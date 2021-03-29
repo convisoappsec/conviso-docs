@@ -1,7 +1,7 @@
 module.exports = {
   someSidebar: {
     Welcome: ['doc1'],
-    CLI: ['doc3'],
+    CLI: ['cli'],
     Integrations: ['integrations/github-actions'],
     Plugins: [],
   },
