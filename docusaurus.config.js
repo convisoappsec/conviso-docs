@@ -37,12 +37,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Flow CLI',
+              to: 'cli',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'Github Actions',
+              to: 'integrations/github-actions',
             },
           ],
         },
@@ -50,16 +50,12 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Instagram',
+              href: 'https://www.instagram.com/convisoappsec/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Linkedin',
+              href: 'https://www.linkedin.com/company/convisoappsec/',
             },
           ],
         },
@@ -68,16 +64,16 @@ module.exports = {
           items: [
             {
               label: 'Blog',
-              to: 'blog',
+              to: 'https://blog.convisoappsec.com/',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/convisoappsec',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Conviso Application Security. Built with Docusaurus.`,
     },
     colorMode: {
       defaultMode: 'light',
@@ -94,7 +90,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/convisoappsec/flow-docs/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
