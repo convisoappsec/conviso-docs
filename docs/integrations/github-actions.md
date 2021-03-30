@@ -7,7 +7,7 @@ sidebar_label: Github Actions
 ![img](../../static/img/github-actions.png)
 
 :::note
-First time using Github Actions? Please refer to the following tutorial.  
+First time using Github Actions? Please refer to the following [tutorial](https://docs.github.com/en/actions).  
 :::
 
 ## Introduction
