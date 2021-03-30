@@ -74,12 +74,12 @@ jobs:
      run: flow sca run
 ```
 
-## Continious Codereview 
+## Continuous Codereview 
 The following code snippet will send diff code to Flow's security Codereview module so you can 
-perform a continious codereview assessment.
-There are three aproaches depending on how you work with your project. In a nutshell:
+perform a continuous codereview assessment.
+There are three approaches depending on how you work with your project. In a nutshell:
 - Using Tags, ordered by time
-- Using Tags, ordered by format version
+- Using Tags, ordered by versioning style (semantic version)
 - Without using Tags, ordered by Git tree
 
 ```yml
@@ -97,6 +97,7 @@ jobs:
      image: convisoappsec/flowcli
      env:
        FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
    steps:
     - uses: actions/checkout@v2
 
@@ -105,7 +106,7 @@ jobs:
 
       #Using Tags, ordered by time
       run: flow deploy create with tag-tracker sort-by time
-      #Using Tags, ordered by format version
+      #Using Tags, ordered by versioning style (semantic version)
       run: flow deploy create with tag-tracker sort-by versioning-style
       #Without using Tags, ordered by Git tree
       run: flow deploy create with values
