@@ -6,8 +6,8 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'convisoappsec', // Usually your GitHub org/user name.
+  projectName: 'flow-docs', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'AppSec Flow Docs',
@@ -24,7 +24,7 @@ module.exports = {
         }, 
         {to: 'blog', label: 'Blog', position: 'left'}, */
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/convisoappsec/flow-docs',
           label: 'GitHub',
           position: 'right',
         },
