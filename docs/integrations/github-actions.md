@@ -1,202 +1,113 @@
 ---
 id: github-actions
-title: Github Actions Integration
+title: Github Actions
 sidebar_label: Github Actions
 ---
 
-You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
-
-## Markdown Syntax
-
-To serve as an example page when styling markdown based Docusaurus sites.
-
-## Headers
-
-# H1 - Create the best documentation
-
-## H2 - Create the best documentation
-
-### H3 - Create the best documentation
-
-#### H4 - Create the best documentation
-
-##### H5 - Create the best documentation
-
-###### H6 - Create the best documentation
-
----
-
-## Emphasis
-
-Emphasis, aka italics, with *asterisks* or _underscores_.
-
-Strong emphasis, aka bold, with **asterisks** or __underscores__.
-
-Combined emphasis with **asterisks and _underscores_**.
-
-Strikethrough uses two tildes. ~~Scratch this.~~
-
----
-
-## Lists
-
-1. First ordered list item
-1. Another item
-   - Unordered sub-list.
-1. Actual numbers don't matter, just that it's a number
-   1. Ordered sub-list
-1. And another item.
-
-* Unordered list can use asterisks
-
-- Or minuses
-
-+ Or pluses
-
----
-
-## Links
-
-[I'm an inline-style link](https://www.google.com/)
-
-[I'm an inline-style link with title](https://www.google.com/ "Google's Homepage")
-
-[I'm a reference-style link][arbitrary case-insensitive reference text]
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com/ or <http://www.example.com/> and sometimes example.com (but not on GitHub, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org/
-[1]: http://slashdot.org/
-[link text itself]: http://www.reddit.com/
-
----
-
-## Images
-
-Here's our logo (hover to see the title text):
-
-Inline-style: ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 1')
-
-Reference-style: ![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 2'
-
-Images from any folder can be used by providing path to file. Path should be relative to markdown file.
-
-![img](../../static/img/logo.svg)
-
----
-
-## Code
-
-```javascript
-var s = 'JavaScript syntax highlighting';
-alert(s);
-```
-
-```python
-s = "Python syntax highlighting"
-print(s)
-```
-
-```
-No language indicated, so no syntax highlighting.
-But let's throw in a <b>tag</b>.
-```
-
-```js {2}
-function highlightMe() {
-  console.log('This line can be highlighted!');
-}
-```
-
----
-
-## Tables
-
-Colons can be used to align columns.
-
-| Tables        |      Are      |   Cool |
-| ------------- | :-----------: | -----: |
-| col 3 is      | right-aligned | \$1600 |
-| col 2 is      |   centered    |   \$12 |
-| zebra stripes |   are neat    |    \$1 |
-
-There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
-
-| Markdown | Less      | Pretty     |
-| -------- | --------- | ---------- |
-| _Still_  | `renders` | **nicely** |
-| 1        | 2         | 3          |
-
----
-
-## Blockquotes
-
-> Blockquotes are very handy in email to emulate reply text. This line is part of the same quote.
-
-Quote break.
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
-
----
-
-## Inline HTML
-
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-
----
-
-## Line Breaks
-
-Here's a line for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a _separate paragraph_.
-
-This line is also a separate paragraph, but... This line is only separated by a single newline, so it's a separate line in the _same paragraph_.
-
----
-
-## Admonitions
+![img](../../static/img/github-actions.png)
 
 :::note
-
-This is a note
-
+First time using Github Actions? Please refer to the following tutorial.  
 :::
 
-:::tip
+## Introduction
 
-This is a tip
+This integration uses the [CLI](../cli) as a docker image for all the execution and communication with Flow.  
+By the end of this tutorial you will know how to:
+- Run a SAST scan
+- Run a SCA scan
+- Send diff code to Flow's security Codereview module.
 
-:::
+## Requirements
 
-:::important
 
-This is important
+### 
+## SAST
+The following code snippet will trigger a SAST scan and send the results to Flow.
 
-:::
+```yml
+name: CI
+on:
+ push:
+   branches: [ master ]
+ pull_request:
+   branches: [ master ]
 
-:::caution
+jobs:
+ conviso-sast:
+   runs-on: ubuntu-latest
+   container:
+     image: convisoappsec/flowcli
+     env:
+       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
+   steps:
+   - uses: actions/checkout@v2
 
-This is a caution
+   - name: Run SAST
+     run: flow sast run
+```
 
-:::
+## SCA
+The following code snippet will trigger a SCA scan and send the results to Flow.
 
-:::warning
+```yml
+name: CI
+on:
+ push:
+   branches: [ master ]
+ pull_request:
+   branches: [ master ]
 
-This is a warning
+jobs:
+ conviso-sca:
+   runs-on: ubuntu-latest
+   container:
+     image: convisoappsec/flowcli
+     env:
+       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
+   steps:
+   - uses: actions/checkout@v2
 
-:::
+   - name: Run SCA
+     run: flow sca run
+```
+
+## Continuous Codereview 
+The following code snippet will send diff code to Flow's security Codereview module so you can 
+perform a continuous codereview assessment.
+There are three approaches depending on how you work with your project. In a nutshell:
+- Using Tags, ordered by time
+- Using Tags, ordered by versioning style (semantic version)
+- Without using Tags, ordered by Git tree
+
+```yml
+name: CI
+on:
+ push:
+   branches: [ master ]
+ pull_request:
+   branches: [ master ]
+
+jobs:
+ conviso-cr:
+   runs-on: ubuntu-latest
+   container:
+     image: convisoappsec/flowcli
+     env:
+       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
+   steps:
+    - uses: actions/checkout@v2
+
+    - name: codereview
+      #Please use only one of the following approaches in the same job
+
+      #Using Tags, ordered by time
+      run: flow deploy create with tag-tracker sort-by time
+      #Using Tags, ordered by versioning style (semantic version)
+      run: flow deploy create with tag-tracker sort-by versioning-style
+      #Without using Tags, ordered by Git tree
+      run: flow deploy create with values
+```

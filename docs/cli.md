@@ -1,5 +1,5 @@
 ---
-id: doc3
+id: cli
 title: This is Document Number 3
 ---
 
