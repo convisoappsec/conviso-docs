@@ -20,12 +20,13 @@ cd flow-onpremise && git checkout 2.x && cp .env.sample .env
 
 Doing so, we have prepared the AppSec Flow environment to be installed.
 
-Next, we have to execute some commands to prepare the environment before installing/upgrading AppSec Flow:
+## Authentication
+
+Now we have to execute some commands to prepare the environment before installing/upgrading AppSec Flow:
 
 ```sh
 source ./scripts/shell_commands.sh && touch key.txt
 ```
-## Authentication
 
 At this point , you should ask Conviso for a new access token, in order to be able to login at Conviso’s Docker Repository.
 To do so, you must e-mail sre@convisoappsec.com and ask for a new AppSec Flow On Premises Access Token. Beware that this token will be available for 12 hours, so use it as soon as possible.
