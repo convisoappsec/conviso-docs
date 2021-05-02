@@ -12,7 +12,7 @@ First time using Gitlab? Please refer to the following tutorial.
 
 ## Introduction
 
-This integration uses the [CLI](../cli) as a docker image for all the execution and communication with Flow.  
+This integration uses the [CLI](../cli/installation) as a docker image for all the execution and communication with Flow.  
 By the end of this tutorial you will know how to:
 - Run a SAST scan
 - Run a SCA scan

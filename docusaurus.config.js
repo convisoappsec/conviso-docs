@@ -38,7 +38,7 @@ module.exports = {
           items: [
             {
               label: 'Flow CLI',
-              to: 'cli',
+              to: 'cli/installation',
             },
             {
               label: 'Github Actions',

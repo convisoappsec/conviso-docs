@@ -12,7 +12,7 @@ First time using Github Actions? Please refer to the [following tutorial](https:
 
 ## Introduction
 
-This integration uses the [CLI](../cli) for all communication with AppSec Flow.  
+This integration uses the [CLI](../cli/installation) for all communication with AppSec Flow.  
 By the end of this tutorial you will know how to:
 - Run a SAST scan
 - Run a SCA scan
