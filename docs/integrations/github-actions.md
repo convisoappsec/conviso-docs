@@ -7,19 +7,27 @@ sidebar_label: Github Actions
 ![img](../../static/img/github-actions.png)
 
 :::note
-First time using Github Actions? Please refer to the following [tutorial](https://docs.github.com/en/actions).  
+First time using Github Actions? Please refer to the [following tutorial](https://docs.github.com/en/actions).  
 :::
 
 ## Introduction
 
-This integration uses the [CLI](../cli) as a docker image for all the execution and communication with Flow.  
+This integration uses the [CLI](../cli) for all communication with AppSec Flow.  
 By the end of this tutorial you will know how to:
 - Run a SAST scan
 - Run a SCA scan
-- Send diff code to Flow's security Codereview module.
+- Send diff code to Flow's Codereview Security module.
 
 ## Requirements
+- A Github account
+- All runners hosted by Github are compatible, but if you are using *self-hosted* runners they need to have **Docker** installed in order to work.
+- **FLOW_API_KEY**: This is the API key to communicate with AppSec Flow
+- **FLOW_PROJECT_CODE**: This is the ID of the application in AppSec Flow
+- When using Github Enterprise Server it need to be run version 3.0 or later
 
+## Creating your pipeline
+If you don't have a pipeline configured, you need to access **Actions** tab in your repository. It will show a variety of different compatibles options for your project.  
+For this integration choose **set up a workflow yourself**. You will be redirected to a text editor page ```.github/workflows/main.yml``` where you are going to configure it using the following information in this tutorial.
 
 ### 
 ## SAST
