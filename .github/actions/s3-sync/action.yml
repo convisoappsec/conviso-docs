@@ -1,0 +1,6 @@
+name: "Docusaurus S3 Sync"
+description: "Builds and syncs Docusaurus site to S3 bucket"
+
+runs:
+  using: docker
+  image: Dockerfile
