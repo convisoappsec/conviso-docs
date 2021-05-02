@@ -27,5 +27,8 @@ RUN apk update && \
     nasm
 # We need these deps for git and docusaurus
 
+#Add execution permission
+RUN ["chmod", "+x", "entrypoint.sh"]
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
