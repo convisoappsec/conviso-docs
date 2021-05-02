@@ -15,7 +15,11 @@ With AppSec Flow, security stops being a bottleneck. It becomes a continuous act
 
 
 ## Requirements
-
+- Minimum hardware requirements:
+    - 2 vCPU
+    - 4GB Ram
+    - 100GB Disk
+- Operating System: Linux based
 - Docker Engine: Refer to https://docs.docker.com/engine/install/
 - Docker Compose: Refer to https://docs.docker.com/compose/install/
 - AppSec Flow On Premises Access Token (Contact us)
