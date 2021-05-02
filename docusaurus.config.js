@@ -23,11 +23,7 @@ module.exports = {
           position: 'left',
         }, 
         {to: 'blog', label: 'Blog', position: 'left'}, */
-        {
-          href: 'https://github.com/convisoappsec/flow-docs',
-          label: 'GitHub',
-          position: 'right',
-        },
+        
       ],
     },
     footer: {
@@ -89,8 +85,7 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/convisoappsec/flow-docs/edit/main/',
+          
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
