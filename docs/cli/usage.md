@@ -5,22 +5,23 @@ sidebar_label: Usage
 ---
 
 ## Authentication
-To start with flowcli an [appsec flow] api key(See [generating api key]) will be necessary. After you got it you can export the key as system environment variable
-and use the flowcli.
+In order to start using the CLI you will need to provide your API Key for your AppSec Flow account.  When retrieving it, you can export the key as system environment variable:
 
 ```sh
 $ export FLOW_API_KEY='you-api-key'
 ```
-or the api key can be set as option argument
+
+Also the API Key can be set as option argument:
 ```sh
 $ flow --api-key 'you-api-key' [SOME COMMAND]
 ```
+>*This is not recommended for production environments*
 
 ## Static Application Security Testing (SAST)
-With the flowcli is very simple to perform a SAST at your source code repository.
-To report the SAST results to Flow a project code will be required. The project is created at [Flow AppSec](https://app.conviso.com.br).
+Using the CLI is very simple to execute a SAST at your source code repository.
+The results will be sent to your AppSec Flow application by using the *project code identifier*.
 
-Assuming that my_source_code_repository is a git repository, so:
+Assuming that my_source_code_repository is a git repository, you can:
 
 ```sh
 $ export FLOW_API_KEY='your-api-key'
