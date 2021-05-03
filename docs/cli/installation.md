@@ -1,15 +1,21 @@
 ---
 id: installation
-title: Installation
-sidebar_label: Installation
+title: CLI
+sidebar_label: Overview
 ---
 
-This is a command line tool to interact with [convisoappsec] flow api. This aims to be very useful for integrations development.
 ## Overview
-The primary goal of the flowcli aims to be a developer friendly tool. The tool will automate as many steps as possible to decrease spent time on an integration with [appsec flow]. Using this tool the integration with your [CI/CD] platform will be easy. At your [CI/CD] you be able to perform [SAST] and [DAST] analysis, send source code to be reviewed by our analysts and order features availables in your [appsec flow account].
+Flow CLI is a command line interface tool to interact with AppSec Flow. 
+
+The primary goal of the CLI is to be a developer friendly tool which automates different functionalities, letting users interact more easily with the platform.
+
+You can use the CLI locally and also inside your [CI/CD] to be able to use the following features:
+- Perform security scans analysis (SAST, SCA, IaC, Container)
+- Set policies to block the pipeline depending on different criterias
+- Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license)
 
 ## Requirements
-To install flowcli some dependecies are required:
+To install the CLI some dependecies are required:
 * python3 >= 3.4. See [python3 download]
 * pip. See [pip guide]
 * git. See [git download]
@@ -37,9 +43,11 @@ $ flow --version
 ```
 The command will print the current version and exit with success. Now we are ready to proceed.
 
+## CI/CD
+For running the CLI in the CI/CD, please check the menu with all the different tools that we are integrated. If your tool is not there, please contact us to assess it.
 
 ## Shell Completion
-This section will guide you to activate the flow shell completion. This is not required to use the tool so you can skip it if you want. 
+This section will guide you to activate the [CLI shell completion](https://en.wikipedia.org/wiki/Command-line_completion) feature. This is not required to use the tool so you can skip it if you want. 
 
 ### Bash
 Open your .bashrc file at ~/.bashrc and place the following snippet in the end of file.
@@ -79,12 +87,5 @@ Start a new fish shell session and the shell completion will be available.
 [zsh]: <https://www.zsh.org/>
 [fish]: <https://fishshell.com/>
 [convisoappsec]: <https://convisoappsec.com/>
-[generating api key]: <https://appsecflow.helpy.io/>
-[generating project code]: <https://appsecflow.helpy.io/>
-[appsec flow]: <https://appsecflow.helpy.io/>
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
-[SAST]: <https://blog.convisoappsec.com/en/code-review-and-sast-whats-the-difference/>
-[DAST]: <https://blog.convisoappsec.com/en/code-review-and-sast-whats-the-difference/>
-[creating project]: <https://appsecflow.helpy.io/>
-[appsec flow account]: <https://appsecflow.helpy.io/>
-[Flow AppSec]: <https://app.conviso.com.br/>
+[AppSec Flow]: <https://app.conviso.com.br/>
