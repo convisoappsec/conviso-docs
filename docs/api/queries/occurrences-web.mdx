@@ -1,0 +1,36 @@
+---
+id: occurrences-web
+title: occurrencesWeb
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all occurrences web the user has access
+
+```graphql
+occurrencesWeb(
+  page: Int = 0
+  limit: Int = 0
+): OccurrenceCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
+### Type
+
+#### [`OccurrenceCollection`](/api/objects/occurrence-collection)

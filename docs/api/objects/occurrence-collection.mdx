@@ -1,0 +1,31 @@
+---
+id: occurrence-collection
+title: OccurrenceCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type OccurrenceCollection {
+  collection: [Occurrence!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[Occurrence!]!`](/api/objects/occurrence))
+
+#### `metadata` ([`CollectionMetadata!`](/api/objects/collection-metadata))

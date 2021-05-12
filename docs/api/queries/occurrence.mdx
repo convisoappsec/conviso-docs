@@ -1,0 +1,33 @@
+---
+id: occurrence
+title: occurrence
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return the occurrence if the user has access
+
+```graphql
+occurrence(
+  id: ID!
+): Occurrence
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+### Type
+
+#### [`Occurrence`](/api/objects/occurrence)

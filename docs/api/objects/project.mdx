@@ -1,0 +1,190 @@
+---
+id: project
+title: Project
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Project {
+  activeObeo: Boolean
+  apiCode: String
+  apiResponseReview: String
+  applicant: String
+  applicantArea: String
+  auditing: String
+  closeComments: Boolean
+  connectivity: String
+  continuousDelivery: Boolean
+  contractedHours: Int
+  createdAt: ISO8601DateTime
+  deploySendFrequency: Int
+  description: String
+  dueDate: ISO8601DateTime
+  endDate: ISO8601DateTime
+  environmentInvaded: Boolean
+  estimatedDays: String
+  estimatedHours: String
+  executiveSummary: String
+  freeRetest: Boolean
+  hasOpenRetest: Boolean
+  hoursOrDays: String
+  id: ID!
+  integrationDeploy: Boolean
+  inviteToken: String
+  isOpen: Boolean!
+  isPublic: Boolean
+  label: String!
+  language: String
+  lastProjectStatusId: Int
+  mainRecommendations: String
+  microserviceFolder: String
+  notificationList: String
+  occurrences: [Occurrence!]!
+  pid: String
+  planId: Int
+  plannedStartedAt: ISO8601DateTime
+  projectStatusId: Int
+  projectTypeId: Int!
+  receiveDeploys: Boolean
+  repositoryUrl: String
+  retestedAt: ISO8601DateTime
+  sacCode: String
+  sacProjectId: Int
+  scopeId: Int!
+  secretId: String
+  sshPublicKey: String
+  startDate: ISO8601DateTime!
+  students: Int
+  subScopeId: Int
+  updatedAt: ISO8601DateTime
+  userableId: Int
+  userableType: String
+  vulnerabilitiesCount: Int!
+  waiting: Boolean!
+}
+```
+
+### Fields
+
+#### `activeObeo` ([`Boolean`](/api/scalars/boolean))
+
+#### `apiCode` ([`String`](/api/scalars/string))
+
+#### `apiResponseReview` ([`String`](/api/scalars/string))
+
+#### `applicant` ([`String`](/api/scalars/string))
+
+#### `applicantArea` ([`String`](/api/scalars/string))
+
+#### `auditing` ([`String`](/api/scalars/string))
+
+#### `closeComments` ([`Boolean`](/api/scalars/boolean))
+
+#### `connectivity` ([`String`](/api/scalars/string))
+
+#### `continuousDelivery` ([`Boolean`](/api/scalars/boolean))
+
+#### `contractedHours` ([`Int`](/api/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `deploySendFrequency` ([`Int`](/api/scalars/int))
+
+#### `description` ([`String`](/api/scalars/string))
+
+#### `dueDate` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `endDate` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `environmentInvaded` ([`Boolean`](/api/scalars/boolean))
+
+#### `estimatedDays` ([`String`](/api/scalars/string))
+
+#### `estimatedHours` ([`String`](/api/scalars/string))
+
+#### `executiveSummary` ([`String`](/api/scalars/string))
+
+#### `freeRetest` ([`Boolean`](/api/scalars/boolean))
+
+#### `hasOpenRetest` ([`Boolean`](/api/scalars/boolean))
+
+#### `hoursOrDays` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `integrationDeploy` ([`Boolean`](/api/scalars/boolean))
+
+#### `inviteToken` ([`String`](/api/scalars/string))
+
+#### `isOpen` ([`Boolean!`](/api/scalars/boolean))
+
+#### `isPublic` ([`Boolean`](/api/scalars/boolean))
+
+#### `label` ([`String!`](/api/scalars/string))
+
+#### `language` ([`String`](/api/scalars/string))
+
+#### `lastProjectStatusId` ([`Int`](/api/scalars/int))
+
+#### `mainRecommendations` ([`String`](/api/scalars/string))
+
+#### `microserviceFolder` ([`String`](/api/scalars/string))
+
+#### `notificationList` ([`String`](/api/scalars/string))
+
+#### `occurrences` ([`[Occurrence!]!`](/api/objects/occurrence))
+
+#### `pid` ([`String`](/api/scalars/string))
+
+#### `planId` ([`Int`](/api/scalars/int))
+
+#### `plannedStartedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `projectStatusId` ([`Int`](/api/scalars/int))
+
+#### `projectTypeId` ([`Int!`](/api/scalars/int))
+
+#### `receiveDeploys` ([`Boolean`](/api/scalars/boolean))
+
+#### `repositoryUrl` ([`String`](/api/scalars/string))
+
+#### `retestedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `sacCode` ([`String`](/api/scalars/string))
+
+#### `sacProjectId` ([`Int`](/api/scalars/int))
+
+#### `scopeId` ([`Int!`](/api/scalars/int))
+
+#### `secretId` ([`String`](/api/scalars/string))
+
+#### `sshPublicKey` ([`String`](/api/scalars/string))
+
+#### `startDate` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `students` ([`Int`](/api/scalars/int))
+
+#### `subScopeId` ([`Int`](/api/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `userableId` ([`Int`](/api/scalars/int))
+
+#### `userableType` ([`String`](/api/scalars/string))
+
+#### `vulnerabilitiesCount` ([`Int!`](/api/scalars/int))
+
+#### `waiting` ([`Boolean!`](/api/scalars/boolean))
