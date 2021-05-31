@@ -15,7 +15,7 @@ module.exports = {
                 //  'integrations/azure-devops',
                 //  'integrations/circleci',
                   'integrations/github-actions',
-                //  'integrations/gitlab',
+                  'integrations/gitlab',
                 //  'integrations/jenkins',
                   ]
         },
