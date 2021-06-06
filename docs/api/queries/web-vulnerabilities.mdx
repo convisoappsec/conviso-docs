@@ -1,6 +1,6 @@
 ---
-id: occurrences
-title: occurrences
+id: web-vulnerabilities
+title: webVulnerabilities
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,13 +15,13 @@ style={{
 </span>
 );
 
-Returns all occurrences the user has access
+Returns all web vulnerabilities the user has access
 
 ```graphql
-occurrences(
+webVulnerabilities(
   page: Int = 0
   limit: Int = 0
-): OccurrenceCollection
+): VulnerabilityCollection
 
 ```
 
@@ -33,4 +33,4 @@ occurrences(
 
 ### Type
 
-#### [`OccurrenceCollection`](/api/objects/occurrence-collection)
+#### [`VulnerabilityCollection`](/api/objects/vulnerability-collection)

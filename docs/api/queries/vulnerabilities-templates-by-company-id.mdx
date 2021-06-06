@@ -1,6 +1,6 @@
 ---
-id: projects
-title: projects
+id: vulnerabilities-templates-by-company-id
+title: vulnerabilitiesTemplatesByCompanyId
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,17 +15,20 @@ style={{
 </span>
 );
 
-Returns all projects the user has access
+Returns all vulnerabilities templates by company id
 
 ```graphql
-projects(
+vulnerabilitiesTemplatesByCompanyId(
+  id: ID!
   page: Int = 0
   limit: Int = 0
-): ProjectCollection!
+): VulnerabilityTemplateCollection!
 
 ```
 
 ### Arguments
+
+#### `id` ([`ID!`](/api/scalars/id))
 
 #### `page` ([`Int`](/api/scalars/int))
 
@@ -33,4 +36,4 @@ projects(
 
 ### Type
 
-#### [`ProjectCollection`](/api/objects/project-collection)
+#### [`VulnerabilityTemplateCollection`](/api/objects/vulnerability-template-collection)

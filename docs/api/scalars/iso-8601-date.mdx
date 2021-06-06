@@ -1,0 +1,22 @@
+---
+id: iso-8601-date
+title: ISO8601Date
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+An ISO 8601-encoded date
+
+```graphql
+scalar ISO8601Date
+```

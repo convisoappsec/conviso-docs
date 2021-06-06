@@ -1,6 +1,6 @@
 ---
-id: occurrence
-title: occurrence
+id: assets
+title: assets
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,12 +15,14 @@ style={{
 </span>
 );
 
-Return the occurrence if the user has access
+Returns all assets the user has access
 
 ```graphql
-occurrence(
+assets(
   id: ID!
-): Occurrence
+  page: Int = 0
+  limit: Int = 0
+): AssetCollection!
 
 ```
 
@@ -28,6 +30,10 @@ occurrence(
 
 #### `id` ([`ID!`](/api/scalars/id))
 
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
 ### Type
 
-#### [`Occurrence`](/api/objects/occurrence)
+#### [`AssetCollection`](/api/objects/asset-collection)
