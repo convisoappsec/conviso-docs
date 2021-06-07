@@ -1,0 +1,70 @@
+module.exports = {
+  schemaSidebar: [
+    { type: "doc", id: "api/schema" },
+    {
+      type: "category",
+      label: "Queries",
+      items: [
+        "api/queries/allocated-analyses",
+        "api/queries/analyses",
+        "api/queries/analysis",
+        "api/queries/assets",
+        "api/queries/project",
+        "api/queries/vulnerabilities",
+        "api/queries/vulnerabilities-templates-by-company-id",
+        "api/queries/vulnerability",
+        "api/queries/web-vulnerabilities",
+      ],
+    },
+    {
+      type: "category",
+      label: "Mutations",
+      items: ["api/mutations/create-web-vulnerability"],
+    },
+    {
+      type: "category",
+      label: "Directives",
+      items: [
+        "api/directives/deprecated",
+        "api/directives/include",
+        "api/directives/skip",
+        "api/directives/specified-by",
+      ],
+    },
+    {
+      type: "category",
+      label: "Objects",
+      items: [
+        "api/objects/analysis",
+        "api/objects/analysis-collection",
+        "api/objects/asset",
+        "api/objects/asset-collection",
+        "api/objects/collection-metadata",
+        "api/objects/create-web-vulnerability-payload",
+        "api/objects/project",
+        "api/objects/vulnerability",
+        "api/objects/vulnerability-collection",
+        "api/objects/vulnerability-template",
+        "api/objects/vulnerability-template-collection",
+      ],
+    },
+    {
+      type: "category",
+      label: "Inputs",
+      items: ["api/inputs/create-web-vulnerability-input"],
+    },
+    {
+      type: "category",
+      label: "Scalars",
+      items: [
+        "api/scalars/boolean",
+        "api/scalars/id",
+        "api/scalars/int",
+        "api/scalars/iso-8601-date",
+        "api/scalars/iso-8601-date-time",
+        "api/scalars/string",
+        "api/scalars/upload",
+      ],
+    },
+  ],
+};

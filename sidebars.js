@@ -32,6 +32,8 @@ module.exports = {
     {
       Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],
       Plugins: [],
-    }
+      
+    },
   ],
+  ...require("./docs/api/sidebar-schema"),
 };

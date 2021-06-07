@@ -1,0 +1,36 @@
+---
+id: analyses
+title: analyses
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all analyses the user has access
+
+```graphql
+analyses(
+  page: Int = 0
+  limit: Int = 0
+): AnalysisCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
+### Type
+
+#### [`AnalysisCollection`](/api/objects/analysis-collection)

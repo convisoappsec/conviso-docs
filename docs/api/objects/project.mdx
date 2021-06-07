@@ -1,0 +1,79 @@
+---
+id: project
+title: Project
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Project {
+  analysis: [Analysis!]!
+  applicationScenario: String
+  beginDate: ISO8601Date
+  conclusion: String
+  contractId: Int
+  createdAt: ISO8601DateTime!
+  endDate: ISO8601Date
+  id: ID!
+  kickoff: Boolean
+  name: String
+  planStatus: String
+  presential: Boolean
+  scopeId: Int
+  sumTotalAnalysisLines: Int
+  sumTotalChangedLines: Int
+  sumTotalNewLines: Int
+  sumTotalRemovedLines: Int
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `analysis` ([`[Analysis!]!`](/api/objects/analysis))
+
+#### `applicationScenario` ([`String`](/api/scalars/string))
+
+#### `beginDate` ([`ISO8601Date`](/api/scalars/iso-8601-date))
+
+#### `conclusion` ([`String`](/api/scalars/string))
+
+#### `contractId` ([`Int`](/api/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `endDate` ([`ISO8601Date`](/api/scalars/iso-8601-date))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `kickoff` ([`Boolean`](/api/scalars/boolean))
+
+#### `name` ([`String`](/api/scalars/string))
+
+#### `planStatus` ([`String`](/api/scalars/string))
+
+#### `presential` ([`Boolean`](/api/scalars/boolean))
+
+#### `scopeId` ([`Int`](/api/scalars/int))
+
+#### `sumTotalAnalysisLines` ([`Int`](/api/scalars/int))
+
+#### `sumTotalChangedLines` ([`Int`](/api/scalars/int))
+
+#### `sumTotalNewLines` ([`Int`](/api/scalars/int))
+
+#### `sumTotalRemovedLines` ([`Int`](/api/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))

@@ -1,0 +1,33 @@
+---
+id: analysis
+title: analysis
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return the analysis if the user has access
+
+```graphql
+analysis(
+  id: ID!
+): Analysis
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+### Type
+
+#### [`Analysis`](/api/objects/analysis)
