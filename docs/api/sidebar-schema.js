@@ -9,6 +9,7 @@ module.exports = {
         "api/queries/analyses",
         "api/queries/analysis",
         "api/queries/assets",
+        "api/queries/notifications",
         "api/queries/project",
         "api/queries/vulnerabilities",
         "api/queries/vulnerabilities-templates-by-company-id",
@@ -19,7 +20,10 @@ module.exports = {
     {
       type: "category",
       label: "Mutations",
-      items: ["api/mutations/create-web-vulnerability"],
+      items: [
+        "api/mutations/create-notification",
+        "api/mutations/create-web-vulnerability",
+      ],
     },
     {
       type: "category",
@@ -35,12 +39,17 @@ module.exports = {
       type: "category",
       label: "Objects",
       items: [
+        "api/objects/activity",
         "api/objects/analysis",
         "api/objects/analysis-collection",
         "api/objects/asset",
         "api/objects/asset-collection",
         "api/objects/collection-metadata",
+        "api/objects/create-notification-payload",
         "api/objects/create-web-vulnerability-payload",
+        "api/objects/notification",
+        "api/objects/notification-collection",
+        "api/objects/playbook",
         "api/objects/project",
         "api/objects/vulnerability",
         "api/objects/vulnerability-collection",
@@ -51,7 +60,10 @@ module.exports = {
     {
       type: "category",
       label: "Inputs",
-      items: ["api/inputs/create-web-vulnerability-input"],
+      items: [
+        "api/inputs/create-notification-input",
+        "api/inputs/create-web-vulnerability-input",
+      ],
     },
     {
       type: "category",

@@ -1,0 +1,70 @@
+---
+id: activity
+title: Activity
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Activity {
+  archiveContentType: String
+  archiveFilename: String
+  archiveId: String
+  archiveSize: Int
+  checkId: Int
+  checklistId: Int
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  evidenceText: String
+  id: ID!
+  justify: String
+  portalUserId: Int
+  projectId: Int
+  status: String
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `archiveContentType` ([`String`](/api/scalars/string))
+
+#### `archiveFilename` ([`String`](/api/scalars/string))
+
+#### `archiveId` ([`String`](/api/scalars/string))
+
+#### `archiveSize` ([`Int`](/api/scalars/int))
+
+#### `checkId` ([`Int`](/api/scalars/int))
+
+#### `checklistId` ([`Int`](/api/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `evidenceText` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `justify` ([`String`](/api/scalars/string))
+
+#### `portalUserId` ([`Int`](/api/scalars/int))
+
+#### `projectId` ([`Int`](/api/scalars/int))
+
+#### `status` ([`String`](/api/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))

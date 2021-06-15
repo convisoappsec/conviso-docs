@@ -1,0 +1,49 @@
+---
+id: notification
+title: Notification
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Notification {
+  analysesId: Int
+  authorId: Int
+  createdAt: ISO8601DateTime!
+  description: String
+  id: ID!
+  notificationStatus: String
+  updatedAt: ISO8601DateTime!
+  vulnerabilityTemplateId: Int
+}
+```
+
+### Fields
+
+#### `analysesId` ([`Int`](/api/scalars/int))
+
+#### `authorId` ([`Int`](/api/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `notificationStatus` ([`String`](/api/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `vulnerabilityTemplateId` ([`Int`](/api/scalars/int))

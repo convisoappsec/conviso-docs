@@ -20,6 +20,8 @@ No description
 ```graphql
 type Analysis {
   activeObeo: Boolean
+  activitieCompleted: Int
+  activities: [Activity!]!
   apiCode: String
   apiResponseReview: String
   applicant: String
@@ -52,9 +54,11 @@ type Analysis {
   mainRecommendations: String
   microserviceFolder: String
   notificationList: String
+  notifications: [Notification!]!
   pid: String
   planId: Int
   plannedStartedAt: ISO8601DateTime
+  playbooks: [Playbook!]!
   projectStatusId: Int
   projectTypeId: Int!
   receiveDeploys: Boolean
@@ -71,12 +75,12 @@ type Analysis {
   totalAnalysisLines: Int
   totalChangedLines: Int
   totalNewLines: Int
+  totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
   updatedAt: ISO8601DateTime
   userableId: Int
   userableType: String
-  vulnerabilitiesCount: Int!
-  vulnerability: [Vulnerability!]!
+  vulnerabilities: [Vulnerability!]!
   waiting: Boolean!
 }
 ```
@@ -84,6 +88,10 @@ type Analysis {
 ### Fields
 
 #### `activeObeo` ([`Boolean`](/api/scalars/boolean))
+
+#### `activitieCompleted` ([`Int`](/api/scalars/int))
+
+#### `activities` ([`[Activity!]!`](/api/objects/activity))
 
 #### `apiCode` ([`String`](/api/scalars/string))
 
@@ -149,11 +157,15 @@ type Analysis {
 
 #### `notificationList` ([`String`](/api/scalars/string))
 
+#### `notifications` ([`[Notification!]!`](/api/objects/notification))
+
 #### `pid` ([`String`](/api/scalars/string))
 
 #### `planId` ([`Int`](/api/scalars/int))
 
 #### `plannedStartedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `playbooks` ([`[Playbook!]!`](/api/objects/playbook))
 
 #### `projectStatusId` ([`Int`](/api/scalars/int))
 
@@ -187,6 +199,8 @@ type Analysis {
 
 #### `totalNewLines` ([`Int`](/api/scalars/int))
 
+#### `totalPublishedVulnerabilities` ([`Int`](/api/scalars/int))
+
 #### `totalRemovedLines` ([`Int`](/api/scalars/int))
 
 #### `updatedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
@@ -195,8 +209,6 @@ type Analysis {
 
 #### `userableType` ([`String`](/api/scalars/string))
 
-#### `vulnerabilitiesCount` ([`Int!`](/api/scalars/int))
-
-#### `vulnerability` ([`[Vulnerability!]!`](/api/objects/vulnerability))
+#### `vulnerabilities` ([`[Vulnerability!]!`](/api/objects/vulnerability))
 
 #### `waiting` ([`Boolean!`](/api/scalars/boolean))
