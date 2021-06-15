@@ -7,7 +7,7 @@ sidebar_label: CircleCI
 ![img](../../static/img/circleci.png)
 
 :::note
-First time using CircleCI? Please refer to the following tutorial.  
+First time using CircleCI? Please refer to the [following tutorial](https://circleci.com/docs/).  
 :::
 
 ## Introduction
