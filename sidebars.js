@@ -15,8 +15,11 @@ module.exports = {
                 //  'integrations/azure-devops',
                 //  'integrations/circleci',
                   'integrations/github-actions',
-                //  'integrations/gitlab',
+                  'integrations/gitlab',
                   'integrations/jenkins',
+                //  'integrations/gitlab',
+                  
+                //  'integrations/jenkins',
                   ]
         },
       /*  {
@@ -32,6 +35,8 @@ module.exports = {
     {
       Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],
       Plugins: [],
-    }
+      
+    },
   ],
+  ...require("./docs/api/sidebar-schema"),
 };

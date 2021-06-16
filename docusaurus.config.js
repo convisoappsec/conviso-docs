@@ -16,6 +16,11 @@ module.exports = {
         src: 'img/favicon.ico',
       },
       items: [
+        {
+          to: "/api/schema", // adjust the location depending on your baseURL (see configuration)
+          label: "API", // change the label with yours
+          position: "left",
+        },
        /* {
           to: 'docs/',
           activeBasePath: 'docs',
@@ -90,6 +95,16 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+      },
+    ],
+  ],
+  plugins: [
+    [
+      require.resolve("@edno/docusaurus2-graphql-doc-generator"),
+      {
+        schema: "./static/schema.graphql",
+        rootPath: "./docs", // docs will be generated under './docs/swapi' (rootPath/baseURL)
+        baseURL: "api",
       },
     ],
   ],

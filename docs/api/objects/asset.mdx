@@ -1,0 +1,91 @@
+---
+id: asset
+title: Asset
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Asset {
+  applicationIdGauntlet: Int
+  architectureType: String
+  assetType: String
+  assetsTagList: String
+  audience: String
+  createdAt: ISO8601DateTime!
+  criticity: String
+  dataClassification: String
+  description: String
+  developmentModel: String
+  developmentTeam: String
+  environment: String
+  errorGauntlet: String
+  id: ID!
+  lifeCycle: String
+  name: String
+  scanType: String
+  scopeId: Int
+  updatedAt: ISO8601DateTime!
+  url: String
+  verificationTokenGauntlet: String
+  verifyStatusGauntlet: String
+}
+```
+
+### Fields
+
+#### `applicationIdGauntlet` ([`Int`](/api/scalars/int))
+
+#### `architectureType` ([`String`](/api/scalars/string))
+
+#### `assetType` ([`String`](/api/scalars/string))
+
+#### `assetsTagList` ([`String`](/api/scalars/string))
+
+#### `audience` ([`String`](/api/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `criticity` ([`String`](/api/scalars/string))
+
+#### `dataClassification` ([`String`](/api/scalars/string))
+
+#### `description` ([`String`](/api/scalars/string))
+
+#### `developmentModel` ([`String`](/api/scalars/string))
+
+#### `developmentTeam` ([`String`](/api/scalars/string))
+
+#### `environment` ([`String`](/api/scalars/string))
+
+#### `errorGauntlet` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `lifeCycle` ([`String`](/api/scalars/string))
+
+#### `name` ([`String`](/api/scalars/string))
+
+#### `scanType` ([`String`](/api/scalars/string))
+
+#### `scopeId` ([`Int`](/api/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `url` ([`String`](/api/scalars/string))
+
+#### `verificationTokenGauntlet` ([`String`](/api/scalars/string))
+
+#### `verifyStatusGauntlet` ([`String`](/api/scalars/string))

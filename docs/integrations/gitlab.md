@@ -19,59 +19,49 @@ By the end of this tutorial you will know how to:
 - Send diff code to Flow's security Codereview module.
 
 ## Requirements
+1. Executor type defined as docker or docker+machine; 
+1. External access (can be restricted to specific Conviso addresses);
 
+### Usage
 
-### 
+The snippets below will produce a single job with our integration as single step, but you can attach each **script**
+section described on each action in your current pipeline with your own stage organization.
 ## SAST
 The following code snippet will trigger a SAST scan and send the results to Flow.
 
 ```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
-
-jobs:
- conviso-sast:
-   runs-on: ubuntu-latest
-   container:
-     image: convisoappsec/flowcli
-     env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
-   steps:
-   - uses: actions/checkout@v2
-
-   - name: Run SAST
-     run: flow sast run
+conviso-sast:
+    image: convisoappsec/flowcli:latest
+    services:
+        - docker:dind
+    variables:
+        FLOW_PROJECT_CODE: "HERE"
+    only:
+        variables:
+            - $FLOW_API_KEY
+    script:
+        - flow sast run
+    tags:
+        - docker
 ```
 
 ## SCA
 The following code snippet will trigger a SCA scan and send the results to Flow.
 
 ```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
-
-jobs:
- conviso-sca:
-   runs-on: ubuntu-latest
-   container:
-     image: convisoappsec/flowcli
-     env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
-   steps:
-   - uses: actions/checkout@v2
-
-   - name: Run SCA
-     run: flow sca run
+conviso-sca:
+    image: convisoappsec/flowcli:latest
+    services:
+        - docker:dind
+    variables:
+        FLOW_PROJECT_CODE: "HERE"
+    only:
+        variables:
+            - $FLOW_API_KEY
+    script:
+        - flow sca run
+    tags:
+        - docker
 ```
 
 ## Continuous Codereview 
@@ -83,31 +73,19 @@ There are three approaches depending on how you work with your project. In a nut
 - Without using Tags, ordered by Git tree
 
 ```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
-
-jobs:
- conviso-cr:
-   runs-on: ubuntu-latest
-   container:
-     image: convisoappsec/flowcli
-     env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
-   steps:
-    - uses: actions/checkout@v2
-
-    - name: codereview
-      #Please use only one of the following approaches in the same job
-
-      #Using Tags, ordered by time
-      run: flow deploy create with tag-tracker sort-by time
-      #Using Tags, ordered by versioning style (semantic version)
-      run: flow deploy create with tag-tracker sort-by versioning-style
-      #Without using Tags, ordered by Git tree
-      run: flow deploy create with values
+conviso-codereview:
+    image: convisoappsec/flowcli:latest
+    services:
+        - docker:dind
+    variables:
+        FLOW_PROJECT_CODE: "Please, insert your project code here"
+    only:
+        variables:
+            - $FLOW_API_KEY
+    script:
+       - flow deploy create with values
+       # - flow deploy create with tag-tracker sort by time
+       # - flow deploy create with tag-tracker sort-by versioning-style
+    tags:
+        - docker
 ```
