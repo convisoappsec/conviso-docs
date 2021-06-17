@@ -16,6 +16,7 @@ module.exports = {
                 //  'integrations/circleci',
                   'integrations/github-actions',
                   'integrations/gitlab',
+                  'integrations/codefresh',
                 //  'integrations/jenkins',
                   ]
         },
