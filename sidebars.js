@@ -22,6 +22,13 @@ module.exports = {
                 //  'integrations/jenkins',
                   ]
         },
+        {
+          type: "category",
+          label: "Scanners",
+          items: [
+                  'integrations/sonarcloud',
+                  ]
+        },
       /*  {
           type: "category",
           label: "Defect/Bug Tracking",
