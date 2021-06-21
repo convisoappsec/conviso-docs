@@ -50,9 +50,11 @@ In order to both platforms to be synced, a webhook needs to be configured so cha
 2. Click on Create
 3. Give a name to the Webook, for example: ```AppSec Flow```
 4. In AppSec Flow please go to Integrations > SonarCloud.
-5. Within Webhook information, copy the webhook url:
-```Example:
-    https://XXXXXX:YYYYYY@com.br/api/v1/integrations/sonarcloud/webhook?organization=Put here your organization key.
+5. Within Webhook information, copy the webhook url.
+
+Example:
+```
+https://XXXXXX:YYYYYY@com.br/api/v1/integrations/sonarcloud/webhook?organization=Put here your organization key.
 ```
 6. Update the last part of the url with the organization key/id that was configured (You can get this information from the Organizations info)
 7. Paste the content in Sonarcloud url webhook field
