@@ -13,11 +13,18 @@ module.exports = {
           label: "CI/CD",
           items: [
                 //  'integrations/azure-devops',
-                //  'integrations/circleci',
+                  'integrations/circleci',
                   'integrations/github-actions',
                   'integrations/gitlab',
                   'integrations/codefresh',
-                //  'integrations/jenkins',
+                  'integrations/jenkins',
+                  ]
+        },
+        {
+          type: "category",
+          label: "Scanners",
+          items: [
+                  'integrations/sonarcloud',
                   ]
         },
       /*  {
