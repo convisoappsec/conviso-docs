@@ -7,7 +7,7 @@ The authentication process is made through the x-api-key header, as exeplified b
 ```console 
 x-api-key: {{API_KEY}}
 ``` 
-You can generate your API key following this [steps](https://app.clickup.com/3016679/v/dc/2w1z7-8998/2w1z7-192).  
+You can generate your API key following this [steps](https://help.convisoappsec.com/pt-BR/articles/4428685-api-key).  
 The URI to access the GraphQL API is:
 ```console
 https://app.conviso.com.br/graphql
