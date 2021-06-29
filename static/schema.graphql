@@ -205,27 +205,6 @@ type CreateWebVulnerabilityPayload {
   vulnerability: Vulnerability
 }
 
-type Deploy {
-  aasmState: String
-  createdAt: ISO8601DateTime!
-  currentCommit: String
-  currentTag: String
-  deployUrlCompare: String
-  discardReason: String
-  discardedId: Int
-  gauntletDiffUrl: String
-  gauntletScanId: Int
-  gauntletSourceCodeId: Int
-  id: ID!
-  previousCommit: String
-  previousTag: String
-  projectId: Int
-  reviewed: Boolean
-  reviewedAt: ISO8601DateTime
-  reviewerId: Int
-  updatedAt: ISO8601DateTime!
-}
-
 """
 An ISO 8601-encoded date
 """
@@ -334,13 +313,11 @@ type PortalUser {
   endWorkTime: String
   financial: Boolean
   githubUser: String
-  history: String!
   id: ID!
   jiraUser: String
   name: String
   oper: Boolean
   phone: String
-  reviews: [Deploy!]!
   slackUser: String
   sshKeys: String
   vulnerabilities: [Vulnerability!]!

@@ -52,7 +52,6 @@ module.exports = {
         "api/objects/collection-metadata",
         "api/objects/create-notification-payload",
         "api/objects/create-web-vulnerability-payload",
-        "api/objects/deploy",
         "api/objects/notification",
         "api/objects/notification-collection",
         "api/objects/playbook",
