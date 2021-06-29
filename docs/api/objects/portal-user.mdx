@@ -1,0 +1,73 @@
+---
+id: portal-user
+title: PortalUser
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type PortalUser {
+  allocatedAnalyses: [Analysis!]!
+  analyst: Boolean
+  blocked: Boolean
+  dashboardOnly: Boolean
+  email: String!
+  endWorkTime: String
+  financial: Boolean
+  githubUser: String
+  id: ID!
+  jiraUser: String
+  name: String
+  oper: Boolean
+  phone: String
+  slackUser: String
+  sshKeys: String
+  vulnerabilities: [Vulnerability!]!
+}
+```
+
+### Fields
+
+#### `allocatedAnalyses` ([`[Analysis!]!`](/api/objects/analysis))
+
+#### `analyst` ([`Boolean`](/api/scalars/boolean))
+
+#### `blocked` ([`Boolean`](/api/scalars/boolean))
+
+#### `dashboardOnly` ([`Boolean`](/api/scalars/boolean))
+
+#### `email` ([`String!`](/api/scalars/string))
+
+#### `endWorkTime` ([`String`](/api/scalars/string))
+
+#### `financial` ([`Boolean`](/api/scalars/boolean))
+
+#### `githubUser` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `jiraUser` ([`String`](/api/scalars/string))
+
+#### `name` ([`String`](/api/scalars/string))
+
+#### `oper` ([`Boolean`](/api/scalars/boolean))
+
+#### `phone` ([`String`](/api/scalars/string))
+
+#### `slackUser` ([`String`](/api/scalars/string))
+
+#### `sshKeys` ([`String`](/api/scalars/string))
+
+#### `vulnerabilities` ([`[Vulnerability!]!`](/api/objects/vulnerability))

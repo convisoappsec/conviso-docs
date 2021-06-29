@@ -10,6 +10,7 @@ module.exports = {
         "api/queries/analysis",
         "api/queries/assets",
         "api/queries/notifications",
+        "api/queries/portal-user-profile",
         "api/queries/project",
         "api/queries/vulnerabilities",
         "api/queries/vulnerabilities-templates-by-company-id",
@@ -23,6 +24,10 @@ module.exports = {
       items: [
         "api/mutations/create-notification",
         "api/mutations/create-web-vulnerability",
+        "api/mutations/update-activity-status-to-finish",
+        "api/mutations/update-activity-status-to-not-apply",
+        "api/mutations/update-activity-status-to-restart",
+        "api/mutations/update-activity-status-to-start",
       ],
     },
     {
@@ -50,7 +55,12 @@ module.exports = {
         "api/objects/notification",
         "api/objects/notification-collection",
         "api/objects/playbook",
+        "api/objects/portal-user",
         "api/objects/project",
+        "api/objects/update-activity-status-to-finish-payload",
+        "api/objects/update-activity-status-to-not-apply-payload",
+        "api/objects/update-activity-status-to-restart-payload",
+        "api/objects/update-activity-status-to-start-payload",
         "api/objects/vulnerability",
         "api/objects/vulnerability-collection",
         "api/objects/vulnerability-template",
@@ -63,6 +73,10 @@ module.exports = {
       items: [
         "api/inputs/create-notification-input",
         "api/inputs/create-web-vulnerability-input",
+        "api/inputs/update-activity-status-to-finish-input",
+        "api/inputs/update-activity-status-to-not-apply-input",
+        "api/inputs/update-activity-status-to-restart-input",
+        "api/inputs/update-activity-status-to-start-input",
       ],
     },
     {
