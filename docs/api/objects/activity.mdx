@@ -23,8 +23,6 @@ type Activity {
   archiveFilename: String
   archiveId: String
   archiveSize: Int
-  checkId: Int
-  checklistId: Int
   createdAt: ISO8601DateTime!
   deletedAt: ISO8601DateTime
   evidenceText: String
@@ -33,6 +31,7 @@ type Activity {
   portalUserId: Int
   projectId: Int
   status: String
+  title: String
   updatedAt: ISO8601DateTime!
 }
 ```
@@ -46,10 +45,6 @@ type Activity {
 #### `archiveId` ([`String`](/api/scalars/string))
 
 #### `archiveSize` ([`Int`](/api/scalars/int))
-
-#### `checkId` ([`Int`](/api/scalars/int))
-
-#### `checklistId` ([`Int`](/api/scalars/int))
 
 #### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
 
@@ -66,5 +61,7 @@ type Activity {
 #### `projectId` ([`Int`](/api/scalars/int))
 
 #### `status` ([`String`](/api/scalars/string))
+
+#### `title` ([`String`](/api/scalars/string))
 
 #### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))

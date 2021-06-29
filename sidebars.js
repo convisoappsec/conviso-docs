@@ -1,3 +1,5 @@
+const sidebarSchema = require("./docs/api/sidebar-schema");
+
 module.exports = {
   docs: [
     'index',
@@ -31,6 +33,11 @@ module.exports = {
     },
     {
       Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],
+      Plugins: [],
+      
+    },
+    {
+      GraphQL: sidebarSchema.schemaSidebar,
       Plugins: [],
       
     },
