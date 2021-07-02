@@ -1,6 +1,6 @@
 ---
-id: assets
-title: assets
+id: deploys-by-analysis-id
+title: deploysByAnalysisId
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,14 +15,16 @@ style={{
 </span>
 );
 
-Returns all assets the user has access
+Returns deploys by analysis id
 
 ```graphql
-assets(
+deploysByAnalysisId(
   id: ID!
+  initialDate: ISO8601DateTime!
+  finishDate: ISO8601DateTime!
   page: Int = 0
   limit: Int = 0
-): AssetCollection!
+): DeployCollection!
 
 ```
 
@@ -30,10 +32,14 @@ assets(
 
 #### `id` ([`ID!`](/api/scalars/id))
 
+#### `initialDate` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `finishDate` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
 #### `page` ([`Int`](/api/scalars/int))
 
 #### `limit` ([`Int`](/api/scalars/int))
 
 ### Type
 
-#### [`AssetCollection`](/api/objects/asset-collection)
+#### [`DeployCollection`](/api/objects/deploy-collection)

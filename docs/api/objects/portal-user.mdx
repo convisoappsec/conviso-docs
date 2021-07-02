@@ -19,7 +19,7 @@ No description
 
 ```graphql
 type PortalUser {
-  allocatedAnalyses: [Analysis!]!
+  allocatedAnalyses: [Analysis!]
   analyst: Boolean
   blocked: Boolean
   dashboardOnly: Boolean
@@ -32,15 +32,19 @@ type PortalUser {
   name: String
   oper: Boolean
   phone: String
+  reviewedDeploys(
+    initialDate: ISO8601DateTime!
+    finishDate: ISO8601DateTime!
+  ): [Deploy!]
   slackUser: String
-  sshKeys: String
-  vulnerabilities: [Vulnerability!]!
+  sshPublicKey: String
+  submittedVulnerabilities: [Vulnerability!]
 }
 ```
 
 ### Fields
 
-#### `allocatedAnalyses` ([`[Analysis!]!`](/api/objects/analysis))
+#### `allocatedAnalyses` ([`[Analysis!]`](/api/objects/analysis))
 
 #### `analyst` ([`Boolean`](/api/scalars/boolean))
 
@@ -66,8 +70,14 @@ type PortalUser {
 
 #### `phone` ([`String`](/api/scalars/string))
 
+#### `reviewedDeploys` ([`[Deploy!]`](/api/objects/deploy))
+
+- ##### `initialDate` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+- ##### `finishDate` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
 #### `slackUser` ([`String`](/api/scalars/string))
 
-#### `sshKeys` ([`String`](/api/scalars/string))
+#### `sshPublicKey` ([`String`](/api/scalars/string))
 
-#### `vulnerabilities` ([`[Vulnerability!]!`](/api/objects/vulnerability))
+#### `submittedVulnerabilities` ([`[Vulnerability!]`](/api/objects/vulnerability))

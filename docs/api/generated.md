@@ -1,6 +1,6 @@
 ---
 id: schema
-title: Schema Documentation
+title: Authentication
 ---
 
 The authentication process is made through the x-api-key header, as exeplified below.
@@ -17,4 +17,4 @@ Use the docs in the sidebar to find out how to use the schema:
 - **Allowed operations**: queries and mutations.
 - **Schema-defined types**: scalars, objects, enums, interfaces, unions, and input objects.
 
-<small><i>Generated on June 29, 2021 at 1:50:07 PM.</i></small>
+<small><i>Generated on July 02, 2021 at 4:23:56 PM.</i></small>

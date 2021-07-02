@@ -19,15 +19,13 @@ No description
 
 ```graphql
 type Analysis {
-  activeObeo: Boolean
-  activitieCompleted: Int
-  activities: [Activity!]!
+  activities: [Activity!]
+  allocatedAnalyst: [AnalystAllocations!]
   apiCode: String
   apiResponseReview: String
-  applicant: String
-  applicantArea: String
   auditing: String
   closeComments: Boolean
+  companyId: Int!
   connectivity: String
   continuousDelivery: Boolean
   contractedHours: Int
@@ -50,26 +48,22 @@ type Analysis {
   isPublic: Boolean
   label: String!
   language: String
-  lastProjectStatusId: Int
   mainRecommendations: String
   microserviceFolder: String
   notificationList: String
-  notifications: [Notification!]!
+  notifications: [Notification!]
   pid: String
-  planId: Int
   plannedStartedAt: ISO8601DateTime
-  playbooks: [Playbook!]!
-  projectStatusId: Int
-  projectTypeId: Int!
+  playbooks: [Playbook!]
   receiveDeploys: Boolean
   repositoryUrl: String
   retestedAt: ISO8601DateTime
   sacCode: String
   sacProjectId: Int
-  scopeId: Int!
   secretId: String
   sshPublicKey: String
   startDate: ISO8601DateTime!
+  status: String
   students: Int
   subScopeId: Int
   totalAnalysisLines: Int
@@ -78,32 +72,29 @@ type Analysis {
   totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
   updatedAt: ISO8601DateTime
+  userWithAccess: [PortalUser!]
   userableId: Int
   userableType: String
-  vulnerabilities: [Vulnerability!]!
+  vulnerabilities: [Vulnerability!]
   waiting: Boolean!
 }
 ```
 
 ### Fields
 
-#### `activeObeo` ([`Boolean`](/api/scalars/boolean))
+#### `activities` ([`[Activity!]`](/api/objects/activity))
 
-#### `activitieCompleted` ([`Int`](/api/scalars/int))
-
-#### `activities` ([`[Activity!]!`](/api/objects/activity))
+#### `allocatedAnalyst` ([`[AnalystAllocations!]`](/api/objects/analyst-allocations))
 
 #### `apiCode` ([`String`](/api/scalars/string))
 
 #### `apiResponseReview` ([`String`](/api/scalars/string))
 
-#### `applicant` ([`String`](/api/scalars/string))
-
-#### `applicantArea` ([`String`](/api/scalars/string))
-
 #### `auditing` ([`String`](/api/scalars/string))
 
 #### `closeComments` ([`Boolean`](/api/scalars/boolean))
+
+#### `companyId` ([`Int!`](/api/scalars/int))
 
 #### `connectivity` ([`String`](/api/scalars/string))
 
@@ -149,27 +140,19 @@ type Analysis {
 
 #### `language` ([`String`](/api/scalars/string))
 
-#### `lastProjectStatusId` ([`Int`](/api/scalars/int))
-
 #### `mainRecommendations` ([`String`](/api/scalars/string))
 
 #### `microserviceFolder` ([`String`](/api/scalars/string))
 
 #### `notificationList` ([`String`](/api/scalars/string))
 
-#### `notifications` ([`[Notification!]!`](/api/objects/notification))
+#### `notifications` ([`[Notification!]`](/api/objects/notification))
 
 #### `pid` ([`String`](/api/scalars/string))
 
-#### `planId` ([`Int`](/api/scalars/int))
-
 #### `plannedStartedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
-#### `playbooks` ([`[Playbook!]!`](/api/objects/playbook))
-
-#### `projectStatusId` ([`Int`](/api/scalars/int))
-
-#### `projectTypeId` ([`Int!`](/api/scalars/int))
+#### `playbooks` ([`[Playbook!]`](/api/objects/playbook))
 
 #### `receiveDeploys` ([`Boolean`](/api/scalars/boolean))
 
@@ -181,13 +164,13 @@ type Analysis {
 
 #### `sacProjectId` ([`Int`](/api/scalars/int))
 
-#### `scopeId` ([`Int!`](/api/scalars/int))
-
 #### `secretId` ([`String`](/api/scalars/string))
 
 #### `sshPublicKey` ([`String`](/api/scalars/string))
 
 #### `startDate` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `status` ([`String`](/api/scalars/string))
 
 #### `students` ([`Int`](/api/scalars/int))
 
@@ -205,10 +188,12 @@ type Analysis {
 
 #### `updatedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
+#### `userWithAccess` ([`[PortalUser!]`](/api/objects/portal-user))
+
 #### `userableId` ([`Int`](/api/scalars/int))
 
 #### `userableType` ([`String`](/api/scalars/string))
 
-#### `vulnerabilities` ([`[Vulnerability!]!`](/api/objects/vulnerability))
+#### `vulnerabilities` ([`[Vulnerability!]`](/api/objects/vulnerability))
 
 #### `waiting` ([`Boolean!`](/api/scalars/boolean))

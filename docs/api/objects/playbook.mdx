@@ -20,12 +20,12 @@ No description
 ```graphql
 type Playbook {
   checklistTypeId: Int
+  companyId: Int
   createdAt: ISO8601DateTime
   deletedAt: ISO8601DateTime
   description: String
   id: ID!
   label: String!
-  scopeId: Int
   updatedAt: ISO8601DateTime
 }
 ```
@@ -33,6 +33,8 @@ type Playbook {
 ### Fields
 
 #### `checklistTypeId` ([`Int`](/api/scalars/int))
+
+#### `companyId` ([`Int`](/api/scalars/int))
 
 #### `createdAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
@@ -43,7 +45,5 @@ type Playbook {
 #### `id` ([`ID!`](/api/scalars/id))
 
 #### `label` ([`String!`](/api/scalars/string))
-
-#### `scopeId` ([`Int`](/api/scalars/int))
 
 #### `updatedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))

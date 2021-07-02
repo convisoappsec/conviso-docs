@@ -19,8 +19,9 @@ No description
 
 ```graphql
 type Project {
-  analysis: [Analysis!]!
+  analysis: [Analysis!]
   beginDate: ISO8601Date
+  companyId: Int
   conclusion: String
   contractId: Int
   createdAt: ISO8601DateTime!
@@ -28,10 +29,9 @@ type Project {
   id: ID!
   kickoff: Boolean
   name: String
-  planStatus: String
   presential: Boolean
   projectDescription: String
-  scopeId: Int
+  projectStatus: String
   sumTotalAnalysisLines: Int
   sumTotalChangedLines: Int
   sumTotalNewLines: Int
@@ -42,9 +42,11 @@ type Project {
 
 ### Fields
 
-#### `analysis` ([`[Analysis!]!`](/api/objects/analysis))
+#### `analysis` ([`[Analysis!]`](/api/objects/analysis))
 
 #### `beginDate` ([`ISO8601Date`](/api/scalars/iso-8601-date))
+
+#### `companyId` ([`Int`](/api/scalars/int))
 
 #### `conclusion` ([`String`](/api/scalars/string))
 
@@ -60,13 +62,11 @@ type Project {
 
 #### `name` ([`String`](/api/scalars/string))
 
-#### `planStatus` ([`String`](/api/scalars/string))
-
 #### `presential` ([`Boolean`](/api/scalars/boolean))
 
 #### `projectDescription` ([`String`](/api/scalars/string))
 
-#### `scopeId` ([`Int`](/api/scalars/int))
+#### `projectStatus` ([`String`](/api/scalars/string))
 
 #### `sumTotalAnalysisLines` ([`Int`](/api/scalars/int))
 
