@@ -4,7 +4,11 @@ module.exports = {
   docs: [
     'index',
     {
-      CLI: ['cli/installation', 'cli/usage']
+      CLI: ['cli/installation',
+             'cli/usage',
+             'cli/security-gate'
+
+            ]
     },
     {
       type: "category",
