@@ -23,6 +23,7 @@ type Analysis {
   allocatedAnalyst: [AnalystAllocations!]
   apiCode: String
   apiResponseReview: String
+  assets: [Asset!]
   auditing: String
   closeComments: Boolean
   companyId: Int!
@@ -89,6 +90,8 @@ type Analysis {
 #### `apiCode` ([`String`](/api/scalars/string))
 
 #### `apiResponseReview` ([`String`](/api/scalars/string))
+
+#### `assets` ([`[Asset!]`](/api/objects/asset))
 
 #### `auditing` ([`String`](/api/scalars/string))
 
