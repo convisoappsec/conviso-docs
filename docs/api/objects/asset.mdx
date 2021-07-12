@@ -19,11 +19,12 @@ No description
 
 ```graphql
 type Asset {
-  applicationIdGauntlet: Int
+  analyses: [Analysis!]
   architectureType: String
   assetType: String
   assetsTagList: String
   audience: String
+  companyId: Int
   createdAt: ISO8601DateTime!
   criticity: String
   dataClassification: String
@@ -31,22 +32,18 @@ type Asset {
   developmentModel: String
   developmentTeam: String
   environment: String
-  errorGauntlet: String
   id: ID!
   lifeCycle: String
   name: String
   scanType: String
-  scopeId: Int
   updatedAt: ISO8601DateTime!
   url: String
-  verificationTokenGauntlet: String
-  verifyStatusGauntlet: String
 }
 ```
 
 ### Fields
 
-#### `applicationIdGauntlet` ([`Int`](/api/scalars/int))
+#### `analyses` ([`[Analysis!]`](/api/objects/analysis))
 
 #### `architectureType` ([`String`](/api/scalars/string))
 
@@ -55,6 +52,8 @@ type Asset {
 #### `assetsTagList` ([`String`](/api/scalars/string))
 
 #### `audience` ([`String`](/api/scalars/string))
+
+#### `companyId` ([`Int`](/api/scalars/int))
 
 #### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
 
@@ -70,8 +69,6 @@ type Asset {
 
 #### `environment` ([`String`](/api/scalars/string))
 
-#### `errorGauntlet` ([`String`](/api/scalars/string))
-
 #### `id` ([`ID!`](/api/scalars/id))
 
 #### `lifeCycle` ([`String`](/api/scalars/string))
@@ -80,12 +77,6 @@ type Asset {
 
 #### `scanType` ([`String`](/api/scalars/string))
 
-#### `scopeId` ([`Int`](/api/scalars/int))
-
 #### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
 
 #### `url` ([`String`](/api/scalars/string))
-
-#### `verificationTokenGauntlet` ([`String`](/api/scalars/string))
-
-#### `verifyStatusGauntlet` ([`String`](/api/scalars/string))

@@ -19,6 +19,7 @@ No description
 
 ```graphql
 type Activity {
+  analysisId: Int
   archiveContentType: String
   archiveFilename: String
   archiveId: String
@@ -28,8 +29,7 @@ type Activity {
   evidenceText: String
   id: ID!
   justify: String
-  portalUserId: Int
-  projectId: Int
+  portalUser: PortalUser
   status: String
   title: String
   updatedAt: ISO8601DateTime!
@@ -37,6 +37,8 @@ type Activity {
 ```
 
 ### Fields
+
+#### `analysisId` ([`Int`](/api/scalars/int))
 
 #### `archiveContentType` ([`String`](/api/scalars/string))
 
@@ -56,9 +58,7 @@ type Activity {
 
 #### `justify` ([`String`](/api/scalars/string))
 
-#### `portalUserId` ([`Int`](/api/scalars/int))
-
-#### `projectId` ([`Int`](/api/scalars/int))
+#### `portalUser` ([`PortalUser`](/api/objects/portal-user))
 
 #### `status` ([`String`](/api/scalars/string))
 
