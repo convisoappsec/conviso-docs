@@ -50,15 +50,19 @@ In order to both platforms to be synced, a webhook needs to be configured so cha
 2. Click on Create
 3. Give a name to the Webook, for example: ```AppSec Flow```
 4. In AppSec Flow please go to Integrations > SonarCloud.
-5. Within Webhook information, copy the webhook url.
+5. Within Webhook information, select the desired organization.
+6. Accordingly to Organization selected, two fields like webhook URL and secret will be build.
 
 Example:
-```
-https://XXXXXX:YYYYYY@com.br/api/v1/integrations/sonarcloud/webhook?organization=Put here your organization key.
-```
-6. Update the last part of the url with the organization key/id that was configured (You can get this information from the Organizations info)
-7. Paste the content in Sonarcloud url webhook field
+![img](../../static/img/sonarcloud_webhook.png)
+
+7. Copy the URL generated and paste it in Sonarcloud webhook URL field
 8. Copy the secret generated in AppSec Flow and paste it in Sonarcloud secret field
+
+Example:
+
+![img](../../static/img/sonarcloud_webhook2.png)
+
 9. Click on Create
 
 That's it! Now everytime a new scan is performed, an event is going to be sent to AppSec Flow in order to keep the integrated projects in sync.
