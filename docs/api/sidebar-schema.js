@@ -13,6 +13,7 @@ module.exports = {
         "api/queries/deploys-by-analysis-id",
         "api/queries/deploys-by-company-id",
         "api/queries/deploys-by-project-id",
+        "api/queries/findings-by-commit",
         "api/queries/notifications",
         "api/queries/portal-user-profile",
         "api/queries/project",
