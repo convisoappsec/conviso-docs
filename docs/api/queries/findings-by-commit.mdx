@@ -1,0 +1,45 @@
+---
+id: findings-by-commit
+title: findingsByCommit
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all findings by commit hash
+
+```graphql
+findingsByCommit(
+  commit: String = ''
+  page: Int = 0
+  limit: Int = 0
+): FindingCollection
+
+```
+
+### Arguments
+
+#### `commit` ([`ID!`](/api/scalars/string))
+
+#### `page` ([`Int!`](/api/scalars/int))
+
+#### `limit` ([`Int!`](/api/scalars/int))
+
+### Type
+
+#### [`FindingCollection`](/api/objects/finding)
+
+### Fields
+
+#### `collection` ([`[Finding!]!`](/api/objects/finding))
+
+#### `metadata` ([`CollectionMetadata!`](/api/objects/collection-metadata))
