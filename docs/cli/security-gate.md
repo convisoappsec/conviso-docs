@@ -11,7 +11,7 @@ The Security Gate feature helps you with that by letting you define policies suc
 - Vulnerability Quantity by severity (Low, Medium, High, Critical)
 - Vulnerability sources (For example, external integrations such as Checkmarx or Qualys, and also [AppSec Flow] scanners)
 
-## How does is work?
+## How does it work?
 
 First, you need to define the policies for the specific project.
 Let us define for this example that a [CI/CD] pipeline needs to be blocked when there is more than 5 high severity vulnerabilities.
@@ -35,8 +35,34 @@ rules:
       maximum: 0
 ```
 
-## Setup
-To do...
+## Usage
+```
+flow vulnerability assert-security-rules --rules-file rules.yml
+```
+
+Success Response:
+```
+Starting vulnerabilities security rules assertion
+✅ Vulnerabilities security rules assertion finished
+```
+
+Failed Response:
+```
+Starting vulnerabilities security rules assertion
+💬 Vulnerabilities summary
+[
+    {
+        "from": "any",
+        "severity": {
+            "medium": {
+                "quantity": 2
+            }
+        }
+    }
+]
+Error: Vulnerabilities quantity offending security rules
+```
+
 
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
 [AppSec Flow]: <https://app.conviso.com.br/>
