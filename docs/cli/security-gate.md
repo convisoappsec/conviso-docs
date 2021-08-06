@@ -15,7 +15,7 @@ The Security Gate feature helps you with that by letting you define policies suc
 
 First, you need to define the policies for the specific project.
 Let us define for this example that a [CI/CD] pipeline needs to be blocked when there is more than 5 high severity vulnerabilities.
-If the policy that was defined is true and the asset in fact has more that 5 vulnerabilities or more that 2 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline indicating the cause with the details of why it broked.
+If the policy that was defined is true and the asset in fact has more that 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline indicating the cause with the details of why it did not passed through.
 
 ## Policy File Structure
 
@@ -54,8 +54,8 @@ Starting vulnerabilities security rules assertion
     {
         "from": "any",
         "severity": {
-            "medium": {
-                "quantity": 2
+            "high": {
+                "quantity": 7
             }
         }
     }

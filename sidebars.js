@@ -5,9 +5,9 @@ module.exports = {
     'index',
     {
       CLI: ['cli/installation',
-             'cli/usage',
+             'cli/authentication',
+             'cli/sast',
              'cli/security-gate'
-
             ]
     },
     {
