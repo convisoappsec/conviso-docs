@@ -1,7 +1,7 @@
 ---
-id: security-gate
-title: Security Gate
-sidebar_label: Security Gate
+id: sast
+title: SAST
+sidebar_label: SAST
 ---
 
 
