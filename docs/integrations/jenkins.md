@@ -7,7 +7,7 @@ sidebar_label: Jenkins
 ![img](../../static/img/jenkins.png)
 
 :::note
-First time using Github Actions? Please refer to the following tutorial.  
+First time using Jenkins? Please refer to the following tutorial.  
 :::
 
 ## Introduction
@@ -19,59 +19,77 @@ By the end of this tutorial you will know how to:
 - Send diff code to Flow's security Codereview module.
 
 ## Requirements
+In order to integrate with Jenkins, your environment should fullfills the followings requirements:
+1. Jenkins version 2.222.3 or higher;
+1. Docker installed;
+1. Jenkins user must have access to the Docker daemon;
+1. External access (can be restricted to specific Conviso addresses);
+
+If you need help about docker installation you can read all the process in the links below:
+
+[Install Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script)
+[Post-Install Linux Steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
 
-### 
+
+### Usage
+
+The steps below will show what does your Jenkinsfile should have to perform our actions.
+These stages also can be inserted inside your current Jenkinsfile.
 ## SAST
 The following code snippet will trigger a SAST scan and send the results to Flow.
 
 ```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
+pipeline {
 
-jobs:
- conviso-sast:
-   runs-on: ubuntu-latest
-   container:
-     image: convisoappsec/flowcli
-     env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
-   steps:
-   - uses: actions/checkout@v2
+  agent {
+    docker {
+      image 'convisoappsec/flowcli:latest'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
+  }
 
-   - name: Run SAST
-     run: flow sast run
+  environment {
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
+  }
+
+  stages {
+    stage('Conviso_SAST') {
+      steps {
+        sh 'flow sast run'
+      }
+    }
+  }
+}
 ```
 
 ## SCA
 The following code snippet will trigger a SCA scan and send the results to Flow.
 
 ```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
+pipeline {
 
-jobs:
- conviso-sca:
-   runs-on: ubuntu-latest
-   container:
-     image: convisoappsec/flowcli
-     env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
-   steps:
-   - uses: actions/checkout@v2
+  agent {
+    docker {
+      image 'convisoappsec/flowcli:latest'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
+  }
 
-   - name: Run SCA
-     run: flow sca run
+  environment {
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
+  }
+
+  stages {
+    stage('Conviso_SAST') {
+      steps {
+        sh 'flow sca run'
+      }
+    }
+  }
+}
 ```
 
 ## Continuous Codereview 
@@ -83,31 +101,31 @@ There are three approaches depending on how you work with your project. In a nut
 - Without using Tags, ordered by Git tree
 
 ```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
+pipeline {
+  agent {
+    docker {
+      image 'convisoappsec/flowcli:latest'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
+  }
 
-jobs:
- conviso-cr:
-   runs-on: ubuntu-latest
-   container:
-     image: convisoappsec/flowcli
-     env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
-   steps:
-    - uses: actions/checkout@v2
+  environment {
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
+  }
 
-    - name: codereview
-      #Please use only one of the following approaches in the same job
-
-      #Using Tags, ordered by time
-      run: flow deploy create with tag-tracker sort-by time
-      #Using Tags, ordered by versioning style (semantic version)
-      run: flow deploy create with tag-tracker sort-by versioning-style
-      #Without using Tags, ordered by Git tree
-      run: flow deploy create with values
+  stages {
+    stage('Conviso_CodeReview') {
+      steps {
+      //Please use only one of the following approaches in the same job
+      //Using Tags, ordered by time
+      //  sh 'flow deploy create with tag-tracker sort-by time'
+      //Using Tags, ordered by versioning style (semantic version)
+      //  sh 'flow deploy create with tag-tracker sort-by versioning-style'
+      //Without using Tags, ordered by Git tree
+        sh 'flow deploy create with values'
+      }
+    }
+  }
+}
 ```

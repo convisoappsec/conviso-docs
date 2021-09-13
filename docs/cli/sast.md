@@ -1,21 +1,9 @@
 ---
-id: usage
-title: Usage
-sidebar_label: Usage
+id: sast
+title: SAST
+sidebar_label: SAST
 ---
 
-## Authentication
-In order to start using the CLI you will need to provide your API Key for your AppSec Flow account.  When retrieving it, you can export the key as system environment variable:
-
-```sh
-$ export FLOW_API_KEY='you-api-key'
-```
-
-Also the API Key can be set as option argument:
-```sh
-$ flow --api-key 'you-api-key' [SOME COMMAND]
-```
->*This is not recommended for production environments*
 
 ## Static Application Security Testing (SAST)
 Using the CLI is very simple to execute a SAST at your source code repository.
