@@ -16,4 +16,4 @@ https://app.conviso.com.br/graphql
 - **Allowed operations**: queries and mutations.
 - **Schema-defined types**: scalars, objects, enums, interfaces, unions, and input objects.
 
-<small><i>Generated on September 13, 2021 at 7:28:15 PM.</i></small>
+<small><i>Generated on September 13, 2021 at 7:46:41 PM.</i></small>

@@ -15,8 +15,25 @@ style={{
 </span>
 );
 
+Returns all findings by commit
 
+```graphql
+findingsByCommit(
+  commit: String!
+  page: Int = 0
+  limit: Int = 0
+): FindingCollection!
 
 ```
 
 ### Arguments
+
+#### `commit` ([`String!`](/api/scalars/string))
+
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
+### Type
+
+#### [`FindingCollection`](/api/objects/finding-collection)

@@ -841,7 +841,7 @@ input IssueTypeDastInput {
   description: String!
 
   """
-  Issue evidence Base64 encoded.
+  Issue evidence Base64 encoded
   """
   evidence: String!
   hashIssue: String!
