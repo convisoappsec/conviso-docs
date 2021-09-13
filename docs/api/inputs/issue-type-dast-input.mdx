@@ -1,0 +1,78 @@
+---
+id: issue-type-dast-input
+title: IssueTypeDastInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IssueTypeDastInput {
+  affectedIp: String!
+  affectedPort: String!
+  affectedHost: String!
+  affectedUrl: String!
+  affectedProtocol: String!
+  affectedParameter: String!
+  affectedHeaders: String!
+  affectedQueryString: String!
+  businessSeverity: String!
+  description: String!
+  evidence: String!
+  hashIssue: String!
+  originalSeverity: String!
+  references: [String!]!
+  reporter: String
+  technicalSeverity: String!
+  title: String!
+}
+```
+
+### Fields
+
+#### `affectedIp` ([`String!`](/api/scalars/string))
+
+#### `affectedPort` ([`String!`](/api/scalars/string))
+
+#### `affectedHost` ([`String!`](/api/scalars/string))
+
+#### `affectedUrl` ([`String!`](/api/scalars/string))
+
+#### `affectedProtocol` ([`String!`](/api/scalars/string))
+
+#### `affectedParameter` ([`String!`](/api/scalars/string))
+
+#### `affectedHeaders` ([`String!`](/api/scalars/string))
+
+#### `affectedQueryString` ([`String!`](/api/scalars/string))
+
+#### `businessSeverity` ([`String!`](/api/scalars/string))
+
+#### `description` ([`String!`](/api/scalars/string))
+
+#### `evidence` ([`String!`](/api/scalars/string))
+
+Issue evidence Base64 encoded.
+
+#### `hashIssue` ([`String!`](/api/scalars/string))
+
+#### `originalSeverity` ([`String!`](/api/scalars/string))
+
+#### `references` ([`[String!]!`](/api/scalars/string))
+
+#### `reporter` ([`String`](/api/scalars/string))
+
+#### `technicalSeverity` ([`String!`](/api/scalars/string))
+
+#### `title` ([`String!`](/api/scalars/string))

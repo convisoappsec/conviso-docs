@@ -24,23 +24,24 @@ type Analysis {
   apiCode: String
   apiResponseReview: String
   assets: [Asset!]
-  auditing: String
   closeComments: Boolean
   companyId: Int!
   connectivity: String
   continuousDelivery: Boolean
   contractedHours: Int
   createdAt: ISO8601DateTime
+  customMetadata: AnalysisCollection
   deploySendFrequency: Int
-  description: String
   dueDate: ISO8601DateTime
   endDate: ISO8601DateTime
   environmentInvaded: Boolean
   estimatedDays: String
   estimatedHours: String
   executiveSummary: String
+  firstVulnerabilityIdentified: Vulnerability
   freeRetest: Boolean
   hasOpenRetest: Boolean
+  history: [AnalysisHistory!]
   hoursOrDays: String
   id: ID!
   integrationDeploy: Boolean
@@ -51,27 +52,35 @@ type Analysis {
   language: String
   mainRecommendations: String
   microserviceFolder: String
+  negativeScope: String
   notificationList: String
   notifications: [Notification!]
+  objective: String
   pid: String
   plannedStartedAt: ISO8601DateTime
+  playbookFinishedAt: ISO8601DateTime
+  playbookStartedAt: ISO8601DateTime
   playbooks: [Playbook!]
   receiveDeploys: Boolean
   repositoryUrl: String
   retestedAt: ISO8601DateTime
   sacCode: String
   sacProjectId: Int
+  scope: String
   secretId: String
   sshPublicKey: String
   startDate: ISO8601DateTime!
   status: String
   students: Int
   subScopeId: Int
+  tags: [Tag!]
+  teams: [Team!]
   totalAnalysisLines: Int
   totalChangedLines: Int
   totalNewLines: Int
   totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
+  type: AnalysisType!
   updatedAt: ISO8601DateTime
   userWithAccess: [PortalUser!]
   userableId: Int
@@ -93,8 +102,6 @@ type Analysis {
 
 #### `assets` ([`[Asset!]`](/api/objects/asset))
 
-#### `auditing` ([`String`](/api/scalars/string))
-
 #### `closeComments` ([`Boolean`](/api/scalars/boolean))
 
 #### `companyId` ([`Int!`](/api/scalars/int))
@@ -107,9 +114,9 @@ type Analysis {
 
 #### `createdAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
-#### `deploySendFrequency` ([`Int`](/api/scalars/int))
+#### `customMetadata` ([`AnalysisCollection`](/api/objects/analysis-collection))
 
-#### `description` ([`String`](/api/scalars/string))
+#### `deploySendFrequency` ([`Int`](/api/scalars/int))
 
 #### `dueDate` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
@@ -123,9 +130,13 @@ type Analysis {
 
 #### `executiveSummary` ([`String`](/api/scalars/string))
 
+#### `firstVulnerabilityIdentified` ([`Vulnerability`](/api/objects/vulnerability))
+
 #### `freeRetest` ([`Boolean`](/api/scalars/boolean))
 
 #### `hasOpenRetest` ([`Boolean`](/api/scalars/boolean))
+
+#### `history` ([`[AnalysisHistory!]`](/api/objects/analysis-history))
 
 #### `hoursOrDays` ([`String`](/api/scalars/string))
 
@@ -147,13 +158,21 @@ type Analysis {
 
 #### `microserviceFolder` ([`String`](/api/scalars/string))
 
+#### `negativeScope` ([`String`](/api/scalars/string))
+
 #### `notificationList` ([`String`](/api/scalars/string))
 
 #### `notifications` ([`[Notification!]`](/api/objects/notification))
 
+#### `objective` ([`String`](/api/scalars/string))
+
 #### `pid` ([`String`](/api/scalars/string))
 
 #### `plannedStartedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `playbookFinishedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `playbookStartedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
 #### `playbooks` ([`[Playbook!]`](/api/objects/playbook))
 
@@ -167,6 +186,8 @@ type Analysis {
 
 #### `sacProjectId` ([`Int`](/api/scalars/int))
 
+#### `scope` ([`String`](/api/scalars/string))
+
 #### `secretId` ([`String`](/api/scalars/string))
 
 #### `sshPublicKey` ([`String`](/api/scalars/string))
@@ -179,6 +200,10 @@ type Analysis {
 
 #### `subScopeId` ([`Int`](/api/scalars/int))
 
+#### `tags` ([`[Tag!]`](/api/objects/tag))
+
+#### `teams` ([`[Team!]`](/api/objects/team))
+
 #### `totalAnalysisLines` ([`Int`](/api/scalars/int))
 
 #### `totalChangedLines` ([`Int`](/api/scalars/int))
@@ -188,6 +213,8 @@ type Analysis {
 #### `totalPublishedVulnerabilities` ([`Int`](/api/scalars/int))
 
 #### `totalRemovedLines` ([`Int`](/api/scalars/int))
+
+#### `type` ([`AnalysisType!`](/api/objects/analysis-type))
 
 #### `updatedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 

@@ -1,0 +1,80 @@
+---
+id: analysis-search
+title: AnalysisSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AnalysisSearch {
+  continuousDeliveryEq: Boolean
+  createdAtGteq: ISO8601DateTime
+  createdAtLteq: ISO8601DateTime
+  endDateCont: ISO8601DateTime
+  endDateEq: ISO8601DateTime
+  labelCont: String
+  labelEq: String
+  idEq: Int
+  projectStatusLabelCont: String
+  projectStatusLabelEq: String
+  projectTypeLabelCont: String
+  projectTypeLabelEq: String
+  startDateEq: ISO8601DateTime
+  startDateCont: ISO8601DateTime
+  tagNameEq: String
+}
+```
+
+### Fields
+
+#### `continuousDeliveryEq` ([`Boolean`](/api/scalars/boolean))
+
+Verify if is Continuous Code Review
+
+#### `createdAtGteq` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+Search in created_at dates with greater than or equal
+
+#### `createdAtLteq` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+Search in created_at dates with less than or equal
+
+#### `endDateCont` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `endDateEq` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `labelCont` ([`String`](/api/scalars/string))
+
+#### `labelEq` ([`String`](/api/scalars/string))
+
+#### `idEq` ([`Int`](/api/scalars/int))
+
+#### `projectStatusLabelCont` ([`String`](/api/scalars/string))
+
+#### `projectStatusLabelEq` ([`String`](/api/scalars/string))
+
+Search Status
+
+#### `projectTypeLabelCont` ([`String`](/api/scalars/string))
+
+#### `projectTypeLabelEq` ([`String`](/api/scalars/string))
+
+Search Type
+
+#### `startDateEq` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `startDateCont` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `tagNameEq` ([`String`](/api/scalars/string))
