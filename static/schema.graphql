@@ -2,14 +2,18 @@ type Activity {
   analysisId: Int
   archiveContentType: String
   archiveFilename: String
-  archiveId: String
   archiveSize: Int
   createdAt: ISO8601DateTime!
   deletedAt: ISO8601DateTime
+  description: String
   evidenceText: String
+  finishedAt: ISO8601DateTime
   id: ID!
   justify: String
+  playbook: Playbook!
   portalUser: PortalUser
+  reference: String
+  startedAt: ISO8601DateTime
   status: String
   title: String
   updatedAt: ISO8601DateTime!
@@ -21,23 +25,24 @@ type Analysis {
   apiCode: String
   apiResponseReview: String
   assets: [Asset!]
-  auditing: String
   closeComments: Boolean
   companyId: Int!
   connectivity: String
   continuousDelivery: Boolean
   contractedHours: Int
   createdAt: ISO8601DateTime
+  customMetadata: AnalysisCollection
   deploySendFrequency: Int
-  description: String
   dueDate: ISO8601DateTime
   endDate: ISO8601DateTime
   environmentInvaded: Boolean
   estimatedDays: String
   estimatedHours: String
   executiveSummary: String
+  firstVulnerabilityIdentified: Vulnerability
   freeRetest: Boolean
   hasOpenRetest: Boolean
+  history: [AnalysisHistory!]
   hoursOrDays: String
   id: ID!
   integrationDeploy: Boolean
@@ -48,27 +53,35 @@ type Analysis {
   language: String
   mainRecommendations: String
   microserviceFolder: String
+  negativeScope: String
   notificationList: String
   notifications: [Notification!]
+  objective: String
   pid: String
   plannedStartedAt: ISO8601DateTime
+  playbookFinishedAt: ISO8601DateTime
+  playbookStartedAt: ISO8601DateTime
   playbooks: [Playbook!]
   receiveDeploys: Boolean
   repositoryUrl: String
   retestedAt: ISO8601DateTime
   sacCode: String
   sacProjectId: Int
+  scope: String
   secretId: String
   sshPublicKey: String
   startDate: ISO8601DateTime!
   status: String
   students: Int
   subScopeId: Int
+  tags: [Tag!]
+  teams: [Team!]
   totalAnalysisLines: Int
   totalChangedLines: Int
   totalNewLines: Int
   totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
+  type: AnalysisType!
   updatedAt: ISO8601DateTime
   userWithAccess: [PortalUser!]
   userableId: Int
@@ -79,7 +92,81 @@ type Analysis {
 
 type AnalysisCollection {
   collection: [Analysis!]!
-  metadata: CollectionMetadata!
+  metadata: ProjectMeta!
+}
+
+type AnalysisHistory {
+  activeAllocation: Boolean
+  analysisId: Int
+  changeTime: ISO8601DateTime
+  comment: String
+  createdAt: ISO8601DateTime!
+  deliveryDate: ISO8601DateTime
+  editedComment: Boolean
+  environmentInvaded: Boolean
+  environmentInvadedComment: String
+  estimateId: Int
+  estimatedDays: Int
+  estimatedHours: Int
+  estimatedMinutes: Int
+  id: ID!
+  pausedComment: String
+  portalUserEmail: String
+  portalUserName: String
+  projectCycleId: Int
+  sacId: String
+  startedAt: ISO8601DateTime
+  status: String
+  updatedAt: ISO8601DateTime!
+  versionTag: String
+  vulnCount: Int
+  vulnerabilityIds: String
+}
+
+input AnalysisSearch {
+  """
+  Verify if is Continuous Code Review
+  """
+  continuousDeliveryEq: Boolean
+
+  """
+  Search in created_at dates with greater than or equal
+  """
+  createdAtGteq: ISO8601DateTime
+
+  """
+  Search in created_at dates with less than or equal
+  """
+  createdAtLteq: ISO8601DateTime
+  endDateCont: ISO8601DateTime
+  endDateEq: ISO8601DateTime
+  labelCont: String
+  labelEq: String
+  idEq: Int
+  projectStatusLabelCont: String
+
+  """
+  Search Status
+  """
+  projectStatusLabelEq: String
+  projectTypeLabelCont: String
+
+  """
+  Search Type
+  """
+  projectTypeLabelEq: String
+  startDateEq: ISO8601DateTime
+  startDateCont: ISO8601DateTime
+  tagNameEq: String
+}
+
+type AnalysisType {
+  code: String!
+  createdAt: ISO8601DateTime
+  defaultDuration: Int
+  description: String
+  id: ID!
+  label: String!
 }
 
 type AnalystAllocations {
@@ -124,6 +211,284 @@ type CollectionMetadata {
   totalPages: Int!
 }
 
+type Company {
+  active: Int
+  address: String
+  bountyCritical: Int
+  bountyHigh: Int
+  bountyLow: Int
+  bountyMedium: Int
+  brandContentType: String
+  brandFilename: String
+  brandId: String
+  brandSize: String
+  cnpj: String
+  contactEmail: String
+  contactName: String
+  contractedTime: Int
+  createdAt: ISO8601DateTime!
+  description: String
+  expirationAt: ISO8601DateTime
+  headquarterId: [Int!]
+  id: ID!
+  label: String!
+  notifyOpenVulns: Boolean
+  notifyOpenVulnsCritical: Int
+  notifyOpenVulnsHigh: Int
+  notifyOpenVulnsLow: Int
+  notifyOpenVulnsMedium: Int
+  sendEmailNotification: Boolean
+  sid: String!
+  tags: [String!]
+  titleColor: String
+  updatedAt: ISO8601DateTime!
+  visibleDeploysReview: Boolean
+}
+
+type CompanyCollection {
+  collection: [Company!]!
+  metadata: CollectionMetadata!
+}
+
+input CompanySearch {
+  """
+  Exact search for a label
+  """
+  labelEq: String
+
+  """
+  Search for the content of a label
+  """
+  labelCont: String
+
+  """
+  Search for the content of an email
+  """
+  contactEmailCont: String
+
+  """
+  Exact search for an email
+  """
+  contactEmailEq: String
+}
+
+type Contact {
+  assetId: ID
+  attachment: String
+  attachmentContentType: String
+  attachmentFilename: String
+  attachmentId: String
+  attachmentSize: Int
+  contractId: ID
+  createdAt: ISO8601DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  phone: String!
+  planId: ID
+  role: String!
+  scopeId: ID
+  updatedAt: ISO8601DateTime!
+}
+
+input ContactTypeInput {
+  id: ID
+  contractId: ID
+  name: String!
+  email: String!
+  phone: String!
+  role: String!
+  attachment: Upload
+}
+
+type Contract {
+  attachment: String
+  attachmentContentType: String
+  attachmentFilename: String
+  attachmentId: String
+  attachmentSize: Int
+  client: Company
+  companyId: Int
+  consumedAnnualLeave: String
+  consumedApplicationSecurityTesting: String
+  consumedEducationModule: String
+  consumedGapAnalysis: String
+  consumedHardwareIotPenTest: String
+  consumedManagedService: String
+  consumedManualCodeReview: String
+  consumedMobilePenTest: String
+  consumedNetworkPenTest: String
+  consumedScanAndFindingReview: String
+  consumedThreatModeling: String
+  consumedWebPenTest: String
+  contacts: [Contact!]
+  createdAt: ISO8601DateTime!
+  customMetadata: ContractCollection
+  daysConnecttivityBlock: Int
+  description: String
+  educationId: Int
+  educationSecret: String
+  finishedAt: ISO8601Date
+  finishedContracts: Int
+  id: ID!
+  newContractModel: Boolean
+  noEndDate: Boolean
+  onPremiseKey: String
+  openedContracts: Int
+  professionalService: Int
+  resourcesCount: Int
+  scopeId: Int
+  serviceKind: String
+  serviceKinds: [ContractService!]
+  startedAt: ISO8601Date
+  status: String
+  totalContracts: Int
+  trialDays: Int
+  updatedAt: ISO8601DateTime!
+}
+
+type ContractCollection {
+  collection: [Contract!]!
+  metadata: ContractMeta!
+}
+
+type ContractMeta {
+  currentPage: Int!
+  finishedContracts: Int
+  limitValue: Int!
+  openedContracts: Int
+  totalContracts: Int
+  totalCount: Int
+  totalPages: Int!
+}
+
+input ContractSearch {
+  descriptionEq: String
+  descriptionCont: String
+  scopeLabelCont: String
+  status: String
+}
+
+type ContractService {
+  contractId: ID!
+  createdAt: ISO8601DateTime!
+  durationDays: Int
+  id: ID!
+  licenceAmount: Int
+  licenceAmountType: String
+  serviceKindId: ID!
+  serviceKindLabel: String
+  updatedAt: ISO8601DateTime!
+}
+
+"""
+Autogenerated input type of CreateCodeReviewVulnerability
+"""
+input CreateCodeReviewVulnerabilityInput {
+  analysisId: Int!
+  description: String!
+  evidenceArchives: [Upload!]!
+  files: [String!]!
+
+  """
+  Possible options [low, medium or high]
+  """
+  impact: String!
+  impactResume: String!
+  inputData: String!
+  invaded: Boolean!
+
+  """
+  Required only if invaded true
+  """
+  invadedEnvironmentDescription: String
+  outputData: String!
+
+  """
+  Possible options [low, medium or high]
+  """
+  probability: String!
+  vulnerabilityTemplateId: Int!
+  vulnerableCode: String!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateCodeReviewVulnerability
+"""
+type CreateCodeReviewVulnerabilityPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  vulnerability: Vulnerability
+}
+
+"""
+Autogenerated input type of CreateContract
+"""
+input CreateContractInput {
+  """
+  Company Id. Set it to indicate the contract owner
+  """
+  companyId: Int!
+
+  """
+  Contract description. You must describe important points
+  """
+  description: String!
+
+  """
+  End date. Set it to indicate the end date
+  """
+  finishedAt: ISO8601Date
+
+  """
+  Start date. Set it to indicate the initial date
+  """
+  startedAt: ISO8601Date!
+
+  """
+  Contract has no end date
+  """
+  noEndDate: Boolean!
+
+  """
+  List of services
+  """
+  services: [ServiceTypeInput!]!
+
+  """
+  List of contacts
+  """
+  contacts: [ContactTypeInput!]
+  attachment: Upload
+  educationSecret: String
+  educationId: Int
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateContract
+"""
+type CreateContractPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  contract: Contract
+  errors: [String!]
+}
+
 """
 Autogenerated input type of CreateCredential
 """
@@ -155,6 +520,40 @@ type CreateCredentialPayload {
 }
 
 """
+Autogenerated input type of CreateFindingDast
+"""
+input CreateFindingDastInput {
+  flowProjectId: String!
+
+  """
+  List of issues
+  """
+  issues: [IssueTypeDastInput!]!
+
+  """
+  Required if you have a 3rd party scan engine.
+  """
+  source: String
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateFindingDast
+"""
+type CreateFindingDastPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  message: String
+}
+
+"""
 Autogenerated input type of CreateNotification
 """
 input CreateNotificationInput {
@@ -182,41 +581,89 @@ type CreateNotificationPayload {
 }
 
 """
-Autogenerated input type of CreateWebVulnerability
+Autogenerated input type of CreateOtherVulnerability
 """
-input CreateWebVulnerabilityInput {
+input CreateOtherVulnerabilityInput {
   analysisId: Int!
-  vulnerabilityTemplateId: Int!
+  description: String!
+  evidenceArchives: [Upload!]!
+  host: String!
 
   """
   Possible options [low, medium or high]
   """
   impact: String!
-
-  """
-  Possible options [low, medium or high]
-  """
-  probability: String!
-  description: String!
   impactResume: String!
-  webProtocol: String!
-
-  """
-  Possible options [GET, POST, DELETE, PUT, PATCH, HEAD, CONNECT, OPTIONS, TRACE]
-  """
-  webMethod: String!
-  webParameters: String!
-  webUrl: String!
-  webSteps: String!
-  webRequest: String!
-  webResponse: String!
   invaded: Boolean!
 
   """
   Required only if invaded true
   """
   invadedEnvironmentDescription: String
+
+  """
+  Possible options [low, medium or high]
+  """
+  probability: String!
+  protocol: String!
+  steps: String!
+  vector: String!
+  vulnerabilityTemplateId: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateOtherVulnerability
+"""
+type CreateOtherVulnerabilityPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  vulnerability: Vulnerability
+}
+
+"""
+Autogenerated input type of CreateWebVulnerability
+"""
+input CreateWebVulnerabilityInput {
+  analysisId: Int!
+  description: String!
   evidenceArchives: [Upload!]!
+
+  """
+  Possible options [low, medium or high]
+  """
+  impact: String!
+  impactResume: String!
+  invaded: Boolean!
+
+  """
+  Required only if invaded true
+  """
+  invadedEnvironmentDescription: String
+
+  """
+  Possible options [low, medium or high]
+  """
+  probability: String!
+  vulnerabilityTemplateId: Int!
+
+  """
+  Possible options [GET, POST, DELETE, PUT, PATCH, HEAD, CONNECT, OPTIONS, TRACE]
+  """
+  webMethod: String!
+  webParameters: String!
+  webProtocol: String!
+  webRequest: String!
+  webResponse: String!
+  webSteps: String!
+  webUrl: String!
 
   """
   A unique identifier for the client performing the mutation.
@@ -253,8 +700,60 @@ type CredentialCollection {
   metadata: CollectionMetadata!
 }
 
+"""
+Autogenerated input type of DeleteContact
+"""
+input DeleteContactInput {
+  id: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of DeleteContact
+"""
+type DeleteContactPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
+"""
+Autogenerated input type of DeleteContract
+"""
+input DeleteContractInput {
+  id: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of DeleteContract
+"""
+type DeleteContractPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
 type Deploy {
-  analysesId: Int
+  analysisId: Int
+  changedApproximately: String
+  changedLines: Int
+  companyId: Int
+  companyName: String
   createdAt: ISO8601DateTime!
   currentCommit: String
   currentTag: String
@@ -264,18 +763,58 @@ type Deploy {
   gauntletDiffUrl: String
   gauntletScanId: Int
   gauntletSourceCodeId: Int
+  gitDiff: String
   id: ID!
+  languages: String
+  newLines: Int
   previousCommit: String
   previousTag: String
+  removedLines: Int
   reviewed: Boolean
   reviewedAt: ISO8601DateTime
   reviewer: PortalUser
   status: String
+  totalProjectLines: Int
   updatedAt: ISO8601DateTime!
 }
 
 type DeployCollection {
   collection: [Deploy!]!
+  metadata: CollectionMetadata!
+}
+
+type Finding {
+  affectedIp: String
+  affectedLineNumbers: [Int!]
+  affectedSourceFile: String
+  applicationId: Int
+  applicationName: String
+  businessSeverity: String
+  category: String
+  commitReference: String
+  component: String
+  cves: [String!]
+  descriptionEn: String
+  evaluationStatus: String
+  flowDeployId: String
+  flowProjectId: String
+  hashIssue: String
+  id: ID
+  integrationName: String
+  originalSeverity: String
+  rawOutputFromScanner: String
+  recommendationsEn: String
+  references: [String!]
+  shortCommitRef: String
+  source: String
+  tags: [String!]
+  technicalSeverity: String
+  titleEn: String
+  version: String
+}
+
+type FindingCollection {
+  collection: [Finding!]!
   metadata: CollectionMetadata!
 }
 
@@ -289,7 +828,51 @@ An ISO 8601-encoded datetime
 """
 scalar ISO8601DateTime
 
+input IssueTypeDastInput {
+  affectedIp: String!
+  affectedPort: String!
+  affectedHost: String!
+  affectedUrl: String!
+  affectedProtocol: String!
+  affectedParameter: String!
+  affectedHeaders: String!
+  affectedQueryString: String!
+  businessSeverity: String!
+  description: String!
+
+  """
+  Issue evidence Base64 encoded
+  """
+  evidence: String!
+  hashIssue: String!
+  originalSeverity: String!
+  references: [String!]!
+  reporter: String
+  technicalSeverity: String!
+  title: String!
+}
+
 type Mutation {
+  """
+  Create a Code Review Vulnerability
+  """
+  createCodeReviewVulnerability(
+    """
+    Parameters for CreateCodeReviewVulnerability
+    """
+    input: CreateCodeReviewVulnerabilityInput!
+  ): CreateCodeReviewVulnerabilityPayload
+
+  """
+  Create a Contract
+  """
+  createContract(
+    """
+    Parameters for CreateContract
+    """
+    input: CreateContractInput!
+  ): CreateContractPayload
+
   """
   Create a Credential
   """
@@ -299,6 +882,16 @@ type Mutation {
     """
     input: CreateCredentialInput!
   ): CreateCredentialPayload
+
+  """
+  Create a Finding Dast
+  """
+  createFindingDast(
+    """
+    Parameters for CreateFindingDast
+    """
+    input: CreateFindingDastInput!
+  ): CreateFindingDastPayload
 
   """
   Create a Notification
@@ -311,6 +904,16 @@ type Mutation {
   ): CreateNotificationPayload
 
   """
+  Create a Other Vulnerability
+  """
+  createOtherVulnerability(
+    """
+    Parameters for CreateOtherVulnerability
+    """
+    input: CreateOtherVulnerabilityInput!
+  ): CreateOtherVulnerabilityPayload
+
+  """
   Create a Web Vulnerability
   """
   createWebVulnerability(
@@ -319,6 +922,26 @@ type Mutation {
     """
     input: CreateWebVulnerabilityInput!
   ): CreateWebVulnerabilityPayload
+
+  """
+  Delete a Contact
+  """
+  deleteContact(
+    """
+    Parameters for DeleteContact
+    """
+    input: DeleteContactInput!
+  ): DeleteContactPayload
+
+  """
+  Delete a Contract
+  """
+  deleteContract(
+    """
+    Parameters for DeleteContract
+    """
+    input: DeleteContractInput!
+  ): DeleteContractPayload
 
   """
   Update activity status to finish
@@ -359,22 +982,563 @@ type Mutation {
     """
     input: UpdateActivityStatusToStartInput!
   ): UpdateActivityStatusToStartPayload
+
+  """
+  Update a Contract
+  """
+  updateContract(
+    """
+    Parameters for UpdateContract
+    """
+    input: UpdateContractInput!
+  ): UpdateContractPayload
 }
 
 type Notification {
-  analysesId: Int
+  analysisId: Int
   author: PortalUser
+  companyId: Int
+  companyName: String
   createdAt: ISO8601DateTime!
   description: String
   id: ID!
   notificationStatus: String
   updatedAt: ISO8601DateTime!
+  vulnerabilityArchives: [VulnerabilityArchive!]!
+  vulnerabilityHistories: [VulnerabilityHistory!]!
   vulnerabilityTemplate: VulnerabilityTemplate!
 }
 
 type NotificationCollection {
   collection: [Notification!]!
   metadata: CollectionMetadata!
+}
+
+type OccurrenceMeta {
+  currentPage: Int!
+  limitValue: Int!
+  totalCount: Int!
+  totalCritical: Int
+  totalHigh: Int
+  totalLow: Int
+  totalMedium: Int
+  totalPages: Int!
+}
+
+enum OrderOccurrencesParams {
+  """
+  order by affected_component_id
+  """
+  affected_component_id
+
+  """
+  order by author_id
+  """
+  author_id
+
+  """
+  order by client_impact
+  """
+  client_impact
+
+  """
+  order by close_comments
+  """
+  close_comments
+
+  """
+  order by code_review_code
+  """
+  code_review_code
+
+  """
+  order by code_review_input_data
+  """
+  code_review_input_data
+
+  """
+  order by code_review_output_data
+  """
+  code_review_output_data
+
+  """
+  order by code_review_vector
+  """
+  code_review_vector
+
+  """
+  order by commitment_at
+  """
+  commitment_at
+
+  """
+  order by created_at
+  """
+  created_at
+
+  """
+  order by criticity
+  """
+  criticity
+
+  """
+  order by deploy_id
+  """
+  deploy_id
+
+  """
+  order by external_vid
+  """
+  external_vid
+
+  """
+  order by failure_type
+  """
+  failure_type
+
+  """
+  order by gauntlet_issue_id
+  """
+  gauntlet_issue_id
+
+  """
+  order by github_alert_id
+  """
+  github_alert_id
+
+  """
+  order by id
+  """
+  id
+
+  """
+  order by impact
+  """
+  impact
+
+  """
+  order by impact_resume
+  """
+  impact_resume
+
+  """
+  order by integration_name
+  """
+  integration_name
+
+  """
+  order by invaded
+  """
+  invaded
+
+  """
+  order by invaded_environment_description
+  """
+  invaded_environment_description
+
+  """
+  order by legacy_id
+  """
+  legacy_id
+
+  """
+  order by notification_title
+  """
+  notification_title
+
+  """
+  order by notification_type
+  """
+  notification_type
+
+  """
+  order by others_host
+  """
+  others_host
+
+  """
+  order by others_protocol
+  """
+  others_protocol
+
+  """
+  order by others_steps
+  """
+  others_steps
+
+  """
+  order by others_vector
+  """
+  others_vector
+
+  """
+  order by probability
+  """
+  probability
+
+  """
+  order by project_id
+  """
+  project_id
+
+  """
+  order by updated_at
+  """
+  updated_at
+
+  """
+  order by vid
+  """
+  vid
+
+  """
+  order by vulnerability_model_id
+  """
+  vulnerability_model_id
+
+  """
+  order by vulnerability_status
+  """
+  vulnerability_status
+
+  """
+  order by web_method
+  """
+  web_method
+
+  """
+  order by web_parameters
+  """
+  web_parameters
+
+  """
+  order by web_protocol
+  """
+  web_protocol
+
+  """
+  order by web_request
+  """
+  web_request
+
+  """
+  order by web_response
+  """
+  web_response
+
+  """
+  order by web_steps
+  """
+  web_steps
+
+  """
+  order by web_url
+  """
+  web_url
+}
+
+enum OrderParams {
+  """
+  descending order
+  """
+  DESC
+
+  """
+  ascending order
+  """
+  ASC
+}
+
+enum OrderProjectsParams {
+  """
+  order by active_obeo
+  """
+  active_obeo
+
+  """
+  order by api_code
+  """
+  api_code
+
+  """
+  order by api_response_review
+  """
+  api_response_review
+
+  """
+  order by applicant
+  """
+  applicant
+
+  """
+  order by applicant_area
+  """
+  applicant_area
+
+  """
+  order by auditing
+  """
+  auditing
+
+  """
+  order by close_comments
+  """
+  close_comments
+
+  """
+  order by connectivity
+  """
+  connectivity
+
+  """
+  order by continuous_delivery
+  """
+  continuous_delivery
+
+  """
+  order by contracted_hours
+  """
+  contracted_hours
+
+  """
+  order by created_at
+  """
+  created_at
+
+  """
+  order by deploy_send_frequency
+  """
+  deploy_send_frequency
+
+  """
+  order by description
+  """
+  description
+
+  """
+  order by due_date
+  """
+  due_date
+
+  """
+  order by end_date
+  """
+  end_date
+
+  """
+  order by environment_invaded
+  """
+  environment_invaded
+
+  """
+  order by estimated_days
+  """
+  estimated_days
+
+  """
+  order by estimated_hours
+  """
+  estimated_hours
+
+  """
+  order by executive_summary
+  """
+  executive_summary
+
+  """
+  order by free_retest
+  """
+  free_retest
+
+  """
+  order by has_open_retest
+  """
+  has_open_retest
+
+  """
+  order by hours_or_days
+  """
+  hours_or_days
+
+  """
+  order by id
+  """
+  id
+
+  """
+  order by integration_deploy
+  """
+  integration_deploy
+
+  """
+  order by invite_token
+  """
+  invite_token
+
+  """
+  order by is_open
+  """
+  is_open
+
+  """
+  order by is_public
+  """
+  is_public
+
+  """
+  order by kanban_delivery_date
+  """
+  kanban_delivery_date
+
+  """
+  order by kanban_description
+  """
+  kanban_description
+
+  """
+  order by kanban_priority
+  """
+  kanban_priority
+
+  """
+  order by kanban_title
+  """
+  kanban_title
+
+  """
+  order by label
+  """
+  label
+
+  """
+  order by language
+  """
+  language
+
+  """
+  order by last_project_status_id
+  """
+  last_project_status_id
+
+  """
+  order by main_recommendations
+  """
+  main_recommendations
+
+  """
+  order by microservice_folder
+  """
+  microservice_folder
+
+  """
+  order by notification_list
+  """
+  notification_list
+
+  """
+  order by pid
+  """
+  pid
+
+  """
+  order by plan_id
+  """
+  plan_id
+
+  """
+  order by planned_started_at
+  """
+  planned_started_at
+
+  """
+  order by project_status_id
+  """
+  project_status_id
+
+  """
+  order by project_type_id
+  """
+  project_type_id
+
+  """
+  order by receive_deploys
+  """
+  receive_deploys
+
+  """
+  order by repository_url
+  """
+  repository_url
+
+  """
+  order by retested_at
+  """
+  retested_at
+
+  """
+  order by sac_code
+  """
+  sac_code
+
+  """
+  order by sac_project_id
+  """
+  sac_project_id
+
+  """
+  order by scope_id
+  """
+  scope_id
+
+  """
+  order by secret_id
+  """
+  secret_id
+
+  """
+  order by ssh_public_key
+  """
+  ssh_public_key
+
+  """
+  order by start_date
+  """
+  start_date
+
+  """
+  order by students
+  """
+  students
+
+  """
+  order by sub_scope_id
+  """
+  sub_scope_id
+
+  """
+  order by updated_at
+  """
+  updated_at
+
+  """
+  order by userable_id
+  """
+  userable_id
+
+  """
+  order by userable_type
+  """
+  userable_type
+
+  """
+  order by vulnerabilities_count
+  """
+  vulnerabilities_count
+
+  """
+  order by waiting
+  """
+  waiting
 }
 
 type Playbook {
@@ -432,6 +1596,18 @@ type Project {
   updatedAt: ISO8601DateTime!
 }
 
+type ProjectMeta {
+  currentPage: Int!
+  limitValue: Int!
+  totalAnalysis: Int
+  totalCount: Int!
+  totalDone: Int
+  totalEstimate: Int
+  totalFixing: Int
+  totalPages: Int!
+  totalPaused: Int
+}
+
 type Query {
   """
   Returns all analyses that the analyst is allocated
@@ -441,7 +1617,21 @@ type Query {
   """
   Returns all analyses the user has access
   """
-  analyses(page: Int, limit: Int): AnalysisCollection!
+  analyses(
+    page: Int
+    limit: Int
+    params: AnalysisSearch
+
+    """
+    column name to order. Ex: label
+    """
+    order: OrderProjectsParams
+
+    """
+    ASC or DESC
+    """
+    orderType: OrderParams
+  ): AnalysisCollection!
 
   """
   Return the analysis if the user has access
@@ -452,6 +1642,37 @@ type Query {
   Returns all assets the user has access
   """
   assetsByCompanyId(id: ID!, page: Int, limit: Int): AssetCollection!
+
+  """
+  Returns all companies the user has access
+  """
+  companies(page: Int, limit: Int, params: CompanySearch): CompanyCollection
+
+  """
+  Return the company the user has access
+  """
+  company(id: ID!): Company
+
+  """
+  Return contact from a contract
+  """
+  contact(id: ID!): Contact
+
+  """
+  Return the contract the user has access
+  """
+  contract(id: ID!): Contract
+
+  """
+  Returns all contracts
+  """
+  contracts(
+    page: Int
+    limit: Int
+    sortBy: String
+    descending: Boolean
+    params: ContractSearch
+  ): ContractCollection!
 
   """
   Returns all credentials by company id
@@ -492,9 +1713,19 @@ type Query {
   ): DeployCollection!
 
   """
+  Returns all findings by commit
+  """
+  findingsByCommit(commit: String!, page: Int, limit: Int): FindingCollection!
+
+  """
   Returns all notifications the user has access
   """
   notifications(page: Int, limit: Int): NotificationCollection
+
+  """
+  Returns all pending deploys
+  """
+  pendingDeploys(page: Int, limit: Int): DeployCollection!
 
   """
   Return user profile by email
@@ -507,9 +1738,33 @@ type Query {
   project(id: ID!): Project
 
   """
+  Return the service type
+  """
+  serviceType(id: ID!): ServiceType
+
+  """
+  Return all service types
+  """
+  serviceTypes(
+    page: Int
+    limit: Int
+    params: ServiceTypeSearch
+  ): ServiceTypeCollection
+
+  """
   Returns all vulnerabilities the user has access
   """
-  vulnerabilities(page: Int, limit: Int): VulnerabilityCollection
+  vulnerabilities(
+    page: Int
+    limit: Int
+    params: VulnerabilitySearch
+    order: OrderOccurrencesParams
+
+    """
+    ASC or DESC
+    """
+    orderType: OrderParams
+  ): VulnerabilityCollection
 
   """
   Returns all vulnerabilities templates by company id
@@ -529,6 +1784,47 @@ type Query {
   Returns all web vulnerabilities the user has access
   """
   webVulnerabilities(page: Int, limit: Int): VulnerabilityCollection
+}
+
+type ServiceType {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  label: String!
+  serviceKindType: [String!]
+  updatedAt: ISO8601DateTime!
+}
+
+type ServiceTypeCollection {
+  collection: [ServiceType!]!
+  metadata: CollectionMetadata!
+}
+
+input ServiceTypeInput {
+  id: ID
+  contractId: ID
+  serviceTypeId: Int!
+  licenceAmountType: String!
+  licenceAmount: Int!
+  durationDays: Int!
+}
+
+input ServiceTypeSearch {
+  labelEq: String
+  labelCont: String
+}
+
+type Tag {
+  name: String!
+}
+
+type Team {
+  analystTeam: Boolean!
+  companyId: Int
+  createdAt: ISO8601DateTime!
+  id: ID!
+  label: String!
+  slackChannel: String
+  updatedAt: ISO8601DateTime!
 }
 
 """
@@ -634,19 +1930,85 @@ type UpdateActivityStatusToStartPayload {
   errors: [String!]
 }
 
+"""
+Autogenerated input type of UpdateContract
+"""
+input UpdateContractInput {
+  id: Int!
+
+  """
+  Company Id. Set it to indicate the contract owner
+  """
+  companyId: Int
+
+  """
+  Contract description. You must describe important points
+  """
+  description: String
+
+  """
+  Start date. Set it to indicate the initial date
+  """
+  startedAt: ISO8601Date
+
+  """
+  End date. Set it to indicate the end date
+  """
+  finishedAt: ISO8601Date
+
+  """
+  Whether or not the contract has an end date
+  """
+  noEndDate: Boolean
+
+  """
+  List of contacts
+  """
+  contacts: [ContactTypeInput!]
+
+  """
+  List of services
+  """
+  services: [ServiceTypeInput!]
+  resourcesCount: Int
+  attachment: Upload
+  educationSecret: String
+  educationId: Int
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of UpdateContract
+"""
+type UpdateContractPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: [String!]
+}
+
 scalar Upload
 
 type Vulnerability {
   affectedComponentId: Int
-  analysesId: Int
+  analysisId: Int
   author: PortalUser
   codeReviewCode: String
   codeReviewInputData: String
   codeReviewOutputData: String
   codeReviewVector: String
   commitmentAt: ISO8601DateTime
+  companyId: Int
+  companyName: String
   createdAt: ISO8601DateTime!
   criticity: String
+  customMetadata: VulnerabilityCollection
   deployId: Int
   description: String
   externalVid: String
@@ -665,6 +2027,8 @@ type Vulnerability {
   title: String
   updatedAt: ISO8601DateTime!
   vid: String
+  vulnerabilityArchives: [VulnerabilityArchive!]!
+  vulnerabilityHistories: [VulnerabilityHistory!]!
   vulnerabilityStatus: String
   vulnerabilityTemplate: VulnerabilityTemplate!
   webMethod: String
@@ -676,9 +2040,46 @@ type Vulnerability {
   webUrl: String
 }
 
+type VulnerabilityArchive {
+  archiveContentType: String
+  archiveFilename: String
+  createdAt: ISO8601DateTime!
+  evidenceText: String
+  id: ID!
+  updatedAt: ISO8601DateTime!
+}
+
 type VulnerabilityCollection {
   collection: [Vulnerability!]!
-  metadata: CollectionMetadata!
+  metadata: OccurrenceMeta!
+}
+
+type VulnerabilityHistory {
+  affectedComponentHistoryId: Int
+  comment: String
+  commitmentAt: ISO8601DateTime
+  createdAt: ISO8601DateTime!
+  fixedByDeployId: Int
+  id: ID!
+  portalUserId: Int
+  status: String
+  updatedAt: ISO8601DateTime!
+  vulnerabilityId: Int
+}
+
+input VulnerabilitySearch {
+  criticityCont: String
+  criticityEq: String
+  descriptionCont: String
+  descriptionEq: String
+  vidCont: String
+  vidEq: String
+
+  """
+  Search Vulnerability Title
+  """
+  vulnerabilityModelTitleCont: String
+  vulnerabilityModelTitleEq: String
 }
 
 type VulnerabilityTemplate {

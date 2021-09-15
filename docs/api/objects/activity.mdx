@@ -22,14 +22,18 @@ type Activity {
   analysisId: Int
   archiveContentType: String
   archiveFilename: String
-  archiveId: String
   archiveSize: Int
   createdAt: ISO8601DateTime!
   deletedAt: ISO8601DateTime
+  description: String
   evidenceText: String
+  finishedAt: ISO8601DateTime
   id: ID!
   justify: String
+  playbook: Playbook!
   portalUser: PortalUser
+  reference: String
+  startedAt: ISO8601DateTime
   status: String
   title: String
   updatedAt: ISO8601DateTime!
@@ -44,21 +48,29 @@ type Activity {
 
 #### `archiveFilename` ([`String`](/api/scalars/string))
 
-#### `archiveId` ([`String`](/api/scalars/string))
-
 #### `archiveSize` ([`Int`](/api/scalars/int))
 
 #### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
 
 #### `deletedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
+#### `description` ([`String`](/api/scalars/string))
+
 #### `evidenceText` ([`String`](/api/scalars/string))
+
+#### `finishedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
 #### `id` ([`ID!`](/api/scalars/id))
 
 #### `justify` ([`String`](/api/scalars/string))
 
+#### `playbook` ([`Playbook!`](/api/objects/playbook))
+
 #### `portalUser` ([`PortalUser`](/api/objects/portal-user))
+
+#### `reference` ([`String`](/api/scalars/string))
+
+#### `startedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
 #### `status` ([`String`](/api/scalars/string))
 

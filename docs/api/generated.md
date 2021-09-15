@@ -13,8 +13,7 @@ The URI to access the GraphQL API is:
 https://app.conviso.com.br/graphql
 ```
 
-Use the docs in the sidebar to find out how to use the schema:
 - **Allowed operations**: queries and mutations.
 - **Schema-defined types**: scalars, objects, enums, interfaces, unions, and input objects.
 
-<small><i>Generated on July 12, 2021 at 10:51:03 AM.</i></small>
+<small><i>Generated on September 13, 2021 at 7:46:41 PM.</i></small>

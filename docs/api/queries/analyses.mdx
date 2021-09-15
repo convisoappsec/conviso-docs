@@ -21,6 +21,9 @@ Returns all analyses the user has access
 analyses(
   page: Int = 0
   limit: Int = 0
+  params: AnalysisSearch
+  order: OrderProjectsParams
+  orderType: OrderParams
 ): AnalysisCollection!
 
 ```
@@ -30,6 +33,16 @@ analyses(
 #### `page` ([`Int`](/api/scalars/int))
 
 #### `limit` ([`Int`](/api/scalars/int))
+
+#### `params` ([`AnalysisSearch`](/api/inputs/analysis-search))
+
+#### `order` ([`OrderProjectsParams`](/api/enums/order-projects-params))
+
+column name to order. Ex: label
+
+#### `orderType` ([`OrderParams`](/api/enums/order-params))
+
+ASC or DESC
 
 ### Type
 

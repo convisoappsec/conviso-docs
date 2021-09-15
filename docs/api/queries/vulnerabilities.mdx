@@ -21,6 +21,9 @@ Returns all vulnerabilities the user has access
 vulnerabilities(
   page: Int = 0
   limit: Int = 0
+  params: VulnerabilitySearch
+  order: OrderOccurrencesParams
+  orderType: OrderParams
 ): VulnerabilityCollection
 
 ```
@@ -30,6 +33,14 @@ vulnerabilities(
 #### `page` ([`Int`](/api/scalars/int))
 
 #### `limit` ([`Int`](/api/scalars/int))
+
+#### `params` ([`VulnerabilitySearch`](/api/inputs/vulnerability-search))
+
+#### `order` ([`OrderOccurrencesParams`](/api/enums/order-occurrences-params))
+
+#### `orderType` ([`OrderParams`](/api/enums/order-params))
+
+ASC or DESC
 
 ### Type
 

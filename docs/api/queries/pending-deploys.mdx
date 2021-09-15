@@ -1,6 +1,6 @@
 ---
-id: findings-by-commit
-title: findingsByCommit
+id: pending-deploys
+title: pendingDeploys
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,20 +15,17 @@ style={{
 </span>
 );
 
-Returns all findings by commit
+Returns all pending deploys
 
 ```graphql
-findingsByCommit(
-  commit: String!
+pendingDeploys(
   page: Int = 0
   limit: Int = 0
-): FindingCollection!
+): DeployCollection!
 
 ```
 
 ### Arguments
-
-#### `commit` ([`String!`](/api/scalars/string))
 
 #### `page` ([`Int`](/api/scalars/int))
 
@@ -36,4 +33,4 @@ findingsByCommit(
 
 ### Type
 
-#### [`FindingCollection`](/api/objects/finding-collection)
+#### [`DeployCollection`](/api/objects/deploy-collection)

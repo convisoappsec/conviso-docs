@@ -1,6 +1,6 @@
 ---
-id: findings-by-commit
-title: findingsByCommit
+id: companies
+title: companies
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,25 +15,25 @@ style={{
 </span>
 );
 
-Returns all findings by commit
+Returns all companies the user has access
 
 ```graphql
-findingsByCommit(
-  commit: String!
+companies(
   page: Int = 0
   limit: Int = 0
-): FindingCollection!
+  params: CompanySearch
+): CompanyCollection
 
 ```
 
 ### Arguments
 
-#### `commit` ([`String!`](/api/scalars/string))
-
 #### `page` ([`Int`](/api/scalars/int))
 
 #### `limit` ([`Int`](/api/scalars/int))
 
+#### `params` ([`CompanySearch`](/api/inputs/company-search))
+
 ### Type
 
-#### [`FindingCollection`](/api/objects/finding-collection)
+#### [`CompanyCollection`](/api/objects/company-collection)

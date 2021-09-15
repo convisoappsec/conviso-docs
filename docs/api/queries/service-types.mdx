@@ -1,6 +1,6 @@
 ---
-id: findings-by-commit
-title: findingsByCommit
+id: service-types
+title: serviceTypes
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,25 +15,25 @@ style={{
 </span>
 );
 
-Returns all findings by commit
+Return all service types
 
 ```graphql
-findingsByCommit(
-  commit: String!
+serviceTypes(
   page: Int = 0
   limit: Int = 0
-): FindingCollection!
+  params: ServiceTypeSearch
+): ServiceTypeCollection
 
 ```
 
 ### Arguments
 
-#### `commit` ([`String!`](/api/scalars/string))
-
 #### `page` ([`Int`](/api/scalars/int))
 
 #### `limit` ([`Int`](/api/scalars/int))
 
+#### `params` ([`ServiceTypeSearch`](/api/inputs/service-type-search))
+
 ### Type
 
-#### [`FindingCollection`](/api/objects/finding-collection)
+#### [`ServiceTypeCollection`](/api/objects/service-type-collection)
