@@ -1,0 +1,63 @@
+---
+id: issue-type-sast-input
+title: IssueTypeSastInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IssueTypeSastInput {
+  businessSeverity: String!
+  description: String!
+  evidence: String!
+  filename: String!
+  hashIssue: String!
+  line: String!
+  originalSeverity: String!
+  title: String!
+  references: [String!]!
+  recommendationsEn: String!
+  reporter: String!
+  technicalSeverity: String!
+}
+```
+
+### Fields
+
+#### `businessSeverity` ([`String!`](/api/scalars/string))
+
+#### `description` ([`String!`](/api/scalars/string))
+
+#### `evidence` ([`String!`](/api/scalars/string))
+
+#### `filename` ([`String!`](/api/scalars/string))
+
+Issue evidence Base64 encoded
+
+#### `hashIssue` ([`String!`](/api/scalars/string))
+
+#### `line` ([`String!`](/api/scalars/string))
+
+#### `originalSeverity` ([`String!`](/api/scalars/string))
+
+#### `title` ([`String!`](/api/scalars/string))
+
+#### `references` ([`String!`](/api/scalars/string))
+
+#### `recommendationsEn` ([`String!`](/api/scalars/string))
+
+#### `reporter` ([`String!`](/api/scalars/string))
+
+#### `technicalSeverity` ([`String!`](/api/scalars/string))
