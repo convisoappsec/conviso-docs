@@ -26,11 +26,11 @@ type IssueTypeSastInput {
   hashIssue: String!
   line: String!
   originalSeverity: String!
-  title: String!
+  recommendationsEn: String
   references: [String!]!
-  recommendationsEn: String!
-  reporter: String!
+  reporter: String
   technicalSeverity: String!
+  title: String!
 }
 ```
 
@@ -38,26 +38,46 @@ type IssueTypeSastInput {
 
 #### `businessSeverity` ([`String!`](/api/scalars/string))
 
+Business severity. Possible values: Low, Medium, High and Critical
+
 #### `description` ([`String!`](/api/scalars/string))
+
+Issue description
 
 #### `evidence` ([`String!`](/api/scalars/string))
 
+Evidence text, encoded with base64
+
 #### `filename` ([`String!`](/api/scalars/string))
 
-Issue evidence Base64 encoded
+File path
 
 #### `hashIssue` ([`String!`](/api/scalars/string))
 
+The hash identifier, composed using issue data like title, line number, file
+path and code snippet -
+b887dfsssaa48aasseb89bd1ea2ca2cc29b5899700b21c437158175ccc2c7d3ab2b4c67af
+
 #### `line` ([`String!`](/api/scalars/string))
+
+Affected line number
 
 #### `originalSeverity` ([`String!`](/api/scalars/string))
 
-#### `title` ([`String!`](/api/scalars/string))
+Original severity. Possible values: Low, Medium, High and Critical
 
-#### `references` ([`String!`](/api/scalars/string))
+#### `recommendationsEn` ([`String`](/api/scalars/string))
 
-#### `recommendationsEn` ([`String!`](/api/scalars/string))
+#### `references` ([`[String!]!`](/api/scalars/string))
 
-#### `reporter` ([`String!`](/api/scalars/string))
+Some issue reference
+
+#### `reporter` ([`String`](/api/scalars/string))
 
 #### `technicalSeverity` ([`String!`](/api/scalars/string))
+
+Technical severity. Possible values: Low, Medium, High and Critical
+
+#### `title` ([`String!`](/api/scalars/string))
+
+Issue title
