@@ -25,11 +25,11 @@ type Notification {
   companyName: String
   createdAt: ISO8601DateTime!
   description: String
-  evidences: [Evidence!]!
-  history: [History!]!
   id: ID!
   notificationStatus: String
   updatedAt: ISO8601DateTime!
+  vulnerabilityArchives: [VulnerabilityArchive!]!
+  vulnerabilityHistories: [VulnerabilityHistory!]!
   vulnerabilityTemplate: VulnerabilityTemplate!
 }
 ```
@@ -48,14 +48,14 @@ type Notification {
 
 #### `description` ([`String`](/api/scalars/string))
 
-#### `evidences` ([`[Evidence!]!`](/api/objects/evidence))
-
-#### `history` ([`[History!]!`](/api/objects/history))
-
 #### `id` ([`ID!`](/api/scalars/id))
 
 #### `notificationStatus` ([`String`](/api/scalars/string))
 
 #### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `vulnerabilityArchives` ([`[VulnerabilityArchive!]!`](/api/objects/vulnerability-archive))
+
+#### `vulnerabilityHistories` ([`[VulnerabilityHistory!]!`](/api/objects/vulnerability-history))
 
 #### `vulnerabilityTemplate` ([`VulnerabilityTemplate!`](/api/objects/vulnerability-template))
