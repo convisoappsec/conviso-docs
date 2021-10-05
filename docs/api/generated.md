@@ -4,28 +4,8 @@ title: Schema Documentation
 ---
 
 ### Authentication process
-### Authentication process
-The authentication process is made through the x-api-key header, as exeplified below.
-```console
-x-api-key: {{API_KEY}}
-``` 
-### Authentication process
-The authentication process is made through the x-api-key header, as exeplified below.
-You can generate your API key following this [steps](https://help.convisoappsec.com/pt-BR/articles/4428685-api-key). 
-The URI to access the GraphQL API is: 
-```console
-https://app.conviso.com.br/graphql
-```
-```console
-x-api-key: {{API_KEY}}
-``` 
 This documentation has been automatically generated from the GraphQL schema.
 The authentication process is made through the x-api-key header, as exeplified below.
-You can generate your API key following this [steps](https://help.convisoappsec.com/pt-BR/articles/4428685-api-key). 
-The URI to access the GraphQL API is: 
-```console
-https://app.conviso.com.br/graphql
-```
 ```console
 x-api-key: {{API_KEY}}
 ``` 
@@ -40,4 +20,4 @@ https://app.conviso.com.br/graphql
 - **Allowed operations**: queries and mutations.
 - **Schema-defined types**: scalars, objects, enums, interfaces, unions, and input objects.
 
-<small><i>Generated on October 04, 2021 at 8:57:06 PM.</i></small>
+<small><i>Generated on October 05, 2021 at 5:14:29 PM.</i></small>
