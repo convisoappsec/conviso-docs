@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.convisoappsec.com/schemas/cli/sast/summary.schema.json",
+
+  "type": "object",
+  "description": "Summary description TODO",
+  "title": "summary",
+
+  "properties": {
+    "technologies": {
+      "type": "array",
+
+      "items": {
+        "type":      "string",
+        "minLength": 1
+      }
+    },
+
+    "issues_count": { "$ref": "https://docs.convisoappsec.com/schemas/cli/sast/issues_count.schema.json" },
+
+    "additionalProperties": {
+      "type":    "integer",
+      "minimum": 0
+    }
+  },
+
+  "required": [
+    "technologies",
+    "issues_count"
+  ]
+}
+
