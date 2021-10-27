@@ -35,11 +35,11 @@ $ flow --api-key 'your-api-key' sast run --project-code 'your-project-code'
 ---------------------------------------
 <a name="reference-issue"></a>
 
-### issues
+### Issue
 
-Issue description TODO
+Issue properties.
 
-**`issues` Properties**
+**`Issue` Properties**
 
 |   |Type|Description|Required|
 |---|---|---|---|
@@ -139,35 +139,32 @@ Additional properties are allowed.
 
 
 
+
+
 ---------------------------------------
 <a name="reference-issues_count"></a>
 
 ### issues count
 
-Issues count description TODO
+Issues stats
 
 **`issues count` Properties**
 
 |   |Type|Description|Required|
 |---|---|---|---|
-|**technologies**|`string` `[]`|| &#10003; Yes|
-|**issues_count**|`object`|| &#10003; Yes|
+|**total**|`integer`|Number of issues found.| &#10003; Yes|
 
 Additional properties are allowed.
 
 * **JSON schema**: [issues_count.schema.json](pathname:///schemas/cli/sast/issues_count.schema.json)
 
-#### issues_count.technologies
+#### issues_count.total
 
-* **Type**: `string` `[]`
-    * Each element in the array must have length greater than or equal to `1`.
+Number of issues found.
+
+* **Type**: `integer`
 * **Required**:  &#10003; Yes
-
-#### issues_count.issues_count
-
-* **Type**: `object`
-* **Required**:  &#10003; Yes
-* **Type of each property**: `integer`
+* **Minimum**: ` >= 0`
 
 
 
@@ -177,14 +174,14 @@ Additional properties are allowed.
 
 ### report
 
-Sastbox report description TODO
+Sast scan report
 
 **`report` Properties**
 
 |   |Type|Description|Required|
 |---|---|---|---|
-|**summary**|`summary`|Summary description TODO| &#10003; Yes|
-|**issues**|`issue` `[]`|TODO| &#10003; Yes|
+|**summary**|`summary`|Overview of issues found during a sast scan.| &#10003; Yes|
+|**issues**|`issue` `[]`|Issues found during the scan.| &#10003; Yes|
 
 Additional properties are allowed.
 
@@ -192,14 +189,14 @@ Additional properties are allowed.
 
 #### report.summary
 
-Summary description TODO
+Overview of issues found during a sast scan.
 
 * **Type**: `summary`
 * **Required**:  &#10003; Yes
 
 #### report.issues
 
-TODO
+Issues found during the scan.
 
 * **Type**: `issue` `[]`
 * **Required**:  &#10003; Yes
@@ -212,15 +209,14 @@ TODO
 
 ### summary
 
-Summary description TODO
+Overview of issues found during a sast scan.
 
 **`summary` Properties**
 
 |   |Type|Description|Required|
 |---|---|---|---|
-|**technologies**|`string` `[]`|| &#10003; Yes|
-|**issues_count**|`issues_count`|Issues count description TODO| &#10003; Yes|
-|**additionalProperties**|`integer`||No|
+|**technologies**|`string` `[]`|Set of technologies scanned for issues.| &#10003; Yes|
+|**issues_count**|`issues_count`|Issues stats| &#10003; Yes|
 
 Additional properties are allowed.
 
@@ -228,19 +224,18 @@ Additional properties are allowed.
 
 #### summary.technologies
 
+Set of technologies scanned for issues.
+
 * **Type**: `string` `[]`
     * Each element in the array must have length greater than or equal to `1`.
 * **Required**:  &#10003; Yes
 
 #### summary.issues_count
 
-Issues count description TODO
+Issues stats
 
 * **Type**: `issues_count`
 * **Required**:  &#10003; Yes
+* **Type of each property**: `integer`
 
-#### summary.additionalProperties
 
-* **Type**: `integer`
-* **Required**: No
-* **Minimum**: ` >= 0`

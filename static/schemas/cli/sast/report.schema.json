@@ -3,18 +3,18 @@
   "$id": "https://docs.convisoappsec.com/schemas/cli/sast/report.schema.json",
 
   "type": "object",
-  "description": "Sastbox report description TODO",
+  "description": "Sast scan report",
   "title": "report",
 
   "properties": {
-    "summary": { "$ref": "https://docs.convisoappsec.com/schemas/cli/sast/summary.schema.json" },
+    "summary": { "$ref": "summary.schema.json" },
 
     "issues": {
       "type": "array",
-      "description": "TODO",
+      "description": "Issues found during the scan.",
       "title": "issues",
 
-      "items": { "$ref": "issue.schema.json" }
+      "items": { "$ref": "https://docs.convisoappsec.com/schemas/cli/sast/issue.schema.json" }
     }
   },
 

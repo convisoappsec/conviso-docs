@@ -3,8 +3,8 @@
   "$id": "https://docs.convisoappsec.com/schemas/cli/sast/issue.schema.json",
 
   "type": "object",
-  "description": "Issue description TODO",
-  "title": "issues",
+  "description": "Issue properties.",
+  "title": "Issue",
 
   "properties": {
      "title": {
