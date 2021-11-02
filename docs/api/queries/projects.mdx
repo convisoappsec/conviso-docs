@@ -1,6 +1,6 @@
 ---
-id: analyses
-title: analyses
+id: projects
+title: projects
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,16 +15,16 @@ style={{
 </span>
 );
 
-Returns all analyses the user has access
+Returns all projects the user has access
 
 ```graphql
-analyses(
+projects(
   page: Int = 0
   limit: Int = 0
-  params: AnalysisSearch
+  params: ProjectSearch
   order: OrderProjectsParams
   orderType: OrderParams
-): AnalysisCollection!
+): ProjectCollection!
 
 ```
 
@@ -34,7 +34,7 @@ analyses(
 
 #### `limit` ([`Int`](/api/scalars/int))
 
-#### `params` ([`AnalysisSearch`](/api/inputs/analysis-search))
+#### `params` ([`ProjectSearch`](/api/inputs/project-search))
 
 #### `order` ([`OrderProjectsParams`](/api/enums/order-projects-params))
 
@@ -46,4 +46,4 @@ ASC or DESC
 
 ### Type
 
-#### [`AnalysisCollection`](/api/objects/analysis-collection)
+#### [`ProjectCollection`](/api/objects/project-collection)

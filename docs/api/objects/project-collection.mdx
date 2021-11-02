@@ -1,6 +1,6 @@
 ---
-id: analysis-collection
-title: AnalysisCollection
+id: project-collection
+title: ProjectCollection
 ---
 
 export const Tag = ({children, color}) => (
@@ -18,14 +18,14 @@ style={{
 No description
 
 ```graphql
-type AnalysisCollection {
-  collection: [Analysis!]!
+type ProjectCollection {
+  collection: [Project!]!
   metadata: ProjectMeta!
 }
 ```
 
 ### Fields
 
-#### `collection` ([`[Analysis!]!`](/api/objects/analysis))
+#### `collection` ([`[Project!]!`](/api/objects/project))
 
 #### `metadata` ([`ProjectMeta!`](/api/objects/project-meta))
