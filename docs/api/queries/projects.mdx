@@ -21,7 +21,7 @@ Returns all projects the user has access
 projects(
   page: Int = 0
   limit: Int = 0
-  params: AnalysisSearch
+  params: ProjectSearch
   order: OrderProjectsParams
   orderType: OrderParams
 ): ProjectCollection!
@@ -34,7 +34,7 @@ projects(
 
 #### `limit` ([`Int`](/api/scalars/int))
 
-#### `params` ([`AnalysisSearch`](/api/inputs/analysis-search))
+#### `params` ([`ProjectSearch`](/api/inputs/project-search))
 
 #### `order` ([`OrderProjectsParams`](/api/enums/order-projects-params))
 

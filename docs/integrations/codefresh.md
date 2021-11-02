@@ -107,7 +107,7 @@ Notice that if we hadn't configured it that way, every command that require auth
 
 Before proceeding, we strongly recommend reading [this guide] to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```FLOW_API_KEY``` variable, configured at the pipeline or imported through shared context and ```FLOW_PROJECT_CODE``` (identified as the analysis key in AppSec Flow), which must be defined individually by pipeline.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```FLOW_API_KEY``` variable, configured at the pipeline or imported through shared context and ```FLOW_PROJECT_CODE``` (identified as the project key in AppSec Flow), which must be defined individually by pipeline.
 
 Next, we present sample code snippets for each of the approaches, assuming the target project was cloned in an earlier step.
 
@@ -164,7 +164,7 @@ flow_sample:
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
 ```
 
-Notice that we didn't provide any option to the command ```flow sast run``` at the above pipeline. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
+Notice that we didn't provide any option to the command ```flow sast run``` at the above pipeline. In this case, the default behavior is to perform the project of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
 
 Alternatively, we can specify the diff range manually. In the example presented below, we scan between the current commit and the immediately previous one, at the current branch.
 
@@ -181,8 +181,8 @@ flow_sample:
 
 ### Bringing Everything Together: Code Review & SAST Deploy
 
-The SAST analysis can be complementary to the code review performed by a Conviso professional, acting as input for that professional, too. 
-Assuming the target project was cloned in an earlier step, the following job snippet sample will deploy code for code review and use the same diff identifiers to perform the SAST analysis in the pipeline: 
+The SAST project can be complementary to the code review performed by a Conviso professional, acting as input for that professional, too. 
+Assuming the target project was cloned in an earlier step, the following job snippet sample will deploy code for code review and use the same diff identifiers to perform the SAST project in the pipeline: 
 
 ```yml
 flow_sample:

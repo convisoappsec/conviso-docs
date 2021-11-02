@@ -10,7 +10,7 @@ Flow CLI is a command line interface tool to interact with AppSec Flow.
 The primary goal of the CLI is to be a developer friendly tool which automates different functionalities, letting users interact more easily with the platform.
 
 You can use the CLI locally and also inside your [CI/CD] to be able to use the following features:
-- Perform security scans analysis (SAST, SCA, IaC, Container)
+- Perform security scans project (SAST, SCA, IaC, Container)
 - Set policies to block the pipeline depending on different criterias
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license)
 

@@ -80,7 +80,7 @@ type Project {
   totalNewLines: Int
   totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
-  type: AnalysisType!
+  type: ProjectType!
   updatedAt: ISO8601DateTime
   userWithAccess: [PortalUser!]
   userableId: Int
@@ -136,7 +136,7 @@ type Project {
 
 #### `hasOpenRetest` ([`Boolean`](/api/scalars/boolean))
 
-#### `history` ([`[AnalysisHistory!]`](/api/objects/analysis-history))
+#### `history` ([`[AnalysisHistory!]`](/api/objects/project-history))
 
 #### `hoursOrDays` ([`String`](/api/scalars/string))
 
