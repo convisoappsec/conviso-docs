@@ -1680,9 +1680,9 @@ type Query {
   credentialsByCompanyId(id: ID!, page: Int, limit: Int): CredentialCollection!
 
   """
-  Returns deploys by analysis id
+  Returns deploys by project id
   """
-  deploysByprojectId(
+  deploysByProjectId(
     id: ID!
     initialDate: ISO8601DateTime!
     finishDate: ISO8601DateTime!
@@ -1694,17 +1694,6 @@ type Query {
   Returns deploys by company id
   """
   deploysByCompanyId(
-    id: ID!
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-    page: Int
-    limit: Int
-  ): DeployCollection!
-
-  """
-  Returns deploys by project id
-  """
-  deploysByProjectId(
     id: ID!
     initialDate: ISO8601DateTime!
     finishDate: ISO8601DateTime!
