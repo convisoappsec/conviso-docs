@@ -68,7 +68,7 @@ module.exports = {
         "api/objects/activity",
         "api/objects/project",
         "api/objects/project-collection",
-        "api/objects/analysis-history",
+        "api/objects/project-history",
         "api/objects/project-type",
         "api/objects/analyst-allocations",
         "api/objects/asset",
@@ -134,7 +134,7 @@ module.exports = {
       type: "category",
       label: "Inputs",
       items: [
-        "api/inputs/analysis-search",
+        "api/inputs/project-search",
         "api/inputs/company-search",
         "api/inputs/contact-type-input",
         "api/inputs/contract-search",

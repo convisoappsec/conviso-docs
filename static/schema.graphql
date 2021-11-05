@@ -19,7 +19,7 @@ type Activity {
   updatedAt: ISO8601DateTime!
 }
 
-type Analysis {
+type Project {
   activities: [Activity!]
   allocatedAnalyst: [AnalystAllocations!]
   apiCode: String
@@ -31,7 +31,7 @@ type Analysis {
   continuousDelivery: Boolean
   contractedHours: Int
   createdAt: ISO8601DateTime
-  customMetadata: AnalysisCollection
+  customMetadata: ProjectCollection
   deploySendFrequency: Int
   dueDate: ISO8601DateTime
   endDate: ISO8601DateTime
@@ -81,7 +81,7 @@ type Analysis {
   totalNewLines: Int
   totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
-  type: AnalysisType!
+  type: ProjectType!
   updatedAt: ISO8601DateTime
   userWithAccess: [PortalUser!]
   userableId: Int
@@ -90,8 +90,8 @@ type Analysis {
   waiting: Boolean!
 }
 
-type AnalysisCollection {
-  collection: [Analysis!]!
+type ProjectCollection {
+  collection: [Projects]!
   metadata: ProjectMeta!
 }
 
@@ -123,7 +123,7 @@ type AnalysisHistory {
   vulnerabilityIds: String
 }
 
-input AnalysisSearch {
+input ProjectSearch {
   """
   Verify if is Continuous Code Review
   """
@@ -160,7 +160,7 @@ input AnalysisSearch {
   tagNameEq: String
 }
 
-type AnalysisType {
+type ProjectType {
   code: String!
   createdAt: ISO8601DateTime
   defaultDuration: Int
@@ -178,7 +178,7 @@ type AnalystAllocations {
 }
 
 type Asset {
-  analyses: [Analysis!]
+  projects: [Projects]
   architectureType: String
   assetType: String
   assetsTagList: String
@@ -1553,7 +1553,7 @@ type Playbook {
 }
 
 type PortalUser {
-  allocatedAnalyses: [Analysis!]
+  allocatedProjects: [Projects]
   analyst: Boolean
   blocked: Boolean
   dashboardOnly: Boolean
@@ -1575,27 +1575,6 @@ type PortalUser {
   submittedVulnerabilities: [Vulnerability!]
 }
 
-type Project {
-  analyses: [Analysis!]
-  beginDate: ISO8601Date
-  companyId: Int
-  conclusion: String
-  contractId: Int
-  createdAt: ISO8601DateTime!
-  endDate: ISO8601Date
-  id: ID!
-  kickoff: Boolean
-  name: String
-  presential: Boolean
-  projectDescription: String
-  projectStatus: String
-  sumTotalAnalysisLines: Int
-  sumTotalChangedLines: Int
-  sumTotalNewLines: Int
-  sumTotalRemovedLines: Int
-  updatedAt: ISO8601DateTime!
-}
-
 type ProjectMeta {
   currentPage: Int!
   limitValue: Int!
@@ -1610,17 +1589,17 @@ type ProjectMeta {
 
 type Query {
   """
-  Returns all analyses that the analyst is allocated
+  Returns all projects that the analyst is allocated
   """
-  allocatedAnalyses(page: Int, limit: Int): AnalysisCollection!
+  allocatedProjects(page: Int, limit: Int): ProjectCollection!
 
   """
-  Returns all analyses the user has access
+  Returns all projects the user has access
   """
-  analyses(
+  projects(
     page: Int
     limit: Int
-    params: AnalysisSearch
+    params: ProjectSearch
 
     """
     column name to order. Ex: label
@@ -1631,12 +1610,12 @@ type Query {
     ASC or DESC
     """
     orderType: OrderParams
-  ): AnalysisCollection!
+  ): ProjectCollection!
 
   """
-  Return the analysis if the user has access
+  Return the project if the user has access
   """
-  analysis(id: ID!): Analysis
+  project(id: ID!): Project
 
   """
   Returns all assets the user has access
@@ -1680,9 +1659,9 @@ type Query {
   credentialsByCompanyId(id: ID!, page: Int, limit: Int): CredentialCollection!
 
   """
-  Returns deploys by analysis id
+  Returns deploys by project id
   """
-  deploysByprojectId(
+  deploysByProjectId(
     id: ID!
     initialDate: ISO8601DateTime!
     finishDate: ISO8601DateTime!
@@ -1694,17 +1673,6 @@ type Query {
   Returns deploys by company id
   """
   deploysByCompanyId(
-    id: ID!
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-    page: Int
-    limit: Int
-  ): DeployCollection!
-
-  """
-  Returns deploys by project id
-  """
-  deploysByProjectId(
     id: ID!
     initialDate: ISO8601DateTime!
     finishDate: ISO8601DateTime!

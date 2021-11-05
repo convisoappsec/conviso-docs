@@ -1,6 +1,6 @@
 ---
-id: allocated-analyses
-title: allocatedAnalyses
+id: allocated-projects
+title: allocatedProjects
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,13 +15,13 @@ style={{
 </span>
 );
 
-Returns all analyses that the analyst is allocated
+Returns all projects that the analyst is allocated
 
 ```graphql
-allocatedAnalyses(
+allocatedProjects(
   page: Int = 0
   limit: Int = 0
-): AnalysisCollection!
+): ProjectCollection!
 
 ```
 
@@ -33,4 +33,4 @@ allocatedAnalyses(
 
 ### Type
 
-#### [`AnalysisCollection`](/api/objects/analysis-collection)
+#### [`ProjectCollection`](/api/objects/project-collection)
