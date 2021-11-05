@@ -40,8 +40,6 @@ type Project {
   estimatedHours: String
   executiveSummary: String
   firstVulnerabilityIdentified: Vulnerability
-  freeRetest: Boolean
-  hasOpenRetest: Boolean
   history: [AnalysisHistory!]
   hoursOrDays: String
   id: ID!
@@ -64,7 +62,6 @@ type Project {
   playbooks: [Playbook!]
   receiveDeploys: Boolean
   repositoryUrl: String
-  retestedAt: ISO8601DateTime
   sacCode: String
   sacProjectId: Int
   scope: String
@@ -1346,16 +1343,6 @@ enum OrderProjectsParams {
   executive_summary
 
   """
-  order by free_retest
-  """
-  free_retest
-
-  """
-  order by has_open_retest
-  """
-  has_open_retest
-
-  """
   order by hours_or_days
   """
   hours_or_days
@@ -1469,11 +1456,6 @@ enum OrderProjectsParams {
   order by repository_url
   """
   repository_url
-
-  """
-  order by retested_at
-  """
-  retested_at
 
   """
   order by sac_code

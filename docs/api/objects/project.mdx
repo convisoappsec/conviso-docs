@@ -39,8 +39,6 @@ type Project {
   estimatedHours: String
   executiveSummary: String
   firstVulnerabilityIdentified: Vulnerability
-  freeRetest: Boolean
-  hasOpenRetest: Boolean
   history: [AnalysisHistory!]
   hoursOrDays: String
   id: ID!
@@ -63,7 +61,6 @@ type Project {
   playbooks: [Playbook!]
   receiveDeploys: Boolean
   repositoryUrl: String
-  retestedAt: ISO8601DateTime
   sacCode: String
   sacProjectId: Int
   scope: String
@@ -132,10 +129,6 @@ type Project {
 
 #### `firstVulnerabilityIdentified` ([`Vulnerability`](/api/objects/vulnerability))
 
-#### `freeRetest` ([`Boolean`](/api/scalars/boolean))
-
-#### `hasOpenRetest` ([`Boolean`](/api/scalars/boolean))
-
 #### `history` ([`[AnalysisHistory!]`](/api/objects/project-history))
 
 #### `hoursOrDays` ([`String`](/api/scalars/string))
@@ -179,8 +172,6 @@ type Project {
 #### `receiveDeploys` ([`Boolean`](/api/scalars/boolean))
 
 #### `repositoryUrl` ([`String`](/api/scalars/string))
-
-#### `retestedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
 
 #### `sacCode` ([`String`](/api/scalars/string))
 
