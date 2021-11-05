@@ -38,8 +38,6 @@ enum OrderProjectsParams {
   estimated_days
   estimated_hours
   executive_summary
-  free_retest
-  has_open_retest
   hours_or_days
   id
   integration_deploy
@@ -63,7 +61,6 @@ enum OrderProjectsParams {
   project_type_id
   receive_deploys
   repository_url
-  retested_at
   sac_code
   sac_project_id
   scope_id
@@ -158,14 +155,6 @@ order by estimated_hours
 
 order by executive_summary
 
-#### `free_retest`
-
-order by free_retest
-
-#### `has_open_retest`
-
-order by has_open_retest
-
 #### `hours_or_days`
 
 order by hours_or_days
@@ -257,10 +246,6 @@ order by receive_deploys
 #### `repository_url`
 
 order by repository_url
-
-#### `retested_at`
-
-order by retested_at
 
 #### `sac_code`
 
