@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.convisoappsec.com/schemas/cli/sast/summary.schema.json",
+
+  "type": "object",
+  "description": "Overview of issues found during a sast scan.",
+  "title": "summary",
+
+  "properties": {
+    "technologies": {
+      "type": "array",
+      "description": "Set of technologies scanned for issues.",
+
+      "items": {
+        "type":      "string",
+        "minLength": 1
+      }
+    },
+
+    "issues_count": { "$ref": "https://docs.convisoappsec.com/schemas/cli/sast/issues_count.schema.json" }
+  },
+
+  "required": [
+    "technologies",
+    "issues_count"
+  ]
+}
+

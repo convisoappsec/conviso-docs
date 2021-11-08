@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.convisoappsec.com/schemas/cli/sast/issues_count.schema.json",
+
+  "type": "object",
+  "description": "Statistics about the issues found.",
+  "title": "Issues count",
+
+  "properties": {
+    "total": {
+      "type":    "integer",
+      "description": "Number of issues found.",
+
+      "minimum": 0
+    }
+  },
+
+  "additionalProperties": {
+    "type":    "integer",
+    "description": "Number of issues by 'technology/scanner' issues found.",
+
+    "minimum": 0
+  },
+
+  "required": [ "total" ]
+}

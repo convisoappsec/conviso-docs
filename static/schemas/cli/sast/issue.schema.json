@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.convisoappsec.com/schemas/cli/sast/issue.schema.json",
+
+  "type": "object",
+  "description": "Issue properties.",
+  "title": "Issue",
+
+  "properties": {
+     "title": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "description": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "references": {
+       "type": "array",
+
+       "items": {
+         "type":      "string",
+         "minLength": 1
+       }
+     },
+
+     "filename": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "line": {
+       "anyOf": [
+         {
+           "type":    "integer",
+           "minimum": 1
+         }, 
+
+         {
+           "type":      "string",
+           "minLength": 1,
+           "pattern":   "^[0-9]*$"
+         }
+       ]
+     },
+
+     "reporter": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "evidence": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "hash_evidence_line": {
+       "type": "string"
+     },
+
+     "hash_evidence_full": {
+       "type": "string"
+     },
+
+     "id": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "hash_issue": {
+       "type":      "string",
+       "minLength": 1
+     },
+
+     "severity": {
+       "enum": [
+         "undefined",
+         "critical",
+         "high",
+         "medium",
+         "low",
+         "info"
+       ]
+     }
+  },
+
+  "required": [
+    "id",
+    "evidence",
+    "severity",
+    "title"
+  ]
+}

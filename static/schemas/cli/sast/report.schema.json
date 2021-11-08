@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.convisoappsec.com/schemas/cli/sast/report.schema.json",
+
+  "type": "object",
+  "description": "Sast scan report",
+  "title": "report",
+
+  "properties": {
+    "summary": { "$ref": "summary.schema.json" },
+
+    "issues": {
+      "type": "array",
+      "description": "Issues found during the scan.",
+      "title": "issues",
+
+      "items": { "$ref": "https://docs.convisoappsec.com/schemas/cli/sast/issue.schema.json" }
+    }
+  },
+
+  "required": [
+    "summary",
+    "issues"
+  ]
+}
