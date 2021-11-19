@@ -4,10 +4,14 @@ title: Gitlab
 sidebar_label: Gitlab
 ---
 
+<div style={{textAlign: 'center'}}>
+
 ![img](../../static/img/gitlab.png)
 
+</div>
+
 :::note
-First time using Gitlab? Please refer to the following tutorial.  
+First time using Gitlab? Please refer to the [following documentation](https://docs.gitlab.com/).  
 :::
 
 ## Introduction

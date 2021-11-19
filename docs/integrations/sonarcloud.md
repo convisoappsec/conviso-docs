@@ -4,10 +4,14 @@ title: Sonarcloud
 sidebar_label: Sonarcloud
 ---
 
+<div style={{textAlign: 'center'}}>
+
 ![img](../../static/img/sonarcloud.png)
 
+</div>
+
 :::note
-https://sonarcloud.io/ - Sonarcloud: Enhance Your Workflow with Continuous Code Quality & Code Security  
+First time using SonarCloud? Please refer to the [following documentation](https://sonarcloud.io/documentation).
 :::
 
 ## Introduction

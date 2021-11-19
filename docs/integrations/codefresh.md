@@ -14,7 +14,7 @@ sidebar_label: Codefresh
 </div>
 
 :::note
-First time using Codefresh? Please refer to the [following tutorial](https://codefresh.io/docs/).  
+First time using Codefresh? Please refer to the [following documentation](https://codefresh.io/docs/).  
 :::
 
 ## Requirements

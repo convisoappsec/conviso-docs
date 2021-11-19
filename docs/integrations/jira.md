@@ -4,10 +4,14 @@ title: Jira
 sidebar_label: Jira
 ---
 
+<div style={{textAlign: 'center'}}>
+
 ![img](../../static/img/jira.png)
 
+</div>
+
 :::note
-First time using Github Actions? Please refer to the following tutorial.  
+First time using Jira? Please refer to the [following documentation](https://www.atlassian.com/software/jira/guides).  
 :::
 
 ## Introduction

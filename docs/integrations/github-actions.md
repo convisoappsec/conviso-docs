@@ -4,10 +4,14 @@ title: Github Actions
 sidebar_label: Github Actions
 ---
 
+<div style={{textAlign: 'center'}}>
+
 ![img](../../static/img/github-actions.png)
 
+</div>
+
 :::note
-First time using Github Actions? Please refer to the [following tutorial](https://docs.github.com/en/actions).  
+First time using Github Actions? Please refer to the [following documentation](https://docs.github.com/en/actions).  
 :::
 
 ## Introduction

@@ -3,11 +3,14 @@ id: circleci
 title: CircleCI
 sidebar_label: CircleCI
 ---
+<div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/circleci.png)
 
+</div>
+
 :::note
-First time using CircleCI? Please refer to the [following tutorial](https://circleci.com/docs/).  
+First time using CircleCI? Please refer to the [following documentation](https://circleci.com/docs/).  
 :::
 
 ## Introduction

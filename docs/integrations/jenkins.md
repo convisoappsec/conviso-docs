@@ -4,10 +4,14 @@ title: Jenkins
 sidebar_label: Jenkins
 ---
 
+<div style={{textAlign: 'center'}}>
+
 ![img](../../static/img/jenkins.png)
 
+</div>
+
 :::note
-First time using Jenkins? Please refer to the following tutorial.  
+First time using Jenkins? Please refer to the [following documentation](https://www.jenkins.io/doc/book/).  
 :::
 
 ## Introduction

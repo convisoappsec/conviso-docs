@@ -19,11 +19,16 @@ module.exports = {
           label: "CI/CD",
           items: [
                 //  'integrations/azure-devops',
-                  'integrations/circleci',
-                  'integrations/github-actions',
-                  'integrations/gitlab',
-                  'integrations/codefresh',
-                  'integrations/jenkins',
+                'integrations/azure-pipelines-cli',
+                'integrations/azure-pipelines-graph',
+                'integrations/bitbucket-pipelines',
+                'integrations/circleci',
+                'integrations/codefresh',
+                'integrations/dependency-track',
+                'integrations/github-actions',
+                'integrations/gitlab',
+                'integrations/jenkins',
+                'integrations/jenkins-single-pipeline'                  
                   ]
         },
         {
