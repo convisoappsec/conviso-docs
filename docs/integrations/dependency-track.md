@@ -11,7 +11,7 @@ sidebar_label: Dependency Track
 </div>
 
 :::note
-First time using Codefresh? Please refer to the [following documentation](https://docs.dependencytrack.org/).  
+First time using Dependency Track? Please refer to the [following documentation](https://docs.dependencytrack.org/).  
 :::
 
 ## Introduction

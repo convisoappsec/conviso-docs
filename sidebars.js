@@ -25,11 +25,18 @@ module.exports = {
                 'integrations/bitbucket-pipelines',
                 'integrations/circleci',
                 'integrations/codefresh',
-                'integrations/dependency-track',
                 'integrations/github-actions',
                 'integrations/gitlab',
                 'integrations/jenkins',
                 'integrations/jenkins-single-pipeline'                  
+                  ]
+        },
+
+        {
+          type: "category",
+          label: "SBOM",
+          items: [
+                  'integrations/dependency-track'
                   ]
         },
         {
