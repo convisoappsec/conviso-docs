@@ -34,7 +34,7 @@ module.exports = {
 
         {
           type: "category",
-          label: "SBOM",
+          label: "SCA",
           items: [
                   'integrations/dependency-track'
                   ]
@@ -46,14 +46,13 @@ module.exports = {
                   'integrations/sonarcloud',
                   ]
         },
-      /*  {
+        {
           type: "category",
           label: "Defect/Bug Tracking",
           items: [
                   'integrations/jira',
                   ]
         },
-      */
       ]
     },
     {
