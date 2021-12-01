@@ -56,9 +56,9 @@ In this first block of "Bash" task, we carry out the installation of the tool an
 
 ## Code Review Deployment
 
-Before proceeding, we recommend reading the following [guide](https://help.convisoappsec.com/pt-BR/articles/4428713-estrategias-para-deploy-de-code-review) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables previously configured in the desired pipeline variables and the ```FLOW_PROJECT_CODE``` variable (identified as the analysis key in Conviso Platform) that can be defined in each of the pipelines.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables previously configured in the desired pipeline variables and the ```FLOW_PROJECT_CODE``` variable (identified as the Key of Project at Conviso Platform) that can be defined in each of the pipelines.
 
 Below are the code snippets that must be inserted in the blocks for each type of strategy: 
 

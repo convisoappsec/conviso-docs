@@ -15,8 +15,3 @@ First time using Dependency Track? Please refer to the [following documentation]
 :::
 
 ## Introduction
-
-## Requirements
-
-### Usage
-

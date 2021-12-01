@@ -105,7 +105,7 @@ Notice that if we hadn't configured it that way, every command that require auth
 
 ## Code Review
 
-Before proceeding, we strongly recommend reading [this guide] to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we strongly recommend reading [this guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```FLOW_API_KEY``` variable, configured at the pipeline or imported through shared context and ```FLOW_PROJECT_CODE``` (identified as the project key in AppSec Flow), which must be defined individually by pipeline.
 

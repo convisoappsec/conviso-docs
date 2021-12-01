@@ -19,6 +19,7 @@ module.exports = {
           label: "CI/CD",
           items: [
                 //  'integrations/azure-devops',
+                'integrations/code-review-strategies',
                 'integrations/aws-codebuild',
                 'integrations/azure-pipelines-cli',
                 'integrations/azure-pipelines-graph',
