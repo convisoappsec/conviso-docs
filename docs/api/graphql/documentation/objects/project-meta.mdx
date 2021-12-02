@@ -1,0 +1,52 @@
+---
+id: project-meta
+title: ProjectMeta
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectMeta {
+  currentPage: Int!
+  limitValue: Int!
+  totalAnalysis: Int
+  totalCount: Int!
+  totalDone: Int
+  totalEstimate: Int
+  totalFixing: Int
+  totalPages: Int!
+  totalPaused: Int
+}
+```
+
+### Fields
+
+#### `currentPage` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `limitValue` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `totalAnalysis` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalCount` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `totalDone` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalEstimate` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalFixing` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalPages` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `totalPaused` ([`Int`](/api/graphql/documentation/scalars/int))

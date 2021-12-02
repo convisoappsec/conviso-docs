@@ -1,0 +1,73 @@
+---
+id: contact
+title: Contact
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Contact {
+  assetId: ID
+  attachment: String
+  attachmentContentType: String
+  attachmentFilename: String
+  attachmentId: String
+  attachmentSize: Int
+  contractId: ID
+  createdAt: ISO8601DateTime!
+  email: String!
+  id: ID!
+  name: String!
+  phone: String!
+  planId: ID
+  role: String!
+  scopeId: ID
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `assetId` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `attachment` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentContentType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentFilename` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentSize` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `contractId` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `email` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `name` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `phone` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `planId` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `role` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `scopeId` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

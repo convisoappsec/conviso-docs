@@ -88,7 +88,7 @@ type Project {
 }
 
 type ProjectCollection {
-  collection: [Projects]!
+  collection: [Project]!
   metadata: ProjectMeta!
 }
 
@@ -175,7 +175,7 @@ type AnalystAllocations {
 }
 
 type Asset {
-  projects: [Projects]
+  projects: [Project]
   architectureType: String
   assetType: String
   assetsTagList: String
@@ -1535,7 +1535,7 @@ type Playbook {
 }
 
 type PortalUser {
-  allocatedProjects: [Projects]
+  allocatedProjects: [Project]
   analyst: Boolean
   blocked: Boolean
   dashboardOnly: Boolean
@@ -1593,11 +1593,6 @@ type Query {
     """
     orderType: OrderParams
   ): ProjectCollection!
-
-  """
-  Return the project if the user has access
-  """
-  project(id: ID!): Project
 
   """
   Returns all assets the user has access

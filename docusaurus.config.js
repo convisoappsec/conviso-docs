@@ -104,8 +104,18 @@ module.exports = {
       {
         schema: "./static/schema.graphql",
         rootPath: "./docs", // docs will be generated under './docs/swapi' (rootPath/baseURL)
-        baseURL: "api",
+        baseURL: "api/graphql/documentation",
       },
     ],
+    /*[
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api',
+        path: './docs/api/graphql/documentation',
+        routeBasePath: './docs',
+        sidebarPath: require.resolve('./docs/api/graphql/documentation/sidebar-schema.js'),
+        // ... other options
+      },
+    ],*/
   ],
 };

@@ -1,0 +1,43 @@
+---
+id: service-type-input
+title: ServiceTypeInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ServiceTypeInput {
+  id: ID
+  contractId: ID
+  serviceTypeId: Int!
+  licenceAmountType: String!
+  licenceAmount: Int!
+  durationDays: Int!
+}
+```
+
+### Fields
+
+#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `contractId` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `serviceTypeId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `licenceAmountType` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `licenceAmount` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `durationDays` ([`Int!`](/api/graphql/documentation/scalars/int))

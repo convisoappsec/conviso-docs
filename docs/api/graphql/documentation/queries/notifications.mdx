@@ -1,0 +1,36 @@
+---
+id: notifications
+title: notifications
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all notifications the user has access
+
+```graphql
+notifications(
+  page: Int = 0
+  limit: Int = 0
+): NotificationCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`NotificationCollection`](/api/graphql/documentation/objects/notification-collection)

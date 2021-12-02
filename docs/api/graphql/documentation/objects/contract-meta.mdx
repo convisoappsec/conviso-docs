@@ -1,0 +1,46 @@
+---
+id: contract-meta
+title: ContractMeta
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ContractMeta {
+  currentPage: Int!
+  finishedContracts: Int
+  limitValue: Int!
+  openedContracts: Int
+  totalContracts: Int
+  totalCount: Int
+  totalPages: Int!
+}
+```
+
+### Fields
+
+#### `currentPage` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `finishedContracts` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limitValue` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `openedContracts` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalContracts` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalCount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalPages` ([`Int!`](/api/graphql/documentation/scalars/int))

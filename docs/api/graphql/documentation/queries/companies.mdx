@@ -1,0 +1,39 @@
+---
+id: companies
+title: companies
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all companies the user has access
+
+```graphql
+companies(
+  page: Int = 0
+  limit: Int = 0
+  params: CompanySearch
+): CompanyCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `params` ([`CompanySearch`](/api/graphql/documentation/inputs/company-search))
+
+### Type
+
+#### [`CompanyCollection`](/api/graphql/documentation/objects/company-collection)

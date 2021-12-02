@@ -1,0 +1,36 @@
+---
+id: pending-deploys
+title: pendingDeploys
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all pending deploys
+
+```graphql
+pendingDeploys(
+  page: Int = 0
+  limit: Int = 0
+): DeployCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`DeployCollection`](/api/graphql/documentation/objects/deploy-collection)

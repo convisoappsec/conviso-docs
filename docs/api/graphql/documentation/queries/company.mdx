@@ -1,0 +1,33 @@
+---
+id: company
+title: company
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return the company the user has access
+
+```graphql
+company(
+  id: ID!
+): Company
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+### Type
+
+#### [`Company`](/api/graphql/documentation/objects/company)
