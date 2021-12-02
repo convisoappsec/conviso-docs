@@ -1,0 +1,45 @@
+---
+id: deploys-by-company-id
+title: deploysByCompanyId
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns deploys by company id
+
+```graphql
+deploysByCompanyId(
+  id: ID!
+  initialDate: ISO8601DateTime!
+  finishDate: ISO8601DateTime!
+  page: Int = 0
+  limit: Int = 0
+): DeployCollection!
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `initialDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `finishDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`DeployCollection`](/api/graphql/documentation/objects/deploy-collection)

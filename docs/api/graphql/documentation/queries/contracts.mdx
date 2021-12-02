@@ -1,0 +1,45 @@
+---
+id: contracts
+title: contracts
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all contracts
+
+```graphql
+contracts(
+  page: Int = 0
+  limit: Int = 0
+  sortBy: String
+  descending: Boolean
+  params: ContractSearch
+): ContractCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `sortBy` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `descending` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `params` ([`ContractSearch`](/api/graphql/documentation/inputs/contract-search))
+
+### Type
+
+#### [`ContractCollection`](/api/graphql/documentation/objects/contract-collection)

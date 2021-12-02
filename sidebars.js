@@ -1,4 +1,4 @@
-const sidebarSchema = require("./docs/api/sidebar-schema");
+const sidebarSchema = require("./docs/api/graphql/documentation/sidebar-schema");
 
 module.exports = {
   docs: [
@@ -9,6 +9,25 @@ module.exports = {
              'cli/sast',
              'cli/security-gate'
             ]
+    },
+    {
+      type: "category",
+      label: "API",
+      items: [
+        {
+          type: "category",
+          label: "GraphQL",
+          items: [
+            'api/graphql/introduction',
+            {
+              type: "category",
+              label: "References",
+              items: sidebarSchema.schemaSidebar 
+            }
+          ]
+        },
+        'api/rest/index'
+      ]
     },
     {
       type: "category",
@@ -54,11 +73,6 @@ module.exports = {
       Plugins: [],
       
     },
-    {
-      GraphQL: sidebarSchema.schemaSidebar,
-      Plugins: [],
-      
-    },
   ],
-  ...require("./docs/api/sidebar-schema"),
+  ...require("./docs/api/graphql/documentation/sidebar-schema"),
 };

@@ -1,0 +1,40 @@
+---
+id: analyst-allocations
+title: AnalystAllocations
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AnalystAllocations {
+  allocatedHours: Int
+  createdAt: ISO8601DateTime!
+  id: ID!
+  portalUser: PortalUser
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `allocatedHours` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

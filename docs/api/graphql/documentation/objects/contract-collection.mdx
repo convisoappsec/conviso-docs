@@ -1,0 +1,31 @@
+---
+id: contract-collection
+title: ContractCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ContractCollection {
+  collection: [Contract!]!
+  metadata: ContractMeta!
+}
+```
+
+### Fields
+
+#### `collection` ([`[Contract!]!`](/api/graphql/documentation/objects/contract))
+
+#### `metadata` ([`ContractMeta!`](/api/graphql/documentation/objects/contract-meta))

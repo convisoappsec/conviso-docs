@@ -1,0 +1,36 @@
+---
+id: web-vulnerabilities
+title: webVulnerabilities
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all web vulnerabilities the user has access
+
+```graphql
+webVulnerabilities(
+  page: Int = 0
+  limit: Int = 0
+): VulnerabilityCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`VulnerabilityCollection`](/api/graphql/documentation/objects/vulnerability-collection)

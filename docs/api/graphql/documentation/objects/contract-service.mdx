@@ -1,0 +1,52 @@
+---
+id: contract-service
+title: ContractService
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ContractService {
+  contractId: ID!
+  createdAt: ISO8601DateTime!
+  durationDays: Int
+  id: ID!
+  licenceAmount: Int
+  licenceAmountType: String
+  serviceKindId: ID!
+  serviceKindLabel: String
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `contractId` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `durationDays` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `licenceAmount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `licenceAmountType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `serviceKindId` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `serviceKindLabel` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
