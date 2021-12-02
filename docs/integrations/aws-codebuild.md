@@ -94,7 +94,7 @@ After these procedures, the secret will be available to be used by CodeBuild.
 
 ## Code Review
 
-Before proceeding, we recommend reading the following [guide](https://help.convisoappsec.com/pt-BR/articles/4428713-estrategias-para-deploy-de-code-review) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```FLOW_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```FLOW_PROJECT_CODE``` variable.
 

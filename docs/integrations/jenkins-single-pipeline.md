@@ -102,7 +102,7 @@ environment {
 
 ## Associating Conviso Projects to the Pipeline
 
-The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) analysis. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Analysis Key from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file´s initial session will be as shown below:
+The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) analysis. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Key of Project from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file´s initial session will be as shown below:
 
 ```yml
 def get_project_code(repo_url){
