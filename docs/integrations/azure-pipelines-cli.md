@@ -80,9 +80,9 @@ Authentication between the FlowCLI tool and the platform takes place through an 
 
 ## Code Review
 
-Before proceeding, we recommend reading the following [guide](https://help.convisoappsec.com/pt-BR/articles/4428713-estrategias-para-deploy-de-code-review) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables (previously set in the desired pipeline variables) and the ```FLOW_PROJECT_CODE``` variable (identified as the analysis key in Conviso Platform) that can be defined in each of the pipelines. 
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables (previously set in the desired pipeline variables) and the ```FLOW_PROJECT_CODE``` variable (identified as the Key of Project at Conviso Platform) that can be defined in each of the pipelines. 
 
 Below are the code snippets that can be at the ```azure-pipelines.yml``` file (or any other custom file):
 

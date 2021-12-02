@@ -38,17 +38,25 @@ module.exports = {
           label: "CI/CD",
           items: [
                 //  'integrations/azure-devops',
+                'integrations/code-review-strategies',
                 'integrations/aws-codebuild',
                 'integrations/azure-pipelines-cli',
                 'integrations/azure-pipelines-graph',
                 'integrations/bitbucket-pipelines',
                 'integrations/circleci',
                 'integrations/codefresh',
-                'integrations/dependency-track',
                 'integrations/github-actions',
                 'integrations/gitlab',
                 'integrations/jenkins',
                 'integrations/jenkins-single-pipeline'                  
+                  ]
+        },
+
+        {
+          type: "category",
+          label: "SCA",
+          items: [
+                  'integrations/dependency-track'
                   ]
         },
         {
@@ -58,14 +66,13 @@ module.exports = {
                   'integrations/sonarcloud',
                   ]
         },
-      /*  {
+        {
           type: "category",
           label: "Defect/Bug Tracking",
           items: [
                   'integrations/jira',
                   ]
         },
-      */
       ]
     },
     {
