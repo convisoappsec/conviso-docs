@@ -24,7 +24,7 @@ We are transitioning and migrating from our REST API. Nevertheless in order to a
 
 ## Exploring GraphQL API
 There are different ways to play and explore with our GraphQL API. 
-You can use a desktop application like [Insomnia] or our web GraphQL explorer [here](https://conviso-graphql-playground.s3.us-west-2.amazonaws.com/index.html), based on [GraphQL Playground].
+You can use a desktop application like [Insomnia] or our web GraphQL explorer <a href="../../playground-graphql.html" target="_blank">here</a>, based on [GraphQL Playground].
 
 
 [GraphQL]: <https://graphql.org/>
