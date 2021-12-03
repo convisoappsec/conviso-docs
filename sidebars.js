@@ -14,6 +14,7 @@ module.exports = {
       type: "category",
       label: "API",
       items: [
+        'api/generate-apikey',
         {
           type: "category",
           label: "GraphQL",
@@ -26,8 +27,7 @@ module.exports = {
             }
           ]
         },
-        'api/rest/index',
-        'api/generate-apikey'
+        'api/rest/index'
       ]
     },
     {
