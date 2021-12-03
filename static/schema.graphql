@@ -1,5 +1,4 @@
 type Activity {
-  projectId: Int
   archiveContentType: String
   archiveFilename: String
   archiveSize: Int
@@ -12,6 +11,7 @@ type Activity {
   justify: String
   playbook: Playbook!
   portalUser: PortalUser
+  projectId: Int
   reference: String
   startedAt: ISO8601DateTime
   status: String
@@ -19,82 +19,22 @@ type Activity {
   updatedAt: ISO8601DateTime!
 }
 
-type Project {
-  activities: [Activity!]
-  allocatedAnalyst: [AnalystAllocations!]
-  apiCode: String
-  apiResponseReview: String
-  assets: [Asset!]
-  closeComments: Boolean
-  companyId: Int!
-  connectivity: String
-  continuousDelivery: Boolean
-  contractedHours: Int
-  createdAt: ISO8601DateTime
-  customMetadata: ProjectCollection
-  deploySendFrequency: Int
-  dueDate: ISO8601DateTime
-  endDate: ISO8601DateTime
-  environmentInvaded: Boolean
-  estimatedDays: String
-  estimatedHours: String
-  executiveSummary: String
-  firstVulnerabilityIdentified: Vulnerability
-  history: [AnalysisHistory!]
-  hoursOrDays: String
+type AllocatedProjects {
+  client: String
+  dueDate: ISO8601DateTime!
+  estimatedDays: String!
+  estimatedHours: String!
+  hoursOrDays: String!
   id: ID!
-  integrationDeploy: Boolean
-  inviteToken: String
-  isOpen: Boolean!
-  isPublic: Boolean
   label: String!
-  language: String
-  mainRecommendations: String
-  microserviceFolder: String
-  negativeScope: String
-  notificationList: String
-  notifications: [Notification!]
-  objective: String
-  pid: String
+  pid: String!
   plannedStartedAt: ISO8601DateTime
-  playbookFinishedAt: ISO8601DateTime
-  playbookStartedAt: ISO8601DateTime
-  playbooks: [Playbook!]
-  receiveDeploys: Boolean
-  repositoryUrl: String
-  sacCode: String
-  sacProjectId: Int
-  scope: String
-  secretId: String
-  sshPublicKey: String
-  startDate: ISO8601DateTime!
-  status: String
-  students: Int
-  subScopeId: Int
-  tags: [Tag!]
-  teams: [Team!]
-  totalAnalysisLines: Int
-  totalChangedLines: Int
-  totalNewLines: Int
-  totalPublishedVulnerabilities: Int
-  totalRemovedLines: Int
-  type: ProjectType!
-  updatedAt: ISO8601DateTime
-  userWithAccess: [PortalUser!]
-  userableId: Int
-  userableType: String
-  vulnerabilities: [Vulnerability!]
-  waiting: Boolean!
-}
-
-type ProjectCollection {
-  collection: [Project]!
-  metadata: ProjectMeta!
+  projectStatus: String
+  projectTypeId: Int!
 }
 
 type AnalysisHistory {
   activeAllocation: Boolean
-  projectId: Int
   changeTime: ISO8601DateTime
   comment: String
   createdAt: ISO8601DateTime!
@@ -111,6 +51,7 @@ type AnalysisHistory {
   portalUserEmail: String
   portalUserName: String
   projectCycleId: Int
+  projectId: Int
   sacId: String
   startedAt: ISO8601DateTime
   status: String
@@ -120,50 +61,26 @@ type AnalysisHistory {
   vulnerabilityIds: String
 }
 
-input ProjectSearch {
-  """
-  Verify if is Continuous Code Review
-  """
-  continuousDeliveryEq: Boolean
-
-  """
-  Search in created_at dates with greater than or equal
-  """
-  createdAtGteq: ISO8601DateTime
-
-  """
-  Search in created_at dates with less than or equal
-  """
-  createdAtLteq: ISO8601DateTime
-  endDateCont: ISO8601DateTime
-  endDateEq: ISO8601DateTime
-  labelCont: String
-  labelEq: String
-  idEq: Int
-  projectStatusLabelCont: String
-
-  """
-  Search Status
-  """
-  projectStatusLabelEq: String
-  projectTypeLabelCont: String
-
-  """
-  Search Type
-  """
-  projectTypeLabelEq: String
-  startDateEq: ISO8601DateTime
-  startDateCont: ISO8601DateTime
-  tagNameEq: String
+type AnalysisStatusType {
+  createdAt: ISO8601DateTime
+  id: ID!
+  isInitial: Boolean!
+  label: String!
 }
 
-type ProjectType {
-  code: String!
-  createdAt: ISO8601DateTime
-  defaultDuration: Int
-  description: String
-  id: ID!
-  label: String!
+type AnalysisStatusTypeCollection {
+  collection: [AnalysisStatusType!]!
+  metadata: CollectionMetadata!
+}
+
+type AnalysisVulnerabilitiesCount {
+  critical: Int
+  high: Int
+  low: Int
+  medium: Int
+  notification: Int
+  total: Int
+  totalWithNotification: Int
 }
 
 type AnalystAllocations {
@@ -175,7 +92,6 @@ type AnalystAllocations {
 }
 
 type Asset {
-  projects: [Project]
   architectureType: String
   assetType: String
   assetsTagList: String
@@ -191,13 +107,265 @@ type Asset {
   id: ID!
   lifeCycle: String
   name: String
+  projects: [Project!]
   scanType: String
   updatedAt: ISO8601DateTime!
   url: String
 }
 
+enum AssetArch {
+  """
+  Agile
+  """
+  agile
+
+  """
+  Micro-services
+  """
+  microservices
+
+  """
+  Monolithic
+  """
+  monolithic
+
+  """
+  Serverless
+  """
+  serverless
+
+  """
+  none
+  """
+  none
+}
+
+enum AssetAudience {
+  """
+  External
+  """
+  external
+
+  """
+  Internal
+  """
+  internal
+
+  """
+  Internal and External
+  """
+  internal_and_external
+
+  """
+  None
+  """
+  none
+}
+
 type AssetCollection {
   collection: [Asset!]!
+  metadata: CollectionMetadata!
+}
+
+enum AssetDevelopmentModel {
+  """
+  Agile
+  """
+  agile
+
+  """
+  None
+  """
+  none
+
+  """
+  Third_party
+  """
+  third_party
+
+  """
+  Waterfall
+  """
+  waterfall
+}
+
+enum AssetDevelopmentTeam {
+  """
+  External
+  """
+  external
+
+  """
+  Internal
+  """
+  internal
+
+  """
+  Internal and External
+  """
+  internal_and_external
+
+  """
+  None
+  """
+  none
+}
+
+enum AssetLifeCycle {
+  """
+  Production
+  """
+  production
+
+  """
+  Homologation
+  """
+  homologation
+
+  """
+  Certification
+  """
+  certification
+
+  """
+  discontinued
+  """
+  discontinued
+
+  """
+  None
+  """
+  none
+}
+
+enum AssetScan {
+  """
+  Server
+  """
+  Server
+
+  """
+  DAST
+  """
+  DAST
+
+  """
+  SAST
+  """
+  SAST
+
+  """
+  Container
+  """
+  Container
+
+  """
+  None
+  """
+  None
+}
+
+enum AssetSeverity {
+  """
+  High
+  """
+  high
+
+  """
+  Critical
+  """
+  critical
+
+  """
+  Low
+  """
+  low
+
+  """
+  None
+  """
+  none
+}
+
+enum AssetTypeList {
+  """
+  None
+  """
+  none
+
+  """
+  Client-server
+  """
+  client_server
+
+  """
+  api
+  """
+  api
+
+  """
+  Progressive Web App
+  """
+  progressive_web_app
+
+  """
+  web
+  """
+  web
+
+  """
+  Native Mobile
+  """
+  native_mobile
+
+  """
+  Hybrid Mobile
+  """
+  hybrid_mobile
+
+  """
+  Database
+  """
+  database
+
+  """
+  DMZ
+  """
+  dmz
+
+  """
+  Legacy
+  """
+  legacy
+
+  """
+  Cluster
+  """
+  cluster
+
+  """
+  Node
+  """
+  node
+}
+
+type Attachment {
+  archiveContentType: String
+  archiveFilename: String
+  archiveId: String
+  archiveSize: Int
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  description: String
+  id: ID!
+  portalUser: PortalUser
+  project: Project
+  scope: Attachment
+  updatedAt: ISO8601DateTime!
+}
+
+type AttachmentCollection {
+  collection: [Attachment!]!
   metadata: CollectionMetadata!
 }
 
@@ -306,18 +474,7 @@ type Contract {
   attachmentSize: Int
   client: Company
   companyId: Int
-  consumedAnnualLeave: String
-  consumedApplicationSecurityTesting: String
-  consumedEducationModule: String
-  consumedGapAnalysis: String
-  consumedHardwareIotPenTest: String
-  consumedManagedService: String
-  consumedManualCodeReview: String
-  consumedMobilePenTest: String
-  consumedNetworkPenTest: String
-  consumedScanAndFindingReview: String
-  consumedThreatModeling: String
-  consumedWebPenTest: String
+  consumedServices: ContractConsumedServices
   contacts: [Contact!]
   createdAt: ISO8601DateTime!
   customMetadata: ContractCollection
@@ -349,6 +506,29 @@ type ContractCollection {
   metadata: ContractMeta!
 }
 
+type ContractConsume {
+  consumedAmount: Int
+  consumedPercentage: Int
+  licenceAmountType: String
+  totalAmount: Int
+  updatedAt: ISO8601DateTime
+}
+
+type ContractConsumedServices {
+  consumedAnnualLeave: ContractConsume
+  consumedApplicationSecurityTesting: ContractConsume
+  consumedEducationModule: ContractConsume
+  consumedGapAnalysis: ContractConsume
+  consumedHardwareIotPenTest: ContractConsume
+  consumedManagedService: ContractConsume
+  consumedManualCodeReview: ContractConsume
+  consumedMobilePenTest: ContractConsume
+  consumedNetworkPenTest: ContractConsume
+  consumedScanAndFindingReview: ContractConsume
+  consumedThreatModeling: ContractConsume
+  consumedWebPenTest: ContractConsume
+}
+
 type ContractMeta {
   currentPage: Int!
   finishedContracts: Int
@@ -376,6 +556,79 @@ type ContractService {
   serviceKindId: ID!
   serviceKindLabel: String
   updatedAt: ISO8601DateTime!
+}
+
+"""
+Autogenerated input type of CreateAsset
+"""
+input CreateAssetInput {
+  assetType: AssetTypeList
+  assetsTagList: [String!]
+  audience: AssetAudience
+  architectureType: AssetArch
+  criticity: AssetSeverity
+  companyId: Int!
+  convisoResponsible: Int
+  dataClassification: String
+  description: String
+  developmentModel: AssetDevelopmentModel
+  developmentTeam: AssetDevelopmentTeam
+  environmentList: [String!]
+  integrationIds: [String!]
+  lifeCycle: AssetLifeCycle
+  name: String!
+  projectIds: [Int!]
+  scanType: AssetScan
+  tecnologyList: [String!]
+  teamIds: [String!]
+  url: String
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateAsset
+"""
+type CreateAssetPayload {
+  asset: Asset
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+}
+
+"""
+Autogenerated input type of CreateAttachment
+"""
+input CreateAttachmentInput {
+  description: String
+  projectId: Int
+  companyId: Int!
+  allowedPortalUserIds: [Int!]
+  archive: Upload!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateAttachment
+"""
+type CreateAttachmentPayload {
+  attachment: Attachment
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
 }
 
 """
@@ -517,6 +770,32 @@ type CreateCredentialPayload {
 }
 
 """
+Autogenerated input type of CreateEstimate
+"""
+input CreateEstimateInput {
+  companyId: Int!
+  subject: String!
+  project: String
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateEstimate
+"""
+type CreateEstimatePayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  estimate: Project
+}
+
+"""
 Autogenerated input type of CreateFindingDast
 """
 input CreateFindingDastInput {
@@ -548,6 +827,68 @@ type CreateFindingDastPayload {
   clientMutationId: String
   errors: [String!]
   message: String
+}
+
+"""
+Autogenerated input type of CreateFindingSast
+"""
+input CreateFindingSastInput {
+  codeVersion: [String!]
+  flowDeployId: String
+  flowProjectId: String!
+
+  """
+  List of issues
+  """
+  issues: [IssueTypeSastInput!]!
+
+  """
+  Required if you have a 3rd party scan engine.
+  """
+  source: String
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateFindingSast
+"""
+type CreateFindingSastPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  message: String
+}
+
+"""
+Autogenerated input type of CreateIntegrationMappedFields
+"""
+input CreateIntegrationMappedFieldsInput {
+  """
+  Mapped Fields
+  """
+  mappedFields: [IntegrationMappedFieldsInput!]!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateIntegrationMappedFields
+"""
+type CreateIntegrationMappedFieldsPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
 }
 
 """
@@ -623,6 +964,72 @@ type CreateOtherVulnerabilityPayload {
   clientMutationId: String
   errors: [String!]
   vulnerability: Vulnerability
+}
+
+"""
+Autogenerated input type of CreateProject
+"""
+input CreateProjectInput {
+  assetsIds: [Int!]
+  companyId: Int!
+  startDate: ISO8601Date!
+  connectivity: String
+  credentialsIds: [Int!]
+  estimatedHours: String
+  label: String!
+  negativeScope: String
+  goal: String!
+  playbooksIds: [Int!]!
+  scope: String!
+  students: Int
+  tags: [String!]
+  teamsIds: [Int!]
+  typeId: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateProject
+"""
+type CreateProjectPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  project: Project
+}
+
+"""
+Autogenerated input type of CreateSamlIntegration
+"""
+input CreateSamlIntegrationInput {
+  samlIdpSsoTarget: String!
+  samlIdpEntityId: String!
+  samlIdpCert: String!
+  authorizedDomains: [String!]!
+  scopeId: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of CreateSamlIntegration
+"""
+type CreateSamlIntegrationPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  integration: SamlIntegration!
 }
 
 """
@@ -745,8 +1152,55 @@ type DeleteContractPayload {
   msg: String
 }
 
+"""
+Autogenerated input type of DeleteMappedField
+"""
+input DeleteMappedFieldInput {
+  id: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of DeleteMappedField
+"""
+type DeleteMappedFieldPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
+"""
+Autogenerated input type of DeleteSamlIntegration
+"""
+input DeleteSamlIntegrationInput {
+  id: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of DeleteSamlIntegration
+"""
+type DeleteSamlIntegrationPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
 type Deploy {
-  projectId: Int
   changedApproximately: String
   changedLines: Int
   companyId: Int
@@ -766,6 +1220,7 @@ type Deploy {
   newLines: Int
   previousCommit: String
   previousTag: String
+  projectId: Int
   removedLines: Int
   reviewed: Boolean
   reviewedAt: ISO8601DateTime
@@ -778,6 +1233,15 @@ type Deploy {
 type DeployCollection {
   collection: [Deploy!]!
   metadata: CollectionMetadata!
+}
+
+type Evidence {
+  archiveContentType: String
+  archiveFilename: String
+  createdAt: ISO8601DateTime!
+  evidenceText: String
+  id: ID!
+  updatedAt: ISO8601DateTime!
 }
 
 type Finding {
@@ -802,8 +1266,11 @@ type Finding {
   rawOutputFromScanner: String
   recommendationsEn: String
   references: [String!]
+  scanId: Int
+  scanType: String
   shortCommitRef: String
   source: String
+  sourceFile: String
   tags: [String!]
   technicalSeverity: String
   titleEn: String
@@ -813,6 +1280,119 @@ type Finding {
 type FindingCollection {
   collection: [Finding!]!
   metadata: CollectionMetadata!
+}
+
+input FindingSearch {
+  """
+  Application id
+  """
+  applicationId: Int
+
+  """
+  Commit reference
+  """
+  commitReference: String
+
+  """
+  Deploy id
+  """
+  deployId: Int
+
+  """
+  Status
+  """
+  evaluationStatus: String
+
+  """
+  Integration name
+  """
+  integrationName: String
+
+  """
+  Project id
+  """
+  projectId: Int
+
+  """
+  Scan id
+  """
+  scanId: Int
+
+  """
+  Scan type
+  """
+  scanType: String
+
+  """
+  Source
+  """
+  source: String
+
+  """
+  Source file
+  """
+  sourceFile: String
+
+  """
+  Severity label
+  """
+  technicalSeverity: String
+
+  """
+  Title
+  """
+  title: String
+}
+
+type History {
+  affectedComponentHistoryId: Int
+  comment: String
+  commitmentAt: ISO8601DateTime
+  createdAt: ISO8601DateTime!
+  fixedByDeployId: Int
+  id: ID!
+  portalUserId: Int
+  status: String
+  updatedAt: ISO8601DateTime!
+  vulnerabilityId: Int
+}
+
+type IntegrationExternalProject {
+  asset: Asset
+  customMetadata: IntegrationExternalProjectCollection
+  extraKey: String
+  id: ID!
+  integrationId: Int
+  issueType: String
+  outsideKey: String
+  project: Project
+  projectExternalId: Int
+  projectExternalLabel: String
+  projectId: Int
+  scopeIntegrationId: Int
+}
+
+type IntegrationExternalProjectCollection {
+  collection: [IntegrationExternalProject!]!
+  metadata: IntegrationExternalProjectMeta!
+}
+
+type IntegrationExternalProjectMeta {
+  currentPage: Int!
+  limitValue: Int!
+  totalCount: Int
+  totalPages: Int!
+}
+
+input IntegrationMappedFieldsInput {
+  id: ID
+  assetOption: [Int!]!
+  jiraAssetName: String!
+  jiraAssetKey: String!
+  jiraProjectTypeOption: String
+  scopeIntegrationId: Int!
+  projectExternalId: Int!
+  mapFields: [MappedFieldIntegrationType!]!
 }
 
 """
@@ -838,7 +1418,7 @@ input IssueTypeDastInput {
   description: String!
 
   """
-  Issue evidence Base64 encoded
+  Issue evidence Base64 encoded.
   """
   evidence: String!
   hashIssue: String!
@@ -849,7 +1429,102 @@ input IssueTypeDastInput {
   title: String!
 }
 
+input IssueTypeSastInput {
+  """
+  Business severity. Possible values: Low, Medium, High and Critical
+  """
+  businessSeverity: String!
+
+  """
+  Issue description
+  """
+  description: String!
+
+  """
+  Evidence text, encoded with base64
+  """
+  evidence: String!
+
+  """
+  File path
+  """
+  filename: String!
+
+  """
+  The hash identifier, composed using issue data like title, line number, file
+  path and code snippet -
+  b887dfsssaa48aasseb89bd1ea2ca2cc29b5899700b21c437158175ccc2c7d3ab2b4c67af
+  """
+  hashIssue: String!
+
+  """
+  Affected line number
+  """
+  line: String!
+
+  """
+  Original severity. Possible values: Low, Medium, High and Critical
+  """
+  originalSeverity: String!
+  recommendationsEn: String
+
+  """
+  Some issue reference
+  """
+  references: [String!]!
+  reporter: String
+
+  """
+  Technical severity. Possible values: Low, Medium, High and Critical
+  """
+  technicalSeverity: String!
+
+  """
+  Issue title
+  """
+  title: String!
+}
+
+input MappedFieldIntegrationType {
+  status: String!
+  statusJira: String!
+}
+
+type MappedFields {
+  externalValue: String
+  flowValue: String
+  id: ID!
+  integrationId: Int
+  projectExternalKey: IntegrationExternalProject
+  projectExternalKeyId: Int
+}
+
+type MappedFieldsCollection {
+  collection: [MappedFields!]!
+  metadata: CollectionMetadata!
+}
+
 type Mutation {
+  """
+  Create an Asset
+  """
+  createAsset(
+    """
+    Parameters for CreateAsset
+    """
+    input: CreateAssetInput!
+  ): CreateAssetPayload
+
+  """
+  Create an Attachment from the company
+  """
+  createAttachment(
+    """
+    Parameters for CreateAttachment
+    """
+    input: CreateAttachmentInput!
+  ): CreateAttachmentPayload
+
   """
   Create a Code Review Vulnerability
   """
@@ -881,6 +1556,16 @@ type Mutation {
   ): CreateCredentialPayload
 
   """
+  Create Estimate
+  """
+  createEstimate(
+    """
+    Parameters for CreateEstimate
+    """
+    input: CreateEstimateInput!
+  ): CreateEstimatePayload
+
+  """
   Create a Finding Dast
   """
   createFindingDast(
@@ -889,6 +1574,26 @@ type Mutation {
     """
     input: CreateFindingDastInput!
   ): CreateFindingDastPayload
+
+  """
+  Create a Finding Sast
+  """
+  createFindingSast(
+    """
+    Parameters for CreateFindingSast
+    """
+    input: CreateFindingSastInput!
+  ): CreateFindingSastPayload
+
+  """
+  Create a Integration mapped fields
+  """
+  createIntegrationMappedFields(
+    """
+    Parameters for CreateIntegrationMappedFields
+    """
+    input: CreateIntegrationMappedFieldsInput!
+  ): CreateIntegrationMappedFieldsPayload
 
   """
   Create a Notification
@@ -909,6 +1614,26 @@ type Mutation {
     """
     input: CreateOtherVulnerabilityInput!
   ): CreateOtherVulnerabilityPayload
+
+  """
+  Create Project
+  """
+  createProject(
+    """
+    Parameters for CreateProject
+    """
+    input: CreateProjectInput!
+  ): CreateProjectPayload
+
+  """
+  Create Saml Integration
+  """
+  createSamlIntegration(
+    """
+    Parameters for CreateSamlIntegration
+    """
+    input: CreateSamlIntegrationInput!
+  ): CreateSamlIntegrationPayload
 
   """
   Create a Web Vulnerability
@@ -939,6 +1664,26 @@ type Mutation {
     """
     input: DeleteContractInput!
   ): DeleteContractPayload
+
+  """
+  Delete a Mapped Field
+  """
+  deleteMappedField(
+    """
+    Parameters for DeleteMappedField
+    """
+    input: DeleteMappedFieldInput!
+  ): DeleteMappedFieldPayload
+
+  """
+  Delete a Integration
+  """
+  deleteSamlIntegration(
+    """
+    Parameters for DeleteSamlIntegration
+    """
+    input: DeleteSamlIntegrationInput!
+  ): DeleteSamlIntegrationPayload
 
   """
   Update activity status to finish
@@ -989,20 +1734,72 @@ type Mutation {
     """
     input: UpdateContractInput!
   ): UpdateContractPayload
+
+  """
+  Update a Integration mapped fields
+  """
+  updateIntegrationMappedFields(
+    """
+    Parameters for UpdateIntegrationMappedFields
+    """
+    input: UpdateIntegrationMappedFieldsInput!
+  ): UpdateIntegrationMappedFieldsPayload
+
+  """
+  Update a Occurrence
+  """
+  updateOccurrence(
+    """
+    Parameters for UpdateOccurrence
+    """
+    input: UpdateOccurrenceInput!
+  ): UpdateOccurrencePayload
+
+  """
+  Update Project
+  """
+  updateProject(
+    """
+    Parameters for UpdateProject
+    """
+    input: UpdateProjectInput!
+  ): UpdateProjectPayload
+
+  """
+  Update Saml Integration
+  """
+  updateSamlIntegration(
+    """
+    Parameters for UpdateSamlIntegration
+    """
+    input: UpdateSamlIntegrationInput!
+  ): UpdateSamlIntegrationPayload
+}
+
+input NewEvidence {
+  """
+  Textual evidence
+  """
+  evidenceText: String
+
+  """
+  Archive evidence
+  """
+  archive: Upload
 }
 
 type Notification {
-  projectId: Int
   author: PortalUser
   companyId: Int
   companyName: String
   createdAt: ISO8601DateTime!
   description: String
+  evidences: [Evidence!]!
+  history: [History!]!
   id: ID!
   notificationStatus: String
+  projectId: Int
   updatedAt: ISO8601DateTime!
-  vulnerabilityArchives: [VulnerabilityArchive!]!
-  vulnerabilityHistories: [VulnerabilityHistory!]!
   vulnerabilityTemplate: VulnerabilityTemplate!
 }
 
@@ -1019,6 +1816,7 @@ type OccurrenceMeta {
   totalHigh: Int
   totalLow: Int
   totalMedium: Int
+  totalNotifications: Int
   totalPages: Int!
 }
 
@@ -1246,283 +2044,6 @@ enum OrderParams {
   ASC
 }
 
-enum OrderProjectsParams {
-  """
-  order by active_obeo
-  """
-  active_obeo
-
-  """
-  order by api_code
-  """
-  api_code
-
-  """
-  order by api_response_review
-  """
-  api_response_review
-
-  """
-  order by applicant
-  """
-  applicant
-
-  """
-  order by applicant_area
-  """
-  applicant_area
-
-  """
-  order by auditing
-  """
-  auditing
-
-  """
-  order by close_comments
-  """
-  close_comments
-
-  """
-  order by connectivity
-  """
-  connectivity
-
-  """
-  order by continuous_delivery
-  """
-  continuous_delivery
-
-  """
-  order by contracted_hours
-  """
-  contracted_hours
-
-  """
-  order by created_at
-  """
-  created_at
-
-  """
-  order by deploy_send_frequency
-  """
-  deploy_send_frequency
-
-  """
-  order by description
-  """
-  description
-
-  """
-  order by due_date
-  """
-  due_date
-
-  """
-  order by end_date
-  """
-  end_date
-
-  """
-  order by environment_invaded
-  """
-  environment_invaded
-
-  """
-  order by estimated_days
-  """
-  estimated_days
-
-  """
-  order by estimated_hours
-  """
-  estimated_hours
-
-  """
-  order by executive_summary
-  """
-  executive_summary
-
-  """
-  order by hours_or_days
-  """
-  hours_or_days
-
-  """
-  order by id
-  """
-  id
-
-  """
-  order by integration_deploy
-  """
-  integration_deploy
-
-  """
-  order by invite_token
-  """
-  invite_token
-
-  """
-  order by is_open
-  """
-  is_open
-
-  """
-  order by is_public
-  """
-  is_public
-
-  """
-  order by kanban_delivery_date
-  """
-  kanban_delivery_date
-
-  """
-  order by kanban_description
-  """
-  kanban_description
-
-  """
-  order by kanban_priority
-  """
-  kanban_priority
-
-  """
-  order by kanban_title
-  """
-  kanban_title
-
-  """
-  order by label
-  """
-  label
-
-  """
-  order by language
-  """
-  language
-
-  """
-  order by last_project_status_id
-  """
-  last_project_status_id
-
-  """
-  order by main_recommendations
-  """
-  main_recommendations
-
-  """
-  order by microservice_folder
-  """
-  microservice_folder
-
-  """
-  order by notification_list
-  """
-  notification_list
-
-  """
-  order by pid
-  """
-  pid
-
-  """
-  order by plan_id
-  """
-  plan_id
-
-  """
-  order by planned_started_at
-  """
-  planned_started_at
-
-  """
-  order by project_status_id
-  """
-  project_status_id
-
-  """
-  order by project_type_id
-  """
-  project_type_id
-
-  """
-  order by receive_deploys
-  """
-  receive_deploys
-
-  """
-  order by repository_url
-  """
-  repository_url
-
-  """
-  order by sac_code
-  """
-  sac_code
-
-  """
-  order by sac_project_id
-  """
-  sac_project_id
-
-  """
-  order by scope_id
-  """
-  scope_id
-
-  """
-  order by secret_id
-  """
-  secret_id
-
-  """
-  order by ssh_public_key
-  """
-  ssh_public_key
-
-  """
-  order by start_date
-  """
-  start_date
-
-  """
-  order by students
-  """
-  students
-
-  """
-  order by sub_scope_id
-  """
-  sub_scope_id
-
-  """
-  order by updated_at
-  """
-  updated_at
-
-  """
-  order by userable_id
-  """
-  userable_id
-
-  """
-  order by userable_type
-  """
-  userable_type
-
-  """
-  order by vulnerabilities_count
-  """
-  vulnerabilities_count
-
-  """
-  order by waiting
-  """
-  waiting
-}
-
 type Playbook {
   checklistTypeId: Int
   companyId: Int
@@ -1534,8 +2055,35 @@ type Playbook {
   updatedAt: ISO8601DateTime
 }
 
+type PlaybookCollection {
+  collection: [Playbook!]!
+  metadata: CollectionMetadata!
+}
+
+input PlaybookSearch {
+  """
+  Exact search for a label
+  """
+  labelEq: String
+
+  """
+  Search for the content of a label
+  """
+  labelCont: String
+
+  """
+  Search for the content of an description
+  """
+  descriptionEq: String
+
+  """
+  Exact search for an description
+  """
+  descriptionCont: String
+}
+
 type PortalUser {
-  allocatedProjects: [Project]
+  allocatedAnalyses: [Project!]
   analyst: Boolean
   blocked: Boolean
   dashboardOnly: Boolean
@@ -1547,6 +2095,7 @@ type PortalUser {
   jiraUser: String
   name: String
   oper: Boolean
+  pendingProjectComments: [ProjectComment!]
   phone: String
   reviewedDeploys(
     initialDate: ISO8601DateTime!
@@ -1557,9 +2106,110 @@ type PortalUser {
   submittedVulnerabilities: [Vulnerability!]
 }
 
+type Project {
+  activities: [Activity!]
+  allocatedAnalyst: [AnalystAllocations!]
+  apiCode: String
+  apiResponseReview: String
+  assets: [Asset!]
+  closeComments: Boolean
+  companyId: Int!
+  connectivity: String
+  continuousDelivery: Boolean
+  contractedHours: Int
+  createdAt: ISO8601DateTime
+  credentials: [Credential!]
+  customMetadata: ProjectCollection
+  deploySendFrequency: Int
+  dueDate: ISO8601DateTime
+  endDate: ISO8601DateTime
+  environmentInvaded: Boolean
+  estimatedDays: String
+  estimatedHours: String
+  executiveSummary: String
+  firstVulnerabilityIdentified: Vulnerability
+  freeRetest: Boolean
+  hasOpenRetest: Boolean
+  history: [AnalysisHistory!]
+  hoursOrDays: String
+  id: ID!
+  integrationDeploy: Boolean
+  inviteToken: String
+  isOpen: Boolean!
+  isPublic: Boolean
+  label: String!
+  language: String
+  mainRecommendations: String
+  microserviceFolder: String
+  negativeScope: String
+  notificationList: String
+  notifications: [Notification!]
+  objective: String
+  pid: String
+  plannedStartedAt: ISO8601DateTime
+  playbookFinishedAt: ISO8601DateTime
+  playbookStartedAt: ISO8601DateTime
+  playbooks: [Playbook!]
+  projectType: ProjectType!
+  receiveDeploys: Boolean
+  repositoryUrl: String
+  resultFiles: [ResultFiles!]
+  sacCode: String
+  sacProjectId: Int
+  scope: String
+  secretId: String
+  sshPublicKey: String
+  startDate: ISO8601DateTime!
+  status: String
+  students: Int
+  subScopeId: Int
+  tags: [Tag!]
+  teams: [Team!]
+  totalAnalysisLines: Int
+  totalChangedLines: Int
+  totalNewLines: Int
+  totalPublishedVulnerabilities: Int
+  totalRemovedLines: Int
+  type: String!
+  updatedAt: ISO8601DateTime
+  userWithAccess: [PortalUser!]
+  userableId: Int
+  userableType: String
+  vulnerabilities: [Vulnerability!]
+  vulnerabilitiesCount: AnalysisVulnerabilitiesCount
+  vulnerabilitiesCountByStatus: ProjectVulnerabilitiesStatusCount
+  waiting: Boolean!
+}
+
+type ProjectCollection {
+  collection: [Project!]!
+  metadata: ProjectMeta!
+}
+
+type ProjectComment {
+  author: String!
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID!
+  pid: String!
+  portalUserId: Int
+  projectId: Int
+  updatedAt: ISO8601DateTime!
+}
+
+input ProjectExternalKeySearch {
+  scopeIntegrationId: Int
+  mappingSearchFilter: String
+}
+
 type ProjectMeta {
   currentPage: Int!
+  engagementStatuses: [AnalysisStatusType!]
+  engagementTypes: [ProjectType!]
   limitValue: Int!
+  tags: [String!]
+  teams: [Team!]
+  total: Int
   totalAnalysis: Int
   totalCount: Int!
   totalDone: Int
@@ -1567,6 +2217,125 @@ type ProjectMeta {
   totalFixing: Int
   totalPages: Int!
   totalPaused: Int
+  totalPlanned: Int
+  totalVulnsCount: Int
+  totalVulnsCritical: Int
+  totalVulnsHigh: Int
+  totalVulnsLow: Int
+  totalVulnsMedium: Int
+  totalVulnsNotification: Int
+}
+
+input ProjectSearch {
+  """
+  Verify if is Continuous Code Review
+  """
+  continuousDeliveryEq: Boolean
+
+  """
+  Search in created_at dates with greater than or equal
+  """
+  createdAtGteq: ISO8601DateTime
+
+  """
+  Search in created_at dates with less than or equal
+  """
+  createdAtLteq: ISO8601DateTime
+  endDateCont: ISO8601DateTime
+  endDateEq: ISO8601DateTime
+  endDate: ISO8601DateTime
+  labelCont: String
+  labelEq: String
+  idEq: Int
+  projectStatusLabelCont: String
+
+  """
+  Search Status
+  """
+  projectStatusLabelEq: String
+  projectTypeLabelCont: String
+
+  """
+  Search Type
+  """
+  projectTypeLabelEq: String
+  startDate: ISO8601DateTime
+  startDateEq: ISO8601DateTime
+  startDateCont: ISO8601DateTime
+  tagNameEq: String
+  scopeLabelCont: String
+  scopeIdEq: Int
+  search: String
+  engagementTypes: [Int!]
+  engagementStatuses: [Int!]
+  tags: [String!]
+  teams: [Int!]
+  continuousDelivery: String
+}
+
+type ProjectsQueue {
+  allocatedProjects: [AllocatedProjects!]
+  portalUser: PortalUser
+  scheduledProjects: [ScheduledProjects!]
+}
+
+type ProjectsQueueCollection {
+  collection: [ProjectsQueue!]!
+  metadata: CollectionMetadata!
+}
+
+type ProjectType {
+  code: String!
+  createdAt: ISO8601DateTime
+  defaultDuration: Int
+  description: String
+  id: ID!
+  label: String!
+}
+
+type ProjectTypeCollection {
+  collection: [ProjectType!]!
+  metadata: CollectionMetadata!
+}
+
+input ProjectTypeSearch {
+  """
+  Exact search for a label
+  """
+  labelEq: String
+
+  """
+  Search for the content of a label
+  """
+  labelCont: String
+
+  """
+  Search for the content of an description
+  """
+  descriptionEq: String
+
+  """
+  Exact search for an description
+  """
+  descriptionCont: String
+
+  """
+  Ids is one of these values
+  """
+  idIn: [Int!]
+}
+
+type ProjectVulnerabilitiesStatusCount {
+  falsePositive: Int
+  fixAccepted: Int
+  fixRefused: Int
+  identified: Int
+  inProgress: Int
+  riskAccepted: Int
+  total: Int
+  unpublished: Int
+  waitingReview: Int
+  waitingValidation: Int
 }
 
 type Query {
@@ -1576,28 +2345,19 @@ type Query {
   allocatedProjects(page: Int, limit: Int): ProjectCollection!
 
   """
-  Returns all projects the user has access
-  """
-  projects(
-    page: Int
-    limit: Int
-    params: ProjectSearch
-
-    """
-    column name to order. Ex: label
-    """
-    order: OrderProjectsParams
-
-    """
-    ASC or DESC
-    """
-    orderType: OrderParams
-  ): ProjectCollection!
-
-  """
   Returns all assets the user has access
   """
-  assetsByCompanyId(id: ID!, page: Int, limit: Int): AssetCollection!
+  assets(id: ID!, page: Int, limit: Int): AssetCollection!
+
+  """
+  return an attachment from a company
+  """
+  attachment(id: ID!): Attachment
+
+  """
+  return the attachments from a company
+  """
+  attachments(scopeId: ID!, page: Int, limit: Int): AttachmentCollection
 
   """
   Returns all companies the user has access
@@ -1633,18 +2393,7 @@ type Query {
   """
   Returns all credentials by company id
   """
-  credentialsByCompanyId(id: ID!, page: Int, limit: Int): CredentialCollection!
-
-  """
-  Returns deploys by project id
-  """
-  deploysByProjectId(
-    id: ID!
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-    page: Int
-    limit: Int
-  ): DeployCollection!
+  credentials(id: ID!, page: Int, limit: Int): CredentialCollection!
 
   """
   Returns deploys by company id
@@ -1658,9 +2407,49 @@ type Query {
   ): DeployCollection!
 
   """
+  Returns deploys by project id
+  """
+  deploysByProjectId(
+    id: ID!
+    initialDate: ISO8601DateTime!
+    finishDate: ISO8601DateTime!
+    page: Int
+    limit: Int
+  ): DeployCollection!
+
+  """
+  Returns findings
+  """
+  findings(limit: Int, page: Int, params: FindingSearch): FindingCollection!
+
+  """
   Returns all findings by commit
   """
   findingsByCommit(commit: String!, page: Int, limit: Int): FindingCollection!
+
+  """
+  Returns all mapped integration by company
+  """
+  integrationExternalAssociation(
+    page: Int
+    limit: Int
+
+    """
+    column name to order. Ex: label
+    """
+    sortBy: String
+
+    """
+    0 => DESC or 1 => ASC
+    """
+    descending: Boolean
+    params: ProjectExternalKeySearch
+  ): IntegrationExternalProjectCollection!
+
+  """
+  Returns all mapped fields by integration
+  """
+  mappedFields(outsideKey: String!): MappedFieldsCollection
 
   """
   Returns all notifications the user has access
@@ -1673,6 +2462,16 @@ type Query {
   pendingDeploys(page: Int, limit: Int): DeployCollection!
 
   """
+  Return all playbooks the company
+  """
+  playbooks(
+    id: ID!
+    page: Int
+    limit: Int
+    params: PlaybookSearch
+  ): PlaybookCollection
+
+  """
   Return user profile by email
   """
   portalUserProfile(email: String!): PortalUser
@@ -1681,6 +2480,49 @@ type Query {
   Return the project if the user has access
   """
   project(id: ID!): Project
+
+  """
+  Returns all project statuses
+  """
+  projectStatuses(page: Int, limit: Int): AnalysisStatusTypeCollection!
+
+  """
+  Returns all project types
+  """
+  projectTypes(
+    page: Int
+    limit: Int
+    params: ProjectTypeSearch
+  ): ProjectTypeCollection!
+
+  """
+  Returns all projects the user has access
+  """
+  projects(
+    page: Int
+    limit: Int
+    params: ProjectSearch
+
+    """
+    column name to order. Ex: label
+    """
+    sortBy: String
+
+    """
+    0 => DESC or 1 => ASC
+    """
+    descending: Boolean
+  ): ProjectCollection!
+
+  """
+  Return the projecs queue by user
+  """
+  projectsQueue: ProjectsQueueCollection
+
+  """
+  Return Saml integration
+  """
+  samlIntegration(scopeId: Int!): SamlIntegration!
 
   """
   Return the service type
@@ -1695,6 +2537,21 @@ type Query {
     limit: Int
     params: ServiceTypeSearch
   ): ServiceTypeCollection
+
+  """
+  Return tags
+  """
+  tags(id: ID!, page: Int, limit: Int): TagCollection
+
+  """
+  Return teams avaiable to company
+  """
+  teamsByScope(
+    id: ID!
+    page: Int
+    limit: Int
+    params: TeamSearch
+  ): TeamCollection
 
   """
   Returns all vulnerabilities the user has access
@@ -1726,9 +2583,56 @@ type Query {
   vulnerability(id: ID!): Vulnerability
 
   """
+  Returns all possible vulnerability status
+  """
+  vulnerabilityStatuses: VulnerabilityStatusesType
+
+  """
   Returns all web vulnerabilities the user has access
   """
   webVulnerabilities(page: Int, limit: Int): VulnerabilityCollection
+}
+
+type ResultFiles {
+  archive: String
+  archiveContentType: String
+  archiveFilename: String
+  archiveId: String
+  archiveSize: Int
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime!
+  id: ID!
+  name: String
+  portalUserId: ID
+  updatedAt: ISO8601DateTime!
+}
+
+type SamlIntegration {
+  authorizedDomains: [String!]
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  errorsMessage: String
+  id: ID!
+  integrationType: String
+  samlIdpCert: String
+  samlIdpEntityId: String
+  samlIdpSsoTarget: String
+  scopeId: Int
+  updatedAt: ISO8601DateTime!
+}
+
+type ScheduledProjects {
+  client: String
+  dueDate: ISO8601DateTime!
+  estimatedDays: String!
+  estimatedHours: String!
+  hoursOrDays: String!
+  id: ID!
+  label: String!
+  pid: String!
+  plannedStartedAt: ISO8601DateTime
+  projectStatus: String
+  projectTypeId: Int!
 }
 
 type ServiceType {
@@ -1762,6 +2666,11 @@ type Tag {
   name: String!
 }
 
+type TagCollection {
+  collection: [Tag!]!
+  metadata: CollectionMetadata!
+}
+
 type Team {
   analystTeam: Boolean!
   companyId: Int
@@ -1770,6 +2679,23 @@ type Team {
   label: String!
   slackChannel: String
   updatedAt: ISO8601DateTime!
+}
+
+type TeamCollection {
+  collection: [Team!]!
+  metadata: CollectionMetadata!
+}
+
+input TeamSearch {
+  """
+  Exact search for a label
+  """
+  labelEq: String
+
+  """
+  Search for the content of a label
+  """
+  labelCont: String
 }
 
 """
@@ -1938,11 +2864,323 @@ type UpdateContractPayload {
   msg: [String!]
 }
 
+"""
+Autogenerated input type of UpdateIntegrationMappedFields
+"""
+input UpdateIntegrationMappedFieldsInput {
+  """
+  Mapped Fields
+  """
+  mappedFields: [IntegrationMappedFieldsInput!]!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of UpdateIntegrationMappedFields
+"""
+type UpdateIntegrationMappedFieldsPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+}
+
+"""
+Autogenerated input type of UpdateOccurrence
+"""
+input UpdateOccurrenceInput {
+  """
+  Occurrence ID
+  """
+  id: ID!
+
+  """
+  Affected component id
+  """
+  affectedComponentId: Int
+
+  """
+  Project id
+  """
+  projectId: Int
+
+  """
+  Code review code
+  """
+  codeReviewCode: String
+
+  """
+  Code review input data
+  """
+  codeReviewInputData: String
+
+  """
+  Code review output data
+  """
+  codeReviewOutputData: String
+
+  """
+  Code review vector
+  """
+  codeReviewVector: String
+
+  """
+  Company id
+  """
+  companyId: Int
+
+  """
+  Company name
+  """
+  companyName: String
+
+  """
+  Severity
+  """
+  criticity: String
+
+  """
+  Deploy id
+  """
+  deployId: Int
+
+  """
+  External vid
+  """
+  externalVid: String
+
+  """
+  Failure type
+  """
+  failureType: String
+
+  """
+  Impact
+  """
+  impact: String
+
+  """
+  Impact resume
+  """
+  impactResume: String
+
+  """
+  Invaded
+  """
+  invaded: Boolean
+
+  """
+  Invaded environment description
+  """
+  invadedEnvironmentDescription: String
+
+  """
+  Other host
+  """
+  othersHost: String
+
+  """
+  Others protocol
+  """
+  othersProtocol: String
+
+  """
+  Others steps
+  """
+  othersSteps: String
+
+  """
+  Others vector
+  """
+  othersVector: String
+
+  """
+  Probability
+  """
+  probability: String
+
+  """
+  Title
+  """
+  title: String
+
+  """
+  Vid
+  """
+  vid: String
+
+  """
+  Web method
+  """
+  webMethod: String
+
+  """
+  Web parameters
+  """
+  webParameters: String
+
+  """
+  Web protocol
+  """
+  webProtocol: String
+
+  """
+  Web request
+  """
+  webRequest: String
+
+  """
+  Web response
+  """
+  webResponse: String
+
+  """
+  Web steps
+  """
+  webSteps: String
+
+  """
+  Web url
+  """
+  webUrl: String
+
+  """
+  Author_id
+  """
+  authorId: Int
+
+  """
+  Vulnerability template id
+  """
+  vulnerabilityTemplateId: Int
+
+  """
+  Vulnerability status
+  """
+  vulnerabilityStatus: String
+
+  """
+  Change status attributes
+  """
+  changeStatusAttributes: UpdateOccurrenceStatus
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of UpdateOccurrence
+"""
+type UpdateOccurrencePayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: [String!]
+}
+
+input UpdateOccurrenceStatus {
+  """
+  Comment
+  """
+  comment: String
+
+  """
+  Deploy id
+  """
+  deployId: String
+
+  """
+  Evidences attributes
+  """
+  evidencesAttributes: [NewEvidence!]
+
+  """
+  Status
+  """
+  status: String!
+}
+
+"""
+Autogenerated input type of UpdateProject
+"""
+input UpdateProjectInput {
+  id: ID!
+  assetsIds: [Int!]
+  companyId: Int!
+  startDate: ISO8601Date
+  connectivity: String
+  credentialsIds: [Int!]
+  estimatedHours: String
+  label: String!
+  negativeScope: String
+  goal: String!
+  playbooksIds: [Int!]!
+  scope: String!
+  students: Int
+  tags: [String!]
+  teamsIds: [Int!]
+  typeId: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of UpdateProject
+"""
+type UpdateProjectPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  msg: [String!]
+}
+
+"""
+Autogenerated input type of UpdateSamlIntegration
+"""
+input UpdateSamlIntegrationInput {
+  id: Int!
+  samlIdpSsoTarget: String!
+  samlIdpEntityId: String!
+  samlIdpCert: String!
+  authorizedDomains: [String!]!
+  scopeId: Int!
+
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+}
+
+"""
+Autogenerated return type of UpdateSamlIntegration
+"""
+type UpdateSamlIntegrationPayload {
+  """
+  A unique identifier for the client performing the mutation.
+  """
+  clientMutationId: String
+  errors: [String!]
+  integration: SamlIntegration!
+}
+
 scalar Upload
 
 type Vulnerability {
   affectedComponentId: Int
-  projectId: Int
   author: PortalUser
   codeReviewCode: String
   codeReviewInputData: String
@@ -1956,8 +3194,10 @@ type Vulnerability {
   customMetadata: VulnerabilityCollection
   deployId: Int
   description: String
+  evidences: [Evidence!]!
   externalVid: String
   failureType: String
+  history: [History!]!
   id: ID!
   impact: String
   impactResume: String
@@ -1969,12 +3209,12 @@ type Vulnerability {
   othersSteps: String
   othersVector: String
   probability: String
+  projectId: Int
   title: String
   updatedAt: ISO8601DateTime!
   vid: String
-  vulnerabilityArchives: [VulnerabilityArchive!]!
-  vulnerabilityHistories: [VulnerabilityHistory!]!
   vulnerabilityStatus: String
+  vulnerabilityStatuses: [[String!]!]
   vulnerabilityTemplate: VulnerabilityTemplate!
   webMethod: String
   webParameters: String
@@ -1985,31 +3225,9 @@ type Vulnerability {
   webUrl: String
 }
 
-type VulnerabilityArchive {
-  archiveContentType: String
-  archiveFilename: String
-  createdAt: ISO8601DateTime!
-  evidenceText: String
-  id: ID!
-  updatedAt: ISO8601DateTime!
-}
-
 type VulnerabilityCollection {
   collection: [Vulnerability!]!
   metadata: OccurrenceMeta!
-}
-
-type VulnerabilityHistory {
-  affectedComponentHistoryId: Int
-  comment: String
-  commitmentAt: ISO8601DateTime
-  createdAt: ISO8601DateTime!
-  fixedByDeployId: Int
-  id: ID!
-  portalUserId: Int
-  status: String
-  updatedAt: ISO8601DateTime!
-  vulnerabilityId: Int
 }
 
 input VulnerabilitySearch {
@@ -2025,6 +3243,10 @@ input VulnerabilitySearch {
   """
   vulnerabilityModelTitleCont: String
   vulnerabilityModelTitleEq: String
+}
+
+type VulnerabilityStatusesType {
+  statuses: [String!]!
 }
 
 type VulnerabilityTemplate {
