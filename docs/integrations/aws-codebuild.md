@@ -68,7 +68,7 @@ Below is a step-by-step guide to setting up a new vault in Secret Manager, if yo
 
 4. Below, a list of key-value objects is expected;
 
-5. As key, fill ```FLOW_API_KEY``` with the value of the AppSecFlow API key. If you don't have a key, follow [this guide](../integrations/generate-apikey) to generate one;
+5. As key, fill ```FLOW_API_KEY``` with the value of the AppSecFlow API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
 
 6. In the encryption key field, select the desired one and click **Next**;
 
@@ -94,7 +94,7 @@ After these procedures, the secret will be available to be used by CodeBuild.
 
 ## Code Review
 
-Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```FLOW_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```FLOW_PROJECT_CODE``` variable.
 

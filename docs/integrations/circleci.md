@@ -99,7 +99,7 @@ jobs:
 
 ## Code Review
 
-Before proceeding, we recommend reading the following [document](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```FLOW_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```FLOW_PROJECT_CODE``` (identified as the Project Key in Conviso Platform) which can be defined individually by project.
 

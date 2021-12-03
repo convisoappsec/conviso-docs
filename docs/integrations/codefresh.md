@@ -74,7 +74,7 @@ At the right corner of pipeline editing screen, there is a menu with **Steps**, 
 
 1. Click **Variables**, then **Add Variable**;
 2. At **Key** field, input the variable name: ```FLOW_API_KEY``` ;
-3. At **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide](../integrations/generate-apikey).
+3. At **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide](../api/generate-apikey).
 4. After pasting the API key at the **Value** field, you will notice a padlock with the **Encrypt** option. Click the **Encrypt** option and confirm.
 
 ### Account Variables Setup
@@ -102,7 +102,7 @@ Notice that if we hadn't configured it that way, every command that require auth
 
 ## Code Review
 
-Before proceeding, we strongly recommend reading [this guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we strongly recommend reading [this guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```FLOW_API_KEY``` variable, configured at the pipeline or imported through shared context and ```FLOW_PROJECT_CODE``` (identified as the project key in Conviso Platform), which must be defined individually by pipeline.
 

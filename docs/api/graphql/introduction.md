@@ -20,7 +20,7 @@ We are transitioning and migrating from our REST API. Nevertheless in order to a
         ```console 
         x-api-key: {{API_KEY}}
         ``` 
-        You can generate your API key following this [steps](../../integrations/generate-apikey).
+        You can generate your API key following this [steps](../../api/generate-apikey).
 
 ## Exploring GraphQL API
 There are different ways to play and explore with our GraphQL API. 

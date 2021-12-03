@@ -26,7 +26,8 @@ module.exports = {
             }
           ]
         },
-        'api/rest/index'
+        'api/rest/index',
+        'api/generate-apikey'
       ]
     },
     {
@@ -77,7 +78,7 @@ module.exports = {
         },
       ]
     },
-    {Guides: ['integrations/code-review-strategies', 'integrations/generate-apikey'],
+    {Guides: ['guides/code-review-strategies'],
      Plugins:[],
     },
     {

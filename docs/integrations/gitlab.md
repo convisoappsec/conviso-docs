@@ -127,7 +127,7 @@ If you already have a **Continuous Code Review** type project in Conviso Platfor
 
 The interface with Conviso and the GitLab CI/CD platform is done through the use of the command line tool available in [PyPi](https://pypi.org/project/conviso-flowcli/). Like every CLI tool, it is easily integrated into CI environments. For its full functioning, the prerequisites specified at the beginning of this session must be followed.
 
-We recommend reading the following [document](../integrations/code-review-strategies) to understand the different strategies/approaches for creating a deploy for Code Review.
+We recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for creating a deploy for Code Review.
 
 ## Code Review
 
