@@ -7,7 +7,7 @@ sidebar_label: Code Review Deploy Strategies
 ## Introduction
 There are three different ways to submit Deploy to Code Review. Before deploying the code to Conviso's security analysts, it is essential to choose among the available strategies the one that best suits the repository.
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 This approach is ideal for projects where there is a single line of releases in development and the previous tags are deprecated. For example, in a fictitious project, the following tags were created:
 
@@ -21,7 +21,7 @@ This approach is ideal for projects where there is a single line of releases in 
 
 When deploying in version with tag 2.0.0, the content of the code sent to Conviso will be the diff between versions 2.0.0 and 1.1.1, as the selection was made in chronological order.
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 Unlike the previous approach, this one is more suitable for more complex versions, where the use of tags is more intense, generally keeping multiple versions in development. For example, in another fictitious project, the tags below were created:
 
@@ -41,7 +41,7 @@ In this scenario, when deploying in the version with tag 1.2.1, the content of t
 In this scenario, if the previous strategy had been selected, the diff performed would be with release 2.0.0, which would be incorrect as it is ahead of the development of 1.2.1.
 :::
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 This last approach differs from the other two in that it doesn't use tags, for diff the git timeline itself is used. For example, in a third fictitious project, we have the structures below:
 

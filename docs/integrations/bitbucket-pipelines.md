@@ -56,13 +56,13 @@ In order for the environment to be ready for the execution of all CLI resources,
 
 ## Code Review 
 
-Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variable at the project and the ```FLOW_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) which can be set individually by project.
 
 Below are sample code snippets for each of the approaches:
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 ```yml
 image: convisoappsec/flowcli
@@ -78,7 +78,7 @@ pipelines:
             - docker
 ```
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 ```yml
 image: convisoappsec/flowcli
@@ -93,7 +93,7 @@ pipelines:
             - docker
 ```
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 ```yml
 image: convisoappsec/flowcli

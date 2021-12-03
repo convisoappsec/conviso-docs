@@ -42,7 +42,7 @@ First let's access Jira and copy the URL, as shown in the image below:
 
 </div>
 
-Then, to generate the "API Token", access the following link: [API - TOKEN](https://id.atlassian.com/manage-profile/security/api-tokens):
+Then, to generate the **API Token**, access the following link: [API - TOKEN](https://id.atlassian.com/manage-profile/security/api-tokens):
 
 <div style={{textAlign: 'center'}}>
 
@@ -58,7 +58,7 @@ After clicking the create API token button, as shown in the image above, copy th
 
 </div>
 
-The next step within Jira is to copy the project key that should receive Conviso Platform issues. Look for the "Settings" button and then the Key option, as shown in the image below:
+The next step within Jira is to copy the project key that should receive Conviso Platform issues. Look for the **Settings** button and then the Key option, as shown in the image below:
 
 
 <div style={{textAlign: 'center'}}>
@@ -78,7 +78,7 @@ Now that we have the necessary information, let's go to Conviso Platform, look f
 
 Then, all Jira information must be filled in the fields requested by Flow, and that were demonstrated how to obtain at the beginning of this document.
 
-The checkbox "Jira SSL?" must be checked only if the certificate associated with Jira is issued by a Public Certificate Authority. For Private CAs aor self-signed certificates, use https:// at the site address URL and leave this box unchecked.
+The checkbox **Jira SSL?** must be checked only if the certificate associated with Jira is issued by a Public Certificate Authority. For Private CAs aor self-signed certificates, use https:// at the site address URL and leave this box unchecked.
 
 <div style={{textAlign: 'center'}}>
 
@@ -110,7 +110,7 @@ In **Associated Projects**, you will have 3 fields that you need to configure in
 
 </div>
 
-If your Jira has custom fields, they must be filled in. In order to include them, first it is necessary to click on "Add Custom Fields", where the options below will appear:
+If your Jira has custom fields, they must be filled in. In order to include them, first it is necessary to click on **Add Custom Fields**, where the options below will appear:
 
 <div style={{textAlign: 'center'}}>
 
@@ -172,7 +172,7 @@ Whenever a new vulnerability is identified, it is automatically sent to the proj
 
 ## Webhooks
 
-You may configure "Webhooks" in order to make the communication with Jira bidirectional. 
+You may configure **Webhooks** in order to make the communication with Jira bidirectional. 
 :::note
 The Webhook function works with Jira version 7.1 and above.
 :::
@@ -195,7 +195,7 @@ Then, click on the Jira icon:
 
 </div>
 
-In the menu on the left, look for Webhooks and then click on the "Create a webhook" button, as shown in the image below:
+In the menu on the left, look for Webhooks and then click on the **Create a webhook** button, as shown in the image below:
 
 <div style={{textAlign: 'center'}}>
 

@@ -44,7 +44,7 @@ In the case of using GitLab on-premise, it is assumed that the instance administ
 
 By default (it is configurable), the behavior of a pipeline in GitLab is through the configuration of the .gitlab-ci.yml file in the repository root. As the extension indicates, the format used by this file is the YAML markup language. The description of CI within the versioning system brings many benefits, among them we can highlight two: old version pipelines still work correctly and different branches can have different pipelines.
 
-Below, we can check out an example that would be like a "Hello, World!" of a pipeline to illustrate some features that can be used in the file structure:
+Below, we can check out an example that would be like a **Hello, World!** of a pipeline to illustrate some features that can be used in the file structure:
 
 ```yml
 image: "python:alpine" 
@@ -55,7 +55,7 @@ hello_world:
         - docker
 ```
 
-By committing this file to the repository, we can already check the result of the execution by navigating to the main repository page under "CI / CD -> Pipelines". You should see something like the figure below:
+By committing this file to the repository, we can already check the result of the execution by navigating to the main repository page under **CI / CD -> Pipelines**. You should see something like the figure below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -63,7 +63,7 @@ By committing this file to the repository, we can already check the result of th
 
 </div>
 
-In this pipeline screen, we could have a macro view of the status of all the stages executed. To view the jobs individually, you can access "CI / CD -> Jobs". You should see something like the figure shown below:
+In this pipeline screen, we could have a macro view of the status of all the stages executed. To view the jobs individually, you can access **CI / CD -> Jobs**. You should see something like the figure shown below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -71,7 +71,7 @@ In this pipeline screen, we could have a macro view of the status of all the sta
 
 </div>
 
-On the jobs screen, by clicking on the "passed" button, we can see the execution of the job we have configured for the repository, as shown below:
+On the jobs screen, by clicking on the **passed** button, we can see the execution of the job we have configured for the repository, as shown below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -97,25 +97,25 @@ Before you can start setting up Conviso features in your pipeline, your runner m
 
 ### CI/CD Configuration
 
-Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable with an AppSec Flow API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
+Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable with an Conviso Platform API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
 
-1. In the upper right corner, click on your username and on "Edit profile";
+1. In the upper right corner, click on your username and on **Edit profile**;
 
-2. Click on the "API Key" tab and then on "Generate";
+2. Click on the **API Key** tab and then on **Generate**;
 
-3. A window will appear asking for confirmation of your action, click "confirm";
+3. A window will appear asking for confirmation of your action, click **confirm**;
 
 4. Your API key has been updated, copy the value displayed on the screen.
 
 To set the ```FLOW_API_KEY``` variable in GitLab, follow the steps below:
 
-1 - In your GitLab project under "Settings -> CI/CD -> Variables";
+1 - In your GitLab project under **Settings -> CI/CD -> Variables**;
 
 2 - Fill in as the image below (missing image!!!!);
 
-3 - Click on "Add variable".
+3 - Click on **Add variable**.
 
-If you already have a "Continuous Code Review" type project in AppSec Flow, you can repeat the steps above for the ```FLOW_PROJECT_CODE``` variable. The value of this variable can be found in AppSec Flow on the Project page as "Key of Project".
+If you already have a **Continuous Code Review** type project in Conviso Platform, you can repeat the steps above for the ```FLOW_PROJECT_CODE``` variable. The value of this variable can be found in Conviso Platform at the Project page as **Project Key**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -127,13 +127,13 @@ If you already have a "Continuous Code Review" type project in AppSec Flow, you 
 
 The interface with Conviso and the GitLab CI/CD platform is done through the use of the command line tool available in [PyPi](https://pypi.org/project/conviso-flowcli/). Like every CLI tool, it is easily integrated into CI environments. For its full functioning, the prerequisites specified at the beginning of this session must be followed.
 
-We recommend reading the following [document](../integrations/code-review-strategies) to understand the different strategies/approaches for creating a deploy for Code Review.
+We recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for creating a deploy for Code Review.
 
 ## Code Review
 
 After choosing the strategy used to send deploys to Code Review, it is possible to create a specific job for this action in the GitLab pipeline. The prerequisites for executing this functionality are the configurations made previously (definition of the ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` variables). Below are the code snippets from the ```.gitlab-ci.yml``` file that illustrates the creation of exclusive jobs for the code review deployment.
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 ```yml
 codereview-job-tags-by-time:
@@ -151,7 +151,7 @@ codereview-job-tags-by-time:
         - docker
 ```
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 ```yml
 codereview-job-tags-by-version-style:
@@ -169,7 +169,7 @@ codereview-job-tags-by-version-style:
         - docker
 ```
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 ```yml
 codereview-job-tags-by-version-style:
@@ -189,7 +189,7 @@ codereview-job-tags-by-version-style:
 
 ## SAST
 
-In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in AppSec Flow as findings.
+In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
 The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as environment variables for the runner.
 
@@ -268,10 +268,10 @@ appsec-flow:
 
 The pipeline used above covers practically all the concepts exercised in this guide. Analyzing some points, we can make observations:
 
-- The CI routine with Conviso's tools can integrate with a stage already present in your pipeline, as an example, in the stage called "test", as well as being executed in a new one;
+- The CI routine with Conviso's tools can integrate with a stage already present in your pipeline, as an example, in the stage called **test**, as well as being executed in a new one;
 
 - The execution of the SAST job and the deploy of code review can be executed at any point in the pipeline, as it uses only the code from the repository and not any artifact generated by the execution of a stage or job in the pipeline;
 
-- The deployment strategy used in this last example could be any of the three specified in the "Strategies for Code Review Deploy" section above. Choose the one that best suits your development process;
+- The deployment strategy used in this last example could be any of the three specified in the **Code Review Deploy** section above. Choose the one that best suits your development process;
 
 More information about CLI and the complete documentation about its commands can be seen on the project page in [Pypi](https://pypi.org/project/conviso-flowcli/).

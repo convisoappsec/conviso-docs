@@ -36,21 +36,21 @@ To create a new build project, follow the step by step below:
 
 1. From the AWS console's main menu, locate the CodeBuild service;
 
-2. Click "Create Build Project";
+2. Click **Create Build Project**;
 
-3. In the section "Project Configuration" fill in the name and description of your project;
+3. In the section **Project Configuration** fill in the name and description of your project;
 
-4. At the "Source" section, in the "Source Provider" field, select the location where your repository is hosted;
+4. At the **Source** section, in the **Source Provider** field, select the location where your repository is hosted;
 
-5. Depending on the chosen source, specific fields will appear for each one to select the code repository as well as its version (branchs, tags, etc). In case of SCM type sources, ensure that in the additional settings, at the git clone depth selection, the option "Full" is selected. If the source is S3, you must ensure that the .git directory is present along with the source code;
+5. Depending on the chosen source, specific fields will appear for each one to select the code repository as well as its version (branchs, tags, etc). In case of SCM type sources, ensure that in the additional settings, at the git clone depth selection, the option **Full** is selected. If the source is S3, you must ensure that the .git directory is present along with the source code;
 
-6. At the "Environment" section, configure the options below:
+6. At the **Environment** section, configure the options below:
 
-    1. In the "Buildspec" section, select the option "Use a buildspec file". If you already have a buildspec file in the project, we recommend creating a conviso-buildspec.yml file at the root of the repository. In the field "Buildspec name", enter the path of the desired buildspec file. The contents of the conviso-buildspec.yml file will depend on the desired actions (see next sections on this document);
+    1. In the **Buildspec** section, select the option **Use a buildspec file**. If you already have a buildspec file in the project, we recommend creating a conviso-buildspec.yml file at the root of the repository. In the field **Buildspec name**, enter the path of the desired buildspec file. The contents of the conviso-buildspec.yml file will depend on the desired actions (see next sections on this document);
 
-    2. In the "Logs" section, if S3 or CloudWatch services are available, choose the one that best suits your work. These logs will contain information about the execution of the pipelines;
+    2. In the **Logs** section, if S3 or CloudWatch services are available, choose the one that best suits your work. These logs will contain information about the execution of the pipelines;
 
-    3. After finishing these settings, click on the button at the bottom of the page "Create Build Project".
+    3. After finishing these settings, click on the button at the bottom of the page **Create Build Project**.
 
 In case of success, a new build project was created. However, its execution instructions are empty. Note that, by default, if the build project was automatically associated with an SCM, whenever there is a change in the repository in the specified version, the pipeline (buildspec) will already be triggered, which is still empty.
 
@@ -62,52 +62,52 @@ Below is a step-by-step guide to setting up a new vault in Secret Manager, if yo
 
 1. From the main menu of the AWS console, locate the Secret Manager service;
 
-2. Click "Store a New Secret";
+2. Click **Store a New Secret**;
 
-3. Select "Other types of secrets" as the secret type;
+3. Select **Other types of secrets** as the secret type;
 
 4. Below, a list of key-value objects is expected;
 
-5. As key, fill ```FLOW_API_KEY``` with the value of the AppSecFlow API key. If you don't have a key, follow [this guide](https://help.convisoappsec.com/pt-BR/articles/4428685-api-key) to generate one;
+5. As key, fill ```FLOW_API_KEY``` with the value of the AppSecFlow API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
 
-6. In the encryption key field, select the desired one and click "Next";
+6. In the encryption key field, select the desired one and click **Next**;
 
 7. Identify the new secret (done in step 2) conveniently. For example: Conviso (in the rest of the tutorial we will treat the secret manager identification like this).
 
-8. Be sure to check "Disable automatic switchover" and click "Next";
+8. Be sure to check **Disable automatic switchover** and click **Next**;
 
-9. A summary of the new secret will be shown, as well as code snippets for integration in some languages. Click "Store" to save the secret.
+9. A summary of the new secret will be shown, as well as code snippets for integration in some languages. Click **Store** to save the secret.
 
 After creating the secret in the Secret Manager service, it is necessary to give access permissions to the service role associated with the build project. One way to do this is by attaching the predefined policy called SecretsManagerReadWrite. Follow the steps below to carry out this process:
 
 1. From the main menu of the AWS console, locate the IAM service;
 
-2. In the left menu, under "Access Management", click on "Roles";
+2. In the left menu, under **Access Management**, click on **Roles**;
 
 3. In the search box, look for the name of the service role associated with the build project;
 
 4. Click on the role and then click on attach policies;
 
-5. Look for the predefined "SecretsManagerReadWrite" or a custom policy that contemplates the read permission called "GetSecretValue" from the Secret Manager service.
+5. Look for the predefined **SecretsManagerReadWrite** or a custom policy that contemplates the read permission called **GetSecretValue** from the Secret Manager service.
 
 After these procedures, the secret will be available to be used by CodeBuild.
 
 ## Code Review
 
-Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
 After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```FLOW_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```FLOW_PROJECT_CODE``` variable.
 
 Below are code snippets from the ```conviso-buildspec.yml``` file, which illustrates the creation of a unique job for deploying code review in the three available strategies:
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 ```yml
 version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<chave da análise>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
    FLOW_API_KEY: Conviso:FLOW_API_KEY
 
@@ -122,14 +122,14 @@ phases:
      - flow deploy create with tag-tracker sort by time
 ```
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 ```yml
 version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<chave da análise>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
    FLOW_API_KEY: Conviso:FLOW_API_KEY
 
@@ -144,14 +144,14 @@ phases:
      - flow deploy create with tag-tracker sort-by versioning-style
 ```
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 ```yml
 version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<chave da análise>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
    FLOW_API_KEY: Conviso:FLOW_API_KEY
 
@@ -177,7 +177,7 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<chave da análise>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
    FLOW_API_KEY: Conviso:FLOW_API_KEY
 
@@ -201,7 +201,7 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<chave da análise>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
    FLOW_API_KEY: Conviso:FLOW_API_KEY
 
@@ -226,7 +226,7 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<chave da análise>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
    FLOW_API_KEY: Conviso:FLOW_API_KEY
 
@@ -252,4 +252,4 @@ The AWS Pipelines service, which aggregates the CodeCommit, CodeArtifact, CodeBu
 
 * **Cannot connect to the Docker daemon at ```unix:///var/run/docker.sock```. Is the docker daemon running?**
 
-In the environment setup, check that the "Privileged" checkbox is correctly checked.
+In the environment setup, check that the **Privileged** checkbox is correctly checked.

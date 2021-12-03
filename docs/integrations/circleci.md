@@ -23,11 +23,11 @@ For the Cloud version, support is native. However, for the enterprise version, i
 
 - Build environment with Docker
 
-- External access (may be limited to Conviso, Dockerhub and AppSec Flow registry)
+- External access (may be limited to Conviso, Dockerhub and Conviso registry)
 
 ## First Steps
 
-After configuring your VCS access policies in CircleCI, on the Project Dashboard page you will be able to see all the repositories available for creating Pipelines. If there is already a description of a pipeline in the repository, it will be available in the .circleci folder at the root of the repository, in the config.yml file. It is important that Conviso jobs are set up correctly along with the rest of the workflow. If there is no pipeline yet, clicking on the "Setup project" button for your repository will open an editor for the creation of pipelines.
+After configuring your VCS access policies in CircleCI, on the Project Dashboard page you will be able to see all the repositories available for creating Pipelines. If there is already a description of a pipeline in the repository, it will be available in the .circleci folder at the root of the repository, in the config.yml file. It is important that Conviso jobs are set up correctly along with the rest of the workflow. If there is no pipeline yet, clicking on the **Setup project** button for your repository will open an editor for the creation of pipelines.
 
 The platform will bring suggestions based on the technologies present in your project's code. For this first pipeline, we can paste the contents of the code snippet below:
 
@@ -49,35 +49,35 @@ jobs:
           command: flow --help
           name: help
 ```
-In this first pipeline, only one job is configured, called "flow-help", and we determine that it will be executed as the only job of the "main" workflow.
+In this first pipeline, only one job is configured, called **flow-help**, and we determine that it will be executed as the only job of the **main** workflow.
 
-This file can be saved by Circle CI itself in an alternate branch by clicking on "Add Config" or manually committed.
+This file can be saved by Circle CI itself in an alternate branch by clicking on **Add Config** or manually committed.
 
 ## Variables Setup
 
-Authentication between the flow CLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the "Variables" of Pipeline. They can be defined by project or else by context.
+Authentication between the flow CLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the **Variables** of Pipeline. They can be defined by project or else by context.
 
 ### Project Variables Setup
 
 In this case, the variable will be restricted to the execution of pipelines of the selected project. To configure this way, follow the steps below:
 
-1. From the "Project Dashboard" menu, select the desired project;
+1. From the **Project Dashboard** menu, select the desired project;
 
-2. In the upper right corner, click on "Project Settings";
+2. In the upper right corner, click on **Project Settings**;
 
-3. In the left menu, click on "Environment Variables" and then on the "Add Environment Variable" button;
+3. In the left menu, click on **Environment Variables** and then on the **Add Environment Variable** button;
 
-4. Name the variable FLOW_API_KEY and add the API key available in your AppSec Flow profile.
+4. Name the variable FLOW_API_KEY and add the API key available in your Conviso Platform profile.
 
 ### Context Variables Setup
 
 In this case, the variable will be visible to all projects associated with the specified context. To configure this way, follow the steps below:
 
-1. In the "Organization Settings" menu, select the "Contexts" option;
+1. In the **Organization Settings** menu, select the **Contexts** option;
 
-2. Select the desired context or create a new one by clicking on "New Context";
+2. Select the desired context or create a new one by clicking on **New Context**;
 
-3. After selecting the desired context, click on "Add Environment Variable".
+3. After selecting the desired context, click on **Add Environment Variable**.
 
 For the jobs to load the created context, you need to configure them in the workflows session of the configuration file. Below, an example:
 
@@ -99,13 +99,13 @@ jobs:
 
 ## Code Review
 
-Before proceeding, we recommend reading the following [document](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
+Before proceeding, we recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```FLOW_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```FLOW_PROJECT_CODE``` (identified as the Key of Project in AppSec Flow) which can be defined individually by project.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```FLOW_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```FLOW_PROJECT_CODE``` (identified as the Project Key in Conviso Platform) which can be defined individually by project.
 
 Below are sample code snippets for each of the approaches:
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 ```yml
 version: 2.1
@@ -121,7 +121,7 @@ jobs:
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Chave da análise>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -130,7 +130,7 @@ jobs:
           name: deploy
 ```
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 ```yml
 version: 2.1
@@ -146,7 +146,7 @@ jobs:
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Chave da análise>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -155,7 +155,7 @@ jobs:
           name: deploy
 ```
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 ```yml
 version: 2.1
@@ -171,7 +171,7 @@ jobs:
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Chave da análise>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -182,7 +182,7 @@ jobs:
  
 ## SAST
 
-In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in AppSec Flow as findings.
+In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
 The prerequisites for executing the job are the same ones already used: ```FLOW_API_KEY``` no (context or project) and ```FLOW_PROJECT_CODE``` defined as environment variables.
 
@@ -202,7 +202,7 @@ jobs:
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Key of Project>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -227,7 +227,7 @@ jobs:
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Key of Project>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -254,7 +254,7 @@ jobs:
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Key of Project>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout

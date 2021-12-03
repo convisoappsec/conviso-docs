@@ -16,7 +16,7 @@ First time using Github Actions? Please refer to the [following documentation](h
 
 ## Introduction
 
-This integration uses the [CLI](../cli/installation) for all communication with AppSec Flow.  
+This integration uses the [CLI](../cli/installation) for all communication with Conviso Platform.  
 By the end of this tutorial you will know how to:
 - Run a SAST scan
 - Run a SCA scan
@@ -25,8 +25,8 @@ By the end of this tutorial you will know how to:
 ## Requirements
 - A Github account
 - All runners hosted by Github are compatible, but if you are using *self-hosted* runners they need to have **Docker** installed in order to work.
-- **FLOW_API_KEY**: This is the API key to communicate with AppSec Flow
-- **FLOW_PROJECT_CODE**: This is the ID of the application in AppSec Flow
+- **FLOW_API_KEY**: This is the API key to communicate with Conviso Platform
+- **FLOW_PROJECT_CODE**: This is the ID of the application in Conviso Platform
 - When using Github Enterprise Server it need to be run version 3.0 or later
 
 ## Creating your pipeline
