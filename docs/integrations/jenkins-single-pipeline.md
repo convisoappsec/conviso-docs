@@ -20,7 +20,7 @@ This integration addresses a single pipeline creation that serves multiple repos
 
 ## Requirements
 
-1. "Generic Webhook Trigger" and "Docker" plugins installed at Jenkins;
+1. **Generic Webhook Trigger** and **Docker** plugins installed at Jenkins;
 
 2. A Personal Access Token from an automation user or an common user to SCM (Github, Gitlab, Bitbucket, etc.) and Jenkins, to provide Jenkins access to code repositories;
 
@@ -36,15 +36,15 @@ This integration addresses a single pipeline creation that serves multiple repos
 
 1. At Jenkins' main menu, create a new job;
 
-2. Label the Job as you wish and select the "Pipeline" type;
+2. Label the Job as you wish and select the **Pipeline** type;
 
-3. At the "Build Triggers" section, create a Generic Webhook Trigger;
+3. At the **Build Triggers** section, create a Generic Webhook Trigger;
 
-4. Create a "Post Content Parameter" labeled as "Webhook", with the expression "$" and "JSONPATH" type;
+4. Create a **Post Content Parameter** labeled as **Webhook**, with the expression **$** and **JSONPATH** type;
 
 5. At **Token**, Use the Token value obtained at step 6 of the preceding section **Requirements**;
 
-6. **Cause** will be the message shown when the job is started. For example, "Conviso Job Pipeline started for repo: ```$webhook_repository_git_http_url``` Start Commit: ```$webhook_before```. End Commit: ```$webhook_after```"
+6. **Cause** will be the message shown when the job is started. For example, **Conviso Job Pipeline started for repo: ```$webhook_repository_git_http_url``` Start Commit: ```$webhook_before```. End Commit: ```$webhook_after```**
 
 7. (Optional) When checking the **Print Post Content** option, Jenkins will exhibit the webhook received content;
 
@@ -102,7 +102,7 @@ environment {
 
 ## Associating Conviso Projects to the Pipeline
 
-The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) analysis. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Key of Project from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file´s initial session will be as shown below:
+The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) Project. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Project Key from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file´s initial session will be as shown below:
 
 ```yml
 def get_project_code(repo_url){

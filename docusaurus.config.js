@@ -16,11 +16,11 @@ module.exports = {
         src: 'img/favicon.ico',
       },
       items: [
-        // {
-        //   to: "/api/schema", // adjust the location depending on your baseURL (see configuration)
-        //   label: "API", // change the label with yours
-        //   position: "left",
-        // },
+        {
+           to: "https://help.convisoappsec.com/",
+           label: "More Info",
+           position: "right",
+        },
        /* {
           to: 'docs/',
           activeBasePath: 'docs',

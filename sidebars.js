@@ -33,12 +33,15 @@ module.exports = {
       type: "category",
       label: "Integrations",
       items: [
+        //{
+        //  type: "category",
+        //  label: "Authentication",
+        //  items: []
+        //},
         {
           type: "category",
           label: "CI/CD",
           items: [
-                //  'integrations/azure-devops',
-                'integrations/code-review-strategies',
                 'integrations/aws-codebuild',
                 'integrations/azure-pipelines-cli',
                 'integrations/azure-pipelines-graph',
@@ -51,21 +54,6 @@ module.exports = {
                 'integrations/jenkins-single-pipeline'                  
                   ]
         },
-
-        {
-          type: "category",
-          label: "SCA",
-          items: [
-                  'integrations/dependency-track'
-                  ]
-        },
-        {
-          type: "category",
-          label: "Scanners",
-          items: [
-                  'integrations/sonarcloud',
-                  ]
-        },
         {
           type: "category",
           label: "Defect/Bug Tracking",
@@ -73,7 +61,24 @@ module.exports = {
                   'integrations/jira',
                   ]
         },
+        // {
+        //  type: "category",
+        //  label: "SCA",
+        //  items: [
+        //          'integrations/dependency-track'
+        //          ]
+        // },
+        {
+          type: "category",
+          label: "Scanners",
+          items: [
+                  'integrations/sonarcloud',
+                  ]
+        },
       ]
+    },
+    {Guides: ['integrations/code-review-strategies', 'integrations/generate-apikey'],
+     Plugins:[],
     },
     {
       Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],

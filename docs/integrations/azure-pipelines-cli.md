@@ -32,15 +32,15 @@ In order for the experience with Conviso's services to be complete, it is necess
 
 Given an Azure Devops project, to create a Welcome Pipeline you can follow the steps below:
 
-1. At the DevOps Project root, click at "Pipelines";
+1. At the DevOps Project root, click at **Pipelines**;
 
-2. At the upper right menu, click at "New Pipeline";
+2. At the upper right menu, click at **New Pipeline**;
 
-3. At the "Connect" step, select the platform where your code is hosted; 
+3. At the **Connect** step, select the platform where your code is hosted; 
 
-4. At "Select", connect to the wanted repository code; 
+4. At **Select**, connect to the wanted repository code; 
 
-5. At "Configure", if you don't have or don't want to associate it with an existing pipeline, select the "Starter Pipeline" option;
+5. At **Configure**, if you don't have or don't want to associate it with an existing pipeline, select the **Starter Pipeline** option;
 
 6. At the opened Azure Devops text editor, paste the code snippet below:
 
@@ -62,31 +62,31 @@ Throughout the document, trigger, pool and job settings are proposed. The only r
 
 ## Secrets Setup
 
-Authentication between the FlowCLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the "Variables" of Pipeline. They can be defined in an already created pipeline following the step by step presented below: 
+Authentication between the FlowCLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the **Variables** of Pipeline. They can be defined in an already created pipeline following the step by step presented below: 
 
-1. At the DevOps Project root, click at "Pipelines";
+1. At the DevOps Project root, click at **Pipelines**;
 
 2. Select the wanted pipeline at the pipelines list;
 
-3. Click at "Edit" at the upper right menu;
+3. Click at **Edit** at the upper right menu;
 
-4. at the upper right menu again, click at "Variables";
+4. at the upper right menu again, click at **Variables**;
 
-5. Click at the "+" button at the upper right corner;
+5. Click at the **+** button at the upper right corner;
 
 6. Label the variable as ```FLOW_API_KEY``` and add the API key available at your Conviso Platform Profile;
 
-7. Check the option "Keep this value secret", then click "Ok".
+7. Check the option **Keep this value secret**, then click **Ok**.
 
 ## Code Review
 
 Before proceeding, we recommend reading the following [guide](../integrations/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables (previously set in the desired pipeline variables) and the ```FLOW_PROJECT_CODE``` variable (identified as the Key of Project at Conviso Platform) that can be defined in each of the pipelines. 
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables (previously set in the desired pipeline variables) and the ```FLOW_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) that can be defined in each of the pipelines. 
 
 Below are the code snippets that can be at the ```azure-pipelines.yml``` file (or any other custom file):
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 ```yml
 trigger:
@@ -98,7 +98,7 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    FLOW_PROJECT_CODE: '<Chave da Análise>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -107,7 +107,7 @@ jobs:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 ```yml
 trigger:
@@ -119,7 +119,7 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    FLOW_PROJECT_CODE: '<Chave da Análise>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -128,7 +128,7 @@ jobs:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 ```yml
 trigger:
@@ -140,7 +140,7 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    FLOW_PROJECT_CODE: '<Chave da Análise>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -165,7 +165,7 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    FLOW_PROJECT_CODE: '<Chave da Análise>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -188,7 +188,7 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    FLOW_PROJECT_CODE: '<Chave da Análise>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |

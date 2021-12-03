@@ -62,7 +62,7 @@ After choosing the strategy used to send deploys to Code Review, it is possible 
 
 Below are sample code snippets for each of the approaches:
 
-**With TAGS, timestamp sorted**
+**With TAGS, sorted by timestamp**
 
 ```yml
 image: convisoappsec/flowcli
@@ -78,7 +78,7 @@ pipelines:
             - docker
 ```
 
-**With TAGS, versioning-style sorted**
+**With TAGS, sorted by versioning-style**
 
 ```yml
 image: convisoappsec/flowcli
@@ -93,7 +93,7 @@ pipelines:
             - docker
 ```
 
-**Without TAGS, GIT tree sorted**
+**Without TAGS, sorted by GIT Tree**
 
 ```yml
 image: convisoappsec/flowcli
