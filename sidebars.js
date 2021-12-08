@@ -4,13 +4,6 @@ module.exports = {
   docs: [
     'index',
     {
-      CLI: ['cli/installation',
-             'cli/authentication',
-             'cli/sast',
-             'cli/security-gate'
-            ]
-    },
-    {
       type: "category",
       label: "API",
       items: [
@@ -31,14 +24,29 @@ module.exports = {
       ]
     },
     {
+      CLI: ['cli/installation',
+             'cli/authentication',
+             'cli/sast',
+             'cli/security-gate'
+            ]
+    },
+    {Guides: ['guides/code-review-strategies'],
+     Plugins:[],
+    },
+    {
       type: "category",
       label: "Integrations",
       items: [
-        //{
-        //  type: "category",
-        //  label: "Authentication",
-        //  items: []
-        //},
+        {
+        type: "category",
+        label: "Authentication/SSO",
+        items: [          
+          'integrations/adfs',          
+          'integrations/azure-ad',
+          'integrations/google',
+          'integrations/ldap'
+               ]
+        },
         {
           type: "category",
           label: "CI/CD",
@@ -53,6 +61,14 @@ module.exports = {
                 'integrations/gitlab',
                 'integrations/jenkins',
                 'integrations/jenkins-single-pipeline'                  
+                  ]
+        },
+        {
+          type: "category",
+          label: "Data Analytics",
+          items: [
+                  'integrations/datastudio',
+                  'integrations/powerbi'
                   ]
         },
         {
@@ -77,9 +93,6 @@ module.exports = {
                   ]
         },
       ]
-    },
-    {Guides: ['guides/code-review-strategies'],
-     Plugins:[],
     },
     {
       Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],
