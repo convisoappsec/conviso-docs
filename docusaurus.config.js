@@ -18,7 +18,7 @@ module.exports = {
       items: [
         {
            to: "https://help.convisoappsec.com/",
-           label: "More Info",
+           label: "General Documentation",
            position: "right",
         },
        /* {
