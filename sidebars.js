@@ -87,6 +87,13 @@ module.exports = {
         // },
         {
           type: "category",
+          label: "Notifications",
+          items: [          
+            'integrations/slack'
+                 ]
+        }, 
+        {
+          type: "category",
           label: "Scanners",
           items: [
                   'integrations/sonarcloud',
