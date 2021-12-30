@@ -44,7 +44,8 @@ module.exports = {
           'integrations/adfs',          
           'integrations/azure-ad',
           'integrations/google',
-          'integrations/ldap'
+          'integrations/ldap',
+          'integrations/saml'
                ]
         },
         {
