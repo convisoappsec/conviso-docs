@@ -153,8 +153,8 @@ pipeline {
       
       environment {
         FLOW_API_KEY      = credentials('SUP-FLOW-API-KEY-HOMOLOGA')
-        FLOW_PROJECT_CODE = "p6sjCo541cMk7Wmn"
-        FLOW_API_URL = "https://homologa.conviso.com.br/"
+        FLOW_PROJECT_CODE = "****************"
+        FLOW_API_URL = "https://app.conviso.com.br/"
      }
 ​
       steps {
