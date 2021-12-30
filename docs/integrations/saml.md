@@ -38,7 +38,7 @@ Log in to Conviso Platform. At the left-side menu, click at **Integrations**. Th
 
 </div>
 
-After retrieving the necessary datum from yor SSO platform, paste the to their correspondent fields at Conviso Platform. Remember to specify all of your configured Authentication Domains and their aliases at the **Authorized Domains** field. After pasting the retrieved datum and configuring your authorized domains, click at the **Save** button, in order to finish and store the SAML SSO configuration:
+After retrieving the necessary datum from your SSO platform, paste the to their correspondent fields at Conviso Platform. Remember to specify all of your configured Authentication Domains and their aliases at the **Authorized Domains** field. After pasting the retrieved datum and configuring your authorized domains, click at the **Save** button, in order to finish and store the SAML SSO configuration:
 
 <div style={{textAlign: 'center'}}>
 
