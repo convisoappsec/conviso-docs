@@ -20,7 +20,7 @@ The integration of the Conviso Platform with the Jira tool is done via API where
 
 Jira's integration with Conviso Platform will benefit issue control management and vulnerability consolidation. With the integration performed, the customer can orchestrate vulnerability to Jira.
 
-The Conviso Platform communication with Jira is bidirectional, that is, if a user adds comments in the Jira discussion field, the added message will automatically appear on the vulnerability's Security Champions tab. This allows a Conviso technician to interact with the development team that is doing corrections.
+The Conviso Platform uses two-way communication with Jira, that is, if a user adds comments in the Jira discussion field, the added message will automatically appear on the vulnerability's Security Champions tab. This allows a Conviso technician to interact with the development team that is doing corrections.
 
 ## Requirements
 
@@ -149,7 +149,7 @@ Whenever a new vulnerability is identified, it is automatically sent to the proj
 
 ## Webhooks
 
-You may configure **Webhooks** in order to make the communication with Jira bidirectional. 
+You may configure **Webhooks** in order to use the two-way communication with Jira. 
 :::note
 The Webhook function works with Jira version 7.1 and above.
 :::
