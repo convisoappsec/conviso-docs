@@ -20,7 +20,7 @@ The integration of the Conviso Platform with the Jira tool is done via API where
 
 Jira's integration with Conviso Platform will benefit issue control management and vulnerability consolidation. With the integration performed, the customer can orchestrate vulnerability to Jira.
 
-The Conviso Platform communication with Jira is bidirectional, that is, if a user adds comments in the Jira discussion field, the added message will automatically appear on the vulnerability's Security Champions tab. This allows a Conviso technician to interact with the development team that is doing corrections.
+The Conviso Platform uses two-way communication with Jira, that is, if a user adds comments in the Jira discussion field, the added message will automatically appear on the vulnerability's Security Champions tab. This allows a Conviso technician to interact with the development team that is doing corrections.
 
 ## Requirements
 
@@ -149,7 +149,7 @@ Whenever a new vulnerability is identified, it is automatically sent to the proj
 
 ## Webhooks
 
-You may configure **Webhooks** in order to make the communication with Jira bidirectional. 
+You may configure **Webhooks** in order to use the two-way communication with Jira. 
 :::note
 The Webhook function works with Jira version 7.1 and above.
 :::
@@ -239,3 +239,55 @@ The comments will appear in Jira's comment field, as shown in the image below:
 ![img](../../static/img/jira-img19.png)
 
 </div>
+
+## Mapping External Fields to Conviso Platform
+
+:::note
+In order to use this feature, your Jira must be configured in the English language.
+:::
+
+This functionality allows vulnerabilities in Conviso Platform to have their status synchronized with jira and vice versa.
+To enable it, you have to register a new webhook in Jira that allows sending some data when a Task is modified.
+In the same webhook registration screen shown in the section above, we will register a new webhook:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-img20.png)
+
+</div>
+
+In the URL field, use a predefined URL, with your token at its end:
+
+```https://app.conviso.com.br/api/v1/integrations/jira/update_vulnerability?issue_key=${issue.key}&project_key=${project.key}&jira_authorization_token=YOUR TOKEN```
+
+Your token can be retrieved from Conviso Platform, Integrations, at Jira integration configuration, as shown below:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-img21.png)
+
+</div>
+
+After doing so, edit the Jira integration Configuration and associate the Conviso Platform fields with their respective fields in Jira, at the **Custom Mapping** section:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-img21a.png)
+
+</div>
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-img22.png)
+
+</div>
+
+**Status in Conviso Platform**: are current statuses that each vulnerability can be at Conviso Platform.
+
+**Status in Jira**: are current status that each task can assume on Jira.
+
+In the example above, when we change a vulnerability status at Conviso Platform to **False Positive**, Jira will change its status to **Done** and vice versa: when we change to **Done** in Jira, it will change to **False Positive** at Conviso Platform.
+
+:::note
+Don't forget to click **Save** after configuring Jira's integration!
+:::

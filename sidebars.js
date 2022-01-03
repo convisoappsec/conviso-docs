@@ -44,7 +44,8 @@ module.exports = {
           'integrations/adfs',          
           'integrations/azure-ad',
           'integrations/google',
-          'integrations/ldap'
+          'integrations/ldap',
+          'integrations/saml'
                ]
         },
         {
@@ -61,7 +62,7 @@ module.exports = {
                 'integrations/gitlab',
                 'integrations/jenkins',
                 'integrations/jenkins-single-pipeline'                  
-                  ]
+                 ]
         },
         {
           type: "category",
@@ -69,30 +70,38 @@ module.exports = {
           items: [
                   'integrations/datastudio',
                   'integrations/powerbi'
-                  ]
+                 ]
         },
         {
           type: "category",
           label: "Defect/Bug Tracking",
           items: [
                   'integrations/jira',
-                  ]
+                  'integrations/bitbucket'
+                 ]
         },
         // {
         //  type: "category",
         //  label: "SCA",
         //  items: [
         //          'integrations/dependency-track'
-        //          ]
+        //         ]
         // },
+        {
+          type: "category",
+          label: "Notifications",
+          items: [          
+            'integrations/slack'
+                 ]
+        }, 
         {
           type: "category",
           label: "Scanners",
           items: [
                   'integrations/sonarcloud',
-                  ]
+                 ]
         },
-      ]
+            ]
     },
     {
       Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],
