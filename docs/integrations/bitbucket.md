@@ -29,7 +29,7 @@ In order to perform this integration, you will need:
 - Bitbucket username and password;
 - Repository name.
 
-Log in to the Conviso Platform. At the left Menu, choose **Integrations**. At the right panel, choose **Defect Tracker**, then click at the button **Integrate** at the Bitbucket card:
+Log in to the Conviso Platform. At the left Menu, choose **Integrations**. At the right panel, choose **Defect Tracker**, then click at the button **Integrate** on the Bitbucket card:
 
 <div style={{textAlign: 'center'}}>
 
