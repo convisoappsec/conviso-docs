@@ -76,8 +76,12 @@ module.exports = {
           type: "category",
           label: "Defect/Bug Tracking",
           items: [
+                  'integrations/bitbucket',
+                  'integrations/github',
                   'integrations/jira',
-                  'integrations/bitbucket'
+                  'integrations/redmine',
+                  'integrations/servicenow',
+                  'integrations/trello'
                  ]
         },
         // {
