@@ -18,18 +18,18 @@ Now, we need to get the most current repository version available and create a n
 cd flow-onpremise && git checkout 2.x && cp .env.sample .env
 ```
 
-Doing so, we have prepared the AppSec Flow environment to be installed.
+Doing so, we have prepared the Conviso Platform environment to be installed.
 
 ## Authentication
 
-Now we have to execute some commands to prepare the environment before installing/upgrading AppSec Flow:
+Now we have to execute some commands to prepare the environment before installing/upgrading Conviso Platform:
 
 ```sh
 source ./scripts/shell_commands.sh && touch key.txt
 ```
 
 At this point , you should ask Conviso for a new access token, in order to be able to login at Conviso’s Docker Repository.
-To do so, you must e-mail sre@convisoappsec.com and ask for a new AppSec Flow On Premises Access Token. Beware that this token will be available for 12 hours, so use it as soon as possible.
+To do so, you must e-mail sre@convisoappsec.com and ask for a new Conviso Platform On Premises Access Token. Beware that this token will be available for 12 hours, so use it as soon as possible.
 
 Once you had received it, paste the access token in the file that you just created, key.txt (we use nano just as an example, you can you use the text editor of your choice).
 
@@ -47,7 +47,7 @@ convisoappsec:docker:login key.txt
 docker-compose pull
 ```
 ## Environment Variables
-When the download is finished, we have to set up some environment variables, in order to make AppSec Flow to run:
+When the download is finished, we have to set up some environment variables, in order to make Conviso Platform to run:
 
 ```sh
 KEY="$(docker run docker.convisoappsec.com/flow-app:2 bundle exec rake secret)"
@@ -57,9 +57,9 @@ KEY="$(docker run docker.convisoappsec.com/flow-app:2 bundle exec rake secret)"
 echo "APP_SECRET_KEY_BASE=${KEY}" >> .env
 ```
 
-## Starting AppSec Flow
+## Starting Conviso Platform
 
-Finally, we just need to startup AppSec Flow:
+Finally, we just need to startup Conviso Platform:
 
 ```sh
 docker-compose up -d

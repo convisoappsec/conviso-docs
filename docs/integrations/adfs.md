@@ -45,7 +45,7 @@ Inside ADFS, click on the option to add a **Relying Party Trust** as shown in th
 Next, we need to configure the **Data Source** to use. The first option is to include the following Conviso Platform url:
 
 ```
-https://app.conviso.com.br/portal_users/saml/metadata 
+https://app.convisoappsec.com/portal_users/saml/metadata 
 ```
 
 <div style={{textAlign: 'center'}}>

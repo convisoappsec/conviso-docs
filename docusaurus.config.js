@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'AppSec Flow Docs',
+  title: 'Conviso Platform Docs',
   tagline: 'The tagline of my site',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
@@ -10,9 +10,9 @@ module.exports = {
   projectName: 'flow-docs', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'AppSec Flow Docs',
+      title: 'Conviso Platform Docs',
       logo: {
-        alt: 'AppSec Flow Docs Logo',
+        alt: 'Conviso Platform Docs Logo',
         src: 'img/favicon.ico',
       },
       items: [

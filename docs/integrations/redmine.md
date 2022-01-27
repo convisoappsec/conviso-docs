@@ -90,7 +90,7 @@ On the **WebHooks System** screen, the user will fill in the form at the field *
 
 The user must fill in the URL informing the token already obtained:
 
-```https://app.conviso.com.br/payload?redmine_authorization_token=<TYPE_YOUR_REDMINE_TOKEN_HERE>```
+```https://app.convisoappsec.com/payload?redmine_authorization_token=<TYPE_YOUR_REDMINE_TOKEN_HERE>```
 
 <div style={{textAlign: 'center'}}>
 

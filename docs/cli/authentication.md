@@ -5,7 +5,7 @@ sidebar_label: Authentication
 ---
 
 ## Authentication
-In order to start using the CLI you will need to provide your API Key for your AppSec Flow account.  When retrieving it, you can export the key as system environment variable:
+In order to start using the CLI you will need to provide your API Key for your Conviso Platform account.  When retrieving it, you can export the key as system environment variable:
 
 ```sh
 $ export FLOW_API_KEY='you-api-key'

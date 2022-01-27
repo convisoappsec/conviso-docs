@@ -68,7 +68,7 @@ Below is a step-by-step guide to setting up a new vault in Secret Manager, if yo
 
 4. Below, a list of key-value objects is expected;
 
-5. As key, fill ```FLOW_API_KEY``` with the value of the AppSecFlow API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
+5. As key, fill ```FLOW_API_KEY``` with the value of the Conviso Platform API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
 
 6. In the encryption key field, select the desired one and click **Next**;
 

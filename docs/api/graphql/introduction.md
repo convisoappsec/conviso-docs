@@ -14,7 +14,7 @@ We are transitioning and migrating from our REST API. Nevertheless in order to a
 
 ## Getting Started
 - Conviso's GraphQL API endpoint is located at ```/graphql```
-    - Production Environment: ```https://app.conviso.com.br/graphql```
+    - Production Environment: ```https://app.convisoappsec.com/graphql```
 - You need to have an API Key and authenticate in order to interact with the api.
     - The authentication process is made through the x-api-key header, as exemplified below.
         ```console 
