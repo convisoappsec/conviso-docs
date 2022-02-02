@@ -80,7 +80,7 @@ Once we already get all the required information, it is time to move on to Convi
 
 </div>
 
-At the floating window, insert the datum required that were previously obtained. When finished, click at the **Save** button to store your integration settings:
+At the floating window, insert the data required that were previously obtained. When finished, click at the **Save** button to store your integration settings:
 
 <div style={{textAlign: 'center'}}>
 
