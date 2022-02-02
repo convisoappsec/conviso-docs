@@ -32,13 +32,13 @@ If you want to integrate Conviso Platform to your Oracle Authentication Manager,
 
 As there are different SSO provider implementations, below are the required Conviso URLs to configure your SSO Provider Aplication, labeled as the commom known SSO implementations (your SSO Provider may use distinct label for it):
 
-Use this URL for the **ACS URL** on Google or **Reply URL (Assertion Consumer Service URL)** on Azure Active Directory: 
+Use this URL for the **ACS URL** (on Google) or **Reply URL (Assertion Consumer Service URL)** (on Azure Active Directory): 
 ```https://app.convisoappsec.com/portal_users/saml/auth```
 
-Use this URL for the **Entity ID** on Google or Azure Active Directory, **Data Source** on ADFS:
+Use this URL for the **Entity ID** (on Google or Azure Active Directory), **Data Source** (on ADFS):
 ```https://app.convisoappsec.com/portal_users/saml/metadata```
 
-Use this URL for the **Start URL** on Google:
+Use this URL for the **Start URL** (on Google):
 ```https://app.convisoappsec.com```
 
 ## Conviso Platform SAML 2.0 SSO integration
