@@ -40,7 +40,7 @@ To analyze data on your BI platform, there are 4 types of endpoints that allow t
 
 </div>
 
-To create a connector with the BI tool, just copy the **Conviso Platform URL** (https://app.conviso.com.br/), the **Endpoint**, and your **x-api-key** (you can generate your x-api-key by following the instructions [here](../../api/generate-apikey)) and insert the parameters at the BI tool you are using.
+To create a connector with the BI tool, just copy the **Conviso Platform URL** (https://app.convisoappsec.com/), the **Endpoint**, and your **x-api-key** (you can generate your x-api-key by following the instructions [here](../../api/generate-apikey)) and insert the parameters at the BI tool you are using.
 
 ## Google Data Studio Setup
 
@@ -109,7 +109,7 @@ This windows will be shown. We will fill this form with the following data: **Da
 </div>
 
 1. At **Data Type**, select **JSON**;
-2. At **Source URL or Google Drive path**, insert ```https://app.conviso.com.br/api/v2/projects```;
+2. At **Source URL or Google Drive path**, insert ```https://app.convisoappsec.com/api/v2/projects```;
 3. At **HTTP headers**, insert ```x-api-key:<your-generated-api-key>```.
 
 When done filling the form, click at the button **Add**, at the lower right corner:

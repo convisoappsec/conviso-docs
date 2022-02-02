@@ -5,7 +5,7 @@ sidebar_label: Overview
 ---
 
 ## Overview
-Flow CLI is a command line interface tool to interact with AppSec Flow. 
+Flow CLI is a command line interface tool to interact with Conviso Platform. 
 
 The primary goal of the CLI is to be a developer friendly tool which automates different functionalities, letting users interact more easily with the platform.
 
@@ -88,4 +88,4 @@ Start a new fish shell session and the shell completion will be available.
 [fish]: <https://fishshell.com/>
 [convisoappsec]: <https://convisoappsec.com/>
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
-[AppSec Flow]: <https://app.conviso.com.br/>
+[Conviso Platform]: <https://app.convisoappsec.com/>

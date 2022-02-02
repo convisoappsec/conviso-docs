@@ -62,7 +62,7 @@ On the next screen, there are some required form fields that need attention:
 
 - **Name**: Where a label of your choice should be filled in for the Rest Message;
 
-- **EndPoint**: The endpoint of Conviso's API ([https://app.conviso.com.br/payload)], where the request is sent to;
+- **EndPoint**: The endpoint of Conviso's API ([https://app.convisoappsec.com/payload)], where the request is sent to;
 
 - **Basic auth profile**: Where login and password will be filled in to authenticate with the API;
 

@@ -40,7 +40,7 @@ To analyze data on your BI platform, there are 4 types of endpoints that allow t
 
 </div>
 
-To create a connector with the BI tool, just copy the **Conviso Platform URL** (https://app.conviso.com.br/), the **Endpoint**, and your **x-api-key** (you can generate your x-api-key by following the instructions [here](../../api/generate-apikey)) and insert the parameters at the BI tool you are using.
+To create a connector with the BI tool, just copy the **Conviso Platform URL** (https://app.convisoappsec.com/), the **Endpoint**, and your **x-api-key** (you can generate your x-api-key by following the instructions [here](../../api/generate-apikey)) and insert the parameters at the BI tool you are using.
 
 ## PowerBI Setup
 
@@ -62,7 +62,7 @@ At the **Web** floating window, choose the **Advanced** option:
 
 Fill the form with proper data.
 
-1. At the **URL Parts**, paste the URL ```https://app.conviso.com.br/api/v2/projects```;
+1. At the **URL Parts**, paste the URL ```https://app.convisoappsec.com/api/v2/projects```;
 
 2. At the **HTTP Request Header Parameters**, choose **Accept** for the first field and click on **Add Header** button;
 

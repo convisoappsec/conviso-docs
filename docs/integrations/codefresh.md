@@ -20,7 +20,7 @@ Access to docker deamon when running the Pipeline is mandatory. The Codefresh Sa
 
 ## First Steps
 
-If you have at least one **CodeFresh Runner** installed at your on-premises infrastructure, you can create the first pipeline by interacting with AppSecFlow's command line tool, [FlowCLI]. If you do not have one yet, it is recommended that you read the [Runner-related page in the official CodeFresh documentation](https://codefresh.io/docs/docs/administration/codefresh-runner/).
+If you have at least one **CodeFresh Runner** installed at your on-premises infrastructure, you can create the first pipeline by interacting with Conviso Platform command line tool, [FlowCLI]. If you do not have one yet, it is recommended that you read the [Runner-related page in the official CodeFresh documentation](https://codefresh.io/docs/docs/administration/codefresh-runner/).
 
 Whereas the local Runner is the default Runtime Environment for your CodeFresh account, all pipelines that didn't have this property changed manually will have their builds performed on it. With that in mind, we can proceed to the creation of a first pipeline to better know Codefresh.
 
@@ -52,7 +52,7 @@ Executing command: flow --help
 Usage: flow [OPTIONS] COMMAND [ARGS]...
 Options:
   -k, --api-key TEXT  The api key to access flow resources. [env var: FLOW_API_KEY]
-  -u, --api-url TEXT  The api url to access flow resources. [env var: FLOW_API_URL; default: https://app.conviso.com.br]
+  -u, --api-url TEXT  The api url to access flow resources. [env var: FLOW_API_URL; default: https://app.convisoappsec.com]
   -i, --api-insecure  HTTPS requests to untrusted hosts is enable. [env var: FLOW_API_INSECURE; default: False]
   -h, --help          Show this message and exit.
   -v, --version       Show the version and exit.

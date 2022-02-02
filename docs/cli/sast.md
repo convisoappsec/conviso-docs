@@ -7,7 +7,7 @@ sidebar_label: SAST
 
 ## Static Application Security Testing (SAST)
 Using the CLI is very simple to execute a SAST at your source code repository.
-The results will be sent to your AppSec Flow application by using the *project code identifier*.
+The results will be sent to your Conviso Platform application by using the *project code identifier*.
 
 Assuming that my_source_code_repository is a git repository, you can:
 

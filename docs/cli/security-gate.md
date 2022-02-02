@@ -9,7 +9,7 @@ sidebar_label: Security Gate
 Imagine that you want to validate your opened vulnerabilities for an specific project and block your [CI/CD] pipeline depending on pre defined vulnerability policies.
 The Security Gate feature helps you with that by letting you define policies such as:
 - Vulnerability Quantity by severity (Low, Medium, High, Critical)
-- Vulnerability sources (For example, external integrations such as Checkmarx or Qualys, and also [AppSec Flow] scanners)
+- Vulnerability sources (For example, external integrations such as Checkmarx or Qualys, and also [Conviso Platform] scanners)
 
 ## How does it work?
 
@@ -65,4 +65,4 @@ Error: Vulnerabilities quantity offending security rules
 
 
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
-[AppSec Flow]: <https://app.conviso.com.br/>
+[Conviso Platform]: <https://app.convisoappsec.com/>
