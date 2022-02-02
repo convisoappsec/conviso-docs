@@ -1,6 +1,6 @@
 ---
-id: assets-by-company-id
-title: assetsByCompanyId
+id: assets
+title: assets
 ---
 
 export const Tag = ({children, color}) => (
@@ -18,7 +18,7 @@ style={{
 Returns all assets the user has access
 
 ```graphql
-assetsByCompanyId(
+assets(
   id: ID!
   page: Int = 0
   limit: Int = 0
