@@ -46,7 +46,7 @@ In order to configure Google SSO, it is necessary to have Admin privileges on th
 
 </div>
 
-5. In the following step, you will review the following configuration data, you will use it later at the Conviso Platform Setup (you can always get back to this configuration section to copy the datum). Click on the **Continue** button to go to the next step;
+5. In the following step, you will review the following configuration data, you will use it later at the Conviso Platform Setup (you can always get back to this configuration section to copy the data). Click on the **Continue** button to go to the next step;
 
 <div style={{textAlign: 'center'}}>
 

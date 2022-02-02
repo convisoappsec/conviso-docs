@@ -22,11 +22,11 @@ In order to retrieve the required information to configure SAML 2.0 integration 
 
 - **Authorized Domains and aliases**.
 
-As these datum are retrieved from different locations depending on the SSO implementation being used, a solid knowledge of the SSO platform and the necessary administrative privileges are required too.
+As these data are retrieved from different locations depending on the SSO implementation being used, a solid knowledge of the SSO platform and the necessary administrative privileges are required too.
 
 ## Oracle Authentication Manager
 
-If you want to integrate Conviso Platform to your Oracle Authentication Manager, you can use [this video](https://www.youtube.com/watch?v=7ybg7pQyIS0) from Official Oracle Youtube Channel to help you on configuring your OAM Platform and finding the required Conviso Platform datum to create this SSO integration.
+If you want to integrate Conviso Platform to your Oracle Authentication Manager, you can use [this video](https://www.youtube.com/watch?v=7ybg7pQyIS0) from Official Oracle Youtube Channel to help you on configuring your OAM Platform and finding the required Conviso Platform data to create this SSO integration.
 
 ## Required URLs to configure your SSO Provider
 
@@ -51,7 +51,7 @@ Log in to Conviso Platform. At the left-side menu, click at **Integrations**. Th
 
 </div>
 
-After retrieving the necessary datum from your SSO platform, paste the to their correspondent fields at Conviso Platform. Remember to specify all of your configured Authentication Domains and their aliases at the **Authorized Domains** field. After pasting the retrieved datum and configuring your authorized domains, click at the **Save** button, in order to finish and store the SAML SSO configuration:
+After retrieving the necessary data from your SSO platform, paste the to their correspondent fields at Conviso Platform. Remember to specify all of your configured Authentication Domains and their aliases at the **Authorized Domains** field. After pasting the retrieved data and configuring your authorized domains, click at the **Save** button, in order to finish and store the SAML SSO configuration:
 
 <div style={{textAlign: 'center'}}>
 
