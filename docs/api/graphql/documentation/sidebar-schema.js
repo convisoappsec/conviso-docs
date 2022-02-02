@@ -6,7 +6,7 @@ module.exports = {
       label: "Queries",
       items: [
         "api/graphql/documentation/queries/allocated-projects",
-        "api/graphql/documentation/queries/assets-by-company-id",
+        "api/graphql/documentation/queries/assets",
         "api/graphql/documentation/queries/companies",
         "api/graphql/documentation/queries/company",
         "api/graphql/documentation/queries/contact",
