@@ -76,7 +76,7 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 
 </div>
 
-9. Copy the required information and paste at the proper form fields at Conviso Platform:
+9. Copy the required information to be able to paste them at the proper form fields at Conviso Platform:
 
 <div style={{textAlign: 'center'}}>
 
@@ -88,7 +88,79 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 After downloading the certificate from Azure, open it in a text editor to copy its contents or use the command ```cat <your_certificate>``` at your terminal to be able to copy its contents.
 :::
 
-10. At the **Allowed Domains** field, insert the domain name and all domain aliases used by your organization to log in. After filling the form, click at **Save** button to store your SSO configuration:
+## Associating users to the SSO Application
+
+After creating the SSO Application, you must populate it with your user accounts. Click on the **Users and groups** Application menu: 
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9a.png)
+
+</div>
+
+On the top menu bar, click on the **Add user/group** option:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9b.png)
+
+</div>
+
+At the Add Assignment screen, select the link **None selected** below the Users label:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9c.png)
+
+</div>
+
+At the right panel, select all of the users you want to assign to the Conviso Platform SSO login:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9d.png)
+
+</div>
+
+When done selecting users, click on the **Select** button at the end of the right panel:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9e.png)
+
+</div>
+
+When your users are selected, you will be back to the previous screen, and now the Userds label show how many users were selected. Click at the **Assign** button to finish this configuration: 
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9f.png)
+
+</div>
+
+At last, the SSO Application will exhibit which users are granted access to it:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9g.png)
+
+</div>
+
+## Conviso Platform setup
+
+First, logon to the Conviso Platform;
+
+At the left menu, click on **Integrations**. On the right panel, choose **Authentication** and, then click on the **Integrate** button on the Azure card:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img9h.png)
+
+</div>
+
+Fill the form with corresponding data obtained at step 9 of the **Installing the Conviso SSO App** section of this document.
+
+ At the **Allowed Domains** field, insert the domain name and all domain aliases used by your organization to log in. After filling the form, click at **Save** button to store your SSO configuration:
 
 <div style={{textAlign: 'center'}}>
 
