@@ -24,6 +24,27 @@ module.exports = {
       ]
     },
     {
+      type: "category",
+      label: "AppSec Starter Training",
+      items: [
+              'training/lesson01',
+              'training/lesson02',
+              'training/lesson03',
+              'training/lesson04',
+              'training/lesson05',
+              'training/lesson06',
+              'training/lesson07',
+              'training/lesson08',
+              'training/lesson09',
+              'training/lesson10',
+              'training/lesson11',
+              'training/lesson12',
+              'training/lesson13',
+              'training/lesson14',
+              'training/lesson15'
+             ],
+    },
+    {
       CLI: [
             'cli/installation',
             'cli/authentication',
@@ -140,26 +161,6 @@ module.exports = {
                   'releases/appsecflow305',
                   'releases/appsecflow304',
                   'releases/appsecflow302',
-                ],
-      Plugins: [],
-    },
-    {
-      Training: [
-                  'training/lesson01',
-                  'training/lesson02',
-                  'training/lesson03',
-                  'training/lesson04',
-                  'training/lesson05',
-                  'training/lesson06',
-                  'training/lesson07',
-                  'training/lesson08',
-                  'training/lesson09',
-                  'training/lesson10',
-                  'training/lesson11',
-                  'training/lesson12',
-                  'training/lesson13',
-                  'training/lesson14',
-                  'training/lesson15'
                 ],
       Plugins: [],
     },
