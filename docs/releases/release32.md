@@ -6,7 +6,7 @@ sidebar_label: Release 3.2
 
 ## New product brand positioning
 
-In this release, we bring you our new product positioning, now called Conviso Platform. This new positioning's goal is focused on offering products as a solution to empower developers to build secure applications, as our new slogan is "Security in DevOps: From Devs to Devs".
+In this release, we bring you our new product positioning, now called Conviso Platform. This new positioning's goal is focused on offering products as a solution to empower developers to build secure applications, as our new slogan is **Security in DevOps: From Devs to Devs**.
 
 <div style={{textAlign: 'center'}}>
 
