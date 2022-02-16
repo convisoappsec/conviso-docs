@@ -24,11 +24,12 @@ module.exports = {
       ]
     },
     {
-      CLI: ['cli/installation',
-             'cli/authentication',
-             'cli/sast',
-             'cli/security-gate'
-            ]
+      CLI: [
+            'cli/installation',
+            'cli/authentication',
+            'cli/sast',
+            'cli/security-gate'
+           ]
     },
     {Guides: ['guides/code-review-strategies'],
      Plugins:[],
@@ -66,6 +67,13 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Container Security Platform",
+          items: [          
+            'integrations/aqua'
+                 ]
+        }, 
+        {
+          type: "category",
           label: "Data Analytics",
           items: [
                   'integrations/datastudio',
@@ -84,33 +92,76 @@ module.exports = {
                   'integrations/trello'
                  ]
         },
-        // {
-        //  type: "category",
-        //  label: "SCA",
-        //  items: [
-        //          'integrations/dependency-track'
-        //         ]
-        // },
         {
           type: "category",
           label: "Notifications",
           items: [          
             'integrations/slack'
                  ]
-        }, 
+        },
+        //{
+        //  type: "category",
+        //  label: "SCA",
+        //  items: [
+        //          'integrations/dependency-track',
+        //          'integrations/github-sca'
+        //         ]
+        // }, 
         {
           type: "category",
           label: "Scanners",
           items: [
+                  'integrations/amazon-inspector',
+                  //'integrations/checkmarx',
+                  'integrations/dast',
+                  'integrations/fortify',
+                  //'integrations/nessus',
+                  'integrations/qualys',
                   'integrations/sonarcloud',
-                 ]
+                  'integrations/sonarqube',
+                  //'integrations/veracode'           
+                  ]
         },
-            ]
+      ]
     },
     {
-      Onpremises: ['onpremises/overview', 'onpremises/installation', 'onpremises/configuration'],
+      Onpremises: [ 
+                    'onpremises/overview', 
+                    'onpremises/installation',
+                    'onpremises/configuration'
+                  ],
       Plugins: [],
       
+    },
+    {
+      Releases: [
+                  'releases/release32',
+                  'releases/release31',
+                  'releases/appsecflow305',
+                  'releases/appsecflow304',
+                  'releases/appsecflow302',
+                ],
+      Plugins: [],
+    },
+    {
+      Training: [
+                  'training/lesson01',
+                  'training/lesson02',
+                  'training/lesson03',
+                  'training/lesson04',
+                  'training/lesson05',
+                  'training/lesson06',
+                  'training/lesson07',
+                  'training/lesson08',
+                  'training/lesson09',
+                  'training/lesson10',
+                  'training/lesson11',
+                  'training/lesson12',
+                  'training/lesson13',
+                  'training/lesson14',
+                  'training/lesson15'
+                ],
+      Plugins: [],
     },
   ],
   ...require("./docs/api/graphql/documentation/sidebar-schema"),
