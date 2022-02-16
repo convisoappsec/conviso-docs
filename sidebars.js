@@ -146,23 +146,25 @@ module.exports = {
       ]
     },
     {
-      Onpremises: [ 
-                    'onpremises/overview', 
-                    'onpremises/installation',
-                    'onpremises/configuration'
-                  ],
-      Plugins: [],
-      
+        type: "category",
+        label: "Onpremises",
+        items: [ 
+                'onpremises/overview', 
+                'onpremises/installation',
+                'onpremises/configuration'
+               ],
     },
     {
-      Releases: [
-                  'releases/release32',
-                  'releases/release31',
-                  'releases/appsecflow305',
-                  'releases/appsecflow304',
-                  'releases/appsecflow302',
-                ],
-      Plugins: [],
+      type: "category",
+      label: "Releases",
+      items: [
+              'releases/intro',
+              'releases/release32',
+              'releases/release31',
+              'releases/appsecflow305',
+              'releases/appsecflow304',
+              'releases/appsecflow302',
+             ],
     },
   ],
   ...require("./docs/api/graphql/documentation/sidebar-schema"),
