@@ -174,7 +174,7 @@ module.exports = {
               'general/assets_management',
               'general/bug_bounty',
               'general/email_notifications',
-              //'general/estimate',
+              'general/estimate',
               'general/integration_policies',
               'general/projects_management',
               'general/requirements',
