@@ -12,7 +12,7 @@ This release is an additional step towards our strategy of putting Flow at the c
 
 ### Flag to consider all Finding as Vulnerability in Policies
 
-The setting to classify all findings as vulnerabilities will be valid once this option is selected. It is also possible to classify by its criticality.
+The setting to classify all findings as vulnerabilities will be valid once this option is selected. It is also possible to classify by its severity.
 
 <div style={{textAlign: 'center'}}>
 
