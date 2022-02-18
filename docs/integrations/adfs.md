@@ -82,7 +82,6 @@ Again, we leave the default setting to allow all users access:
 
 After creating the Relying Party Trust, it is now necessary to create the **Claim Rules**:
 
-
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/adfs-img6.png)
@@ -206,7 +205,9 @@ Be careful with the protocol used in this url, it may default to **HTTP**. When 
 Only users of the **Company** type can perform this operation.
 :::
 
-For the **Login URL**, use ```https://<your-fqdndomain-name>/adfs/ls```:
+Log in to the [Conviso Platform](https://app.convisoappsec.com);
+
+At the left menu, choose **Integrations**. At the right panel, click on **Authentication** menu option, then click on the **Integrate** button of the **ADFS** card:
 
 <div style={{textAlign: 'center'}}>
 
@@ -214,6 +215,18 @@ For the **Login URL**, use ```https://<your-fqdndomain-name>/adfs/ls```:
 
 </div>
 
-Fill the **Federation Service Identifier** and **Certificate** fields with the previously obtained information. Fill the **Authorized Domains** field with all of your domain aliases.
+Fill in the SSO ADFS modal form with proper data:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/adfs-img18.png)
+
+</div>
+
+For the **Login URL**, use ```https://<your-fqdndomain-name>/adfs/ls```:
+
+Fill the **Federation Service Identifier** and **Certificate** fields with the previously obtained information. 
+
+Fill the **Authorized Domains** field with all of your domain aliases.
 
 After clicking on the **Save** button, we must disable Conviso Platform default authentication option.
