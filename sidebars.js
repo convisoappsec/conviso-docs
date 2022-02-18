@@ -27,6 +27,7 @@ module.exports = {
             type: "category",
             label: "AppSec Starter Training",
             items: [
+                      'training/introduction',
                       'training/lesson01',
                       'training/lesson02',
                       'training/lesson03',
