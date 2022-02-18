@@ -88,7 +88,7 @@ If you need to share access user or supporting document for a particular system,
 
 ### Requirements
 
-Keeping large teams working with the same goals, and following a pattern within the process is not the easiest of tasks. The **Requirements** allows you to create an action plan based on tasks that must be accomplished. For more information on how to use this, please refer to the [following guide](./bricks)
+Keeping large teams working with the same goals, and following a pattern within the process is not the easiest of tasks. The **Requirements** allows you to create an action plan based on tasks that must be accomplished. For more information on how to use this, please refer to the [following guide](./requirements)
 
 In some cases these tasks can be placed as mandatory for closing a project, this ensures that the manager has full control over the execution.
 
