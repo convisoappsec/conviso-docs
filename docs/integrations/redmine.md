@@ -38,7 +38,9 @@ The Redmine integration has three steps:
 
 ## Conviso Platform Configuration
 
-Log in to the Conviso Platform. At the left Menu, choose **Integrations**. At the right panel, choose **Defect Tracker**, then click at the button **Integrate** on the Redmine card:
+Log in to the [Conviso Platform](https://app.convisoappsec.com);
+
+At the left Menu, choose **Integrations**. At the right panel, choose **Defect Tracker**, then click at the button **Integrate** on the Redmine card:
 
 <div style={{textAlign: 'center'}}>
 
