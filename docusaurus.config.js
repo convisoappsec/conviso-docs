@@ -118,4 +118,29 @@ module.exports = {
       },
     ],*/
   ],
+
+  themes: [
+    // ... Your other themes.
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        indexBlog: false,
+        indexDocs: true,
+        indexPages: true,
+        docsDir: "docs",
+        hashed: true,
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 25,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+        // When applying `zh` in language, please install `nodejieba` in your project.
+      },
+    ],
+  ],
+
+
 };

@@ -88,7 +88,7 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 After downloading the certificate from Azure, open it in a text editor to copy its contents or use the command ```cat <your_certificate>``` at your terminal to be able to copy its contents.
 :::
 
-## Associating users to the SSO Application
+## Assigning users to the SSO Application
 
 After creating the SSO Application, you must populate it with your user accounts. Click on the **Users and groups** Application menu: 
 
