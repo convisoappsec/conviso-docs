@@ -6,7 +6,7 @@ sidebar_label: Introduction
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/Logo.png)
+![img](../../static/img/logo_release.png)
 
 </div>
 
