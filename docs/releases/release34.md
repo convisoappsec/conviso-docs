@@ -20,7 +20,7 @@ You can find Security Champion now as "**Any question about the project?**". The
 
 ### For Vulnerabilities:
 
-You can find Security Champion now as "**Talk to an expert**". The experience also remains the same after clicking the buttom. The difference is that this communication has lost one addition step to the user thourgh an easier access. 
+You can find Security Champion now as "**Talk to an expert**". The experience also remains the same after clicking the buttom. The difference is that this communication has lost one additional step to the user through an easier access. 
 
 <div style={{textAlign: 'center'}}>
 
