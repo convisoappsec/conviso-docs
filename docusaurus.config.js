@@ -16,12 +16,7 @@ module.exports = {
         src: 'img/favicon.ico',
       },
       items: [
-        {
-           to: "https://help.convisoappsec.com/",
-           label: "General Documentation",
-           position: "right",
-        },
-       /* {
+        /* {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Docs',
