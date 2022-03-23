@@ -46,7 +46,7 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-          command: flow --help
+          command: conviso --help
           name: help
 ```
 In this first pipeline, only one job is configured, called **flow-help**, and we determine that it will be executed as the only job of the **main** workflow.
@@ -55,7 +55,7 @@ This file can be saved by Circle CI itself in an alternate branch by clicking on
 
 ## Variables Setup
 
-Authentication between the flow CLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the **Variables** of Pipeline. They can be defined by project or else by context.
+Authentication between the CLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the **Variables** of Pipeline. They can be defined by project or else by context.
 
 ### Project Variables Setup
 
@@ -67,7 +67,7 @@ In this case, the variable will be restricted to the execution of pipelines of t
 
 3. In the left menu, click on **Environment Variables** and then on the **Add Environment Variable** button;
 
-4. Name the variable FLOW_API_KEY and add the API key available in your Conviso Platform profile.
+4. Name the variable CONVISO_API_KEY and add the API key available in your Conviso Platform profile.
 
 ### Context Variables Setup
 
@@ -101,7 +101,7 @@ jobs:
 
 Before proceeding, we recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```FLOW_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```FLOW_PROJECT_CODE``` (identified as the Project Key in Conviso Platform) which can be defined individually by project.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```CONVISO_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```CONVISO_PROJECT_CODE``` (identified as the Project Key in Conviso Platform) which can be defined individually by project.
 
 Below are sample code snippets for each of the approaches:
 
@@ -114,19 +114,19 @@ workflows:
   main:
     jobs:
       - flow-codereview-tags-time:
-          context: Conviso #has an env var called FLOW_API_KEY
+          context: Conviso #has an env var called CONVISO_API_KEY
 
 jobs:
  flow-codereview-tags-time: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Project Key>"
+      CONVISO_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
       - run:
-          command: flow deploy create with tag-tracker sort-by time
+          command: conviso deploy create with tag-tracker sort-by time
           name: deploy
 ```
 
@@ -139,19 +139,19 @@ workflows:
   main:
     jobs:
       - flow-codereview-tags-format:
-          context: Conviso #has an env var called FLOW_API_KEY
+          context: Conviso #has an env var called CONVISO_API_KEY
 
 jobs:
  flow-codereview-tags-format: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Project Key>"
+      CONVISO_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
       - run:
-          command: flow deploy create with tag-tracker sort-by versioning-style
+          command: conviso deploy create with tag-tracker sort-by versioning-style
           name: deploy
 ```
 
@@ -164,19 +164,19 @@ workflows:
   main:
     jobs:
       - flow-codereview-git:
-          context: Conviso #has an env var called FLOW_API_KEY
+          context: Conviso #has an env var called CONVISO_API_KEY
 
 jobs:
  flow-codereview-git: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Project Key>"
+      CONVISO_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
       - run:
-          command: flow deploy create with values   
+          command: conviso deploy create with values   
           name: deploy
 ```
  
@@ -184,9 +184,9 @@ jobs:
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The prerequisites for executing the job are the same ones already used: ```FLOW_API_KEY``` no (context or project) and ```FLOW_PROJECT_CODE``` defined as environment variables.
+The prerequisites for executing the job are the same ones already used: ```CONVISO_API_KEY``` no (context or project) and ```CONVISO_PROJECT_CODE``` defined as environment variables.
 
-In the above pipeline, we didn't use any options to the ```flow sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
+In the above pipeline, we didn't use any options to the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
 
 ```yml
 version: 2.1
@@ -195,19 +195,19 @@ workflows:
   main:
     jobs:
       - flow-sast:
-          context: Conviso #has an env var called FLOW_API_KEY
+          context: Conviso #has an env var called CONVISO_API_KEY
 
 jobs:
  flow-sast: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Project Key>"
+      CONVISO_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
       - run:
-          command: flow sast run   
+          command: conviso sast run   
           name: sast
 ```
 
@@ -220,25 +220,25 @@ workflows:
   main:
     jobs:
       - flow-sast:
-          context: Conviso #has an env var called FLOW_API_KEY
+          context: Conviso #has an env var called CONVISO_API_KEY
 
 jobs:
  flow-sast: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Project Key>"
+      CONVISO_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
       - run:
-          command: flow sast run --start_commit `git rev-parse @~1` --end-commit $CIRCLE_SHA1 
+          command: conviso sast run --start_commit `git rev-parse @~1` --end-commit $CIRCLE_SHA1 
           name: sast
 ```
 
-## Getting Everything Together: Code Review + SAST Deployment
+## SCA
 
-The SAST analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST analysis, forming a complete solution in the pipeline. An example of a complete pipeline with both solutions can be seen in the snippet below:
+The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
 
 ```yml
 version: 2.1
@@ -246,26 +246,56 @@ version: 2.1
 workflows:
   main:
     jobs:
-      - flow-deploy-sast:
-          context: Conviso #has an env var called FLOW_API_KEY
+      - flow-sca:
+          context: Conviso #has an env var called CONVISO_API_KEY
 
 jobs:
- flow-deploy-sast: 
+ flow-sca: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      FLOW_PROJECT_CODE: "<Project Key>"
+      CONVISO_PROJECT_CODE: "<Project Key>"
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          command: conviso sca run   
+          name: sca
+```
+
+## Getting Everything Together: Code Review + SAST + SCA Deployment
+
+The SAST and SCA analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
+
+```yml
+version: 2.1
+
+workflows:
+  main:
+    jobs:
+      - flow-deploy-sast-sca:
+          context: Conviso #has an env var called CONVISO_API_KEY
+
+jobs:
+ flow-deploy-sast-sca: 
+    docker: 
+      - image: "convisoappsec/flowcli"
+    environment:
+      CONVISO_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
       - run:
           name: deploy
-          command: flow deploy create -f env_vars with values > created_deploy_vars
+          command: conviso deploy create -f env_vars with values > created_deploy_vars
       - run: 
           name: sast
           command: |
             source created_deploy_vars
-            flow sast run \
-            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
+            conviso sast run \
+            --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+      - run:
+          name: sca
+          command: conviso sca run
 ```

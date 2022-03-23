@@ -68,7 +68,7 @@ Below is a step-by-step guide to setting up a new vault in Secret Manager, if yo
 
 4. Below, a list of key-value objects is expected;
 
-5. As key, fill ```FLOW_API_KEY``` with the value of the Conviso Platform API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
+5. As key, fill ```CONVISO_API_KEY``` with the value of the Conviso Platform API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
 
 6. In the encryption key field, select the desired one and click **Next**;
 
@@ -96,7 +96,7 @@ After these procedures, the secret will be available to be used by CodeBuild.
 
 Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```FLOW_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```FLOW_PROJECT_CODE``` variable.
+After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```CONVISO_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```CONVISO_PROJECT_CODE``` variable.
 
 Below are code snippets from the ```conviso-buildspec.yml``` file, which illustrates the creation of a unique job for deploying code review in the three available strategies:
 
@@ -107,9 +107,9 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<Project Key>'
+   CONVISO_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   FLOW_API_KEY: Conviso:FLOW_API_KEY
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
 
 phases:
  install:
@@ -119,7 +119,7 @@ phases:
      - pip3 install conviso-flowcli
  pre_build:
    commands:
-     - flow deploy create with tag-tracker sort by time
+     - conviso deploy create with tag-tracker sort by time
 ```
 
 **With TAGS, sorted by versioning-style**
@@ -129,9 +129,9 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<Project Key>'
+   CONVISO_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   FLOW_API_KEY: Conviso:FLOW_API_KEY
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
 
 phases:
  install:
@@ -141,7 +141,7 @@ phases:
      - pip3 install conviso-flowcli
  pre_build:
    commands:
-     - flow deploy create with tag-tracker sort-by versioning-style
+     - conviso deploy create with tag-tracker sort-by versioning-style
 ```
 
 **Without TAGS, sorted by GIT Tree**
@@ -151,9 +151,9 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<Project Key>'
+   CONVISO_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   FLOW_API_KEY: Conviso:FLOW_API_KEY
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
 
 phases:
  install:
@@ -163,23 +163,23 @@ phases:
      - pip3 install conviso-flowcli
  pre_build:
    commands:
-     - flow deploy create with values
+     - conviso deploy create with values
 ```
 
 ## SAST
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the compilation project, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The requirementss for running the job are the same as already practiced: Build project, ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as variables in the buildspec file:
+The requirementss for running the job are the same as already practiced: Build project, ```CONVISO_API_KEY``` and ```CONVISO_PROJECT_CODE``` defined as variables in the buildspec file:
 
 ```yml
 version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<Project Key>'
+   CONVISO_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   FLOW_API_KEY: Conviso:FLOW_API_KEY
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
 
 phases:
  install:
@@ -189,10 +189,10 @@ phases:
      - pip3 install conviso-flowcli
  pre_build:
    commands:
-     - flow sast run
+     - conviso sast run
 ```
 
-In the above pipeline, we didn't use any options to the ```flow sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
+In the above pipeline, we didn't use any options to the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
 
 Alternatively, we can specify the diff range manually. In the example below, we scan between the current commit and the immediately previous one on the current branch, so the findings will be found only at the last commit changes:
 
@@ -201,9 +201,9 @@ version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<Project Key>'
+   CONVISO_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   FLOW_API_KEY: Conviso:FLOW_API_KEY
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
 
 phases:
  install:
@@ -214,21 +214,45 @@ phases:
  pre_build:
    commands:
      - export START_COMMIT=`git rev-parse @~1`
-     - flow sast run --start-commit $START_COMMIT --end-commit $CODEBUILD_RESOLVED_SOURCE_VERSION
+     - conviso sast run --start-commit $START_COMMIT --end-commit $CODEBUILD_RESOLVED_SOURCE_VERSION
 ```
 
-## Getting everything together: Code Review + SAST Deployment
+## SCA
 
-The SAST analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST analysis, forming a complete solution in the compilation project. An example of a complete buildspec with both solutions can be seen in the snippet below:
+The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
 
 ```yml
 version: 0.2
 
 env:
  variables:
-   FLOW_PROJECT_CODE: '<Project Key>'
+   CONVISO_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   FLOW_API_KEY: Conviso:FLOW_API_KEY
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+
+phases:
+ install:
+   commands:
+     - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
+     - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+     - pip3 install conviso-flowcli
+ pre_build:
+   commands:
+     - conviso sca run
+```
+
+## Getting everything together: Code Review + SAST + SCA Deployment
+
+The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the compilation project. An example of a complete buildspec with all solutions can be seen in the snippet below:
+
+```yml
+version: 0.2
+
+env:
+ variables:
+   CONVISO_PROJECT_CODE: '<Project Key>'
+ secrets-manager:
+   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
 
 phases:
  install:
@@ -239,9 +263,10 @@ phases:
  pre_build:
    commands:
      - deploy_create_output_vars="$(mktemp)"
-     - flow deploy create -f env_vars with values > "$deploy_create_output_vars"
+     - conviso deploy create -f env_vars with values > "$deploy_create_output_vars"
      - . "$deploy_create_output_vars"
-     - flow sast run --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
+     - conviso sast run --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+     - conviso sca run
 ```
 
 ## Troubleshooting

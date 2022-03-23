@@ -50,6 +50,7 @@ module.exports = {
                       'cli/installation',
                       'cli/authentication',
                       'cli/sast',
+                      //'cli/sca',
                       'cli/security-gate'
                     ]
     },
@@ -150,8 +151,8 @@ module.exports = {
         label: "Onpremises",
         items: [ 
                 'onpremises/overview', 
-                'onpremises/installation',
-                'onpremises/configuration'
+                //'onpremises/installation',
+                //'onpremises/configuration'
                ],
     },
     {

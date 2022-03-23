@@ -54,14 +54,14 @@ pipeline {
   }
 
   environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = "Please, insert your project code here"
+    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
+    CONVISO_PROJECT_CODE = "Please, insert your project code here"
   }
 
   stages {
     stage('Conviso_SAST') {
       steps {
-        sh 'flow sast run'
+        sh 'conviso sast run'
       }
     }
   }
@@ -69,7 +69,8 @@ pipeline {
 ```
 
 ## SCA
-The following code snippet will trigger a SCA scan and send the results to Flow.
+
+The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
 
 ```yml
 pipeline {
@@ -82,14 +83,14 @@ pipeline {
   }
 
   environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = "Please, insert your project code here"
+    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
+    CONVISO_PROJECT_CODE = "Please, insert your project code here"
   }
 
   stages {
     stage('Conviso_SAST') {
       steps {
-        sh 'flow sca run'
+        sh 'conviso sca run'
       }
     }
   }
@@ -114,8 +115,8 @@ pipeline {
   }
 
   environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = "Please, insert your project code here"
+    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
+    CONVISO_PROJECT_CODE = "Please, insert your project code here"
   }
 
   stages {
@@ -123,53 +124,51 @@ pipeline {
       steps {
       //Please use only one of the following approaches in the same job
       //Using Tags, ordered by time
-      //  sh 'flow deploy create with tag-tracker sort-by time'
+      //  sh 'conviso deploy create with tag-tracker sort-by time'
       //Using Tags, ordered by versioning style (semantic version)
-      //  sh 'flow deploy create with tag-tracker sort-by versioning-style'
+      //  sh 'conviso deploy create with tag-tracker sort-by versioning-style'
       //Without using Tags, ordered by Git tree
-        sh 'flow deploy create with values'
+        sh 'conviso deploy create with values'
       }
     }
   }
 }
 ```
 
-## Getting Everything Together: Code Review + SAST Deployment
+## Getting Everything Together: Code Review + SAST + SCA Deployment
 
 The SAST analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST analysis, forming a complete solution in the pipeline. An example of a complete pipeline with both solutions can be seen in the snippet below: 
-```
+
+```yml
 pipeline {
   agent none
-​
   stages {
     stage('Conviso_CodeReview') {
-​
       agent {
         docker {
           image 'convisoappsec/flowcli:latest'
           args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
-      }
-      
+      }     
       environment {
-        FLOW_API_KEY      = credentials('SUP-FLOW-API-KEY-HOMOLOGA')
-        FLOW_PROJECT_CODE = "****************"
-        FLOW_API_URL = "https://app.convisoappsec.com/"
+        CONVISO_API_KEY      = credentials('SUP-FLOW-API-KEY-HOMOLOGA')
+        CONVISO_PROJECT_CODE = "****************"
+        CONVISO_API_URL = "https://app.convisoappsec.com/"
      }
-​
       steps {
         git url: 'https://github.com/convisoappsec/DVWA.git'
-​
         sh '''
-          flow deploy create \
+          conviso deploy create \
 	        -f env_vars with values > deploy_create_output_vars
         '''
-​
-        sh '''
+​        sh '''
           . deploy_create_output_vars
-          flow sast run \
-	        --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
+          conviso sast run \
+	        --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+        '''
+        sh '''
+          conviso sca run
         '''
       }//steps
     }//stage

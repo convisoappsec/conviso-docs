@@ -53,7 +53,7 @@ This integration addresses a single pipeline creation that serves multiple repos
 ## Jenkinsfile Pipeline Script
 
 ```yml
-// Here you should map http_git_url with the flow project code
+// Here you should map http_git_url with the Conviso project code
 def get_project_code(repo_url){
     project_codes = [
         "<url_to_git_repo>": '<project_code>',
@@ -71,8 +71,8 @@ pipeline {
   }
 
 environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = get_project_code(webhook_repository_git_http_url)
+    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
+    CONVISO_PROJECT_CODE = get_project_code(webhook_repository_git_http_url)
     PREVIOUS_COMMIT = "$webhook_before"
     CURRENT_COMMIT = "$webhook_after"
 }
@@ -81,12 +81,12 @@ environment {
     stage('AppSec_Flow') {
       steps {
         git credentialsId: '<credential_personal_access_token_name>', url: "$webhook_repository_git_http_url"
-        sh 'flow deploy create -f env_vars with values -p $PREVIOUS_COMMIT -c $CURRENT_COMMIT > created_deploy_vars'
+        sh 'conviso deploy create -f env_vars with values -p $PREVIOUS_COMMIT -c $CURRENT_COMMIT > created_deploy_vars'
         sh '''
             . ./created_deploy_vars
-            flow sast run \
-            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
+            conviso sast run \
+            --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
         '''
       }
     }
