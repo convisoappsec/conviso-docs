@@ -137,7 +137,7 @@ module.exports = {
                   'integrations/checkmarx',
                   'integrations/dast',
                   'integrations/fortify',
-                  //'integrations/nessus',
+                  'integrations/nessus',
                   'integrations/qualys',
                   'integrations/sonarcloud',
                   'integrations/sonarqube',
