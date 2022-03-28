@@ -33,7 +33,7 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Flow CLI',
+              label: 'CLI',
               to: 'cli/installation',
             },
             {

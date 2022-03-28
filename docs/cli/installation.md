@@ -5,7 +5,7 @@ sidebar_label: Overview
 ---
 
 ## Overview
-Flow CLI is a command line interface tool to interact with Conviso Platform. 
+The CLI is a command line interface tool to interact with Conviso Platform. 
 
 The primary goal of the CLI is to be a developer friendly tool which automates different functionalities, letting users interact more easily with the platform.
 
@@ -39,7 +39,7 @@ $ python3 -m pip install --user conviso-flowcli
 ```
 Check if the install command was well succeeded.
 ```sh
-$ flow --version
+$ conviso --version
 ```
 The command will print the current version and exit with success. Now we are ready to proceed.
 
@@ -52,10 +52,10 @@ This section will guide you to activate the [CLI shell completion](https://en.wi
 ### Bash
 Open your .bashrc file at ~/.bashrc and place the following snippet in the end of file.
 ```sh
-FLOW_COMPLETER="$(which flow_bash_completer.sh)"
+CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 
-[ -f "$FLOW_COMPLETER" ] && {
-  source "$FLOW_COMPLETER"
+[ -f "$CONVISO_COMPLETER" ] && {
+  source "$CONVISO_COMPLETER"
 }
 ```
 Start a new bash shell session and the shell completion will be available.
@@ -63,10 +63,10 @@ Start a new bash shell session and the shell completion will be available.
 ### Zsh
 Open your .zshrc file at ~/.zshrc and place the following snippet in the end of file.
 ```sh
-FLOW_COMPLETER="$(which flow_zsh_completer.sh)"
+CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
 
-[ -f "$FLOW_COMPLETER" ] && {
-  source "$FLOW_COMPLETER"
+[ -f "$CONVISO_COMPLETER" ] && {
+  source "$CONVISO_COMPLETER"
 }
 ```
 Start a new zsh shell session and the shell completion will be available.

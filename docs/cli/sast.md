@@ -6,23 +6,24 @@ sidebar_label: SAST
 
 
 ## Static Application Security Testing (SAST)
+
 Using the CLI is very simple to execute a SAST at your source code repository.
 The results will be sent to your Conviso Platform application by using the *project code identifier*.
 
 Assuming that my_source_code_repository is a git repository, you can:
 
 ```sh
-$ export FLOW_API_KEY='your-api-key'
-$ export FLOW_PROJECT_CODE='your-project-code'
+$ export CONVISO_API_KEY='your-api-key'
+$ export CONVISO_PROJECT_CODE='your-project-code'
 $ cd my_source_code_repository
-$ flow sast run
+$ conviso sast run
 ```
 
 The following instructions has the same effect.
 
 ```sh
 $ cd my_source_code_repository
-$ flow --api-key 'your-api-key' sast run --project-code 'your-project-code'
+$ conviso --api-key 'your-api-key' sast run --project-code 'your-project-code'
 ```
 
 ## Output

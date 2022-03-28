@@ -4,14 +4,19 @@ title: On-Premises - Overview
 sidebar_label: Overview
 ---
 
-:::note
-Do you wanna talk with one of our specialists about On-Premises solution?  [Contact us](https://convisoappsec.com).
+:::danger
+The Onpremises solution development and support were discontinued. If you are still using the Onpremises implementation, please [contact us](https://convisoappsec.com).
 :::
 
-## Overview
+<!--
+:::note
+Do you wanna talk with one of our specialists about On-Premises solution? [contact us](https://convisoappsec.com).
+:::
+
+/** ## Overview
 
 Conviso Platform is a software platform that supports all security practices in a software development pipeline and improves vulnerability management.
-With Conviso Platform, security stops being a bottleneck. It becomes a continuous activity integrated into the whole software development life cycle, incorporating best practices with the correct projects running at the right moments, and without reducing the speed of your business. 
+With Conviso Platform, security stops being a bottleneck. It becomes a continuous activity integrated into the whole software development life cycle, incorporating best practices with the correct projects running at the right moments, and without reducing the speed of your business.  
 
 
 ## Requirements
@@ -29,3 +34,5 @@ With Conviso Platform, security stops being a bottleneck. It becomes a continuou
 
 - Inbound: 443 (HTTPS)
 - Outbound: All
+
+-->

@@ -37,7 +37,7 @@ rules:
 
 ## Usage
 ```
-flow vulnerability assert-security-rules --rules-file rules.yml
+conviso vulnerability assert-security-rules --rules-file rules.yml
 ```
 
 Success Response:
