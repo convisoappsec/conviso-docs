@@ -26,7 +26,7 @@ Whereas the local Runner is the default Runtime Environment for your CodeFresh a
 
 1. At the main menu, click **Pipelines**;
 2. At the upper right corner, click **New Pipeline**;
-3. Select a project to be the test Pipeline. This Pipeline may be labeled as **flow-sample**, as we will refer to it hereafter;
+3. Select a project to be the test Pipeline. This Pipeline may be labeled as **conviso_sample**, as we will refer to it hereafter;
 4. In this first run, no source code association is required, so the **Add Git Repository** option may remain disabled;
 5. By clicking on **Create**, the page will be directed to the **Workflow** tab of the Pipeline, where Codefresh generates an example of a pipeline to be executed. We will not use that example now; copy and paste the code below into the YAML editing window;
 
@@ -35,7 +35,7 @@ version: "1.0"
 stages:
 - "test"
 steps:
-  flow_sample:
+  conviso_sample:
     title: "CLI Hello"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -112,7 +112,7 @@ Next, we present sample code snippets for each of the approaches, assuming the t
 **With TAGS, sorted by timestamp**
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso Deploy"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -124,7 +124,7 @@ flow_sample:
 **With TAGS, sorted by versioning-style**
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso Deploy"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -136,7 +136,7 @@ flow_sample:
 **Without TAGS, sorted by GIT Tree**
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso Deploy"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -152,7 +152,7 @@ The requirements for running the job are the same as already shown: ```CONVISO_A
 Next, we present the sample code snippets for each of the approaches, assuming the target project was cloned in a previous step.
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso SAST"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -167,7 +167,7 @@ Notice that we didn't provide any option to the command ```conviso sast run``` a
 Alternatively, we can specify the diff range manually. In the example presented below, we scan between the current commit and the immediately previous one, at the current branch.
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso SAST"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -182,7 +182,7 @@ flow_sample:
 The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso SCA"
     type: "freestyle"
     image: "convisoappsec/flowcli"
@@ -198,7 +198,7 @@ The SAST and SCA projects can be complementary to the code review performed by a
 Assuming the target project was cloned in an earlier step, the following job snippet sample will deploy code for code review and use the same diff identifiers to perform the SAST and SCA projects in the pipeline: 
 
 ```yml
-flow_sample:
+conviso_sample:
     title: "Conviso Full Job"
     type: "freestyle"
     image: "convisoappsec/flowcli"
