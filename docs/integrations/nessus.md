@@ -82,7 +82,7 @@ On the main menu to the left, click on **Integrations**. At the panel to the rig
 
 </div>
 
-Fill the **Access Key**, **Secret Key** and **URL** with data retrieved from your Nessus instance. When done filling the form, click on the **Save** button to store your integration configuration setting:
+Fill the **Access Key**, **Secret Key** and **URL** with data retrieved from your Nessus instance. When done filling the form, click on the **Save** button:
 
 <div style={{textAlign: 'center'}}>
 
@@ -90,3 +90,44 @@ Fill the **Access Key**, **Secret Key** and **URL** with data retrieved from you
 
 </div>
 
+Now you have to create the Nessus Scans and Conviso Platform Assets mappings. Choose from the list **External Projects** the Nessus scans that will be related to the Conviso Platform **Assets**. If you need to associate more than one scan to assets, click on the **Add external projects** and do the association. When done mapping all of your Nessus scans to the Conviso Platform Assets, click on the **Save** button:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/nessus-img7.png)
+
+</div>
+
+## Importing Nessus Issues to Conviso Platform
+
+At the left main Menu, choose **Assets Management**. On the right panel, select the asset you want to manage:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/nessus-img8.png)
+
+</div>
+
+Click on the button **Actions** and select the **Import Nessus Issues** from the drop-down list:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/nessus-img9.png)
+
+</div>
+
+Click on the **Confirm** button to start importing Nessus issues to Conviso Platform:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/nessus-img10.png)
+
+</div>
+
+You may find the imported issues from Nessus by clicking on the **Findings** menu option on the main left menu panel:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/nessus-img11.png)
+
+</div>
