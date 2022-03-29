@@ -141,7 +141,7 @@ module.exports = {
                   'integrations/qualys',
                   'integrations/sonarcloud',
                   'integrations/sonarqube',
-                  //'integrations/veracode'           
+                  'integrations/veracode'           
                   ]
         },
       ]
