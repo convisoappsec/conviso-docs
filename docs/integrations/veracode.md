@@ -50,3 +50,32 @@ Fill the modal with the **Veracode api id** and the **Veracode api key**. When d
 
 </div>
 
+After saving, a new modal will be automatically shown with 4 options: select external projects, choose the asset, add other external projects and if you want to integrate all Veracode projects.
+
+:::note
+If no assets are displayed, make sure there is at least one asset created in the **Assets Management** tab in the Conviso Platform main left Menu.
+:::
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/veracode-img3.png)
+
+</div>
+
+## Importing Veracode Issues to Conviso Platform
+
+Click on the **Assets Management** main left Menu option, then select the asset you want to import issues. Click on **Actions** and then choose **Import Veracode Issues** from the drop-down list. It will automatically request Veracode to get the issues:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/veracode-img4.png)
+
+</div>
+
+After importing Veracode issues, you will be able to view those imported issues, by clicking on the **Findings** main left menu:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/veracode-img5.png)
+
+</div>
