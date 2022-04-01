@@ -1,0 +1,42 @@
+---
+id: playbooks
+title: playbooks
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return all playbooks the company
+
+```graphql
+playbooks(
+  id: ID!
+  page: Int = 0
+  limit: Int = 0
+  params: RequirementSearch
+): RequirementCollection
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
+#### `params` ([`RequirementSearch`](/api/inputs/requirement-search))
+
+### Type
+
+#### [`RequirementCollection`](/api/objects/requirement-collection)

@@ -1,0 +1,45 @@
+---
+id: asset-development-model
+title: AssetDevelopmentModel
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+enum AssetDevelopmentModel {
+  agile
+  none
+  third_party
+  waterfall
+}
+```
+
+### Values
+
+#### `agile`
+
+Agile
+
+#### `none`
+
+None
+
+#### `third_party`
+
+Third_party
+
+#### `waterfall`
+
+Waterfall

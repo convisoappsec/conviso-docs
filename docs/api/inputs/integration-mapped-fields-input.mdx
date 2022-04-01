@@ -1,0 +1,52 @@
+---
+id: integration-mapped-fields-input
+title: IntegrationMappedFieldsInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IntegrationMappedFieldsInput {
+  id: ID
+  assetOption: [Int!]!
+  outsideKey: String
+  issueType: String
+  extraKey: String
+  scopeIntegrationId: Int!
+  projectExternalId: Int!
+  projectExternalLabel: String!
+  mapFields: [MappedFieldIntegrationType!]!
+}
+```
+
+### Fields
+
+#### `id` ([`ID`](/api/scalars/id))
+
+#### `assetOption` ([`[Int!]!`](/api/scalars/int))
+
+#### `outsideKey` ([`String`](/api/scalars/string))
+
+#### `issueType` ([`String`](/api/scalars/string))
+
+#### `extraKey` ([`String`](/api/scalars/string))
+
+#### `scopeIntegrationId` ([`Int!`](/api/scalars/int))
+
+#### `projectExternalId` ([`Int!`](/api/scalars/int))
+
+#### `projectExternalLabel` ([`String!`](/api/scalars/string))
+
+#### `mapFields` ([`[MappedFieldIntegrationType!]!`](/api/inputs/mapped-field-integration-type))

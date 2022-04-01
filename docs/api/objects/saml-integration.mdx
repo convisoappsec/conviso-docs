@@ -1,0 +1,58 @@
+---
+id: saml-integration
+title: SamlIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type SamlIntegration {
+  authorizedDomains: [String!]
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  errorsMessage: String
+  id: ID!
+  integrationType: String
+  samlIdpCert: String
+  samlIdpEntityId: String
+  samlIdpSsoTarget: String
+  scopeId: Int
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `authorizedDomains` ([`[String!]`](/api/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/scalars/iso-8601-date-time))
+
+#### `errorsMessage` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `integrationType` ([`String`](/api/scalars/string))
+
+#### `samlIdpCert` ([`String`](/api/scalars/string))
+
+#### `samlIdpEntityId` ([`String`](/api/scalars/string))
+
+#### `samlIdpSsoTarget` ([`String`](/api/scalars/string))
+
+#### `scopeId` ([`Int`](/api/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))

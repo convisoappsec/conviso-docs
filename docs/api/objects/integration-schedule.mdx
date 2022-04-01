@@ -1,0 +1,40 @@
+---
+id: integration-schedule
+title: IntegrationSchedule
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IntegrationSchedule {
+  createdAt: ISO8601DateTime!
+  cycle: String
+  id: ID!
+  integrationId: Int
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `cycle` ([`String`](/api/scalars/string))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `integrationId` ([`Int`](/api/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))

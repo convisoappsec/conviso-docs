@@ -1,0 +1,50 @@
+---
+id: asset-life-cycle
+title: AssetLifeCycle
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+enum AssetLifeCycle {
+  production
+  homologation
+  certification
+  discontinued
+  none
+}
+```
+
+### Values
+
+#### `production`
+
+Production
+
+#### `homologation`
+
+Homologation
+
+#### `certification`
+
+Certification
+
+#### `discontinued`
+
+discontinued
+
+#### `none`
+
+None

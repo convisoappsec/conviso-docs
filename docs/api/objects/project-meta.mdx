@@ -20,7 +20,12 @@ No description
 ```graphql
 type ProjectMeta {
   currentPage: Int!
+  engagementStatuses: [AnalysisStatusType!]
+  engagementTypes: [ProjectType!]
   limitValue: Int!
+  tags: [String!]
+  teams: [Team!]
+  total: Int
   totalAnalysis: Int
   totalCount: Int!
   totalDone: Int
@@ -28,6 +33,13 @@ type ProjectMeta {
   totalFixing: Int
   totalPages: Int!
   totalPaused: Int
+  totalPlanned: Int
+  totalVulnsCount: Int
+  totalVulnsCritical: Int
+  totalVulnsHigh: Int
+  totalVulnsLow: Int
+  totalVulnsMedium: Int
+  totalVulnsNotification: Int
 }
 ```
 
@@ -35,7 +47,17 @@ type ProjectMeta {
 
 #### `currentPage` ([`Int!`](/api/scalars/int))
 
+#### `engagementStatuses` ([`[AnalysisStatusType!]`](/api/objects/analysis-status-type))
+
+#### `engagementTypes` ([`[ProjectType!]`](/api/objects/project-type))
+
 #### `limitValue` ([`Int!`](/api/scalars/int))
+
+#### `tags` ([`[String!]`](/api/scalars/string))
+
+#### `teams` ([`[Team!]`](/api/objects/team))
+
+#### `total` ([`Int`](/api/scalars/int))
 
 #### `totalAnalysis` ([`Int`](/api/scalars/int))
 
@@ -50,3 +72,17 @@ type ProjectMeta {
 #### `totalPages` ([`Int!`](/api/scalars/int))
 
 #### `totalPaused` ([`Int`](/api/scalars/int))
+
+#### `totalPlanned` ([`Int`](/api/scalars/int))
+
+#### `totalVulnsCount` ([`Int`](/api/scalars/int))
+
+#### `totalVulnsCritical` ([`Int`](/api/scalars/int))
+
+#### `totalVulnsHigh` ([`Int`](/api/scalars/int))
+
+#### `totalVulnsLow` ([`Int`](/api/scalars/int))
+
+#### `totalVulnsMedium` ([`Int`](/api/scalars/int))
+
+#### `totalVulnsNotification` ([`Int`](/api/scalars/int))

@@ -23,6 +23,7 @@ type ProjectTypeSearch {
   labelCont: String
   descriptionEq: String
   descriptionCont: String
+  idIn: [Int!]
 }
 ```
 
@@ -43,3 +44,7 @@ Search for the content of an description
 #### `descriptionCont` ([`String`](/api/scalars/string))
 
 Exact search for an description
+
+#### `idIn` ([`[Int!]`](/api/scalars/int))
+
+Ids is one of these values

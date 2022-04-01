@@ -26,18 +26,7 @@ type Contract {
   attachmentSize: Int
   client: Company
   companyId: Int
-  consumedAnnualLeave: String
-  consumedApplicationSecurityTesting: String
-  consumedEducationModule: String
-  consumedGapAnalysis: String
-  consumedHardwareIotPenTest: String
-  consumedManagedService: String
-  consumedManualCodeReview: String
-  consumedMobilePenTest: String
-  consumedNetworkPenTest: String
-  consumedScanAndFindingReview: String
-  consumedThreatModeling: String
-  consumedWebPenTest: String
+  consumedServices: ContractConsumedServices
   contacts: [Contact!]
   createdAt: ISO8601DateTime!
   customMetadata: ContractCollection
@@ -81,29 +70,7 @@ type Contract {
 
 #### `companyId` ([`Int`](/api/scalars/int))
 
-#### `consumedAnnualLeave` ([`String`](/api/scalars/string))
-
-#### `consumedApplicationSecurityTesting` ([`String`](/api/scalars/string))
-
-#### `consumedEducationModule` ([`String`](/api/scalars/string))
-
-#### `consumedGapAnalysis` ([`String`](/api/scalars/string))
-
-#### `consumedHardwareIotPenTest` ([`String`](/api/scalars/string))
-
-#### `consumedManagedService` ([`String`](/api/scalars/string))
-
-#### `consumedManualCodeReview` ([`String`](/api/scalars/string))
-
-#### `consumedMobilePenTest` ([`String`](/api/scalars/string))
-
-#### `consumedNetworkPenTest` ([`String`](/api/scalars/string))
-
-#### `consumedScanAndFindingReview` ([`String`](/api/scalars/string))
-
-#### `consumedThreatModeling` ([`String`](/api/scalars/string))
-
-#### `consumedWebPenTest` ([`String`](/api/scalars/string))
+#### `consumedServices` ([`ContractConsumedServices`](/api/objects/contract-consumed-services))
 
 #### `contacts` ([`[Contact!]`](/api/objects/contact))
 

@@ -1,0 +1,49 @@
+---
+id: integration-external-association
+title: integrationExternalAssociation
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all mapped integration by company
+
+```graphql
+integrationExternalAssociation(
+  page: Int = 0
+  limit: Int = 0
+  sortBy: String
+  descending: Boolean
+  params: ProjectExternalKeySearch
+): IntegrationExternalProjectCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
+#### `sortBy` ([`String`](/api/scalars/string))
+
+column name to order. Ex: label
+
+#### `descending` ([`Boolean`](/api/scalars/boolean))
+
+0 => DESC or 1 => ASC
+
+#### `params` ([`ProjectExternalKeySearch`](/api/inputs/project-external-key-search))
+
+### Type
+
+#### [`IntegrationExternalProjectCollection`](/api/objects/integration-external-project-collection)

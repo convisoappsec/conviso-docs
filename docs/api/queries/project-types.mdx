@@ -1,0 +1,39 @@
+---
+id: project-types
+title: projectTypes
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all project types
+
+```graphql
+projectTypes(
+  page: Int = 0
+  limit: Int = 0
+  params: ProjectTypeSearch
+): ProjectTypeCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/scalars/int))
+
+#### `limit` ([`Int`](/api/scalars/int))
+
+#### `params` ([`ProjectTypeSearch`](/api/inputs/project-type-search))
+
+### Type
+
+#### [`ProjectTypeCollection`](/api/objects/project-type-collection)

@@ -19,7 +19,7 @@ No description
 
 ```graphql
 type PortalUser {
-  allocatedAnalyses: [Analysis!]
+  allocatedAnalyses: [Project!]
   analyst: Boolean
   blocked: Boolean
   dashboardOnly: Boolean
@@ -31,7 +31,10 @@ type PortalUser {
   jiraUser: String
   name: String
   oper: Boolean
+  pendingDeploys: [PendingDeploy!]
+  pendingProjectComments: [ProjectComment!]
   phone: String
+  projectsInEstimate: [ProjectsInEstimate!]
   reviewedDeploys(
     initialDate: ISO8601DateTime!
     finishDate: ISO8601DateTime!
@@ -44,7 +47,7 @@ type PortalUser {
 
 ### Fields
 
-#### `allocatedAnalyses` ([`[Analysis!]`](/api/objects/analysis))
+#### `allocatedAnalyses` ([`[Project!]`](/api/objects/project))
 
 #### `analyst` ([`Boolean`](/api/scalars/boolean))
 
@@ -68,7 +71,13 @@ type PortalUser {
 
 #### `oper` ([`Boolean`](/api/scalars/boolean))
 
+#### `pendingDeploys` ([`[PendingDeploy!]`](/api/objects/pending-deploy))
+
+#### `pendingProjectComments` ([`[ProjectComment!]`](/api/objects/project-comment))
+
 #### `phone` ([`String`](/api/scalars/string))
+
+#### `projectsInEstimate` ([`[ProjectsInEstimate!]`](/api/objects/projects-in-estimate))
 
 #### `reviewedDeploys` ([`[Deploy!]`](/api/objects/deploy))
 

@@ -1,0 +1,58 @@
+---
+id: result-files
+title: ResultFiles
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ResultFiles {
+  archive: String
+  archiveContentType: String
+  archiveFilename: String
+  archiveId: String
+  archiveSize: Int
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime!
+  id: ID!
+  name: String
+  portalUserId: ID
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `archive` ([`String`](/api/scalars/string))
+
+#### `archiveContentType` ([`String`](/api/scalars/string))
+
+#### `archiveFilename` ([`String`](/api/scalars/string))
+
+#### `archiveId` ([`String`](/api/scalars/string))
+
+#### `archiveSize` ([`Int`](/api/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/scalars/id))
+
+#### `name` ([`String`](/api/scalars/string))
+
+#### `portalUserId` ([`ID`](/api/scalars/id))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))

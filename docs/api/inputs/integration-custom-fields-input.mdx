@@ -1,0 +1,40 @@
+---
+id: integration-custom-fields-input
+title: IntegrationCustomFieldsInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IntegrationCustomFieldsInput {
+  id: ID
+  name: String!
+  value: String!
+  projectExternalKeyId: Int
+  fieldType: String
+}
+```
+
+### Fields
+
+#### `id` ([`ID`](/api/scalars/id))
+
+#### `name` ([`String!`](/api/scalars/string))
+
+#### `value` ([`String!`](/api/scalars/string))
+
+#### `projectExternalKeyId` ([`Int`](/api/scalars/int))
+
+#### `fieldType` ([`String`](/api/scalars/string))

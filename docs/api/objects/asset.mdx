@@ -19,7 +19,6 @@ No description
 
 ```graphql
 type Asset {
-  analyses: [Analysis!]
   architectureType: String
   assetType: String
   assetsTagList: String
@@ -35,6 +34,7 @@ type Asset {
   id: ID!
   lifeCycle: String
   name: String
+  projects: [Project!]
   scanType: String
   updatedAt: ISO8601DateTime!
   url: String
@@ -42,8 +42,6 @@ type Asset {
 ```
 
 ### Fields
-
-#### `analyses` ([`[Analysis!]`](/api/objects/analysis))
 
 #### `architectureType` ([`String`](/api/scalars/string))
 
@@ -74,6 +72,8 @@ type Asset {
 #### `lifeCycle` ([`String`](/api/scalars/string))
 
 #### `name` ([`String`](/api/scalars/string))
+
+#### `projects` ([`[Project!]`](/api/objects/project))
 
 #### `scanType` ([`String`](/api/scalars/string))
 

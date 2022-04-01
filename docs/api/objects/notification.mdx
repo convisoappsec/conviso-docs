@@ -19,7 +19,6 @@ No description
 
 ```graphql
 type Notification {
-  analysisId: Int
   author: PortalUser
   companyId: Int
   companyName: String
@@ -29,14 +28,13 @@ type Notification {
   history: [History!]!
   id: ID!
   notificationStatus: String
+  projectId: Int
   updatedAt: ISO8601DateTime!
   vulnerabilityTemplate: VulnerabilityTemplate!
 }
 ```
 
 ### Fields
-
-#### `analysisId` ([`Int`](/api/scalars/int))
 
 #### `author` ([`PortalUser`](/api/objects/portal-user))
 
@@ -55,6 +53,8 @@ type Notification {
 #### `id` ([`ID!`](/api/scalars/id))
 
 #### `notificationStatus` ([`String`](/api/scalars/string))
+
+#### `projectId` ([`Int`](/api/scalars/int))
 
 #### `updatedAt` ([`ISO8601DateTime!`](/api/scalars/iso-8601-date-time))
 
