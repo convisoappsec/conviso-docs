@@ -1,0 +1,37 @@
+---
+id: scope-integration
+title: ScopeIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ScopeIntegration {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  name: String!
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `name` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

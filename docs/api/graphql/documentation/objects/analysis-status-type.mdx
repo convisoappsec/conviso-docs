@@ -1,0 +1,37 @@
+---
+id: analysis-status-type
+title: AnalysisStatusType
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AnalysisStatusType {
+  createdAt: ISO8601DateTime
+  id: ID!
+  isInitial: Boolean!
+  label: String!
+}
+```
+
+### Fields
+
+#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `isInitial` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))

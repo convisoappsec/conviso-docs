@@ -1,0 +1,31 @@
+---
+id: integration-schedule-cycle
+title: IntegrationScheduleCycle
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IntegrationScheduleCycle {
+  cycle: String!
+  information: String!
+}
+```
+
+### Fields
+
+#### `cycle` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `information` ([`String!`](/api/graphql/documentation/scalars/string))

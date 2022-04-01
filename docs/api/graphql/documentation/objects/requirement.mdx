@@ -1,6 +1,6 @@
 ---
-id: playbook
-title: Playbook
+id: requirement
+title: Requirement
 ---
 
 export const Tag = ({children, color}) => (
@@ -18,7 +18,8 @@ style={{
 No description
 
 ```graphql
-type Playbook {
+type Requirement {
+  check: [Check!]!
   checklistTypeId: Int
   companyId: Int
   createdAt: ISO8601DateTime
@@ -31,6 +32,8 @@ type Playbook {
 ```
 
 ### Fields
+
+#### `check` ([`[Check!]!`](/api/graphql/documentation/objects/check))
 
 #### `checklistTypeId` ([`Int`](/api/graphql/documentation/scalars/int))
 

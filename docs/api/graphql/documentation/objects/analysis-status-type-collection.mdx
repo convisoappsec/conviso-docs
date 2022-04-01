@@ -1,0 +1,31 @@
+---
+id: analysis-status-type-collection
+title: AnalysisStatusTypeCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AnalysisStatusTypeCollection {
+  collection: [AnalysisStatusType!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[AnalysisStatusType!]!`](/api/graphql/documentation/objects/analysis-status-type))
+
+#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))

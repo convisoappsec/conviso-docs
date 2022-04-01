@@ -1,0 +1,43 @@
+---
+id: readed-chat-message
+title: ReadedChatMessage
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ReadedChatMessage {
+  chat: Chat!
+  createdAt: ISO8601DateTime!
+  id: ID!
+  lastMessageReaded: ChatMessage!
+  portalUser: PortalUser!
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `chat` ([`Chat!`](/api/graphql/documentation/objects/chat))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `lastMessageReaded` ([`ChatMessage!`](/api/graphql/documentation/objects/chat-message))
+
+#### `portalUser` ([`PortalUser!`](/api/graphql/documentation/objects/portal-user))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

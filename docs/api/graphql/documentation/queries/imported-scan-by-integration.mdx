@@ -1,0 +1,39 @@
+---
+id: imported-scan-by-integration
+title: importedScanByIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns imported scans from a scan tool
+
+```graphql
+importedScanByIntegration(
+  integrationId: Int!
+  page: Int = 0
+  limit: Int = 0
+): ImportedScanCollection!
+
+```
+
+### Arguments
+
+#### `integrationId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`ImportedScanCollection`](/api/graphql/documentation/objects/imported-scan-collection)

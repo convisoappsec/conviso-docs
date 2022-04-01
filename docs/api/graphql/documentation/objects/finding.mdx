@@ -28,6 +28,7 @@ type Finding {
   category: String
   commitReference: String
   component: String
+  createdAt: ISO8601DateTime!
   cves: [String!]
   descriptionEn: String
   evaluationStatus: String
@@ -40,8 +41,11 @@ type Finding {
   rawOutputFromScanner: String
   recommendationsEn: String
   references: [String!]
+  scanId: Int
+  scanType: String
   shortCommitRef: String
   source: String
+  sourceFile: String
   tags: [String!]
   technicalSeverity: String
   titleEn: String
@@ -69,6 +73,8 @@ type Finding {
 
 #### `component` ([`String`](/api/graphql/documentation/scalars/string))
 
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
 #### `cves` ([`[String!]`](/api/graphql/documentation/scalars/string))
 
 #### `descriptionEn` ([`String`](/api/graphql/documentation/scalars/string))
@@ -93,9 +99,15 @@ type Finding {
 
 #### `references` ([`[String!]`](/api/graphql/documentation/scalars/string))
 
+#### `scanId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `scanType` ([`String`](/api/graphql/documentation/scalars/string))
+
 #### `shortCommitRef` ([`String`](/api/graphql/documentation/scalars/string))
 
 #### `source` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `sourceFile` ([`String`](/api/graphql/documentation/scalars/string))
 
 #### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
 

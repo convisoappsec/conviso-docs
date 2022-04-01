@@ -1,6 +1,6 @@
 ---
-id: credentials-by-company-id
-title: credentialsByCompanyId
+id: vulnerabilities-waiting-validation
+title: vulnerabilitiesWaitingValidation
 ---
 
 export const Tag = ({children, color}) => (
@@ -15,20 +15,17 @@ style={{
 </span>
 );
 
-Returns all credentials by company id
+Return the queue of vulnerabilities waiting validation if user is basis
 
 ```graphql
-credentialsByCompanyId(
-  id: ID!
+vulnerabilitiesWaitingValidation(
   page: Int = 0
   limit: Int = 0
-): CredentialCollection!
+): VulnerabilityCollection
 
 ```
 
 ### Arguments
-
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
 
 #### `page` ([`Int`](/api/graphql/documentation/scalars/int))
 
@@ -36,4 +33,4 @@ credentialsByCompanyId(
 
 ### Type
 
-#### [`CredentialCollection`](/api/graphql/documentation/objects/credential-collection)
+#### [`VulnerabilityCollection`](/api/graphql/documentation/objects/vulnerability-collection)

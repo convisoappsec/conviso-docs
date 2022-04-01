@@ -1,0 +1,76 @@
+---
+id: check
+title: Check
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Check {
+  actionPlan: String
+  category: String
+  checkTypeId: Int
+  checklistId: Int!
+  createdAt: ISO8601DateTime
+  deletedAt: ISO8601DateTime
+  description: String
+  id: ID!
+  item: String
+  label: String!
+  notApplicableJustify: String
+  reference: String
+  sort: Int
+  spentTime: Int
+  updatedAt: ISO8601DateTime
+  vulnerabilityModelId: Int
+  vulnerabilityTemplateId: Int
+}
+```
+
+### Fields
+
+#### `actionPlan` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `category` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `checkTypeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `checklistId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `item` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `notApplicableJustify` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `reference` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `sort` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `spentTime` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `vulnerabilityModelId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `vulnerabilityTemplateId` ([`Int`](/api/graphql/documentation/scalars/int))

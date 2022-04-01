@@ -9,7 +9,7 @@ type Activity {
   finishedAt: ISO8601DateTime
   id: ID!
   justify: String
-  playbook: Playbook!
+  playbook: Requirement!
   portalUser: PortalUser
   projectId: Int
   reference: String
@@ -114,51 +114,33 @@ type Asset {
 }
 
 enum AssetArch {
-  """
-  Agile
-  """
+  """Agile"""
   agile
 
-  """
-  Micro-services
-  """
+  """Micro-services"""
   microservices
 
-  """
-  Monolithic
-  """
+  """Monolithic"""
   monolithic
 
-  """
-  Serverless
-  """
+  """Serverless"""
   serverless
 
-  """
-  none
-  """
+  """none"""
   none
 }
 
 enum AssetAudience {
-  """
-  External
-  """
+  """External"""
   external
 
-  """
-  Internal
-  """
+  """Internal"""
   internal
 
-  """
-  Internal and External
-  """
+  """Internal and External"""
   internal_and_external
 
-  """
-  None
-  """
+  """None"""
   none
 }
 
@@ -168,184 +150,116 @@ type AssetCollection {
 }
 
 enum AssetDevelopmentModel {
-  """
-  Agile
-  """
+  """Agile"""
   agile
 
-  """
-  None
-  """
+  """None"""
   none
 
-  """
-  Third_party
-  """
+  """Third_party"""
   third_party
 
-  """
-  Waterfall
-  """
+  """Waterfall"""
   waterfall
 }
 
 enum AssetDevelopmentTeam {
-  """
-  External
-  """
+  """External"""
   external
 
-  """
-  Internal
-  """
+  """Internal"""
   internal
 
-  """
-  Internal and External
-  """
+  """Internal and External"""
   internal_and_external
 
-  """
-  None
-  """
+  """None"""
   none
 }
 
 enum AssetLifeCycle {
-  """
-  Production
-  """
+  """Production"""
   production
 
-  """
-  Homologation
-  """
+  """Homologation"""
   homologation
 
-  """
-  Certification
-  """
+  """Certification"""
   certification
 
-  """
-  discontinued
-  """
+  """discontinued"""
   discontinued
 
-  """
-  None
-  """
+  """None"""
   none
 }
 
 enum AssetScan {
-  """
-  Server
-  """
+  """Server"""
   Server
 
-  """
-  DAST
-  """
+  """DAST"""
   DAST
 
-  """
-  SAST
-  """
+  """SAST"""
   SAST
 
-  """
-  Container
-  """
+  """Container"""
   Container
 
-  """
-  None
-  """
+  """None"""
   None
 }
 
 enum AssetSeverity {
-  """
-  High
-  """
+  """High"""
   high
 
-  """
-  Critical
-  """
+  """Critical"""
   critical
 
-  """
-  Low
-  """
+  """Low"""
   low
 
-  """
-  None
-  """
+  """None"""
   none
 }
 
 enum AssetTypeList {
-  """
-  None
-  """
+  """None"""
   none
 
-  """
-  Client-server
-  """
+  """Client-server"""
   client_server
 
-  """
-  api
-  """
+  """api"""
   api
 
-  """
-  Progressive Web App
-  """
+  """Progressive Web App"""
   progressive_web_app
 
-  """
-  web
-  """
+  """web"""
   web
 
-  """
-  Native Mobile
-  """
+  """Native Mobile"""
   native_mobile
 
-  """
-  Hybrid Mobile
-  """
+  """Hybrid Mobile"""
   hybrid_mobile
 
-  """
-  Database
-  """
+  """Database"""
   database
 
-  """
-  DMZ
-  """
+  """DMZ"""
   dmz
 
-  """
-  Legacy
-  """
+  """Legacy"""
   legacy
 
-  """
-  Cluster
-  """
+  """Cluster"""
   cluster
 
-  """
-  Node
-  """
+  """Node"""
   node
 }
 
@@ -367,6 +281,143 @@ type Attachment {
 type AttachmentCollection {
   collection: [Attachment!]!
   metadata: CollectionMetadata!
+}
+
+type Chat {
+  archives: [ChatArchive!]
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID!
+  lastMessageAt: ISO8601DateTime!
+  messages(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+  ): ChatMessageConnection
+  openConversation: Boolean!
+  portalUser: PortalUser!
+  project: Project
+  scope: Company!
+  updatedAt: ISO8601DateTime!
+  vulnerability: Vulnerability
+}
+
+type ChatArchive {
+  archiveContentType: String
+  archiveFilename: String
+  archiveId: String
+  commentableId: Int
+  commentableType: String
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID!
+  updatedAt: ISO8601DateTime!
+}
+
+"""The connection type for Chat."""
+type ChatConnection {
+  """A list of edges."""
+  edges: [ChatEdge]
+
+  """A list of nodes."""
+  nodes: [Chat]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type ChatEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge."""
+  node: Chat
+}
+
+type ChatMessage {
+  chat: Chat!
+  content: String!
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID!
+  portalUser: PortalUser!
+  updatedAt: ISO8601DateTime!
+}
+
+"""The connection type for ChatMessage."""
+type ChatMessageConnection {
+  """A list of edges."""
+  edges: [ChatMessageEdge]
+
+  """A list of nodes."""
+  nodes: [ChatMessage]
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+}
+
+"""An edge in a connection."""
+type ChatMessageEdge {
+  """A cursor for use in pagination."""
+  cursor: String!
+
+  """The item at the end of the edge."""
+  node: ChatMessage
+}
+
+type Check {
+  actionPlan: String
+  category: String
+  checkTypeId: Int
+  checklistId: Int!
+  createdAt: ISO8601DateTime
+  deletedAt: ISO8601DateTime
+  description: String
+  id: ID!
+  item: String
+  label: String!
+  notApplicableJustify: String
+  reference: String
+  sort: Int
+  spentTime: Int
+  updatedAt: ISO8601DateTime
+  vulnerabilityModelId: Int
+  vulnerabilityTemplateId: Int
+}
+
+type ClickupFolder {
+  id: Int!
+  name: String!
+}
+
+type ClickupList {
+  id: Int!
+  name: String!
+}
+
+type ClickupSpace {
+  id: Int!
+  name: String!
+  private: Boolean!
+}
+
+type ClickupStatus {
+  color: String!
+  id: String!
+  orderindex: Int!
+  status: String!
+  type: String!
 }
 
 type CollectionMetadata {
@@ -416,25 +467,34 @@ type CompanyCollection {
 }
 
 input CompanySearch {
-  """
-  Exact search for a label
-  """
+  """Exact search for a label"""
   labelEq: String
 
-  """
-  Search for the content of a label
-  """
+  """Search for the content of a label"""
   labelCont: String
 
-  """
-  Search for the content of an email
-  """
+  """Search for the content of an email"""
   contactEmailCont: String
 
-  """
-  Exact search for an email
-  """
+  """Exact search for an email"""
   contactEmailEq: String
+}
+
+"""Autogenerated input type of ConfigureIntegrationSchedule"""
+input ConfigureIntegrationScheduleInput {
+  integrationId: Int!
+  cycle: Cycle!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of ConfigureIntegrationSchedule"""
+type ConfigureIntegrationSchedulePayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  integrationSchedule: IntegrationSchedule
 }
 
 type Contact {
@@ -558,9 +618,7 @@ type ContractService {
   updatedAt: ISO8601DateTime!
 }
 
-"""
-Autogenerated input type of CreateAsset
-"""
+"""Autogenerated input type of CreateAsset"""
 input CreateAssetInput {
   assetType: AssetTypeList
   assetsTagList: [String!]
@@ -583,28 +641,20 @@ input CreateAssetInput {
   teamIds: [String!]
   url: String
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateAsset
-"""
+"""Autogenerated return type of CreateAsset"""
 type CreateAssetPayload {
   asset: Asset
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of CreateAttachment
-"""
+"""Autogenerated input type of CreateAttachment"""
 input CreateAttachmentInput {
   description: String
   projectId: Int
@@ -612,136 +662,116 @@ input CreateAttachmentInput {
   allowedPortalUserIds: [Int!]
   archive: Upload!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateAttachment
-"""
+"""Autogenerated return type of CreateAttachment"""
 type CreateAttachmentPayload {
   attachment: Attachment
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of CreateCodeReviewVulnerability
-"""
+"""Autogenerated input type of CreateChatMessage"""
+input CreateChatMessageInput {
+  projectId: Int
+  occurrenceId: Int
+  content: String
+  chatId: Int
+  scopeId: Int
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of CreateChatMessage"""
+type CreateChatMessagePayload {
+  attachment: ChatArchive
+  chat: Chat
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  message: ChatMessage
+  msg: String
+}
+
+"""Autogenerated input type of CreateCodeReviewVulnerability"""
 input CreateCodeReviewVulnerabilityInput {
   projectId: Int!
   description: String!
   evidenceArchives: [Upload!]!
   files: [String!]!
 
-  """
-  Possible options [low, medium or high]
-  """
+  """Possible options [low, medium or high]"""
   impact: String!
   impactResume: String!
   inputData: String!
   invaded: Boolean!
 
-  """
-  Required only if invaded true
-  """
+  """Required only if invaded true """
   invadedEnvironmentDescription: String
   outputData: String!
 
-  """
-  Possible options [low, medium or high]
-  """
+  """Possible options [low, medium or high]"""
   probability: String!
   vulnerabilityTemplateId: Int!
   vulnerableCode: String!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateCodeReviewVulnerability
-"""
+"""Autogenerated return type of CreateCodeReviewVulnerability"""
 type CreateCodeReviewVulnerabilityPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   vulnerability: Vulnerability
 }
 
-"""
-Autogenerated input type of CreateContract
-"""
+"""Autogenerated input type of CreateContract"""
 input CreateContractInput {
-  """
-  Company Id. Set it to indicate the contract owner
-  """
+  """Company Id. Set it to indicate the contract owner"""
   companyId: Int!
 
-  """
-  Contract description. You must describe important points
-  """
+  """Contract description. You must describe important points"""
   description: String!
 
-  """
-  End date. Set it to indicate the end date
-  """
+  """End date. Set it to indicate the end date """
   finishedAt: ISO8601Date
 
-  """
-  Start date. Set it to indicate the initial date
-  """
+  """Start date. Set it to indicate the initial date"""
   startedAt: ISO8601Date!
 
-  """
-  Contract has no end date
-  """
+  """Contract has no end date"""
   noEndDate: Boolean!
 
-  """
-  List of services
-  """
+  """List of services"""
   services: [ServiceTypeInput!]!
 
-  """
-  List of contacts
-  """
+  """List of contacts"""
   contacts: [ContactTypeInput!]
   attachment: Upload
   educationSecret: String
   educationId: Int
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateContract
-"""
+"""Autogenerated return type of CreateContract"""
 type CreateContractPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   contract: Contract
   errors: [String!]
 }
 
-"""
-Autogenerated input type of CreateCredential
-"""
+"""Autogenerated input type of CreateCredential"""
 input CreateCredentialInput {
   companyId: Int!
   description: String
@@ -751,224 +781,206 @@ input CreateCredentialInput {
   password: String!
   user: String!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateCredential
-"""
+"""Autogenerated return type of CreateCredential"""
 type CreateCredentialPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   credential: Credential
   errors: [String!]
 }
 
-"""
-Autogenerated input type of CreateEstimate
-"""
+"""Autogenerated input type of CreateDeploy"""
+input CreateDeployInput {
+  companyId: Int!
+  projectId: Int!
+  previousTag: String
+  currentTag: String
+  currentCommit: String!
+  previousCommit: String!
+  diffContent: Upload
+  changedFiles: [String!]
+  newLines: Int!
+  removedLines: Int!
+  changedLines: Int!
+  languages: [String!]
+  totalLines: Int!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of CreateDeploy"""
+type CreateDeployPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  deploy: Deploy
+  errors: [String!]
+}
+
+"""Autogenerated input type of CreateEstimate"""
 input CreateEstimateInput {
   companyId: Int!
   subject: String!
   project: String
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateEstimate
-"""
+"""Autogenerated return type of CreateEstimate"""
 type CreateEstimatePayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   estimate: Project
 }
 
-"""
-Autogenerated input type of CreateFindingDast
-"""
+"""Autogenerated input type of CreateFindingDast"""
 input CreateFindingDastInput {
   flowProjectId: String!
 
-  """
-  List of issues
-  """
+  """List of issues"""
   issues: [IssueTypeDastInput!]!
 
-  """
-  Required if you have a 3rd party scan engine.
-  """
+  """Required if you have a 3rd party scan engine."""
   source: String
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateFindingDast
-"""
+"""Autogenerated return type of CreateFindingDast"""
 type CreateFindingDastPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   message: String
 }
 
-"""
-Autogenerated input type of CreateFindingSast
-"""
+"""Autogenerated input type of CreateFindingSast"""
 input CreateFindingSastInput {
   codeVersion: [String!]
   flowDeployId: String
   flowProjectId: String!
 
-  """
-  List of issues
-  """
+  """List of issues"""
   issues: [IssueTypeSastInput!]!
 
-  """
-  Required if you have a 3rd party scan engine.
-  """
+  """Required if you have a 3rd party scan engine."""
   source: String
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateFindingSast
-"""
+"""Autogenerated return type of CreateFindingSast"""
 type CreateFindingSastPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   message: String
 }
 
-"""
-Autogenerated input type of CreateIntegrationMappedFields
-"""
-input CreateIntegrationMappedFieldsInput {
-  """
-  Mapped Fields
-  """
-  mappedFields: [IntegrationMappedFieldsInput!]!
+"""Autogenerated input type of CreateIntegration"""
+input CreateIntegrationInput {
+  companyId: Int!
+  integrationType: String!
+  checkmarxUrl: String!
+  checkmarxUsername: String!
+  checkmarxPassword: String!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateIntegrationMappedFields
-"""
+"""Autogenerated input type of CreateIntegrationMappedFields"""
+input CreateIntegrationMappedFieldsInput {
+  """Mapped Fields"""
+  mappedFields: [IntegrationMappedFieldsInput!]!
+
+  """Custom Fields"""
+  customFields: [IntegrationCustomFieldsInput!]!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of CreateIntegrationMappedFields"""
 type CreateIntegrationMappedFieldsPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of CreateNotification
-"""
+"""Autogenerated return type of CreateIntegration"""
+type CreateIntegrationPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  integration: Integration
+}
+
+"""Autogenerated input type of CreateNotification"""
 input CreateNotificationInput {
   projectId: Int!
   vulnerabilityTemplateId: Int!
   description: String!
   evidenceArchives: [Upload!]!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateNotification
-"""
+"""Autogenerated return type of CreateNotification"""
 type CreateNotificationPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   notification: Notification
 }
 
-"""
-Autogenerated input type of CreateOtherVulnerability
-"""
+"""Autogenerated input type of CreateOtherVulnerability"""
 input CreateOtherVulnerabilityInput {
   projectId: Int!
   description: String!
-  evidenceArchives: [Upload!]!
+
+  """Possible send a file or Evidence Text"""
+  evidences: [VulnerabilityArchiveTypeInput!]!
   host: String!
 
-  """
-  Possible options [low, medium or high]
-  """
+  """Possible options [low, medium or high]"""
   impact: String!
   impactResume: String!
   invaded: Boolean!
 
-  """
-  Required only if invaded true
-  """
+  """Required only if invaded true"""
   invadedEnvironmentDescription: String
 
-  """
-  Possible options [low, medium or high]
-  """
+  """Possible options [low, medium or high]"""
   probability: String!
   protocol: String!
   steps: String!
   vector: String!
   vulnerabilityTemplateId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateOtherVulnerability
-"""
+"""Autogenerated return type of CreateOtherVulnerability"""
 type CreateOtherVulnerabilityPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
+  evidences: [Evidence!]
   vulnerability: Vulnerability
 }
 
-"""
-Autogenerated input type of CreateProject
-"""
+"""Autogenerated input type of CreateProject"""
 input CreateProjectInput {
   assetsIds: [Int!]
   companyId: Int!
@@ -986,27 +998,19 @@ input CreateProjectInput {
   teamsIds: [Int!]
   typeId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateProject
-"""
+"""Autogenerated return type of CreateProject"""
 type CreateProjectPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   project: Project
 }
 
-"""
-Autogenerated input type of CreateSamlIntegration
-"""
+"""Autogenerated input type of CreateSamlIntegration"""
 input CreateSamlIntegrationInput {
   samlIdpSsoTarget: String!
   samlIdpEntityId: String!
@@ -1014,47 +1018,33 @@ input CreateSamlIntegrationInput {
   authorizedDomains: [String!]!
   scopeId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateSamlIntegration
-"""
+"""Autogenerated return type of CreateSamlIntegration"""
 type CreateSamlIntegrationPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   integration: SamlIntegration!
 }
 
-"""
-Autogenerated input type of CreateWebVulnerability
-"""
+"""Autogenerated input type of CreateWebVulnerability"""
 input CreateWebVulnerabilityInput {
   projectId: Int!
   description: String!
   evidenceArchives: [Upload!]!
 
-  """
-  Possible options [low, medium or high]
-  """
+  """Possible options [low, medium or high]"""
   impact: String!
   impactResume: String!
   invaded: Boolean!
 
-  """
-  Required only if invaded true
-  """
+  """Required only if invaded true """
   invadedEnvironmentDescription: String
 
-  """
-  Possible options [low, medium or high]
-  """
+  """Possible options [low, medium or high]"""
   probability: String!
   vulnerabilityTemplateId: Int!
 
@@ -1069,19 +1059,13 @@ input CreateWebVulnerabilityInput {
   webSteps: String!
   webUrl: String!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of CreateWebVulnerability
-"""
+"""Autogenerated return type of CreateWebVulnerability"""
 type CreateWebVulnerabilityPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   vulnerability: Vulnerability
@@ -1104,100 +1088,155 @@ type CredentialCollection {
   metadata: CollectionMetadata!
 }
 
-"""
-Autogenerated input type of DeleteContact
-"""
+type CustomFieldIntegration {
+  fieldType: String
+  id: ID!
+  name: String
+  projectExternalKey: IntegrationExternalProject
+  projectExternalKeyId: Int
+  value: String
+}
+
+type CustomFieldIntegrationCollection {
+  collection: [CustomFieldIntegration!]!
+  metadata: CollectionMetadata!
+}
+
+enum Cycle {
+  """Daily"""
+  daily
+
+  """Weekly"""
+  weekly
+}
+
+"""Autogenerated input type of DeleteChat"""
+input DeleteChatInput {
+  id: ID!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated input type of DeleteChatMessage"""
+input DeleteChatMessageInput {
+  id: ID!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of DeleteChatMessage"""
+type DeleteChatMessagePayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
+"""Autogenerated return type of DeleteChat"""
+type DeleteChatPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
+"""Autogenerated input type of DeleteContact"""
 input DeleteContactInput {
   id: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of DeleteContact
-"""
+"""Autogenerated return type of DeleteContact"""
 type DeleteContactPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: String
 }
 
-"""
-Autogenerated input type of DeleteContract
-"""
+"""Autogenerated input type of DeleteContract"""
 input DeleteContractInput {
   id: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of DeleteContract
-"""
+"""Autogenerated return type of DeleteContract"""
 type DeleteContractPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: String
 }
 
-"""
-Autogenerated input type of DeleteMappedField
-"""
+"""Autogenerated input type of DeleteDeploy"""
+input DeleteDeployInput {
+  id: ID!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of DeleteDeploy"""
+type DeleteDeployPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+}
+
+"""Autogenerated input type of DeleteMappedField"""
 input DeleteMappedFieldInput {
   id: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of DeleteMappedField
-"""
+"""Autogenerated return type of DeleteMappedField"""
 type DeleteMappedFieldPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: String
 }
 
-"""
-Autogenerated input type of DeleteSamlIntegration
-"""
+"""Autogenerated input type of DeleteSamlIntegration"""
 input DeleteSamlIntegrationInput {
   id: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of DeleteSamlIntegration
-"""
+"""Autogenerated return type of DeleteSamlIntegration"""
 type DeleteSamlIntegrationPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: String
+}
+
+"""Autogenerated input type of DeleteVulnerabilitiesById"""
+input DeleteVulnerabilitiesByIdInput {
+  vulnerabilitiesId: [Int!]!
+  scopeId: Int!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of DeleteVulnerabilitiesById"""
+type DeleteVulnerabilitiesByIdPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  success: [String!]
 }
 
 type Deploy {
@@ -1244,6 +1283,11 @@ type Evidence {
   updatedAt: ISO8601DateTime!
 }
 
+input ExternalProjectTypeInput {
+  id: String!
+  name: String!
+}
+
 type Finding {
   affectedIp: String
   affectedLineNumbers: [Int!]
@@ -1254,6 +1298,7 @@ type Finding {
   category: String
   commitReference: String
   component: String
+  createdAt: ISO8601DateTime!
   cves: [String!]
   descriptionEn: String
   evaluationStatus: String
@@ -1283,64 +1328,43 @@ type FindingCollection {
 }
 
 input FindingSearch {
-  """
-  Application id
-  """
+  """Application id"""
   applicationId: Int
 
-  """
-  Commit reference
-  """
+  """Commit Reference"""
   commitReference: String
 
-  """
-  Deploy id
-  """
+  """Created at"""
+  createdAt: ISO8601DateTime
+
+  """Deploy id"""
   deployId: Int
 
-  """
-  Status
-  """
-  evaluationStatus: String
+  """Status"""
+  evaluationStatus: Int
 
-  """
-  Integration name
-  """
+  """Integration name"""
   integrationName: String
 
-  """
-  Project id
-  """
-  projectId: Int
+  """Flow Project Key"""
+  projectKey: String
 
-  """
-  Scan id
-  """
-  scanId: Int
+  """Scope id"""
+  scopeId: Int
 
-  """
-  Scan type
-  """
+  """Scan type"""
   scanType: String
 
-  """
-  Source
-  """
-  source: String
+  """Source"""
+  source: Int
 
-  """
-  Source file
-  """
+  """Source file"""
   sourceFile: String
 
-  """
-  Severity label
-  """
-  technicalSeverity: String
+  """Severity label"""
+  technicalSeverity: Int
 
-  """
-  Title
-  """
+  """Title"""
   title: String
 }
 
@@ -1355,6 +1379,72 @@ type History {
   status: String
   updatedAt: ISO8601DateTime!
   vulnerabilityId: Int
+}
+
+type ImportedScan {
+  asset: Asset
+  assetId: Int!
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID
+  inProgress: Boolean
+  integrationId: Int!
+  integrationType: String!
+  lastCheckAt: ISO8601DateTime
+  organization: String
+  projectId: Int!
+  reference: String
+  referenceName: String
+  scopeId: Int
+  status: Boolean
+  updatedAt: ISO8601DateTime!
+}
+
+type ImportedScanCollection {
+  collection: [ImportedScan!]!
+  metadata: CollectionMetadata!
+}
+
+"""Autogenerated input type of IntegrateCheckmarxProject"""
+input IntegrateCheckmarxProjectInput {
+  companyId: Int!
+  integrationId: Int!
+  projects: [ExternalProjectTypeInput!]!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of IntegrateCheckmarxProject"""
+type IntegrateCheckmarxProjectPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  importedScans: [ImportedScan!]
+}
+
+type Integration {
+  assets: [Asset!]
+  checkmarxPassword: String!
+  checkmarxPasswordBidx: String!
+  checkmarxUrl: String!
+  checkmarxUsername: String!
+  createdAt: ISO8601DateTime!
+  id: ID!
+  importedScans: [ImportedScan!]
+  integrationType: String!
+  name: String
+  schedule: IntegrationSchedule
+  scopeId: Int
+  updatedAt: ISO8601DateTime!
+}
+
+input IntegrationCustomFieldsInput {
+  id: ID
+  name: String!
+  value: String!
+  projectExternalKeyId: Int
+  fieldType: String
 }
 
 type IntegrationExternalProject {
@@ -1387,22 +1477,37 @@ type IntegrationExternalProjectMeta {
 input IntegrationMappedFieldsInput {
   id: ID
   assetOption: [Int!]!
-  jiraAssetName: String!
-  jiraAssetKey: String!
-  jiraProjectTypeOption: String
+  outsideKey: String
+  issueType: String
+  extraKey: String
   scopeIntegrationId: Int!
   projectExternalId: Int!
+  projectExternalLabel: String!
   mapFields: [MappedFieldIntegrationType!]!
 }
 
-"""
-An ISO 8601-encoded date
-"""
+type IntegrationSchedule {
+  createdAt: ISO8601DateTime!
+  cycle: String
+  id: ID!
+  integrationId: Int
+  updatedAt: ISO8601DateTime!
+}
+
+type IntegrationScheduleCycle {
+  cycle: String!
+  information: String!
+}
+
+type IntegrationScheduleCycleCollection {
+  collection: [IntegrationScheduleCycle!]!
+  metadata: CollectionMetadata!
+}
+
+"""An ISO 8601-encoded date"""
 scalar ISO8601Date
 
-"""
-An ISO 8601-encoded datetime
-"""
+"""An ISO 8601-encoded datetime"""
 scalar ISO8601DateTime
 
 input IssueTypeDastInput {
@@ -1417,9 +1522,7 @@ input IssueTypeDastInput {
   businessSeverity: String!
   description: String!
 
-  """
-  Issue evidence Base64 encoded.
-  """
+  """Issue evidence Base64 encoded."""
   evidence: String!
   hashIssue: String!
   originalSeverity: String!
@@ -1430,24 +1533,16 @@ input IssueTypeDastInput {
 }
 
 input IssueTypeSastInput {
-  """
-  Business severity. Possible values: Low, Medium, High and Critical
-  """
+  """Business severity. Possible values: Low, Medium, High and Critical"""
   businessSeverity: String!
 
-  """
-  Issue description
-  """
+  """Issue description"""
   description: String!
 
-  """
-  Evidence text, encoded with base64
-  """
+  """Evidence text, encoded with base64"""
   evidence: String!
 
-  """
-  File path
-  """
+  """File path"""
   filename: String!
 
   """
@@ -1457,37 +1552,27 @@ input IssueTypeSastInput {
   """
   hashIssue: String!
 
-  """
-  Affected line number
-  """
+  """Affected line number"""
   line: String!
 
-  """
-  Original severity. Possible values: Low, Medium, High and Critical
-  """
+  """Original severity. Possible values: Low, Medium, High and Critical"""
   originalSeverity: String!
   recommendationsEn: String
 
-  """
-  Some issue reference
-  """
+  """Some issue reference"""
   references: [String!]!
   reporter: String
 
-  """
-  Technical severity. Possible values: Low, Medium, High and Critical
-  """
+  """Technical severity. Possible values: Low, Medium, High and Critical"""
   technicalSeverity: String!
 
-  """
-  Issue title
-  """
+  """Issue title"""
   title: String!
 }
 
 input MappedFieldIntegrationType {
   status: String!
-  statusJira: String!
+  statusExternal: String!
 }
 
 type MappedFields {
@@ -1505,286 +1590,258 @@ type MappedFieldsCollection {
 }
 
 type Mutation {
-  """
-  Create an Asset
-  """
-  createAsset(
-    """
-    Parameters for CreateAsset
-    """
-    input: CreateAssetInput!
-  ): CreateAssetPayload
+  """Configure Integration Schedule"""
+  configureIntegrationSchedule(
+    """Parameters for ConfigureIntegrationSchedule"""
+    input: ConfigureIntegrationScheduleInput!
+  ): ConfigureIntegrationSchedulePayload
 
-  """
-  Create an Attachment from the company
-  """
-  createAttachment(
-    """
-    Parameters for CreateAttachment
-    """
-    input: CreateAttachmentInput!
-  ): CreateAttachmentPayload
-
-  """
-  Create a Code Review Vulnerability
-  """
-  createCodeReviewVulnerability(
-    """
-    Parameters for CreateCodeReviewVulnerability
-    """
-    input: CreateCodeReviewVulnerabilityInput!
-  ): CreateCodeReviewVulnerabilityPayload
-
-  """
-  Create a Contract
-  """
-  createContract(
-    """
-    Parameters for CreateContract
-    """
-    input: CreateContractInput!
-  ): CreateContractPayload
-
-  """
-  Create a Credential
-  """
-  createCredential(
-    """
-    Parameters for CreateCredential
-    """
-    input: CreateCredentialInput!
-  ): CreateCredentialPayload
-
-  """
-  Create Estimate
-  """
-  createEstimate(
-    """
-    Parameters for CreateEstimate
-    """
-    input: CreateEstimateInput!
-  ): CreateEstimatePayload
-
-  """
-  Create a Finding Dast
-  """
-  createFindingDast(
-    """
-    Parameters for CreateFindingDast
-    """
-    input: CreateFindingDastInput!
-  ): CreateFindingDastPayload
-
-  """
-  Create a Finding Sast
-  """
-  createFindingSast(
-    """
-    Parameters for CreateFindingSast
-    """
-    input: CreateFindingSastInput!
-  ): CreateFindingSastPayload
-
-  """
-  Create a Integration mapped fields
-  """
-  createIntegrationMappedFields(
-    """
-    Parameters for CreateIntegrationMappedFields
-    """
-    input: CreateIntegrationMappedFieldsInput!
-  ): CreateIntegrationMappedFieldsPayload
-
-  """
-  Create a Notification
-  """
-  createNotification(
-    """
-    Parameters for CreateNotification
-    """
-    input: CreateNotificationInput!
-  ): CreateNotificationPayload
-
-  """
-  Create a Other Vulnerability
-  """
-  createOtherVulnerability(
-    """
-    Parameters for CreateOtherVulnerability
-    """
-    input: CreateOtherVulnerabilityInput!
-  ): CreateOtherVulnerabilityPayload
-
-  """
-  Create Project
-  """
-  createProject(
-    """
-    Parameters for CreateProject
-    """
+  """Create Analysis"""
+  createAnalysis(
+    """Parameters for CreateProject"""
     input: CreateProjectInput!
   ): CreateProjectPayload
 
-  """
-  Create Saml Integration
-  """
+  """Create an Asset"""
+  createAsset(
+    """Parameters for CreateAsset"""
+    input: CreateAssetInput!
+  ): CreateAssetPayload
+
+  """Create an Attachment from the company"""
+  createAttachment(
+    """Parameters for CreateAttachment"""
+    input: CreateAttachmentInput!
+  ): CreateAttachmentPayload
+
+  """Create a conversation or message"""
+  createChatMessage(
+    """Parameters for CreateChatMessage"""
+    input: CreateChatMessageInput!
+  ): CreateChatMessagePayload
+
+  """Create a Code Review Vulnerability"""
+  createCodeReviewVulnerability(
+    """Parameters for CreateCodeReviewVulnerability"""
+    input: CreateCodeReviewVulnerabilityInput!
+  ): CreateCodeReviewVulnerabilityPayload
+
+  """Create a Contract"""
+  createContract(
+    """Parameters for CreateContract"""
+    input: CreateContractInput!
+  ): CreateContractPayload
+
+  """Create a Credential"""
+  createCredential(
+    """Parameters for CreateCredential"""
+    input: CreateCredentialInput!
+  ): CreateCredentialPayload
+
+  """Create Deploy"""
+  createDeploy(
+    """Parameters for CreateDeploy"""
+    input: CreateDeployInput!
+  ): CreateDeployPayload
+
+  """Create Estimate"""
+  createEstimate(
+    """Parameters for CreateEstimate"""
+    input: CreateEstimateInput!
+  ): CreateEstimatePayload
+
+  """Create a Finding Dast"""
+  createFindingDast(
+    """Parameters for CreateFindingDast"""
+    input: CreateFindingDastInput!
+  ): CreateFindingDastPayload
+
+  """Create a Finding Sast"""
+  createFindingSast(
+    """Parameters for CreateFindingSast"""
+    input: CreateFindingSastInput!
+  ): CreateFindingSastPayload
+
+  """Create a Integration mapped fields"""
+  createIntegrationMappedFields(
+    """Parameters for CreateIntegrationMappedFields"""
+    input: CreateIntegrationMappedFieldsInput!
+  ): CreateIntegrationMappedFieldsPayload
+
+  """Create Integration Scan Checkmarx"""
+  createIntegrationScanCheckmarx(
+    """Parameters for CreateIntegration"""
+    input: CreateIntegrationInput!
+  ): CreateIntegrationPayload
+
+  """Create a Notification"""
+  createNotification(
+    """Parameters for CreateNotification"""
+    input: CreateNotificationInput!
+  ): CreateNotificationPayload
+
+  """Create a Other Vulnerability"""
+  createOtherVulnerability(
+    """Parameters for CreateOtherVulnerability"""
+    input: CreateOtherVulnerabilityInput!
+  ): CreateOtherVulnerabilityPayload
+
+  """Create Project"""
+  createProject(
+    """Parameters for CreateProject"""
+    input: CreateProjectInput!
+  ): CreateProjectPayload
+
+  """Create Saml Integration"""
   createSamlIntegration(
-    """
-    Parameters for CreateSamlIntegration
-    """
+    """Parameters for CreateSamlIntegration"""
     input: CreateSamlIntegrationInput!
   ): CreateSamlIntegrationPayload
 
-  """
-  Create a Web Vulnerability
-  """
+  """Create a Web Vulnerability"""
   createWebVulnerability(
-    """
-    Parameters for CreateWebVulnerability
-    """
+    """Parameters for CreateWebVulnerability"""
     input: CreateWebVulnerabilityInput!
   ): CreateWebVulnerabilityPayload
 
-  """
-  Delete a Contact
-  """
+  """Delete Chat"""
+  deleteChat(
+    """Parameters for DeleteChat"""
+    input: DeleteChatInput!
+  ): DeleteChatPayload
+
+  """Delete Chat message"""
+  deleteChatMessage(
+    """Parameters for DeleteChatMessage"""
+    input: DeleteChatMessageInput!
+  ): DeleteChatMessagePayload
+
+  """Delete a Contact"""
   deleteContact(
-    """
-    Parameters for DeleteContact
-    """
+    """Parameters for DeleteContact"""
     input: DeleteContactInput!
   ): DeleteContactPayload
 
-  """
-  Delete a Contract
-  """
+  """Delete a Contract"""
   deleteContract(
-    """
-    Parameters for DeleteContract
-    """
+    """Parameters for DeleteContract"""
     input: DeleteContractInput!
   ): DeleteContractPayload
 
-  """
-  Delete a Mapped Field
-  """
+  """Delete Deploy"""
+  deleteDeploy(
+    """Parameters for DeleteDeploy"""
+    input: DeleteDeployInput!
+  ): DeleteDeployPayload
+
+  """Delete a Mapped Field"""
   deleteMappedField(
-    """
-    Parameters for DeleteMappedField
-    """
+    """Parameters for DeleteMappedField"""
     input: DeleteMappedFieldInput!
   ): DeleteMappedFieldPayload
 
-  """
-  Delete a Integration
-  """
+  """Delete a Integration"""
   deleteSamlIntegration(
-    """
-    Parameters for DeleteSamlIntegration
-    """
+    """Parameters for DeleteSamlIntegration"""
     input: DeleteSamlIntegrationInput!
   ): DeleteSamlIntegrationPayload
 
-  """
-  Update activity status to finish
-  """
+  """Delete vulnerabilities by array of Ids"""
+  deleteVulnerabilitiesById(
+    """Parameters for DeleteVulnerabilitiesById"""
+    input: DeleteVulnerabilitiesByIdInput!
+  ): DeleteVulnerabilitiesByIdPayload
+
+  """Integrate Checkmarx Projects with the Conviso Platform"""
+  integrateCheckmarxProject(
+    """Parameters for IntegrateCheckmarxProject"""
+    input: IntegrateCheckmarxProjectInput!
+  ): IntegrateCheckmarxProjectPayload
+
+  """Create or update last message readed"""
+  readedChatMessagesUpdate(
+    """Parameters for ReadedChatMessagesUpdate"""
+    input: ReadedChatMessagesUpdateInput!
+  ): ReadedChatMessagesUpdatePayload
+
+  """Update activity status to finish"""
   updateActivityStatusToFinish(
-    """
-    Parameters for UpdateActivityStatusToFinish
-    """
+    """Parameters for UpdateActivityStatusToFinish"""
     input: UpdateActivityStatusToFinishInput!
   ): UpdateActivityStatusToFinishPayload
 
-  """
-  Update activity status to not apply
-  """
+  """Update activity status to not apply"""
   updateActivityStatusToNotApply(
-    """
-    Parameters for UpdateActivityStatusToNotApply
-    """
+    """Parameters for UpdateActivityStatusToNotApply"""
     input: UpdateActivityStatusToNotApplyInput!
   ): UpdateActivityStatusToNotApplyPayload
 
-  """
-  Update activity status to restart
-  """
+  """Update activity status to restart"""
   updateActivityStatusToRestart(
-    """
-    Parameters for UpdateActivityStatusToRestart
-    """
+    """Parameters for UpdateActivityStatusToRestart"""
     input: UpdateActivityStatusToRestartInput!
   ): UpdateActivityStatusToRestartPayload
 
-  """
-  Update activity status to start
-  """
+  """Update activity status to start"""
   updateActivityStatusToStart(
-    """
-    Parameters for UpdateActivityStatusToStart
-    """
+    """Parameters for UpdateActivityStatusToStart"""
     input: UpdateActivityStatusToStartInput!
   ): UpdateActivityStatusToStartPayload
 
-  """
-  Update a Contract
-  """
+  """Update a Contract"""
   updateContract(
-    """
-    Parameters for UpdateContract
-    """
+    """Parameters for UpdateContract"""
     input: UpdateContractInput!
   ): UpdateContractPayload
 
-  """
-  Update a Integration mapped fields
-  """
+  """Update Deploy"""
+  updateDeploy(
+    """Parameters for UpdateDeploy"""
+    input: UpdateDeployInput!
+  ): UpdateDeployPayload
+
+  """Enable or disable the integration of an asset"""
+  updateImportedScanStatus(
+    """Parameters for UpdateImportedScanStatus"""
+    input: UpdateImportedScanStatusInput!
+  ): UpdateImportedScanStatusPayload
+
+  """Update a Integration mapped fields"""
   updateIntegrationMappedFields(
-    """
-    Parameters for UpdateIntegrationMappedFields
-    """
+    """Parameters for UpdateIntegrationMappedFields"""
     input: UpdateIntegrationMappedFieldsInput!
   ): UpdateIntegrationMappedFieldsPayload
 
-  """
-  Update a Occurrence
-  """
+  """Update Integration Scan Checkmarx"""
+  updateIntegrationScanCheckmarx(
+    """Parameters for UpdateIntegration"""
+    input: UpdateIntegrationInput!
+  ): UpdateIntegrationPayload
+
+  """Update a Occurrence"""
   updateOccurrence(
-    """
-    Parameters for UpdateOccurrence
-    """
+    """Parameters for UpdateOccurrence"""
     input: UpdateOccurrenceInput!
   ): UpdateOccurrencePayload
 
-  """
-  Update Project
-  """
+  """Update Project"""
   updateProject(
-    """
-    Parameters for UpdateProject
-    """
+    """Parameters for UpdateProject"""
     input: UpdateProjectInput!
   ): UpdateProjectPayload
 
-  """
-  Update Saml Integration
-  """
+  """Update Saml Integration"""
   updateSamlIntegration(
-    """
-    Parameters for UpdateSamlIntegration
-    """
+    """Parameters for UpdateSamlIntegration"""
     input: UpdateSamlIntegrationInput!
   ): UpdateSamlIntegrationPayload
 }
 
 input NewEvidence {
-  """
-  Textual evidence
-  """
+  """Textual evidence"""
   evidenceText: String
 
-  """
-  Archive evidence
-  """
+  """Archive evidence"""
   archive: Upload
 }
 
@@ -1821,265 +1878,164 @@ type OccurrenceMeta {
 }
 
 enum OrderOccurrencesParams {
-  """
-  order by affected_component_id
-  """
+  """order by affected_component_id"""
   affected_component_id
 
-  """
-  order by author_id
-  """
+  """order by author_id"""
   author_id
 
-  """
-  order by client_impact
-  """
+  """order by client_impact"""
   client_impact
 
-  """
-  order by close_comments
-  """
+  """order by close_comments"""
   close_comments
 
-  """
-  order by code_review_code
-  """
+  """order by code_review_code"""
   code_review_code
 
-  """
-  order by code_review_input_data
-  """
+  """order by code_review_input_data"""
   code_review_input_data
 
-  """
-  order by code_review_output_data
-  """
+  """order by code_review_output_data"""
   code_review_output_data
 
-  """
-  order by code_review_vector
-  """
+  """order by code_review_vector"""
   code_review_vector
 
-  """
-  order by commitment_at
-  """
+  """order by commitment_at"""
   commitment_at
 
-  """
-  order by created_at
-  """
+  """order by created_at"""
   created_at
 
-  """
-  order by criticity
-  """
+  """order by criticity"""
   criticity
 
-  """
-  order by deploy_id
-  """
+  """order by deploy_id"""
   deploy_id
 
-  """
-  order by external_vid
-  """
+  """order by external_vid"""
   external_vid
 
-  """
-  order by failure_type
-  """
+  """order by failure_type"""
   failure_type
 
-  """
-  order by gauntlet_issue_id
-  """
+  """order by gauntlet_issue_id"""
   gauntlet_issue_id
 
-  """
-  order by github_alert_id
-  """
+  """order by github_alert_id"""
   github_alert_id
 
-  """
-  order by id
-  """
+  """order by id"""
   id
 
-  """
-  order by impact
-  """
+  """order by impact"""
   impact
 
-  """
-  order by impact_resume
-  """
+  """order by impact_resume"""
   impact_resume
 
-  """
-  order by integration_name
-  """
+  """order by integration_name"""
   integration_name
 
-  """
-  order by invaded
-  """
+  """order by invaded"""
   invaded
 
-  """
-  order by invaded_environment_description
-  """
+  """order by invaded_environment_description"""
   invaded_environment_description
 
-  """
-  order by legacy_id
-  """
+  """order by legacy_id"""
   legacy_id
 
-  """
-  order by notification_title
-  """
+  """order by notification_title"""
   notification_title
 
-  """
-  order by notification_type
-  """
+  """order by notification_type"""
   notification_type
 
-  """
-  order by others_host
-  """
+  """order by others_host"""
   others_host
 
-  """
-  order by others_protocol
-  """
+  """order by others_protocol"""
   others_protocol
 
-  """
-  order by others_steps
-  """
+  """order by others_steps"""
   others_steps
 
-  """
-  order by others_vector
-  """
+  """order by others_vector"""
   others_vector
 
-  """
-  order by probability
-  """
+  """order by probability"""
   probability
 
-  """
-  order by project_id
-  """
+  """order by project_id"""
   project_id
 
-  """
-  order by updated_at
-  """
+  """order by updated_at"""
   updated_at
 
-  """
-  order by vid
-  """
+  """order by vid"""
   vid
 
-  """
-  order by vulnerability_model_id
-  """
+  """order by vulnerability_model_id"""
   vulnerability_model_id
 
-  """
-  order by vulnerability_status
-  """
+  """order by vulnerability_status"""
   vulnerability_status
 
-  """
-  order by web_method
-  """
+  """order by web_method"""
   web_method
 
-  """
-  order by web_parameters
-  """
+  """order by web_parameters"""
   web_parameters
 
-  """
-  order by web_protocol
-  """
+  """order by web_protocol"""
   web_protocol
 
-  """
-  order by web_request
-  """
+  """order by web_request"""
   web_request
 
-  """
-  order by web_response
-  """
+  """order by web_response"""
   web_response
 
-  """
-  order by web_steps
-  """
+  """order by web_steps"""
   web_steps
 
-  """
-  order by web_url
-  """
+  """order by web_url"""
   web_url
 }
 
 enum OrderParams {
-  """
-  descending order
-  """
+  """descending order"""
   DESC
 
-  """
-  ascending order
-  """
+  """ascending order"""
   ASC
 }
 
-type Playbook {
-  checklistTypeId: Int
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+type PendingDeploy {
   companyId: Int
-  createdAt: ISO8601DateTime
-  deletedAt: ISO8601DateTime
-  description: String
-  id: ID!
-  label: String!
-  updatedAt: ISO8601DateTime
-}
-
-type PlaybookCollection {
-  collection: [Playbook!]!
-  metadata: CollectionMetadata!
-}
-
-input PlaybookSearch {
-  """
-  Exact search for a label
-  """
-  labelEq: String
-
-  """
-  Search for the content of a label
-  """
-  labelCont: String
-
-  """
-  Search for the content of an description
-  """
-  descriptionEq: String
-
-  """
-  Exact search for an description
-  """
-  descriptionCont: String
+  companyName: String
+  createdAt: ISO8601DateTime!
+  id: ID
+  pid: String
+  projectId: Int!
+  updatedAt: ISO8601DateTime!
 }
 
 type PortalUser {
@@ -2095,12 +2051,11 @@ type PortalUser {
   jiraUser: String
   name: String
   oper: Boolean
+  pendingDeploys: [PendingDeploy!]
   pendingProjectComments: [ProjectComment!]
   phone: String
-  reviewedDeploys(
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-  ): [Deploy!]
+  projectsInEstimate: [ProjectsInEstimate!]
+  reviewedDeploys(initialDate: ISO8601DateTime!, finishDate: ISO8601DateTime!): [Deploy!]
   slackUser: String
   sshPublicKey: String
   submittedVulnerabilities: [Vulnerability!]
@@ -2149,7 +2104,7 @@ type Project {
   plannedStartedAt: ISO8601DateTime
   playbookFinishedAt: ISO8601DateTime
   playbookStartedAt: ISO8601DateTime
-  playbooks: [Playbook!]
+  playbooks: [Requirement!]
   projectType: ProjectType!
   receiveDeploys: Boolean
   repositoryUrl: String
@@ -2227,19 +2182,13 @@ type ProjectMeta {
 }
 
 input ProjectSearch {
-  """
-  Verify if is Continuous Code Review
-  """
+  """Verify if is Continuous Code Review"""
   continuousDeliveryEq: Boolean
 
-  """
-  Search in created_at dates with greater than or equal
-  """
+  """Search in created_at dates with greater than or equal"""
   createdAtGteq: ISO8601DateTime
 
-  """
-  Search in created_at dates with less than or equal
-  """
+  """Search in created_at dates with less than or equal """
   createdAtLteq: ISO8601DateTime
   endDateCont: ISO8601DateTime
   endDateEq: ISO8601DateTime
@@ -2249,15 +2198,11 @@ input ProjectSearch {
   idEq: Int
   projectStatusLabelCont: String
 
-  """
-  Search Status
-  """
+  """Search Status"""
   projectStatusLabelEq: String
   projectTypeLabelCont: String
 
-  """
-  Search Type
-  """
+  """Search Type"""
   projectTypeLabelEq: String
   startDate: ISO8601DateTime
   startDateEq: ISO8601DateTime
@@ -2271,6 +2216,15 @@ input ProjectSearch {
   tags: [String!]
   teams: [Int!]
   continuousDelivery: String
+}
+
+type ProjectsInEstimate {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  label: String!
+  pid: String!
+  projectTypeId: Int!
+  scopeId: Int!
 }
 
 type ProjectsQueue {
@@ -2299,29 +2253,19 @@ type ProjectTypeCollection {
 }
 
 input ProjectTypeSearch {
-  """
-  Exact search for a label
-  """
+  """Exact search for a label"""
   labelEq: String
 
-  """
-  Search for the content of a label
-  """
+  """Search for the content of a label"""
   labelCont: String
 
-  """
-  Search for the content of an description
-  """
+  """Search for the content of an description"""
   descriptionEq: String
 
-  """
-  Exact search for an description
-  """
+  """Exact search for an description"""
   descriptionCont: String
 
-  """
-  Ids is one of these values
-  """
+  """Ids is one of these values"""
   idIn: [Int!]
 }
 
@@ -2339,258 +2283,297 @@ type ProjectVulnerabilitiesStatusCount {
 }
 
 type Query {
-  """
-  Returns all projects that the analyst is allocated
-  """
+  """Returns all analyses that the analyst is allocated"""
+  allocatedAnalyses(page: Int, limit: Int): ProjectCollection!
+
+  """Returns all projects that the analyst is allocated"""
   allocatedProjects(page: Int, limit: Int): ProjectCollection!
 
-  """
-  Returns all assets the user has access
-  """
+  """Returns all assets the user has access"""
   assets(id: ID!, page: Int, limit: Int): AssetCollection!
 
-  """
-  return an attachment from a company
-  """
+  """return an attachment from a company"""
   attachment(id: ID!): Attachment
 
-  """
-  return the attachments from a company
-  """
+  """return the attachments from a company"""
   attachments(scopeId: ID!, page: Int, limit: Int): AttachmentCollection
 
-  """
-  Returns all companies the user has access
-  """
+  """Returns all messages from a chat"""
+  chatMessages(
+    chatId: Int!
+
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+  ): ChatMessageConnection
+
+  """Search in chats"""
+  chatSearch(
+    scopeId: Int!
+    searchParam: String!
+
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+  ): ChatConnection
+
+  """Returns all chats that user has access"""
+  chats(
+    scopeId: Int!
+    projectId: Int
+    vulnerabilityId: Int
+
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first _n_ elements from the list."""
+    first: Int
+
+    """Returns the last _n_ elements from the list."""
+    last: Int
+  ): ChatConnection
+
+  """Load Clickup folders"""
+  clickupFolders(companyId: Int!, spaceId: Int!): [ClickupFolder!]
+
+  """Load Clickup lists"""
+  clickupLists(companyId: Int!, folderId: Int!): [ClickupList!]
+
+  """Load Clickup spaces"""
+  clickupSpaces(companyId: Int!): [ClickupSpace!]
+
+  """Load Clickup Statuses"""
+  clickupStatuses(companyId: Int!, listId: Int!): [ClickupStatus!]
+
+  """Returns all companies the user has access"""
   companies(page: Int, limit: Int, params: CompanySearch): CompanyCollection
 
-  """
-  Return the company the user has access
-  """
+  """Return the company the user has access"""
   company(id: ID!): Company
 
-  """
-  Return contact from a contract
-  """
+  """Return contact from a contract"""
   contact(id: ID!): Contact
 
-  """
-  Return the contract the user has access
-  """
+  """Return the contract the user has access"""
   contract(id: ID!): Contract
 
-  """
-  Returns all contracts
-  """
-  contracts(
-    page: Int
-    limit: Int
-    sortBy: String
-    descending: Boolean
-    params: ContractSearch
-  ): ContractCollection!
+  """Returns all contracts"""
+  contracts(page: Int, limit: Int, sortBy: String, descending: Boolean, params: ContractSearch): ContractCollection!
 
-  """
-  Returns all credentials by company id
-  """
+  """Returns all credentials by company id"""
   credentials(id: ID!, page: Int, limit: Int): CredentialCollection!
 
-  """
-  Returns deploys by company id
-  """
-  deploysByCompanyId(
-    id: ID!
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-    page: Int
-    limit: Int
-  ): DeployCollection!
+  """Returns all custom fields by integration id"""
+  customFieldIntegration(id: Int!): CustomFieldIntegrationCollection
 
-  """
-  Returns deploys by project id
-  """
-  deploysByProjectId(
-    id: ID!
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-    page: Int
-    limit: Int
-  ): DeployCollection!
+  """Returns deploys by company id"""
+  deploysByCompanyId(id: ID!, initialDate: ISO8601DateTime!, finishDate: ISO8601DateTime!, page: Int, limit: Int): DeployCollection!
 
-  """
-  Returns findings
-  """
+  """Returns deploys by project id"""
+  deploysByProjectId(id: ID!, initialDate: ISO8601DateTime!, finishDate: ISO8601DateTime!, page: Int, limit: Int): DeployCollection!
+
+  """Returns findings"""
   findings(limit: Int, page: Int, params: FindingSearch): FindingCollection!
 
-  """
-  Returns all findings by commit
-  """
+  """Returns all findings by commit"""
   findingsByCommit(commit: String!, page: Int, limit: Int): FindingCollection!
 
-  """
-  Returns all mapped integration by company
-  """
+  """Returns imported scans from a scan tool"""
+  importedScanByIntegration(integrationId: Int!, page: Int, limit: Int): ImportedScanCollection!
+
+  """Returns projects that should recive new deploys"""
+  integrationAlert(page: Int, limit: Int): ProjectCollection!
+
+  """Returns all mapped integration by company"""
   integrationExternalAssociation(
     page: Int
     limit: Int
 
-    """
-    column name to order. Ex: label
-    """
+    """column name to order. Ex: label"""
     sortBy: String
 
-    """
-    0 => DESC or 1 => ASC
-    """
+    """0 => DESC or 1 => ASC"""
     descending: Boolean
     params: ProjectExternalKeySearch
   ): IntegrationExternalProjectCollection!
 
-  """
-  Returns all mapped fields by integration
-  """
-  mappedFields(outsideKey: String!): MappedFieldsCollection
+  """Return all possible schedules"""
+  integrationScheduleCycles: IntegrationScheduleCycleCollection!
 
-  """
-  Returns all notifications the user has access
-  """
+  """Load current Checkmarx integration"""
+  loadCheckmarxIntegration(companyId: Int!): Integration
+
+  """Load company integration"""
+  loadIntegration(companyId: Int!, integrationType: String!): ScopeIntegration
+
+  """Returns all mapped fields by integration"""
+  mappedFields(id: Int!): MappedFieldsCollection
+
+  """Returns all notifications the user has access"""
   notifications(page: Int, limit: Int): NotificationCollection
 
-  """
-  Returns all pending deploys
-  """
+  """Returns all pending deploys"""
   pendingDeploys(page: Int, limit: Int): DeployCollection!
 
-  """
-  Return all playbooks the company
-  """
-  playbooks(
-    id: ID!
-    page: Int
-    limit: Int
-    params: PlaybookSearch
-  ): PlaybookCollection
+  """Return all playbooks the company"""
+  playbooks(id: ID!, page: Int, limit: Int, params: RequirementSearch): RequirementCollection
 
-  """
-  Return user profile by email
-  """
+  """Return user profile by email"""
   portalUserProfile(email: String!): PortalUser
 
-  """
-  Return the project if the user has access
-  """
+  """Return the project if the user has access"""
   project(id: ID!): Project
 
-  """
-  Returns all project statuses
-  """
+  """Returns all project statuses"""
   projectStatuses(page: Int, limit: Int): AnalysisStatusTypeCollection!
 
-  """
-  Returns all project types
-  """
-  projectTypes(
-    page: Int
-    limit: Int
-    params: ProjectTypeSearch
-  ): ProjectTypeCollection!
+  """Returns all project types"""
+  projectTypes(page: Int, limit: Int, params: ProjectTypeSearch): ProjectTypeCollection!
 
-  """
-  Returns all projects the user has access
-  """
+  """Returns all projects the user has access"""
   projects(
     page: Int
     limit: Int
     params: ProjectSearch
 
-    """
-    column name to order. Ex: label
-    """
+    """column name to order. Ex: label"""
     sortBy: String
 
-    """
-    0 => DESC or 1 => ASC
-    """
+    """0 => DESC or 1 => ASC"""
     descending: Boolean
   ): ProjectCollection!
 
-  """
-  Return the projecs queue by user
-  """
-  projectsQueue: ProjectsQueueCollection
+  """Return the projects queue by user"""
+  projectsQueue(page: Int, limit: Int): ProjectsQueueCollection
 
-  """
-  Return Saml integration
-  """
+  """Return Saml integration"""
   samlIntegration(scopeId: Int!): SamlIntegration!
 
-  """
-  Return the service type
-  """
+  """Search External Projects"""
+  searchExternalProjects(companyId: Int!, integrationId: Int!): [[String!]!]
+
+  """Return the service type"""
   serviceType(id: ID!): ServiceType
 
-  """
-  Return all service types
-  """
-  serviceTypes(
-    page: Int
-    limit: Int
-    params: ServiceTypeSearch
-  ): ServiceTypeCollection
+  """Return all service types"""
+  serviceTypes(page: Int, limit: Int, params: ServiceTypeSearch): ServiceTypeCollection
 
-  """
-  Return tags
-  """
+  """Return tags"""
   tags(id: ID!, page: Int, limit: Int): TagCollection
 
-  """
-  Return teams avaiable to company
-  """
-  teamsByScope(
-    id: ID!
-    page: Int
-    limit: Int
-    params: TeamSearch
-  ): TeamCollection
+  """Return teams avaiable to company"""
+  teamsByScope(id: ID!, page: Int, limit: Int, params: TeamSearch): TeamCollection
 
-  """
-  Returns all vulnerabilities the user has access
-  """
+  """Returns all vulnerabilities the user has access"""
   vulnerabilities(
     page: Int
     limit: Int
     params: VulnerabilitySearch
     order: OrderOccurrencesParams
 
-    """
-    ASC or DESC
-    """
+    """ASC or DESC"""
     orderType: OrderParams
   ): VulnerabilityCollection
 
-  """
-  Returns all vulnerabilities templates by company id
-  """
-  vulnerabilitiesTemplatesByCompanyId(
-    id: ID!
-    page: Int
-    limit: Int
-  ): VulnerabilityTemplateCollection!
+  """Returns all vulnerabilities templates by company id"""
+  vulnerabilitiesTemplatesByCompanyId(id: ID!, page: Int, limit: Int): VulnerabilityTemplateCollection!
 
   """
-  Return the vulnerability if the user has access
+  Return the queue of vulnerabilities waiting validation if user is basis
   """
+  vulnerabilitiesWaitingValidation(page: Int, limit: Int): VulnerabilityCollection
+
+  """Return the vulnerability if the user has access"""
   vulnerability(id: ID!): Vulnerability
 
-  """
-  Returns all possible vulnerability status
-  """
+  """Returns all possible vulnerability status"""
   vulnerabilityStatuses: VulnerabilityStatusesType
 
-  """
-  Returns all web vulnerabilities the user has access
-  """
+  """Returns all web vulnerabilities the user has access"""
   webVulnerabilities(page: Int, limit: Int): VulnerabilityCollection
+}
+
+type ReadedChatMessage {
+  chat: Chat!
+  createdAt: ISO8601DateTime!
+  id: ID!
+  lastMessageReaded: ChatMessage!
+  portalUser: PortalUser!
+  updatedAt: ISO8601DateTime!
+}
+
+"""Autogenerated input type of ReadedChatMessagesUpdate"""
+input ReadedChatMessagesUpdateInput {
+  chatId: Int!
+  lastMessageId: Int!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of ReadedChatMessagesUpdate"""
+type ReadedChatMessagesUpdatePayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  msg: String
+  readedChatMessage: ReadedChatMessage
+}
+
+type Requirement {
+  check: [Check!]!
+  checklistTypeId: Int
+  companyId: Int
+  createdAt: ISO8601DateTime
+  deletedAt: ISO8601DateTime
+  description: String
+  id: ID!
+  label: String!
+  updatedAt: ISO8601DateTime
+}
+
+type RequirementCollection {
+  collection: [Requirement!]!
+  metadata: CollectionMetadata!
+}
+
+input RequirementSearch {
+  """Exact search for a label"""
+  labelEq: String
+
+  """Search for the content of a label"""
+  labelCont: String
+
+  """Search for the content of an description"""
+  descriptionEq: String
+
+  """Exact search for an description"""
+  descriptionCont: String
 }
 
 type ResultFiles {
@@ -2633,6 +2616,13 @@ type ScheduledProjects {
   plannedStartedAt: ISO8601DateTime
   projectStatus: String
   projectTypeId: Int!
+}
+
+type ScopeIntegration {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  name: String!
+  updatedAt: ISO8601DateTime!
 }
 
 type ServiceType {
@@ -2687,431 +2677,346 @@ type TeamCollection {
 }
 
 input TeamSearch {
-  """
-  Exact search for a label
-  """
+  """Exact search for a label"""
   labelEq: String
 
-  """
-  Search for the content of a label
-  """
+  """Search for the content of a label"""
   labelCont: String
 }
 
-"""
-Autogenerated input type of UpdateActivityStatusToFinish
-"""
+"""Autogenerated input type of UpdateActivityStatusToFinish"""
 input UpdateActivityStatusToFinishInput {
   activityId: Int!
   evidence: String
   evidenceArchive: Upload
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateActivityStatusToFinish
-"""
+"""Autogenerated return type of UpdateActivityStatusToFinish"""
 type UpdateActivityStatusToFinishPayload {
   activity: Activity
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of UpdateActivityStatusToNotApply
-"""
+"""Autogenerated input type of UpdateActivityStatusToNotApply"""
 input UpdateActivityStatusToNotApplyInput {
   activityId: Int!
   justify: String
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateActivityStatusToNotApply
-"""
+"""Autogenerated return type of UpdateActivityStatusToNotApply"""
 type UpdateActivityStatusToNotApplyPayload {
   activity: Activity
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of UpdateActivityStatusToRestart
-"""
+"""Autogenerated input type of UpdateActivityStatusToRestart"""
 input UpdateActivityStatusToRestartInput {
   activityId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateActivityStatusToRestart
-"""
+"""Autogenerated return type of UpdateActivityStatusToRestart"""
 type UpdateActivityStatusToRestartPayload {
   activity: Activity
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of UpdateActivityStatusToStart
-"""
+"""Autogenerated input type of UpdateActivityStatusToStart"""
 input UpdateActivityStatusToStartInput {
   activityId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateActivityStatusToStart
-"""
+"""Autogenerated return type of UpdateActivityStatusToStart"""
 type UpdateActivityStatusToStartPayload {
   activity: Activity
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of UpdateContract
-"""
+"""Autogenerated input type of UpdateContract"""
 input UpdateContractInput {
   id: Int!
 
-  """
-  Company Id. Set it to indicate the contract owner
-  """
+  """Company Id. Set it to indicate the contract owner"""
   companyId: Int
 
-  """
-  Contract description. You must describe important points
-  """
+  """Contract description. You must describe important points"""
   description: String
 
-  """
-  Start date. Set it to indicate the initial date
-  """
+  """Start date. Set it to indicate the initial date"""
   startedAt: ISO8601Date
 
-  """
-  End date. Set it to indicate the end date
-  """
+  """End date. Set it to indicate the end date """
   finishedAt: ISO8601Date
 
-  """
-  Whether or not the contract has an end date
-  """
+  """Whether or not the contract has an end date"""
   noEndDate: Boolean
 
-  """
-  List of contacts
-  """
+  """List of contacts"""
   contacts: [ContactTypeInput!]
 
-  """
-  List of services
-  """
+  """List of services"""
   services: [ServiceTypeInput!]
   resourcesCount: Int
   attachment: Upload
   educationSecret: String
   educationId: Int
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateContract
-"""
+"""Autogenerated return type of UpdateContract"""
 type UpdateContractPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: [String!]
 }
 
-"""
-Autogenerated input type of UpdateIntegrationMappedFields
-"""
-input UpdateIntegrationMappedFieldsInput {
-  """
-  Mapped Fields
-  """
-  mappedFields: [IntegrationMappedFieldsInput!]!
+"""Autogenerated input type of UpdateDeploy"""
+input UpdateDeployInput {
+  id: ID!
+  companyId: Int!
+  projectId: Int!
+  previousTag: String
+  currentTag: String
+  currentCommit: String!
+  previousCommit: String!
+  diffContent: [Upload!]
+  changedFiles: [String!]
+  newLines: Int!
+  removedLines: Int!
+  changedLines: Int!
+  languages: String
+  totalLines: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateIntegrationMappedFields
-"""
+"""Autogenerated return type of UpdateDeploy"""
+type UpdateDeployPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  deployId: Int
+  errors: [String!]
+  msg: [String!]
+}
+
+"""Autogenerated input type of UpdateImportedScanStatus"""
+input UpdateImportedScanStatusInput {
+  companyId: Int!
+  integrationId: Int!
+  status: Boolean!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of UpdateImportedScanStatus"""
+type UpdateImportedScanStatusPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  importedScan: ImportedScan
+}
+
+"""Autogenerated input type of UpdateIntegration"""
+input UpdateIntegrationInput {
+  companyId: Int!
+  integrationId: Int!
+  checkmarxUrl: String!
+  checkmarxUsername: String!
+  checkmarxPassword: String!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated input type of UpdateIntegrationMappedFields"""
+input UpdateIntegrationMappedFieldsInput {
+  """Mapped Fields"""
+  mappedFields: [IntegrationMappedFieldsInput!]!
+
+  """Custom Fields"""
+  customFields: [IntegrationCustomFieldsInput!]!
+
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+}
+
+"""Autogenerated return type of UpdateIntegrationMappedFields"""
 type UpdateIntegrationMappedFieldsPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
 }
 
-"""
-Autogenerated input type of UpdateOccurrence
-"""
+"""Autogenerated return type of UpdateIntegration"""
+type UpdateIntegrationPayload {
+  """A unique identifier for the client performing the mutation."""
+  clientMutationId: String
+  errors: [String!]
+  integration: Integration
+}
+
+"""Autogenerated input type of UpdateOccurrence"""
 input UpdateOccurrenceInput {
-  """
-  Occurrence ID
-  """
+  """Occurrence ID"""
   id: ID!
 
-  """
-  Affected component id
-  """
+  """Affected component id"""
   affectedComponentId: Int
 
-  """
-  Project id
-  """
+  """Project id"""
   projectId: Int
 
-  """
-  Code review code
-  """
+  """Code review code"""
   codeReviewCode: String
 
-  """
-  Code review input data
-  """
+  """Code review input data"""
   codeReviewInputData: String
 
-  """
-  Code review output data
-  """
+  """Code review output data"""
   codeReviewOutputData: String
 
-  """
-  Code review vector
-  """
+  """Code review vector"""
   codeReviewVector: String
 
-  """
-  Company id
-  """
+  """Company id"""
   companyId: Int
 
-  """
-  Company name
-  """
+  """Company name"""
   companyName: String
 
-  """
-  Severity
-  """
+  """Severity"""
   criticity: String
 
-  """
-  Deploy id
-  """
+  """Deploy id"""
   deployId: Int
 
-  """
-  External vid
-  """
+  """External vid"""
   externalVid: String
 
-  """
-  Failure type
-  """
+  """Failure type"""
   failureType: String
 
-  """
-  Impact
-  """
+  """Impact"""
   impact: String
 
-  """
-  Impact resume
-  """
+  """Impact resume"""
   impactResume: String
 
-  """
-  Invaded
-  """
+  """Invaded"""
   invaded: Boolean
 
-  """
-  Invaded environment description
-  """
+  """Invaded environment description"""
   invadedEnvironmentDescription: String
 
-  """
-  Other host
-  """
+  """Other host"""
   othersHost: String
 
-  """
-  Others protocol
-  """
+  """Others protocol"""
   othersProtocol: String
 
-  """
-  Others steps
-  """
+  """Others steps"""
   othersSteps: String
 
-  """
-  Others vector
-  """
+  """Others vector"""
   othersVector: String
 
-  """
-  Probability
-  """
+  """Probability"""
   probability: String
 
-  """
-  Title
-  """
+  """Title"""
   title: String
 
-  """
-  Vid
-  """
+  """Vid"""
   vid: String
 
-  """
-  Web method
-  """
+  """Web method"""
   webMethod: String
 
-  """
-  Web parameters
-  """
+  """Web parameters"""
   webParameters: String
 
-  """
-  Web protocol
-  """
+  """Web protocol"""
   webProtocol: String
 
-  """
-  Web request
-  """
+  """Web request"""
   webRequest: String
 
-  """
-  Web response
-  """
+  """Web response"""
   webResponse: String
 
-  """
-  Web steps
-  """
+  """Web steps"""
   webSteps: String
 
-  """
-  Web url
-  """
+  """Web url"""
   webUrl: String
 
-  """
-  Author_id
-  """
+  """Author_id"""
   authorId: Int
 
-  """
-  Vulnerability template id
-  """
+  """Vulnerability template id"""
   vulnerabilityTemplateId: Int
 
-  """
-  Vulnerability status
-  """
+  """Vulnerability status"""
   vulnerabilityStatus: String
 
-  """
-  Change status attributes
-  """
+  """Change status attributes"""
   changeStatusAttributes: UpdateOccurrenceStatus
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateOccurrence
-"""
+"""Autogenerated return type of UpdateOccurrence"""
 type UpdateOccurrencePayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: [String!]
 }
 
 input UpdateOccurrenceStatus {
-  """
-  Comment
-  """
+  """Comment"""
   comment: String
 
-  """
-  Deploy id
-  """
+  """Deploy id"""
   deployId: String
 
-  """
-  Evidences attributes
-  """
+  """Evidences attributes"""
   evidencesAttributes: [NewEvidence!]
 
-  """
-  Status
-  """
+  """Status"""
   status: String!
 }
 
-"""
-Autogenerated input type of UpdateProject
-"""
+"""Autogenerated input type of UpdateProject"""
 input UpdateProjectInput {
   id: ID!
   assetsIds: [Int!]
@@ -3130,27 +3035,19 @@ input UpdateProjectInput {
   teamsIds: [Int!]
   typeId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateProject
-"""
+"""Autogenerated return type of UpdateProject"""
 type UpdateProjectPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   msg: [String!]
 }
 
-"""
-Autogenerated input type of UpdateSamlIntegration
-"""
+"""Autogenerated input type of UpdateSamlIntegration"""
 input UpdateSamlIntegrationInput {
   id: Int!
   samlIdpSsoTarget: String!
@@ -3159,19 +3056,13 @@ input UpdateSamlIntegrationInput {
   authorizedDomains: [String!]!
   scopeId: Int!
 
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
 }
 
-"""
-Autogenerated return type of UpdateSamlIntegration
-"""
+"""Autogenerated return type of UpdateSamlIntegration"""
 type UpdateSamlIntegrationPayload {
-  """
-  A unique identifier for the client performing the mutation.
-  """
+  """A unique identifier for the client performing the mutation."""
   clientMutationId: String
   errors: [String!]
   integration: SamlIntegration!
@@ -3225,12 +3116,23 @@ type Vulnerability {
   webUrl: String
 }
 
+input VulnerabilityArchiveTypeInput {
+  id: ID
+  archiveFilename: String
+  archiveContentType: String
+  originableId: Int
+  evidenceText: String
+  archive: Upload
+}
+
 type VulnerabilityCollection {
   collection: [Vulnerability!]!
   metadata: OccurrenceMeta!
 }
 
 input VulnerabilitySearch {
+  """Search Vulnerabilities by Company Id"""
+  projectScopeIdEq: Int
   criticityCont: String
   criticityEq: String
   descriptionCont: String
@@ -3238,15 +3140,13 @@ input VulnerabilitySearch {
   vidCont: String
   vidEq: String
 
-  """
-  Search Vulnerability Title
-  """
+  """Search Vulnerability Title"""
   vulnerabilityModelTitleCont: String
   vulnerabilityModelTitleEq: String
 }
 
 type VulnerabilityStatusesType {
-  statuses: [String!]!
+  statuses: [[String!]!]!
 }
 
 type VulnerabilityTemplate {
@@ -3273,3 +3173,4 @@ type VulnerabilityTemplateCollection {
   collection: [VulnerabilityTemplate!]!
   metadata: CollectionMetadata!
 }
+

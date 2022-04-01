@@ -1,0 +1,55 @@
+---
+id: chat-messages
+title: chatMessages
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all messages from a chat
+
+```graphql
+chatMessages(
+  chatId: Int!
+  after: String
+  before: String
+  first: Int = 0
+  last: Int = 0
+): ChatMessageConnection
+
+```
+
+### Arguments
+
+#### `chatId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `after` ([`String`](/api/graphql/documentation/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+#### `before` ([`String`](/api/graphql/documentation/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+#### `first` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Returns the first _n_ elements from the list.
+
+#### `last` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Returns the last _n_ elements from the list.
+
+### Type
+
+#### [`ChatMessageConnection`](/api/graphql/documentation/objects/chat-message-connection)
+
+The connection type for ChatMessage.

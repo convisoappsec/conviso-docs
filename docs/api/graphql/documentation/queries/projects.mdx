@@ -22,8 +22,8 @@ projects(
   page: Int = 0
   limit: Int = 0
   params: ProjectSearch
-  order: OrderProjectsParams
-  orderType: OrderParams
+  sortBy: String
+  descending: Boolean
 ): ProjectCollection!
 
 ```
@@ -36,13 +36,13 @@ projects(
 
 #### `params` ([`ProjectSearch`](/api/graphql/documentation/inputs/project-search))
 
-#### `order` ([`OrderProjectsParams`](/api/graphql/documentation/enums/order-projects-params))
+#### `sortBy` ([`String`](/api/graphql/documentation/scalars/string))
 
 column name to order. Ex: label
 
-#### `orderType` ([`OrderParams`](/api/graphql/documentation/enums/order-params))
+#### `descending` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
 
-ASC or DESC
+0 => DESC or 1 => ASC
 
 ### Type
 

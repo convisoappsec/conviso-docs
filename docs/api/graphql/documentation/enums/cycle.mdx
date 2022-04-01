@@ -1,0 +1,35 @@
+---
+id: cycle
+title: Cycle
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+enum Cycle {
+  daily
+  weekly
+}
+```
+
+### Values
+
+#### `daily`
+
+Daily
+
+#### `weekly`
+
+Weekly

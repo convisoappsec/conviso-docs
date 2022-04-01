@@ -1,0 +1,35 @@
+---
+id: team-search
+title: TeamSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type TeamSearch {
+  labelEq: String
+  labelCont: String
+}
+```
+
+### Fields
+
+#### `labelEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+Exact search for a label
+
+#### `labelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+Search for the content of a label

@@ -1,0 +1,31 @@
+---
+id: attachment-collection
+title: AttachmentCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AttachmentCollection {
+  collection: [Attachment!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[Attachment!]!`](/api/graphql/documentation/objects/attachment))
+
+#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))

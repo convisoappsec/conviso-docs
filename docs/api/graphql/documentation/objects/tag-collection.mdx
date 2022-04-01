@@ -1,0 +1,31 @@
+---
+id: tag-collection
+title: TagCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type TagCollection {
+  collection: [Tag!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[Tag!]!`](/api/graphql/documentation/objects/tag))
+
+#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))

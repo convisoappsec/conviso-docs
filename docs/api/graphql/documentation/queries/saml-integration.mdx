@@ -1,0 +1,33 @@
+---
+id: saml-integration
+title: samlIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return Saml integration
+
+```graphql
+samlIntegration(
+  scopeId: Int!
+): SamlIntegration!
+
+```
+
+### Arguments
+
+#### `scopeId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`SamlIntegration`](/api/graphql/documentation/objects/saml-integration)

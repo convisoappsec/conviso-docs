@@ -1,0 +1,31 @@
+---
+id: mapped-field-integration-type
+title: MappedFieldIntegrationType
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type MappedFieldIntegrationType {
+  status: String!
+  statusExternal: String!
+}
+```
+
+### Fields
+
+#### `status` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `statusExternal` ([`String!`](/api/graphql/documentation/scalars/string))

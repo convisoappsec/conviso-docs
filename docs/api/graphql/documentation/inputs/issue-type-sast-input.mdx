@@ -1,0 +1,83 @@
+---
+id: issue-type-sast-input
+title: IssueTypeSastInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IssueTypeSastInput {
+  businessSeverity: String!
+  description: String!
+  evidence: String!
+  filename: String!
+  hashIssue: String!
+  line: String!
+  originalSeverity: String!
+  recommendationsEn: String
+  references: [String!]!
+  reporter: String
+  technicalSeverity: String!
+  title: String!
+}
+```
+
+### Fields
+
+#### `businessSeverity` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Business severity. Possible values: Low, Medium, High and Critical
+
+#### `description` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Issue description
+
+#### `evidence` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Evidence text, encoded with base64
+
+#### `filename` ([`String!`](/api/graphql/documentation/scalars/string))
+
+File path
+
+#### `hashIssue` ([`String!`](/api/graphql/documentation/scalars/string))
+
+The hash identifier, composed using issue data like title, line number, file
+path and code snippet -
+b887dfsssaa48aasseb89bd1ea2ca2cc29b5899700b21c437158175ccc2c7d3ab2b4c67af
+
+#### `line` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Affected line number
+
+#### `originalSeverity` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Original severity. Possible values: Low, Medium, High and Critical
+
+#### `recommendationsEn` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `references` ([`[String!]!`](/api/graphql/documentation/scalars/string))
+
+Some issue reference
+
+#### `reporter` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `technicalSeverity` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Technical severity. Possible values: Low, Medium, High and Critical
+
+#### `title` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Issue title

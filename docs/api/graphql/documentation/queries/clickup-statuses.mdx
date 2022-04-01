@@ -1,0 +1,36 @@
+---
+id: clickup-statuses
+title: clickupStatuses
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Load Clickup Statuses
+
+```graphql
+clickupStatuses(
+  companyId: Int!
+  listId: Int!
+): [ClickupStatus!]
+
+```
+
+### Arguments
+
+#### `companyId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `listId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`ClickupStatus`](/api/graphql/documentation/objects/clickup-status)

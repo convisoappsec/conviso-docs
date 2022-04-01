@@ -1,0 +1,90 @@
+---
+id: finding-search
+title: FindingSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type FindingSearch {
+  applicationId: Int
+  commitReference: String
+  createdAt: ISO8601DateTime
+  deployId: Int
+  evaluationStatus: Int
+  integrationName: String
+  projectKey: String
+  scopeId: Int
+  scanType: String
+  source: Int
+  sourceFile: String
+  technicalSeverity: Int
+  title: String
+}
+```
+
+### Fields
+
+#### `applicationId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Application id
+
+#### `commitReference` ([`String`](/api/graphql/documentation/scalars/string))
+
+Commit Reference
+
+#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+Created at
+
+#### `deployId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Deploy id
+
+#### `evaluationStatus` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Status
+
+#### `integrationName` ([`String`](/api/graphql/documentation/scalars/string))
+
+Integration name
+
+#### `projectKey` ([`String`](/api/graphql/documentation/scalars/string))
+
+Flow Project Key
+
+#### `scopeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Scope id
+
+#### `scanType` ([`String`](/api/graphql/documentation/scalars/string))
+
+Scan type
+
+#### `source` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Source
+
+#### `sourceFile` ([`String`](/api/graphql/documentation/scalars/string))
+
+Source file
+
+#### `technicalSeverity` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Severity label
+
+#### `title` ([`String`](/api/graphql/documentation/scalars/string))
+
+Title

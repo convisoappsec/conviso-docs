@@ -1,0 +1,31 @@
+---
+id: custom-field-integration-collection
+title: CustomFieldIntegrationCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type CustomFieldIntegrationCollection {
+  collection: [CustomFieldIntegration!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[CustomFieldIntegration!]!`](/api/graphql/documentation/objects/custom-field-integration))
+
+#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))

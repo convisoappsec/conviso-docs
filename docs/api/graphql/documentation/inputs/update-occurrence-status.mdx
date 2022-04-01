@@ -1,0 +1,45 @@
+---
+id: update-occurrence-status
+title: UpdateOccurrenceStatus
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type UpdateOccurrenceStatus {
+  comment: String
+  deployId: String
+  evidencesAttributes: [NewEvidence!]
+  status: String!
+}
+```
+
+### Fields
+
+#### `comment` ([`String`](/api/graphql/documentation/scalars/string))
+
+Comment
+
+#### `deployId` ([`String`](/api/graphql/documentation/scalars/string))
+
+Deploy id
+
+#### `evidencesAttributes` ([`[NewEvidence!]`](/api/graphql/documentation/inputs/new-evidence))
+
+Evidences attributes
+
+#### `status` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Status

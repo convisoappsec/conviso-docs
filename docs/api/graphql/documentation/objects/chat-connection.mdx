@@ -1,0 +1,40 @@
+---
+id: chat-connection
+title: ChatConnection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+The connection type for Chat.
+
+```graphql
+type ChatConnection {
+  edges: [ChatEdge]
+  nodes: [Chat]
+  pageInfo: PageInfo!
+}
+```
+
+### Fields
+
+#### `edges` ([`[ChatEdge]`](/api/graphql/documentation/objects/chat-edge))
+
+A list of edges.
+
+#### `nodes` ([`[Chat]`](/api/graphql/documentation/objects/chat))
+
+A list of nodes.
+
+#### `pageInfo` ([`PageInfo!`](/api/graphql/documentation/objects/page-info))
+
+Information to aid in pagination.

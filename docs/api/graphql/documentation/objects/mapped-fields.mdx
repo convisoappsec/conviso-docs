@@ -1,0 +1,43 @@
+---
+id: mapped-fields
+title: MappedFields
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type MappedFields {
+  externalValue: String
+  flowValue: String
+  id: ID!
+  integrationId: Int
+  projectExternalKey: IntegrationExternalProject
+  projectExternalKeyId: Int
+}
+```
+
+### Fields
+
+#### `externalValue` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `flowValue` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `integrationId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `projectExternalKey` ([`IntegrationExternalProject`](/api/graphql/documentation/objects/integration-external-project))
+
+#### `projectExternalKeyId` ([`Int`](/api/graphql/documentation/scalars/int))

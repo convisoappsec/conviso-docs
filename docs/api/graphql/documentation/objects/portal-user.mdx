@@ -19,7 +19,7 @@ No description
 
 ```graphql
 type PortalUser {
-  allocatedProjects: [Project]
+  allocatedAnalyses: [Project!]
   analyst: Boolean
   blocked: Boolean
   dashboardOnly: Boolean
@@ -31,7 +31,10 @@ type PortalUser {
   jiraUser: String
   name: String
   oper: Boolean
+  pendingDeploys: [PendingDeploy!]
+  pendingProjectComments: [ProjectComment!]
   phone: String
+  projectsInEstimate: [ProjectsInEstimate!]
   reviewedDeploys(
     initialDate: ISO8601DateTime!
     finishDate: ISO8601DateTime!
@@ -44,7 +47,7 @@ type PortalUser {
 
 ### Fields
 
-#### `allocatedProjects` ([`[Project]`](/api/graphql/documentation/objects/project))
+#### `allocatedAnalyses` ([`[Project!]`](/api/graphql/documentation/objects/project))
 
 #### `analyst` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
 
@@ -68,7 +71,13 @@ type PortalUser {
 
 #### `oper` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
 
+#### `pendingDeploys` ([`[PendingDeploy!]`](/api/graphql/documentation/objects/pending-deploy))
+
+#### `pendingProjectComments` ([`[ProjectComment!]`](/api/graphql/documentation/objects/project-comment))
+
 #### `phone` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectsInEstimate` ([`[ProjectsInEstimate!]`](/api/graphql/documentation/objects/projects-in-estimate))
 
 #### `reviewedDeploys` ([`[Deploy!]`](/api/graphql/documentation/objects/deploy))
 
