@@ -6,7 +6,7 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'convisoappsec', // Usually your GitHub org/user name.
+  organizationName: 'convisoappsec', // Usually your GitHub org/user name..
   projectName: 'flow-docs', // Usually your repo name.
   themeConfig: {
     navbar: {
