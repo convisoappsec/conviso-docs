@@ -1,0 +1,31 @@
+---
+id: mapped-fields-collection
+title: MappedFieldsCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type MappedFieldsCollection {
+  collection: [MappedFields!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[MappedFields!]!`](/api/graphql/documentation/objects/mapped-fields))
+
+#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))

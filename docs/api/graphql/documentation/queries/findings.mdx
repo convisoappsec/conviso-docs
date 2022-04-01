@@ -1,0 +1,39 @@
+---
+id: findings
+title: findings
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns findings
+
+```graphql
+findings(
+  limit: Int = 0
+  page: Int = 0
+  params: FindingSearch
+): FindingCollection!
+
+```
+
+### Arguments
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `params` ([`FindingSearch`](/api/graphql/documentation/inputs/finding-search))
+
+### Type
+
+#### [`FindingCollection`](/api/graphql/documentation/objects/finding-collection)

@@ -1,6 +1,6 @@
 ---
-id: vulnerability-archive
-title: VulnerabilityArchive
+id: chat-message
+title: ChatMessage
 ---
 
 export const Tag = ({children, color}) => (
@@ -18,26 +18,29 @@ style={{
 No description
 
 ```graphql
-type VulnerabilityArchive {
-  archiveContentType: String
-  archiveFilename: String
+type ChatMessage {
+  chat: Chat!
+  content: String!
   createdAt: ISO8601DateTime!
-  evidenceText: String
+  deletedAt: ISO8601DateTime
   id: ID!
+  portalUser: PortalUser!
   updatedAt: ISO8601DateTime!
 }
 ```
 
 ### Fields
 
-#### `archiveContentType` ([`String`](/api/graphql/documentation/scalars/string))
+#### `chat` ([`Chat!`](/api/graphql/documentation/objects/chat))
 
-#### `archiveFilename` ([`String`](/api/graphql/documentation/scalars/string))
+#### `content` ([`String!`](/api/graphql/documentation/scalars/string))
 
 #### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
-#### `evidenceText` ([`String`](/api/graphql/documentation/scalars/string))
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
 #### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `portalUser` ([`PortalUser!`](/api/graphql/documentation/objects/portal-user))
 
 #### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

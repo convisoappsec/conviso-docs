@@ -1,0 +1,42 @@
+---
+id: teams-by-scope
+title: teamsByScope
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return teams avaiable to company
+
+```graphql
+teamsByScope(
+  id: ID!
+  page: Int = 0
+  limit: Int = 0
+  params: TeamSearch
+): TeamCollection
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `params` ([`TeamSearch`](/api/graphql/documentation/inputs/team-search))
+
+### Type
+
+#### [`TeamCollection`](/api/graphql/documentation/objects/team-collection)

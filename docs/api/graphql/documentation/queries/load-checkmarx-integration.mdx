@@ -1,0 +1,33 @@
+---
+id: load-checkmarx-integration
+title: loadCheckmarxIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Load current Checkmarx integration
+
+```graphql
+loadCheckmarxIntegration(
+  companyId: Int!
+): Integration
+
+```
+
+### Arguments
+
+#### `companyId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`Integration`](/api/graphql/documentation/objects/integration)

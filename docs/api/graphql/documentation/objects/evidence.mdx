@@ -1,0 +1,43 @@
+---
+id: evidence
+title: Evidence
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Evidence {
+  archiveContentType: String
+  archiveFilename: String
+  createdAt: ISO8601DateTime!
+  evidenceText: String
+  id: ID!
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `archiveContentType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `archiveFilename` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `evidenceText` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

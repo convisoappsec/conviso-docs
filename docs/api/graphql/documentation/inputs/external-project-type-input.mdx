@@ -1,0 +1,31 @@
+---
+id: external-project-type-input
+title: ExternalProjectTypeInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ExternalProjectTypeInput {
+  id: String!
+  name: String!
+}
+```
+
+### Fields
+
+#### `id` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `name` ([`String!`](/api/graphql/documentation/scalars/string))

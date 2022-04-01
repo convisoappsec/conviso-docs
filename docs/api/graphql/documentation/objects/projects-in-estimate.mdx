@@ -1,0 +1,43 @@
+---
+id: projects-in-estimate
+title: ProjectsInEstimate
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectsInEstimate {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  label: String!
+  pid: String!
+  projectTypeId: Int!
+  scopeId: Int!
+}
+```
+
+### Fields
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `pid` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `projectTypeId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `scopeId` ([`Int!`](/api/graphql/documentation/scalars/int))

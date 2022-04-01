@@ -1,0 +1,50 @@
+---
+id: asset-scan
+title: AssetScan
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+enum AssetScan {
+  Server
+  DAST
+  SAST
+  Container
+  None
+}
+```
+
+### Values
+
+#### `Server`
+
+Server
+
+#### `DAST`
+
+DAST
+
+#### `SAST`
+
+SAST
+
+#### `Container`
+
+Container
+
+#### `None`
+
+None

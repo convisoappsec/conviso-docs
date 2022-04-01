@@ -1,0 +1,35 @@
+---
+id: chat-edge
+title: ChatEdge
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+An edge in a connection.
+
+```graphql
+type ChatEdge {
+  cursor: String!
+  node: Chat
+}
+```
+
+### Fields
+
+#### `cursor` ([`String!`](/api/graphql/documentation/scalars/string))
+
+A cursor for use in pagination.
+
+#### `node` ([`Chat`](/api/graphql/documentation/objects/chat))
+
+The item at the end of the edge.

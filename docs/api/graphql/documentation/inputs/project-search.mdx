@@ -24,6 +24,7 @@ type ProjectSearch {
   createdAtLteq: ISO8601DateTime
   endDateCont: ISO8601DateTime
   endDateEq: ISO8601DateTime
+  endDate: ISO8601DateTime
   labelCont: String
   labelEq: String
   idEq: Int
@@ -31,9 +32,18 @@ type ProjectSearch {
   projectStatusLabelEq: String
   projectTypeLabelCont: String
   projectTypeLabelEq: String
+  startDate: ISO8601DateTime
   startDateEq: ISO8601DateTime
   startDateCont: ISO8601DateTime
   tagNameEq: String
+  scopeLabelCont: String
+  scopeIdEq: Int
+  search: String
+  engagementTypes: [Int!]
+  engagementStatuses: [Int!]
+  tags: [String!]
+  teams: [Int!]
+  continuousDelivery: String
 }
 ```
 
@@ -55,6 +65,8 @@ Search in created_at dates with less than or equal
 
 #### `endDateEq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
+#### `endDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
 #### `labelCont` ([`String`](/api/graphql/documentation/scalars/string))
 
 #### `labelEq` ([`String`](/api/graphql/documentation/scalars/string))
@@ -73,8 +85,26 @@ Search Status
 
 Search Type
 
+#### `startDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
 #### `startDateEq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
 #### `startDateCont` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
 #### `tagNameEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `scopeLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `scopeIdEq` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `search` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `engagementTypes` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `engagementStatuses` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `teams` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `continuousDelivery` ([`String`](/api/graphql/documentation/scalars/string))

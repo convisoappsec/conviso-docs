@@ -26,18 +26,7 @@ type Contract {
   attachmentSize: Int
   client: Company
   companyId: Int
-  consumedAnnualLeave: String
-  consumedApplicationSecurityTesting: String
-  consumedEducationModule: String
-  consumedGapAnalysis: String
-  consumedHardwareIotPenTest: String
-  consumedManagedService: String
-  consumedManualCodeReview: String
-  consumedMobilePenTest: String
-  consumedNetworkPenTest: String
-  consumedScanAndFindingReview: String
-  consumedThreatModeling: String
-  consumedWebPenTest: String
+  consumedServices: ContractConsumedServices
   contacts: [Contact!]
   createdAt: ISO8601DateTime!
   customMetadata: ContractCollection
@@ -81,29 +70,7 @@ type Contract {
 
 #### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
 
-#### `consumedAnnualLeave` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedApplicationSecurityTesting` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedEducationModule` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedGapAnalysis` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedHardwareIotPenTest` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedManagedService` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedManualCodeReview` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedMobilePenTest` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedNetworkPenTest` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedScanAndFindingReview` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedThreatModeling` ([`String`](/api/graphql/documentation/scalars/string))
-
-#### `consumedWebPenTest` ([`String`](/api/graphql/documentation/scalars/string))
+#### `consumedServices` ([`ContractConsumedServices`](/api/graphql/documentation/objects/contract-consumed-services))
 
 #### `contacts` ([`[Contact!]`](/api/graphql/documentation/objects/contact))
 

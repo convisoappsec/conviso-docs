@@ -1,0 +1,85 @@
+---
+id: asset-type-list
+title: AssetTypeList
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+enum AssetTypeList {
+  none
+  client_server
+  api
+  progressive_web_app
+  web
+  native_mobile
+  hybrid_mobile
+  database
+  dmz
+  legacy
+  cluster
+  node
+}
+```
+
+### Values
+
+#### `none`
+
+None
+
+#### `client_server`
+
+Client-server
+
+#### `api`
+
+api
+
+#### `progressive_web_app`
+
+Progressive Web App
+
+#### `web`
+
+web
+
+#### `native_mobile`
+
+Native Mobile
+
+#### `hybrid_mobile`
+
+Hybrid Mobile
+
+#### `database`
+
+Database
+
+#### `dmz`
+
+DMZ
+
+#### `legacy`
+
+Legacy
+
+#### `cluster`
+
+Cluster
+
+#### `node`
+
+Node

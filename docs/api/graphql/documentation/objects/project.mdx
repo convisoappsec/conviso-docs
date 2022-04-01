@@ -30,6 +30,7 @@ type Project {
   continuousDelivery: Boolean
   contractedHours: Int
   createdAt: ISO8601DateTime
+  credentials: [Credential!]
   customMetadata: ProjectCollection
   deploySendFrequency: Int
   dueDate: ISO8601DateTime
@@ -39,6 +40,8 @@ type Project {
   estimatedHours: String
   executiveSummary: String
   firstVulnerabilityIdentified: Vulnerability
+  freeRetest: Boolean
+  hasOpenRetest: Boolean
   history: [AnalysisHistory!]
   hoursOrDays: String
   id: ID!
@@ -58,9 +61,11 @@ type Project {
   plannedStartedAt: ISO8601DateTime
   playbookFinishedAt: ISO8601DateTime
   playbookStartedAt: ISO8601DateTime
-  playbooks: [Playbook!]
+  playbooks: [Requirement!]
+  projectType: ProjectType!
   receiveDeploys: Boolean
   repositoryUrl: String
+  resultFiles: [ResultFiles!]
   sacCode: String
   sacProjectId: Int
   scope: String
@@ -77,12 +82,14 @@ type Project {
   totalNewLines: Int
   totalPublishedVulnerabilities: Int
   totalRemovedLines: Int
-  type: ProjectType!
+  type: String!
   updatedAt: ISO8601DateTime
   userWithAccess: [PortalUser!]
   userableId: Int
   userableType: String
   vulnerabilities: [Vulnerability!]
+  vulnerabilitiesCount: AnalysisVulnerabilitiesCount
+  vulnerabilitiesCountByStatus: ProjectVulnerabilitiesStatusCount
   waiting: Boolean!
 }
 ```
@@ -111,6 +118,8 @@ type Project {
 
 #### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
+#### `credentials` ([`[Credential!]`](/api/graphql/documentation/objects/credential))
+
 #### `customMetadata` ([`ProjectCollection`](/api/graphql/documentation/objects/project-collection))
 
 #### `deploySendFrequency` ([`Int`](/api/graphql/documentation/scalars/int))
@@ -128,6 +137,10 @@ type Project {
 #### `executiveSummary` ([`String`](/api/graphql/documentation/scalars/string))
 
 #### `firstVulnerabilityIdentified` ([`Vulnerability`](/api/graphql/documentation/objects/vulnerability))
+
+#### `freeRetest` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `hasOpenRetest` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
 
 #### `history` ([`[AnalysisHistory!]`](/api/graphql/documentation/objects/analysis-history))
 
@@ -167,11 +180,15 @@ type Project {
 
 #### `playbookStartedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
-#### `playbooks` ([`[Playbook!]`](/api/graphql/documentation/objects/playbook))
+#### `playbooks` ([`[Requirement!]`](/api/graphql/documentation/objects/requirement))
+
+#### `projectType` ([`ProjectType!`](/api/graphql/documentation/objects/project-type))
 
 #### `receiveDeploys` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
 
 #### `repositoryUrl` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `resultFiles` ([`[ResultFiles!]`](/api/graphql/documentation/objects/result-files))
 
 #### `sacCode` ([`String`](/api/graphql/documentation/scalars/string))
 
@@ -205,7 +222,7 @@ type Project {
 
 #### `totalRemovedLines` ([`Int`](/api/graphql/documentation/scalars/int))
 
-#### `type` ([`ProjectType!`](/api/graphql/documentation/objects/project-type))
+#### `type` ([`String!`](/api/graphql/documentation/scalars/string))
 
 #### `updatedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
@@ -216,5 +233,9 @@ type Project {
 #### `userableType` ([`String`](/api/graphql/documentation/scalars/string))
 
 #### `vulnerabilities` ([`[Vulnerability!]`](/api/graphql/documentation/objects/vulnerability))
+
+#### `vulnerabilitiesCount` ([`AnalysisVulnerabilitiesCount`](/api/graphql/documentation/objects/analysis-vulnerabilities-count))
+
+#### `vulnerabilitiesCountByStatus` ([`ProjectVulnerabilitiesStatusCount`](/api/graphql/documentation/objects/project-vulnerabilities-status-count))
 
 #### `waiting` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))

@@ -1,0 +1,45 @@
+---
+id: page-info
+title: PageInfo
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Information about pagination in a connection.
+
+```graphql
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+```
+
+### Fields
+
+#### `endCursor` ([`String`](/api/graphql/documentation/scalars/string))
+
+When paginating forwards, the cursor to continue.
+
+#### `hasNextPage` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
+
+When paginating forwards, are there more items?
+
+#### `hasPreviousPage` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
+
+When paginating backwards, are there more items?
+
+#### `startCursor` ([`String`](/api/graphql/documentation/scalars/string))
+
+When paginating backwards, the cursor to continue.

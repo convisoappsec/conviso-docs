@@ -1,0 +1,31 @@
+---
+id: project-external-key-search
+title: ProjectExternalKeySearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectExternalKeySearch {
+  scopeIntegrationId: Int
+  mappingSearchFilter: String
+}
+```
+
+### Fields
+
+#### `scopeIntegrationId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `mappingSearchFilter` ([`String`](/api/graphql/documentation/scalars/string))

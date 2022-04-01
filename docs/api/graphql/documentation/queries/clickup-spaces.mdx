@@ -1,0 +1,33 @@
+---
+id: clickup-spaces
+title: clickupSpaces
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Load Clickup spaces
+
+```graphql
+clickupSpaces(
+  companyId: Int!
+): [ClickupSpace!]
+
+```
+
+### Arguments
+
+#### `companyId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`ClickupSpace`](/api/graphql/documentation/objects/clickup-space)

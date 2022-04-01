@@ -1,0 +1,40 @@
+---
+id: contract-consume
+title: ContractConsume
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ContractConsume {
+  consumedAmount: Int
+  consumedPercentage: Int
+  licenceAmountType: String
+  totalAmount: Int
+  updatedAt: ISO8601DateTime
+}
+```
+
+### Fields
+
+#### `consumedAmount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `consumedPercentage` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `licenceAmountType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `totalAmount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))

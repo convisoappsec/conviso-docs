@@ -19,7 +19,6 @@ No description
 
 ```graphql
 type Activity {
-  projectId: Int
   archiveContentType: String
   archiveFilename: String
   archiveSize: Int
@@ -30,8 +29,9 @@ type Activity {
   finishedAt: ISO8601DateTime
   id: ID!
   justify: String
-  playbook: Playbook!
+  playbook: Requirement!
   portalUser: PortalUser
+  projectId: Int
   reference: String
   startedAt: ISO8601DateTime
   status: String
@@ -41,8 +41,6 @@ type Activity {
 ```
 
 ### Fields
-
-#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
 
 #### `archiveContentType` ([`String`](/api/graphql/documentation/scalars/string))
 
@@ -64,9 +62,11 @@ type Activity {
 
 #### `justify` ([`String`](/api/graphql/documentation/scalars/string))
 
-#### `playbook` ([`Playbook!`](/api/graphql/documentation/objects/playbook))
+#### `playbook` ([`Requirement!`](/api/graphql/documentation/objects/requirement))
 
 #### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
 
 #### `reference` ([`String`](/api/graphql/documentation/scalars/string))
 

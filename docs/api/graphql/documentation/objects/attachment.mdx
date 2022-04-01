@@ -1,0 +1,61 @@
+---
+id: attachment
+title: Attachment
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Attachment {
+  archiveContentType: String
+  archiveFilename: String
+  archiveId: String
+  archiveSize: Int
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  description: String
+  id: ID!
+  portalUser: PortalUser
+  project: Project
+  scope: Attachment
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `archiveContentType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `archiveFilename` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `archiveId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `archiveSize` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `project` ([`Project`](/api/graphql/documentation/objects/project))
+
+#### `scope` ([`Attachment`](/api/graphql/documentation/objects/attachment))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

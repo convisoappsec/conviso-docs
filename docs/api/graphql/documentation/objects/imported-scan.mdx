@@ -1,0 +1,73 @@
+---
+id: imported-scan
+title: ImportedScan
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ImportedScan {
+  asset: Asset
+  assetId: Int!
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID
+  inProgress: Boolean
+  integrationId: Int!
+  integrationType: String!
+  lastCheckAt: ISO8601DateTime
+  organization: String
+  projectId: Int!
+  reference: String
+  referenceName: String
+  scopeId: Int
+  status: Boolean
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `asset` ([`Asset`](/api/graphql/documentation/objects/asset))
+
+#### `assetId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `inProgress` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `integrationId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `integrationType` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `lastCheckAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `organization` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `reference` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `referenceName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `scopeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `status` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

@@ -1,0 +1,36 @@
+---
+id: projects-queue
+title: projectsQueue
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return the projects queue by user
+
+```graphql
+projectsQueue(
+  page: Int = 0
+  limit: Int = 0
+): ProjectsQueueCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`ProjectsQueueCollection`](/api/graphql/documentation/objects/projects-queue-collection)

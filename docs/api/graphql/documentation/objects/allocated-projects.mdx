@@ -1,0 +1,58 @@
+---
+id: allocated-projects
+title: AllocatedProjects
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AllocatedProjects {
+  client: String
+  dueDate: ISO8601DateTime!
+  estimatedDays: String!
+  estimatedHours: String!
+  hoursOrDays: String!
+  id: ID!
+  label: String!
+  pid: String!
+  plannedStartedAt: ISO8601DateTime
+  projectStatus: String
+  projectTypeId: Int!
+}
+```
+
+### Fields
+
+#### `client` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `dueDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `estimatedDays` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `estimatedHours` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `hoursOrDays` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `pid` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `plannedStartedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `projectStatus` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectTypeId` ([`Int!`](/api/graphql/documentation/scalars/int))

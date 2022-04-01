@@ -1,0 +1,43 @@
+---
+id: custom-field-integration
+title: CustomFieldIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type CustomFieldIntegration {
+  fieldType: String
+  id: ID!
+  name: String
+  projectExternalKey: IntegrationExternalProject
+  projectExternalKeyId: Int
+  value: String
+}
+```
+
+### Fields
+
+#### `fieldType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `name` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectExternalKey` ([`IntegrationExternalProject`](/api/graphql/documentation/objects/integration-external-project))
+
+#### `projectExternalKeyId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `value` ([`String`](/api/graphql/documentation/scalars/string))

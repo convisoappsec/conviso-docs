@@ -19,7 +19,6 @@ No description
 
 ```graphql
 type Deploy {
-  projectId: Int
   changedApproximately: String
   changedLines: Int
   companyId: Int
@@ -39,6 +38,7 @@ type Deploy {
   newLines: Int
   previousCommit: String
   previousTag: String
+  projectId: Int
   removedLines: Int
   reviewed: Boolean
   reviewedAt: ISO8601DateTime
@@ -50,8 +50,6 @@ type Deploy {
 ```
 
 ### Fields
-
-#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
 
 #### `changedApproximately` ([`String`](/api/graphql/documentation/scalars/string))
 
@@ -90,6 +88,8 @@ type Deploy {
 #### `previousCommit` ([`String`](/api/graphql/documentation/scalars/string))
 
 #### `previousTag` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
 
 #### `removedLines` ([`Int`](/api/graphql/documentation/scalars/int))
 

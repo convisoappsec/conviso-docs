@@ -1,0 +1,36 @@
+---
+id: integration-alert
+title: integrationAlert
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns projects that should recive new deploys
+
+```graphql
+integrationAlert(
+  page: Int = 0
+  limit: Int = 0
+): ProjectCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`ProjectCollection`](/api/graphql/documentation/objects/project-collection)

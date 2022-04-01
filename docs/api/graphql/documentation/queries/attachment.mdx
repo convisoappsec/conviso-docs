@@ -1,0 +1,33 @@
+---
+id: attachment
+title: attachment
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+return an attachment from a company
+
+```graphql
+attachment(
+  id: ID!
+): Attachment
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+### Type
+
+#### [`Attachment`](/api/graphql/documentation/objects/attachment)
