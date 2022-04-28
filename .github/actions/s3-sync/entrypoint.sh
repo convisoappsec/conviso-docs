@@ -48,6 +48,10 @@ yarn run build
 echo "Copying to website folder"
 aws s3 sync ./build s3://${AWS_S3_BUCKET} --exact-timestamps --delete --region ${AWS_DEFAULT_REGION} $*
 
+echo "Invalidate cloudfront distribution"
+aws cloudfront create-invalidation \
+  --cli-input-json "{\"DistributionId\":\"E2IPBQYF2W483C\",\"InvalidationBatch\":{\"Paths\":{\"Quantity\":1,\"Items\":[\"/*\"]},\"CallerReference\":\"$(date +%s)\"}}"
+
 echo "Cleaning up things"
 
 rm -rf ~/.aws
