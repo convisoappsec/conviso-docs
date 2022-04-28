@@ -54,8 +54,8 @@ pipeline {
   }
 
   environment {
-    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
-    CONVISO_PROJECT_CODE = "Please, insert your project code here"
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
   }
 
   stages {
@@ -83,8 +83,8 @@ pipeline {
   }
 
   environment {
-    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
-    CONVISO_PROJECT_CODE = "Please, insert your project code here"
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
   }
 
   stages {
@@ -115,8 +115,8 @@ pipeline {
   }
 
   environment {
-    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
-    CONVISO_PROJECT_CODE = "Please, insert your project code here"
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
   }
 
   stages {
@@ -151,9 +151,9 @@ pipeline {
         }
       }     
       environment {
-        CONVISO_API_KEY      = credentials('SUP-FLOW-API-KEY-HOMOLOGA')
-        CONVISO_PROJECT_CODE = "****************"
-        CONVISO_API_URL = "https://app.convisoappsec.com/"
+        FLOW_API_KEY      = credentials('SUP-FLOW-API-KEY-HOMOLOGA')
+        FLOW_PROJECT_CODE = "****************"
+        FLOW_API_URL = "https://app.convisoappsec.com/"
      }
       steps {
         git url: 'https://github.com/convisoappsec/DVWA.git'
@@ -164,8 +164,8 @@ pipeline {
 ​        sh '''
           . deploy_create_output_vars
           conviso sast run \
-	        --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+	        --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
         '''
         sh '''
           conviso sca run

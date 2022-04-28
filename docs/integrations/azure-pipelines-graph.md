@@ -58,36 +58,36 @@ In this first block of **Bash** task, we carry out the installation of the tool 
 
 Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```CONVISO_API_KEY``` variables previously configured in the desired pipeline variables and the ```CONVISO_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) that can be defined in each of the pipelines.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables previously configured in the desired pipeline variables and the ```FLOW_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) that can be defined in each of the pipelines.
 
 Below are the code snippets that must be inserted in the blocks for each type of strategy: 
 
 **With TAGS, sorted by timestamp**
 
 ```yml
-conviso -k $(CONVISO_API_KEY) deploy create with tag-tracker sort-by time --project-code $(CONVISO_PROJECT_CODE)
+conviso -k $(FLOW_API_KEY) deploy create with tag-tracker sort-by time --project-code $(FLOW_PROJECT_CODE)
 ```
 
 **With TAGS, sorted by versioning-style**
 
 ```yml
-conviso -k $(CONVISO_API_KEY) deploy create with tag-tracker sort-by versioning-style --project-code $(CONVISO_PROJECT_CODE)
+conviso -k $(FLOW_API_KEY) deploy create with tag-tracker sort-by versioning-style --project-code $(FLOW_PROJECT_CODE)
 ```
 
 **Without TAGS, sorted by GIT Tree**
 
 ```yml
-conviso -k $(CONVISO_API_KEY) deploy create with values --project-code $(CONVISO_PROJECT_CODE)
+conviso -k $(FLOW_API_KEY) deploy create with values --project-code $(FLOW_PROJECT_CODE)
 ```
 
 ## SAST
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The requirements for running the job are the same as already practiced: ```CONVISO_API_KEY``` and ```CONVISO_PROJECT_CODE``` defined as environment variables for the Agent Pool.
+The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as environment variables for the Agent Pool.
 
 ```yml
-conviso sast run --project-code $(CONVISO_PROJECT_CODE)
+conviso sast run --project-code $(FLOW_PROJECT_CODE)
 ```
 
 In the above pipeline, we didn't use any options to the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
@@ -95,7 +95,7 @@ In the above pipeline, we didn't use any options to the ```conviso sast run``` c
 Alternatively, we can specify the diff range manually. In the example below, we scan between the current commit and the immediately previous one on the current branch:
 
 ```yml
-conviso sast run --start_commit `git rev-parse @~1` --end-commit $(Build.SourceVersion) --project-code $(CONVISO_PROJECT_CODE)
+conviso sast run --start_commit `git rev-parse @~1` --end-commit $(Build.SourceVersion) --project-code $(FLOW_PROJECT_CODE)
 ```
 
 ## SCA
@@ -103,7 +103,7 @@ conviso sast run --start_commit `git rev-parse @~1` --end-commit $(Build.SourceV
 The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
 
 ```yml
-conviso sca run --project-code $(CONVISO_PROJECT_CODE)
+conviso sca run --project-code $(FLOW_PROJECT_CODE)
 ```
 
 ## Getting everything together: Code Review + SAST + SCA Deployment
@@ -111,11 +111,11 @@ conviso sca run --project-code $(CONVISO_PROJECT_CODE)
 The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
 
 ```yml
-conviso -k $(CONVISO_API_KEY) deploy create -f env_vars with values > created_deploy_vars
+conviso -k $(FLOW_API_KEY) deploy create -f env_vars with values > created_deploy_vars
 source created_deploy_vars
-conviso -k $(CONVISO_API_KEY) sast run --project-code $(CONVISO_PROJECT_CODE)
-conviso -k $(CONVISO_API_KEY) sca run --project-code $(CONVISO_PROJECT_CODE)
+conviso -k $(FLOW_API_KEY) sast run --project-code $(FLOW_PROJECT_CODE)
+conviso -k $(FLOW_API_KEY) sca run --project-code $(FLOW_PROJECT_CODE)
 ```
 
 ## Troubleshooting
-If authentication is not performed even when loading the ```CONVISO_API_KEY``` variable, make sure it is provided as environment variables for all tasks that use the CLI.
+If authentication is not performed even when loading the ```FLOW_API_KEY``` variable, make sure it is provided as environment variables for all tasks that use the CLI.

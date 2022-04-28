@@ -71,8 +71,8 @@ pipeline {
   }
 
 environment {
-    CONVISO_API_KEY      = credentials('CONVISO_API_KEY')
-    CONVISO_PROJECT_CODE = get_project_code(webhook_repository_git_http_url)
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = get_project_code(webhook_repository_git_http_url)
     PREVIOUS_COMMIT = "$webhook_before"
     CURRENT_COMMIT = "$webhook_after"
 }
@@ -85,8 +85,8 @@ environment {
         sh '''
             . ./created_deploy_vars
             conviso sast run \
-            --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
         '''
       }
     }
