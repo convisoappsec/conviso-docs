@@ -51,9 +51,9 @@ steps:
 Executing command: conviso --help
 Usage: conviso [OPTIONS] COMMAND [ARGS]...
 Options:
-  -k, --api-key TEXT  The api key to access conviso resources. [env var: CONVISO_API_KEY]
-  -u, --api-url TEXT  The api url to access conviso resources. [env var: CONVISO_API_URL; default: https://app.convisoappsec.com]
-  -i, --api-insecure  HTTPS requests to untrusted hosts is enable. [env var: CONVISO_API_INSECURE; default: False]
+  -k, --api-key TEXT  The api key to access conviso resources. [env var: FLOW_API_KEY]
+  -u, --api-url TEXT  The api url to access conviso resources. [env var: FLOW_API_URL; default: https://app.convisoappsec.com]
+  -i, --api-insecure  HTTPS requests to untrusted hosts is enable. [env var: FLOW_API_INSECURE; default: False]
   -h, --help          Show this message and exit.
   -v, --version       Show the version and exit.
 Commands:
@@ -74,7 +74,7 @@ Authentication between [CLI](../cli/installation) and the Conviso Platform is do
 At the right corner of pipeline editing screen, there is a menu with **Steps**, **Triggers**, **Variables** and **Help** options. 
 
 1. Click **Variables**, then **Add Variable**;
-2. At **Key** field, input the variable name: ```CONVISO_API_KEY``` ;
+2. At **Key** field, input the variable name: ```FLOW_API_KEY``` ;
 3. At **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide](../api/generate-apikey).
 4. After pasting the API key at the **Value** field, you will notice a padlock with the **Encrypt** option. Click the **Encrypt** option and confirm.
 
@@ -86,7 +86,7 @@ To create global variables, the user must have account administrator privileges.
 2. At the **Configuration** section, click **Shared Configuration**;
 3. Click **Add Shared Value**. If you already have other contexts, click **Add Configuration Context**;
 4. Select **Shared Secret** option and label it as **Conviso**;
-5. At the **Key** field, input the variable name: ```CONVISO_API_KEY``` ;
+5. At the **Key** field, input the variable name: ```FLOW_API_KEY``` ;
 6. At the **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide];
 7. Click **Add variable** and then **Save**.
 
@@ -105,7 +105,7 @@ Notice that if we hadn't configured it that way, every command that require auth
 
 Before proceeding, we strongly recommend reading [this guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```CONVISO_API_KEY``` variable, configured at the pipeline or imported through shared context and ```CONVISO_PROJECT_CODE``` (identified as the project key in Conviso Platform), which must be defined individually by pipeline.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```FLOW_API_KEY``` variable, configured at the pipeline or imported through shared context and ```FLOW_PROJECT_CODE``` (identified as the project key in Conviso Platform), which must be defined individually by pipeline.
 
 Next, we present sample code snippets for each of the approaches, assuming the target project was cloned in an earlier step.
 
@@ -148,7 +148,7 @@ conviso_sample:
 ## SAST
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
-The requirements for running the job are the same as already shown: ```CONVISO_API_KEY``` (in the context or project) and ```CONVISO_PROJECT_CODE```, defined as environment variables.
+The requirements for running the job are the same as already shown: ```FLOW_API_KEY``` (in the context or project) and ```FLOW_PROJECT_CODE```, defined as environment variables.
 Next, we present the sample code snippets for each of the approaches, assuming the target project was cloned in a previous step.
 
 ```yml
@@ -205,7 +205,7 @@ conviso_sample:
     commands:
       - "conviso deploy create -f env_vars with values > created_deploy_vars"
       - "source created_deploy_vars"
-      - "conviso sast run --start-commit \"$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT\" --end-commit \"$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT\""
+      - "conviso sast run --start-commit \"$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT\" --end-commit \"$FLOW_DEPLOY_CURRENT_VERSION_COMMIT\""
       - "conviso sca run"
     stage: "test"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"

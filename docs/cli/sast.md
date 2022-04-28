@@ -13,8 +13,8 @@ The results will be sent to your Conviso Platform application by using the *proj
 Assuming that my_source_code_repository is a git repository, you can:
 
 ```sh
-$ export CONVISO_API_KEY='your-api-key'
-$ export CONVISO_PROJECT_CODE='your-project-code'
+$ export FLOW_API_KEY='your-api-key'
+$ export FLOW_PROJECT_CODE='your-project-code'
 $ cd my_source_code_repository
 $ conviso sast run
 ```

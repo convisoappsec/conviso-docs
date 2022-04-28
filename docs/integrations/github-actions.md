@@ -25,8 +25,8 @@ By the end of this tutorial you will know how to:
 ## Requirements
 - A Github account
 - All runners hosted by Github are compatible, but if you are using *self-hosted* runners they need to have **Docker** installed in order to work.
-- **CONVISO_API_KEY**: This is the API key to communicate with Conviso Platform
-- **CONVISO_PROJECT_CODE**: This is the ID of the application in Conviso Platform
+- **FLOW_API_KEY**: This is the API key to communicate with Conviso Platform
+- **FLOW_PROJECT_CODE**: This is the ID of the application in Conviso Platform
 - When using Github Enterprise Server it need to be run version 3.0 or later
 
 ## Creating your pipeline
@@ -51,8 +51,8 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       CONVISO_PROJECT_CODE: "<project code>"
+       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
    steps:
    - uses: actions/checkout@v2
 
@@ -77,8 +77,8 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       CONVISO_PROJECT_CODE: "<project code>"
+       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
    steps:
    - uses: actions/checkout@v2
 
@@ -108,8 +108,8 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       CONVISO_PROJECT_CODE: "<project code>"
+       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_PROJECT_CODE: "<project code>"
    steps:
     - uses: actions/checkout@v2
 

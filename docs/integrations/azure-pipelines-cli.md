@@ -74,7 +74,7 @@ Authentication between the CLI tool and the platform takes place through an API 
 
 5. Click at the **+** button at the upper right corner;
 
-6. Label the variable as ```CONVISO_API_KEY``` and add the API key available at your Conviso Platform Profile;
+6. Label the variable as ```FLOW_API_KEY``` and add the API key available at your Conviso Platform Profile;
 
 7. Check the option **Keep this value secret**, then click **Ok**.
 
@@ -82,7 +82,7 @@ Authentication between the CLI tool and the platform takes place through an API 
 
 Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```CONVISO_API_KEY``` variables (previously set in the desired pipeline variables) and the ```CONVISO_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) that can be defined in each of the pipelines. 
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables (previously set in the desired pipeline variables) and the ```FLOW_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) that can be defined in each of the pipelines. 
 
 Below are the code snippets that can be at the ```azure-pipelines.yml``` file (or any other custom file):
 
@@ -98,13 +98,13 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: '<Project Key>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
           conviso deploy create with tag-tracker sort-by time    
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
 **With TAGS, sorted by versioning-style**
@@ -119,13 +119,13 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: '<Project Key>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
           conviso deploy create with tag-tracker sort-by versioning-style    
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
 **Without TAGS, sorted by GIT Tree**
@@ -140,20 +140,20 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: '<Project Key>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
           conviso deploy create with values    
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
 ## SAST
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated at Conviso Platform as findings.
 
-The requirements for running the job are the same as already practiced: ```CONVISO_API_KEY``` and ```CONVISO_PROJECT_CODE```, defined as environment variables for the Agent Pool.
+The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE```, defined as environment variables for the Agent Pool.
 
 ```yml
 trigger:
@@ -165,13 +165,13 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: '<Project Key>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
           conviso sast run
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
 In the above pipeline, we didn't use any options to the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively. 
@@ -188,13 +188,13 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: '<Project Key>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash:
           conviso sast run --start_commit `git rev-parse @~1` --end-commit $GIT_COMMIT
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
          GIT_COMMIT: $(Build.SourceVersion)
 ```
 
@@ -212,13 +212,13 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: '<Project Key>'
+    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: 
          conviso sca run
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
 ## Getting Everything Together: Code Review + SAST + SCA Deployment
@@ -235,28 +235,28 @@ jobs:
   container:
     image: 'convisoappsec/flowcli'
   variables:
-    CONVISO_PROJECT_CODE: 'Kt5p5zKb_zbth0o0'
+    FLOW_PROJECT_CODE: 'Kt5p5zKb_zbth0o0'
 
   steps:
     - bash: |
           conviso deploy create -f env_vars with values > created_deploy_vars    
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)    
+         FLOW_API_KEY: $(FLOW_API_KEY)    
     - bash: |
           cat created_deploy_vars
     - bash: |
           source created_deploy_vars
           conviso sast run \
-            --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
     - bash: | 
          conviso sca run
       env:
-         CONVISO_API_KEY: $(CONVISO_API_KEY)
+         FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
 ## Troubleshooting
 
-If authentication is not performed even by loading the CONVISO_API_KEY variable, make sure it is loaded in the env session of all tasks that use the CLI.
+If authentication is not performed even by loading the FLOW_API_KEY variable, make sure it is loaded in the env session of all tasks that use the CLI.

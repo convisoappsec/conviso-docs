@@ -67,7 +67,7 @@ In this case, the variable will be restricted to the execution of pipelines of t
 
 3. In the left menu, click on **Environment Variables** and then on the **Add Environment Variable** button;
 
-4. Name the variable CONVISO_API_KEY and add the API key available in your Conviso Platform profile.
+4. Name the variable FLOW_API_KEY and add the API key available in your Conviso Platform profile.
 
 ### Context Variables Setup
 
@@ -101,7 +101,7 @@ jobs:
 
 Before proceeding, we recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```CONVISO_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```CONVISO_PROJECT_CODE``` (identified as the Project Key in Conviso Platform) which can be defined individually by project.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The prerequisites for executing this functionality are the settings of the ```FLOW_API_KEY``` variables in the project or context (we'll follow the guide with the context option) and ```FLOW_PROJECT_CODE``` (identified as the Project Key in Conviso Platform) which can be defined individually by project.
 
 Below are sample code snippets for each of the approaches:
 
@@ -114,14 +114,14 @@ workflows:
   main:
     jobs:
       - flow-codereview-tags-time:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-codereview-tags-time: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -139,14 +139,14 @@ workflows:
   main:
     jobs:
       - flow-codereview-tags-format:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-codereview-tags-format: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -164,14 +164,14 @@ workflows:
   main:
     jobs:
       - flow-codereview-git:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-codereview-git: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -184,7 +184,7 @@ jobs:
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The prerequisites for executing the job are the same ones already used: ```CONVISO_API_KEY``` no (context or project) and ```CONVISO_PROJECT_CODE``` defined as environment variables.
+The prerequisites for executing the job are the same ones already used: ```FLOW_API_KEY``` no (context or project) and ```FLOW_PROJECT_CODE``` defined as environment variables.
 
 In the above pipeline, we didn't use any options to the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
 
@@ -195,14 +195,14 @@ workflows:
   main:
     jobs:
       - flow-sast:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-sast: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -220,14 +220,14 @@ workflows:
   main:
     jobs:
       - flow-sast:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-sast: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -247,14 +247,14 @@ workflows:
   main:
     jobs:
       - flow-sca:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-sca: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -274,14 +274,14 @@ workflows:
   main:
     jobs:
       - flow-deploy-sast-sca:
-          context: Conviso #has an env var called CONVISO_API_KEY
+          context: Conviso #has an env var called FLOW_API_KEY
 
 jobs:
  flow-deploy-sast-sca: 
     docker: 
       - image: "convisoappsec/flowcli"
     environment:
-      CONVISO_PROJECT_CODE: "<Project Key>"
+      FLOW_PROJECT_CODE: "<Project Key>"
     steps:
       - setup_remote_docker
       - checkout
@@ -293,8 +293,8 @@ jobs:
           command: |
             source created_deploy_vars
             conviso sast run \
-            --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
       - run:
           name: sca
           command: conviso sca run

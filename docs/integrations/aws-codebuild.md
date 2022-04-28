@@ -68,7 +68,7 @@ Below is a step-by-step guide to setting up a new vault in Secret Manager, if yo
 
 4. Below, a list of key-value objects is expected;
 
-5. As key, fill ```CONVISO_API_KEY``` with the value of the Conviso Platform API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
+5. As key, fill ```FLOW_API_KEY``` with the value of the Conviso Platform API key. If you don't have a key, follow [this guide](../api/generate-apikey) to generate one;
 
 6. In the encryption key field, select the desired one and click **Next**;
 
@@ -96,7 +96,7 @@ After these procedures, the secret will be available to be used by CodeBuild.
 
 Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```CONVISO_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```CONVISO_PROJECT_CODE``` variable.
+After choosing the strategy to be used to send deploys to Code Review, it is possible to create a specific buildspec for this action in the CodeBuild build project. The requirements for executing this functionality are the settings made previously (creation of the compilation project and definition of the ```FLOW_API_KEY``` secret) and also the existence of a project at Conviso Platform, as the project key is required, which in the code will be the ```FLOW_PROJECT_CODE``` variable.
 
 Below are code snippets from the ```conviso-buildspec.yml``` file, which illustrates the creation of a unique job for deploying code review in the three available strategies:
 
@@ -107,9 +107,9 @@ version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -129,9 +129,9 @@ version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -151,9 +151,9 @@ version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -170,16 +170,16 @@ phases:
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the compilation project, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The requirementss for running the job are the same as already practiced: Build project, ```CONVISO_API_KEY``` and ```CONVISO_PROJECT_CODE``` defined as variables in the buildspec file:
+The requirementss for running the job are the same as already practiced: Build project, ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as variables in the buildspec file:
 
 ```yml
 version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -201,9 +201,9 @@ version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -226,9 +226,9 @@ version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -250,9 +250,9 @@ version: 0.2
 
 env:
  variables:
-   CONVISO_PROJECT_CODE: '<Project Key>'
+   FLOW_PROJECT_CODE: '<Project Key>'
  secrets-manager:
-   CONVISO_API_KEY: Conviso:CONVISO_API_KEY
+   FLOW_API_KEY: Conviso:FLOW_API_KEY
 
 phases:
  install:
@@ -265,7 +265,7 @@ phases:
      - deploy_create_output_vars="$(mktemp)"
      - conviso deploy create -f env_vars with values > "$deploy_create_output_vars"
      - . "$deploy_create_output_vars"
-     - conviso sast run --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
+     - conviso sast run --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
      - conviso sca run
 ```
 
