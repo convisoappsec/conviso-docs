@@ -108,7 +108,7 @@ At the drop-down list **Projects**, select the Conviso Platform Project you want
 You may associate several Conviso Platform Projects to a single Jira Project.
 :::
 
-After creating the Projects Associations, the panel will expand and ask you for the **Jira Issue Type** that you want to link. Choose from the ones you have created in your Jira board:
+After creating the Projects Associations, the panel will expand and ask you for the **Jira Issue Type** that you want to link. Choose from **Epic**, **Task** or **Subtask** types:
 
 <div style={{textAlign: 'center'}}>
 
