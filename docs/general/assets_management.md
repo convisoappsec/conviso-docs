@@ -54,7 +54,7 @@ The Conviso Platform has basically three options for creating assets. If you hav
 
 **Import from Repositories**: allows you to directly import your Assets already configured at some system integrated to the Conviso Platform.
 
-**Asset Import**: for those who have a large number of assets that want to register in Conviso Platform. To help on using this feature, refer to the [following guide](./assets_import).
+**Asset Import**: for those who have many assets that want to register in Conviso Platform. To help on using this feature, refer to the [following guide](./assets_import).
 
 
 

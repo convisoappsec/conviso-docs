@@ -6,7 +6,7 @@ sidebar_label: Integration Policies
 
 ## Introduction
 
-The **Integration Policy** feature aims to send the Conviso Platform vulnerabilities automatically to the integrated Defect Tracking tools such as Bitbucket, Github, Jira, Redmine, ServiceNow or Trello, or automatically classify as vulnerabilities the findings from Scanning tools such as Fortify, Qualys, Sonarcloud, Sonarqube or Amazon Inspector.
+The **Integration Policy** feature aims to send the Conviso Platform vulnerabilities automatically to the integrated Defect Tracking tools such as Bitbucket, GitHub, Jira, Redmine, ServiceNow or Trello, or automatically classify as vulnerabilities the findings from Scanning tools such as Fortify, Qualys, SonarCloud, SonarQube or Amazon Inspector.
 
 With this setting enabled, the user will not need to send issues manually whenever a new vulnerability is identified and registered in Conviso Platform. The issue will be automatically created in the defect tracking tool.
 
@@ -56,7 +56,7 @@ When selecting the desired options, click on the **Save** button so that the int
 
 - **Low**: By checking this box, only vulnerabilities with low severity will be sent to your Scanner tool.
 
-- **Medium**: If you check this box, only vulnerabilities with medium severity will be sent to your Scannerg tool.
+- **Medium**: If you check this box, only vulnerabilities with medium severity will be sent to your Scanner tool.
 
 - **High**: By checking this box, only vulnerabilities with high severity will be sent to your Scanner tool.
 

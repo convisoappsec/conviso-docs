@@ -36,7 +36,7 @@ On the users access screen, click on the blue **+** button to the right, to crea
 
 </div>
 
-The **Add a new** user modal will be shown. On the **E-mails** field, type the new user e-mail address (or choose an existing one, if you are changing an existing user access profile) and choose a Team wich the user will be assigned to on the drop-down list **Teams**. Next, choose what kind of access will be granted to the user, by choosing one of the three radio buttons: **Company**, **Projects** or **Vulnerabilities** (details on the next section in this document). When done filling the form, click on the **Create** button to store the user access profile. An e-mail will be sent to the user, who must accept the invitation.
+The **Add a new** user modal will be shown. On the **E-mails** field, type the new user e-mail address (or choose an existing one, if you are changing an existing user access profile) and choose a Team which the user will be assigned to on the drop-down list **Teams**. Next, choose what kind of access will be granted to the user, by choosing one of the three radio buttons: **Company**, **Projects** or **Vulnerabilities** (details on the next section in this document). When done filling the form, click on the **Create** button to store the user access profile. An e-mail will be sent to the user, who must accept the invitation.
 
 <div style={{textAlign: 'center'}}>
 
@@ -54,7 +54,7 @@ The **Add a new** user modal will be shown. On the **E-mails** field, type the n
 
 </div>
 
-- **Projects**: the user will only have control of the projects he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the **Projects** dop-down list:
+- **Projects**: the user will only have control of the projects he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the **Projects** drop-down list:
 
 <div style={{textAlign: 'center'}}>
 
@@ -62,7 +62,7 @@ The **Add a new** user modal will be shown. On the **E-mails** field, type the n
 
 </div>
 
-- **Vulnerabilities**: The user will only have control of the vulnerabilities he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the **Projects** dop-down list, and then choose what vulnerabilities the user will be granted access to, by clicking on the **Vulnerabilities** dop-down list:
+- **Vulnerabilities**: The user will only have control of the vulnerabilities he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the **Projects** drop-down list, and then choose what vulnerabilities the user will be granted access to, by clicking on the **Vulnerabilities** drop-down list:
 
 <div style={{textAlign: 'center'}}>
 
@@ -74,7 +74,7 @@ The **Add a new** user modal will be shown. On the **E-mails** field, type the n
 
 There are some additional controls available at **User Management**:
 
-In the main **User Management** screen, you can click on this button to navigate through the screen, expanding or colapsing user detaisl or refreshing the entire user list: 
+In the main **User Management** screen, you can click on this button to navigate through the screen, expanding or collapsing user details or refreshing the entire user list: 
 
 <div style={{textAlign: 'left'}}>
 
@@ -82,7 +82,7 @@ In the main **User Management** screen, you can click on this button to navigate
 
 </div>
 
-The availble controls exhibited when you click the button:
+The available controls exhibited when you click the button:
 
 <div style={{textAlign: 'left'}}>
 
@@ -90,7 +90,7 @@ The availble controls exhibited when you click the button:
 
 </div>
 
-Also, at the right of each user, you have some additional controls available, depending of the context.
+Also, at the right of each user, you have some additional controls available, depending on the context.
 
 **Grant Access to Education Module** (the user currently has no access to the Education Module):
 <div style={{textAlign: 'left'}}>
@@ -141,7 +141,7 @@ Also, at the right of each user, you have some additional controls available, de
 
 </div>
 
-**Cancel User's Invitation** (use it to cancel an user invitation):
+**Cancel User's Invitation** (use it to cancel a user invitation):
 <div style={{textAlign: 'left'}}>
 
 ![img](../../static/img/user_management-img16.png)

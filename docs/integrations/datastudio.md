@@ -44,7 +44,7 @@ To create a connector with the BI tool, just copy the **Conviso Platform URL** (
 
 ## Google Data Studio Setup
 
-Logon to **Google Data Studio** [here](https://datastudio.google.com/), click at **Create** button and choose **Report**:
+Log on to **Google Data Studio** [here](https://datastudio.google.com/), click at **Create** button and choose **Report**:
 
 <div style={{textAlign: 'center'}}>
 
@@ -112,7 +112,7 @@ This windows will be shown. We will fill this form with the following data: **Da
 2. At **Source URL or Google Drive path**, insert ```https://app.convisoappsec.com/api/v2/projects```;
 3. At **HTTP headers**, insert ```x-api-key:<your-generated-api-key>```.
 
-When done filling the form, click at the button **Add**, at the lower right corner:
+When done filling the form, click at the button **Add**, in the lower right corner:
 
 <div style={{textAlign: 'center'}}>
 

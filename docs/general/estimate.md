@@ -30,7 +30,7 @@ Fill in **Subject** and **Description**.
 It is possible to request an estimate for all types of services (as long as it is within the contract), such as pentests, code review, training, consulting, etc.
 :::
 
-**Subject**: Describe what you want to be executed, as **Web Pentest in application x**, **Code review in application x**, **Network Pentest on x ip addresses**, etc.
+**Subject**: Describe what you want to be executed, as **Web Pentest in application x**, **Code review in application x**, **Network Pentest on x IP addresses**, etc.
 
 **Description**: Detailed information regarding the scope of the request, such as:
 
@@ -52,7 +52,7 @@ It is possible to request an estimate for all types of services (as long as it i
   - api.site.com/carrinho
 
 :::info
-This information will be used to estimate the required effort to  the requested demand.
+This information will be used to estimate the required effort to the requested demand.
 :::
 
 After filling the form, just click on **Save** button.

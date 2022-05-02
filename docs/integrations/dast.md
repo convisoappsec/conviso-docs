@@ -66,7 +66,7 @@ At the **URL** field, type the URL of the asset you want to scan:
 
 </div>
 
-You may want to provide some additional information for your new asset. Fill the corresponding fields of the form wit useful data. When done, click at the butto **Save** at the end of the form: 
+You may want to provide some additional information for your new asset. Fill the corresponding fields of the form wit useful data. When done, click at the button **Save** at the end of the form: 
 
 <div style={{textAlign: 'center'}}>
 
@@ -106,7 +106,7 @@ Your current scan sessions will be exhibited. You can filter your scans by statu
 
 ## Scheduling DAST Scans
 
-In order to schedule new scan sessions, click at the **Scans** menu option at the main left panel, then click on the **Scheduled Scans** submenu. On the panle to the right, click on the **+ New Scheduled Scan** button:
+In order to schedule new scan sessions, click at the **Scans** menu option at the main left panel, then click on the **Scheduled Scans** submenu. On the panel to the right, click on the **+ New Scheduled Scan** button:
 
 <div style={{textAlign: 'center'}}>
 

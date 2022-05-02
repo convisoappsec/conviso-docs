@@ -6,7 +6,7 @@ sidebar_label: Security Gate
 
 ## Overview
 
-Imagine that you want to validate your opened vulnerabilities for an specific project and block your [CI/CD] pipeline depending on pre defined vulnerability policies.
+Imagine that you want to validate your opened vulnerabilities for a specific project and block your [CI/CD] pipeline depending on pre-defined vulnerability policies.
 The Security Gate feature helps you with that by letting you define policies such as:
 - Vulnerability Quantity by severity (Low, Medium, High, Critical)
 - Vulnerability sources (For example, external integrations such as Checkmarx or Qualys, and also [Conviso Platform] scanners)
@@ -15,7 +15,7 @@ The Security Gate feature helps you with that by letting you define policies suc
 
 First, you need to define the policies for the specific project.
 Let us define for this example that a [CI/CD] pipeline needs to be blocked when there is more than 5 high severity vulnerabilities.
-If the policy that was defined is true and the asset in fact has more that 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline indicating the cause with the details of why it did not passed through.
+If the policy that was defined is true and the asset in fact has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline indicating the cause with the details of why it did not pass through.
 
 ## Policy File Structure
 

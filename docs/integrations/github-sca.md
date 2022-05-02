@@ -11,26 +11,26 @@ sidebar_label: Github SCA
 </div>
 
 :::note
-First time using Github SCA? Please refer to the [following documentation](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning).
+First time using GitHub SCA? Please refer to the [following documentation](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning).
 :::
 
 ## Introduction
 
-Manage 3rd party library vulnerabilities, all company vulnerabilities identified by Github in 3rd party libraries and consolidate them using full workflow!
+Manage 3rd party library vulnerabilities, all company vulnerabilities identified by GitHub in 3rd party libraries and consolidate them using full workflow!
 
 ## Requirements
 
-In order to integrate Github SCA to Conviso Platform, we will need the following data:
+In order to integrate GitHub SCA to Conviso Platform, we will need the following data:
 
-- Github token;
+- GitHub token;
 
 - Repository Name;
 
 - A Conviso Platform Project.
 
-## Github Setup
+## GitHub Setup
 
-Log on to [Github](https://github.com/);
+Log on to [GitHub](https://github.com/);
 
 To the right of the top menu bar, click on your user to expand the user options, then select the **Settings** submenu:
 
@@ -94,7 +94,7 @@ Your personal access token will be generated. Copy it by clicking the **Copy to 
 
 ## Enabling Security Alerts
 
-At Github, select the repository you wish to integrate to Conviso Platform, then click on the **Settings** Menu:
+At GitHub, select the repository you wish to integrate to Conviso Platform, then click on the **Settings** Menu:
 
 <div style={{textAlign: 'center'}}>
 
@@ -124,7 +124,7 @@ The vulnerabilities shown here will be automatically sent to the Conviso Platfor
 
 Log in to the [Conviso Platform](https://app.convisoappsec.com);
 
-On the main menu to the left, click on **Integrations**. At the panel to the right, click on the **Scanners** option, then click on the **Integrate** button on the **Github SCA** card:
+On the main menu to the left, click on **Integrations**. At the panel to the right, click on the **Scanners** option, then click on the **Integrate** button on the **GitHub SCA** card:
 
 <div style={{textAlign: 'center'}}>
 
@@ -132,7 +132,7 @@ On the main menu to the left, click on **Integrations**. At the panel to the rig
 
 </div>
 
-Fill the modal with the **Github authorization token** and the **Github repository** obtained from Github. Also, select the Conviso Platform **Projects** you wish to integrate. When done filling the form, click on the **Save** button to store your integration configuration settings:
+Fill the modal with the **GitHub authorization token** and the **GitHub repository** obtained from GitHub. Also, select the Conviso Platform **Projects** you wish to integrate. When done filling the form, click on the **Save** button to store your integration configuration settings:
 
 <div style={{textAlign: 'center'}}>
 

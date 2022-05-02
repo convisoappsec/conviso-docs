@@ -24,7 +24,7 @@ The integration allows the import of issues (vulnerabilities) found in Veracode 
 
 In order to create this integration, you will need the following data from your Veracode instance:
 
-- Veracode API Id;
+- Veracode API ID;
 
 - Veracode API Key.
 
@@ -42,7 +42,7 @@ On the main menu to the left, click on **Integrations**. At the panel to the rig
 
 </div>
 
-Fill the modal with the **Veracode api id** and the **Veracode api key**. When done filling the form, click on the **Save** button to store your integration configuration settings:
+Fill the modal with the **Veracode API ID** and the **Veracode API key**. When done filling the form, click on the **Save** button to store your integration configuration settings:
 
 <div style={{textAlign: 'center'}}>
 

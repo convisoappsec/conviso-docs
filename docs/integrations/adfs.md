@@ -139,7 +139,7 @@ These values must be exactly the same as shown, for the correct functioning of t
 
 ### Configuring ADFS Logout Endpoint
 
-In order to perform this configuration, we have to make sure that the the **Secure Hash Algorithm** is configured for **SHA-256** within the **Relying Trust Party** properties, in the **Advanced** tab:
+In order to perform this configuration, we have to make sure that the **Secure Hash Algorithm** is configured for **SHA-256** within the **Relying Trust Party** properties, in the **Advanced** tab:
 
 <div style={{textAlign: 'center'}}>
 
@@ -155,7 +155,7 @@ Now we must open the **Monitoring** tab and disable the **Automatically Update R
 
 </div>
 
-We should configure as shown in the following image and configure the client's own ADFS logout url. The default is ```https://X.Y.com/adfs/ls/?wa=wsignout1.0```, where X and Y are, respectively, the subdomain and the root domain where the client's ADFS is installed:
+We should configure as shown in the following image and configure the client's own ADFS logout URL. The default is ```https://X.Y.com/adfs/ls/?wa=wsignout1.0```, where X and Y are, respectively, the subdomain and the root domain where the client's ADFS is installed:
 
 <div style={{textAlign: 'center'}}>
 
@@ -196,7 +196,7 @@ Within **ADFS Management Console**, right-click on the **Service** node and choo
 </div>
 
 :::note
-Be careful with the protocol used in this url, it may default to **HTTP**. When using **HTTPS** (and we strongly recommend to do so), change this field and leave **HTTPS** in the value of **Federation Service Identifier**.
+Be careful with the protocol used in this url, it may default to **HTTP**. When using **HTTPS** (and we strongly recommend doing so), change this field and leave **HTTPS** in the value of **Federation Service Identifier**.
 :::
 
 ### Configuring integration in Conviso Platform

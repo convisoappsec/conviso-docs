@@ -132,7 +132,7 @@ After mapping all the Conviso Platform status to Jira status, click at the **Sav
 
 </div>
 
-After saving you integration configuration, you may want to review, make changes to it or even remove it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; If you wanto to completely delete it, use the **Trash** icon at its right:
+After saving you integration configuration, you may want to review, make changes to it or even remove it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; If you want to completely delete it, use the **Trash** icon at its right:
 
 <div style={{textAlign: 'center'}}>
 

@@ -114,7 +114,7 @@ At the Add Assignment screen, select the link **None selected** below the Users 
 
 </div>
 
-At the right panel, select all of the users you want to assign to the Conviso Platform SSO login:
+At the right panel, select all the users you want to assign to the Conviso Platform SSO login:
 
 <div style={{textAlign: 'center'}}>
 
@@ -130,7 +130,7 @@ When done selecting users, click on the **Select** button at the end of the righ
 
 </div>
 
-When your users are selected, you will be back to the previous screen, and now the Userds label show how many users were selected. Click at the **Assign** button to finish this configuration: 
+When your users are selected, you will be back to the previous screen, and now the Users label show how many users were selected. Click at the **Assign** button to finish this configuration: 
 
 <div style={{textAlign: 'center'}}>
 

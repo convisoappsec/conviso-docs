@@ -6,7 +6,7 @@ sidebar_label: Requirements
 
 ## Introduction
 
-Requirements help keep large teams working towards the same goals, and following a pattern within a process is not the easiest of tasks. Requirementss allow you to create an action plan based on tasks that must be accomplished. These tasks, in some cases, can be placed as mandatory for the closing of a project, which guarantees the manager total control over the execution.
+Requirements help keep large teams working towards the same goals, and following a pattern within a process is not the easiest of tasks. Requirements allow you to create an action plan based on tasks that must be accomplished. These tasks, in some cases, can be placed as mandatory for the closing of a project, which guarantees the manager total control over the execution.
 
 ## Using Requirements
 

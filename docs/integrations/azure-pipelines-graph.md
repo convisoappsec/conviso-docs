@@ -20,7 +20,7 @@ In order for the experience with Conviso's services to be complete, it is necess
 
 1. Hosted Agent Pool (Ubuntu 18.04 or higher) with Docker installed or Agent Cloud Azure;
 
-2. External access (may be limited to Conviso's registry for SAST, Dockerhub and Conviso Platform).
+2. External access (can be limited to Conviso's registry for SAST, Dockerhub and Conviso Platform).
 
 ## First Steps
 
@@ -32,7 +32,7 @@ Given an Azure Devops project, to create a Welcome Pipeline you can follow the s
 
 3. Select the **Use the classic editor to create a pipeline without YAML** option;
 
-4. At **Select your Repository** step, select the platform where your code is hosted, the ropository and the branch for pipeline execution and click at **Continue**;
+4. At **Select your Repository** step, select the platform where your code is hosted, the repository and the branch for pipeline execution and click at **Continue**;
 
 5. Select the **Start with an Empty Job** option;
 
@@ -100,7 +100,7 @@ conviso sast run --start_commit `git rev-parse @~1` --end-commit $(Build.SourceV
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 conviso sca run --project-code $(FLOW_PROJECT_CODE)
@@ -108,7 +108,7 @@ conviso sca run --project-code $(FLOW_PROJECT_CODE)
 
 ## Getting everything together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
+The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
 
 ```yml
 conviso -k $(FLOW_API_KEY) deploy create -f env_vars with values > created_deploy_vars

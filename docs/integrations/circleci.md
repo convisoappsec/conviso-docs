@@ -23,11 +23,11 @@ For the Cloud version, support is native. However, for the enterprise version, i
 
 - Build environment with Docker
 
-- External access (may be limited to Conviso, Dockerhub and Conviso registry)
+- External access (can be limited to Conviso, Dockerhub and Conviso registry)
 
 ## First Steps
 
-After configuring your VCS access policies in CircleCI, on the Project Dashboard page you will be able to see all the repositories available for creating Pipelines. If there is already a description of a pipeline in the repository, it will be available in the .circleci folder at the root of the repository, in the config.yml file. It is important that Conviso jobs are set up correctly along with the rest of the workflow. If there is no pipeline yet, clicking on the **Setup project** button for your repository will open an editor for the creation of pipelines.
+After configuring your VCS access policies in CircleCI, on the Project Dashboard page you will be able to see all the repositories available for creating Pipelines. If there is already a description of a pipeline in the repository, it will be available in the ```.circleci``` folder at the root of the repository, in the config.yml file. It is important that Conviso jobs are set up correctly along with the rest of the workflow. If there is no pipeline yet, clicking on the **Setup project** button for your repository will open an editor for the creation of pipelines.
 
 The platform will bring suggestions based on the technologies present in your project's code. For this first pipeline, we can paste the contents of the code snippet below:
 
@@ -55,7 +55,7 @@ This file can be saved by Circle CI itself in an alternate branch by clicking on
 
 ## Variables Setup
 
-Authentication between the CLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the **Variables** of Pipeline. They can be defined by project or else by context.
+Authentication between the CLI tool and the platform takes place through an API key. For this to happen safely, it is recommended to use the **Variables** of Pipeline. They can be defined by project or else by context.
 
 ### Project Variables Setup
 
@@ -238,7 +238,7 @@ jobs:
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 version: 2.1
@@ -265,7 +265,7 @@ jobs:
 
 ## Getting Everything Together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
+The SAST and SCA analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
 
 ```yml
 version: 2.1

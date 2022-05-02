@@ -46,7 +46,7 @@ In order to get access to the LDAP configuration, you need to be logged in to yo
 
 1. For **LDAP User DN** and **LDAP password**, we strongly recommend that you create a service user account and grant the proper privileges to BIND to your LDAP implementation;
 
-2. The **Host** data is the FQDN of your host where LDAP is served. For most of Microsoft (AD/LDAP) implementations, there are often more than 2 hosts (called Domain Controllers) that serve LDAP, so you can use your FQDN domain name as the Host, once any Domain Controller can respond to the requests. If you especify a single host on this field and this host become offline, you will loose the SSO feature and will be unable to logon at Conviso Platform, although you will still be able to login on your domain;
+2. The **Host** data is the FQDN of your host where LDAP is served. For most of Microsoft (AD/LDAP) implementations, there are often more than 2 hosts (called Domain Controllers) that serve LDAP, so you can use your FQDN domain name as the Host, once any Domain Controller can respond to the requests. If you specify a single host on this field and this host become offline, you will lose the SSO feature and will be unable to logon at Conviso Platform, although you will still be able to log in on your domain;
 
 3. The **Port** will depend on your LDAP implementation and configuration. Microsoft **LDAP** listens on the default **389** port, while **LDAP Over SSL (LDAPS)** listens on the default **636** port. Check if your LDAP/LDAPS are using the default port or make the appropriate changes to this;
 
@@ -74,7 +74,7 @@ Next, choose **Connection** at the menu bar, and then choose **Connect...**:
 
 </div>
 
-You will be prompted to provide **Server** and **port** data. These are the same data you will be using at Conviso Platform LDAP SSO integration. Note that for **LDAPS** connections, the default port is **636** and you must check the **SSL** checkbox:
+You will be prompted to provide **Server** and **port** data. These are the same data you will be using at Conviso Platform LDAP SSO integration. Note that for **LDAPS** connections, the default port is **636**, and you must check the **SSL** checkbox:
 
 <div style={{textAlign: 'center'}}>
 
@@ -106,7 +106,7 @@ After you are bound to LDAP, go to **View** at the menu bar and select **Tree**:
 
 </div>
 
-A floating window will be shown. At **Base DN**, select your Domain DN (in our exemple, **DC=redelocal,DC=com,DC=br**):
+A floating window will be shown. At **Base DN**, select your Domain DN (in our example, **DC=redelocal,DC=com,DC=br**):
 
 <div style={{textAlign: 'center'}}>
 
@@ -114,7 +114,7 @@ A floating window will be shown. At **Base DN**, select your Domain DN (in our e
 
 </div>
 
-Now, expand the tree at the left panel, and the expand the DN that starts with **CN=Users**. This is where the user you used to bind to LDAP is stored. If you are using a custom service user account, expand the tree until you find its OU.
+Now, expand the tree at the left panel, and then expand the DN that starts with **CN=Users**. This is where the user you used to bind to LDAP is stored. If you are using a custom service user account, expand the tree until you find its OU.
 
 From the left panel, you can extract the **LDAP Domain** (1); from the right panel, you can extract the data for the **LDAP User DN** (2).
 

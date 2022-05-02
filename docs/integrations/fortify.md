@@ -26,7 +26,7 @@ To integrate Fortify with Conviso Platform, you will need the following data:
 
 - Password: The password of the referred username;
 
-- API URL: The API URL address obtained from Fortify subscription, e.g. 192.168.1.15/ssc/api/v1.
+- API URL: The API URL address obtained from Fortify subscription, e.g. ```192.168.1.15/ssc/api/v1```.
 
 ## Conviso Platform Setup
 
@@ -58,7 +58,7 @@ On the left Menu, click on **Assets Management**, then click on the **Edit** ico
 
 </div>
 
-Click on the **Advanced** button to expand all of the asset's properties:
+Click on the **Advanced** button to expand all the asset's properties:
 
 <div style={{textAlign: 'center'}}>
 
@@ -100,7 +100,7 @@ You can import all of your Fortify's Projects to Conviso Platform by checking **
 
 </div>
 
-No matter your choice, once the projects are selected, they will be shown as a list below the section **Selected Projects**. You may want to search for a particular project by **Project Name** or **Version** using the **Search** button. Also, you can remove all of the selected projects by clicking on the **Remove Selected Projects**, if you have selected any projects by mistake. When done selecting the Fortify Projects you want to import to Conviso Platform, click on the button **Finish** to store your integration configuration settings:
+No matter your choice, once the projects are selected, they will be shown as a list below the section **Selected Projects**. You may want to search for a particular project by **Project Name** or **Version** using the **Search** button. Also, you can remove all the selected projects by clicking on the **Remove Selected Projects**, if you have selected any projects by mistake. When done selecting the Fortify Projects you want to import to Conviso Platform, click on the button **Finish** to store your integration configuration settings:
 
 <div style={{textAlign: 'center'}}>
 

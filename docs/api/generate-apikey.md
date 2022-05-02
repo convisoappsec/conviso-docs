@@ -4,7 +4,7 @@ title: Generate API Key
 sidebar_label: Generate API Key
 ---
 
-To generate your user's API_KEY key, Logon to Conviso Platform and go to the "Edit Profile" in the upper right corner, as shown in the image below:
+To generate your user's API_KEY key, log on to Conviso Platform and go to the "Edit Profile" in the upper right corner, as shown in the image below:
 
 <div style={{textAlign: 'center'}}>
 

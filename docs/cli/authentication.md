@@ -11,7 +11,7 @@ In order to start using the CLI you will need to provide your API Key for your C
 $ export FLOW_API_KEY='you-api-key'
 ```
 
-Also the API Key can be set as option argument:
+Also, the API Key can be set as option argument:
 ```sh
 $ conviso --api-key 'you-api-key' [SOME COMMAND]
 ```

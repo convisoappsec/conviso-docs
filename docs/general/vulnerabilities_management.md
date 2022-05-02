@@ -24,7 +24,7 @@ The benefits of vulnerability management:
 
 ## Vulnerabilities Management
 
-With the Vulnerability Management feature, create a process to prioritize corrections. However, it must be observed from other angles so that prioritizations can be  correctly assigned.
+With the Vulnerability Management feature, create a process to prioritize corrections. However, it must be observed from other angles so that prioritization can be correctly assigned.
 
 Log in to the [Conviso Platform](https://app.convisoappsec.com);
 
@@ -65,7 +65,7 @@ Select the vulnerability you want to manage. The vulnerability will expand, exhi
 
 </div>
 
-The Workflow will be shown below the vulnerabilty title. All identified vulnerabilities will start with the **Identified** status. You can start the workflow by assigning a new status to the vulnerability, clicking on the **Assign** button and filling the form with the required data. When finished filling the form, click on the **Change** button to start the vulnerability workflow. The vulnerability status will be assigned to **In progress**:
+The Workflow will be shown below the vulnerability title. All identified vulnerabilities will start with the **Identified** status. You can start the workflow by assigning a new status to the vulnerability, clicking on the **Assign** button and filling the form with the required data. When finished filling the form, click on the **Change** button to start the vulnerability workflow. The vulnerability status will be assigned to **In progress**:
 
 <div style={{textAlign: 'center'}}>
 
@@ -81,7 +81,7 @@ The Workflow will be shown below the vulnerabilty title. All identified vulnerab
 
 Later in the vulnerability workflow, you will be able to assign other statuses to the vulnerability, like:
 
-- **Validate**, to ask the responsible to ensure that your corrections were successfuly made and fixed the vulnerability;
+- **Validate**, to ask the responsible to ensure that your corrections were successfully made and fixed the vulnerability;
 - **Accept Risk**, to accept the risk of not fixing the vulnerability for some reason;
 - **False Positive**, to mark the vulnerability as a false occurrence. 
 

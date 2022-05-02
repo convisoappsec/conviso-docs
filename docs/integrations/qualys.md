@@ -42,7 +42,7 @@ At the top bar menu, click on **Help**, then click on **About**, at the drop-dow
 
 </div>
 
-On the **About** window opened, select and copy the **Qualys API URL** (the second one on the list, beggining with ```qualysapi```): 
+On the **About** window opened, select and copy the **Qualys API URL** (the second one on the list, beginning with ```qualysapi```): 
 
 <div style={{textAlign: 'center'}}>
 
@@ -62,7 +62,7 @@ On the main menu to the left, click on **Integrations**. At the panel to the rig
 
 </div>
 
-Fill the **Qualys API Username**, **Qualys API Password** and **URL** with the data retrieved from the preceeding section on this document. When done filling all the required fields, click on the **Save** button to store your Qualys integration configuration settings:
+Fill the **Qualys API Username**, **Qualys API Password** and **URL** with the data retrieved from the preceding section on this document. When done filling all the required fields, click on the **Save** button to store your Qualys integration configuration settings:
 
 <div style={{textAlign: 'center'}}>
 
@@ -88,7 +88,7 @@ Click on the **Advanced Options** button to expand the asset's properties:
 
 </div>
 
-On the **Integrations** section of the asset's properties, type ```QUALYS``` to narrow your search and then select the Qualys integration you just created in the preceeding section:
+On the **Integrations** section of the asset's properties, type ```QUALYS``` to narrow your search and then select the Qualys integration you just created in the preceding section:
 
 <div style={{textAlign: 'center'}}>
 

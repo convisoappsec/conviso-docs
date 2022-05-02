@@ -32,7 +32,7 @@ In order to integrate Nessus to Conviso Platform, you will need the following da
 
 ## Obtaining Nessus Data
 
-Login to your Nessus Professional instance. Take note of the URL at the address bar of your browser, it may looks like ```https://<Nessus_FQDN_or_IP>:<Nessus_Port>```;
+Login to your Nessus Professional instance. Take note of the URL at the address bar of your browser, it may look like ```https://<Nessus_FQDN_or_IP>:<Nessus_Port>```;
 
 At the Nessus Console, click on the **Settings** option, at the top bar menu:
 
