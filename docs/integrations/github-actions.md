@@ -1,7 +1,7 @@
 ---
 id: github-actions
-title: Github Actions
-sidebar_label: Github Actions
+title: GitHub Actions
+sidebar_label: GitHub Actions
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -11,23 +11,23 @@ sidebar_label: Github Actions
 </div>
 
 :::note
-First time using Github Actions? Please refer to the [following documentation](https://docs.github.com/en/actions).  
+First time using GitHub Actions? Please refer to the [following documentation](https://docs.github.com/en/actions).  
 :::
 
 ## Introduction
 
 This integration uses the [CLI](../cli/installation) for all communication with Conviso Platform.  
 By the end of this tutorial you will know how to:
-- Run a SAST scan
-- Run a SCA scan
-- Send diff code to Flow's Codereview Security module.
+- Run an SAST scan
+- Run an SCA scan
+- Send diff code to Conviso Platform Code Review Security module.
 
 ## Requirements
-- A Github account
-- All runners hosted by Github are compatible, but if you are using *self-hosted* runners they need to have **Docker** installed in order to work.
+- A GitHub account
+- All runners hosted by GitHub are compatible, but if you are using *self-hosted* runners they need to have **Docker** installed in order to work.
 - **FLOW_API_KEY**: This is the API key to communicate with Conviso Platform
 - **FLOW_PROJECT_CODE**: This is the ID of the application in Conviso Platform
-- When using Github Enterprise Server it need to be run version 3.0 or later
+- When using GitHub Enterprise Server it needs to be run version 3.0 or later
 
 ## Creating your pipeline
 If you don't have a pipeline configured, you need to access **Actions** tab in your repository. It will show a variety of different compatibles options for your project.  
@@ -61,7 +61,7 @@ jobs:
 ```
 
 ## SCA
-The following code snippet will trigger a SCA scan and send the results to Flow.
+The following code snippet will trigger an SCA scan and send the results to Flow.
 
 ```yml
 name: CI
@@ -86,9 +86,9 @@ jobs:
      run: conviso sca run
 ```
 
-## Continuous Codereview 
-The following code snippet will send diff code to Flow's security Codereview module so you can 
-perform a continuous codereview assessment.
+## Continuous Code Review 
+The following code snippet will send diff code to Conviso Platform security Code Review module, so you can 
+perform a continuous code review assessment.
 There are three approaches depending on how you work with your project. In a nutshell:
 - Using Tags, ordered by time
 - Using Tags, ordered by versioning style (semantic version)

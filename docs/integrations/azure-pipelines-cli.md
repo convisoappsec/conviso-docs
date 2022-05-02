@@ -18,7 +18,7 @@ The integration of continuous code review analysis with Azure Pipeline aims to c
 
 This integration with Conviso Platform will make it easier to track revisions of each piece of source code without impacting the development process.
 
-Deploy review status checks are one of the benefits Conviso Platform makes available to the customer to manage deploys, and if a vulnerability is identified in the deploy code, a notification will automatically be generated for the person responsible for the vulnerability correction.
+Deploy review status checks are one of the benefits Conviso Platform makes available to the customer to manage deploys, and if a vulnerability is identified in the deployment code, a notification will automatically be generated for the person responsible for the vulnerability correction.
 
 ## Requirements
 
@@ -26,7 +26,7 @@ In order for the experience with Conviso's services to be complete, it is necess
 
 1. Hosted Agent Pool (Ubuntu 18.04 or higher) with Docker installed or Agent Cloud Azure;
 
-2. External access (may be limited to Conviso's registry for SAST, Dockerhub and Conviso Platform).
+2. External access (can be limited to Conviso's registry for SAST, Dockerhub and Conviso Platform).
 
 ## First Steps
 
@@ -62,7 +62,7 @@ Throughout the document, trigger, pool and job settings are proposed. The only r
 
 ## Secrets Setup
 
-Authentication between the CLI tool and the platform takes place through an API key. For this to happen in a safe way, it is recommended to use the **Variables** of Pipeline. They can be defined in an already created pipeline following the step by step presented below: 
+Authentication between the CLI tool and the platform takes place through an API key. For this to happen safely, it is recommended to use the **Variables** of Pipeline. They can be defined in an already created pipeline following the step by step presented below: 
 
 1. At the DevOps Project root, click at **Pipelines**;
 
@@ -72,7 +72,7 @@ Authentication between the CLI tool and the platform takes place through an API 
 
 4. at the upper right menu again, click at **Variables**;
 
-5. Click at the **+** button at the upper right corner;
+5. Click at the **+** button in the upper right corner;
 
 6. Label the variable as ```FLOW_API_KEY``` and add the API key available at your Conviso Platform Profile;
 
@@ -200,7 +200,7 @@ jobs:
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 trigger:
@@ -223,7 +223,7 @@ jobs:
 
 ## Getting Everything Together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below: 
+The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below: 
 
 ```yml
 trigger:

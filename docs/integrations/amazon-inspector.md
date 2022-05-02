@@ -34,7 +34,7 @@ In the next section, you will be guided through AWS Console to be able to retrie
 
 ## Amazon Inspector Setup
 
-Logon to your AWS Console as an Administrator;
+Log on to your AWS Console as an Administrator;
 
 On the top bar menu, click on Services and then choose IAM: 
 
@@ -60,7 +60,7 @@ At the right panel, click on the **Add Users** button:
 
 </div>
 
-Label the new user as you wish, at the **User Name** field. At the **Select AWS Access Type** section, check the box next to **Access Key - Programmatic Access**. When done, click on the **Next - Permissions** button at the lower right corner of the form:
+Label the new user as you wish, at the **User Name** field. At the **Select AWS Access Type** section, check the box next to **Access Key - Programmatic Access**. When done, click on the **Next - Permissions** button in the lower right corner of the form:
 
 <div style={{textAlign: 'center'}}>
 
@@ -68,7 +68,7 @@ Label the new user as you wish, at the **User Name** field. At the **Select AWS 
 
 </div>
 
-At the next form, choose the **Attach existing policies directly** option, then select the **AmazonInspectorReadOnlyAccess**. When done, click on the **Next:Tags** button at the lower right corner of the form:
+At the next form, choose the **Attach existing policies directly** option, then select the **AmazonInspectorReadOnlyAccess**. When done, click on the **Next:Tags** button in the lower right corner of the form:
 
 <div style={{textAlign: 'center'}}>
 
@@ -76,7 +76,7 @@ At the next form, choose the **Attach existing policies directly** option, then 
 
 </div>
 
-This step is optional. Use it if you want to associate any TAGS to the new user. When done, click on the **Next:Review** button at the lower right corner of the form:
+This step is optional. Use it if you want to associate any TAGS to the new user. When done, click on the **Next:Review** button in the lower right corner of the form:
 
 <div style={{textAlign: 'center'}}>
 
@@ -84,7 +84,7 @@ This step is optional. Use it if you want to associate any TAGS to the new user.
 
 </div>
 
-Review the new user data and click at the **Create User** button at the lower right corner of the form to finish the user configuration:
+Review the new user data and click at the **Create User** button in the lower right corner of the form to finish the user configuration:
 
 <div style={{textAlign: 'center'}}>
 
@@ -104,7 +104,7 @@ Copy the **Access Key ID** and store it in a text file, to be able to recover it
 
 </div>
 
-Now, to get the AWS Region where your Amazon Inspector is configured, click on the **Services** at the top menu bar and choose **Amazon Inspector**. Now, at the top menu bar, expand the **Amazon Region** to get the AWS region string where your Amnazon Inspector is configured (in our example, the AWS is **us-west-2**. Change it according your current configuration):
+Now, to get the AWS Region where your Amazon Inspector is configured, click on the **Services** at the top menu bar and choose **Amazon Inspector**. Now, at the top menu bar, expand the **Amazon Region** to get the AWS region string where your Amazon Inspector is configured (in our example, the AWS is **us-west-2**. Change it according your current configuration):
 
 <div style={{textAlign: 'center'}}>
 

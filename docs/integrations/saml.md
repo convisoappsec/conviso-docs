@@ -26,11 +26,11 @@ As these data are retrieved from different locations depending on the SSO implem
 
 ## Oracle Authentication Manager
 
-If you want to integrate Conviso Platform to your Oracle Authentication Manager, you can use [this video](https://www.youtube.com/watch?v=7ybg7pQyIS0) from Official Oracle Youtube Channel to help you on configuring your OAM Platform and finding the required Conviso Platform data to create this SSO integration.
+If you want to integrate Conviso Platform to your Oracle Authentication Manager, you can use [this video](https://www.youtube.com/watch?v=7ybg7pQyIS0) from Official Oracle YouTube Channel to help you on configuring your OAM Platform and finding the required Conviso Platform data to create this SSO integration.
 
 ## Required URLs to configure your SSO Provider
 
-As there are different SSO provider implementations, below are the required Conviso URLs to configure your SSO Provider Aplication, labeled as the commom known SSO implementations (your SSO Provider may use distinct label for it):
+As there are different SSO provider implementations, below are the required Conviso URLs to configure your SSO Provider Application, labeled as the common known SSO implementations (your SSO Provider may use distinct label for it):
 
 Use this URL for the **ACS URL** (on Google) or **Reply URL (Assertion Consumer Service URL)** (on Azure Active Directory): 
 ```https://app.convisoappsec.com/portal_users/saml/auth```
@@ -51,7 +51,7 @@ Log in to Conviso Platform. At the left-side menu, click at **Integrations**. Th
 
 </div>
 
-After retrieving the necessary data from your SSO platform, paste the to their correspondent fields at Conviso Platform. Remember to specify all of your configured Authentication Domains and their aliases at the **Authorized Domains** field. After pasting the retrieved data and configuring your authorized domains, click at the **Save** button, in order to finish and store the SAML SSO configuration:
+After retrieving the necessary data from your SSO platform, paste them to their correspondent fields at Conviso Platform. Remember to specify all of your configured Authentication Domains and their aliases at the **Authorized Domains** field. After pasting the retrieved data and configuring your authorized domains, click at the **Save** button, in order to finish and store the SAML SSO configuration:
 
 <div style={{textAlign: 'center'}}>
 

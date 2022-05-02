@@ -1,7 +1,7 @@
 ---
 id: gitlab
-title: Gitlab
-sidebar_label: Gitlab
+title: GitLab
+sidebar_label: GitLab
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -11,7 +11,7 @@ sidebar_label: Gitlab
 </div>
 
 :::note
-First time using Gitlab? Please refer to the [following documentation](https://docs.gitlab.com/).  
+First time using GitLab? Please refer to the [following documentation](https://docs.gitlab.com/).  
 :::
 
 ## Introduction
@@ -42,7 +42,7 @@ In the case of using GitLab on-premise, it is assumed that the instance administ
 
 ## First Steps
 
-By default (it is configurable), the behavior of a pipeline in GitLab is through the configuration of the .gitlab-ci.yml file in the repository root. As the extension indicates, the format used by this file is the YAML markup language. The description of CI within the versioning system brings many benefits, among them we can highlight two: old version pipelines still work correctly and different branches can have different pipelines.
+By default (it is configurable), the behavior of a pipeline in GitLab is through the configuration of the ```.gitlab-ci.yml``` file in the repository root. As the extension indicates, the format used by this file is the YAML markup language. The description of CI within the versioning system brings many benefits. Among them, we can highlight two: old version pipelines still work correctly, and different branches can have different pipelines.
 
 Below, we can check out an example that would be like a **Hello, World!** of a pipeline to illustrate some features that can be used in the file structure:
 
@@ -79,13 +79,13 @@ On the jobs screen, by clicking on the **passed** button, we can see the executi
 
 </div>
 
-After this introduction, it is recommended to consult the official GitLab documentation in the [YAML](https://docs.gitlab.com/ee/ci/yaml/) section, where you can discover all the other super powers of the ```gitlab-ci.yml``` file.
+After this introduction, it is recommended to consult the official GitLab documentation in the [YAML](https://docs.gitlab.com/ee/ci/yaml/) section, where you can discover all the other superpowers of the ```gitlab-ci.yml``` file.
 
 ## Conviso Setup
 
 ### Requirements
 
-Before you can start setting up Conviso features in your pipeline, your runner must complete all of the following requirements:
+Before you can start setting up Conviso features in your pipeline, your runner must complete all the following requirements:
 
 - Be a specific or group runner;
 
@@ -97,7 +97,7 @@ Before you can start setting up Conviso features in your pipeline, your runner m
 
 ### CI/CD Configuration
 
-Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable with an Conviso Platform API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
+Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable with a Conviso Platform API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
 
 1. In the upper right corner, click on your username and on **Edit profile**;
 
@@ -111,7 +111,7 @@ To set the ```FLOW_API_KEY``` variable in GitLab, follow the steps below:
 
 1 - In your GitLab project under **Settings -> CI/CD -> Variables**;
 
-2 - Fill in as the image below (missing image!!!!);
+2 - Fill in as the image below;
 
 3 - Click on **Add variable**.
 
@@ -127,7 +127,7 @@ If you already have a **Continuous Code Review** type project in Conviso Platfor
 
 The interface with Conviso and the GitLab CI/CD platform is done through the use of the command line tool available in [PyPi](https://pypi.org/project/conviso-flowcli/). Like every CLI tool, it is easily integrated into CI environments. For its full functioning, the prerequisites specified at the beginning of this session must be followed.
 
-We recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for creating a deploy for Code Review.
+We recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for creating a deployment for Code Review.
 
 ## Code Review
 
@@ -232,7 +232,7 @@ conviso-sast:
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 conviso-sca:
@@ -252,7 +252,7 @@ conviso-sca:
 
 ## Getting Everything Together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
+The SAST and SCA analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
 
 ```yml
 stages:
@@ -292,7 +292,7 @@ The pipeline used above covers practically all the concepts exercised in this gu
 
 - The CI routine with Conviso's tools can integrate with a stage already present in your pipeline, as an example, in the stage called **test**, as well as being executed in a new one;
 
-- The execution of the SAST job and the deploy of code review can be executed at any point in the pipeline, as it uses only the code from the repository and not any artifact generated by the execution of a stage or job in the pipeline;
+- The execution of the SAST job and the deployment of code review can be executed at any point in the pipeline, as it uses only the code from the repository and not any artifact generated by the execution of a stage or job in the pipeline;
 
 - The deployment strategy used in this last example could be any of the three specified in the **Code Review Deploy** section above. Choose the one that best suits your development process;
 

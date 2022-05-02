@@ -20,7 +20,7 @@ The integration of Conviso Platform with the Bitbucket tool is done via "API", w
 
 The integration of Bitbucket with Conviso Platform will benefit the management of issue control and the consolidation of vulnerabilities. With the integration in place, the customer can orchestrate the vulnerability to their tool.
 
-The Conviso Platform has a two-way commnunication with Bitbucket, that is, if a user adds comments in the Bitbucket discussion field, it will generate a notification on the Security Champions tab of the specific vulnerability. This allows a Conviso technician to interact with the development team that is making corrections.
+The Conviso Platform has a two-way communication with Bitbucket, that is, if a user adds comments in the Bitbucket discussion field, it will generate a notification on the Security Champions tab of the specific vulnerability. This allows a Conviso technician to interact with the development team that is making corrections.
 
 ## Integrating Conviso Platform with Bitbucket
 

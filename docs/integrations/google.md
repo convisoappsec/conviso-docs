@@ -76,7 +76,7 @@ Also, you must check the **Signed Response** checkbox, before clicking on the **
 
 </div>
 
-7. You must add the following attibute mappings, associating each **Google Directory attribute** with its corresponding **App attribute**, as shown below.
+7. You must add the following attribute mappings, associating each **Google Directory attribute** with its corresponding **App attribute**, as shown below.
 
 - **Primary email** -> **email**
 

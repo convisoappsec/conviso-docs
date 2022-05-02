@@ -48,7 +48,7 @@ Fill in the required fields **Username**, **Password** and **API URL** with prop
 
 </div>
 
-Select one of the synchronization options available, **Daily (everyday, at 23:59)** or **Weekly (every Sunday, at 23:59)**. After choosing your synchronization basis, click on the **Save and Continue** button:
+Select one of the synchronization options available, **Daily (every day, at 23:59)** or **Weekly (every Sunday, at 23:59)**. After choosing your synchronization basis, click on the **Save and Continue** button:
 
 <div style={{textAlign: 'center'}}>
 
@@ -64,7 +64,7 @@ Now, click on the **Sync Checkmarx Asset** button to populate the Assets data:
 
 </div>
 
-On the modal shown you have two options. By selecting the top **Asset** checkbox, you will select all of your Checkmarx assets to be imported. You may also select individual assets from the list below, selecting the desired assets to be imported to Conviso Platform. When done selecting your assets to be imported, clic on the **Save** button:
+On the modal shown you have two options. By selecting the top **Asset** checkbox, you will select all of your Checkmarx assets to be imported. You may also select individual assets from the list below, selecting the desired assets to be imported to Conviso Platform. When done selecting your assets to be imported, click on the **Save** button:
 
 <div style={{textAlign: 'center'}}>
 
@@ -72,7 +72,7 @@ On the modal shown you have two options. By selecting the top **Asset** checkbox
 
 </div>
 
-In this final step, review the imported assets and, when done, click on the **Save** button to finishe the Checkmarx integration:
+In this final step, review the imported assets and, when done, click on the **Save** button to finish the Checkmarx integration:
 
 <div style={{textAlign: 'center'}}>
 

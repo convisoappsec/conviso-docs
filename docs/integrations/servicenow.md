@@ -18,11 +18,11 @@ ServiceNow's integration with Conviso Platform will benefit issue control manage
 
 Conviso Platform and ServiceNow have a two-way communication, that is, if a user adds comments in the ServiceNow discussion field, the added message will automatically appear in the Security Champions tab of the vulnerability. This allows a Conviso technician to interact with the development team that is making corrections.
 
-Integration with Service Now must be performed in five steps:
+Integration with ServiceNow must be performed in five steps:
 
-- Get the Service Now instance;
+- Get the ServiceNow instance;
 
-- Create a Rest Message from Service Now;
+- Create a Rest Message from ServiceNow;
 
 - Create Script for Sending Comments;
 
@@ -42,7 +42,7 @@ After logging in to ServiceNow, click at the option **Manage** on the top menu b
 
 ## Create a ServiceNow REST Message
 
-By clicking on the url, you will be redirected to enter your instance login and password, which is different from the Service Now login and password:
+By clicking on the URL, you will be redirected to enter your instance login and password, which is different from the ServiceNow login and password:
 
 <div style={{textAlign: 'center'}}>
 
@@ -62,7 +62,7 @@ On the next screen, there are some required form fields that need attention:
 
 - **Name**: Where a label of your choice should be filled in for the Rest Message;
 
-- **EndPoint**: The endpoint of Conviso's API ([https://app.convisoappsec.com/payload)], where the request is sent to;
+- **Endpoint**: The endpoint of Conviso's API ([https://app.convisoappsec.com/payload)], where the request is sent to;
 
 - **Basic auth profile**: Where login and password will be filled in to authenticate with the API;
 
@@ -196,7 +196,7 @@ catch(ex) {
 }
 ```
 
-After clicking on **Advanced** tab, you will see a script field, which must be filled with a script that will automate the submission of comments. Copy and paste the script above.Below is an example of how it should look:
+After clicking on **Advanced** tab, you will see a script field, which must be filled with a script that will automate the submission of comments. Copy and paste the script above. Below is an example of how it should look:
 
 <div style={{textAlign: 'center'}}>
 

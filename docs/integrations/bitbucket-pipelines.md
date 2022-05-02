@@ -46,7 +46,7 @@ pipelines:
 
 ## Setting up Environment Variables
 
-In order for the environment to be ready for the execution of all CLI resources, it is necessary to configure some environment variables. To accompliush that, follow the steps below:
+In order for the environment to be ready for the execution of all CLI resources, it is necessary to configure some environment variables. To accomplish that, follow the steps below:
 
 1. Under **Repository Settings**, click at **Repository Variables**;
 
@@ -149,7 +149,7 @@ pipelines:
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 image: convisoappsec/flowcli
@@ -167,7 +167,7 @@ pipelines:
 
 ## Getting everything together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
+The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
 
 ```yml
 image: convisoappsec/flowcli

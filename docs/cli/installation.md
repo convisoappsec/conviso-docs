@@ -11,11 +11,11 @@ The primary goal of the CLI is to be a developer friendly tool which automates d
 
 You can use the CLI locally and also inside your [CI/CD] to be able to use the following features:
 - Perform security scans project (SAST, SCA, IaC, Container)
-- Set policies to block the pipeline depending on different criterias
+- Set policies to block the pipeline depending on different criteria
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license)
 
 ## Requirements
-To install the CLI some dependecies are required:
+To install the CLI some dependencies are required:
 * python3 >= 3.4. See [python3 download]
 * pip. See [pip guide]
 * git. See [git download]
@@ -37,7 +37,7 @@ or
 ```sh
 $ python3 -m pip install --user conviso-flowcli
 ```
-Check if the install command was well succeeded.
+Check if the installation command was well succeeded.
 ```sh
 $ conviso --version
 ```
@@ -47,10 +47,10 @@ The command will print the current version and exit with success. Now we are rea
 For running the CLI in the CI/CD, please check the menu with all the different tools that we are integrated. If your tool is not there, please contact us to assess it.
 
 ## Shell Completion
-This section will guide you to activate the [CLI shell completion](https://en.wikipedia.org/wiki/Command-line_completion) feature. This is not required to use the tool so you can skip it if you want. 
+This section will guide you to activate the [CLI shell completion](https://en.wikipedia.org/wiki/Command-line_completion) feature. This is not required to use the tool, so you can skip it if you want. 
 
 ### Bash
-Open your .bashrc file at ~/.bashrc and place the following snippet in the end of file.
+Open your ```.bashrc``` file at ```~/.bashrc``` and place the following snippet in the end of file.
 ```sh
 CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 
@@ -60,8 +60,8 @@ CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 ```
 Start a new bash shell session and the shell completion will be available.
 
-### Zsh
-Open your .zshrc file at ~/.zshrc and place the following snippet in the end of file.
+### ZSH
+Open your ```.zshrc``` file at ```~/.zshrc``` and place the following snippet in the end of file.
 ```sh
 CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
 
@@ -69,7 +69,7 @@ CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
   source "$CONVISO_COMPLETER"
 }
 ```
-Start a new zsh shell session and the shell completion will be available.
+Start a new ZSH shell session and the shell completion will be available.
 
 ### Fish
 Start a fish shell session and execute the following command.

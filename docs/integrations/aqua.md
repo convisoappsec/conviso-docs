@@ -11,7 +11,7 @@ sidebar_label: Aqua
 </div>
 
 :::note
-Fisrt time using Aqua? Please refer to the [following documentation](https://www.aquasec.com/resources/).
+First time using Aqua? Please refer to the [following documentation](https://www.aquasec.com/resources/).
 :::
 
 ## Introduction
@@ -38,7 +38,7 @@ On the left Menu, click on **Integrations**, then choose **Container Security Pl
 
 </div>
 
-Fill in the form fileds with proper data: Your user ID at the field labeled **Aqua**; the user password at the field **Aqua password** and your Aqua URL instance at the field **Aqua URL**. When done filling the form, click on the button **Next** to continue:
+Fill in the form fields with proper data: Your user ID at the field labeled **Aqua**; the user password at the field **Aqua password** and your Aqua URL instance at the field **Aqua URL**. When done filling the form, click on the button **Next** to continue:
 
 <div style={{textAlign: 'center'}}>
 

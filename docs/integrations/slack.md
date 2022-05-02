@@ -16,7 +16,7 @@ The integration of Conviso Platform with the Slack tool aims to help monitor tho
 
 1. When comments/questions are added in the Security Champions tab of an analysis, an alert is generated directly in the Slack channel;
 
-2. When comments/questions are addedd to the vulnerability Security Champions tab;
+2. When comments/questions are added to the vulnerability Security Champions tab;
 
 3. When a new vulnerability is identified.
 
@@ -36,7 +36,7 @@ First, we need to create an "App" in Slack. Click on [Create App](https://api.sl
 
 </div>
 
-A new floating window will open. Label the new application as you wish. ate the **App Name** field and select your Workspace where you want to create your application, from the drop-down list at **Pick a workspace to develop your app in** option. When done, click at the **Create App** button:
+A new floating window will open. Label the new application as you wish. At the **App Name** field and select your Workspace where you want to create your application, from the drop-down list at **Pick a workspace to develop your app in** option. When done, click at the **Create App** button:
 
 <div style={{textAlign: 'center'}}>
 

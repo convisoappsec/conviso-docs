@@ -62,7 +62,7 @@ Fill the form with the required information and then click at the **Save** butto
 
 The WebHook integration with Redmine allows all comments made on Redmine issues to also be registered in Conviso Platform. To start configuring a Webhook it is necessary to install the Redmine Updates Notifier plugin.
 
-First, the user must login to Redmine:
+First, the user must log in to Redmine:
 
 <div style={{textAlign: 'center'}}>
 
@@ -110,7 +110,7 @@ To finish the webhook configuration, click at the **Apply** button at the end of
 
 ## Enabling Conviso Platform Integration
 
-After done configuring Redmine Webhook, we need to associate one or more assets with the Redmine integration. Go to **Assets Management** on the left Menu at Conviso Platform,  identify the asset that should be associated in the integration and click on edit, following the example below:
+After done configuring Redmine Webhook, we need to associate one or more assets with the Redmine integration. Go to **Assets Management** on the left Menu at Conviso Platform, identify the asset that should be associated in the integration and click on edit, following the example below:
 
 <div style={{textAlign: 'center'}}>
 

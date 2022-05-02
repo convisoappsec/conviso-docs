@@ -16,21 +16,21 @@ First time using Jenkins? Please refer to the [following documentation](https://
 
 ## Introduction
 
-This integration addresses a single pipeline creation that serves multiple repositories. It is essential that the SCM system and Jenkins are accessible to each other so the builds can occur automatically through the repository's webhooks, as well as Jenkins can request the code for the SCM through a clone.
+This integration addresses a single pipeline creation that serves multiple repositories. It is essential that the SCM system and Jenkins are accessible to each other, so the builds can occur automatically through the repository's webhooks, as well as Jenkins can request the code for the SCM through a clone.
 
 ## Requirements
 
 1. **Generic Webhook Trigger** and **Docker** plugins installed at Jenkins;
 
-2. A Personal Access Token from an automation user or an common user to SCM (Github, Gitlab, Bitbucket, etc.) and Jenkins, to provide Jenkins access to code repositories;
+2. A Personal Access Token from an automation user or a common user to SCM (GitHub, GitLab, Bitbucket, etc.) and Jenkins, to provide Jenkins access to code repositories;
 
 3. Docker is installed at the host and docker group access privileges to the Jenkins user;
 
 4. Groovy Sandbox available at pipeline script;
 
-5. A Personal Token stored at Jenkins as user-password Credential. The yuser must be the token owner and the password as the token itself;
+5. A Personal Token stored at Jenkins as user-password Credential. The user must be the token owner and the password as the token itself;
 
-6. A generic token to act as the Conviso pipeline identifier. It may be a Credential type or not. It wil be used at webhook's URL as a pipeline identifier ```/invoke?token=TOKEN_HERE```.
+6. A generic token to act as the Conviso pipeline identifier. It may be a Credential type or not. It will be used at webhook's URL as a pipeline identifier ```/invoke?token=TOKEN_HERE```.
 
 ## Pipeline Setup
 
@@ -102,7 +102,7 @@ environment {
 
 ## Associating Conviso Projects to the Pipeline
 
-The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) Project. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Project Key from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file´s initial session will be as shown below:
+The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) Project. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Project Key from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file's initial session will be as shown below:
 
 ```yml
 def get_project_code(repo_url){
@@ -134,4 +134,4 @@ The webhook creation at the repository varies from platform to platform. However
 {JENKINS_URL}/generic-webhook-trigger/invoke?token=TOKEN
 ```
 
-where TOKEN is the token created at step 6 of the **Requirements** section above.
+Where TOKEN is the token created at step 6 of the **Requirements** section above.

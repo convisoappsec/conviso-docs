@@ -16,7 +16,7 @@ First time using AWS Codebuild? Please refer to the [following documentation](ht
 
 ## Introduction
 
-CodeBuild is the AWS Continuous Integration service. It is possible to configure pipelines from different sources, from AWS CodeCommit itself to other widely used tools such as: GitHub, GitHub Enterprise and BitBucket. You can also use a storage bucket in S3 as a code provider. The integration with Conviso is carried out through a build project in CodeBuild, which can be totally independent from the existing Pipeline for your code. This document will cover the creation process from scratch.
+CodeBuild is the AWS Continuous Integration service. It is possible to configure pipelines from different sources, from AWS CodeCommit itself to other widely used tools such as: GitHub, GitHub Enterprise and BitBucket. You can also use a storage bucket in S3 as a code provider. The integration with Conviso is carried out through a build project in CodeBuild, which can be totally independent of the existing Pipeline for your code. This document will cover the creation process from scratch.
 
 ## Requirements
 
@@ -26,7 +26,7 @@ To integrate a project into AWS CodeBuild, be sure to meet the requirements belo
 
 2. User with write and read privileges to use the following services: CodeBuild, IAM, Secret Manager, S3 and/or Cloudwatch for execution logs and CodeCommit, if the repository is in it; 
 
-3. Project with source code available from one of the sources supported by CodeBuild: AWS CodeCommit, Amazon S3, Github, Github Enterprise or BitBucket;
+3. Project with source code available from one of the sources supported by CodeBuild: AWS CodeCommit, Amazon S3, GitHub, GitHub Enterprise or BitBucket;
 
 4. If using Amazon S3, the code bucket must contain the .git directory.
 
@@ -42,7 +42,7 @@ To create a new build project, follow the step by step below:
 
 4. At the **Source** section, in the **Source Provider** field, select the location where your repository is hosted;
 
-5. Depending on the chosen source, specific fields will appear for each one to select the code repository as well as its version (branchs, tags, etc). In case of SCM type sources, ensure that in the additional settings, at the git clone depth selection, the option **Full** is selected. If the source is S3, you must ensure that the .git directory is present along with the source code;
+5. Depending on the chosen source, specific fields will appear for each one to select the code repository as well as its version (branches, tags, etc.). In case of SCM type sources, ensure that in the additional settings, at the git clone depth selection, the option **Full** is selected. If the source is S3, you must ensure that the .git directory is present along with the source code;
 
 6. At the **Environment** section, configure the options below:
 
@@ -170,7 +170,7 @@ phases:
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the compilation project, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The requirementss for running the job are the same as already practiced: Build project, ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as variables in the buildspec file:
+The requirements for running the job are the same as already practiced: Build project, ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as variables in the buildspec file:
 
 ```yml
 version: 0.2
@@ -219,7 +219,7 @@ phases:
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 version: 0.2
@@ -243,7 +243,7 @@ phases:
 
 ## Getting everything together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the compilation project. An example of a complete buildspec with all solutions can be seen in the snippet below:
+The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the compilation project. An example of a complete buildspec with all solutions can be seen in the snippet below:
 
 ```yml
 version: 0.2

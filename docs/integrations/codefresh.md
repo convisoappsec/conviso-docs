@@ -16,7 +16,7 @@ First time using Codefresh? Please refer to the [following documentation](https:
 
 ## Requirements
 
-Access to docker deamon when running the Pipeline is mandatory. The Codefresh SaaS version does not provide access to this feature by default. Currently, the integration is only compatible with Hybrid type environments (with runners at the infrastructure itself) or fully on-premise. More information about the Code Fresh installation types can be found at [Codefresh official documentation page](https://codefresh.io/docs/docs/administration/installation-security/).
+Access to docker daemon when running the Pipeline is mandatory. The Codefresh SaaS version does not provide access to this feature by default. Currently, the integration is only compatible with Hybrid type environments (with runners at the infrastructure itself) or fully on-premise. More information about the Code Fresh installation types can be found at [Codefresh official documentation page](https://codefresh.io/docs/docs/administration/installation-security/).
 
 ## First Steps
 
@@ -25,7 +25,7 @@ If you have at least one **CodeFresh Runner** installed at your on-premises infr
 Whereas the local Runner is the default Runtime Environment for your CodeFresh account, all pipelines that didn't have this property changed manually will have their builds performed on it. With that in mind, we can proceed to the creation of a first pipeline to better know Codefresh.
 
 1. At the main menu, click **Pipelines**;
-2. At the upper right corner, click **New Pipeline**;
+2. In the upper right corner, click **New Pipeline**;
 3. Select a project to be the test Pipeline. This Pipeline may be labeled as **conviso_sample**, as we will refer to it hereafter;
 4. In this first run, no source code association is required, so the **Add Git Repository** option may remain disabled;
 5. By clicking on **Create**, the page will be directed to the **Workflow** tab of the Pipeline, where Codefresh generates an example of a pipeline to be executed. We will not use that example now; copy and paste the code below into the YAML editing window;
@@ -67,7 +67,7 @@ Successfully ran freestyle step: CLI Hello
 
 ## Variables Setup
 
-Authentication between [CLI](../cli/installation) and the Conviso Platform is done using an API key. To do it in a safe way, it is recommended to use the **Variables** of Pipeline. Those variables can be defined by Pipeline or by anything else at the account scope (valid for all projects), via **Shared Configuration**. The second option is more advantageous if there is interaction with the tool in more than one project and/or pipeline.
+Authentication between [CLI](../cli/installation) and the Conviso Platform is done using an API key. To do it safely, it is recommended to use the **Variables** of Pipeline. Those variables can be defined by Pipeline or by anything else at the account scope (valid for all projects), via **Shared Configuration**. The second option is more advantageous if there is interaction with the tool in more than one project and/or pipeline.
 
 ### Pipeline Variables Setup
 
@@ -179,7 +179,7 @@ conviso_sample:
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 conviso_sample:

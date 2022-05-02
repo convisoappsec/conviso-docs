@@ -7,7 +7,7 @@ sidebar_label: SAST
 
 ## Static Application Security Testing (SAST)
 
-Using the CLI is very simple to execute a SAST at your source code repository.
+Using the CLI is very simple to execute an SAST at your source code repository.
 The results will be sent to your Conviso Platform application by using the *project code identifier*.
 
 Assuming that my_source_code_repository is a git repository, you can:
@@ -19,7 +19,7 @@ $ cd my_source_code_repository
 $ conviso sast run
 ```
 
-The following instructions has the same effect.
+The following instructions have the same effect.
 
 ```sh
 $ cd my_source_code_repository
@@ -64,7 +64,7 @@ Additional properties are allowed.
 #### issue.title
 
 * **Type**: `string`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 * **Minimum Length**`: >= 1`
 
 #### issue.description
@@ -100,7 +100,7 @@ Additional properties are allowed.
 #### issue.evidence
 
 * **Type**: `string`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 * **Minimum Length**`: >= 1`
 
 #### issue.hash_evidence_line
@@ -116,7 +116,7 @@ Additional properties are allowed.
 #### issue.id
 
 * **Type**: `string`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 * **Minimum Length**`: >= 1`
 
 #### issue.hash_issue
@@ -128,7 +128,7 @@ Additional properties are allowed.
 #### issue.severity
 
 * **Type**: `any`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 * **Allowed values**:
     * `undefined`
     * `critical`
@@ -164,7 +164,7 @@ Additional properties are allowed.
 Number of issues found.
 
 * **Type**: `integer`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 * **Minimum**: ` >= 0`
 
 
@@ -175,13 +175,13 @@ Number of issues found.
 
 ### report
 
-Sast scan report
+SAST scan report
 
 **`report` Properties**
 
 |   |Type|Description|Required|
 |---|---|---|---|
-|**summary**|`summary`|Overview of issues found during a sast scan.| &#10003; Yes|
+|**summary**|`summary`|Overview of issues found during an SAST scan.| &#10003; Yes|
 |**issues**|`issue` `[]`|Issues found during the scan.| &#10003; Yes|
 
 Additional properties are allowed.
@@ -190,17 +190,17 @@ Additional properties are allowed.
 
 #### report.summary
 
-Overview of issues found during a sast scan.
+Overview of issues found during an SAST scan.
 
 * **Type**: `summary`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 
 #### report.issues
 
 Issues found during the scan.
 
 * **Type**: `issue` `[]`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 
 
 
@@ -210,7 +210,7 @@ Issues found during the scan.
 
 ### summary
 
-Overview of issues found during a sast scan.
+Overview of issues found during an SAST scan.
 
 **`summary` Properties**
 
@@ -229,14 +229,12 @@ Set of technologies scanned for issues.
 
 * **Type**: `string` `[]`
     * Each element in the array must have length greater than or equal to `1`.
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 
 #### summary.issues_count
 
 Issues stats
 
 * **Type**: `issues_count`
-* **Required**:  &#10003; Yes
+* **Required**: &#10003; Yes
 * **Type of each property**: `integer`
-
-

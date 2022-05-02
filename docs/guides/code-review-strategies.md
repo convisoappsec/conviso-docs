@@ -66,5 +66,5 @@ And so, successively, the policy will diff the current commit with the previous 
 Want to learn more about how to apply these strategies? Follow these links:
 
 - [Jenkins](../integrations/jenkins)
-- [Gitlab](../integrations/gitlab)
+- [GitLab](../integrations/gitlab)
 

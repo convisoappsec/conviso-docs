@@ -34,7 +34,7 @@ Fill in the mandatory form fields:
 - **User**: The username you will use;
 - **Password**: The username password;
 - **Profile**: The user profile;
-- **Environment**: The envireopnment where this credential will be used;
+- **Environment**: The environment where this credential will be used;
 
 If you wish to better describe you credential purposes, use the optional **Description** text box to set a brief description of your credential. When done filling the form, click on the **Save** button to store your new credential: 
 
@@ -48,7 +48,7 @@ If you wish to better describe you credential purposes, use the optional **Descr
 
 To add an existing credential to a new or an existing project, create (or edit) a project.
 
-In the project configuration form, check the option **Will credentials be provided?**, and then select the credential filled in in the previous steps in the **Credentials** text box, as shown in the image below. It is possible to fill in more than one credential in this text box:
+In the project configuration form, check the option **Will credentials be provided?**, and then select the credential filled in the previous steps in the **Credentials** text box, as shown in the image below. It is possible to fill in more than one credential in this text box:
 
 <div style={{textAlign: 'center'}}>
 
@@ -77,7 +77,7 @@ Next, click on **New Attachment** to start setting up your file attachment:
 Fill the form with proper data:
 
 - **Description**: A brief description of your file attachment (optional);
-- **File**: use the **Select File** button to browse for yuor attachment file. This field is mandatory;
+- **File**: use the **Select File** button to browse for your attachment file. This field is mandatory;
 - **Projects**: To share the file attachment you are creating with any project, select the project or projects you want by clicking on the drop-down list;
 
 The **Access Management** section of the form allows you to restrict the file attachment access to one or more users, by selecting them by clicking on the drop-down list **Users**. When done, click on the **Save** button to store your attachment configuration settings:

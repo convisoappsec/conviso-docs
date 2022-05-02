@@ -18,12 +18,12 @@ First time using Jenkins? Please refer to the [following documentation](https://
 
 This integration uses the [CLI](../cli/installation) as a docker image for all the execution and communication with Flow.  
 By the end of this tutorial you will know how to:
-- Run a SAST scan
-- Run a SCA scan
-- Send diff code to Flow's security Codereview module.
+- Run an SAST scan
+- Run an SCA scan
+- Send diff code to Conviso Platform security code review module.
 
 ## Requirements
-In order to integrate with Jenkins, your environment should fullfills the followings requirements:
+In order to integrate with Jenkins, your environment should fulfill the followings requirements:
 1. Jenkins version 2.222.3 or higher;
 1. Docker installed;
 1. Jenkins user must have access to the Docker daemon;
@@ -70,7 +70,7 @@ pipeline {
 
 ## SCA
 
-The following code snippet will trigger a SCA scan and send the results to Conviso Platform:
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
 pipeline {
@@ -97,9 +97,8 @@ pipeline {
 }
 ```
 
-## Continuous Codereview 
-The following code snippet will send diff code to Flow's security Codereview module so you can 
-perform a continuous codereview assessment.
+## Continuous Code Review 
+The following code snippet will send diff code to Conviso Platform Security Code Review module, so you can perform a continuous code review assessment.
 There are three approaches depending on how you work with your project. In a nutshell:
 - Using Tags, ordered by time
 - Using Tags, ordered by versioning style (semantic version)
@@ -137,7 +136,7 @@ pipeline {
 
 ## Getting Everything Together: Code Review + SAST + SCA Deployment
 
-The SAST analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deploy for code review of the code and will use the same diff identifiers to perform the SAST analysis, forming a complete solution in the pipeline. An example of a complete pipeline with both solutions can be seen in the snippet below: 
+The SAST analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST analysis, forming a complete solution in the pipeline. An example of a complete pipeline with both solutions can be seen in the snippet below: 
 
 ```yml
 pipeline {
