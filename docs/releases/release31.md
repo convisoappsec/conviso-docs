@@ -20,7 +20,7 @@ Also, by using webhooks, both Jira and Conviso Platform will be synced.
 
 ## Generic SAML 2.0 Integration
 
-There are already a variety of Single Sign On integrations within Conviso Platform but now it is possible to configure custom Identity providers that support SAML 2.0 protocol. 
+There are already a variety of Single Sign On integrations within Conviso Platform, but now it is possible to configure custom Identity providers that support SAML 2.0 protocol. 
 
 In a nutshell, if there is no specific integration for your tool, you can just use the generic SAML 2.0 integration instead.
 
@@ -38,7 +38,7 @@ We take bugs seriously. In order to make Conviso Platform a more reliable produc
 
 ### Projects
 
-**Fixed**: Misleading behaviour when trying to create a new project
+**Fixed**: Misleading behavior when trying to create a new project
 
 **Fixed**: Unable to change status to in progress for some project types
 
@@ -50,7 +50,7 @@ We take bugs seriously. In order to make Conviso Platform a more reliable produc
 
 **Fixed**: CSS issue while using the filter option
 
-**Fixed**: Inaccurate english translations
+**Fixed**: Inaccurate English translations
 
 **Fixed**: Unable to search for specific vulnerabilities by their name
 
@@ -66,7 +66,7 @@ We take bugs seriously. In order to make Conviso Platform a more reliable produc
 
 ### Integrations
 
-**Fixed**: Inaccurate english translations within integrations list
+**Fixed**: Inaccurate English translations within integrations list
 
 **Fixed**: Priority is not being set when Jira Issues are created
 

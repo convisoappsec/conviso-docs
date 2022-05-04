@@ -18,7 +18,7 @@ The platform has released a new version, with some features that will help our c
 
 - Assets importing;
 
-- New integrations (Qualys, Sonarqube, Fortify, Slack, Github, Nessus, Datasets, Veracode, Amazon Inspector and Trello);
+- New integrations (Qualys, SonarQube, Fortify, Slack, GitHub, Nessus, Datasets, Veracode, Amazon Inspector and Trello);
 
 ## Benefits
 
@@ -64,9 +64,9 @@ Consolidation of **SAST** and **DAST** vulnerabilities: Associate analysis with 
 
 </div>
 
-- **Github SCA**
+- **GitHub SCA**
 
-Manage 3rd party library vulnerabilities, all company vulnerabilities identified by Github in 3rd party libraries, consolidate using full workflow.
+Manage 3rd party library vulnerabilities, all company vulnerabilities identified by GitHub in 3rd party libraries, consolidate using full workflow.
 
 <div style={{textAlign: 'center'}}>
 
