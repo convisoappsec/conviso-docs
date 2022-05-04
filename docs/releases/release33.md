@@ -10,7 +10,7 @@ Playbooks will now be found in the Platform as Requirements. We believe that the
 
 ## Release Notes
 
-Release notes are an essential artefact when a new product release goes live to production. There you can find detailed information about what is new to the product, as well as enhancements and a summary of bug fixes. Now, you can find this information more easily in the Help's top menu bar section.
+Release notes are an essential artifact when a new product release goes live to production. There you can find detailed information about what is new to the product, as well as enhancements and a summary of bug fixes. Now, you can find this information more easily in the Help's top menu bar section.
 
 <div style={{textAlign: 'center'}}>
 

@@ -20,8 +20,8 @@ If the new release introduces changes in compatibility or default behavior, we w
 
 ## New features and enhancements
 
-Now is the time to brag about all of the cool, new stuff your software does.
+Now is the time to brag about all the cool, new stuff your software does.
 
 ## Bug fixes
 
-Because no software is perfect, there are always bugs left unsquashed. This section is the place to list those ones.
+Because no software is perfect, there are always bugs left unsquashed. This section is the place to list those.
