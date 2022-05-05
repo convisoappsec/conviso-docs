@@ -22,6 +22,12 @@ Conviso Platform brings a new messaging experience:
 Communication with the Support team, to report bugs and/or ask questions regarding the use of Conviso products and services, is now found in the side menu as Help Desk, as a sub-item of the Support icon. This will trigger the chat in the lower right corner of the screen.
 Communication with Conviso Security Experts to talk about a particular Vulnerability or Project. This is where, for example you can ask for help understanding a vulnerability or even ask about the deadline of a specific project. This also can be found as a sub-item in the Support menu as Security Expert option.
 
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/release35-gif2.gif)
+
+</div>
+
 ## End of life (EOL) of a deploying endpoint
 
 The endpoint POST /api/v2/deploys is no longer valid for creating deploys within the platform. In order to create deploys for code-review purposes, please refer to the specific documentation of the CI/CD your company is using. Here is an example of [GitHub Actions](../integrations/github-actions).
