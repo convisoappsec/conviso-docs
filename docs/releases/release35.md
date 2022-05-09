@@ -28,9 +28,9 @@ Communication with Conviso Security Experts to talk about a particular Vulnerabi
 
 </div>
 
-## End of life (EOL) of a deploying endpoint
+## End of life (EOL)
 
-The endpoint POST /api/v2/deploys is no longer valid for creating deploys within the platform. In order to create deploys for code-review purposes, please refer to the specific documentation of the CI/CD your company is using. Here is an example of [GitHub Actions](../integrations/github-actions).
+The endpoint POST /api/v2/deploys is no longer valid for creating deploys within the platform. In order to create deploys for code-review purposes, please refer to the specific documentation of the CI/CD your company is using. Here is an example of [GitHub Actions](../integrations/github-actions#continuous-code-review).
 
 ## Bug Fixes:
 
