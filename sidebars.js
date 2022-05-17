@@ -122,14 +122,14 @@ module.exports = {
             'integrations/slack'
                  ]
         },
-        //{
-        //  type: "category",
-        //  label: "SCA",
-        //  items: [
-        //          'integrations/dependency-track',
-        //          'integrations/github-sca'
-        //         ]
-        // }, 
+        {
+          type: "category",
+          label: "SCA",
+          items: [
+                  'integrations/dependency-track',
+                  'integrations/github-sca'
+                 ]
+        }, 
         {
           type: "category",
           label: "Scanners",
