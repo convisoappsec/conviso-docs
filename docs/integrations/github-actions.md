@@ -35,15 +35,15 @@ For this integration choose **set up a workflow yourself**. You will be redirect
 
 ### 
 ## SAST
-The following code snippet will trigger a SAST scan and send the results to Flow.
+The following code snippet will trigger a SAST scan and send the results to Conviso Platform.
 
 ```yml
 name: CI
 on:
  push:
-   branches: [ master ]
+   branches: [ main ]
  pull_request:
-   branches: [ master ]
+   branches: [ main ]
 
 jobs:
  conviso-sast:
@@ -51,7 +51,7 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
    steps:
    - uses: actions/checkout@v2
@@ -61,7 +61,7 @@ jobs:
 ```
 
 ## SCA
-The following code snippet will trigger an SCA scan and send the results to Flow.
+The following code snippet will trigger an SCA scan and send the results to Conviso Platform.
 
 ```yml
 name: CI
@@ -77,7 +77,7 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
    steps:
    - uses: actions/checkout@v2
@@ -98,9 +98,9 @@ There are three approaches depending on how you work with your project. In a nut
 name: CI
 on:
  push:
-   branches: [ master ]
+   branches: [ main ]
  pull_request:
-   branches: [ master ]
+   branches: [ main ]
 
 jobs:
  conviso-cr:
@@ -108,7 +108,7 @@ jobs:
    container:
      image: convisoappsec/flowcli
      env:
-       FLOW_API_KEY:  ${{secrets.FLOW_API_KEY}}
+       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
    steps:
     - uses: actions/checkout@v2
