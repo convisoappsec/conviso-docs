@@ -84,32 +84,41 @@ After the configuration is stored, we are able to connect Conviso Platform to Po
 
 </div>
 
+
 ### Using pagination
 
-Add `?page=1` part in your URL as part when adding the Power Query
+Add URL part with parameter `?page=1` in your URL when adding the Power Query
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img1.png"/>
-  <img href="../../static/img/powerbi/powerbi-img2.png" />
-  <img href="../../static/img/powerbi/powerbi-img3.png" />
+
+![img](../../static/img/powerbi/powerbi-img1.png)
+![img](../../static/img/powerbi/powerbi-img2.png)
+![img](../../static/img/powerbi/powerbi-img3.png)
+
 </div>
 
-Edit the first and second lines of code by creating a function that takes "`page`" as a parameter
+Edit the first and second lines of code by creating a function that takes `page` as a parameter
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img4.png" />
+
+![img](../../static/img/powerbi/powerbi-img4.png)
+
 </div>
 
 Below is an example of how it should look
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img5.png" />
+
+![img](../../static/img/powerbi/powerbi-img5.png)
+
 </div>
 
 It is now possible to perform pagination via function
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img6.png" />
+
+![img](../../static/img/powerbi/powerbi-img6.png)
+
 </div>
 
 ### Paginating multiple pages to a table
@@ -117,45 +126,59 @@ It is now possible to perform pagination via function
 After previous steps made in "[Using pagination](#using-pagination)", select the option "Enter Data"
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img7.png" />
+
+![img](../../static/img/powerbi/powerbi-img7.png)
+
 </div>
 
-Configure the open table as shown below. Notice in the image that it is set to capture 10 pages using the "`page`" variable
+Configure the open table as shown below. Notice in the image that it is set to capture 10 pages using the `page` variable
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img8.png" />
+
+![img](../../static/img/powerbi/powerbi-img8.png)
+
 </div>
 
 After confirmation, the table below will appear. You need to change your "type" to text, as shown in the sequence below
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img9.png" />
-  <img href="../../static/img/powerbi/powerbi-img10.png" />
-  <img href="../../static/img/powerbi/powerbi-img11.png" />
+
+![img](../../static/img/powerbi/powerbi-img9.png)
+![img](../../static/img/powerbi/powerbi-img10.png)
+![img](../../static/img/powerbi/powerbi-img11.png)
+
 </div>
 
 Setup "Invoke Custom Function" to the table
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img12.png" />
+
+![img](../../static/img/powerbi/powerbi-img12.png)
+
 </div>
 
 The fields filled in will be similar to the ones below
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img13.png" />
+
+![img](../../static/img/powerbi/powerbi-img13.png)
+
 </div>
 
 One more table will appear, choose which attributes you want to bring from the API and confirm
 
 <div style={{textAlign: 'center'}}>
-  <img href="../../static/img/powerbi/powerbi-img14.png" />
+
+![img](../../static/img/powerbi/powerbi-img14.png)
+
 </div>
 
 Done! With this we perform the pagination of the 10 pages (as we configured) of the API in a table!
 
 <div style={{textAlign: 'center'}}>
-<img href="../../static/img/powerbi/powerbi-img15.png" />
+
+![img](../../static/img/powerbi/powerbi-img15.png)
+
 </div>
 
 > **Further details in de original documentation, example: [Table.GenerateByPage](https://docs.microsoft.com/en-us/power-query/helperfunctions#tablegeneratebypage)**
