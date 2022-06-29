@@ -51,7 +51,6 @@ module.exports = {
                       'cli/authentication',
                       'cli/ast',
                       'cli/sast',
-                      //'cli/sca',
                       'cli/security-gate'
                     ]
     },
