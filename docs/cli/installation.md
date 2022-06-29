@@ -22,23 +22,23 @@ To install the CLI some dependencies are required:
 * Docker. See [docker download]
 
 If you have system admin privileges just execute one of the following commands.
-```sh
+```bash
 $ pip install conviso-flowcli
 ```
 or
-```sh
+```bash
 $ python3 -m pip install conviso-flowcli
 ```
 If you haven't system admin privileges execute one of the following commands.
-```sh
+```bash
 $ pip install --user conviso-flowcli
 ```
 or
-```sh
+```bash
 $ python3 -m pip install --user conviso-flowcli
 ```
 Check if the installation command was well succeeded.
-```sh
+```bash
 $ conviso --version
 ```
 The command will print the current version and exit with success. Now we are ready to proceed.
@@ -51,7 +51,7 @@ This section will guide you to activate the [CLI shell completion](https://en.wi
 
 ### Bash
 Open your ```.bashrc``` file at ```~/.bashrc``` and place the following snippet in the end of file.
-```sh
+```bash
 CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 
 [ -f "$CONVISO_COMPLETER" ] && {
@@ -62,7 +62,7 @@ Start a new bash shell session and the shell completion will be available.
 
 ### ZSH
 Open your ```.zshrc``` file at ```~/.zshrc``` and place the following snippet in the end of file.
-```sh
+```bash
 CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
 
 [ -f "$CONVISO_COMPLETER" ] && {
@@ -73,7 +73,7 @@ Start a new ZSH shell session and the shell completion will be available.
 
 ### Fish
 Start a fish shell session and execute the following command.
-```sh
+```bash
 $ mkdir -p ~/.config/fish/completions
 $ cp (which flow_fish_completer.fish) ~/.config/fish/completions/flow.fish
 ```
