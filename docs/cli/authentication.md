@@ -8,11 +8,11 @@ sidebar_label: Authentication
 In order to start using the CLI you will need to provide your API Key for your Conviso Platform account.  When retrieving it, you can export the key as system environment variable:
 
 ```bash
-$ export FLOW_API_KEY='you-api-key'
+export FLOW_API_KEY='you-api-key'
 ```
 
 Also, the API Key can be set as option argument:
 ```bash
-$ conviso --api-key 'you-api-key' [SOME COMMAND]
+conviso --api-key 'you-api-key' [SOME COMMAND]
 ```
 >*This is not recommended for production environments*

@@ -23,23 +23,23 @@ To install the CLI some dependencies are required:
 
 If you have system admin privileges just execute one of the following commands.
 ```bash
-$ pip install conviso-flowcli
+pip install conviso-flowcli
 ```
 or
 ```bash
-$ python3 -m pip install conviso-flowcli
+python3 -m pip install conviso-flowcli
 ```
 If you haven't system admin privileges execute one of the following commands.
 ```bash
-$ pip install --user conviso-flowcli
+pip install --user conviso-flowcli
 ```
 or
 ```bash
-$ python3 -m pip install --user conviso-flowcli
+python3 -m pip install --user conviso-flowcli
 ```
 Check if the installation command was well succeeded.
 ```bash
-$ conviso --version
+conviso --version
 ```
 The command will print the current version and exit with success. Now we are ready to proceed.
 
@@ -74,8 +74,8 @@ Start a new ZSH shell session and the shell completion will be available.
 ### Fish
 Start a fish shell session and execute the following command.
 ```bash
-$ mkdir -p ~/.config/fish/completions
-$ cp (which flow_fish_completer.fish) ~/.config/fish/completions/flow.fish
+mkdir -p ~/.config/fish/completions
+cp (which flow_fish_completer.fish) ~/.config/fish/completions/flow.fish
 ```
 Start a new fish shell session and the shell completion will be available.
 
