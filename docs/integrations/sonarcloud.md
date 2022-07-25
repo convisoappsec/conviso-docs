@@ -17,7 +17,7 @@ First time using SonarCloud? Please refer to the [following documentation](https
 ## Introduction
 
 Are you ready to consolidate yours results and take decisions using just one platform? 
-Conviso Platform helps you solve this problem by integrating plenty of scanners and consolidate the results in order to assess, prioritize and manage everything in just a few clicks.
+Conviso Platform helps you solve this problem by integrating plenty of scanners and consolidate the results in order to assess, prioritize and manage everything in just a few clicks. The SonarCloud integration does not manage code quality issues, but it does disclose security issues.
 
 After this tutorial you will be able to:
 - Import your SonarCloud projects inside Conviso Platform
