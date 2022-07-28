@@ -61,6 +61,7 @@ module.exports = {
       type: "category",
       label: "Integrations",
       items: [
+        'integrations/integrations_intro',
         {
           type: "category",
           label: "Authentication/SSO",
