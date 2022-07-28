@@ -38,7 +38,7 @@ Integration with datasets makes it possible to export information from Conviso P
 
 Once you've added one or more of these integrations, you'll be able to create an issue directly in your Defect Tracker tool.
 
-### Notification
+### Notifications
 
 By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel.
 
