@@ -14,9 +14,9 @@ sidebar_label: Slack
 
 The integration of Conviso Platform with the Slack tool aims to help monitor those who are managing activities and don't want to miss anything at the timeline. This integration generates 3 types of alerts directly in the channel of the development team or the manager, with the benefits listed below:
 
-1. When comments/questions are added in the Security Champions tab of an analysis, an alert is generated directly in the Slack channel;
+1. When comments/questions are added in the Security Experts tab of a project, an alert is generated directly in the Slack channel;
 
-2. When comments/questions are added to the vulnerability Security Champions tab;
+2. When comments/questions are added to the vulnerability Security Experts tab;
 
 3. When a new vulnerability is identified.
 
@@ -100,7 +100,7 @@ At the floating window shown, paste the previously copied webhook URL at the **S
 
 </div>
 
-After finishing the integration, we can add a test comment in the Security Champions tab of the Project, and a notification will be generated in the Slack channel with the same message added in Conviso Platform, as shown below:
+After finishing the integration, we can add a test comment in the Security Experts tab of the Project, and a notification will be generated in the Slack channel with the same message added in Conviso Platform, as shown below:
 
 **Slack Comments:**
 
@@ -110,7 +110,7 @@ After finishing the integration, we can add a test comment in the Security Champ
 
 </div>
 
-**Security Champions at Conviso Platform:**
+**Vulnerability Identified:**
 
 <div style={{textAlign: 'center'}}>
 
