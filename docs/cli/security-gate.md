@@ -35,7 +35,7 @@ rules:
       maximum: 0
 ```
 
-If you want to avoid validating a specific severity value, you just need to remove it from the rules content. For example, in case you want to validate only critical and maximum severity:
+If you want to avoid validating a specific severity value, you just need to remove it from the rules content. For example, in case you want to validate only critical and high severity:
 
 ```yml
 rules:
