@@ -35,6 +35,18 @@ rules:
       maximum: 0
 ```
 
+If you want to avoid validating a specific severity value, you just need to remove it from the rules content. For example, in case you want to validate only critical and maximum severity:
+
+```yml
+rules:
+- from: any
+  severity:
+    critical:
+      maximum: 0
+    high:
+      maximum: 5
+```
+
 ## Usage
 ```
 conviso vulnerability assert-security-rules --rules-file rules.yml
@@ -62,7 +74,6 @@ Starting vulnerabilities security rules assertion
 ]
 Error: Vulnerabilities quantity offending security rules
 ```
-
 
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
 [Conviso Platform]: <https://app.convisoappsec.com/>
