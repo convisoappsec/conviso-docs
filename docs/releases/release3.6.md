@@ -6,7 +6,7 @@ sidebar_label: Release 3.6
 
 ## What's New
 
-- Possibility to include project requirements within the technical report generation;;
+- Possibility to include project requirements within the technical report generation;
 - Generation of technical reports in Portuguese and English;
 - Read-only permission can now be configured to selected users for resources like Vulnerabilities and Projects (This is an experimental feature and right now it is being tested with a small amount of customers only);
 - In order to improve the response time in Security Experts, notifications of total new messages are now being displayed in the lateral menu;
