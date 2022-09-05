@@ -163,6 +163,7 @@ module.exports = {
       label: "Releases",
       items: [
         'releases/intro',
+        'releases/release3.6',
         'releases/release35',
         'releases/release34',
         'releases/release33',
