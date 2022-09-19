@@ -55,7 +55,35 @@ module.exports = {
       ]
     },
     {
-      Guides: ['guides/code-review-strategies'],
+      type: "category",
+      label: "Guides",
+      items: [
+        'guides/code-review-strategies',
+        {
+          type: "category",
+          label: "Burp Extension",
+          items: [
+            'guides/burp-extension/home',
+            'guides/burp-extension/add-extension-to-burp',
+            'guides/burp-extension/define-endpoint',
+            'guides/burp-extension/test-api-key',
+            'guides/burp-extension/issues-tab',
+            'guides/burp-extension/auto-fill',
+            'guides/burp-extension/as-new-issue',
+            'guides/burp-extension/as-new-issue-with-evidence',
+            'guides/burp-extension/as-evidence',
+            'guides/burp-extension/requirements-tabs',
+            'guides/burp-extension/finish-activity',
+            'guides/burp-extension/not-applicable-activity',
+            'guides/burp-extension/not-started',
+            'guides/burp-extension/restart-activity',
+            'guides/burp-extension/not-applicable',
+            'guides/burp-extension/working-analysis',
+            'guides/burp-extension/reload-working-analyses'
+          ]
+        },
+
+      ]
     },
     {
       type: "category",
