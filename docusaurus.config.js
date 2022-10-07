@@ -105,16 +105,17 @@ module.exports = {
         homepage: "./docs/api/graphql/introduction.md"
       }
     ],
-    /*[
-      '@docusaurus/plugin-content-docs',
+    [
+      // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
+      require.resolve('@docusaurus/plugin-ideal-image'),
       {
-        id: 'api',
-        path: './docs/api/graphql/documentation',
-        routeBasePath: './docs',
-        sidebarPath: require.resolve('./docs/api/graphql/documentation/sidebar-schema.js'),
-        // ... other options
+        quality: 70,
+        max: 1030,
+        min: 640,
+        steps: 2,
+        disableInDev: false,
       },
-    ],*/
+    ],
   ],
 
   themes: [
