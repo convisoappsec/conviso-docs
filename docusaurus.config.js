@@ -1,13 +1,14 @@
 module.exports = {
   title: 'Conviso Platform Docs',
   tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.convisoappsec.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'convisoappsec', // Usually your GitHub org/user name..
-  projectName: 'flow-docs', // Usually your repo name.
+  organizationName: 'convisoappsec',
+  projectName: 'flow-docs',
+
   themeConfig: {
     navbar: {
       title: 'Conviso Platform Docs',
@@ -15,19 +16,10 @@ module.exports = {
         alt: 'Conviso Platform Docs Logo',
         src: 'img/favicon.ico',
       },
-      items: [
-        /* {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
-        }, 
-        {to: 'blog', label: 'Blog', position: 'left'}, */
-        
-      ],
+      items: [],
     },
+
     footer: {
-      
       links: [
         {
           title: 'Docs',
@@ -71,6 +63,7 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Conviso Application Security. Built with Docusaurus.`,
     },
+
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
@@ -89,8 +82,6 @@ module.exports = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -128,12 +119,9 @@ module.exports = {
   ],
 
   themes: [
-    // ... Your other themes.
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
         indexBlog: false,
         indexDocs: true,
         indexPages: true,
@@ -141,14 +129,8 @@ module.exports = {
         hashed: true,
         highlightSearchTermsOnTargetPage: true,
         searchResultLimits: 25,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-        // When applying `zh` in language, please install `nodejieba` in your project.
       },
     ],
   ],
 
-
-};
+}
