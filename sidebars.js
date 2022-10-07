@@ -221,5 +221,5 @@ module.exports = {
       ],
     },
   ],
-  ...require("./docs/api/graphql/documentation/sidebar-schema"),
+  ...sidebarSchema,
 }

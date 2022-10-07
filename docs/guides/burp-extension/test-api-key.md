@@ -5,7 +5,7 @@ sidebar_label: Test API Key
 ---
 
 If you don't have an API Key yet, please follow these steps:
-* [Getting API Key](../../api/generate-apikey.md)
+* [Getting API Key](../../api/generate-apikey.mdx)
 
 And then, let's test it. When testing the API KEY, we expect the result: 
 

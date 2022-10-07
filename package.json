@@ -1,5 +1,5 @@
 {
-  "name": "flow-docs",
+  "name": "conviso-docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,12 +12,15 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.70",
-    "@docusaurus/preset-classic": "2.0.0-alpha.70",
+    "@docusaurus/core": "2.1.0",
+    "@docusaurus/plugin-ideal-image": "^2.1.0",
+    "@docusaurus/preset-classic": "2.1.0",
     "@easyops-cn/docusaurus-search-local": "^0.21.4",
-    "@edno/docusaurus2-graphql-doc-generator": "^1.1.1",
+    "@graphql-markdown/docusaurus": "^1.14.0",
     "@mdx-js/react": "^1.6.21",
     "clsx": "^1.1.1",
+    "graphql": "^16.6.0",
+    "plugin-image-zoom": "flexanalytics/plugin-image-zoom",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
@@ -32,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=16.14.1"
   }
 }
