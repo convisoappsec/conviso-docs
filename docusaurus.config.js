@@ -95,12 +95,15 @@ module.exports = {
   ],
   plugins: [
     [
-      require.resolve("@edno/docusaurus2-graphql-doc-generator"),
+    [
+      //https://github.com/graphql-markdown/graphql-markdown
+      require.resolve("@graphql-markdown/docusaurus"),
       {
         schema: "./static/schema.graphql",
         rootPath: "./docs", // docs will be generated under './docs/swapi' (rootPath/baseURL)
         baseURL: "api/graphql/documentation",
-      },
+        homepage: "./docs/api/graphql/introduction.md"
+      }
     ],
     /*[
       '@docusaurus/plugin-content-docs',
