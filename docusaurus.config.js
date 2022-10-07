@@ -76,7 +76,12 @@ module.exports = {
       disableSwitch: true,
       respectPrefersColorScheme: false,
     },
+
+    imageZoom: {
+      selector: '.markdown img',
+    },
   },
+
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -93,8 +98,12 @@ module.exports = {
       },
     ],
   ],
+
   plugins: [
     [
+      // https://github.com/flexanalytics/plugin-image-zoom
+      require.resolve('plugin-image-zoom'), {}
+    ],
     [
       //https://github.com/graphql-markdown/graphql-markdown
       require.resolve("@graphql-markdown/docusaurus"),
