@@ -97,7 +97,7 @@ Before you can start setting up Conviso features in your pipeline, your runner m
 
 ### CI/CD Configuration
 
-Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable with a Conviso Platform API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
+Accessing your project's main page, you must set the ```CONVISO_API_KEY``` variable with a Conviso Platform API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
 
 1. In the upper right corner, click on your username and on **Edit profile**;
 
@@ -107,7 +107,7 @@ Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable
 
 4. Your API key has been updated, copy the value displayed on the screen.
 
-To set the ```FLOW_API_KEY``` variable in GitLab, follow the steps below:
+To set the ```CONVISO_API_KEY``` variable in GitLab, follow the steps below:
 
 1 - In your GitLab project under **Settings -> CI/CD -> Variables**;
 
@@ -115,7 +115,7 @@ To set the ```FLOW_API_KEY``` variable in GitLab, follow the steps below:
 
 3 - Click on **Add variable**.
 
-If you already have a **Continuous Code Review** type project in Conviso Platform, you can repeat the steps above for the ```FLOW_PROJECT_CODE``` variable. The value of this variable can be found in Conviso Platform at the Project page as **Project Key**.
+If you already have a **Continuous Code Review** type project in Conviso Platform, you can repeat the steps above for the ```CONVISO_PROJECT_CODE``` variable. The value of this variable can be found in Conviso Platform at the Project page as **Project Key**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -131,7 +131,7 @@ We recommend reading the following [document](../guides/code-review-strategies) 
 
 ## Code Review
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific job for this action in the GitLab pipeline. The prerequisites for executing this functionality are the configurations made previously (definition of the ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` variables). Below are the code snippets from the ```.gitlab-ci.yml``` file that illustrates the creation of exclusive jobs for the code review deployment.
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific job for this action in the GitLab pipeline. The prerequisites for executing this functionality are the configurations made previously (definition of the ```CONVISO_API_KEY``` and ```CONVISO_PROJECT_CODE``` variables). Below are the code snippets from the ```.gitlab-ci.yml``` file that illustrates the creation of exclusive jobs for the code review deployment.
 
 **With TAGS, sorted by timestamp**
 
@@ -141,10 +141,10 @@ codereview-job-tags-by-time:
     services:
         - docker:dind
     variables:
-        FLOW_PROJECT_CODE: "HERE"
+        CONVISO_PROJECT_CODE: "HERE"
     only:
         variables:
-            - $FLOW_API_KEY
+            - $CONVISO_API_KEY
     script:
         - conviso deploy create with tag-tracker sort-by time
     tags:
@@ -159,10 +159,10 @@ codereview-job-tags-by-version-style:
     services:
         - docker:dind
     variables:
-        FLOW_PROJECT_CODE: "HERE"
+        CONVISO_PROJECT_CODE: "HERE"
     only:
         variables:
-            - $FLOW_API_KEY
+            - $CONVISO_API_KEY
     script:
         - conviso deploy create with tag-tracker sort-by versioning-style
     tags:
@@ -177,10 +177,10 @@ codereview-job-tags-by-version-style:
     services:
         - docker:dind
     variables: 
-        FLOW_PROJECT_CODE: "HERE"
+        CONVISO_PROJECT_CODE: "HERE"
     only:
         variables:
-            - $FLOW_API_KEY
+            - $CONVISO_API_KEY
     script:
         - conviso deploy create with values
     tags:
@@ -191,7 +191,7 @@ codereview-job-tags-by-version-style:
 
 In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
 
-The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as environment variables for the runner.
+The requirements for running the job are the same as already practiced: ```CONVISO_API_KEY``` and ```CONVISO_PROJECT_CODE``` defined as environment variables for the runner.
 
 ```yml
 conviso-sast:
@@ -199,10 +199,10 @@ conviso-sast:
     services:
         - docker:dind
     variables:
-        FLOW_PROJECT_CODE: "HERE"
+        CONVISO_PROJECT_CODE: "HERE"
     only:
         variables:
-            - $FLOW_API_KEY
+            - $CONVISO_API_KEY
     script:
         - conviso sast run
     tags:
@@ -220,10 +220,10 @@ conviso-sast:
     services:
         - docker:dind
     variables:
-        FLOW_PROJECT_CODE: "HERE"
+        CONVISO_PROJECT_CODE: "HERE"
     only:
         variables:
-            - $FLOW_API_KEY
+            - $CONVISO_API_KEY
     before_script:
         - export START_COMMIT=`git rev-parse @~1`
     script:
@@ -240,10 +240,10 @@ conviso-sca:
     services:
         - docker:dind
     variables:
-        FLOW_PROJECT_CODE: "HERE"
+        CONVISO_PROJECT_CODE: "HERE"
     only:
         variables:
-            - $FLOW_API_KEY
+            - $CONVISO_API_KEY
     script:
         - conviso sca run
     tags:
@@ -258,16 +258,16 @@ The SAST and SCA analysis can be complementary to the code review carried out by
 stages:
   - test
 
-appsec-flow:
+convisoappsec:
   stage: test
   image: convisoappsec/flowcli:latest
   services:
     - docker:dind
   variables:
-    FLOW_PROJECT_CODE: "HERE"
+    CONVISO_PROJECT_CODE: "HERE"
   only:
     variables:
-      - $FLOW_API_KEY
+      - $CONVISO_API_KEY
   before_script:
     - deploy_create_output_vars="$(mktemp)"
   script:
@@ -278,8 +278,8 @@ appsec-flow:
     - source "$deploy_create_output_vars"
     - |
       conviso sast run \
-        --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-        --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
+        --start-commit "$CONVISO_DEPLOY_PREVIOUS_VERSION_COMMIT" \
+        --end-commit "$CONVISO_DEPLOY_CURRENT_VERSION_COMMIT"
     - |
       conviso sca run    
   after_script:
