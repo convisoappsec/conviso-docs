@@ -1,6 +1,6 @@
 # Conviso Platform Documentation
 
-Welcome to the open-source documentation of [Conviso Platform](https://www.convisoappsec.com/). Please review this README file to understand how you can assist in contributing to this documentation.
+Welcome to the open source documentation of [Conviso Platform](https://www.convisoappsec.com/). Please review this README file to understand how you can assist in contributing to this documentation.
 
 ## About Conviso Platform
 
@@ -25,7 +25,7 @@ Fix and monitor major attacks from the development pipeline, under the managemen
 Raise awareness and empower code security developers, as well as other professionals involved in AppSec.
 
 
-## Webiste
+## Website
 
 The Conviso Platform documentation website is built  using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 

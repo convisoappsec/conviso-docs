@@ -54,7 +54,7 @@ jobs:
        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
    steps:
-   - uses: actions/checkout@v2
+   - uses: actions/checkout@v3
 
    - name: Run SAST
      run: conviso sast run
@@ -80,7 +80,7 @@ jobs:
        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
    steps:
-   - uses: actions/checkout@v2
+   - uses: actions/checkout@v3
 
    - name: Run SCA
      run: conviso sca run
@@ -111,7 +111,7 @@ jobs:
        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
    steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: codereview
       #Please use only one of the following approaches in the same job
@@ -122,4 +122,30 @@ jobs:
       run: conviso deploy create with tag-tracker sort-by versioning-style
       #Without using Tags, ordered by Git tree
       run: conviso deploy create with values
+```
+
+## AST
+The following code snippet will trigger an AST scan and send the results to Conviso Platform.
+
+```yml
+name: CI
+on:
+ push:
+   branches: [ master ]
+ pull_request:
+   branches: [ master ]
+
+jobs:
+  conviso-ast:
+    runs-on: ubuntu-latest
+    container:
+      image: convisoappsec/flowcli
+      env:
+        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+        FLOW_PROJECT_CODE: "<project code>"
+    steps:
+    - uses: actions/checkout@v3
+  
+    - name: AST
+      run: conviso ast run
 ```
