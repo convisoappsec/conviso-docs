@@ -86,32 +86,6 @@ jobs:
      run: conviso sca run
 ```
 
-## SAST, SCA and Code Submition Review
-The following code snippet will trigger a SAST, SCA and Code Submition Review scan and send the results to Conviso Platform.
-
-```yml
-name: CI
-on:
- push:
-   branches: [ master ]
- pull_request:
-   branches: [ master ]
-
-jobs:
-  conviso-sast-sca:
-    runs-on: ubuntu-latest
-    container:
-      image: convisoappsec/flowcli
-      env:
-        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-        FLOW_PROJECT_CODE: "<project code>"
-    steps:
-    - uses: actions/checkout@v3
-  
-    - name: Run SAST, SCA and Code Submition Review
-      run: conviso ast run
-```
-
 ## Continuous Code Review 
 The following code snippet will send diff code to Conviso Platform security Code Review module, so you can 
 perform a continuous code review assessment.
@@ -148,4 +122,30 @@ jobs:
       run: conviso deploy create with tag-tracker sort-by versioning-style
       #Without using Tags, ordered by Git tree
       run: conviso deploy create with values
+```
+
+## AST
+The following code snippet will trigger an AST scan and send the results to Conviso Platform.
+
+```yml
+name: CI
+on:
+ push:
+   branches: [ master ]
+ pull_request:
+   branches: [ master ]
+
+jobs:
+  conviso-ast:
+    runs-on: ubuntu-latest
+    container:
+      image: convisoappsec/flowcli
+      env:
+        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+        FLOW_PROJECT_CODE: "<project code>"
+    steps:
+    - uses: actions/checkout@v3
+  
+    - name: AST
+      run: conviso ast run
 ```
