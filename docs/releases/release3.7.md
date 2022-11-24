@@ -4,7 +4,7 @@ title: Release 3.7
 sidebar_label: Release 3.7
 ---
 
-Release Date: Nov 23th, 2022
+Release Date: Nov 23rd, 2022
 
 ## What's New
 
