@@ -42,7 +42,7 @@ You can now find a new item on the menu: Requirements and Guidelines. Find it by
 We also included automation that creates assets from a pipeline through the Conviso CLI. With this automation, the integration process becomes simpler. The reach of Conviso CLI for developers was increased, improving their interaction with the platform.
 
 ```
-conviso assets create <[String] OR String>
+conviso assets create
 ```
 
 ### You can now name your Projects as you wish
