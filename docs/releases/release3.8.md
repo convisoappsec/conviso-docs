@@ -32,11 +32,6 @@ Have a look:
 
 </div>
 
-### Requirements and Guidelines
-
-You can now find a new item on the menu: Requirements and Guidelines. Find it by clicking on the Intelligence menu option. We created it to offer an easily accessible option in our menu that only lists requirements and guidelines. As a result, companies can build their knowledge bases and guides without associating them with a project. Now it is also possible to know when each Requirement and Guideline was created and updated.
-
-
 ### Create assets with Conviso CLI
 
 We also included automation that creates assets from a pipeline through the Conviso CLI. With this automation, the integration process becomes simpler. The reach of Conviso CLI for developers was increased, improving their interaction with the platform.
