@@ -14,6 +14,11 @@ Welcome to our Release 3.8! We are constantly refining Conviso Platform to empow
 
 Welcome to Conviso Platform's new, improved dashboard experience, focused on leveraging your decision-making process. We enhanced it not only to make it more attractive but also to improve your experience. For all these purposes, we included better graphics and even more information, so you can have a better vision and gain better insights regarding your applications, improving your decision-making process with the platform.
 
+:::note
+For now, only a few customers can try this new experience but don't worry, it will be available for everyone in the following weeks.  
+:::
+
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/release38-dashboard.gif)
