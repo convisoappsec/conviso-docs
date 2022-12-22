@@ -37,13 +37,6 @@ To list all the Assets you have access on the Conviso Platform
   conviso assets ls --company-id $YOUR_COMPANY_ID --limit 100
   ```
 
-
-<!-- 
-### References
-
-1. [How find company ID?](#TBD) 
-2. -->
-
 ## create
 
 `conviso assets create [OPTIONS]`
@@ -62,8 +55,13 @@ To create a new Asset on Conviso Platform
 
 ### Examples
 
-* Create an Asset from git repository `/path/example` with custom name.
+* Create an Asset from git repository `/path/example` with custom name `asset-x`.
 
   ```sh
-  conviso assets create --company-id $YOUR_COMPANY_ID --repository-dir ~/path/example
+  conviso assets create --company-id $YOUR_COMPANY_ID --repository-dir ~/path/example --name asset-x
   ```
+
+## References
+
+1. [How setup apikey?](http://localhost:3001/cli/authentication)
+<!-- 2. [How find company ID?](#TBD)  -->
