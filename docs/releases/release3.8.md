@@ -41,9 +41,7 @@ Have a look:
 
 We also included automation that creates assets from a pipeline through the Conviso CLI. With this automation, the integration process becomes simpler. The reach of Conviso CLI for developers was increased, improving their interaction with the platform.
 
-```
-conviso assets create
-```
+For more information you can check the documentation [here](https://docs.convisoappsec.com/cli/assets).
 
 ### You can now name your Projects as you wish
 
