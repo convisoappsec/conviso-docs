@@ -116,6 +116,12 @@ module.exports = {
         disableInDev: false,
       },
     ],
+    [
+      require.resolve('docusaurus-gtm-plugin'),
+      {
+        id: 'GTM-NZ832PZ', // GTM Container ID
+      }
+    ],
   ],
 
   themes: [
