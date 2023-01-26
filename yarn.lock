@@ -5831,7 +5831,8 @@ pkg-up@^3.1.0:
 
 plugin-image-zoom@flexanalytics/plugin-image-zoom:
   version "0.0.0"
-  resolved "https://codeload.github.com/flexanalytics/plugin-image-zoom/tar.gz/86f6f0b4f927ded94dcfdc18c0a9ee702ffd8d06"
+  uid "6edf8e287dc64c8a4e1010fd36478316ac25ffeb"
+  resolved "https://codeload.github.com/flexanalytics/plugin-image-zoom/tar.gz/6edf8e287dc64c8a4e1010fd36478316ac25ffeb"
   dependencies:
     medium-zoom "^1.0.4"
 
