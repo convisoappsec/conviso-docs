@@ -21,8 +21,8 @@ This command unifies three operations in a single and simple interface associate
 To trigger this function is very simple, one of the methods is to export the settings to be used by the CLI to environment variables. Below an example.
 
 ```bash
-export FLOW_API_KEY='your-api-key'
-export FLOW_PROJECT_CODE='your-project-code'
+export CONVISO_API_KEY='your-api-key'
+export CONVISO_PROJECT_CODE='your-project-code'
 
 cd your_source_code_repository
 
