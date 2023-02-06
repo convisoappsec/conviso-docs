@@ -4,7 +4,7 @@ title: Release 3.9
 sidebar_label: Release 3.9
 ---
 
-Release date: February 3rd, 2023
+Release date: February 6th, 2023
 
 ## What's New
 
