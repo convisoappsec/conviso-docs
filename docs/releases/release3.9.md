@@ -4,19 +4,34 @@ title: Release 3.9
 sidebar_label: Release 3.9
 ---
 
-Release date: January 24th, 2023
+Release date: February 3rd, 2023
 
 ## What's New
 
 Welcome to our first 2023 product release note! We are constantly implementing changes to optimize user experience on our platform and to integrate it even more with the developer's ecosystem.
 
-### Support for SARIF format is now available!
+### Create Profiles and bring more flexibility to user management
 
-Conviso Platform now has the ability to import results from external scanners that use SARIF format as their output.
-With this new feature, developers can automate the whole vulnerability management process of those tools using our platform and worry more about fixing the vulnerabilities instead of doing manual work. Let the automation with us!
-You can configure this with your CI/CD of preference using our CLI in just a few steps and start taking advantage of it.
+<div style={{textAlign: 'center'}}>
 
-Check [our documentation](https://docs.convisoappsec.com/cli/findings/#import-findings) to learn more. 
+![img](../../static/img/release39-profiles.gif)
+
+</div>
+
+With this new feature you can let users do what they are **only** allowed to do.
+Bring the whole team to the platform and set up the permissions that make sense for your company.
+For now there is a global Profile called View-Only and it should be used with users that are not capable of changing anything. Additional global profiles will be introduced in future versions.
+
+In this first release of profiles, you can set permissions for three resources within the platform:
+
+- **User Access**: View, Invite Users
+- **Vulnerabilities**: View, Create, Edit, Delete
+- **Projects**: View, Create, Edit, Delete
+
+
+There are more resources to come in the following releases so you can make a more granular configuration of your custom profiles.
+
+Please share your feedback through our chat so we can understand your thoughts about this new feature.
 
 
 ## Bug Fixes
