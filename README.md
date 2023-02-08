@@ -61,8 +61,13 @@ yarn start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-Please note that instructions may vary depending on the operating system used. For more information, see [here]().
+Please note that instructions may vary depending on the operating system used. For more information, see [here](https://docusaurus.io/docs/installation).
 
+## Deploy
+
+This repository is configured to deliver updates continuously and efficiently to production. Whenever a push is performed on the main branch (main), the process will be triggered automatically. 
+
+If you want to know more about this process, see [here](https://github.com/convisoappsec/flow-docs/blob/main/.github/workflows/main.ym)
 
 ## Contributing
 
