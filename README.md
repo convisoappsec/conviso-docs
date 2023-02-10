@@ -49,8 +49,14 @@ To install Node.js, follow the instructions [here](https://nodejs.org/en/downloa
 
 To install Yarn, run the following command:
 ```bash
-yarn install
+npm install --global yarn
 ```
+
+To test that the installation was successful:
+```bash
+yarn --version
+```
+
 
 ## Getting Started
 
@@ -67,7 +73,7 @@ Please note that instructions may vary depending on the operating system used. F
 
 This repository is configured to deliver updates continuously and efficiently to production. Whenever a push is performed on the main branch (main), the process will be triggered automatically. 
 
-If you want to know more about this process, see [here](https://github.com/convisoappsec/flow-docs/blob/main/.github/workflows/main.ym)
+If you want to know more about this process, see [here](https://github.com/convisoappsec/conviso-docs/blob/main/.github/workflows/main.yml)
 
 ## Contributing
 
