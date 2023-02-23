@@ -45,6 +45,12 @@ or
 python3 -m pip install --user conviso-flowcli
 ```
 
+or install a specific version. Versions tag can be found on [PyPI][pypi-history] or [Github][github-tags]
+
+```bash
+python3 -m pip install conviso-flowcli==1.12.0rc2
+```
+
 Check if the installation command was well succeeded.
 
 ```bash
@@ -106,3 +112,5 @@ Start a new fish shell session and the shell completion will be available.
 [convisoappsec]: <https://convisoappsec.com/>
 [CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
 [Conviso Platform]: <https://app.convisoappsec.com/>
+[pypi-history]: https://pypi.org/project/conviso-flowcli/#history
+[github-tags]: https://github.com/convisoappsec/flowcli/tags
