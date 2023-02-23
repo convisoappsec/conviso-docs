@@ -22,25 +22,35 @@ To install the CLI some dependencies are required:
 * Docker. See [docker download]
 
 If you have system admin privileges just execute one of the following commands.
+
 ```bash
 pip install conviso-flowcli
 ```
+
 or
+
 ```bash
 python3 -m pip install conviso-flowcli
 ```
+
 If you haven't system admin privileges execute one of the following commands.
+
 ```bash
 pip install --user conviso-flowcli
 ```
+
 or
+
 ```bash
 python3 -m pip install --user conviso-flowcli
 ```
+
 Check if the installation command was well succeeded.
+
 ```bash
 conviso --version
 ```
+
 The command will print the current version and exit with success. Now we are ready to proceed.
 
 ## CI/CD
@@ -50,7 +60,9 @@ For running the CLI in the CI/CD, please check the menu with all the different t
 This section will guide you to activate the [CLI shell completion](https://en.wikipedia.org/wiki/Command-line_completion) feature. This is not required to use the tool, so you can skip it if you want. 
 
 ### Bash
+
 Open your ```.bashrc``` file at ```~/.bashrc``` and place the following snippet in the end of file.
+
 ```bash
 CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 
@@ -58,10 +70,12 @@ CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
   source "$CONVISO_COMPLETER"
 }
 ```
+
 Start a new bash shell session and the shell completion will be available.
 
 ### ZSH
 Open your ```.zshrc``` file at ```~/.zshrc``` and place the following snippet in the end of file.
+
 ```bash
 CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
 
@@ -69,14 +83,17 @@ CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
   source "$CONVISO_COMPLETER"
 }
 ```
+
 Start a new ZSH shell session and the shell completion will be available.
 
 ### Fish
 Start a fish shell session and execute the following command.
+
 ```bash
 mkdir -p ~/.config/fish/completions
 cp (which flow_fish_completer.fish) ~/.config/fish/completions/flow.fish
 ```
+
 Start a new fish shell session and the shell completion will be available.
 
 [python3 download]: <https://www.python.org/downloads/>
