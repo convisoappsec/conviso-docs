@@ -15,11 +15,14 @@ You can use the CLI locally and also inside your [CI/CD] to be able to use the f
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license)
 
 ## Requirements
+
 To install the CLI some dependencies are required:
 * python3 >= 3.4. See [python3 download]
 * pip. See [pip guide]
 * git. See [git download]
 * Docker. See [docker download]
+
+### Installation
 
 If you have system admin privileges just execute one of the following commands.
 
@@ -45,11 +48,19 @@ or
 python3 -m pip install --user conviso-flowcli
 ```
 
-or install a specific version. Versions tag can be found on [PyPI][pypi-history] or [Github][github-tags]
+or install a specific version. Versions can be found on [PyPI][pypi-history].
 
 ```bash
 python3 -m pip install conviso-flowcli==1.12.0rc2
 ```
+
+or use Container Image with specific version. Versions can be found on [Github][github-tags].
+
+```bash
+docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
+```
+
+:warning: Observe that PyPI and Github versions have a slightly difference
 
 Check if the installation command was well succeeded.
 
