@@ -36,4 +36,11 @@ To import results from a [SARIF][sarif] file to a project of your account in the
   ```
 
 
+<!-- 
+## References
+
+1. TBD
+2. TBD
+-->
+
 [sarif]: http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html
