@@ -63,5 +63,6 @@ To create a new Asset on Conviso Platform
 
 ## References
 
-1. [How setup apikey?](http://localhost:3001/cli/authentication)
+1. [How setup apikey?](/cli/authentication)
+
 <!-- 2. [How find company ID?](#TBD)  -->
