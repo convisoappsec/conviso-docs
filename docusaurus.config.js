@@ -80,6 +80,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          editUrl: ({ versionDocsDirPath, docPath }) =>
+            `https://github.com/convisoappsec/conviso-docs/edit/main/${versionDocsDirPath}/${docPath}`,
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
         },
