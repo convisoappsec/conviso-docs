@@ -16,7 +16,7 @@ Through the Business Intelligence integration, it is possible to optimize time b
 
 ## Pre requisites
 
-To use this feature you need to generate an API key following [this documentation](../../api/generate-apikey) and then explore the API Documentation in order to search for the data you are interested to bring to PowerBI.
+To use this feature you need to generate an API key following [this documentation](../../api/graphql/introduction) and then explore the API Documentation in order to search for the data you are interested to bring to PowerBI.
 Having this information you can proceed to create a connector within PowerBI.
 
 ## PowerBI Setup
