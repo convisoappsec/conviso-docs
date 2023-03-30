@@ -33,6 +33,47 @@ The Conviso Platform documentation website is built  using [Docusaurus 2](https:
 
 View all [documentation](https://docs.convisoappsec.com/) and walk-through our code samples on the website.
 
+## Installation
+
+To contribute to the project, you will need to install some dependencies in your local environment. Here are the requirements:
+
+- Node.js >= 12.13.0
+- Yarn >= 1.5
+
+### Installation of Node.js
+
+To install Node.js, follow the instructions [here](https://nodejs.org/en/download/package-manager/).
+
+
+### Yarn Installation
+
+To install Yarn, run the following command:
+```bash
+npm install --global yarn
+```
+
+To test that the installation was successful:
+```bash
+yarn --version
+```
+
+
+## Getting Started
+
+To start the project, run the following command:
+```bash
+yarn start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+Please note that instructions may vary depending on the operating system used. For more information, see [here](https://docusaurus.io/docs/installation).
+
+## Deploy
+
+This repository is configured to deliver updates continuously and efficiently to production. Whenever a push is performed on the main branch (main), the process will be triggered automatically. 
+
+If you want to know more about this process, see [here](https://github.com/convisoappsec/conviso-docs/blob/main/.github/workflows/main.yml)
 
 ## Contributing
 
