@@ -38,7 +38,7 @@ In order to test your GrapQL queries you can use the Conviso's Playgorund avalia
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI1.png)
+![img](../../static/img/powerbi/BI1.png)
 
 </div>
 
@@ -48,7 +48,7 @@ In order to test your GrapQL queries you can use the Conviso's Playgorund avalia
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI2.png)
+![img](../../static/img/powerbi/BI2.png)
 
 </div>
 
@@ -102,7 +102,7 @@ Click on **Done**;
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI3.png)
+![img](../../static/img/powerbi/BI3.png)
 
 </div>
 
@@ -111,7 +111,7 @@ At the floating window click on **Connect**;
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI4.png)
+![img](../../static/img/powerbi/BI4.png)
 
 </div>
 
@@ -119,7 +119,7 @@ To access the data retrieved click on **List**;
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI5.png)
+![img](../../static/img/powrerbi/BI5.png)
 
 </div>
 
