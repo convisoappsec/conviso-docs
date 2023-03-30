@@ -119,7 +119,7 @@ To access the data retrieved click on **List**;
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powrerbi/BI5.png)
+![img](../../static/img/powerbi/BI5.png)
 
 </div>
 
