@@ -129,7 +129,7 @@ To access the data retrieved click on **List**;
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI6.png)
+![img](../../static/img/powerbi/BI6.png)
 
 </div>
 
@@ -137,7 +137,7 @@ You will see the information as detailed below and from there you are free to co
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/BI7.png)
+![img](../../static/img/powerbi/BI7.png)
 
 </div>
 
