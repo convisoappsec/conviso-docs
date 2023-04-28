@@ -100,4 +100,5 @@ Using **"Advanced Options"**, you can further enrich information about the asset
 **Contacts:** It is also possible to add the contact of the responsible people for the asset to be notified about its situation.
 
 ## Support
-If you have any questions or need help using our product, please don't hesitate to contact our [support team](support@convisoappsec.com).
+
+If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
