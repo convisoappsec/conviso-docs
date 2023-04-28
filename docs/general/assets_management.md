@@ -50,7 +50,7 @@ You can see three options for creating assets. If you have any integration set u
 
 </div>
 
-**Asset Import:** This option allows you to efficiently bring in multiple assets from a .csv file, with specific rules to follow as indicated in the [documentation](./assets_import).
+**Asset Import:** This option allows you to efficiently bring in multiple assets from a .csv file, with specific rules to follow as indicated in the [documentation](../general/assets_import).
 
 **Import from repositories:** Another option that enables you to add assets from a platform like Github by connecting with your platform account.
 
