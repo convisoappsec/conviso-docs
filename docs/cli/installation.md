@@ -101,7 +101,7 @@ Once the CLI is installed and your machine is authenticated, perform the followi
 - **Import findings and vulnerabilities from other security tools** that support .SARIF files to Conviso Platform, see [more](../cli/findings.md).
 
 
-### Other installation commands
+## Other installation commands
 
 In case the main method didn't work, there are several other ways:
 
