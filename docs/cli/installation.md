@@ -19,8 +19,8 @@ To use the CLI,  install it and [authenticate](#authentication) your machine.
 ### Prerequisites
 To install the CLI some dependencies are required:
 * python3 >= 3.4. See [python3 download](https://www.python.org/downloads/).
-* pip. See [pip guide](https://git-scm.com/downloads).
-* git. See [git download](https://packaging.python.org/tutorials/installing-packages/#installing-from-pypi).
+* pip. See [pip guide](https://packaging.python.org/tutorials/installing-packages/#installing-from-pypi).
+* git. See [git download](https://git-scm.com/downloads).
 * Docker. See [docker download](https://docs.docker.com/engine/install/).
 
 Follow the download instructions for each dependency.
@@ -38,7 +38,7 @@ or
 python3 -m pip install conviso-flowcli
 ```
 
-**Note:** If it is not working, we recommend visiting the [other installation commands](#other-installation-commands) section that shows other ways to install.
+**Note:** If it's not working, we recommend visiting the [other installation commands](#other-installation-commands) section that shows other ways to install.
 
 **You can use the CLI in your CI/CD environment**. For details, please check the [menu](../integrations/integrations_intro.md) with all the different tools that we are integrated with. If your tool is not there, please contact us to assess it.
 
@@ -60,7 +60,7 @@ The following shows an example:
 
 The command will print CLI commands and options summary. Now we are ready to proceed!
 
-**Note:**  Conviso recommends always keeping your CLI installation updated to the latest version. You can check by running ```conviso --version```.
+**Note:** Conviso recommends always keeping your CLI installation updated to the latest version. You can check by running ```conviso --version```.
 
 ## Authentication
 
