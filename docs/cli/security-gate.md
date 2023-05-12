@@ -1,25 +1,32 @@
 ---
 id: security-gate
-title: Security Gate
-sidebar_label: Security Gate
+title: CI/CD Pipeline Security Control with Security Gate
+sidebar_label: CI/CD Pipeline Security Control with Security Gate
 ---
 
-## Overview
+## Introduction
+With Conviso CLI's **Security Gate** feature you can define vulnerability policies, such as the number of vulnerabilities by severity and sources, and automatically block your CI/CD pipeline if these policies are not complied, ensuring that your code is secure from potential threats.
 
-Imagine that you want to validate your opened vulnerabilities for a specific project and block your [CI/CD] pipeline depending on pre-defined vulnerability policies.
-The Security Gate feature helps you with that by letting you define policies such as:
-- Vulnerability Quantity by severity (Low, Medium, High, Critical)
-- Vulnerability sources (For example, external integrations such as Checkmarx or Qualys, and also [Conviso Platform] scanners)
+### Prerequisites
+To successfully run this command [authenticate](/cli/installation#authentication) your machine and set the project key with ```export FLOW_PROJECT_CODE='your-project-code'```. The "Project Code" is found on the specific project page.
 
-## How does it work?
+## Usage
+To use this feature, follow these steps:
 
-First, you need to define the policies for the specific project.
-Let us define for this example that a [CI/CD] pipeline needs to be blocked when there is more than 5 high severity vulnerabilities.
-If the policy that was defined is true and the asset in fact has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline indicating the cause with the details of why it did not pass through.
+### 1. Defining vulnerability policies
 
-## Policy File Structure
+First, you need to define the policies for the specific project. This CLI feature helps you with that, allowing you to define policies such as:
 
-For the previous example it can be used the following policy rules:
+- Vulnerability quantity by severity (Low, Medium, High, Critical)
+
+- Vulnerability sources (for example, external integrations such as Checkmarx or Qualys, and also Conviso Platform scanners)
+
+**Note:** It's important to highlight that the definition of vulnerability policies must be defined in the vulnerability management process, considering risk appetite, team maturity and other factors.
+
+### 2. Creating the Security Gate rules in the YAML file
+The policy file structure is based on YAML format and can be defined with rules. 
+
+For example, you can define a policy that will block your CI/CD pipeline if there are more than 5 high severity vulnerabilities from any scanners:
 
 ```yml
 rules:
@@ -35,7 +42,11 @@ rules:
       maximum: 0
 ```
 
-If you want to avoid validating a specific severity value, you just need to remove it from the rules content. For example, in case you want to validate only critical and high severity:
+If the policy that was defined is true and the asset in fact has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline.
+
+To avoid validating a specific severity value, just remove it from the rules content. 
+
+For example, in case you want to validate only critical and high severity:
 
 ```yml
 rules:
@@ -47,18 +58,25 @@ rules:
       maximum: 5
 ```
 
-## Usage
+Save the file in the repository where the CLI will run and record its name that will be used in the next step.
+
+
+### 3. Running Security Gate with the CLI
+After defining the vulnerability policy file, run the following command:
+
 ```
-conviso vulnerability assert-security-rules --rules-file rules.yml
+conviso vulnerability assert-security-rules --rules-file 'FILE_NAME.yml'
 ```
 
-Success Response:
+If all vulnerabilities meet the defined policies, you will receive a success response:
+
 ```
 Starting vulnerabilities security rules assertion
 ✅ Vulnerabilities security rules assertion finished
 ```
 
-Failed Response:
+However, if any vulnerability does not meet the defined policies, you will receive a failure response:
+
 ```
 Starting vulnerabilities security rules assertion
 💬 Vulnerabilities summary
@@ -75,5 +93,14 @@ Starting vulnerabilities security rules assertion
 Error: Vulnerabilities quantity offending security rules
 ```
 
-[CI/CD]: <https://en.wikipedia.org/wiki/CI/CD>
-[Conviso Platform]: <https://app.convisoappsec.com/>
+## Support
+If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+
+## Resources
+By exploring our content you'll find resources to help you understand the benefits of the Conviso CLI:
+
+[How Vulnerability Management Works in Conviso Platform:](https://bit.ly/3LBxR0m) Discover the key features of the platform and how it helps detect, prioritize, and remediate vulnerabilities.
+
+[Prioritization of Vulnerabilities:](https://bit.ly/3LBxR0m) Learn best practices for prioritizing vulnerabilities and creating a strategy that works for your organization.
+
+[Vulnerability Management Process:](https://bit.ly/3LgMDIn) Get an overview of the process and learn how to implement it in your organization.
