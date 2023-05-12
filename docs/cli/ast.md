@@ -1,10 +1,8 @@
 ---
 id: ast
 title: Scan projects using the CLI
-sidebar_label: AST
+sidebar_label: Scan projects using the CLI
 ---
-
-## Scan projects using the CLI
 
 ### Introduction
 
