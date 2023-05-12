@@ -49,7 +49,6 @@ module.exports = {
       CLI: [
         'cli/installation',
         'cli/ast',
-        'cli/sast',
         'cli/security-gate',
         'cli/assets',
         'cli/findings',
