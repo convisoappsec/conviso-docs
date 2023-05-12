@@ -64,7 +64,6 @@ To create a new Asset on Conviso Platform
 ## References
 
 1. [How to get an APIKEY?][doc/generate-apikey]
-2. [How to setup APIKEY in the CLI?](/cli/authentication)
 <!-- 2. [How find company ID?](#TBD)  -->
 
 

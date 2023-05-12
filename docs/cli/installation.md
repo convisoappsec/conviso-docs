@@ -125,7 +125,7 @@ python3 -m pip install conviso-flowcli==1.12.0rc2
 
 **Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/). 
 
-- If you want to use Container Image with a specific version. Versions can be found on [Github](https://github.com/convisoappsec/flowcli/tags).
+- If you want to use Container Image with a specific version. Versions can be found on Github.
 
 ```bash
 docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
