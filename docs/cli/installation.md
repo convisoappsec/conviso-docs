@@ -14,7 +14,7 @@ You can use the CLI locally and also inside your CI/CD to be able to use the fol
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license).
 
 ## Install the Conviso CLI
-To use the CLI,  install it and [authenticate](#authentication) your machine.
+To use the CLI, install it and [authenticate](#authentication) your machine.
 
 ### Prerequisites
 To install the CLI some dependencies are required:
@@ -125,8 +125,7 @@ python3 -m pip install conviso-flowcli==1.12.0rc2
 
 **Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/). 
 
-
-- If you want to use Container Image with a specific version. Versions can be found on [Github](https://github.com/convisoappsec/flowcli/tags).
+- If you want to use Container Image with a specific version. Versions can be found on Github.
 
 ```bash
 docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
