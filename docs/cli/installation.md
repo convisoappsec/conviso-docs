@@ -184,7 +184,7 @@ Start a new fish shell session and the shell completion will be available.
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
 
 ## Resources
-By exploring our content you'll find resources to help you understand vulnerability management:
+By exploring our content you'll find resources to help you understand the benefits of the Conviso CLI:
 
 [What is SARIF and how it could revolutionize software security:](https://bit.ly/3nqqcbK) The article explains how SARIF can improve transparency and collaboration in the security software industry and highlights how the Conviso Platform already supports the SARIF format with Conviso CLI.
 
