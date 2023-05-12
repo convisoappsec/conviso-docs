@@ -28,14 +28,14 @@ In February, we released the [Custom Profiles](https://docs.convisoappsec.com/re
   - Full access to Access Control:
     - Management of users in their account; 
     - Profile management; 
-    - Team management ;
+    - Team management.
   - Business unit management.
 
 - Developer: The Developer profile does not have access to any assets by default, but should receive access to assets from another user, such as an Admin or even another Developer.
   Permissions: 
     - Limited vulnerability status update (False Positive and Risk Accepted are not allowed);
     - Create, view, and edit Assets;
-    - Create, view, and edit Projects;      
+    - Create, view, and edit Projects.      
 
 <br />
 
