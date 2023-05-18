@@ -64,7 +64,7 @@ The command will print CLI commands and options summary. Now we are ready to pro
 
 ## Authentication
 
-In order to start using the CLI you will need to provide your API Key for your Conviso Platform account. Just go to "Edit Profile", and then click on "API Key" as follows the gif below:
+In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../api/generate-apikey.md). Just go to "Edit Profile", and then click on "API Key" as follows the gif below:
 
 <div style={{textAlign: 'center'}}>
 

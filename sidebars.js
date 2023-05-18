@@ -7,6 +7,7 @@ module.exports = {
       type: "category",
       label: "API",
       items: [
+        'api/api-overview',
         'api/generate-apikey',
         {
           type: "category",
