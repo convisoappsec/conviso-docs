@@ -149,7 +149,7 @@ Whenever a new vulnerability is identified, it is automatically sent to the proj
 
 ## Webhooks
 
-You may configure **Webhooks** in order to use the two-way communication with Jira. 
+You may configure [**Webhooks**](https://<YOUR SPACE NAME>.atlassian.net/plugins/servlet/webhooks#) in order to use the two-way communication with Jira. 
 :::note
 The Webhook function works with Jira version 7.1 and above.
 :::
