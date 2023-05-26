@@ -149,7 +149,7 @@ Whenever a new vulnerability is identified, it is automatically sent to the proj
 
 ## Webhooks
 
-You may configure **Webhooks** in order to use the two-way communication with Jira. 
+You may configure [**Webhooks**](#jiraconfig) in order to use the two-way communication with Jira. 
 :::note
 The Webhook function works with Jira version 7.1 and above.
 :::
@@ -291,3 +291,7 @@ In the example above, when we change a vulnerability status at Conviso Platform 
 :::note
 Don't forget to click **Save** after configuring Jira's integration!
 :::
+
+### FAQ
+
+* How to find webhooks configuration in Jira? Try direct by the URL, remember to change `YOUR_SPACE_NAME` :`https://YOUR_SPACE_NAME.atlassian.net/plugins/servlet/webhooks#`
