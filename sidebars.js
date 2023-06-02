@@ -197,6 +197,14 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Secure by Design",
+      items: [
+        'secure-by-design/overview',
+        'secure-by-design/threat-modeling'
+      ],
+    },
+    {
+      type: "category",
       label: "Releases",
       items: [
         'releases/intro',
