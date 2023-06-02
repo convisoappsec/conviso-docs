@@ -180,6 +180,14 @@ module.exports = {
     },
     {
       type: "category",
+      label: "People & Culture",
+      items: [
+        'people-and-culture/overview',
+        'people-and-culture/solving-code-review'
+      ],
+    },
+    {
+      type: "category",
       label: "Onpremises",
       items: [
         'onpremises/overview',
