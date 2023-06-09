@@ -5,7 +5,7 @@ sidebar_label: Importing the scan results of a SARIF file
 ---
 
 ## Introduction
-The Conviso CLI allows you to import results from a (SARIF)[http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html] file, such as Trivy or Semgrep, to a project in your account on the Conviso Platform. This can be useful for tracking and managing security vulnerabilities and other issues found by scanning tools.
+The Conviso CLI allows you to import results from a [SARIF](http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) file, such as Trivy or Semgrep, to a project in your account on the Conviso Platform. This can be useful for tracking and managing security vulnerabilities and other issues found by scanning tools.
 
 **Note:** This functionality is in **Pre-Release**. It is necessary that the Container image in Job `import` use the corresponding version `1.12.0-rc.2`. To learn how to do this, [read how to install the Conviso CLI in alternative methods](/installation.md/#other-installation-commands).
 
