@@ -4,139 +4,36 @@ title: Jenkins
 sidebar_label: Jenkins
 ---
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/jenkins.png)
-
-</div>
-
-:::note
-First time using Jenkins? Please refer to the [following documentation](https://www.jenkins.io/doc/book/).  
-:::
 
 ## Introduction
+With Conviso Platform integrated into your Jenkins pipeline, you can automate and streamline your security processes, ensuring that your applications undergo thorough security assessments throughout the development lifecycle. 
 
-This integration uses the [CLI](../cli/installation) as a docker image for all the execution and communication with Flow.  
-By the end of this tutorial you will know how to:
-- Run an SAST scan
-- Run an SCA scan
-- Send diff code to Conviso Platform security code review module.
+You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers both **Static Application Security Testing (SAST)** and **Software Composition Analysis (SCA)** directly on your Jenkins pipeline.
 
-## Requirements
-In order to integrate with Jenkins, your environment should fulfill the followings requirements:
-1. Jenkins version 2.222.3 or higher;
-1. Docker installed;
-1. Jenkins user must have access to the Docker daemon;
-1. External access (can be restricted to specific Conviso addresses);
+The [CLI](https://docs.convisoappsec.com/cli/installation/) is a docker image in this integration for all execution and connection with the Conviso Platform. 
 
-If you need help about docker installation you can read all the process in the links below:
+### Prerequisites
+The following prerequisites are necessary:
+- Jenkins version 2.222.3 or higher;
+- Docker installed;
+- Docker and Docker Pipeline plugins installed on Jenkins;
+- Jenkins users must have access to Docker Daemon to be able to run Docker commands;
+- External access (can be restricted to specific Conviso addresses);
+- The variables in the pipeline should remain unchanged.
 
-[Install Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script)
-[Post-Install Linux Steps](https://docs.docker.com/engine/install/linux-postinstall/)
+**Note:** If you need help with Docker installation, instructions can be found in the links below: [Install Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [Post-Install Linux Steps](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script).
 
 
+## Usage
+By the end of this tutorial, you will know how to:
+- **Perform a Conviso AST scan to analyze your application's security**
+- **Run a scan exclusively using Conviso SAST**
+- **Run a scan exclusively using Conviso SCA**
+- **Send difference code to Conviso Platform security Code Review module**
 
-### Usage
+## Perform a Conviso AST scan to analyze your application's security
+The steps below will show you what your Jenkinsfile must have to perform Application Security Testing (AST) with Security Code Review, forming a complete solution in the pipeline:
 
-The steps below will show what does your Jenkinsfile should have to perform our actions.
-These stages also can be inserted inside your current Jenkinsfile.
-## SAST
-The following code snippet will trigger a SAST scan and send the results to Flow.
-
-```yml
-pipeline {
-
-  agent {
-    docker {
-      image 'convisoappsec/flowcli:latest'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-  }
-
-  environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = "Please, insert your project code here"
-  }
-
-  stages {
-    stage('Conviso_SAST') {
-      steps {
-        sh 'conviso sast run'
-      }
-    }
-  }
-}
-```
-
-## SCA
-
-The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
-
-```yml
-pipeline {
-
-  agent {
-    docker {
-      image 'convisoappsec/flowcli:latest'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-  }
-
-  environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = "Please, insert your project code here"
-  }
-
-  stages {
-    stage('Conviso_SAST') {
-      steps {
-        sh 'conviso sca run'
-      }
-    }
-  }
-}
-```
-
-## Continuous Code Review 
-The following code snippet will send diff code to Conviso Platform Security Code Review module, so you can perform a continuous code review assessment.
-There are three approaches depending on how you work with your project. In a nutshell:
-- Using Tags, ordered by time
-- Using Tags, ordered by versioning style (semantic version)
-- Without using Tags, ordered by Git tree
-
-```yml
-pipeline {
-  agent {
-    docker {
-      image 'convisoappsec/flowcli:latest'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-  }
-
-  environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = "Please, insert your project code here"
-  }
-
-  stages {
-    stage('Conviso_CodeReview') {
-      steps {
-      //Please use only one of the following approaches in the same job
-      //Using Tags, ordered by time
-      //  sh 'conviso deploy create with tag-tracker sort-by time'
-      //Using Tags, ordered by versioning style (semantic version)
-      //  sh 'conviso deploy create with tag-tracker sort-by versioning-style'
-      //Without using Tags, ordered by Git tree
-        sh 'conviso deploy create with values'
-      }
-    }
-  }
-}
-```
-
-## Getting Everything Together: Code Review + SAST + SCA Deployment
-
-The SAST analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST analysis, forming a complete solution in the pipeline. An example of a complete pipeline with both solutions can be seen in the snippet below: 
 
 ```yml
 pipeline {
@@ -174,3 +71,118 @@ pipeline {
   }//stages
 }//pipeline
 ```
+
+**Note:** To scan your repository with AST, you need to have a project registered on Conviso Platform, the "Project Code" is found on the specific project page. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
+
+The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+
+## Run a scan exclusively using Conviso SAST
+The steps below will show you what your Jenkinsfile must have to perform Static Application Security Testing (SAST):
+
+
+```yml
+pipeline {
+
+  agent {
+    docker {
+      image 'convisoappsec/flowcli:latest'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
+  }
+
+  environment {
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
+  }
+
+  stages {
+    stage('Conviso_SAST') {
+      steps {
+        sh 'conviso sast run'
+      }
+    }
+  }
+}
+```
+
+The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. 
+
+
+## Run a scan exclusively using Conviso SCA
+The steps below will show you what your Jenkinsfile must have to perform Software Composition Analysis (SCA):
+
+```yml
+pipeline {
+
+  agent {
+    docker {
+      image 'convisoappsec/flowcli:latest'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
+  }
+
+  environment {
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
+  }
+
+  stages {
+    stage('Conviso_SAST') {
+      steps {
+        sh 'conviso sca run'
+      }
+    }
+  }
+}
+```
+
+Identified vulnerabilities related to your external packages will be automatically sent to your Project on Conviso Platform.
+
+## Send difference code to Conviso Platform security Code Review module
+The code below will send diff code to the Conviso Platform Security Code Review module, allowing you to perform a continuous code review assessment. 
+
+Depending on how you work with your project, there are three approaches: 
+
+- **Using Tags ordered by time.**
+- **Using Tags ordered by versioning style (semantic version).**
+- **Without using Tags, ordered by Git tree.**
+
+```yml
+pipeline {
+  agent {
+    docker {
+      image 'convisoappsec/flowcli:latest'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
+  }
+
+  environment {
+    FLOW_API_KEY      = credentials('FLOW_API_KEY')
+    FLOW_PROJECT_CODE = "Please, insert your project code here"
+  }
+
+  stages {
+    stage('Conviso_CodeReview') {
+      steps {
+      //Please use only one of the following approaches in the same job
+      //Using Tags, ordered by time
+      //  sh 'conviso deploy create with tag-tracker sort-by time'
+      //Using Tags, ordered by versioning style (semantic version)
+      //  sh 'conviso deploy create with tag-tracker sort-by versioning-style'
+      //Without using Tags, ordered by Git tree
+        sh 'conviso deploy create with values'
+      }
+    }
+  }
+}
+```
+
+Integrating Conviso Platform with Jenkins offers a powerful solution to enhance your application security. You can leverage the comprehensive security testing and code review capabilities of Conviso Platform directly within your Jenkins pipeline.
+
+## Support
+If you have any questions or need help using our product, please don't hesitate to contact our support team.
+
+## Resources
+By exploring our content, you'll find resources to help you to understand the benefits of the Conviso Platform integrations:
+
+[AppSec: Integrations with CI/CD tools through Conviso Platform:](https://bit.ly/3ODN0jw) Follow this article to understand how we can integrate your main tools within a single platform.
