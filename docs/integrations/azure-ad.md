@@ -1,18 +1,37 @@
 ---
 id: azure-ad
-title: Azure Active Directory
-sidebar_label: Azure AD
+title: Azure Active Directory SSO
+sidebar_label: Azure Active Directory SSO
 ---
 
 ## Introduction
+The AD (Active Directory) integration in the Conviso Platform simplifies user management for enterprise customers. 
 
-The AD (Active Directory) integration aims to facilitate access to the Conviso Platform and simplify the management of enterprise customer users.
+Installing the Conviso Platform SSO Application from the Azure marketplace, you can enable Single Sign-On (SSO) authentication, allowing you to manage access to the Conviso Platform from Azure directly. 
 
-Within Azure's marketplace, you can install Conviso's proprietary application to configure authentication on the platform through SSO.
+### Prerequisites
+Before getting started, ensure you have the following prerequisites:
+- An Azure AD subscription. If you don't have a subscription, you can create a [free account](https://azure.microsoft.com/free/).
+- A subscription with enabled single sign-on for the Conviso Platform SSO Application.
 
-## Installing the Conviso SSO App
 
-1. Access the [Azure Portal](https://portal.azure.com/) with your admin account:
+## Usage
+This section provides a comprehensive guide on using the Conviso Platform SSO Application, covering installation and assigning user permissions. 
+
+- **Installing the Conviso Platform SSO Application**
+- **Performing Conviso Platform setup**
+- **Assigning users to the Conviso Platform SSO application**
+
+Following these steps, you can efficiently configure and manage user access to the Conviso Platform, ensuring a streamlined and secure experience for your enterprise customers.
+
+## Installing the Conviso Platform SSO Application
+To install the Conviso Platform SSO application, follow these steps:
+
+1. Sign in to the [Azure Portal](https://portal.azure.com/) using your admin account.
+
+2. In the left navigation pane, go to **Azure Active Directory** service and select **Enterprise Applications**. 
+
+3. Choose **All Applications** and click on **New Application**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -20,7 +39,10 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 
 </div>
 
-2. In the left menu, look for **Azure Active Directory** service, then click at the **Enterprise Applications** menu option:
+
+4. On the Browse **Azure AD Gallery** page, search for "**Conviso Platform SSO**" in the search box.
+
+5. Select the **Conviso Platform SSO** application and click **Create**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -28,7 +50,13 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 
 </div>
 
-3. Select **All Applications** and then click at **+ New Application**:
+6. You will be redirected to Conviso Platform SSO application's **Overview** page.
+
+7. In the left navigation pane, select **Single Sign-On**.
+
+8. On the **Select a single sign-on method** page, choose **SAML**.
+
+9. The **Basic SAML Configuration** must be edited as it is a requirement by Microsoft itself. Select **Edit**, then **Save** with the data already filled in and close the pop-up window.
 
 <div style={{textAlign: 'center'}}>
 
@@ -36,23 +64,32 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 
 </div>
 
-4. The **Browse Azure AD Gallery** window will be shown: 
+10. Now, find the **Certificate (Base64)** and download it.
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '80%' }}>
 
 ![img](../../static/img/azure-ad-img4.png)
 
 </div>
 
-5. At the search box, type **AppSec Flow SSO** to search for the app:
+11. Along with the certificate, you need the **Login URL** and the **Azure AD Identifier**.
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '80%'}}>
 
 ![img](../../static/img/azure-ad-img5.png)
 
 </div>
 
-6. Select **AppSec Flow SSO** and install the app by clicking at the **Create** button at the right panel. Wait until its installation is finished:
+12. Conviso Platform uses the **Certificate (Base64), Login URL**, and **Azure AD Identifier** as credentials to communicate with Azure.
+
+## Performing Conviso Platform setup
+To set up the Conviso Platform, follow these steps:
+
+1. Log in to the Conviso Platform.
+
+2. In the left navigation pane, click on **Integrations**.
+
+3. From the Integrations panel, select **Authentication**, and choose **Azure**. Click the **Integrate** button.
 
 <div style={{textAlign: 'center'}}>
 
@@ -60,15 +97,21 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 
 </div>
 
-7. Click at the recent installed application to open its configuration: 
+4. Fill out the form with the corresponding information obtained previously. Enter the domain name and all domain aliases used by your organization to log in at the **Authorized Domains** field. Click the Save button after completing the form to save your SSO configuration.
+- **Authorized Domains example: company.com**
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '60%'}}>
 
 ![img](../../static/img/azure-ad-img7.png)
 
 </div>
 
-8. Click at the **Single Sign-On** menu on the left:
+The next step is to assign which Azure users will use SSO to access the Conviso Platform.
+
+## Assigning users to the Conviso Platform SSO Application
+To assign users to the Conviso Platform SSO application, follow these steps:
+
+1. After configuring the Azure Integration in the Conviso Platform, you must permit users to use the SSO. Go back to your Azure Portal. In the **Enterprise Applications | All applications page**, select your recently configured Conviso Platform SSO application. If it doesn't show your new application, refresh the page.
 
 <div style={{textAlign: 'center'}}>
 
@@ -76,98 +119,42 @@ Within Azure's marketplace, you can install Conviso's proprietary application to
 
 </div>
 
-9. Copy the required information to be able to paste them at the proper form fields at Conviso Platform:
+2. In the left navigation pane within the application's page, select **Users and Groups**.
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '50%'}}>
 
 ![img](../../static/img/azure-ad-img9.png)
 
 </div>
 
-:::note
-After downloading the certificate from Azure, open it in a text editor to copy its contents or use the command ```cat <your_certificate>``` at your terminal to be able to copy its contents.
-:::
+3. Search for the **Add user/group** button.
 
-## Assigning users to the SSO Application
-
-After creating the SSO Application, you must populate it with your user accounts. Click on the **Users and groups** Application menu: 
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9a.png)
-
-</div>
-
-On the top menu bar, click on the **Add user/group** option:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9b.png)
-
-</div>
-
-At the Add Assignment screen, select the link **None selected** below the Users label:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9c.png)
-
-</div>
-
-At the right panel, select all the users you want to assign to the Conviso Platform SSO login:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9d.png)
-
-</div>
-
-When done selecting users, click on the **Select** button at the end of the right panel:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9e.png)
-
-</div>
-
-When your users are selected, you will be back to the previous screen, and now the Users label show how many users were selected. Click at the **Assign** button to finish this configuration: 
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9f.png)
-
-</div>
-
-At last, the SSO Application will exhibit which users are granted access to it:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9g.png)
-
-</div>
-
-## Conviso Platform setup
-
-First, logon to the Conviso Platform;
-
-At the left menu, click on **Integrations**. On the right panel, choose **Authentication** and, then click on the **Integrate** button on the Azure card:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/azure-ad-img9h.png)
-
-</div>
-
-Fill the form with corresponding data obtained at step 9 of the **Installing the Conviso SSO App** section of this document.
-
- At the **Allowed Domains** field, insert the domain name and all domain aliases used by your organization to log in. After filling the form, click at **Save** button to store your SSO configuration:
-
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '50%'}}>
 
 ![img](../../static/img/azure-ad-img10.png)
 
 </div>
 
-After saving the data and getting a success message, you can test by logging in again using an email from the domain defined in the integration, using the **SSO Access** option in the Conviso Platform login form.
+4. Select **None Selected** under **Users**. A window will appear displaying all your Azure AD users. Choose the desired users, then click **Select** and then **Assign**.
 
-[More information](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/appsec-flow-sso-tutorial)
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-ad-img11.png)
+
+</div>
+
+Finally, you can view the Azure AD users with access to the Conviso Platform.
+
+You are now ready to go. To log in again with an email from the domain specified in the integration, use the **SSO Access** option on the [Conviso Platform website](https://app.convisoappsec.com/).
+
+Note: Also consult the [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/appsec-flow-sso-tutorial) for further guidance. There you will find a similar tutorial to help you.
+
+## Support
+If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+
+## Resources
+By exploring our content, you'll find resources to help you to understand the benefits of the Conviso Platform integrations:
+
+[AppSec: Integrations with CI/CD tools through Conviso Platform:](https://bit.ly/3ODN0jw) Follow this article to understand how we can integrate your main tools within a single platform.
+
+[Security Precautions in Kubernetes for Cloud scenarios – IaaS (Infrastructure as a Service):](https://bit.ly/3qaizqR) What is the importance of using Kubernetes in a Cloud environment? And what are the security practices that we need to apply for this context?
