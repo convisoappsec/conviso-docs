@@ -7,9 +7,6 @@ sidebar_label: Importing the scan results of a SARIF file
 ## Introduction
 The Conviso CLI allows you to import results from a [SARIF](http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) file, such as Trivy or Semgrep, to a project in your account on the Conviso Platform. This can be useful for tracking and managing security vulnerabilities and other issues found by scanning tools.
 
-**Note:** This functionality is in **Pre-Release**. It is necessary that the Container image in Job `import` use the corresponding version `1.12.0-rc.2`. To learn how to do this, [read how to install the Conviso CLI in alternative methods](/installation.md/#other-installation-commands).
-
-
 ### Prerequisites
 To successfully run  `conviso assets` command you need to [authenticate with the API Key](../cli/installation.md/#authentication).
 
@@ -20,7 +17,11 @@ To perform this action, simply execute the `conviso findings import-sarif` comma
 conviso findings import-sarif --project-code $YOUR_PROJECT_CODE --input-file ‘SARIF FILE PATH’
 ```
 
-**Note:** You will need to provide the `--project-code` option with the project code of the project you want to import the results to. You will also need to provide the `--input-file` option with the path to the SARIF file containing the results.
+### Options 
+| Option                | Description                            |
+| --------------------- | -------------------------------------- |
+| --project-code TEXT   | env var: FLOW_PROJECT_CODE (required)  |
+| -i, --input-file PATH | The path to SARIF file.    (required)  |
 
 When everything goes well, you will receive the following message in the terminal:
 
@@ -36,15 +37,16 @@ In addition to using the command line interface, you can also integrate the SARI
 
 To use this integration, you must set up three variables as secrets in the repository:
 
-  * `FLOW_API_KEY` - (required) - Conviso Platform API Key 
+| Secrets              | Description                                                                      |
+| -------------------- | -------------------------------------------------------------------------------- |
+| `FLOW_API_KEY`       | Conviso Platform API Key (required)                                              |
+| `FLOW_PROJECT_CODE`  | Conviso Platform project key (required)                                          |
+| `OUTPUT_FILEPATH`    | SARIF filepath outputed from scanner and consumed by Conviso CLI  (required)     |
 
-  * `FLOW_PROJECT_CODE` - (required) - Conviso Platform project key
-
-  * `OUTPUT_FILEPATH` - (required) - SARIF filepath outputed from scanner and consumed by Conviso CLI
 
 
-### Example
-
+### Sample YAML file for Security Scan and Conviso Importation Workflow.
+Here is an example of a yml file to use:
   <>
     <br/>
     <details>
