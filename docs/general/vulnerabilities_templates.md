@@ -39,32 +39,25 @@ Creating a new vulnerability template is simple! Just follow these steps:
 
 To create your vulnerability template, please ensure that you fill in all the required fields on the form:
 
-**Title:** A label describing the vulnerability (mandatory);
+- **Title:** A label describing the vulnerability (mandatory);
 
-**Notification:** By checking this box, the template will be changed from Vulnerability to Notification. See what changes in [this section of the documentation](#what-is-the-difference-between-vulnerability-and-notification);
+- **Notification:** By checking this box, the template will be changed from Vulnerability to Notification. See what changes in [this section of the documentation](#what-is-the-difference-between-vulnerability-and-notification);
 
-**Impact:** Select the impact this vulnerability could have (optional);
+- **Impact:** Select the impact this vulnerability could have (optional);
 
-**Probability:** Select how likely this vulnerability is to occur (optional);
+- **Probability:** Select how likely this vulnerability is to occur (optional);
 
-**Categories:** Select which CWE this vulnerability belongs to (mandatory);
+- **Categories:** Select which CWE this vulnerability belongs to (mandatory);
 
-**Patterns:** Select which currently used patterns (OWASP, SANS, etc.) this vulnerability belongs to (mandatory);
+- **Patterns:** Select which currently used patterns (OWASP, SANS, etc.) this vulnerability belongs to (mandatory);
 
-**Vulnerability:** Description of the vulnerability (mandatory);
+- **Vulnerability:** Description of the vulnerability (mandatory);
 
-**Reference:** Place the sources where the information regarding this vulnerability was taken (mandatory);
+- **Reference:** Place the sources where the information regarding this vulnerability was taken (mandatory);
 
-**Solution:** Description of how to fix the vulnerability (mandatory).
+- **Solution:** Description of how to fix the vulnerability (mandatory).
 
 **Step 3** - Once you have filled in all the necessary fields, click the “Save” button to store your new vulnerability template.
-
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/vulnerabilities_templates-img4.png)
-
-</div>
 
 ## What is the difference between Vulnerability and Notification?
 
@@ -72,9 +65,9 @@ When the "Notification" box is checked, the template is changed from Vulnerabili
 
 Impact, Probability, Categories, and Standards are not required for notifications:
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '60%'}}>
 
-![img](../../static/img/vulnerabilities_templates-img5.png)
+![img](../../static/img/vulnerabilities_templates-img4.png)
 
 </div>
 
