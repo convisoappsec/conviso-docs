@@ -18,8 +18,6 @@ Users have different levels of permissions, and are defined in Profiles.
 ### About Profiles
 Profiles are predefined sets of permissions that determine what a user can do on the system. Each profile is created for a specific role or function within the organization and is composed of a set of permissions that define which features and functionality of the system the user will have access to.
 
-On Conviso Platform, there are two types of user profiles: 
-
 #### Custom profiles  
 
 Custom profiles are created by administrators and allow you to define access permissions according to the organization's needs. 
@@ -31,8 +29,8 @@ There are more resources to come in the [following releases](../releases/intro.m
 #### Standard Profiles
 On the Platform, there are 3 default profiles:
 
-##### Developer Profile
-The Developer profile does not have access to any assets by default, but should receive access to assets from another user, such as an Admin or even another Developer. Permissions:
+#### Developer Profile
+Profile Developer was created with the aim of streamlining the platform for software engineers, so that they only have access to what is relevant to their work. Permissions:
 
 - Limited vulnerability status update (False Positive and Risk Accepted are not allowed);
 - Create, view, and edit Assets;
@@ -40,7 +38,7 @@ The Developer profile does not have access to any assets by default, but should 
 
 To add new users with Developer Profile roles, [see here how to invite new users.](#adding-new-users-by-sending-invites)
 
-##### Admin Profile
+#### Admin Profile
 The Admin profile is designed to provide full access to all the functionalities of the company's platform to which they belong, in addition to the following exclusive accesses:
 
 - Full access to Access Control:
@@ -49,7 +47,7 @@ The Admin profile is designed to provide full access to all the functionalities 
 - Team management ;
 - Business unit management.
 
-##### Viewer-only
+#### Viewer-only
 The Viewer-Only profile,  a global Profile, refers to users who only have permission to view what was assigned to them on the platform by the administrator.  
 
 ### About Teams
@@ -59,10 +57,10 @@ Our goal is to offer a more effective interconnection between profiles and users
 
 [See how to create a team.](#creating-a-new-team)
 
-##Usage
+## Usage
 In this section we explain the following ways to manage users in Conviso Platform:
 
-### Using Access Control to perform User Management
+## Using Access Control to perform User Management
 To access “Access Control”, go to "settings" next to your profile picture in the upper right corner:
 
 
@@ -117,7 +115,7 @@ Next, choose what kind of access will be granted to the user, by choosing one of
 
 - **Vulnerabilities**: The user will only have control of the vulnerabilities he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the Projects drop-down list, and then choose what vulnerabilities the user will be granted access to, by clicking on the Vulnerabilities drop-down list:
 
-#### Canceling user invitation
+### Canceling user invitation
 If you need to cancel a user's invite, just go to actions and press the "Cancel User's Invitation" button in the "User" subarea in Access Control:
 
 <div style={{textAlign: 'center', maxWidth: '40%' }}>
