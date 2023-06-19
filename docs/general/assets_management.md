@@ -100,5 +100,11 @@ Using **"Advanced Options"**, you can further enrich information about the asset
 **Contacts:** It is also possible to add the contact of the responsible people for the asset to be notified about its situation.
 
 ## Support
-
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+
+## Resources
+By exploring our content you'll find resources to help you understand assets management:
+
+[Continuous monitoring and management of the application:](https://bit.ly/45TbWK0) The monitoring and validation of findings from analyzes performed – whether through dynamic tests (DAST), interactive tests (IAST), or Network Scans need to be monitored and maintained in a centralized and organized way by the teams involved in the process.
+
+[Security Risk Management - Best Practices and Processes:](https://bit.ly/45RKSL7) In this article, we will discuss the importance of security risk management and share best practices for effectively executing this process.

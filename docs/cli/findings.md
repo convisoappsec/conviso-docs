@@ -1,46 +1,52 @@
 ---
 id: findings
-title: Findings
-sidebar_label: Findings
+title: Importing the scan results of a SARIF file
+sidebar_label: Importing the scan results of a SARIF file
 ---
 
+## Introduction
+The Conviso CLI allows you to import results from a [SARIF](http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) file, such as Trivy or Semgrep, to a project in your account on the Conviso Platform. This can be useful for tracking and managing security vulnerabilities and other issues found by scanning tools.
+
+### Prerequisites
+To successfully run  `conviso assets` command you need to [authenticate with the API Key](../cli/installation.md/#authentication).
+
 ## Usage
+To perform this action, simply execute the `conviso findings import-sarif` command in the terminal:
 
-`conviso findings [OPTIONS] COMMAND [ARGS]`
+```
+conviso findings import-sarif --project-code $YOUR_PROJECT_CODE --input-file ‘SARIF FILE PATH’
+```
 
-## Description
-
-The `conviso findings` allows you to perform operations around Findings of your account at Conviso Platform.
-
-## Commands
-
-## import-findings
-
-`conviso findings import-sarif [OPTIONS]`
-
-To import results from a [SARIF][sarif] file to a project of your account in the Conviso Platform.
-
-### Options
-
+### Options 
 | Option                | Description                            |
 | --------------------- | -------------------------------------- |
-| --project-code TEXT   | [env var: FLOW_PROJECT_CODE; required] |
-| -i, --input-file PATH | The path to SARIF file.  [required]    |
+| --project-code TEXT   | env var: FLOW_PROJECT_CODE (required)  |
+| -i, --input-file PATH | The path to SARIF file.    (required)  |
 
-### Examples
+When everything goes well, you will receive the following message in the terminal:
 
-* Importing `file.sarif` to a project in Conviso Platform:
+```
+The results were successfully imported!
+```
 
-  ```bash
-  conviso findings import-sarif --project-code $YOUR_PROJECT_CODE --input-file file.sarif
-  ```
+The identified vulnerabilities will be automatically sent to your Project on Conviso Platform, now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
-* Integrate SARIF importation with Github Actions through the workflow below. To use it you must setup 3 variables as secrets in the repository. They are listed here:
 
-  * `FLOW_API_KEY` - required - Conviso Platform apikey 
-  * `FLOW_PROJECT_CODE` - required - Conviso Platform project to receive the findings
-  * `OUTPUT_FILEPATH` - required - SARIF filepath outputed from scanner and consumed by Conviso CLI
+## Integrate the SARIF importation with Github Actions 
+In addition to using the command line interface, you can also integrate the SARIF import with Github Actions. 
 
+To use this integration, you must set up three variables as secrets in the repository:
+
+| Secrets              | Description                                                                      |
+| -------------------- | -------------------------------------------------------------------------------- |
+| `FLOW_API_KEY`       | Conviso Platform API Key (required)                                              |
+| `FLOW_PROJECT_CODE`  | Conviso Platform project key (required)                                          |
+| `OUTPUT_FILEPATH`    | SARIF filepath outputed from scanner and consumed by Conviso CLI  (required)     |
+
+
+
+### Sample YAML file for Security Scan and Conviso Importation Workflow.
+Here is an example of a yml file to use:
   <>
     <br/>
     <details>
@@ -100,17 +106,17 @@ To import results from a [SARIF][sarif] file to a project of your account in the
 
     ```
 
-    </details>
+  </details>
   </>
 
-  :warning: Note that the functionality is in pre-release. It is necessary that the Container image in Job `import` use the corresponding version `1.12.0-rc.2`.
 
-<!-- 
-## References
+## Video Tutorial in Portuguese
+To see the tool working in practice, we recommend watching this [video](https://www.youtube.com/watch?v=ldt1gt8hPrM).
 
-1. TBD
-2. TBD
--->
+## Support​
+If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
 
-[sarif]: http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html
-<!-- TODO: update container image version when pre-release "1.12.0-rc.2" get stable -->
+## Resources​
+By exploring our content you'll find resources to help you:
+
+[What is SARIF and how it could revolutionize software security:](https://bit.ly/3nqqcbK) SARIF can help improve transparency and collaboration in the security software industry, allowing companies to share information and work together to identify and solve common security issues.
