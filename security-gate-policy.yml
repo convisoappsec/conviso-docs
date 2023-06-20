@@ -1,0 +1,11 @@
+rules:
+- from: any
+  severity:
+    critical:
+      maximum: 0
+    high:
+      maximum: 0
+    medium:
+      maximum: 0
+    low:
+      maximum: 0
