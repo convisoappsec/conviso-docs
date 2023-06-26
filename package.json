@@ -14,7 +14,7 @@
   "dependencies": {
     "@docusaurus/core": "^2.2.0",
     "@docusaurus/plugin-ideal-image": "^2.3.0",
-    "@docusaurus/preset-classic": "^2.3.0",
+    "@docusaurus/preset-classic": "^2.4.1",
     "@easyops-cn/docusaurus-search-local": "^0.27.1",
     "@graphql-markdown/docusaurus": "^1.16.3",
     "@mdx-js/react": "^1.6.21",
