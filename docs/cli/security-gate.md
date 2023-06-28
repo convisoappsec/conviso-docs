@@ -93,6 +93,15 @@ Starting vulnerabilities security rules assertion
 Error: Vulnerabilities quantity offending security rules
 ```
 
+## Video Tutorial in Portuguese
+To see the tool working in practice, we recommend watching this video:
+
+<div style={{textAlign: 'center'}}>
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/pLbjG1-xFOo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
+
 ## Support
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
 
@@ -104,3 +113,5 @@ By exploring our content you'll find resources to help you understand the benefi
 [Prioritization of Vulnerabilities:](https://bit.ly/3LBxR0m) Learn best practices for prioritizing vulnerabilities and creating a strategy that works for your organization.
 
 [Vulnerability Management Process:](https://bit.ly/3LgMDIn) Get an overview of the process and learn how to implement it in your organization.
+
+
