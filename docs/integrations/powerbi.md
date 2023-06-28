@@ -4,47 +4,15 @@ title: PowerBI
 sidebar_label: PowerBI
 ---
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/powerbi.png)
-
-</div>
-
 ## Introduction
 
-Through the Business Intelligence integration, it is possible to optimize time by easily issuing customized reports, in addition to allowing data to be extracted and consumed on BI platforms.
+Integrating the Conviso Platform and PowerBI offers a powerful solution for optimizing your time and enhancing your data analysis capabilities. 
 
-## Endpoints
+With this integration, you can quickly generate customized reports and extract data for consumption on BI platforms, enabling you to make informed decisions based on real-time information.
 
-To use this feature, access the menu **Integrations** and then **Business Intelligence** at the right panel and click at the **Integrate** button:
+## Usage
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/bi-img1.png)
-
-</div>
-
-To analyze data on your BI platform, there are 4 types of endpoints that allow the user to generate .JSON file and feed the BI tool: 
-
-- Deploys
-
-- Projects
-
-- Assets
-
-- Users
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/bi-img2.png)
-
-</div>
-
-To create a connector with the BI tool, just copy the **Conviso Platform URL** (https://app.convisoappsec.com/), the **Endpoint**, and your **x-api-key** (you can generate your x-api-key by following the instructions [here](../../api/generate-apikey)) and insert the parameters at the BI tool you are using.
-
-## PowerBI Setup
-
-Open PowerBI Desktop. Click on the **Get Data** button and then on **Web** menu option:
+Access the **Integrations (1)** menu in the Conviso Platform. Navigate to the **Business Intelligence (2)** section in the right panel. Click on the "**Integrate**" **(3)** button.
 
 <div style={{textAlign: 'center'}}>
 
@@ -52,7 +20,12 @@ Open PowerBI Desktop. Click on the **Get Data** button and then on **Web** menu 
 
 </div>
 
-At the **Web** floating window, choose the **Advanced** option:
+
+There are four types of endpoints available to generate a JSON file and feed the BI tool:
+* **Deploys:** Returns a JSON with all company deployments.
+* **Projects:** Returns all projects linked to the user's scope.
+* **Assets:**  Returns all company assets.
+* **Users:** Returns a JSON with all company users.
 
 <div style={{textAlign: 'center'}}>
 
@@ -60,125 +33,189 @@ At the **Web** floating window, choose the **Advanced** option:
 
 </div>
 
-Fill the form with proper data.
+To create a connector with your BI tool, you will need the following information:
+* **Conviso Platform URL:** Use the URL ```https://app.convisoappsec.com/```.
+* **Endpoint:** Select one of the four available endpoints mentioned above.
+* **x-API-key:** Generate your API Key by following the instructions provided [here](../api/generate-apikey.md).
 
-1. At the **URL Parts**, paste the URL ```https://app.convisoappsec.com/api/v2/projects```;
+## PowerBI Setup
 
-2. At the **HTTP Request Header Parameters**, choose **Accept** for the first field and click on **Add Header** button;
+Follow these steps to set up PowerBI Desktop:
 
-3. At the new field, type ```x-api-key``` and paste your API Key at the blank field to the right.
-
-4. Click on **OK** button to save.
-
+**Step 1 -** Open PowerBI Desktop and click on the **“Get Data”(1)**  button, then select **“Web”(2)**:
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/powerbi-img3.png)
 
 </div>
 
-After the configuration is stored, we are able to connect Conviso Platform to PowerBI. This allows creating dashboards of projects, where the dashboard model varies according to the user's need.
-
+**Step 2 -** In the Web floating window, choose the **”Advanced”** option:
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/powerbi-img4.png)
 
 </div>
 
+**Step 3 -** Fill out the form with the correct data and save it to connect:
+* In the **URL Parts (1)** field, paste the URL: ```https://app.convisoappsec.com/api/v2/projects```
+* In the **HTTP Request Header Parameters**, choose **“Accept”(2)** for the first field and click on the **Add Header button (3)**.
+* In the **new field(4)**, type ```x-API-key``` and paste your API Key in the blank field to the right.
 
-### Using pagination
-
-Add URL part with parameter `?page=1` in your URL when adding the Power Query
-
+Click **“OK”** to save:
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img1.png)
-![img](../../static/img/powerbi/powerbi-img2.png)
-![img](../../static/img/powerbi/powerbi-img3.png)
+![img](../../static/img/powerbi-img5.png)
 
 </div>
 
-Edit the first and second lines of code by creating a function that takes `page` as a parameter
+And click **“Connect”**:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img4.png)
+![img](../../static/img/powerbi-img6.png)
 
 </div>
 
-Below is an example of how it should look
+After storing the configuration, you can connect the Conviso Platform to PowerBI. This allows you to create dashboards of projects tailored to your specific needs.
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/powerbi-img7.png)
+
+</div>
+
+
+## Using Pagination​ in PowerBI 
+
+Pagination in PowerBI allows you to retrieve data from the Conviso Platform in smaller, manageable chunks or pages, rather than loading all the data at once. 
+
+This is particularly useful when dealing with large datasets or when there are API limitations on how much data can be retrieved in a single request.
+
+**To implement pagination in PowerBI, follow these steps:**
+
+**Step 1 - **Add the URL part with the parameter ?page=1 to your URL when adding the Power Query in** “Get Data”**. This indicates that you want to retrieve the data for the first page.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img5.png)
+![img](../../static/img/powerbi-img8.png)
 
 </div>
 
-It is now possible to perform pagination via function
+
+**Step 2 -** Click **"Advanced Editor"** in the header menu **“Home”**:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img6.png)
+![img](../../static/img/powerbi-img9.png)
 
 </div>
 
-### Paginating multiple pages to a table
+**Step 3 -** Edit the first and second lines of code by creating a function that takes the page number as a parameter. 
 
-After previous steps made in "[Using pagination](#using-pagination)", select the option "Enter Data"
+This function allows you to specify the page number while fetching data dynamically.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img7.png)
+![img](../../static/img/powerbi-img10.png)
 
 </div>
 
-Configure the open table as shown below. Notice in the image that it is set to capture 10 pages using the `page` variable
+Here's an example of how the code should look:
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/powerbi-img11.png)
+
+</div>
+
+We change the initial part by incrementing ```(page as text) =>```**(1)** and editing the page part ```"?page="&page&""``` **(2).**
+
+**Step 4 -** With the function in place, you can now perform pagination by invoking the function with different page numbers, allowing you to retrieve and analyze data from subsequent pages:
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/powerbi-img12.png)
+
+</div>
+
+Implementing pagination ensures you can efficiently handle and process large volumes of data from the Conviso Platform within PowerBI, enabling you to create comprehensive reports and visualizations based on the complete dataset.
+
+## Paginating Multiple Pages to a Table​ in PowerBI  
+
+Paginating multiple pages to a table in PowerBI allows you to retrieve and consolidate data from various pages of the Conviso Platform API into a single table. T
+
+his is particularly useful when the data you need spans multiple pages and you want to combine it for comprehensive analysis and reporting within PowerBI.
+
+**To implement Paginating Multiple Pages to a Table​ in PowerBI, follow these steps:**
+
+**Step 1 -** After following the previous steps for ["Using pagination"](#using-pagination), select the **"Enter Data" (1)** option to see the **“Create Table” (2)** window:
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/powerbi-img13.png)
+
+</div>
+
+**Step 2 -** Configure the opened table as shown below. Note that it is set to capture 10 pages using the page variable:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img8.png)
+![img](../../static/img/powerbi-img14.png)
 
 </div>
 
-After confirmation, the table below will appear. You need to change your "type" to text, as shown in the sequence below
+
+**Step 3 -** After confirmation, the table will appear below. Change the **"type" (1)** to **"Text"(2)** as shown in the following steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img9.png)
-![img](../../static/img/powerbi/powerbi-img10.png)
-![img](../../static/img/powerbi/powerbi-img11.png)
+![img](../../static/img/powerbi-img15.png)
 
 </div>
 
-Setup "Invoke Custom Function" to the table
+Then a confirmation window will appear, click **"Replace current"** to confirm.
+
+**Step 4**- In **"Options" (1)** configure an **"Invoke Custom Function" (2)** for the table: 
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/powerbi-img16.png)
+
+</div>
+
+**Step 5 -**  **Then configure the fields as described below:**
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/powerbi-img17.png)
+
+</div>
+
+
+Example in this image:
+
+* **New column name:** ```projects?page=1```
+* **Function query:** ```projects?page=1```
+* **page:** ```page```
+
+**Step 6 -** Another table will appear, allowing you to choose the specific attributes or columns you want to retrieve from the API. Click on the **table settings (1)**, select the desired attributes, and **confirm (2):**
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img12.png)
+![img](../../static/img/powerbi-img18.png)
 
 </div>
 
-The fields filled in will be similar to the ones below
-
+Done! With this, you can perform pagination of the 10 pages (as configured) of the API in a table:
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi/powerbi-img13.png)
+![img](../../static/img/powerbi-img19.png)
 
 </div>
 
-One more table will appear, choose which attributes you want to bring from the API and confirm
+You can seamlessly retrieve and consolidate data from the Conviso Platform API within PowerBI by paginating multiple pages to a table. 
 
-<div style={{textAlign: 'center'}}>
+This simplifies data analysis, enhances reporting capabilities, and lets you gain valuable insights from a complete dataset.
 
-![img](../../static/img/powerbi/powerbi-img14.png)
+## Support
 
-</div>
+If you have any questions or need help using our product, please don't hesitate to contact our support team.
+Resources
 
-Done! With this we perform the pagination of the 10 pages (as we configured) of the API in a table!
+By exploring our content, you'll find resources to help you understand the importance of security applications data:
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/powerbi/powerbi-img15.png)
-
-</div>
-
-> **Further details in de original documentation, example: [Table.GenerateByPage](https://docs.microsoft.com/en-us/power-query/helperfunctions#tablegeneratebypage)**
+[The importance of a platform for managing an AppSec program:](https://bit.ly/42JEfrq) We invite you to learn why an AppSec management platform is essential for companies that want to keep their applications safe and secure.
