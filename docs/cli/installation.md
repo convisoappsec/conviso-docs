@@ -38,7 +38,37 @@ or
 python3 -m pip install conviso-flowcli
 ```
 
-**Note:** If it's not working, we recommend visiting the [other installation commands](#other-installation-commands) section that shows other ways to install.
+## Other installation commands
+
+In case the main method didn't work, there are several other ways:
+
+- If you haven't system admin privileges:
+
+```bash
+pip install --user conviso-flowcli
+```
+
+or
+
+```bash
+python3 -m pip install --user conviso-flowcli
+```
+
+- If you want to install a specific version. Versions can be found on [PypI](https://pypi.org/project/conviso-flowcli/#history).
+
+```bash
+python3 -m pip install conviso-flowcli==1.12.0rc2
+```
+
+**Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/). 
+
+- If you want to use Container Image with a specific version. Versions can be found on Github.
+
+```bash
+docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
+```
+
+**Note:** Observe that PyPI and Github versions have a slightly difference,
 
 **You can use the CLI in your CI/CD environment**. For details, please check the [menu](../integrations/integrations_intro.md) with all the different tools that we are integrated with. If your tool is not there, please contact us to assess it.
 
@@ -90,6 +120,9 @@ conviso --api-key 'you-api-key' [SOME COMMAND]
 
 **Note:** For security reasons, this is not recommended for production environments!
 
+## Updating Conviso CLI
+
+We release new Conviso CLI versions often! See [Releases Notes](../releases/intro.md) for more details.
 
 ## Next steps
 
@@ -99,43 +132,6 @@ Once the CLI is installed and your machine is authenticated, perform the followi
 - Validate your opened vulnerabilities for a specific project and **block your CI/CD pipeline depending on pre-defined vulnerability policies**, [see more](../cli/security-gate.md).
 - Perform the **Management of your Assets**, see this [guide](../cli/assets.md).
 - **Import findings and vulnerabilities from other security tools** that support .SARIF files to Conviso Platform, see [more](../cli/findings.md).
-
-
-## Other installation commands
-
-In case the main method didn't work, there are several other ways:
-
-- If you haven't system admin privileges:
-
-```bash
-pip install --user conviso-flowcli
-```
-
-or
-
-```bash
-python3 -m pip install --user conviso-flowcli
-```
-
-- If you want to install a specific version. Versions can be found on [PypI](https://pypi.org/project/conviso-flowcli/#history).
-
-```bash
-python3 -m pip install conviso-flowcli==1.12.0rc2
-```
-
-**Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/). 
-
-- If you want to use Container Image with a specific version. Versions can be found on Github.
-
-```bash
-docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
-```
-
-**Note:** Observe that PyPI and Github versions have a slightly difference
-
-## Updating Conviso CLI
-
-We release new Conviso CLI versions often! See [Releases Notes](../releases/intro.md) for more details.
 
 
 ## Tips: Shell Completion
