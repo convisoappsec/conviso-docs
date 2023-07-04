@@ -13,6 +13,7 @@ If this is your **first time accessing the platform**, we recommend checking out
 >
 Conviso Platform is a software platform that supports all security practices in a software development pipeline and improves vulnerability management. With Conviso Platform, security stops being a bottleneck. It becomes a continuous activity integrated into the whole software development life cycle, incorporating best practices with the correct projects running at the right moments, and without reducing the speed of your business.
 
+awesome changes to this page!!!
 
 ![alt text](../static/img/Logo.png 'Logo Conviso Platform')
 
