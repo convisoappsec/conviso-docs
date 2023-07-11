@@ -6,137 +6,57 @@ sidebar_label: GitLab
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/gitlab.png)
+[![img](../../static/img/gitlab.png  "Image for Gitlab, Secure CI/CD Pipeline, security testing with Conviso Platform")](https://bit.ly/3JyRdl8)
 
 </div>
-
-:::note
-First time using GitLab? Please refer to the [following documentation](https://docs.gitlab.com/).  
-:::
 
 ## Introduction
+With Conviso Platform integrated into your [Gitlab](https://gitlab.com/) Secure CI/CD Pipeline, you can automate and streamline your security processes, ensuring that your applications undergo thorough security assessments throughout the development lifecycle. 
 
-The GitLab platform has powerful features. Among them, easily run pipelines in your code repository using CI/CD: Continuous Integration & Continuous Delivery or Continuous Deployment.
+You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers both **Static Application Security Testing (SAST)** and **Software Composition Analysis (SCA)** and **Code Review** directly on your Gitlab pipeline.
 
-Continuous Integration is a very broad concept, but for this guide it can be abstracted as the step in which the code is exposed to a test environment in a continuous way; in a commit, daily, in a merge to a specific branch and many other user configurable triggers right on your project page.
+The [CLI](https://docs.convisoappsec.com/cli/installation/) is a docker image in this integration for all execution and connection with the Conviso Platform. 
 
-Continuous Delivery is the step that usually takes place immediately after all integrations are successful. The software is ready to be published, according to the scrutiny of all the checks carried out in the continuous integration stage, and human approval is now required for the release of a new version to the public.
+**[Explore our Integration page to learn more and supercharge your Application Security Program  with Conviso Platform.](https://bit.ly/3NzvomE)**
 
-Continuous Deployment is usually used in mature projects, where the integration and delivery stage is already consolidated enough that the software is automatically put into production.
+### Prerequisites
 
-Pipeline in this context of CI/CD, is the term that gives the wake that the code will go through whenever we want. These pipelines are usually made up of stages that can be nicknamed as needed (with a few reserved words). In the community we commonly find the terms: scan, verify, build, test, deploy, among others.
+Before you can use Conviso Platform with Gitlab, you need to make sure that:
+1. You have your API Key, which is a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
 
-Stages can contain one or more jobs which are actually the automation actions performed by GitLab Runner, the pipeline runner agent. In Figure 1, we can visualize the architecture; the GitLab Server element can be either the [Cloud platform](https://gitlab.com) as well as an on-premises installation of GitLab. The runners can be local, in the cloud, and as the diagram demonstrates even on a project developer's laptop, for example.
+2. You must also set two environment variables for the runner: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` These codes tell Conviso Platform which project and account you are using. To do this on Gitlab, you must:
+**2.1** Go to your project’s **Settings > CI/CD** and expand the **Variables** section.
+**2.2**  Select **Add variable** and fill in the detail. 
+
+3. After you create a variable, you can use it in the ```.gitlab-ci.yml```configuration file or in job scripts. To make the ```.gitlab-ci.yml``` file, go to your repository page and click on **“CI/CD Configuration”**:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/gitlab-infra.png)
-
+[![img](../../static/img/gitlab-img1.png "Image for Gitlab, Secure CI/CD Pipeline, security testing with Conviso Platform")](https://bit.ly/3JyRdl8)
 </div>
 
-Also, runners implement different types of executors. To understand in greater detail about runners and to know the different types of runners and their capabilities, In this document we will cover the shell and docker type runners.
+This will allow you to write the code that we will use in this tutorial!
 
-:::note
-In the case of using GitLab on-premise, it is assumed that the instance administrator has knowledge about installing runners. Otherwise, we strongly recommend reading the official GitLab documentation in the [runner](https://docs.gitlab.com/runner/) and [executors](https://docs.gitlab.com/runner/executors/) sections.
-:::
+## Usage
 
-## First Steps
+By the end of this tutorial, you will know how to:
 
-By default (it is configurable), the behavior of a pipeline in GitLab is through the configuration of the ```.gitlab-ci.yml``` file in the repository root. As the extension indicates, the format used by this file is the YAML markup language. The description of CI within the versioning system brings many benefits. Among them, we can highlight two: old version pipelines still work correctly, and different branches can have different pipelines.
+* [**Perform a Conviso AST scan to analyze your application's security**](#perform-a-conviso-ast-scan-to-analyze-your-applications-security)
+* [**Run a scan exclusively using Conviso SAST**](#run-a-scan-exclusively-using-conviso-sast)
+* [**Run a scan exclusively using Conviso SCA**](#run-a-scan-exclusively-using-conviso-sca)
+* [**How to Send Your Code to Conviso Platform for Code Review**](#how-to-send-your-code-to-conviso-platform-for-code-review)
+* [**How to Use Code Review, SAST and SCA Together**](#how-to-use-code-review-sast-and-sca-together)
 
-Below, we can check out an example that would be like a **Hello, World!** of a pipeline to illustrate some features that can be used in the file structure:
+**[Learn more about Conviso Platform integrations!](https://bit.ly/3NzvomE)**
+
+## Perform a Conviso AST scan to analyze your application's security
+
+Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. This versatile tool combines Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review capabilities, providing comprehensive security analysis directly within your pipeline.
+
+Follow the steps below to integrate Security Code Review seamlessly into your pipeline, creating a comprehensive solution within your ```.gitlab-ci.yml``` file:
 
 ```yml
-image: "python:alpine" 
-hello_world:
-    script:
-        - echo "Hello, World!"
-    tags:
-        - docker
-```
-
-By committing this file to the repository, we can already check the result of the execution by navigating to the main repository page under **CI / CD -> Pipelines**. You should see something like the figure below:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/gitlab-img1.png)
-
-</div>
-
-In this pipeline screen, we could have a macro view of the status of all the stages executed. To view the jobs individually, you can access **CI / CD -> Jobs**. You should see something like the figure shown below:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/gitlab-img2.png)
-
-</div>
-
-On the jobs screen, by clicking on the **passed** button, we can see the execution of the job we have configured for the repository, as shown below:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/gitlab-img3.png)
-
-</div>
-
-After this introduction, it is recommended to consult the official GitLab documentation in the [YAML](https://docs.gitlab.com/ee/ci/yaml/) section, where you can discover all the other superpowers of the ```gitlab-ci.yml``` file.
-
-## Conviso Setup
-
-### Requirements
-
-Before you can start setting up Conviso features in your pipeline, your runner must complete all the following requirements:
-
-- Be a specific or group runner;
-
-- Defined docker or docker+machine executor type;
-
-- Have external access (this can be restricted to specific addresses);
-
-- Git
-
-### CI/CD Configuration
-
-Accessing your project's main page, you must set the ```FLOW_API_KEY``` variable with a Conviso Platform API key. If you don't have a key, it can be found on your platform user's profile editing page, following the steps below:
-
-1. In the upper right corner, click on your username and on **Edit profile**;
-
-2. Click on the **API Key** tab and then on **Generate**;
-
-3. A window will appear asking for confirmation of your action, click **confirm**;
-
-4. Your API key has been updated, copy the value displayed on the screen.
-
-To set the ```FLOW_API_KEY``` variable in GitLab, follow the steps below:
-
-1 - In your GitLab project under **Settings -> CI/CD -> Variables**;
-
-2 - Fill in as the image below;
-
-3 - Click on **Add variable**.
-
-If you already have a **Continuous Code Review** type project in Conviso Platform, you can repeat the steps above for the ```FLOW_PROJECT_CODE``` variable. The value of this variable can be found in Conviso Platform at the Project page as **Project Key**.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/gitlab-img4.png)
-
-</div>
-
-### .gitlab-ci.yml File Configuration
-
-The interface with Conviso and the GitLab CI/CD platform is done through the use of the command line tool available in [PyPi](https://pypi.org/project/conviso-flowcli/). Like every CLI tool, it is easily integrated into CI environments. For its full functioning, the prerequisites specified at the beginning of this session must be followed.
-
-We recommend reading the following [document](../guides/code-review-strategies) to understand the different strategies/approaches for creating a deployment for Code Review.
-
-## Code Review
-
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific job for this action in the GitLab pipeline. The prerequisites for executing this functionality are the configurations made previously (definition of the ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` variables). Below are the code snippets from the ```.gitlab-ci.yml``` file that illustrates the creation of exclusive jobs for the code review deployment.
-
-**With TAGS, sorted by timestamp**
-
-```yml
-codereview-job-tags-by-time:
+conviso-ast:
     image: convisoappsec/flowcli:latest
     services:
         - docker:dind
@@ -146,52 +66,19 @@ codereview-job-tags-by-time:
         variables:
             - $FLOW_API_KEY
     script:
-        - conviso deploy create with tag-tracker sort-by time
+        - conviso ast run
     tags:
         - docker
+
 ```
 
-**With TAGS, sorted by versioning-style**
+**Note:** To scan your repository with AST, you need to have a project registered on Conviso Platform. The ```Project Code``` is found on the specific project page. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
 
-```yml
-codereview-job-tags-by-version-style:
-    image: convisoappsec/flowcli:latest
-    services:
-        - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
-    only:
-        variables:
-            - $FLOW_API_KEY
-    script:
-        - conviso deploy create with tag-tracker sort-by versioning-style
-    tags:
-        - docker
-```
+The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
-**Without TAGS, sorted by GIT Tree**
+## Run a scan exclusively using Conviso SAST
 
-```yml
-codereview-job-tags-by-version-style:
-    image: convisoappsec/flowcli:latest
-    services:
-        - docker:dind
-    variables: 
-        FLOW_PROJECT_CODE: "HERE"
-    only:
-        variables:
-            - $FLOW_API_KEY
-    script:
-        - conviso deploy create with values
-    tags:
-        - docker
-```
-
-## SAST
-
-In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
-
-The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` defined as environment variables for the runner.
+The steps below will show you what your ```.gitlab-ci.yml``` must have to perform Static Application Security Testing (SAST):
 
 ```yml
 conviso-sast:
@@ -209,13 +96,10 @@ conviso-sast:
         - docker
 ```
 
-In the above job, we didn't use any options at the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
-
-Alternatively, we can specify the diff range manually. In the Example below, we scan between the current commit and the immediately previous one on the current branch:
+Alternatively, you can specify the diff range manually. In the example below, we scan between the current commit and the immediately previous one on the current branch:
 
 ```yml
 conviso-sast:
-    stage: <stage desejado>
     image: convisoappsec/flowcli:latest
     services:
         - docker:dind
@@ -230,9 +114,9 @@ conviso-sast:
         - conviso sast run --start-commit $START_COMMIT --end-commit $CI_COMMIT_SHA
 ```
 
-## SCA
+## Run a scan exclusively using Conviso SCA
 
-The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
+The steps below will show you what your ```.gitlab-ci.yml``` must have to perform Software Composition Analysis (SCA):
 
 ```yml
 conviso-sca:
@@ -250,16 +134,82 @@ conviso-sca:
         - docker
 ```
 
-## Getting Everything Together: Code Review + SAST + SCA Deployment
+## How to Send Your Code to Conviso Platform for Code Review
 
-The SAST and SCA analysis can be complementary to the code review carried out by Conviso's professional, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
+The Code Review process is when a Conviso expert looks at your code and gives you feedback. You can send your code from Gitlab to Conviso Platform for Code Review using the script below.
+
+To track the code changes, Conviso Platform can use time tags, versioning tags or the Git tree.
+
+### Using Tags ordered by time
+
+This way, you use tags to mark different versions of your code. Conviso Platform will use the tags to find the changes in your code. It will use the time of the tags to sort them.
 
 ```yml
-stages:
-  - test
+codereview-job-tags-by-time:
+    image: convisoappsec/flowcli:latest
+    services:
+        - docker:dind
+    variables:
+        FLOW_PROJECT_CODE: "HERE"
+    only:
+        variables:
+            - $FLOW_API_KEY
+    script:
+        - conviso deploy create with tag-tracker sort-by time
+    tags:
+        - docker
+```
 
+### Using Tags ordered by versioning style
+
+For example, it will use numbers like 1.0, 1.1, 2.0, etc.
+
+```yml
+codereview-job-tags-by-version-style:
+    image: convisoappsec/flowcli:latest
+    services:
+        - docker:dind
+    variables:
+        FLOW_PROJECT_CODE: "HERE"
+    only:
+        variables:
+            - $FLOW_API_KEY
+    script:
+        - conviso deploy create with tag-tracker sort-by versioning-style
+    tags:
+        - docker
+```
+
+### Without using Tags, ordered by Git tree
+
+This way, you don’t use tags at all. Conviso Platform will use the Git tree to find the changes in your code.
+
+```yml
+codereview-job-tags-by-version-style:
+    image: convisoappsec/flowcli:latest
+    services:
+        - docker:dind
+    variables: 
+        FLOW_PROJECT_CODE: "HERE"
+    only:
+        variables:
+            - $FLOW_API_KEY
+    script:
+        - conviso deploy create with values
+    tags:
+        - docker
+```
+
+If you want to learn more about these ways of sending your code, [read this](../guides/code-review-strategies.md) guide on Code Review Deploy Strategies.
+
+## How to Use Code Review, SAST and SCA Together
+
+You can use Conviso Platform to do Code Review, SAST and SCA; using all three together to make your applications more Secure in your CI/CD Pipeline
+
+Here is an example of a pipeline with all three features:
+
+```yml
 appsec-flow:
-  stage: test
   image: convisoappsec/flowcli:latest
   services:
     - docker:dind
@@ -288,12 +238,21 @@ appsec-flow:
     - docker
 ```
 
-The pipeline used above covers practically all the concepts exercised in this guide. Analyzing some points, we can make observations:
+**[Unlock the full potential of your Application Program  with Conviso Platform integrations. Visit our Integration page now to get started.](https://bit.ly/3NzvomE)**
 
-- The CI routine with Conviso's tools can integrate with a stage already present in your pipeline, as an example, in the stage called **test**, as well as being executed in a new one;
+## Support
 
-- The execution of the SAST job and the deployment of code review can be executed at any point in the pipeline, as it uses only the code from the repository and not any artifact generated by the execution of a stage or job in the pipeline;
+If you have any questions or need help using our product, please don't hesitate to contact our support team.
 
-- The deployment strategy used in this last example could be any of the three specified in the **Code Review Deploy** section above. Choose the one that best suits your development process;
+## Resources
 
-More information about CLI and the complete documentation about its commands can be seen on the project page in [Pypi](https://pypi.org/project/conviso-flowcli/).
+By exploring our content, you'll find resources to help you to understand the benefits of the Conviso Platform integrations for Secure CI/CD Pipeline:
+
+[AppSec: Integrations with CI/CD tools through Conviso Platform](https://bit.ly/3ODN0jw): Follow this article to understand how we can integrate your main tools within a single platform.
+
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/cta1.png "Image for Secure CI/CD Pipeline, security testing and vulnerability management with Conviso Platform")](https://bit.ly/3JyRdl8)
+
+</div>
