@@ -136,7 +136,7 @@ Follow these steps to set up PowerBI Desktop:
 
 * In the **URL Parts (1)** field, paste the URL: ```https://app.convisoappsec.com/api/v2/projects```
 * In the **HTTP Request Header Parameters**, choose **“Accept”(2)** for the first field and click on the **Add Header button (3)**.
-* In the **new field(4)**, type ```x-API-key``` and paste your API Key in the blank field to the right.
+* In the **new field (4)**, type ```x-API-key``` and paste your API Key in the blank field to the right.
 
 Click **“OK”** to save:
 
@@ -224,7 +224,7 @@ his is particularly useful when the data you need spans multiple pages and you w
 
 **To paginate multiple pages to a table​ in PowerBI, follow these steps:**
 
-**Step 1 -** After following the previous steps for ["Using pagination"](#using-pagination​-in-powerbi), select the **"Enter Data" (1)** option to see the **“Create Table” (2)** window:
+**Step 1 -** After following the previous steps for ["Using pagination"](#using-pagination-in-powerbi), select the **"Enter Data" (1)** option to see the **“Create Table” (2)** window:
 
 <div style={{textAlign: 'center'}}>
 
@@ -241,7 +241,7 @@ his is particularly useful when the data you need spans multiple pages and you w
 </div>
 
 
-**Step 3 -** After confirmation, the table will appear below. Change the **"type" (1)** to **"Text"(2)** as shown in the following steps:
+**Step 3 -** After confirmation, the table will appear below. Change the **"type" (3)** to **"Text"(4)** as shown in the following steps:
 
 <div style={{textAlign: 'center'}}>
 
@@ -251,7 +251,7 @@ his is particularly useful when the data you need spans multiple pages and you w
 
 Then a confirmation window will appear, click **"Replace current"** to confirm.
 
-**Step 4**- In **"Options" (1)** configure an **"Invoke Custom Function" (2)** for the table:
+**Step 4**- In **"Options" (5)** configure an **"Invoke Custom Function" (6)** for the table:
 
 <div style={{textAlign: 'center'}}>
 
@@ -273,30 +273,33 @@ Example in this image:
 * **Function query:** ```projects?page=1```
 * **page:** ```page```
 
-**Step 6 -** Another table will appear, allowing you to choose the specific attributes or columns you want to retrieve from the API. Click on the **table settings (7)**, select the **desired attributes (8)**, and **confirm (()):**
+**Step 6 -** Another table will appear, allowing you to choose the specific attributes or columns you want to retrieve from the API. Click on the **table settings (7)**, select the **desired attributes (8)**, and **confirm (9):**
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi-img18.png)
+![img](../../static/img/powerbi-img21.png)
 
 </div>
 
 Done! With this, you can perform pagination of the 10 pages (as configured) of the API in a table:
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/powerbi-img19.png)
+![img](../../static/img/powerbi-img22.png)
 
 </div>
 
-You can seamlessly retrieve and consolidate data from the Conviso Platform API within PowerBI by paginating multiple pages to a table. 
+You can seamlessly retrieve and consolidate data from the Conviso Platform API within PowerBI by paginating multiple pages to a table.
 
 This simplifies data analysis, enhances reporting capabilities, and lets you gain valuable insights from a complete dataset.
 
 ## Support
 
 If you have any questions or need help using our product, please don't hesitate to contact our support team.
-Resources
+
+## Resources
 
 By exploring our content, you'll find resources to help you understand the importance of security applications data:
 
 [The importance of a platform for managing an AppSec program:](https://bit.ly/42JEfrq) We invite you to learn why an AppSec management platform is essential for companies that want to keep their applications safe and secure.
+
+[![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
