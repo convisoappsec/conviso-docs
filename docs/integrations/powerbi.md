@@ -74,7 +74,9 @@ In the code above, we are using a query that retrieves the total lines of code f
 Please make sure to replace the following details with your own:
 
 **CONVISO_API_KEY:** Generate your ```x-api-key``` by following the instructions provided [here](/docs/api/generate-apikey.md).
+
 **COMPANY_ID:** Obtain your company id by navigating to the "Companies" section under "Settings" in the Conviso Platform.
+
 **YOUR QUERY:** Configure the desired query in the ```Content``` line. You can find a detailed description of all available queries at this [link](/docs/api/graphql/introduction.md).
 
 Once you have pasted the code, the data will be loaded within seconds.
@@ -108,8 +110,10 @@ There are four types of endpoints available to generate a JSON file and feed the
 
 To create a connector with your BI tool, you will need the following information:
 
-**Conviso Platform URL:** Use the URL "```https://app.convisoappsec.com/```"
+**Conviso Platform URL:** Use the URL "```https://app.convisoappsec.com/```".
+
 **Endpoint:** Select one of the four available endpoints mentioned above.
+
 **x-API-key:** Generate your API Key by following the instructions provided [here](/docs/api/generate-apikey.md).
 
 ## PowerBI Setup
