@@ -111,7 +111,13 @@ Here is an example of a yml file to use:
 
 
 ## Video Tutorial in Portuguese
-To see the tool working in practice, we recommend watching this [video](https://www.youtube.com/watch?v=ldt1gt8hPrM).
+To see the tool working in practice, we recommend watching this video:
+
+<div style={{textAlign: 'center'}}>
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/ldt1gt8hPrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</div>
 
 ## Support​
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).

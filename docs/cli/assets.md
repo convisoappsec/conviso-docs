@@ -1,7 +1,7 @@
 ---
 id: assets
-title: Creating assets with the CLI
-sidebar_label: Creating assets with the CLI
+title: Creating Assets with the CLI
+sidebar_label: Creating Assets with the CLI
 ---
 
 ## Introduction
