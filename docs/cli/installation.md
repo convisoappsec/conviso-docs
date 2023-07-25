@@ -5,7 +5,8 @@ sidebar_label: Getting started with the CLI
 ---
 
 ## Introduction
-The CLI is a command-line interface tool to interact with Conviso Platform. The primary goal of the CLI is to be a developer friendly tool which brings the functionality of Conviso Platform into your development workflow. 
+
+The CLI is a command-line interface tool to interact with Conviso Platform. The primary goal of the CLI is to be a developer friendly tool which brings the functionality of Conviso Platform into your development workflow.
 
 You can use the CLI locally and also inside your CI/CD to be able to use the following features:
 
@@ -14,18 +15,21 @@ You can use the CLI locally and also inside your CI/CD to be able to use the fol
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license).
 
 ## Install the Conviso CLI
+
 To use the CLI, install it and [authenticate](#authentication) your machine.
 
 ### Prerequisites
+
 To install the CLI some dependencies are required:
-* python3 >= 3.4. See [python3 download](https://www.python.org/downloads/).
-* pip. See [pip guide](https://packaging.python.org/tutorials/installing-packages/#installing-from-pypi).
-* git. See [git download](https://git-scm.com/downloads).
-* Docker. See [docker download](https://docs.docker.com/engine/install/).
+- python3 >= 3.4. See [python3 download](https://www.python.org/downloads/).
+- pip. See [pip guide](https://packaging.python.org/tutorials/installing-packages/#installing-from-pypi).
+- git. See [git download](https://git-scm.com/downloads).
+- Docker. See [docker download](https://docs.docker.com/engine/install/).
 
 Follow the download instructions for each dependency.
 
 ### Installation
+
 Run the following installation command for the Conviso CLI:
 
 ```bash
@@ -90,7 +94,6 @@ conviso --api-key 'you-api-key' [SOME COMMAND]
 
 **Note:** For security reasons, this is not recommended for production environments!
 
-
 ## Next steps
 
 Once the CLI is installed and your machine is authenticated, perform the following actions to run your AppSec Program with the Conviso Platform:
@@ -99,7 +102,6 @@ Once the CLI is installed and your machine is authenticated, perform the followi
 - Validate your opened vulnerabilities for a specific project and **block your CI/CD pipeline depending on pre-defined vulnerability policies**, [see more](../cli/security-gate.md).
 - Perform the **Management of your Assets**, see this [guide](../cli/assets.md).
 - **Import findings and vulnerabilities from other security tools** that support .SARIF files to Conviso Platform, see [more](../cli/findings.md).
-
 
 ## Other installation commands
 
@@ -123,7 +125,7 @@ python3 -m pip install --user conviso-flowcli
 python3 -m pip install conviso-flowcli==1.12.0rc2
 ```
 
-**Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/). 
+**Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/).
 
 - If you want to use Container Image with a specific version. Versions can be found on Github.
 
@@ -136,7 +138,6 @@ docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
 ## Updating Conviso CLI
 
 We release new Conviso CLI versions often! See [Releases Notes](../releases/intro.md) for more details.
-
 
 ## Tips: Shell Completion
 
@@ -157,6 +158,7 @@ CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
 Start a new bash shell session and the shell completion will be available.
 
 #### ZSH
+
 Open your ```.zshrc``` file at ```~/.zshrc``` and place the following snippet in the end of file.
 
 ```bash
@@ -170,6 +172,7 @@ CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
 Start a new ZSH shell session and the shell completion will be available.
 
 #### Fish
+
 Start a fish shell session and execute the following command.
 
 ```bash
@@ -180,11 +183,15 @@ cp (which flow_fish_completer.fish) ~/.config/fish/completions/flow.fish
 Start a new fish shell session and the shell completion will be available.
 
 ## Getting support for the Conviso CLI
+
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
 
 ## Resources
+
 By exploring our content you'll find resources to help you understand the benefits of the Conviso CLI:
 
 [What is SARIF and how it could revolutionize software security:](https://bit.ly/3nqqcbK) The article explains how SARIF can improve transparency and collaboration in the security software industry and highlights how the Conviso Platform already supports the SARIF format with Conviso CLI.
 
 [Securing customers CI/CD pipelines using Conviso CLI:](https://bit.ly/3LS1oD7) This article brings a presentation of the possibilities of using the Conviso CLI for your CI/CD pipeline.
+
+[![Discovery Conviso Platform](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
