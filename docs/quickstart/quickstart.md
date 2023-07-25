@@ -10,22 +10,50 @@ Hello, if you're reading this, it means you've just received your first access t
 
 Let's go through the initial steps for a great experience in secure development.
 
-## Step 1 - Login to Conviso Platform, choose the most accessible way
+## Step 1 - Login to Conviso Platform
+If you are entering for the first time, the following screen will appear for you to register on the platform:
+
+<div style={{textAlign: 'center', maxWidth: '50%' }}>
+
+![img](../../static/img/quickstart-img1.1.png)
+
+</div>
+
+On this screen you can set your name and password. Then you can define a Multiple Factor setting.
+
+To perform this configuration, click on "Setup now", follow the tutorial in the image, using your phone's camera to scan the code and authenticate:
+
+<div style={{textAlign: 'center', maxWidth: '50%' }}>
+
+![img](../../static/img/quickstart-img1.2.png)
+
+</div>
+
+When scanning the image, your cell phone will present you with a form of authentication to provide a secret 6-digit code.
+
+<div style={{textAlign: 'center', maxWidth: '30%' }}>
+
+![img](../../static/img/quickstart-img1.3.png)
+
+</div>
+
+Now that you have this secret code, enter it on the line to the left of "Next". That's it, 2FA authentication done!
+
+
 To access the platform, you can use the traditional login with "username" and "password."  Alternatively, you can enhance your login security using a single sign-on (SSO).
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '90%'}}>
 
 ![img](../../static/img/quickstart-img1.png)
 
 </div>
-
 
 Learn how to connect via [SSO based on our platform integrations](/integrations/google.md).
 
 ## Step 2 - Add a profile picture
 In "Edit Profile" and “Details”,   click the “Select File” button to add your photo. This will make it easier for you to be identified by your team. Only .jpg and .png are supported.
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '80%' }}>
 
 ![img](../../static/img/quickstart-img2.png)
 
@@ -36,7 +64,7 @@ In "Edit Profile" and “Details”,   click the “Select File” button to add
 
 In "Edit Profile," click "Preferences," then choose when you want to receive notifications:
 
-<div style={{textAlign: 'center'}}>
+<div style={{textAlign: 'center', maxWidth: '80%' }}>
 
 ![img](../../static/img/quickstart-img3.png)
 
