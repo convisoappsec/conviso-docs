@@ -243,7 +243,8 @@ module.exports = {
         'general/resources',
         'general/user_management',
         'general/vulnerabilities_management',
-        'general/vulnerabilities_templates'
+        'general/vulnerabilities_templates',
+        'general/contributing'
       ],
     },
   ],
