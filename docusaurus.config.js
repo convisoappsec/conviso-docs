@@ -10,11 +10,6 @@ module.exports = {
   projectName: 'flow-docs',
 
   themeConfig: {
-        hubspot: {
-          accountId: "5613826",
-          async: true, // OPTIONAL: sets the async attribute on the script tag, defaults to false
-          defer: true, // OPTIONAL: sets the defer attribute on the script tag, defaults to false 
-        },
     navbar: {
       title: 'Conviso Platform Docs',
       logo: {
@@ -98,10 +93,6 @@ module.exports = {
   ],
 
   plugins: [
-    [
-      // https://github.com/stackql/docusaurus-plugin-hubspot
-      require.resolve('docusaurus-plugin-hubspot'), {}
-    ],
     [
       // https://github.com/flexanalytics/plugin-image-zoom
       require.resolve('plugin-image-zoom'), {}
