@@ -1,67 +1,102 @@
 ---
 id: integration_policies
-title: Integration Policies
+title: Vulnerability Management Integration Policies
 sidebar_label: Integration Policies
----
+description: Discover the efficiency of Integration Policies for Vulnerability Management. Automate notifications, issue creation, and vulnerability classification with Conviso Platform, empowering enhanced security practices
+keywords: [Policies Integration, Vulnerability Management, Automate Notifications, Vulnerability Classification, Conviso Platform]
 
+---
 ## Introduction
 
-The **Integration Policy** feature aims to send the Conviso Platform vulnerabilities automatically to the integrated Defect Tracking tools such as Bitbucket, GitHub, Jira, Redmine, ServiceNow or Trello, or automatically classify as vulnerabilities the findings from Scanning tools such as Fortify, Qualys, SonarCloud, SonarQube or Amazon Inspector.
+Discover the efficiency of Integration Policies for [Vulnerability Management](../general/vulnerabilities_management.md) with Conviso Platform. Automate Notifications, Vulnerability Classification, and more. This powerful integration empowers your developer team to focus on critical risks, respond promptly to security concerns, and foster a culture of secure development within your organization.
 
-With this setting enabled, the user will not need to send issues manually whenever a new vulnerability is identified and registered in Conviso Platform. The issue will be automatically created in the defect tracking tool.
+[**Embrace Vulnerability Management with Conviso Platform's Policies Integration.**](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-## Setting up Conviso Platform
+**Prerequisites**
+Ensure that you have already integrated a Defect Tracker tool or a Scanner tool with [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826). If you haven't integrated any tools yet, refer to the respective [documentation](../integrations/integrations_intro.md) on how to perform the integration.
 
-Log in to the [Conviso Platform](https://app.convisoappsec.com);
+## Usage
 
-To configure the **Integration Policy**, first you must have integrated a **Defect Tracker** tool or a **Scanner** tool with Conviso Platform. If you don't have any integrated tools yet, please read the documentation regarding the integration of the Defect Tracker tool or Scanning tool you are using.
+To access the Integration Policy configuration:
 
-In the upper right corner click on the **Gear** icon, then click on **Policies**:
+Click on the **Gear icon (1)** located in the upper-right corner.
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/integration_policies-img1.png)
-
-</div>
-
-The following screen will be shown:
+Select **"Policies" (2)** from the dropdown menu.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/integration_policies-img2.png)
+[![img](../../static/img/integration_policies-img1.png "Screenshot of Conviso Platform with the Gear icon (1) in the upper-right corner. The user is selecting 'Policies' (2) from the dropdown menu.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-### Vulnerabilities
+You will be presented with the following features that ensure a more effective approach to [vulnerability management](../general/vulnerabilities_management.md), making the process more agile, consistent and secure.
 
-**Automatically send vulnerabilities to Defect Tracking tools**: If you are using a Defect Tracking tool, this box must be checked. It will automatically send selected vulnerability classes from Conviso Platform to the Defect Tracking tool you are currently using at your environment. It is mandatory that you select at least one vulnerability severity level from those listed below:
+## Vulnerability management follow up
 
-- **All Vuln**: If you check this box, all vulnerabilities will be automatically sent to your Defect Tracking tool.
+This policy shows how well notifications are configured for unresolved vulnerabilities based on the number of days they remain open:
 
-- **Low**: By checking this box, only vulnerabilities with low severity will be sent to your Defect Tracking tool.
+<div style={{textAlign: 'center'}}>
 
-- **Medium**: If you check this box, only vulnerabilities with medium severity will be sent to your Defect Tracking tool.
+[![img](../../static/img/integration_policies-img2.png "Screenshot of Conviso Platform showing the policy showing well-configured notifications for unresolved vulnerabilities based on the number of days they remain open.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-- **High**: By checking this box, only vulnerabilities with high severity will be sent to your Defect Tracking tool.
+</div>
 
-- **Critical**: If you check this box, only vulnerabilities with critical severity will be sent to your Defect Tracking tool.
+## Transform vulnerabilities in issues at defect trackers
 
-When selecting the desired options, click on the **Save** button so that the integration policy is successfully made between Conviso Platform and your Defect Tracking tool.
+By enabling this policy, you enable the automatic creation of issues in Defect Tracking Tools for identified vulnerabilities. You can choose to send vulnerabilities automatically to the Defect Tracker Tool for all severity levels:
 
-### Scans
+<div style={{textAlign: 'center'}}>
 
-**Classify the findings as vulnerabilities**: If you are using a Scanner tool, this box must be checked. It will automatically send selected vulnerability classes from Conviso Platform to the Scanner tool you are currently using at your environment. It is mandatory that you select at least one vulnerability severity level from those listed below:
+[![img](../../static/img/integration_policies-img3.png "Clipping of a screenshot from Conviso Platform showing automatic creation of issues in defect tracking tools for vulnerabilities identified by enabling this policy.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-- **All Vuln**: If you check this box, all vulnerabilities will be automatically sent to your Scanner tool.
+</div>
 
-- **Low**: By checking this box, only vulnerabilities with low severity will be sent to your Scanner tool.
+## Transform scans findings in vulnerabilities
 
-- **Medium**: If you check this box, only vulnerabilities with medium severity will be sent to your Scanner tool.
+This policy streamlines the management of findings generated by scans by classifying them as vulnerabilities automatically. All findings from the scans will be treated as vulnerabilities with the specified severity levels:
 
-- **High**: By checking this box, only vulnerabilities with high severity will be sent to your Scanner tool.
+<div style={{textAlign: 'center'}}>
 
-- **Critical**: If you check this box, only vulnerabilities with critical severity will be sent to your Scanner tool.
+[![img](../../static/img/integration_policies-img4.png "Clipping of a screenshot of the Conviso Platform showing the configuration for streamlined management of scan findings by automatic classification as vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-When selecting the desired options, click on the **Save** button so that the integration policy is successfully made between Conviso Platform and your Scanner tool.
+</div>
+
+## Bug Bounty Score
+
+With this feature, you have a complete view of the Bug Bounty Program score from the identified vulnerabilities.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/integration_policies-img5.png "Clipping of a screenshot of the Conviso Platform showing the Bug Bounty Program score feature, providing a complete view of the score from identified vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+**Get in touch with our team to find out more.**
+
+## Ignored Paths
+
+This feature empowers you to exclude specific paths or files from automated scans, enabling the omission of irrelevant files and folders during scanning, such as test files and folders. You have the flexibility to add or remove paths as needed.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/integration_policies-img6.png "Clipping of a screenshot of the Conviso Platform showing the feature to exclude specific paths or files from automated scans.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+After selecting your desired options, simply click the Save button to successfully integrate the policy between the Conviso Platform and your Scanner tool. Streamline your scanning process for enhanced security assessments.
+
+## Support
+
+If you have any questions or need help using Conviso Platform, please don't hesitate to contact our support team. 
+
+## Resources
+
+By exploring our content you'll find resources to help you understand vulnerability management:
+
+[How Vulnerability Management Works in Conviso Platform](https://blog.convisoappsec.com/en/how-vulnerability-management-works-in-conviso-platform/): Discover the key features of the platform and how it helps detect, prioritize, and remediate vulnerabilities.
+
+[Prioritization of Vulnerabilities](https://blog.convisoappsec.com/en/how-vulnerability-management-works-in-conviso-platform/): Learn best practices for prioritizing vulnerabilities and creating a strategy that works for your organization.
+
+[Vulnerability Management Process](https://blog.convisoappsec.com/en/vulnerability-management-process-what-is-it/): Get an overview of the process and learn how to implement it in your organization.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
