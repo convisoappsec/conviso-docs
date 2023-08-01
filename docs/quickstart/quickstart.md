@@ -31,12 +31,6 @@ To perform this configuration, click on "Setup now", follow the tutorial in the 
 
 When scanning the image, your cell phone will present you with a form of authentication to provide a secret 6-digit code.
 
-<div style={{textAlign: 'center', maxWidth: '30%' }}>
-
-![img](../../static/img/quickstart-img1.3.png)
-
-</div>
-
 Now that you have this secret code, enter it on the line to the left of "Next". That's it, 2FA authentication done!
 
 
