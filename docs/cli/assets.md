@@ -1,7 +1,9 @@
 ---
 id: assets
-title: Creating Assets with the CLI
-sidebar_label: Creating Assets with the CLI
+title: Creating assets with the CLI
+sidebar_label: Creating assets with the CLI
+description: Learn how to create and manage assets with the Conviso CLI on the Conviso Platform. The Conviso CLI allows you to efficiently create and list assets associated with your company, enabling seamless integration and asset visibility. 
+keywords: [Conviso CLI, Create assets with CLI, Conviso Platform, assets management]
 ---
 
 ## Introduction
@@ -18,7 +20,7 @@ See how to use the `conviso assets` command.
 Use `conviso assets ls [OPTIONS]` to list all the Assets you have access on the Conviso Platform, execute in your terminal:
 
 ```
-conviso assets ls --company-id $YOUR_COMPANY_ID --page ‘INTEGER’’ --limit ‘INTEGER’’
+conviso assets ls --company-id $YOUR_COMPANY_ID --page "INTEGER" --limit "INTEGER" 
 ``` 
 
 ### Options
@@ -80,7 +82,7 @@ Customize the asset scan type. The default value is "None".
 Create an asset named "asset-x" from the git repository "~/path/example":
 
 ```
-conviso assets create --company-id $YOUR_COMPANY_ID --repository-dir ‘PATH’ --name ‘TEXT’ --scan-type ‘TEXT’.
+conviso assets create --company-id $YOUR_COMPANY_ID --repository-dir "." --name "TEXT" --scan-type "TEXT"
 ```
 
 
