@@ -6,48 +6,112 @@ sidebar_label: Overview
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/Logo.png)
+![img](../../static/img/integrations-intro.png)
 
 </div>
 
 ## Introduction
 
-Saving time and increasing productivity are two of the most desired metrics within a business, and they are possible to be achieved thanks to technology and the integration flow made available by it.
-The following integrations connect Conviso Platform to other tools, allowing integrated management of your company's data and processes. Integrating sectors, teams and collaborators is a strategy that makes everything work together, in a collaborative, synchronized and transparent way.
-We will list the benefits that each integration category can offer to your business, and will show how to integrate each one, in order to maximize your results.
+Conviso Platform seamlessly integrates with your current tools and workflows, enabling you to effortlessly enhance the security of your applications throughout the entire Secure Software Development Lifecycle (S-SDLC).  
+ 
+**This guide will walk you through various integration options with Conviso Platform:** 
+- [Single Sign-On (SSO)](#set-up-conviso-platform-single-sign-on-sso)
+- [CI/CD](#conviso-platform-cicd-integration)
+- [Container Security](#container-security-platform)
+- [Data Analytics](#data-analytics-integration)
+- [Defect/Bug Tracking](#defectbug-tracking-integration)
+- [Notifications](#communication-and-notification)
+- [Software Composition Analysis (SCA)](#software-composition-analysis-sca-integration)
+- [Security Scans](#consolidate-vulnerability-management-through-integrated-security-scans)
 
-### Authentication/SSO
+**Note:** You can also check the **[Conviso CLI](../cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
 
-Once the SSO (Single Sign On) integration is completed with any of the tools below, it is possible to access Conviso Platform using the same login and password as the integrated platform.
-It is possible to configure custom Identity providers that support SAML 2.0 protocol.
-So, if there is no specific integration for your tool, you can just use the generic SAML 2.0 integration instead.
+## Set up Conviso Platform Single Sign-On (SSO)
 
-### CI/CD
+Set up Single Sign-On (SSO) to allow your developers and teams easy access to Conviso Platform through your current SSO provider. Let's start with the SSO setup process to streamline access on the Conviso platform:
+* **[ADFS](../integrations/adfs.md)**
+* **[Azure AD](../integrations/azure-ad.md)**
+* **[Google](../integrations/google.md)**
+* **[LDAP](../integrations/ldap.md)**
+* **[SAML 2.0](../integrations/saml.md)**
 
-By integrating Conviso Platform with a development treadmill, we were able to perform automated analysis and provide transparency to teams.
+**Note:** It is possible to configure custom Identity providers that support SAML 2.0 protocol. So, if there is no specific integration for your tool, you can just use the generic SAML 2.0 integration instead.
 
-### Container Security Platform
+## Conviso Platform CI/CD Integration
 
-This integration allows you to synchronize vulnerabilities found in Cloud Workload Protection Platforms (CWPP) and Cloud Security Posture Management (CSPM) solutions and import them into Conviso Platform, enabling consolidated management on the platform.
+Incrementally incorporating CI/CD Integration has become a prevalent practice, enabling you to adopt the integration in stages. By integrating Conviso Platform with your development pipeline, automated analysis can be performed, providing transparency and insights to your teams. We support integrations with the following CI/CD platforms:
+* **[AWS Codebuild](../integrations/aws-codebuild.md)**
+* **[Azure Pipelines CLI Mode](../integrations/azure-pipelines-cli.md)**
+* **[Azure Pipelines Graph Mode](../integrations/azure-pipelines-graph.md)**
+* **[Bitbucket Pipelines](../integrations/bitbucket-pipelines.md)**
+* **[CircleCI](../integrations/circleci.md)**
+* **[Codefresh](../integrations/codefresh.md)**
+* **[GitHub Actions](../integrations/github-actions.md)**
+* **[GitLab](../integrations/gitlab.md)**
+* **[Jenkins](../integrations/jenkins.md)**
+* **[Jenkins Single Pipeline for Multiple Repositories using Webhooks](../integrations/jenkins-single-pipeline.md)**
 
-### Data Analytics
 
-Integration with datasets makes it possible to export information from Conviso Platform and create custom dashboards in Power BI, Google and others.
+## Container Security Platform
 
-### Defect/Bug Tracking
+Our integration enables the synchronization of vulnerabilities found in Cloud Workload Protection Platforms (CWPP) and Cloud Security Posture Management (CSPM) solutions. You can import these vulnerabilities into the Conviso Platform, allowing for consolidated management on a single platform:
+* **[Aqua](../integrations/aqua.md)**
 
-Once you've added one or more of these integrations, you'll be able to create an issue directly in your Defect Tracker tool.
+## Data Analytics Integration
 
-### Notifications
+Unlock the full potential of your data by integrating it into our platform! Export information and create customized dashboards to visualize and analyze your application security data dynamically and flexibly.
+* **[Google Data Studio](../integrations/datastudio.md)**
+* **[PowerBI](../integrations/powerbi.md)**
 
-By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel.
+## Defect/Bug Tracking Integration
 
-### SCA
+By integrating the Conviso Platform with your Defect Tracker tool, you can seamlessly manage and track defects within your development workflow. This streamlines the process of identifying and addressing issues, enhancing collaboration and efficiency. Our platform supports the following Defect Tracker integrations:
+* **[Bitbucket](../integrations/bitbucket.md)**
+* **[ClickUp](../integrations/clickup.mdX)**
+* **[Github](../integrations/github.md)**
+* **[Jira](../integrations/jira.md)**
+* **[Redmine](../integrations/redmine.md)**
+* **[ServiceNow](../integrations/servicenow.md)**
+* **[Trello](../integrations/trello.md)**
 
-Integrate with an intelligent Component Analysis platform that allows Conviso Platform to identify and reduce risk in the software supply chain. It takes a unique and highly beneficial approach by leveraging the capabilities of Software Bill of Materials (SBOM). This approach provides capabilities that traditional Software Composition Analysis (SCA) solutions cannot achieve.
+## Communication and Notification
+Efficient collaboration and communication are crucial for successful application development. By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel:
+* **[Slack](../integrations/slack.md)**
 
-### Scanners
+## Software Composition Analysis (SCA) Integration
 
-From the integration with external scans, it is possible to synchronize tools and extract the findings to manage in a consolidated way from Conviso Platform.
+This integration enables the platform to identify and mitigate risks in your software supply chain effectively. Leveraging the capabilities of a Software Bill of Materials (SBOM), our unique approach goes beyond traditional Software Composition Analysis (SCA) solutions, providing enhanced capabilities that drive comprehensive security measures:
+* **[Dependency-Track](../integrations/dependency-track.md)**
+* **[Github SCA](../integrations/github-sca.md)**
+
+## Consolidate Vulnerability Management through Integrated Security Scans
+
+Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
+* **[Amazon Inspector](../integrations/amazon-inspector.md)**
+* **[Checkmarx](../integrations/checkmarx.md)**
+* **[Dynamic Application Security Testing (DAST)](../integrations/dast.md)**
+* **[Fortify](../integrations/fortify.md)**
+* **[Nessus](../integrations/nessus.md)**
+* **[Qualys](../integrations/qualys.md)**
+* **[SonarCloud](../integrations/sonarcloud.md)**
+* **[SonarQube](../integrations/sonarqube.md)**
+* **[Veracode](../integrations/veracode.md)**
+
+## Support for Conviso Platform Integrations
+
+If you have any questions or don’t find a specific tool in our list of integrations, please don't hesitate to contact our support team.
+
+## Resources
+By exploring our content you'll find resources to help you to understand the benefits of Conviso Platform integrations:
+
+[Securing your code on GitHub with Conviso Platform integration](https://bit.ly/3oFnBvv): In this post, we will guide you to guarantee the security of the code of your application stored and managed on GitHub using the Conviso Platform.
+
+[Elevating the security of your application through the integration of Bitbucket with Conviso Platform](https://bit.ly/3qunqDK): To ensure we can implement a security-first mindset without impacting development speed, we built our platform integration with Bitbucket.
+
+[Integration with Jira and GitHub, a unified vision of vulnerabilities:](https://bit.ly/3IYTZjw) With Conviso Platform we can centralize all the development process information in one platform to have all data and structured information delivered to the teams.
+
+[AppSec: Integrations with CI/CD tools through Conviso Platform:](https://bit.ly/3ODN0jw) Follow this article to understand how we can integrate your main tools within a single platform.
+
+[Conviso Platform now offers an integration with ClickUp:](https://bit.ly/45QL5hF) Managing tasks is often challenging for a team of developers in a day-to-day life that involves tight deadlines. Therefore, adopting a product that facilitates this routine by creating calendars, scheduling tasks, and setting reminders is essential. The integration of ClickUp with the Conviso Platform aims to optimize this routine.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
