@@ -9,6 +9,11 @@ module.exports = {
       id: 'quickstart/quickstart',
     },
     {
+      type: 'doc',
+      label: 'Security Feed',
+      id: 'security-feed/security-feed',
+    },
+    {
       type: "category",
       label: "API",
       items: [
