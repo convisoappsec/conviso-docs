@@ -67,7 +67,7 @@ Unlock the full potential of your data by integrating it into our platform! Expo
 
 By integrating the Conviso Platform with your Defect Tracker tool, you can seamlessly manage and track defects within your development workflow. This streamlines the process of identifying and addressing issues, enhancing collaboration and efficiency. Our platform supports the following Defect Tracker integrations:
 * **[Bitbucket](../integrations/bitbucket.md)**
-* **[ClickUp](../integrations/clickup.mdX)**
+* **[ClickUp](../integrations/clickup.md)**
 * **[Github](../integrations/github.md)**
 * **[Jira](../integrations/jira.md)**
 * **[Redmine](../integrations/redmine.md)**
