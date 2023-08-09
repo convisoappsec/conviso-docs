@@ -189,6 +189,11 @@ module.exports = {
       ]
     },
     {
+      type: 'doc',
+      label: 'Scan Application with Conviso',
+      id: 'conviso-ast/conviso-ast',
+    },
+    {
       type: "category",
       label: "People & Culture",
       items: [
