@@ -2,8 +2,8 @@
 id: assets
 title: Creating assets with the CLI
 sidebar_label: Creating assets with the CLI
-description: Learn how to create and manage assets with the Conviso CLI on the Conviso Platform. The Conviso CLI allows you to efficiently create and list assets associated with your company, enabling seamless integration and asset visibility. 
-keywords: [Conviso CLI, Create assets with CLI, Conviso Platform, assets management]
+description: The Conviso CLI allows you to create and list assets of your company registered on the Conviso Platform. Learn how! 
+keywords: [assets with the Conviso Platform CLI]
 ---
 
 ## Introduction
@@ -32,7 +32,7 @@ To access your company ID you need to go to settings, then "Companies", in the u
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/cli-assets.png)
+[![img](../../static/img/cli-assets.png '"Companies" in Conviso Platform')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -56,7 +56,7 @@ In our case this is the result that appears in the terminal:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/cli-assets1.png)
+[![img](../../static/img/cli-assets1.png 'Security Gate in the terminal')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -98,4 +98,4 @@ By exploring our content you'll find resources to help you understand assets man
 
 [Security Risk Management - Best Practices and Processes:](https://bit.ly/45RKSL7) In this article, we will discuss the importance of security risk management and share best practices for effectively executing this process.
 
-[![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![Discover Conviso Platform, a solution for ASPM!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

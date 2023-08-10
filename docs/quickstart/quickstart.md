@@ -1,7 +1,9 @@
 ---
 id: quickstart
-title: Quickstart
+title: First steps with the Conviso Platform
 sidebar_label: Quickstart
+description:  You are about to take your first steps with the Conviso Platform and start a new experience with secure development. Let's go!
+keywords:  [First steps with the Conviso Platform]
 ---
 
 ## Introduction
@@ -15,7 +17,7 @@ If you are entering for the first time, the following screen will appear for you
 
 <div style={{textAlign: 'center', maxWidth: '50%' }}>
 
-![img](../../static/img/quickstart-img1.1.png)
+[![img](../../static/img/quickstart-img1.1.png 'Login to Conviso Platform')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -25,7 +27,7 @@ To perform this configuration, click on "Setup now", follow the tutorial in the 
 
 <div style={{textAlign: 'center', maxWidth: '50%' }}>
 
-![img](../../static/img/quickstart-img1.2.png)
+[![img](../../static/img/quickstart-img1.2.png 'Setup a Multiple Factor setting')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -38,7 +40,7 @@ To access the platform, you can use the traditional login with "username" and "p
 
 <div style={{textAlign: 'center', maxWidth: '90%'}}>
 
-![img](../../static/img/quickstart-img1.png)
+[![img](../../static/img/quickstart-img1.png 'Login security using a single sign-on (SSO)')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -49,7 +51,7 @@ In "Edit Profile" and “Details”,   click the “Select File” button to add
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-![img](../../static/img/quickstart-img2.png)
+[![img](../../static/img/quickstart-img2.png 'In "Edit Profile" and “Details”')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -60,7 +62,7 @@ In "Edit Profile," click "Preferences," then choose when you want to receive not
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-![img](../../static/img/quickstart-img3.png)
+[![img](../../static/img/quickstart-img3.png 'In "Edit Profile')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -72,7 +74,7 @@ To invite new developers from your team to the platform, use the "Invite your te
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img4.png)
+[![img](../../static/img/quickstart-img4.png '"Invite your team" button')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -81,13 +83,13 @@ To invite new developers from your team to the platform, use the "Invite your te
 
 ## Step 5 - Set up a Conviso Platform integration
 
-In "Integrations," you will have access to a wide range of technologies with which Conviso Platform integrates.
+In "Integrations", you will have access to a wide range of technologies with which Conviso Platform integrates.
 
 In addition to connecting with your code, we integrate with defect tracker/bug, CI/CD systems, SSO authentication, Business Intelligence tools, and various other solutions and platforms.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img5.gif)
+[![img](../../static/img/quickstart-img5.gif 'In "Integrations"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -99,7 +101,7 @@ In the Assets Management section, you will obtain a comprehensive understanding 
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img6.png)
+[![img](../../static/img/quickstart-img6.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -107,13 +109,13 @@ In the Assets Management section, you will obtain a comprehensive understanding 
 
 ## Step 7 - Stay informed about vulnerabilities identified in your assets
 
-In Vulnerabilities Management, you will have a broad view of the vulnerabilities found in your company's assets. You can also track the progress of the correction workflow there. 
+In Vulnerabilities Management section, you will have a broad view of the vulnerabilities found in your company's assets. You can also track the progress of the correction workflow there. 
 
 Review the results carefully and take appropriate action based on the specific details of the identified issues.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img7.png)
+[![img](../../static/img/quickstart-img7.png 'In Vulnerabilities Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -126,7 +128,7 @@ In People and Culture, you can study and practice secure coding methods in a vir
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img8.png)
+[![img](../../static/img/quickstart-img8.png 'In People and Culture')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -135,7 +137,7 @@ When you find a vulnerability, you will have the proper training to handle it.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img9.png)
+[![img](../../static/img/quickstart-img9.png 'Learn how to prevent this kind of vulnerability button')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -148,7 +150,7 @@ In Projects, you will have an overview of the AppSec initiatives, including proj
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img10.png)
+[![img](../../static/img/quickstart-img10.png 'In Projects')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -156,11 +158,11 @@ Learn how to [build your project for a security initiative in your application](
 
 ## Step 10 - Perform threat modeling to Shift-Left
 
-In "Secure by Design," perform automated threat modeling by defining security requirements based on MITRE CAPEC to strengthen the security of your application from the beginning! 
+In "Secure by Design", perform automated threat modeling by defining security requirements based on MITRE CAPEC to strengthen the security of your application from the beginning! 
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img11.png)
+[![img](../../static/img/quickstart-img11.png 'In "Secure by Design"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -168,11 +170,11 @@ In "Secure by Design," perform automated threat modeling by defining security re
 
 ## Step 11 - Update any vulnerability templates
 
-In "Intelligence," under the Vulnerabilities Template section, you can update and study various vulnerability templates, which provide information about the type of vulnerability and how to address it. 
+In "Intelligence", under the Vulnerabilities Template section, you can update and study various vulnerability templates, which provide information about the type of vulnerability and how to address it. 
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img12.png)
+[![img](../../static/img/quickstart-img12.png 'In "Intelligence"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -180,11 +182,11 @@ In "Intelligence," under the Vulnerabilities Template section, you can update an
 
 ## Step 12 - Still have questions? Reach out to our Security Experts
 
-By clicking "Security Expert," you can request help regarding project details and vulnerabilities. 
+By clicking "Security Expert", you can request help regarding project details and vulnerabilities. 
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/quickstart-img13.png)
+[![img](../../static/img/quickstart-img13.png 'In "Security Expert"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -203,4 +205,4 @@ By exploring our content, you'll find resources that will enhance your understan
 
 [AppSec to Go - Conviso's Podcast on AppSec](https://spoti.fi/43UJQwN): Tune in to our podcast, where we discuss AppSec-related subjects, providing valuable insights and discussions. The podcast is conducted in Portuguese.
 
-[![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![Discover Conviso Platform, a solution for ASPM!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
