@@ -41,7 +41,7 @@ workflows:
 jobs:
  flow-help: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     steps:
       - setup_remote_docker
       - checkout
@@ -90,7 +90,7 @@ workflows:
 jobs:
  myjob:
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     steps:
       - run:
           command: echo $GROUP_ENVIRONMENT_VARIABLE
@@ -119,7 +119,7 @@ workflows:
 jobs:
  flow-codereview-tags-time: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -144,7 +144,7 @@ workflows:
 jobs:
  flow-codereview-tags-format: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -169,7 +169,7 @@ workflows:
 jobs:
  flow-codereview-git: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -200,7 +200,7 @@ workflows:
 jobs:
  flow-sast: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -225,7 +225,7 @@ workflows:
 jobs:
  flow-sast: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -252,7 +252,7 @@ workflows:
 jobs:
  flow-sca: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -279,7 +279,7 @@ workflows:
 jobs:
  flow-deploy-sast-sca: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:

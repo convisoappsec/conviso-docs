@@ -132,7 +132,7 @@ python3 -m pip install conviso-flowcli==1.12.0rc2
 - If you want to use Container Image with a specific version. Versions can be found on Github.
 
 ```bash
-docker run convisoappsec/flowcli:1.12.0-rc.2 conviso --help
+docker run convisoappsec/convisocli conviso --help
 ```
 
 **Note:** Observe that PyPI and Github versions have a slightly difference

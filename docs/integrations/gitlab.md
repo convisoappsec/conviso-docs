@@ -57,7 +57,7 @@ Follow the steps below to integrate Security Code Review seamlessly into your pi
 
 ```yml
 conviso-ast:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables:
@@ -82,7 +82,7 @@ The steps below will show you what your ```.gitlab-ci.yml``` must have to perfor
 
 ```yml
 conviso-sast:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables:
@@ -100,7 +100,7 @@ Alternatively, you can specify the diff range manually. In the example below, we
 
 ```yml
 conviso-sast:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables:
@@ -120,7 +120,7 @@ The steps below will show you what your ```.gitlab-ci.yml``` must have to perfor
 
 ```yml
 conviso-sca:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables:
@@ -146,7 +146,7 @@ This way, you use tags to mark different versions of your code. Conviso Platform
 
 ```yml
 codereview-job-tags-by-time:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables:
@@ -166,7 +166,7 @@ For example, it will use numbers like 1.0, 1.1, 2.0, etc.
 
 ```yml
 codereview-job-tags-by-version-style:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables:
@@ -186,7 +186,7 @@ This way, you don’t use tags at all. Conviso Platform will use the Git tree to
 
 ```yml
 codereview-job-tags-by-version-style:
-    image: convisoappsec/flowcli:latest
+    image: convisoappsec/convisocli:latest
     services:
         - docker:dind
     variables: 
@@ -210,7 +210,7 @@ Here is an example of a pipeline with all three features:
 
 ```yml
 appsec-flow:
-  image: convisoappsec/flowcli:latest
+  image: convisoappsec/convisocli:latest
   services:
     - docker:dind
   variables:
@@ -249,12 +249,5 @@ If you have any questions or need help using our product, please don't hesitate 
 By exploring our content, you'll find resources to help you to understand the benefits of the Conviso Platform integrations for Secure CI/CD Pipeline:
 
 [AppSec: Integrations with CI/CD tools through Conviso Platform](https://bit.ly/3ODN0jw): Follow this article to understand how we can integrate your main tools within a single platform.
-
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/cta1.png "Image for Secure CI/CD Pipeline, security testing and vulnerability management with Conviso Platform")](https://bit.ly/3JyRdl8)
-
-</div>
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

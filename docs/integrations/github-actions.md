@@ -49,7 +49,7 @@ jobs:
  conviso-sast:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/flowcli
+     image: convisoappsec/convisocli
      env:
        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
@@ -75,7 +75,7 @@ jobs:
  conviso-sca:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/flowcli
+     image: convisoappsec/convisocli
      env:
        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
@@ -106,7 +106,7 @@ jobs:
  conviso-cr:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/flowcli
+     image: convisoappsec/convisocli
      env:
        FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
        FLOW_PROJECT_CODE: "<project code>"
@@ -139,7 +139,7 @@ jobs:
   conviso-ast:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/flowcli
+      image: convisoappsec/convisocli
       env:
         FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
         FLOW_PROJECT_CODE: "<project code>"

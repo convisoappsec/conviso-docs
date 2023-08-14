@@ -38,7 +38,7 @@ steps:
   conviso_sample:
     title: "CLI Hello"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso --help"
     stage: "test"
@@ -115,7 +115,7 @@ Next, we present sample code snippets for each of the approaches, assuming the t
 conviso_sample:
     title: "Conviso Deploy"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso deploy create with tag-tracker sort-by time"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
@@ -127,7 +127,7 @@ conviso_sample:
 conviso_sample:
     title: "Conviso Deploy"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso deploy create with tag-tracker sort-by versioning-style"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
@@ -139,7 +139,7 @@ conviso_sample:
 conviso_sample:
     title: "Conviso Deploy"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso deploy create with values"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
@@ -155,7 +155,7 @@ Next, we present the sample code snippets for each of the approaches, assuming t
 conviso_sample:
     title: "Conviso SAST"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso sast run"
     stage: "test"
@@ -170,7 +170,7 @@ Alternatively, we can specify the diff range manually. In the example presented 
 conviso_sample:
     title: "Conviso SAST"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso sast run --start_commit `git rev-parse @~1` --end-commit $CF_REVISION"
     stage: "test"
@@ -185,7 +185,7 @@ The following code snippet will trigger an SCA scan and send the results to Conv
 conviso_sample:
     title: "Conviso SCA"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso sca run"
     stage: "test"
@@ -201,7 +201,7 @@ Assuming the target project was cloned in an earlier step, the following job sni
 conviso_sample:
     title: "Conviso Full Job"
     type: "freestyle"
-    image: "convisoappsec/flowcli"
+    image: "convisoappsec/convisocli"
     commands:
       - "conviso deploy create -f env_vars with values > created_deploy_vars"
       - "source created_deploy_vars"
