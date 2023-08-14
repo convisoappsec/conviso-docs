@@ -151,7 +151,6 @@ module.exports = {
             'integrations/clickup',
             'integrations/github',
             'integrations/jira',
-            'integrations/servicenow',
             'integrations/trello'
           ]
         },
