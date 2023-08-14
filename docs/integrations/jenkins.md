@@ -48,7 +48,7 @@ pipeline {
 
   agent {
     docker {
-      image 'convisoappsec/flowcli:latest'
+      image 'convisoappsec/convisocli:latest'
       args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
@@ -77,7 +77,7 @@ pipeline {
 
   agent {
     docker {
-      image 'convisoappsec/flowcli:latest'
+      image 'convisoappsec/convisocli:latest'
       args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
@@ -108,7 +108,7 @@ There are three approaches depending on how you work with your project. In a nut
 pipeline {
   agent {
     docker {
-      image 'convisoappsec/flowcli:latest'
+      image 'convisoappsec/convisocli:latest'
       args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
@@ -145,7 +145,7 @@ pipeline {
     stage('Conviso_CodeReview') {
       agent {
         docker {
-          image 'convisoappsec/flowcli:latest'
+          image 'convisoappsec/convisocli:latest'
           args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
       }     

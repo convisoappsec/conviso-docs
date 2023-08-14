@@ -89,7 +89,7 @@ Here is an example of a yml file to use:
         needs: scan
         runs-on: ubuntu-20.04
         container:
-          image: convisoappsec/flowcli:1.12.0-rc.2
+          image: convisoappsec/convisocli
           env:
             FLOW_API_KEY: ${{secrets.FLOW_API_KEY}}
             FLOW_PROJECT_CODE: ${{secrets.FLOW_PROJECT_CODE}}

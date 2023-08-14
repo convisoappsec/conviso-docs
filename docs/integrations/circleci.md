@@ -15,7 +15,7 @@ First time using CircleCI? Please refer to the [following documentation](https:/
 
 ## Introduction
 
-CircleCI is a CI/CD platform that has the purpose of bringing agility to the pipeline creation process. One of its main features is its extensibility, through the so-called Orbs it is possible to add custom jobs, commands and executors. Currently, the integration with Conviso's products takes advantage of CircleCI's native docker support, and runs through a docker image made available on [Dockerhub](https://hub.docker.com/r/convisoappsec/flowcli) with a CLI-like tool available on [PyPi](https://pypi.org/project/conviso-flowcli/).
+CircleCI is a CI/CD platform that has the purpose of bringing agility to the pipeline creation process. One of its main features is its extensibility, through the so-called Orbs it is possible to add custom jobs, commands and executors. Currently, the integration with Conviso's products takes advantage of CircleCI's native docker support, and runs through a docker image made available on [Dockerhub](https://hub.docker.com/r/convisoappsec/convisocli) with a CLI-like tool available on [PyPi](https://pypi.org/project/conviso-flowcli/).
 
 ## Requirements
 
@@ -41,7 +41,7 @@ workflows:
 jobs:
  flow-help: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     steps:
       - setup_remote_docker
       - checkout
@@ -90,7 +90,7 @@ workflows:
 jobs:
  myjob:
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     steps:
       - run:
           command: echo $GROUP_ENVIRONMENT_VARIABLE
@@ -119,7 +119,7 @@ workflows:
 jobs:
  flow-codereview-tags-time: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -144,7 +144,7 @@ workflows:
 jobs:
  flow-codereview-tags-format: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -169,7 +169,7 @@ workflows:
 jobs:
  flow-codereview-git: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -200,7 +200,7 @@ workflows:
 jobs:
  flow-sast: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -225,7 +225,7 @@ workflows:
 jobs:
  flow-sast: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -252,7 +252,7 @@ workflows:
 jobs:
  flow-sca: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:
@@ -279,7 +279,7 @@ workflows:
 jobs:
  flow-deploy-sast-sca: 
     docker: 
-      - image: "convisoappsec/flowcli"
+      - image: "convisoappsec/convisocli"
     environment:
       FLOW_PROJECT_CODE: "<Project Key>"
     steps:

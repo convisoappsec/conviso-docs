@@ -52,13 +52,13 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
 
   steps:
     - bash: conviso --help
 ```
 
-Throughout the document, trigger, pool and job settings are proposed. The only requirement is the jobs associated to CLI are performed at the ```convisoappsec/flowcli``` image, available at DockerHub.
+Throughout the document, trigger, pool and job settings are proposed. The only requirement is the jobs associated to CLI are performed at the ```convisoappsec/convisocli``` image, available at DockerHub.
 
 ## Secrets Setup
 
@@ -96,7 +96,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: '<Project Key>'
 
@@ -117,7 +117,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: '<Project Key>'
 
@@ -138,7 +138,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: '<Project Key>'
 
@@ -163,7 +163,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: '<Project Key>'
 
@@ -186,7 +186,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: '<Project Key>'
 
@@ -210,7 +210,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: '<Project Key>'
 
@@ -233,7 +233,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   container:
-    image: 'convisoappsec/flowcli'
+    image: 'convisoappsec/convisocli'
   variables:
     FLOW_PROJECT_CODE: 'Kt5p5zKb_zbth0o0'
 

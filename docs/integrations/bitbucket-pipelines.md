@@ -31,7 +31,7 @@ To set up a repository, follow the steps below:
 4. As the first job, let's invoke the CLI help menu. To do so, paste the snippet below:
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
@@ -65,7 +65,7 @@ Below are sample code snippets for each of the approaches:
 **With TAGS, sorted by timestamp**
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
@@ -81,7 +81,7 @@ pipelines:
 **With TAGS, sorted by versioning-style**
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 pipelines:
   branches:
     master:
@@ -96,7 +96,7 @@ pipelines:
 **Without TAGS, sorted by GIT Tree**
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
@@ -116,7 +116,7 @@ In addition to deploying for code review, it is also possible to integrate a SAS
 The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE```, defined as environment variables.
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
@@ -134,7 +134,7 @@ In the above pipeline, we didn't use any options to the ```conviso sast run``` c
 Alternatively, we can specify the diff range manually. In the example below, we scan between the current commit and the immediately previous one on the current branch:
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
@@ -152,7 +152,7 @@ pipelines:
 The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
@@ -170,7 +170,7 @@ pipelines:
 The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below:
 
 ```yml
-image: convisoappsec/flowcli
+image: convisoappsec/convisocli
 
 pipelines:
   branches:
