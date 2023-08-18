@@ -1,7 +1,7 @@
 ---
-id: azure-pipelines-cli
-title: Azure Pipelines CLI Mode
-sidebar_label: Azure Pipelines CLI Mode
+title:  Integrating Conviso Platform into Azure Pipelines 
+description:  Learn how to seamlessly integrate the Conviso Platform into your Azure Pipelines to automate security processes, conduct thorough security assessments, and implement Code Review, SAST, and SCA.
+keywords:  [Conviso Platform, Azure Pipelines]
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -10,89 +10,64 @@ sidebar_label: Azure Pipelines CLI Mode
 
 </div>
 
+
 ## Introduction
 
-The Azure Pipelines is a CI/CD module of the [Azure Devops](https://aex.dev.azure.com/) platform. Through this module, it is possible to create automation routines with various tasks that are available on Azure's marketplace. Currently, the integration with Conviso consists of a Bash-type task that will be run using a docker container and a CLI-type application. The [CLI PyPi tool](https://pypi.org/project/conviso-flowcli/) knowledge is highly recommended.
+Integrate the Conviso Platform seamlessly into your [Azure DevOps Pipelines](https://dev.azure.com/) to automate and streamline your security processes. This integration ensures thorough security assessments for your applications throughout the development lifecycle.
 
-The integration of continuous code review analysis with Azure Pipeline aims to create a direct connector with the development pipeline so that code review of each deploy is carried out.
+You can run the Conviso Platform AST (Application Security Testing), which offers Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review directly on your Azure Pipelines.
 
-This integration with Conviso Platform will make it easier to track revisions of each piece of source code without impacting the development process.
+This integration provides the **CLI as a Docker** image for executing tasks and establishing connections with the Conviso Platform.
 
-Deploy review status checks are one of the benefits Conviso Platform makes available to the customer to manage deploys, and if a vulnerability is identified in the deployment code, a notification will automatically be generated for the person responsible for the vulnerability correction.
+[Explore our Integration page to learn more and supercharge your Application Security Program with Conviso Platform.](https://bit.ly/3NzvomE)
 
-## Requirements
+## Prerequisites
 
-In order for the experience with Conviso's services to be complete, it is necessary to meet all the requirements below:
+Before using Conviso Platform with Azure Pipelines, you must ensure that:
 
-1. Hosted Agent Pool (Ubuntu 18.04 or higher) with Docker installed or Agent Cloud Azure;
+1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](https://docs.convisoappsec.com/api/generate-apikey).
 
-2. External access (can be limited to Conviso's registry for SAST, Dockerhub and Conviso Platform).
+2. A [new pipeline is created to run the automation](https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?view=azure-devops#:~:text=Go%20to%20the%20Pipelines%20tab,start%20with%20an%20Empty%20job.). Follow these steps:
+* Click on "**Pipelines**" in the left-hand menu.
+* Click "**New Pipeline**" and configure it based on your project type.
+* You will arrive at your pipeline's ```YAML document```.
 
-## First Steps
+<div style={{textAlign: 'center'}}>
 
-Given an Azure Devops project, to create a Welcome Pipeline you can follow the steps below:
+[![img](../../static/img/azure-pipelines1.png) 'Azure Pipelines page for “create a new pipeline')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+</div>
 
-1. At the DevOps Project root, click at **Pipelines**;
+3. Set two environment variables for the runner: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE```. These codes specify the project and account on the Conviso Platform. To set a variable for a build pipeline:
+* Go to the **Pipelines** page, select the relevant pipeline, and click "**Edit**."
+* Locate the **Variables** section for that pipeline.
+* Add or update the variable, optionally marking it as secret.
+* **Save** the pipeline changes.
 
-2. At the upper right menu, click at **New Pipeline**;
+<div style={{textAlign: 'center'}}>
 
-3. At the **Connect** step, select the platform where your code is hosted; 
+[![img](../../static/img/azure-pipelines2.png) 'Azure Pipelines page for "review your yaml pipeline"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+</div>
 
-4. At **Select**, connect to the wanted repository code; 
+## Usage
+By the end of this tutorial, you will know how to:
+* [Perform a Conviso AST scan to analyze your application's security](#perform-a-conviso-ast-scan-to-analyze-your-applications-security​)
+* [Run a scan exclusively using Conviso SAST](#run-a-scan-exclusively-using-conviso-sast​)
+* [Run a scan exclusively using Conviso SCA](#run-a-scan-exclusively-using-conviso-sca​)
+* [How to Send Your Code to Conviso Platform for Code Review](#how-to-send-your-code-to-conviso-platform-for-code-review​)
+* [How to Use Code Review, SAST and SCA Together](#getting-everything-together-code-review--sast--sca-deployment)
 
-5. At **Configure**, if you don't have or don't want to associate it with an existing pipeline, select the **Starter Pipeline** option;
+[Learn more about Conviso Platform integrations!](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-6. At the opened Azure Devops text editor, paste the code snippet below:
+## Perform a Conviso AST scan to analyze your application's security
+Empower your security analysis with Application Security Testing (AST) by directly incorporating the Conviso AST scan into your pipeline. This versatile tool offers SAST, SCA, and Code Review capabilities, all integrated within your pipeline.
 
-```yml
-trigger:
-  - master  
-jobs:
-- job: Conviso_Appsec_Getting_started
-  pool:
-    vmImage: 'ubuntu-16.04'
-  container:
-    image: 'convisoappsec/convisocli'
-
-  steps:
-    - bash: conviso --help
-```
-
-Throughout the document, trigger, pool and job settings are proposed. The only requirement is the jobs associated to CLI are performed at the ```convisoappsec/convisocli``` image, available at DockerHub.
-
-## Secrets Setup
-
-Authentication between the CLI tool and the platform takes place through an API key. For this to happen safely, it is recommended to use the **Variables** of Pipeline. They can be defined in an already created pipeline following the step by step presented below: 
-
-1. At the DevOps Project root, click at **Pipelines**;
-
-2. Select the wanted pipeline at the pipelines list;
-
-3. Click at **Edit** at the upper right menu;
-
-4. at the upper right menu again, click at **Variables**;
-
-5. Click at the **+** button in the upper right corner;
-
-6. Label the variable as ```FLOW_API_KEY``` and add the API key available at your Conviso Platform Profile;
-
-7. Check the option **Keep this value secret**, then click **Ok**.
-
-## Code Review
-
-Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
-
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variables (previously set in the desired pipeline variables) and the ```FLOW_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) that can be defined in each of the pipelines. 
-
-Below are the code snippets that can be at the ```azure-pipelines.yml``` file (or any other custom file):
-
-**With TAGS, sorted by timestamp**
+Follow the script below to integrate Security Code Review seamlessly into your pipeline, creating a comprehensive solution within your ```azure-pipelines.yml``` file:
 
 ```yml
 trigger:
   - master  
 jobs:
-- job: Conviso_Appsec_Deploy_Tags_Time
+- job: Conviso_Appsec_AST
   pool:
     vmImage: 'ubuntu-16.04'
   container:
@@ -102,18 +77,22 @@ jobs:
 
   steps:
     - bash: |
-          conviso deploy create with tag-tracker sort-by time    
+          conviso ast run
       env:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-**With TAGS, sorted by versioning-style**
+**Note:** To scan your repository with AST, you must have a registered project on the Conviso Platform. The Project Code is found on the specific project page. You also need your API Key, which [you can find using this tutorial](https://docs.convisoappsec.com/api/generate-apikey).
+
+The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](https://docs.convisoappsec.com/general/vulnerabilities_management) resource to work on the correction flow.
+
+For manual specification of the diff range, you can refer to the provided example in the document.
 
 ```yml
 trigger:
   - master  
 jobs:
-- job: Conviso_Appsec_Deploy_Tags_version_style
+- job: Conviso_Appsec_Custom_Sast
   pool:
     vmImage: 'ubuntu-16.04'
   container:
@@ -122,38 +101,15 @@ jobs:
     FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
-    - bash: |
-          conviso deploy create with tag-tracker sort-by versioning-style    
+    - bash:
+          conviso ast run --start_commit `git rev-parse @~1` --end-commit $GIT_COMMIT
       env:
          FLOW_API_KEY: $(FLOW_API_KEY)
+         GIT_COMMIT: $(Build.SourceVersion)
 ```
 
-**Without TAGS, sorted by GIT Tree**
-
-```yml
-trigger:
-  - master  
-jobs:
-- job: Conviso_Appsec_Deploy_Git_tree
-  pool:
-    vmImage: 'ubuntu-16.04'
-  container:
-    image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
-
-  steps:
-    - bash: |
-          conviso deploy create with values    
-      env:
-         FLOW_API_KEY: $(FLOW_API_KEY)
-```
-
-## SAST
-
-In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated at Conviso Platform as findings.
-
-The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE```, defined as environment variables for the Agent Pool.
+## Run a scan exclusively using Conviso SAST
+Execute Static Application Security Testing (SAST) using the script below in your azure-pipelines.yml:
 
 ```yml
 trigger:
@@ -174,33 +130,8 @@ jobs:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-In the above pipeline, we didn't use any options to the ```conviso sast run``` command. In this case, the default behavior is to perform the analysis of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively. 
-
-Alternatively, we can specify the diff range manually. In the example below, we scan between the current commit and the immediately previous one on the current branch: 
-
-```yml
-trigger:
-  - master  
-jobs:
-- job: Conviso_Appsec_Custom_Sast
-  pool:
-    vmImage: 'ubuntu-16.04'
-  container:
-    image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
-
-  steps:
-    - bash:
-          conviso sast run --start_commit `git rev-parse @~1` --end-commit $GIT_COMMIT
-      env:
-         FLOW_API_KEY: $(FLOW_API_KEY)
-         GIT_COMMIT: $(Build.SourceVersion)
-```
-
-## SCA
-
-The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
+## Run a scan exclusively using Conviso SCA
+To perform Software Composition Analysis (SCA), utilize the following script in your azure-pipelines.yml:
 
 ```yml
 trigger:
@@ -221,9 +152,84 @@ jobs:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-## Getting Everything Together: Code Review + SAST + SCA Deployment
 
-The SAST and SCA analysis can be complementary to the code review carried out by the professional at Conviso, even serving as input for the analyst. The job below will perform the deployment for code review of the code and will use the same diff identifiers to perform the SAST and SCA analysis, forming a complete solution in the pipeline. An example of a complete pipeline with all solutions can be seen in the snippet below: 
+## How to Send Your Code to Conviso Platform for Code Review
+The Code Review process involves Conviso experts providing feedback on your code. You can send your code from Azure Pipelines to the Conviso Platform for Code Review using the script below. Conviso Platform can track code changes using time tags, versioning tags, or the Git tree.
+
+### Using Tags ordered by time
+This way, you use tags to mark different versions of your code. Conviso Platform will use the tags to find the changes in your code. It will use the time of the tags to sort them.
+
+```yml
+trigger:
+  - master  
+jobs:
+- job: Conviso_Appsec_Deploy_Tags_Time
+  pool:
+    vmImage: 'ubuntu-16.04'
+  container:
+    image: 'convisoappsec/convisocli'
+  variables:
+    FLOW_PROJECT_CODE: '<Project Key>'
+
+  steps:
+    - bash: |
+          conviso deploy create with tag-tracker sort-by time    
+      env:
+         FLOW_API_KEY: $(FLOW_API_KEY)
+```
+
+## Using Tags ordered by versioning style
+For example, it will use numbers like 1.0, 1.1, 2.0, etc.
+
+```yml
+trigger:
+  - master  
+jobs:
+- job: Conviso_Appsec_Deploy_Tags_version_style
+  pool:
+    vmImage: 'ubuntu-16.04'
+  container:
+    image: 'convisoappsec/convisocli'
+  variables:
+    FLOW_PROJECT_CODE: '<Project Key>'
+
+  steps:
+    - bash: |
+          conviso deploy create with tag-tracker sort-by versioning-style    
+      env:
+         FLOW_API_KEY: $(FLOW_API_KEY)
+
+```
+
+## Without using Tags, ordered by Git tree
+This way, you don’t use tags at all. Conviso Platform will use the Git tree to find the changes in your code.
+
+```yml
+trigger:
+  - master  
+jobs:
+- job: Conviso_Appsec_Deploy_Git_tree
+  pool:
+    vmImage: 'ubuntu-16.04'
+  container:
+    image: 'convisoappsec/convisocli'
+  variables:
+    FLOW_PROJECT_CODE: '<Project Key>'
+
+  steps:
+    - bash: |
+          conviso deploy create with values    
+      env:
+         FLOW_API_KEY: $(FLOW_API_KEY)
+```
+
+If you want to learn more about these ways of sending your code, [read this](https://docs.convisoappsec.com/guides/code-review-strategies) guide on Code Review Deploy Strategies.
+
+## How to Use Code Review, SAST and SCA Together
+You can use Conviso Platform to do Code Review, SAST and SCA; using all three together to make your applications more Secure in your CI/CD Pipeline
+
+Here is an example of a pipeline with all three features:
+
 
 ```yml
 trigger:
@@ -257,8 +263,16 @@ jobs:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-## Troubleshooting
 
-If authentication is not performed even by loading the FLOW_API_KEY variable, make sure it is loaded in the env session of all tasks that use the CLI.
+## Troubleshooting
+If you encounter authentication issues after loading the ```FLOW_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+
+## Support
+If you have any questions or need help using our product, please don't hesitate to contact our support team.
+
+## Resources
+By exploring our content, you'll find resources to help you to understand the benefits of the Conviso Platform integrations for Secure CI/CD Pipeline:
+
+[AppSec: Integrations with CI/CD tools through Conviso Platform](https://bit.ly/3ODN0jw): Follow this article to understand how we can integrate your main tools within a single platform.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
