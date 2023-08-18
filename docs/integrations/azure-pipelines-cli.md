@@ -7,7 +7,7 @@ keywords:  [Conviso Platform, Azure Pipelines]
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-pipelines.png)
+[![img](../../static/img/azure-pipelines.png 'Azure Pipelines')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -20,7 +20,7 @@ You can run the Conviso Platform AST (Application Security Testing), which offer
 
 This integration provides the **CLI as a Docker** image for executing tasks and establishing connections with the Conviso Platform.
 
-[Explore our Integration page to learn more and supercharge your Application Security Program with Conviso Platform.](https://bit.ly/3NzvomE)
+[Explore our Integration page to learn more and supercharge your Application Security Program with Conviso Platform.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 ## Prerequisites
 

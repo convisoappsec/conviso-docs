@@ -1,7 +1,9 @@
 ---
 id: integrations_intro
 title: Integrations Overview
+description: Conviso Platform seamlessly integrates with your current tools and workflows, enabling you to effortlessly enhance the security of your applications throughout the entire Secure Software Development Lifecycle (S-SDLC)
 sidebar_label: Overview
+keywords: [Integrations Conviso Platform]
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -13,6 +15,8 @@ sidebar_label: Overview
 ## Introduction
 
 Conviso Platform seamlessly integrates with your current tools and workflows, enabling you to effortlessly enhance the security of your applications throughout the entire Secure Software Development Lifecycle (S-SDLC).  
+
+[Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
  
 **This guide will walk you through various integration options with Conviso Platform:** 
 - [Single Sign-On (SSO)](#set-up-conviso-platform-single-sign-on-sso)
@@ -70,8 +74,6 @@ By integrating the Conviso Platform with your Defect Tracker tool, you can seaml
 * **[ClickUp](../integrations/clickup.md)**
 * **[Github](../integrations/github.md)**
 * **[Jira](../integrations/jira.md)**
-* **[Redmine](../integrations/redmine.md)**
-* **[ServiceNow](../integrations/servicenow.md)**
 * **[Trello](../integrations/trello.md)**
 
 ## Communication and Notification
