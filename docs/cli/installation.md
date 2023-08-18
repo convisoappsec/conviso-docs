@@ -16,6 +16,9 @@ You can use the CLI locally and also inside your CI/CD to be able to use the fol
 - Set policies to block the pipeline depending on different criteria;
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license).
 
+[Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+
 ## Install the Conviso CLI
 
 To use the CLI, install it and [authenticate](#authentication) your machine.

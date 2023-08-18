@@ -3,7 +3,7 @@ id: index
 title: Conviso Platform Docs, an ASPM platform
 sidebar_label: Getting Started
 description:   Here you will find all the details related to our tools, integrations and better usability of the Conviso Platform, an ASPM platform. Welcome!
-keywords: [ASPM platform]
+keywords: [ASPM platform, Conviso Platform]
 slug: /
 ---
 
@@ -13,7 +13,7 @@ Here you can find all the details related to our tools and integrations for [**C
 If this is your **first time accessing the platform**, we recommend checking out our [**Quickstart**](/quickstart/quickstart.md) documentation for step-by-step instructions on getting started. If you are interested in **collaborating with the documentation**, access this [**guide**](../docs/general/contributing.md).
 
 >
-Conviso Platform is a comprehensive AppSec management solution that empowers secure development for development teams. A detailed view of the software, associated application risks, and potential business impact supports the implementation and definition of a structured application security program. Consequently, it effectively advances secure development maturity without slowing down the pipeline.
+Conviso Platform is a comprehensive AppSec management solution that empowers secure development for development teams. A detailed view of the software, associated application risks, and potential business impact supports the implementation and definition of a structured application security program. 
 
 <div style={{textAlign: 'center' , maxWidth: '60%'}}>
 
