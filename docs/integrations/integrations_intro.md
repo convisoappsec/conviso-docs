@@ -1,8 +1,8 @@
 ---
 id: integrations_intro
-title: Integrations Overview
-description: Conviso Platform seamlessly integrates with your current tools and workflows, enabling you to effortlessly enhance the security of your applications throughout the entire Secure Software Development Lifecycle (S-SDLC)
-sidebar_label: Overview
+title: Integrations Conviso Platform
+description: Discover the integrations that Conviso Platform makes with your current tools and workflows, enabling you to enhance your secure software development lifecycle.
+sidebar_label: Integrations Conviso Platform
 keywords: [Integrations Conviso Platform]
 ---
 

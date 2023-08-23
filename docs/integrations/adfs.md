@@ -1,7 +1,9 @@
 ---
 id: adfs
-title: Active Directory Federation Services
+title: Integration ADFS
 sidebar_label: ADFS
+description:  The ADFS integration aims to increase user security on the platform. With this SSO feature, managers will have full control of who should have access to Conviso Platform.
+keywords: [Integration ADFS]
 ---
 
 ## Introduction
