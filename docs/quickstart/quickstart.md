@@ -4,6 +4,7 @@ title: First steps with the Conviso Platform
 sidebar_label: Quickstart
 description:  You are about to take your first steps with the Conviso Platform and start a new experience with secure development. Let's go!
 keywords:  [First steps with the Conviso Platform]
+image: '/static/img/quickstartseo.png'
 ---
 
 ## Introduction

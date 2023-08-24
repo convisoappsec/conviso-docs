@@ -4,6 +4,7 @@ title: Getting started with Conviso API GraphQL
 sidebar_label: Getting started with Conviso API GraphQL
 description:  Using the Conviso API GraphQL, you can seamlessly integrate the Conviso Platform with your development infrastructure to perform Application Security activities.
 keywords:   [Conviso API GraphQL]
+image: '/static/img/apigraphqlseo.png'
 
 ---
 

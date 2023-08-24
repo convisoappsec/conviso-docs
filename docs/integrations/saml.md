@@ -4,6 +4,7 @@ title: SAML Integration
 sidebar_label: SAML 2.0
 description: Learn how to configure any SSO authentication provider to use the SAML 2.0 protocol on the Conviso Platform.
 keywords: [SAML Integration]
+image: '/static/img/samlintegrationseo.png'
 ---
 
 <div style={{textAlign: 'center'}}>

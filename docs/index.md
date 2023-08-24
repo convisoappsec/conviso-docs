@@ -4,7 +4,7 @@ title: Conviso Platform Docs, an ASPM platform
 sidebar_label: Getting Started
 description:   Here you will find all the details related to our tools, integrations and better usability of the Conviso Platform, an ASPM platform. Welcome!
 keywords: [ASPM platform, Conviso Platform]
-image: '/static/img/adfs-img1.png'
+image: '/static/img/indexseo.png'
 slug: /
 ---
 

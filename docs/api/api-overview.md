@@ -4,6 +4,7 @@ title: Conviso API Overview
 sidebar_label: Conviso API Overview
 description:  Conviso's API supports seamless integration with existing tools and processes, enabling developers to customize security automation to their workflows for a consistent experience. Get to know!
 keywords:  [Conviso API Overview]
+image: '/static/img/apioverviewseo.png'
 ---
 
 ## Introduction

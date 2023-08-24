@@ -4,6 +4,7 @@ title: LDAP Integration
 sidebar_label: LDAP
 description:  The LDAP integration aims to increase the security of users on the platform. With this feature enabled, managers will have full control of who should have access to Conviso Platform.
 keywords: [LDAP Integration]
+image: '/static/img/ldapintegrationseo.png'
 ---
 
 ## Introduction

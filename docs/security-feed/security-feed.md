@@ -4,6 +4,7 @@ title: Explore Your Security Feed for Real-Time AppSec Insights
 sidebar_label: Security Feed
 description: Explore the Security Feed of the Conviso Platform for real-time insights on application security. Stay informed about pending vulnerabilities, recent deploys, and overall risk scores.
 keywords: [Security Feed, Conviso Platform, real-time appsec insights, application security, overall risk score, ASPM, proactive risk management]
+image: '/static/img/securityfeedseo.png'
 
 ---
 ## Introduction

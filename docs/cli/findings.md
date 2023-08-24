@@ -4,6 +4,7 @@ title: Importing the scan results of a SARIF file
 sidebar_label: Importing the scan results of a SARIF file
 description:  The Conviso platform CLI allows importing results from a SARIF file. This can be useful for tracking and managing security vulnerabilities and other issues. Know more!
 keywords:  [Sarif]
+image: '/static/img/clisarifseo.png'
 ---
 
 ## Introduction

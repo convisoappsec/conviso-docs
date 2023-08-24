@@ -4,6 +4,7 @@ title: Getting started with the Conviso CLI
 sidebar_label: Getting started
 description:  The CLI is a command line interface tool for interacting with the Conviso Platform bringing functionality into your development workflow. Learn more about!
 keywords: [Conviso CLI]
+image: '/static/img/cliinstallationseo.png'
 ---
 
 ## Introduction

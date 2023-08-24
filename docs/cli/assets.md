@@ -4,6 +4,7 @@ title: Creating assets with the CLI
 sidebar_label: Creating assets with the CLI
 description: The Conviso CLI allows you to create and list assets of your company registered on the Conviso Platform. Learn how! 
 keywords: [assets with the Conviso Platform CLI]
+image: '/static/img/cliassetsseo.png'
 ---
 
 ## Introduction

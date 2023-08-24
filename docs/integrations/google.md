@@ -4,7 +4,7 @@ title: Google Integration
 sidebar_label: Google
 description: The Google integration aims to increase user security on the platform. With this SSO feature, managers will have full control of who should have access to the Conviso Platform.
 keywords:  [Google Integration]
-
+image: '/static/img/googleseo.png'
 ---
 
 ## Introduction

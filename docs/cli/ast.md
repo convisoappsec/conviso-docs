@@ -4,6 +4,7 @@ title: Scan projects using the Conviso CLI
 sidebar_label: Scan projects using the CLI
 description:  Protect your code from security threats with our AST (Application Security Testing) using Conviso CLI. Know more about!
 keywords:  [Scan projects using the Conviso Platform CLI]
+image: '/static/img/cliastseo.png'
 ---
 
 ### Introduction

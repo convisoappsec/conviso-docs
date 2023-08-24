@@ -1,10 +1,10 @@
 ---
 id: aws-codebuild
 title: AWS Codebuild
-sidebar_label: AWS Codebuild
+sidebar_label: AWS CodeBuild Integration
 description:  Learn how to configure AWS CodeBuild integration with Conviso Platform, integrating your pipeline in the best way.
 keywords: [AWS CodeBuild Integration]
-
+image: '/static/img/awscodeseo.png'
 ---
 
 <div style={{textAlign: 'center'}}>
