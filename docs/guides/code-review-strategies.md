@@ -2,6 +2,8 @@
 id: code-review-strategies
 title: Code Review Deploy Strategies
 sidebar_label: Code Review Deploy Strategies
+description: There are three different ways to submit Deploy to Code Review. Find out which strategy best suits your repository.
+keywords: [Code Review Strategies]
 ---
 
 ## Introduction

@@ -1,8 +1,8 @@
 ---
 id: azure-pipelines-cli
-title:  Integrating Conviso Platform into Azure Pipelines 
-description:  Learn how to seamlessly integrate the Conviso Platform into your Azure Pipelines to automate security processes, conduct thorough security assessments, and implement Code Review, SAST, and SCA.
-keywords:  [Conviso Platform, Azure Pipelines]
+title:  Azure Pipelines Integration
+description:  Integrate the Conviso Platform seamlessly into your Azure DevOps Pipelines to automate and streamline your security processes. Discover!
+keywords:  [Azure Pipelines Integration]
 ---
 
 <div style={{textAlign: 'center'}}>

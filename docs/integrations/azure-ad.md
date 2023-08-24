@@ -2,6 +2,8 @@
 id: azure-ad
 title: Azure Active Directory SSO
 sidebar_label: Azure Active Directory SSO
+description:  The Active Directory integration in the Conviso Platform simplifies user management for enterprise customers. Know more!
+keywords: [Active Directory]
 ---
 
 ## Introduction
@@ -46,7 +48,7 @@ To install the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-ad-img2.png)
+[![img](../../static/img/azure-ad-img2.png "Azure platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -60,7 +62,7 @@ To install the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-ad-img3.png)
+[![img](../../static/img/azure-ad-img3.png "Azure platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -68,7 +70,7 @@ To install the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-![img](../../static/img/azure-ad-img4.png)
+[![img](../../static/img/azure-ad-img4.png "Azure platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -76,7 +78,7 @@ To install the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '80%'}}>
 
-![img](../../static/img/azure-ad-img5.png)
+[![img](../../static/img/azure-ad-img5.png "Azure platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -93,7 +95,7 @@ To set up the Conviso Platform, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-ad-img6.png)
+[![img](../../static/img/azure-ad-img6.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -102,7 +104,7 @@ To set up the Conviso Platform, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '60%'}}>
 
-![img](../../static/img/azure-ad-img7.png)
+[![img](../../static/img/azure-ad-img7.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -115,7 +117,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-ad-img8.png)
+[![img](../../static/img/azure-ad-img8.png "Azure platform - enterprise applications.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -123,7 +125,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '50%'}}>
 
-![img](../../static/img/azure-ad-img9.png)
+[![img](../../static/img/azure-ad-img9.png "Azure platform - overview.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -131,7 +133,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '50%'}}>
 
-![img](../../static/img/azure-ad-img10.png)
+[![img](../../static/img/azure-ad-img10.png "Azure platform - SSO.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
@@ -139,7 +141,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-ad-img11.png)
+[![img](../../static/img/azure-ad-img11.png "Azure platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
