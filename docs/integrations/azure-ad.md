@@ -4,6 +4,7 @@ title: Azure Active Directory SSO
 sidebar_label: Azure Active Directory SSO
 description:  The Active Directory integration in the Conviso Platform simplifies user management for enterprise customers. Know more!
 keywords: [Active Directory]
+image: '/static/img/azureadseo.png'
 ---
 
 ## Introduction

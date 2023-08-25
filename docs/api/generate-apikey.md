@@ -3,7 +3,8 @@ id: generate-apikey
 title:  Generate Conviso API Key
 sidebar_label:  Generate Conviso API Key
 description:  To perform activities with Conviso CLI, Conviso Platform Integrations and also Conviso API, it is important to generate an Conviso API Key to authenticate your user. Learn how!
-keywords:  [Conviso API Key] 
+keywords:  [Conviso API Key]
+image: '/static/img/generateapikeyseo.png'
 ---
 
 ## Introduction

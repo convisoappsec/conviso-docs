@@ -3,6 +3,7 @@ id: azure-pipelines-cli
 title:  Azure Pipelines Integration
 description:  Integrate the Conviso Platform seamlessly into your Azure DevOps Pipelines to automate and streamline your security processes. Discover!
 keywords:  [Azure Pipelines Integration]
+image: '/static/img/azurepipelinesseo.png'
 ---
 
 <div style={{textAlign: 'center'}}>

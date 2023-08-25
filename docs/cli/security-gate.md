@@ -3,7 +3,8 @@ id: security-gate
 title: CI/CD Pipeline Security Control with Security Gate
 sidebar_label: CI/CD Pipeline Security Control with Security Gate
 description:  With Conviso CLI's Security Gate feature, you can set vulnerability policies and if those policies are not being met, learn more!
-keywords:  [CI/CD Pipeline Security Control] 
+keywords:  [CI/CD Pipeline Security Control]
+image: '/static/img/securitygateseo.png'
 ---
 
 ## Introduction

@@ -4,6 +4,7 @@ title: Integrations Conviso Platform
 description: Discover the integrations that Conviso Platform makes with your current tools and workflows, enabling you to enhance your secure software development lifecycle.
 sidebar_label: Integrations Conviso Platform
 keywords: [Integrations Conviso Platform]
+image: '/static/img/integrationsoverviewseo.png'
 ---
 
 <div style={{textAlign: 'center'}}>
