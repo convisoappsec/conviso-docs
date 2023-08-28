@@ -8,11 +8,11 @@ module.exports = {
       label: 'Quickstart',
       id: 'quickstart/quickstart',
     },
-    {
-      type: 'doc',
-      label: 'Security Feed',
-      id: 'security-feed/security-feed',
-    },
+    //{
+      //type: 'doc',
+      //label: 'Security Feed',
+      //id: 'security-feed/security-feed',
+    //},
     {
       type: "category",
       label: "API",
