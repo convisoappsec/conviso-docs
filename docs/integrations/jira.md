@@ -67,38 +67,38 @@ Follow the instructions below to complete the integration setup.
 
 [![img](../../static/img/jira-img3.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 5** - Then, enter all **Jira** information in the fields requested by [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826), as demonstrated in the initial integration setup section.
+**Step 4** - Then, enter all **Jira** information in the fields requested by [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826), as demonstrated in the initial integration setup section.
 
 [![img](../../static/img/jira-img4.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 **Note:** The Verify SSL checkbox must be checked only if the certificate associated with Jira is issued by a Public Certificate Authority. For Private CAs or self-signed certificates, use https:// at the site address URL and leave this box unchecked.
 
-**Step 6 - Severity Mapping** refers to Jira's two-way integration with Conviso Platform. Select which severity will be referenced to Jira's priority:
+**Step 5 - Severity Mapping** refers to Jira's two-way integration with Conviso Platform. Select which severity will be referenced to Jira's priority:
 
 [![img](../../static/img/jira-img5.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 
-**Step 7 -** Then, in **Configuration**, click on the **Add** button to start pairing Conviso Platform Projects with **Jira Projects:**
+**Step 6 -** Then, in **Configuration**, click on the **Add** button to start pairing Conviso Platform Projects with **Jira Projects:**
 
 [![img](../../static/img/jira-img6.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 
-**Step 8 -** At the drop-down list **New Project Documentation**, select the **Conviso Platform Project** you want to associate with your **Jira Project**, which will be chosen at the Jira Project drop-down list . You can also perform **Issue** and **status configuration**.
+**Step 7 -** At the drop-down list **New Project Documentation**, select the **Conviso Platform Project** you want to associate with your **Jira Project**, which will be chosen at the Jira Project drop-down list . You can also perform **Issue** and **status configuration**.
 
 [![img](../../static/img/jira-img8.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 
-**Step 9 -** After mapping all Conviso Platform statuses to Jira statuses, click on the** Save button**.
+**Step 8 -** After mapping all Conviso Platform statuses to Jira statuses, click on the** Save button**.
 
-**Step 10 -** Click on the **Check Integration Connection** button to check if the platform connects with Jira server. If the connection is successful you will see the following message:
+**Step 9 -** Click on the **Check Integration Connection** button to check if the platform connects with Jira server. If the connection is successful you will see the following message:
 
 [![img](../../static/img/jira-img7.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 11** - After saving your integration configuration, you may want to review, modify or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right:
+**Step 10** - After saving your integration configuration, you may want to review, modify or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right:
 
 [![img](../../static/img/jira-img9.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 12** - Whenever a new vulnerability is detected, it is automatically sent to the project in Jira, as shown in the image below:
+**Step 11** - Whenever a new vulnerability is detected, it is automatically sent to the project in Jira, as shown in the image below:
 
 [![img](../../static/img/jira-img10.png  'A clipping of a Jira platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
