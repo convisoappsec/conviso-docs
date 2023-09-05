@@ -18,7 +18,7 @@ module.exports = {
       },
       items: [],
     },
-    image: 'static/img/indexseo.png',
+    image: 'img/indexseo.png',
 
     footer: {
       links: [
