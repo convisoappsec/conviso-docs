@@ -1,7 +1,9 @@
 ---
 id: bitbucket-pipelines
-title: Bitbucket Pipelines
+title: Bitbucket Pipelines Integration
 sidebar_label: Bitbucket Pipelines
+description:  Bitbucket Pipelines integration with Conviso Platform allows direct integration with the development pipeline without impacting your business. Know more!
+keywords:  [Bitbucket Pipelines Integration]
 ---
 
 <div style={{textAlign: 'center'}}>

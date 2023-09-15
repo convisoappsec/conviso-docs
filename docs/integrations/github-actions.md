@@ -1,8 +1,8 @@
 ---
 id: github-actions
 title:  Integrating Conviso Platform with Github Actions 
-sidebar_label: Github Actions
-description:  Learn how to seamlessly integrate the Conviso Platform into your pipeline to automate security processes, conduct thorough security assessments, and implement Code Review, SAST, and SCA.
+sidebar_label: Githubs Action Integration
+description:  With the Conviso platform integrated with Github Actions in your CI/CD pipeline, you can automate and streamline your security processes. Know more!
 keywords: [Github Actions]
 ---
 
