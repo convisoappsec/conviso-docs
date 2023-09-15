@@ -1,7 +1,9 @@
 ---
 id: gitlab
-title: GitLab
-sidebar_label: GitLab
+title: Gitlab Integration
+sidebar_label: Gitlab
+description:  You can automate and streamline your security processes with the Conviso Platform integrated into your Gitlab Secure CI/CD Pipeline. Know more!
+keywords:  [Gitlab Integration] 
 ---
 
 <div style={{textAlign: 'center'}}>

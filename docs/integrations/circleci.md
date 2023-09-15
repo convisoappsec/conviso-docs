@@ -1,7 +1,9 @@
 ---
 id: circleci
-title: CircleCI
+title: CircleCI Integration
 sidebar_label: CircleCI
+description:  Integration with Conviso Platform takes advantage of CircleCI's native Docker support; learn how to run it!
+keywords:  [CircleCI Integration]
 ---
 <div style={{textAlign: 'center'}}>
 

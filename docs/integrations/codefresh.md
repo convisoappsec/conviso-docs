@@ -2,6 +2,8 @@
 id: codefresh
 title: Codefresh
 sidebar_label: Codefresh
+description: The Codefresh integration with Conviso is only compatible with Hybrid or fully on-premise environments. Know how to execute it.
+keywords:  [Codefresh Integration]
 ---
 
 <div style={{textAlign: 'center'}}>

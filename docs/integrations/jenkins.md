@@ -1,7 +1,9 @@
 ---
 id: jenkins
-title: Jenkins
+title: Jenkins Integration
 sidebar_label: Jenkins
+description: Learn how to integrate Jenkins with the Conviso Platform, centralizing all information in a single place.
+keywords:  [Jenkins Integration]
 ---
 
 <div style={{textAlign: 'center'}}>

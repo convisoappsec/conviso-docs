@@ -1,8 +1,8 @@
 ---
 id: jenkins-single-pipeline
-title: Jenkins Single Pipeline for Multiple Repositories using Webhooks
+title: Jenkins Single Pipeline
 sidebar_label: Jenkins Single Pipeline for Multiple Repositories using Webhooks
-description: Jenkins Single Pipeline for Multiple Repositories using Webhooks
+description:  Integration with the Conviso Platform addresses the creation of a single pipeline that serves multiple repositories, find out how to do it.
 keywords: [Jenkins Single Pipeline]
 ---
 
