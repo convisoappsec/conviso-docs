@@ -1,6 +1,6 @@
 ---
 id: codefresh
-title: Codefresh
+title: Codefresh Integration
 sidebar_label: Codefresh
 description: The Codefresh integration with Conviso is only compatible with Hybrid or fully on-premise environments. Know how to execute it.
 keywords:  [Codefresh Integration]
