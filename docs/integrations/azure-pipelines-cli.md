@@ -71,7 +71,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_AST
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -96,7 +96,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_Custom_Sast
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -119,7 +119,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_Sast
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -141,7 +141,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_Sca
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -167,7 +167,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_Deploy_Tags_Time
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -189,7 +189,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_Deploy_Tags_version_style
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -212,7 +212,7 @@ trigger:
 jobs:
 - job: Conviso_Appsec_Deploy_Git_tree
   pool:
-    vmImage: 'ubuntu-16.04'
+    vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
   variables:
@@ -226,45 +226,6 @@ jobs:
 ```
 
 If you want to learn more about these ways of sending your code, [read this](https://docs.convisoappsec.com/guides/code-review-strategies) guide on Code Review Deploy Strategies.
-
-## How to Use Code Review, SAST and SCA Together
-You can use Conviso Platform to do Code Review, SAST and SCA; using all three together to make your applications more Secure in your CI/CD Pipeline
-
-Here is an example of a pipeline with all three features:
-
-
-```yml
-trigger:
-  - master  
-jobs:
-- job: Conviso_Appsec_Job_Full
-  pool:
-    vmImage: 'ubuntu-16.04'
-  container:
-    image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: 'Kt5p5zKb_zbth0o0'
-
-  steps:
-    - bash: |
-          conviso deploy create -f env_vars with values > created_deploy_vars    
-      env:
-         FLOW_API_KEY: $(FLOW_API_KEY)    
-    - bash: |
-          cat created_deploy_vars
-    - bash: |
-          source created_deploy_vars
-          conviso sast run \
-            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
-      env:
-         FLOW_API_KEY: $(FLOW_API_KEY)
-    - bash: | 
-         conviso sca run
-      env:
-         FLOW_API_KEY: $(FLOW_API_KEY)
-```
-
 
 ## Troubleshooting
 If you encounter authentication issues after loading the ```FLOW_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.

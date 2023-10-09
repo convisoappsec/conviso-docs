@@ -1,7 +1,9 @@
 ---
 id: aqua
-title: Aqua
+title: Aqua Integration
+description: This integration allows the import of vulnerabilities found in Aqua to the Conviso Platform, enhancing vulnerability management.
 sidebar_label: Aqua
+keywords:  [Aqua Integration]
 ---
 
 <div style={{textAlign: 'center'}}>

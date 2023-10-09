@@ -91,7 +91,6 @@ This integration enables the platform to identify and mitigate risks in your sof
 
 Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
 * **[Amazon Inspector](../integrations/amazon-inspector.md)**
-* **[Checkmarx](../integrations/checkmarx.md)**
 * **[Dynamic Application Security Testing (DAST)](../integrations/dast.md)**
 * **[Fortify](../integrations/fortify.md)**
 * **[Nessus](../integrations/nessus.md)**

@@ -1,7 +1,9 @@
 ---
 id: azure-pipelines-graph
-title: Azure Pipelines Graph Mode
+title: Azure Pipelines Graph Mode Integration
 sidebar_label: Azure Pipelines Graph Mode
+description:  Azure Pipelines is a CI/CD module of the Azure DevOps platform; learn how to integrate tasks with the Conviso Platform.
+keywords:   [Azure Pipelines Graph Mode Integration]
 ---
 
 <div style={{textAlign: 'center'}}>

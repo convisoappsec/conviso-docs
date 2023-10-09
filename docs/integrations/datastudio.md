@@ -1,9 +1,9 @@
 ---
 id: datastudio
-title: Google Looker Studio
+title: Google Looker Studio Integration
 sidebar_label: Google Looker Studio
-description: Learn how to integrate the Conviso Platform with Google Looker Studio, streamlining your Application Security Program with seamless data access and insights
-keywords: [Google Looker Studio, Business Intelligence tool, Customized reports, Data analysis, BI platform integration, Conviso Platform integration]
+description:  This document provides instructions on integrating the Conviso Platform with Google Looker Studio, a solution for business intelligence integration.
+keywords: [Google Looker Studio]
 
 ---
 
