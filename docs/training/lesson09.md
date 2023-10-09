@@ -1,7 +1,7 @@
 ---
 id: lesson09
-title: Lesson 09 - OWASP Top 10 2017 - A5:2017-Broken Access Control
-sidebar_label: Lesson 09 - OWASP Top 10 2017 - A5:2017-Broken Access Control
+title: A5:2017-Broken Access Control
+sidebar_label: A5:2017-Broken Access Control
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

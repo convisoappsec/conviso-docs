@@ -1,7 +1,7 @@
 ---
 id: lesson08
-title: Lesson 08 - OWASP Top 10 2017 - A4:2017-XML External Entities (XXE)
-sidebar_label: Lesson 08 - OWASP Top 10 2017 - A4:2017-XML External Entities (XXE)
+title: A4:2017-XML External Entities (XXE)
+sidebar_label: A4:2017-XML External Entities (XXE)
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

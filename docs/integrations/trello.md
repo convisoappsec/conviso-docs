@@ -40,7 +40,7 @@ Log in to Trello using your Atlassian account. Next, click on your user icon at 
 
 </div>
 
-Next, while still logged in, open this link at [Trello](https://trello.com/app-key/). Read and accept the Trello Developer Terms and click on the **Show API Key** button:
+Next, while still logged in, click on the **Show API Key** button:
 
 <div style={{textAlign: 'center'}}>
 

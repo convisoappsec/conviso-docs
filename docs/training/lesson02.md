@@ -1,7 +1,7 @@
 ---
 id: lesson02
-title: Lesson 02 - Risk Overview
-sidebar_label: Lesson 02 - Risk Overview
+title: Risk Overview
+sidebar_label: Risk Overview
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

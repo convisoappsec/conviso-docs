@@ -1,7 +1,7 @@
 ---
 id: lesson06
-title: Lesson 06 - OWASP Top 10 2017 - A2:2017-Broken Authentication
-sidebar_label: Lesson 06 - OWASP Top 10 2017 - A2:2017-Broken Authentication
+title: A2:2017-Broken Authentication
+sidebar_label: A2:2017-Broken Authentication
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

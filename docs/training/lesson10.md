@@ -1,7 +1,7 @@
 ---
 id: lesson10
-title: Lesson 10 - OWASP Top 10 2017 - A6:2017-Security Misconfiguration
-sidebar_label: Lesson 10 - OWASP Top 10 2017 - A6:2017-Security Misconfiguration
+title: A6:2017-Security Misconfiguration
+sidebar_label: A6:2017-Security Misconfiguration
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

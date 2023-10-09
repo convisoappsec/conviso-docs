@@ -11,7 +11,7 @@ sidebar_label: Veracode
 </div>
 
 :::note
-First time using Veracode? Please refer to the [following documentation](https://docs.veracode.com/r/all_HC)
+First time using Veracode? Please refer to the [following documentation](https://docs.veracode.com/)
 :::
 
 ## Introduction

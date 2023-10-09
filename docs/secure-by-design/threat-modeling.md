@@ -15,7 +15,7 @@ The purpose of Threat Modeling, on which the Secure by Design product is based, 
 It's an essential approach for developers, as it helps to develop more secure applications, reducing rework and avoiding errors in the code.
 
 ### Prerequisite
-To access Secure by Design, it is necessary to initiate a contract for using this product, [see here to contact the responsible team.](https://www.convisoappsec.com/products/people-culture)
+To access Secure by Design, it is necessary to initiate a contract for using this product, [see here to contact the responsible team.](https://www.convisoappsec.com/)
 
 ## Usage
 To access, click on the "Secure by Design" option in the left menu. In this first moment, let's get to know the Threat Modeling process by clicking on the "Threat Modeling" suboption:

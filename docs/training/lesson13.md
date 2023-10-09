@@ -1,7 +1,7 @@
 ---
 id: lesson13
-title: Lesson 13 - OWASP Top 10 2017 - A9:2017-Using Components with Known Vulnerabilities
-sidebar_label: Lesson 13 - OWASP Top 10 2017 - A9:2017-Using Components with Known Vulnerabilities
+title: A9:2017-Using Components with Known Vulnerabilities
+sidebar_label: A9:2017-Using Components with Known Vulnerabilities
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

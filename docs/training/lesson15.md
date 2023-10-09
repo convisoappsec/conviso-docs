@@ -1,7 +1,7 @@
 ---
 id: lesson15
-title: Lesson 15 - Application Security Tests
-sidebar_label: Lesson 15 - Application Security Tests
+title: Application Security Tests
+sidebar_label: Application Security Tests
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.
