@@ -2,120 +2,106 @@
 id: slack
 title: Slack
 sidebar_label: Slack
+description: With Conviso Platform integrated with Slack, you can monitor your security activities and get notified of any issues in real-time.
+keywords: [Slack integration]
 ---
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/slack.png)
+[![img](../../static/img/slack.png 'Slack Integration')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
 ## Introduction
 
-The integration of Conviso Platform with the Slack tool aims to help monitor those who are managing activities and don't want to miss anything at the timeline. This integration generates 3 types of alerts directly in the channel of the development team or the manager, with the benefits listed below:
+With Conviso Platform integrated with **[Slack](https://slack.com/intl/pt-br)**, you can monitor your security activities and get notified of any issues in real-time. This integration offers the following benefits:
 
-1. When comments/questions are added in the Security Experts tab of a project, an alert is generated directly in the Slack channel;
+1. You can receive alerts in your Slack channel when comments or questions are added to the Security Experts chat, whether it’s about a project or a vulnerability. This helps you collaborate with the security experts and get feedback on your code.
+2. You can also receive alerts when Conviso Platform identifies a new vulnerability. This helps you prioritize and fix the most critical issues immediately.
+3. You can customize the alerts to suit your preferences and needs. You can choose which channel to receive the alerts, which types to turn on or off, and how often to receive them.
 
-2. When comments/questions are added to the vulnerability Security Experts tab;
+### Prerequisites
 
-3. When a new vulnerability is identified.
+The following prerequisites are necessary:
 
-## Conviso Platform integration with Slack
+* You must have **Workspace Admin** privileges on **Slack** to create this integration.
 
-In this guide, we will integrate Conviso Platform with Slack, so that you can receive notification of each action taken in Conviso Platform. 
+## Usage
 
-:::note
-You must have Workspace Admin privileges on Slack in order to create this integration.
-:::
+In this step-by-step guide, we will walk you through the process of integrating Slack with Conviso Platform for seamless notifications:
+* **[Step 1: Create a Slack App](#step-1-create-a-slack-app)**
+* **[Step 2: Configure Incoming Webhooks](#step-2-configure-incoming-webhooks)**
+* **[Step 3: Configure Conviso Platform](#step-3-configure-conviso-platform)**
 
-First, we need to create an "App" in Slack. Click on [Create App](https://api.slack.com/apps/new) to open the following screen, then select the **From Scratch** option:
+## Step 1: Create a Slack App
 
-<div style={{textAlign: 'center'}}>
+1 - Navigate to the **[Slack website](https://slack.com/intl/pt-br)** and log in to your workspace.
 
-![img](../../static/img/slack-img1.png)
+2 - Click on “**[Create App](https://api.slack.com/apps/new)**” to open the following screen, then select the “**From Scratch**” option:
 
-</div>
+[![img](../../static/img/slack1.png 'A screenshot of the Slack website showing a button labeled “Create App” and a pop-up window with two options: “From an app manifest” and “From scratch')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-A new floating window will open. Label the new application as you wish. At the **App Name** field and select your Workspace where you want to create your application, from the drop-down list at **Pick a workspace to develop your app in** option. When done, click at the **Create App** button:
+3 - Enter a name for your app in the "**App Name**" field and select your desired workspace from the drop-down list.
 
-<div style={{textAlign: 'center'}}>
+4 - When done, click on the “**Create App**” button:
 
-![img](../../static/img/slack-img2.png)
+[![img](../../static/img/slack2.png 'A screenshot of the pop-up window showing an input field for the app name and a drop-down list for the workspace selection.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-</div>
 
-The following screen will be shown. Select the **Incoming Webhooks** card to continue:
+## Step 2: Configure Incoming Webhooks
 
-<div style={{textAlign: 'center'}}>
+1 - You'll be presented with various features after creating the app. Select the "**Incoming Webhooks**" card to continue:
 
-![img](../../static/img/slack-img3.png)
+[![img](../../static/img/slack3.png 'A screenshot of the Slack website showing a dashboard for the app with different cards for features such as “Incoming Webhooks”, “Slash Commands”, “OAuth & Permissions”, etc.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-</div>
+2 - Turn on the switch labeled "**Activate Incoming Webhooks**" to enable this feature:*
 
-At the **Incoming Webhooks** screen, turn on the switch next to the **Activate Incoming Webhooks**:
+[![img](../../static/img/slack4.png 'A screenshot of the Slack website showing the Incoming Webhooks screen with a toggle switch labeled “Activate Incoming Webhooks')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-<div style={{textAlign: 'center'}}>
+3 - The card will expand, revealing the "**Webhook URLs for your Workspace**" section. Click "**Add New Webhook to Workspace**" to proceed:
 
-![img](../../static/img/slack-img4.png)
+[![img](../../static/img/slack5.png 'A screenshot of the Slack website showing the expanded Incoming Webhooks card with a button labeled “Add New Webhook to Workspace')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-</div>
+4 - In the next screen, choose the channel or user where you want to receive incoming messages.  After selecting the desired channel, click on the “**Allow**” button:
 
-The card will be expanded, now showing the **Webhook URLs for your Workspace** section. Click at the button **Add New Webhook to Workspace** to continue:
+[![img](../../static/img/slack6.png 'A screenshot of the Slack website showing a screen with a drop-down list for choosing a channel or user and a button labeled “Allow')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-<div style={{textAlign: 'center'}}>
+5 - You will be redirected to the Incoming Webhooks screen, where the Webhook URL will now be visible. Click the "**Copy**" button to copy the URL to your clipboard.
 
-![img](../../static/img/slack-img4a.png)
+[![img](../../static/img/slack7.png 'A screenshot of the Slack website showing the Incoming Webhooks screen with a text field containing a webhook URL and a button labeled “Copy”.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-</div>
+## Step 3: Configure Conviso Platform
 
-A new screen will be shown. At the drop-down list, select the channel (or user) you want to receive the incoming messages. After selecting the desired channel, click on the **Allow** button :
+1 - Open the Conviso Platform and navigate to the "**Integrations**" **(1)** section in the left menu. Select **"Notifications" (2)** from the right panel. Click the **"Configure" (3)** button to set up the Slack integration:
 
-<div style={{textAlign: 'center'}}>
+[![img](../../static/img/slack8.png 'A screenshot of Conviso Platform showing a menu with options such as “Dashboard”, “Projects”, “Integrations”, etc. and a panel with options such as “Notifications”, “Scanners”, etc. The Integrations menu option, Notifications panel option, and Configure button are highlighted.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-![img](../../static/img/slack-img5.png)
+2 - In the floating window that appears, paste the previously copied Slack Webhook URL into the appropriate field. Click the "**Save**" button to save your configuration.
 
-</div>
+[![img](../../static/img/slack9.png 'A screenshot of Conviso Platform showing a floating window with a text field for entering a slack webhook URL and a button labeled “Save”.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-The **Incoming Webhooks** screen will be shown again, now with the **Webhook URL** already filled in. Click on the **Copy** button to copy the webhook URL to your clipboard:
+3 - After completing the integration, you can test it by adding a comment in your project's "**Security Experts**" tab within the Conviso Platform.
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/slack-img6.png)
-
-</div>
-
-At the Conviso Platform, Click on **Integrations** at the left menu, then click on **Notifications** at the right panel and then click on the **Configure** button:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/slack-img7.png)
-
-</div>
-
-At the floating window shown, paste the previously copied webhook URL at the **Slack Webhook** field and click on the **Save** button to store your configuration:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/slack-img8.png)
-
-</div>
-
-After finishing the integration, we can add a test comment in the Security Experts tab of the Project, and a notification will be generated in the Slack channel with the same message added in Conviso Platform, as shown below:
+A notification will be generated in your Slack channel, mirroring the message added in the Conviso Platform.
 
 **Slack Comments:**
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/slack-img9.png)
-
-</div>
+[![img](../../static/img/slack10.png 'A screenshot of Slack showing a message from Conviso Platform about comments added by security experts in different projects and vulnerabilities.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 **Vulnerability Identified:**
 
-<div style={{textAlign: 'center'}}>
+[![img](../../static/img/slack11.png 'A screenshot of Slack showing a message from Conviso Platform about new vulnerabilities detected in different projects.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-![img](../../static/img/slack-img10.png)
+Now, you can seamlessly streamline communication and collaboration between the Conviso Platform and Slack.
 
-</div>
+## Support
+
+If you have any questions or need help using our product, please don't hesitate to contact our support team.
+
+## Resources
+
+By exploring our content, you'll find resources to help you to understand the benefits of Communication in DevSecOps:
+
+[The importance of Communication in DevSecOps](https://bit.ly/46m6jnB): Like any group of people, DevSecOps teams need to establish clear and assertive information exchange to perform their tasks to the best of their ability.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
