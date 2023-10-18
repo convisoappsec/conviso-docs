@@ -200,15 +200,6 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Onpremises",
-      items: [
-        'onpremises/overview',
-        //'onpremises/installation',
-        //'onpremises/configuration'
-      ],
-    },
-    {
-      type: "category",
       label: "Secure by Design",
       items: [
         'secure-by-design/overview',
