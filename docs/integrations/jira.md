@@ -179,7 +179,7 @@ Edit the Jira integration configuration and map the Conviso Platform fields to t
 
 To access the webhooks configuration in Jira, you can follow these steps:
 
-Open your web browser and enter the following URL: **https://YOUR_SPACE_NAME.atlassian.net/plugins/servlet/webhooks#**
+Open your web browser and enter the following URL: **https:// "[YOUR_SPACE_NAME]" .atlassian.net/plugins/servlet/webhooks#**
 
 **Note:** Replace YOUR_SPACE_NAME with the actual name of your Jira space.
 [![img](../../static/img/jira-img19.png  'A clipping of a Jira platform screen in the Webhook.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

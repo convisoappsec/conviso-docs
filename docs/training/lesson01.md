@@ -1,7 +1,7 @@
 ---
 id: lesson01
-title: Lesson 01 - Basic Concepts
-sidebar_label: Lesson 01 - Basic Concepts
+title: Basic Concepts
+sidebar_label: Basic Concepts
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

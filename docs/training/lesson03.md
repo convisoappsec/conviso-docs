@@ -1,7 +1,7 @@
 ---
 id: lesson03
-title: Lesson 03 - Threat Modeling
-sidebar_label: Lesson 03 - Threat Modeling
+title: Threat Modeling
+sidebar_label: Threat Modeling
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.
