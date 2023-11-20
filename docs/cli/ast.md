@@ -20,7 +20,6 @@ To trigger this function is very simple, one of the methods is to export the set
 
 ```bash
 export FLOW_API_KEY='your-api-key'
-export FLOW_PROJECT_CODE='your-project-code'
 cd your_source_code_repository
 conviso ast run
 ```
@@ -29,7 +28,6 @@ Or if you prefer to do it in a single command, the instructions below have the s
 
 ```bash
 conviso --api-key 'your-api-key' ast run \
-  --project-code 'your-project-code' \
   --repository-dir 'your_source_code_repository_path'
 ```
 
@@ -58,7 +56,6 @@ As an additional custom configuration of the Conviso CLI, it’s possible to per
 
 ```bash
 export FLOW_API_KEY='your-api-key'
-export FLOW_PROJECT_CODE='your-project-code'
 cd your_source_code_repository
 conviso sast run
 ```
