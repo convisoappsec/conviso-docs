@@ -39,7 +39,7 @@ Before using Conviso Platform with Azure Pipelines, you must ensure that:
 [![img](../../static/img/azure-pipelines1.png) 'Azure Pipelines page for “create a new pipeline')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 </div>
 
-3. Set two environment variables for the runner: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE```. These codes specify the project and account on the Conviso Platform. To set a variable for a build pipeline:
+3. Set two environment variable for the runner: ```FLOW_API_KEY```. Set API-KEY as an environment variable in the pipeline:
 * Go to the **Pipelines** page, select the relevant pipeline, and click "**Edit**."
 * Locate the **Variables** section for that pipeline.
 * Add or update the variable, optionally marking it as secret.
@@ -74,8 +74,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -84,9 +82,9 @@ jobs:
          FLOW_API_KEY: $(FLOW_API_KEY)
 ```
 
-**Note:** To scan your repository with AST, you must have a registered project on the Conviso Platform. The Project Code is found on the specific project page. You also need your API Key, which [you can find using this tutorial](https://docs.convisoappsec.com/api/generate-apikey).
+**Note:** To scan your repository with AST, you must have a registered asset on the Conviso Platform. You also need your API Key, which [you can find using this tutorial](https://docs.convisoappsec.com/api/generate-apikey).
 
-The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](https://docs.convisoappsec.com/general/vulnerabilities_management) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your asset on Conviso Platform. Now you can use the [Vulnerabilities Management](https://docs.convisoappsec.com/general/vulnerabilities_management) resource to work on the correction flow.
 
 For manual specification of the diff range, you can refer to the provided example in the document.
 
@@ -99,8 +97,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash:
@@ -122,8 +118,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -144,8 +138,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: 
@@ -170,8 +162,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -192,8 +182,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -215,8 +203,6 @@ jobs:
     vmImage: 'Ubuntu 22.04'
   container:
     image: 'convisoappsec/convisocli'
-  variables:
-    FLOW_PROJECT_CODE: '<Project Key>'
 
   steps:
     - bash: |
@@ -229,6 +215,16 @@ If you want to learn more about these ways of sending your code, [read this](htt
 
 ## Troubleshooting
 If you encounter authentication issues after loading the ```FLOW_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+
+Error: ‘credentials’ cannot be null.
+
+To address this error, add the following lines to the configuration.
+
+````
+steps:
+- checkout: self
+  persistCredentials: true
+```
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our support team.
