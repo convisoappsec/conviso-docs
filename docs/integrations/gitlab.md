@@ -26,7 +26,7 @@ The [CLI](https://docs.convisoappsec.com/cli/installation/) is a docker image in
 Before you can use Conviso Platform with Gitlab, you need to make sure that:
 1. You have your API Key, which is a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
 
-2. You must also set two environment variables for the runner: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE``` These codes tell Conviso Platform which project and account you are using. To do this on Gitlab, you must:
+2. You must also set two environment variable for the runner: ```FLOW_API_KEY```, API_KEY is generated directly on the Conviso Platform.
 **2.1** Go to your project’s **Settings > CI/CD** and expand the **Variables** section.
 **2.2**  Select **Add variable** and fill in the detail. 
 
@@ -55,15 +55,17 @@ By the end of this tutorial, you will know how to:
 
 Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. This versatile tool combines Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review capabilities, providing comprehensive security analysis directly within your pipeline.
 
+
+You can use Conviso Platform to do Code Review, SAST and SCA; using all three together to make your applications more Secure in your CI/CD Pipeline
+
 Follow the steps below to integrate Security Code Review seamlessly into your pipeline, creating a comprehensive solution within your ```.gitlab-ci.yml``` file:
+
 
 ```yml
 conviso-ast:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -74,9 +76,9 @@ conviso-ast:
 
 ```
 
-**Note:** To scan your repository with AST, you need to have a project registered on Conviso Platform. The ```Project Code``` is found on the specific project page. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
+**Note:** To scan your repository with AST, you need to have a asset registered on Conviso Platform. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
 
-The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
 ## Run a scan exclusively using Conviso SAST
 
@@ -87,8 +89,6 @@ conviso-sast:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -105,8 +105,6 @@ conviso-sast:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -125,8 +123,6 @@ conviso-sca:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -151,8 +147,6 @@ codereview-job-tags-by-time:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -171,8 +165,6 @@ codereview-job-tags-by-version-style:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables:
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -191,8 +183,6 @@ codereview-job-tags-by-version-style:
     image: convisoappsec/convisocli:latest
     services:
         - docker:dind
-    variables: 
-        FLOW_PROJECT_CODE: "HERE"
     only:
         variables:
             - $FLOW_API_KEY
@@ -204,43 +194,38 @@ codereview-job-tags-by-version-style:
 
 If you want to learn more about these ways of sending your code, [read this](../guides/code-review-strategies.md) guide on Code Review Deploy Strategies.
 
-## How to Use Code Review, SAST and SCA Together
 
-You can use Conviso Platform to do Code Review, SAST and SCA; using all three together to make your applications more Secure in your CI/CD Pipeline
 
-Here is an example of a pipeline with all three features:
+**[Unlock the full potential of your Application Program  with Conviso Platform integrations. Visit our Integration page now to get started.](https://bit.ly/3NzvomE)**
 
-```yml
-appsec-flow:
+## Troubleshooting
+
+If you encounter authentication issues after loading the ```FLOW_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+
+Error: ‘credentials’ cannot be null.
+
+To address this error, add the following lines to the configuration.
+
+````
+steps:
+- checkout: self
+  persistCredentials: true
+```
+
+If you have access to multiple business units (BU), we recommend defining a variable COMPANY_ID. To locate the COMPANY_ID, you need to check directly in the URL, for example, https://app.convisoappsec.com/spa/scopes/0000/projects. It is located between /scopes/000/projects.
+
+````
+conviso-ast:
   image: convisoappsec/convisocli:latest
   services:
     - docker:dind
-  variables:
-    FLOW_PROJECT_CODE: "HERE"
-  only:
-    variables:
-      - $FLOW_API_KEY
-  before_script:
-    - deploy_create_output_vars="$(mktemp)"
   script:
-    - |
-      conviso deploy create \
-        -f env_vars \
-        with values > "$deploy_create_output_vars"
-    - source "$deploy_create_output_vars"
-    - |
-      conviso sast run \
-        --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-        --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
-    - |
-      conviso sca run    
-  after_script:
-    - rm -f "$deploy_create_output_vars"
+    - export FLOW_COMPANY_ID=${{ secrets.FLOW_COMPANY_ID }}
+    - conviso ast run
   tags:
     - docker
-```
 
-**[Unlock the full potential of your Application Program  with Conviso Platform integrations. Visit our Integration page now to get started.](https://bit.ly/3NzvomE)**
+```
 
 ## Support
 
