@@ -54,14 +54,13 @@ In order for the environment to be ready for the execution of all CLI resources,
 
 2. Create a new variable with the name ```FLOW_API_KEY```. This key is available for Conviso Platform users at the user profile page;
 
-3. We can also add a variable named ```FLOW_PROJECT_CODE``` that contains the Continuous Code Review Project key, present on the Project page at the Project Key field.
+**Attention: the asset is created automatically based on the repository name. If you have registered the asset manually, please check if it has the same name.**
 
 ## Code Review 
 
 Before proceeding, we recommend reading the following [guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
 
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY``` variable at the project and the ```FLOW_PROJECT_CODE``` variable (identified as the Project Key at Conviso Platform) which can be set individually by project.
-
+After choosing the strategy used to send deploys to Code Review, it is possible to create a specific pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this functionality are the settings of the ```FLOW_API_KEY```.
 Below are sample code snippets for each of the approaches:
 
 **With TAGS, sorted by timestamp**
@@ -113,9 +112,9 @@ pipelines:
 
 ## SAST
 
-In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
+In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as vulnerabilities.
 
-The requirements for running the job are the same as already practiced: ```FLOW_API_KEY``` and ```FLOW_PROJECT_CODE```, defined as environment variables.
+The requirements for running the job are the same as already practiced: ```FLOW_API_KEY```, defined as an environment variables.
 
 ```yml
 image: convisoappsec/convisocli
@@ -189,6 +188,28 @@ pipelines:
             - conviso sca run
           services:
             - docker
+```
+
+## Troubleshooting
+
+ If you encounter authentication issues after loading the ```FLOW_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+
+ Error: ‘credentials’ cannot be null. 
+
+ To address this error, add the following lines to the configuration.
+
+```
+ steps:
+  - checkout: self
+    persistCredentials: true
+```
+
+If you have access to multiple business units (BU), we recommend defining a variable COMPANY_ID. To locate the COMPANY_ID, you need to check directly in the URL, for example, https://app.convisoappsec.com/spa/scopes/0000/projects. It is located between /scopes/000/projects.
+
+Example
+```
+    - export FLOW_COMPANY_ID=${{ secrets.FLOW_COMPANY_ID }}
+    - conviso ast run
 ```
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
