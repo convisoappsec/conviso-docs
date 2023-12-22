@@ -29,7 +29,7 @@ Before you can use Conviso Platform with Github Actions, you need to make sure t
 
 * You have your API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
 
-* You must also set two environment variables for the runner: **FLOW_API_KEY** and **FLOW_PROJECT_CODE.** These codes tell Conviso Platform which project and account you are using. To do this on Github, you must:
+* You must also set an environment variable for the runner: **CONVISO_API_KEY**. These codes tell Conviso Platform which project and account you are using. To do this on Github, you must:
     * Go to your project’s **Settings > Secrets and Variables** and expand the **Actions** section.
     * Select **New Repository Secret** and fill in the details. 
 * After creating a variable, you can use it in the ```.yml``` configuration file or job scripts.
@@ -68,8 +68,7 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
    - uses: actions/checkout@v3
 
@@ -77,9 +76,9 @@ jobs:
      run: conviso ast run
 ```
 
-**Note:** To scan your repository with AST, you need to have a project registered on Conviso Platform. The **"Project Code**" is found on the specific project page. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
+**Note:** To scan your repository with AST, you need to have an asset registered on the Conviso Platform. Additionally, you'll require your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
 
-The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
 ## Run a scan exclusively using Conviso SAST
 
@@ -99,8 +98,7 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
    - uses: actions/checkout@v3
 
@@ -126,8 +124,7 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
    - uses: actions/checkout@v3
 
@@ -136,6 +133,31 @@ jobs:
 ```
 
 **[Unlock the full potential of your Application Program with Conviso Platform integrations. Visit our Integration page now to get started.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
+
+## Troubleshooting
+
+ If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+ 
+ Error. ‘credentials’ cannot be null. 
+ 
+ To address this error, add the following lines to the configuration.
+
+```
+ steps:
+  - checkout: self
+    persistCredentials: true
+
+```
+
+If you have access to multiple business units (BU), we recommend defining a variable CONVISO_COMPANY_ID. To locate the CONVISO_COMPANY_ID, you need to check directly in the URL, for example, https://app.convisoappsec.com/spa/scopes/0000/projects. It is located in the middle of the following URL.
+
+Example
+
+````
+- export CONVISO_COMPANY_ID=000
+- conviso ast run
+
+```
 
 ## Support
 
