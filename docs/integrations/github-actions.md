@@ -29,7 +29,7 @@ Before you can use Conviso Platform with Github Actions, you need to make sure t
 
 * You have your API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
 
-* You must also set two environment variable for the runner: **FLOW_API_KEY**. These codes tell Conviso Platform which project and account you are using. To do this on Github, you must:
+* You must also set an environment variable for the runner: **CONVISO_API_KEY**. These codes tell Conviso Platform which project and account you are using. To do this on Github, you must:
     * Go to your project’s **Settings > Secrets and Variables** and expand the **Actions** section.
     * Select **New Repository Secret** and fill in the details. 
 * After creating a variable, you can use it in the ```.yml``` configuration file or job scripts.
@@ -68,7 +68,7 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
    - uses: actions/checkout@v3
 
@@ -76,7 +76,7 @@ jobs:
      run: conviso ast run
 ```
 
-**Note:** To scan your repository with AST, you need to have asset registered on Conviso Platform. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
+**Note:** To scan your repository with AST, you need to have an asset registered on the Conviso Platform. Additionally, you'll require your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
 
 The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
@@ -98,7 +98,7 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
    - uses: actions/checkout@v3
 
@@ -124,7 +124,7 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
    - uses: actions/checkout@v3
 
@@ -136,9 +136,9 @@ jobs:
 
 ## Troubleshooting
 
- If you encounter authentication issues after loading the ```FLOW_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+ If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
  
- Error: ‘credentials’ cannot be null. 
+ Error. ‘credentials’ cannot be null. 
  
  To address this error, add the following lines to the configuration.
 
@@ -149,12 +149,13 @@ jobs:
 
 ```
 
-If you have access to multiple business units (BU), we recommend defining a variable COMPANY_ID. To locate the COMPANY_ID, you need to check directly in the URL, for example, https://app.convisoappsec.com/spa/scopes/0000/projects. It is located between /scopes/000/projects.
+If you have access to multiple business units (BU), we recommend defining a variable CONVISO_COMPANY_ID. To locate the CONVISO_COMPANY_ID, you need to check directly in the URL, for example, https://app.convisoappsec.com/spa/scopes/0000/projects. It is located in the middle of the following URL.
 
 Example
-```
-    - export FLOW_COMPANY_ID=${{ secrets.FLOW_COMPANY_ID }}
-    - conviso ast run
+
+````
+- export CONVISO_COMPANY_ID=000
+- conviso ast run
 
 ```
 
