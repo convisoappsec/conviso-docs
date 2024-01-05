@@ -1,0 +1,40 @@
+---
+id: clickup-status
+title: ClickupStatus
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ClickupStatus {
+  color: String!
+  id: String!
+  orderindex: Int!
+  status: String!
+  type: String!
+}
+```
+
+### Fields
+
+#### `color` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `orderindex` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `status` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `type` ([`String!`](/api/graphql/documentation/scalars/string))

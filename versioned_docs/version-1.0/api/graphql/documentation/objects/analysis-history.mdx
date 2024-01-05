@@ -1,0 +1,100 @@
+---
+id: analysis-history
+title: AnalysisHistory
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AnalysisHistory {
+  activeAllocation: Boolean
+  changeTime: ISO8601DateTime
+  comment: String
+  createdAt: ISO8601DateTime!
+  deliveryDate: ISO8601DateTime
+  editedComment: Boolean
+  environmentInvaded: Boolean
+  environmentInvadedComment: String
+  estimateId: Int
+  estimatedDays: Int
+  estimatedHours: Int
+  estimatedMinutes: Int
+  id: ID!
+  pausedComment: String
+  portalUserEmail: String
+  portalUserName: String
+  projectCycleId: Int
+  projectId: Int
+  sacId: String
+  startedAt: ISO8601DateTime
+  status: String
+  updatedAt: ISO8601DateTime!
+  versionTag: String
+  vulnCount: Int
+  vulnerabilityIds: String
+}
+```
+
+### Fields
+
+#### `activeAllocation` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `changeTime` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `comment` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deliveryDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `editedComment` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `environmentInvaded` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `environmentInvadedComment` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `estimateId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `estimatedDays` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `estimatedHours` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `estimatedMinutes` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `pausedComment` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `portalUserEmail` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `portalUserName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectCycleId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `sacId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `startedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `versionTag` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `vulnCount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `vulnerabilityIds` ([`String`](/api/graphql/documentation/scalars/string))

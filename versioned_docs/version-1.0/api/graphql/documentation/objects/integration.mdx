@@ -1,0 +1,64 @@
+---
+id: integration
+title: Integration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Integration {
+  assets: [Asset!]
+  checkmarxPassword: String!
+  checkmarxPasswordBidx: String!
+  checkmarxUrl: String!
+  checkmarxUsername: String!
+  createdAt: ISO8601DateTime!
+  id: ID!
+  importedScans: [ImportedScan!]
+  integrationType: String!
+  name: String
+  schedule: IntegrationSchedule
+  scopeId: Int
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `assets` ([`[Asset!]`](/api/graphql/documentation/objects/asset))
+
+#### `checkmarxPassword` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `checkmarxPasswordBidx` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `checkmarxUrl` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `checkmarxUsername` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `importedScans` ([`[ImportedScan!]`](/api/graphql/documentation/objects/imported-scan))
+
+#### `integrationType` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `name` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `schedule` ([`IntegrationSchedule`](/api/graphql/documentation/objects/integration-schedule))
+
+#### `scopeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

@@ -1,0 +1,36 @@
+---
+id: load-integration
+title: loadIntegration
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Load company integration
+
+```graphql
+loadIntegration(
+  companyId: Int!
+  integrationType: String!
+): ScopeIntegration
+
+```
+
+### Arguments
+
+#### `companyId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `integrationType` ([`String!`](/api/graphql/documentation/scalars/string))
+
+### Type
+
+#### [`ScopeIntegration`](/api/graphql/documentation/objects/scope-integration)

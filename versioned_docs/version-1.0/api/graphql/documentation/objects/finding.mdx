@@ -1,0 +1,118 @@
+---
+id: finding
+title: Finding
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Finding {
+  affectedIp: String
+  affectedLineNumbers: [Int!]
+  affectedSourceFile: String
+  applicationId: Int
+  applicationName: String
+  businessSeverity: String
+  category: String
+  commitReference: String
+  component: String
+  createdAt: ISO8601DateTime!
+  cves: [String!]
+  descriptionEn: String
+  evaluationStatus: String
+  flowDeployId: String
+  flowProjectId: String
+  hashIssue: String
+  id: ID
+  integrationName: String
+  originalSeverity: String
+  rawOutputFromScanner: String
+  recommendationsEn: String
+  references: [String!]
+  scanId: Int
+  scanType: String
+  shortCommitRef: String
+  source: String
+  sourceFile: String
+  tags: [String!]
+  technicalSeverity: String
+  titleEn: String
+  version: String
+}
+```
+
+### Fields
+
+#### `affectedIp` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `affectedLineNumbers` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `affectedSourceFile` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `applicationId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `applicationName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `businessSeverity` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `category` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `commitReference` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `component` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `cves` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `descriptionEn` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `evaluationStatus` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `flowDeployId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `flowProjectId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `hashIssue` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `integrationName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `originalSeverity` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `rawOutputFromScanner` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `recommendationsEn` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `references` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `scanId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `scanType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `shortCommitRef` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `source` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `sourceFile` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `technicalSeverity` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `titleEn` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `version` ([`String`](/api/graphql/documentation/scalars/string))

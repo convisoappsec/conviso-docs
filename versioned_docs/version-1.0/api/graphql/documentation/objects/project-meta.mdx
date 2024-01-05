@@ -1,0 +1,88 @@
+---
+id: project-meta
+title: ProjectMeta
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectMeta {
+  currentPage: Int!
+  engagementStatuses: [AnalysisStatusType!]
+  engagementTypes: [ProjectType!]
+  limitValue: Int!
+  tags: [String!]
+  teams: [Team!]
+  total: Int
+  totalAnalysis: Int
+  totalCount: Int!
+  totalDone: Int
+  totalEstimate: Int
+  totalFixing: Int
+  totalPages: Int!
+  totalPaused: Int
+  totalPlanned: Int
+  totalVulnsCount: Int
+  totalVulnsCritical: Int
+  totalVulnsHigh: Int
+  totalVulnsLow: Int
+  totalVulnsMedium: Int
+  totalVulnsNotification: Int
+}
+```
+
+### Fields
+
+#### `currentPage` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `engagementStatuses` ([`[AnalysisStatusType!]`](/api/graphql/documentation/objects/analysis-status-type))
+
+#### `engagementTypes` ([`[ProjectType!]`](/api/graphql/documentation/objects/project-type))
+
+#### `limitValue` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `teams` ([`[Team!]`](/api/graphql/documentation/objects/team))
+
+#### `total` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalAnalysis` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalCount` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `totalDone` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalEstimate` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalFixing` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalPages` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `totalPaused` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalPlanned` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalVulnsCount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalVulnsCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalVulnsHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalVulnsLow` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalVulnsMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalVulnsNotification` ([`Int`](/api/graphql/documentation/scalars/int))

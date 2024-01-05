@@ -1,0 +1,35 @@
+---
+id: new-evidence
+title: NewEvidence
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type NewEvidence {
+  evidenceText: String
+  archive: Upload
+}
+```
+
+### Fields
+
+#### `evidenceText` ([`String`](/api/graphql/documentation/scalars/string))
+
+Textual evidence
+
+#### `archive` ([`Upload`](/api/graphql/documentation/scalars/upload))
+
+Archive evidence

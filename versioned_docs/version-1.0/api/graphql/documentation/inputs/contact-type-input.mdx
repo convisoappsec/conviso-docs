@@ -1,0 +1,46 @@
+---
+id: contact-type-input
+title: ContactTypeInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ContactTypeInput {
+  id: ID
+  contractId: ID
+  name: String!
+  email: String!
+  phone: String!
+  role: String!
+  attachment: Upload
+}
+```
+
+### Fields
+
+#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `contractId` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `name` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `email` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `phone` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `role` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `attachment` ([`Upload`](/api/graphql/documentation/scalars/upload))

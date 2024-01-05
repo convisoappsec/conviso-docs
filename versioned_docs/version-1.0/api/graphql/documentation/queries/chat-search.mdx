@@ -1,0 +1,58 @@
+---
+id: chat-search
+title: chatSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Search in chats
+
+```graphql
+chatSearch(
+  scopeId: Int!
+  searchParam: String!
+  after: String
+  before: String
+  first: Int = 0
+  last: Int = 0
+): ChatConnection
+
+```
+
+### Arguments
+
+#### `scopeId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `searchParam` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `after` ([`String`](/api/graphql/documentation/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+#### `before` ([`String`](/api/graphql/documentation/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+#### `first` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Returns the first _n_ elements from the list.
+
+#### `last` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Returns the last _n_ elements from the list.
+
+### Type
+
+#### [`ChatConnection`](/api/graphql/documentation/objects/chat-connection)
+
+The connection type for Chat.

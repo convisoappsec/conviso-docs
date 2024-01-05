@@ -1,0 +1,61 @@
+---
+id: integration-external-project
+title: IntegrationExternalProject
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IntegrationExternalProject {
+  asset: Asset
+  customMetadata: IntegrationExternalProjectCollection
+  extraKey: String
+  id: ID!
+  integrationId: Int
+  issueType: String
+  outsideKey: String
+  project: Project
+  projectExternalId: Int
+  projectExternalLabel: String
+  projectId: Int
+  scopeIntegrationId: Int
+}
+```
+
+### Fields
+
+#### `asset` ([`Asset`](/api/graphql/documentation/objects/asset))
+
+#### `customMetadata` ([`IntegrationExternalProjectCollection`](/api/graphql/documentation/objects/integration-external-project-collection))
+
+#### `extraKey` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `integrationId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `issueType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `outsideKey` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `project` ([`Project`](/api/graphql/documentation/objects/project))
+
+#### `projectExternalId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `projectExternalLabel` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `scopeIntegrationId` ([`Int`](/api/graphql/documentation/scalars/int))

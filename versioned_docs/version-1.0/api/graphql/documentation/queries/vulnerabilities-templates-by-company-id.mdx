@@ -1,0 +1,39 @@
+---
+id: vulnerabilities-templates-by-company-id
+title: vulnerabilitiesTemplatesByCompanyId
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all vulnerabilities templates by company id
+
+```graphql
+vulnerabilitiesTemplatesByCompanyId(
+  id: ID!
+  page: Int = 0
+  limit: Int = 0
+): VulnerabilityTemplateCollection!
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`VulnerabilityTemplateCollection`](/api/graphql/documentation/objects/vulnerability-template-collection)

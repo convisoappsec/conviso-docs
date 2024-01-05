@@ -1,0 +1,36 @@
+---
+id: project-statuses
+title: projectStatuses
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all project statuses
+
+```graphql
+projectStatuses(
+  page: Int = 0
+  limit: Int = 0
+): AnalysisStatusTypeCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`AnalysisStatusTypeCollection`](/api/graphql/documentation/objects/analysis-status-type-collection)

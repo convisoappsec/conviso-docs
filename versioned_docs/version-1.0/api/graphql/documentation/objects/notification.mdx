@@ -1,0 +1,61 @@
+---
+id: notification
+title: Notification
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Notification {
+  author: PortalUser
+  companyId: Int
+  companyName: String
+  createdAt: ISO8601DateTime!
+  description: String
+  evidences: [Evidence!]!
+  history: [History!]!
+  id: ID!
+  notificationStatus: String
+  projectId: Int
+  updatedAt: ISO8601DateTime!
+  vulnerabilityTemplate: VulnerabilityTemplate!
+}
+```
+
+### Fields
+
+#### `author` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `companyName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `evidences` ([`[Evidence!]!`](/api/graphql/documentation/objects/evidence))
+
+#### `history` ([`[History!]!`](/api/graphql/documentation/objects/history))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `notificationStatus` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `vulnerabilityTemplate` ([`VulnerabilityTemplate!`](/api/graphql/documentation/objects/vulnerability-template))

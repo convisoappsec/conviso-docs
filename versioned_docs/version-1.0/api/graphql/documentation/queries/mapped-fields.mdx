@@ -1,0 +1,33 @@
+---
+id: mapped-fields
+title: mappedFields
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all mapped fields by integration
+
+```graphql
+mappedFields(
+  id: Int!
+): MappedFieldsCollection
+
+```
+
+### Arguments
+
+#### `id` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`MappedFieldsCollection`](/api/graphql/documentation/objects/mapped-fields-collection)

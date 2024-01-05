@@ -1,0 +1,39 @@
+---
+id: service-types
+title: serviceTypes
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return all service types
+
+```graphql
+serviceTypes(
+  page: Int = 0
+  limit: Int = 0
+  params: ServiceTypeSearch
+): ServiceTypeCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `params` ([`ServiceTypeSearch`](/api/graphql/documentation/inputs/service-type-search))
+
+### Type
+
+#### [`ServiceTypeCollection`](/api/graphql/documentation/objects/service-type-collection)

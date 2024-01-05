@@ -1,0 +1,82 @@
+---
+id: chat
+title: Chat
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Chat {
+  archives: [ChatArchive!]
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  id: ID!
+  lastMessageAt: ISO8601DateTime!
+  messages(
+    after: String
+    before: String
+    first: Int = 0
+    last: Int = 0
+  ): ChatMessageConnection
+  openConversation: Boolean!
+  portalUser: PortalUser!
+  project: Project
+  scope: Company!
+  updatedAt: ISO8601DateTime!
+  vulnerability: Vulnerability
+}
+```
+
+### Fields
+
+#### `archives` ([`[ChatArchive!]`](/api/graphql/documentation/objects/chat-archive))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `lastMessageAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `messages` ([`ChatMessageConnection`](/api/graphql/documentation/objects/chat-message-connection))
+
+- ##### `after` ([`String`](/api/graphql/documentation/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+- ##### `before` ([`String`](/api/graphql/documentation/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+- ##### `first` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Returns the first _n_ elements from the list.
+
+- ##### `last` ([`Int`](/api/graphql/documentation/scalars/int))
+
+Returns the last _n_ elements from the list.
+
+#### `openConversation` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
+
+#### `portalUser` ([`PortalUser!`](/api/graphql/documentation/objects/portal-user))
+
+#### `project` ([`Project`](/api/graphql/documentation/objects/project))
+
+#### `scope` ([`Company!`](/api/graphql/documentation/objects/company))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `vulnerability` ([`Vulnerability`](/api/graphql/documentation/objects/vulnerability))

@@ -1,0 +1,92 @@
+---
+id: portal-user
+title: PortalUser
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type PortalUser {
+  allocatedAnalyses: [Project!]
+  analyst: Boolean
+  blocked: Boolean
+  dashboardOnly: Boolean
+  email: String!
+  endWorkTime: String
+  financial: Boolean
+  githubUser: String
+  id: ID!
+  jiraUser: String
+  name: String
+  oper: Boolean
+  pendingDeploys: [PendingDeploy!]
+  pendingProjectComments: [ProjectComment!]
+  phone: String
+  projectsInEstimate: [ProjectsInEstimate!]
+  reviewedDeploys(
+    initialDate: ISO8601DateTime!
+    finishDate: ISO8601DateTime!
+  ): [Deploy!]
+  slackUser: String
+  sshPublicKey: String
+  submittedVulnerabilities: [Vulnerability!]
+}
+```
+
+### Fields
+
+#### `allocatedAnalyses` ([`[Project!]`](/api/graphql/documentation/objects/project))
+
+#### `analyst` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `blocked` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `dashboardOnly` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `email` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `endWorkTime` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `financial` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `githubUser` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `jiraUser` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `name` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `oper` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `pendingDeploys` ([`[PendingDeploy!]`](/api/graphql/documentation/objects/pending-deploy))
+
+#### `pendingProjectComments` ([`[ProjectComment!]`](/api/graphql/documentation/objects/project-comment))
+
+#### `phone` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectsInEstimate` ([`[ProjectsInEstimate!]`](/api/graphql/documentation/objects/projects-in-estimate))
+
+#### `reviewedDeploys` ([`[Deploy!]`](/api/graphql/documentation/objects/deploy))
+
+- ##### `initialDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+- ##### `finishDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `slackUser` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `sshPublicKey` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `submittedVulnerabilities` ([`[Vulnerability!]`](/api/graphql/documentation/objects/vulnerability))

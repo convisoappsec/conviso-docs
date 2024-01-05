@@ -1,0 +1,36 @@
+---
+id: vulnerabilities-waiting-validation
+title: vulnerabilitiesWaitingValidation
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return the queue of vulnerabilities waiting validation if user is basis
+
+```graphql
+vulnerabilitiesWaitingValidation(
+  page: Int = 0
+  limit: Int = 0
+): VulnerabilityCollection
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`VulnerabilityCollection`](/api/graphql/documentation/objects/vulnerability-collection)

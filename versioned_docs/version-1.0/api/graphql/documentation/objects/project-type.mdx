@@ -1,0 +1,43 @@
+---
+id: project-type
+title: ProjectType
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectType {
+  code: String!
+  createdAt: ISO8601DateTime
+  defaultDuration: Int
+  description: String
+  id: ID!
+  label: String!
+}
+```
+
+### Fields
+
+#### `code` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `defaultDuration` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))

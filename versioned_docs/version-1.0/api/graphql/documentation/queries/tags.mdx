@@ -1,0 +1,39 @@
+---
+id: tags
+title: tags
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return tags
+
+```graphql
+tags(
+  id: ID!
+  page: Int = 0
+  limit: Int = 0
+): TagCollection
+
+```
+
+### Arguments
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`TagCollection`](/api/graphql/documentation/objects/tag-collection)

@@ -16,7 +16,11 @@ module.exports = {
         alt: 'Conviso Platform Docs Logo',
         src: 'img/favicon.ico',
       },
-      items: [],
+      items: [
+        {
+          type: 'docsVersionDropdown',
+        },
+      ],
     },
     image: 'img/indexseo.png',
 

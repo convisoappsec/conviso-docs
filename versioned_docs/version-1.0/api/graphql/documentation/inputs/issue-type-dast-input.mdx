@@ -1,0 +1,78 @@
+---
+id: issue-type-dast-input
+title: IssueTypeDastInput
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IssueTypeDastInput {
+  affectedIp: String!
+  affectedPort: String!
+  affectedHost: String!
+  affectedUrl: String!
+  affectedProtocol: String!
+  affectedParameter: String!
+  affectedHeaders: String!
+  affectedQueryString: String!
+  businessSeverity: String!
+  description: String!
+  evidence: String!
+  hashIssue: String!
+  originalSeverity: String!
+  references: [String!]!
+  reporter: String
+  technicalSeverity: String!
+  title: String!
+}
+```
+
+### Fields
+
+#### `affectedIp` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedPort` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedHost` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedUrl` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedProtocol` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedParameter` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedHeaders` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `affectedQueryString` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `businessSeverity` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `description` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `evidence` ([`String!`](/api/graphql/documentation/scalars/string))
+
+Issue evidence Base64 encoded.
+
+#### `hashIssue` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `originalSeverity` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `references` ([`[String!]!`](/api/graphql/documentation/scalars/string))
+
+#### `reporter` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `technicalSeverity` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `title` ([`String!`](/api/graphql/documentation/scalars/string))

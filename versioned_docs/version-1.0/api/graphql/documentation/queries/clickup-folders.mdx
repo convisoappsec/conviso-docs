@@ -1,0 +1,36 @@
+---
+id: clickup-folders
+title: clickupFolders
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Load Clickup folders
+
+```graphql
+clickupFolders(
+  companyId: Int!
+  spaceId: Int!
+): [ClickupFolder!]
+
+```
+
+### Arguments
+
+#### `companyId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `spaceId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`ClickupFolder`](/api/graphql/documentation/objects/clickup-folder)

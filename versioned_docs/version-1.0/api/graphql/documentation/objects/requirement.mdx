@@ -1,0 +1,52 @@
+---
+id: requirement
+title: Requirement
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Requirement {
+  check: [Check!]!
+  checklistTypeId: Int
+  companyId: Int
+  createdAt: ISO8601DateTime
+  deletedAt: ISO8601DateTime
+  description: String
+  id: ID!
+  label: String!
+  updatedAt: ISO8601DateTime
+}
+```
+
+### Fields
+
+#### `check` ([`[Check!]!`](/api/graphql/documentation/objects/check))
+
+#### `checklistTypeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))

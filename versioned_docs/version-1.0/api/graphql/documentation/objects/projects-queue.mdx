@@ -1,0 +1,34 @@
+---
+id: projects-queue
+title: ProjectsQueue
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectsQueue {
+  allocatedProjects: [AllocatedProjects!]
+  portalUser: PortalUser
+  scheduledProjects: [ScheduledProjects!]
+}
+```
+
+### Fields
+
+#### `allocatedProjects` ([`[AllocatedProjects!]`](/api/graphql/documentation/objects/allocated-projects))
+
+#### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `scheduledProjects` ([`[ScheduledProjects!]`](/api/graphql/documentation/objects/scheduled-projects))

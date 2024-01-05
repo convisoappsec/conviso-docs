@@ -1,0 +1,106 @@
+---
+id: deploy
+title: Deploy
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Deploy {
+  changedApproximately: String
+  changedLines: Int
+  companyId: Int
+  companyName: String
+  createdAt: ISO8601DateTime!
+  currentCommit: String
+  currentTag: String
+  deployUrlCompare: String
+  discardReason: String
+  discardedId: Int
+  gauntletDiffUrl: String
+  gauntletScanId: Int
+  gauntletSourceCodeId: Int
+  gitDiff: String
+  id: ID!
+  languages: String
+  newLines: Int
+  previousCommit: String
+  previousTag: String
+  projectId: Int
+  removedLines: Int
+  reviewed: Boolean
+  reviewedAt: ISO8601DateTime
+  reviewer: PortalUser
+  status: String
+  totalProjectLines: Int
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `changedApproximately` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `changedLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `companyName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `currentCommit` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `currentTag` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `deployUrlCompare` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `discardReason` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `discardedId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `gauntletDiffUrl` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `gauntletScanId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `gauntletSourceCodeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `gitDiff` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `languages` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `newLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `previousCommit` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `previousTag` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `removedLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `reviewed` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `reviewedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `reviewer` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `totalProjectLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

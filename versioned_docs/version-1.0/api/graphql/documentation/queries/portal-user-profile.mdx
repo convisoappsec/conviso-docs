@@ -1,0 +1,33 @@
+---
+id: portal-user-profile
+title: portalUserProfile
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Return user profile by email
+
+```graphql
+portalUserProfile(
+  email: String!
+): PortalUser
+
+```
+
+### Arguments
+
+#### `email` ([`String!`](/api/graphql/documentation/scalars/string))
+
+### Type
+
+#### [`PortalUser`](/api/graphql/documentation/objects/portal-user)

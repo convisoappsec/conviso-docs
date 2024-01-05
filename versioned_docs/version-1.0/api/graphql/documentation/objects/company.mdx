@@ -1,0 +1,118 @@
+---
+id: company
+title: Company
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Company {
+  active: Int
+  address: String
+  bountyCritical: Int
+  bountyHigh: Int
+  bountyLow: Int
+  bountyMedium: Int
+  brandContentType: String
+  brandFilename: String
+  brandId: String
+  brandSize: String
+  cnpj: String
+  contactEmail: String
+  contactName: String
+  contractedTime: Int
+  createdAt: ISO8601DateTime!
+  description: String
+  expirationAt: ISO8601DateTime
+  headquarterId: [Int!]
+  id: ID!
+  label: String!
+  notifyOpenVulns: Boolean
+  notifyOpenVulnsCritical: Int
+  notifyOpenVulnsHigh: Int
+  notifyOpenVulnsLow: Int
+  notifyOpenVulnsMedium: Int
+  sendEmailNotification: Boolean
+  sid: String!
+  tags: [String!]
+  titleColor: String
+  updatedAt: ISO8601DateTime!
+  visibleDeploysReview: Boolean
+}
+```
+
+### Fields
+
+#### `active` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `address` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `bountyCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `bountyHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `bountyLow` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `bountyMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `brandContentType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `brandFilename` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `brandId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `brandSize` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `cnpj` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `contactEmail` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `contactName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `contractedTime` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `expirationAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `headquarterId` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `notifyOpenVulns` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `notifyOpenVulnsCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `notifyOpenVulnsHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `notifyOpenVulnsLow` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `notifyOpenVulnsMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `sendEmailNotification` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `sid` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `titleColor` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `visibleDeploysReview` ([`Boolean`](/api/graphql/documentation/scalars/boolean))

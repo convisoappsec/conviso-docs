@@ -1,0 +1,79 @@
+---
+id: activity
+title: Activity
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Activity {
+  archiveContentType: String
+  archiveFilename: String
+  archiveSize: Int
+  createdAt: ISO8601DateTime!
+  deletedAt: ISO8601DateTime
+  description: String
+  evidenceText: String
+  finishedAt: ISO8601DateTime
+  id: ID!
+  justify: String
+  playbook: Requirement!
+  portalUser: PortalUser
+  projectId: Int
+  reference: String
+  startedAt: ISO8601DateTime
+  status: String
+  title: String
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `archiveContentType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `archiveFilename` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `archiveSize` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `evidenceText` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `finishedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `justify` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `playbook` ([`Requirement!`](/api/graphql/documentation/objects/requirement))
+
+#### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+
+#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `reference` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `startedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `title` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

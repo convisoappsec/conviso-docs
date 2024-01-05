@@ -1,0 +1,39 @@
+---
+id: attachments
+title: attachments
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+return the attachments from a company
+
+```graphql
+attachments(
+  scopeId: ID!
+  page: Int = 0
+  limit: Int = 0
+): AttachmentCollection
+
+```
+
+### Arguments
+
+#### `scopeId` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+### Type
+
+#### [`AttachmentCollection`](/api/graphql/documentation/objects/attachment-collection)

@@ -1,0 +1,46 @@
+---
+id: pending-deploy
+title: PendingDeploy
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type PendingDeploy {
+  companyId: Int
+  companyName: String
+  createdAt: ISO8601DateTime!
+  id: ID
+  pid: String
+  projectId: Int!
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `companyName` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+
+#### `pid` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

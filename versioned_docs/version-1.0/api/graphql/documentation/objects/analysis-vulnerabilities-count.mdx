@@ -1,0 +1,46 @@
+---
+id: analysis-vulnerabilities-count
+title: AnalysisVulnerabilitiesCount
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type AnalysisVulnerabilitiesCount {
+  critical: Int
+  high: Int
+  low: Int
+  medium: Int
+  notification: Int
+  total: Int
+  totalWithNotification: Int
+}
+```
+
+### Fields
+
+#### `critical` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `high` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `low` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `medium` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `notification` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `total` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalWithNotification` ([`Int`](/api/graphql/documentation/scalars/int))

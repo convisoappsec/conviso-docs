@@ -1,0 +1,55 @@
+---
+id: history
+title: History
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type History {
+  affectedComponentHistoryId: Int
+  comment: String
+  commitmentAt: ISO8601DateTime
+  createdAt: ISO8601DateTime!
+  fixedByDeployId: Int
+  id: ID!
+  portalUserId: Int
+  status: String
+  updatedAt: ISO8601DateTime!
+  vulnerabilityId: Int
+}
+```
+
+### Fields
+
+#### `affectedComponentHistoryId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `comment` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `commitmentAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `fixedByDeployId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `portalUserId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `vulnerabilityId` ([`Int`](/api/graphql/documentation/scalars/int))

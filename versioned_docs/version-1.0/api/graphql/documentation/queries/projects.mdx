@@ -1,0 +1,49 @@
+---
+id: projects
+title: projects
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+Returns all projects the user has access
+
+```graphql
+projects(
+  page: Int = 0
+  limit: Int = 0
+  params: ProjectSearch
+  sortBy: String
+  descending: Boolean
+): ProjectCollection!
+
+```
+
+### Arguments
+
+#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `params` ([`ProjectSearch`](/api/graphql/documentation/inputs/project-search))
+
+#### `sortBy` ([`String`](/api/graphql/documentation/scalars/string))
+
+column name to order. Ex: label
+
+#### `descending` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+0 => DESC or 1 => ASC
+
+### Type
+
+#### [`ProjectCollection`](/api/graphql/documentation/objects/project-collection)

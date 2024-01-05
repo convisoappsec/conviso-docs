@@ -1,0 +1,31 @@
+---
+id: projects-queue-collection
+title: ProjectsQueueCollection
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectsQueueCollection {
+  collection: [ProjectsQueue!]!
+  metadata: CollectionMetadata!
+}
+```
+
+### Fields
+
+#### `collection` ([`[ProjectsQueue!]!`](/api/graphql/documentation/objects/projects-queue))
+
+#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))

@@ -1,0 +1,45 @@
+---
+id: requirement-search
+title: RequirementSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type RequirementSearch {
+  labelEq: String
+  labelCont: String
+  descriptionEq: String
+  descriptionCont: String
+}
+```
+
+### Fields
+
+#### `labelEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+Exact search for a label
+
+#### `labelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+Search for the content of a label
+
+#### `descriptionEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+Search for the content of an description
+
+#### `descriptionCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+Exact search for an description

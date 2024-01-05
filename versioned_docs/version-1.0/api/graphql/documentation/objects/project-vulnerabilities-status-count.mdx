@@ -1,0 +1,55 @@
+---
+id: project-vulnerabilities-status-count
+title: ProjectVulnerabilitiesStatusCount
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectVulnerabilitiesStatusCount {
+  falsePositive: Int
+  fixAccepted: Int
+  fixRefused: Int
+  identified: Int
+  inProgress: Int
+  riskAccepted: Int
+  total: Int
+  unpublished: Int
+  waitingReview: Int
+  waitingValidation: Int
+}
+```
+
+### Fields
+
+#### `falsePositive` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `fixAccepted` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `fixRefused` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `identified` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `inProgress` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `riskAccepted` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `total` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `unpublished` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `waitingReview` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `waitingValidation` ([`Int`](/api/graphql/documentation/scalars/int))

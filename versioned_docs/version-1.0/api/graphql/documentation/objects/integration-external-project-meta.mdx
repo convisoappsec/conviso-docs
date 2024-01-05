@@ -1,0 +1,37 @@
+---
+id: integration-external-project-meta
+title: IntegrationExternalProjectMeta
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type IntegrationExternalProjectMeta {
+  currentPage: Int!
+  limitValue: Int!
+  totalCount: Int
+  totalPages: Int!
+}
+```
+
+### Fields
+
+#### `currentPage` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `limitValue` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `totalCount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalPages` ([`Int!`](/api/graphql/documentation/scalars/int))

@@ -1,0 +1,110 @@
+---
+id: project-search
+title: ProjectSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ProjectSearch {
+  continuousDeliveryEq: Boolean
+  createdAtGteq: ISO8601DateTime
+  createdAtLteq: ISO8601DateTime
+  endDateCont: ISO8601DateTime
+  endDateEq: ISO8601DateTime
+  endDate: ISO8601DateTime
+  labelCont: String
+  labelEq: String
+  idEq: Int
+  projectStatusLabelCont: String
+  projectStatusLabelEq: String
+  projectTypeLabelCont: String
+  projectTypeLabelEq: String
+  startDate: ISO8601DateTime
+  startDateEq: ISO8601DateTime
+  startDateCont: ISO8601DateTime
+  tagNameEq: String
+  scopeLabelCont: String
+  scopeIdEq: Int
+  search: String
+  engagementTypes: [Int!]
+  engagementStatuses: [Int!]
+  tags: [String!]
+  teams: [Int!]
+  continuousDelivery: String
+}
+```
+
+### Fields
+
+#### `continuousDeliveryEq` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+Verify if is Continuous Code Review
+
+#### `createdAtGteq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+Search in created_at dates with greater than or equal
+
+#### `createdAtLteq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+Search in created_at dates with less than or equal
+
+#### `endDateCont` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `endDateEq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `endDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `labelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `labelEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `idEq` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `projectStatusLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectStatusLabelEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+Search Status
+
+#### `projectTypeLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `projectTypeLabelEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+Search Type
+
+#### `startDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `startDateEq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `startDateCont` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `tagNameEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `scopeLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `scopeIdEq` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `search` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `engagementTypes` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `engagementStatuses` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+
+#### `teams` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+
+#### `continuousDelivery` ([`String`](/api/graphql/documentation/scalars/string))

@@ -1,0 +1,50 @@
+---
+id: asset-arch
+title: AssetArch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+enum AssetArch {
+  agile
+  microservices
+  monolithic
+  serverless
+  none
+}
+```
+
+### Values
+
+#### `agile`
+
+Agile
+
+#### `microservices`
+
+Micro-services
+
+#### `monolithic`
+
+Monolithic
+
+#### `serverless`
+
+Serverless
+
+#### `none`
+
+none

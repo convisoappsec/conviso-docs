@@ -1,0 +1,121 @@
+---
+id: contract
+title: Contract
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Contract {
+  attachment: String
+  attachmentContentType: String
+  attachmentFilename: String
+  attachmentId: String
+  attachmentSize: Int
+  client: Company
+  companyId: Int
+  consumedServices: ContractConsumedServices
+  contacts: [Contact!]
+  createdAt: ISO8601DateTime!
+  customMetadata: ContractCollection
+  daysConnecttivityBlock: Int
+  description: String
+  educationId: Int
+  educationSecret: String
+  finishedAt: ISO8601Date
+  finishedContracts: Int
+  id: ID!
+  newContractModel: Boolean
+  noEndDate: Boolean
+  onPremiseKey: String
+  openedContracts: Int
+  professionalService: Int
+  resourcesCount: Int
+  scopeId: Int
+  serviceKind: String
+  serviceKinds: [ContractService!]
+  startedAt: ISO8601Date
+  status: String
+  totalContracts: Int
+  trialDays: Int
+  updatedAt: ISO8601DateTime!
+}
+```
+
+### Fields
+
+#### `attachment` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentContentType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentFilename` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `attachmentSize` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `client` ([`Company`](/api/graphql/documentation/objects/company))
+
+#### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `consumedServices` ([`ContractConsumedServices`](/api/graphql/documentation/objects/contract-consumed-services))
+
+#### `contacts` ([`[Contact!]`](/api/graphql/documentation/objects/contact))
+
+#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `customMetadata` ([`ContractCollection`](/api/graphql/documentation/objects/contract-collection))
+
+#### `daysConnecttivityBlock` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `educationId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `educationSecret` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `finishedAt` ([`ISO8601Date`](/api/graphql/documentation/scalars/iso-8601-date))
+
+#### `finishedContracts` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `newContractModel` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `noEndDate` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `onPremiseKey` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `openedContracts` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `professionalService` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `resourcesCount` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `scopeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `serviceKind` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `serviceKinds` ([`[ContractService!]`](/api/graphql/documentation/objects/contract-service))
+
+#### `startedAt` ([`ISO8601Date`](/api/graphql/documentation/scalars/iso-8601-date))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `totalContracts` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `trialDays` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))

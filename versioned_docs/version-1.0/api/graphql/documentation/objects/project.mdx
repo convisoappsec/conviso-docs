@@ -1,0 +1,241 @@
+---
+id: project
+title: Project
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type Project {
+  activities: [Activity!]
+  allocatedAnalyst: [AnalystAllocations!]
+  apiCode: String
+  apiResponseReview: String
+  assets: [Asset!]
+  closeComments: Boolean
+  companyId: Int!
+  connectivity: String
+  continuousDelivery: Boolean
+  contractedHours: Int
+  createdAt: ISO8601DateTime
+  credentials: [Credential!]
+  customMetadata: ProjectCollection
+  deploySendFrequency: Int
+  dueDate: ISO8601DateTime
+  endDate: ISO8601DateTime
+  environmentInvaded: Boolean
+  estimatedDays: String
+  estimatedHours: String
+  executiveSummary: String
+  firstVulnerabilityIdentified: Vulnerability
+  freeRetest: Boolean
+  hasOpenRetest: Boolean
+  history: [AnalysisHistory!]
+  hoursOrDays: String
+  id: ID!
+  integrationDeploy: Boolean
+  inviteToken: String
+  isOpen: Boolean!
+  isPublic: Boolean
+  label: String!
+  language: String
+  mainRecommendations: String
+  microserviceFolder: String
+  negativeScope: String
+  notificationList: String
+  notifications: [Notification!]
+  objective: String
+  pid: String
+  plannedStartedAt: ISO8601DateTime
+  playbookFinishedAt: ISO8601DateTime
+  playbookStartedAt: ISO8601DateTime
+  playbooks: [Requirement!]
+  projectType: ProjectType!
+  receiveDeploys: Boolean
+  repositoryUrl: String
+  resultFiles: [ResultFiles!]
+  sacCode: String
+  sacProjectId: Int
+  scope: String
+  secretId: String
+  sshPublicKey: String
+  startDate: ISO8601DateTime!
+  status: String
+  students: Int
+  subScopeId: Int
+  tags: [Tag!]
+  teams: [Team!]
+  totalAnalysisLines: Int
+  totalChangedLines: Int
+  totalNewLines: Int
+  totalPublishedVulnerabilities: Int
+  totalRemovedLines: Int
+  type: String!
+  updatedAt: ISO8601DateTime
+  userWithAccess: [PortalUser!]
+  userableId: Int
+  userableType: String
+  vulnerabilities: [Vulnerability!]
+  vulnerabilitiesCount: AnalysisVulnerabilitiesCount
+  vulnerabilitiesCountByStatus: ProjectVulnerabilitiesStatusCount
+  waiting: Boolean!
+}
+```
+
+### Fields
+
+#### `activities` ([`[Activity!]`](/api/graphql/documentation/objects/activity))
+
+#### `allocatedAnalyst` ([`[AnalystAllocations!]`](/api/graphql/documentation/objects/analyst-allocations))
+
+#### `apiCode` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `apiResponseReview` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `assets` ([`[Asset!]`](/api/graphql/documentation/objects/asset))
+
+#### `closeComments` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `companyId` ([`Int!`](/api/graphql/documentation/scalars/int))
+
+#### `connectivity` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `continuousDelivery` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `contractedHours` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `credentials` ([`[Credential!]`](/api/graphql/documentation/objects/credential))
+
+#### `customMetadata` ([`ProjectCollection`](/api/graphql/documentation/objects/project-collection))
+
+#### `deploySendFrequency` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `dueDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `endDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `environmentInvaded` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `estimatedDays` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `estimatedHours` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `executiveSummary` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `firstVulnerabilityIdentified` ([`Vulnerability`](/api/graphql/documentation/objects/vulnerability))
+
+#### `freeRetest` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `hasOpenRetest` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `history` ([`[AnalysisHistory!]`](/api/graphql/documentation/objects/analysis-history))
+
+#### `hoursOrDays` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+
+#### `integrationDeploy` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `inviteToken` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `isOpen` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
+
+#### `isPublic` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `language` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `mainRecommendations` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `microserviceFolder` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `negativeScope` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `notificationList` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `notifications` ([`[Notification!]`](/api/graphql/documentation/objects/notification))
+
+#### `objective` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `pid` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `plannedStartedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `playbookFinishedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `playbookStartedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `playbooks` ([`[Requirement!]`](/api/graphql/documentation/objects/requirement))
+
+#### `projectType` ([`ProjectType!`](/api/graphql/documentation/objects/project-type))
+
+#### `receiveDeploys` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+
+#### `repositoryUrl` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `resultFiles` ([`[ResultFiles!]`](/api/graphql/documentation/objects/result-files))
+
+#### `sacCode` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `sacProjectId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `scope` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `secretId` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `sshPublicKey` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `startDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `students` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `subScopeId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `tags` ([`[Tag!]`](/api/graphql/documentation/objects/tag))
+
+#### `teams` ([`[Team!]`](/api/graphql/documentation/objects/team))
+
+#### `totalAnalysisLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalChangedLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalNewLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalPublishedVulnerabilities` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `totalRemovedLines` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `type` ([`String!`](/api/graphql/documentation/scalars/string))
+
+#### `updatedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+
+#### `userWithAccess` ([`[PortalUser!]`](/api/graphql/documentation/objects/portal-user))
+
+#### `userableId` ([`Int`](/api/graphql/documentation/scalars/int))
+
+#### `userableType` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `vulnerabilities` ([`[Vulnerability!]`](/api/graphql/documentation/objects/vulnerability))
+
+#### `vulnerabilitiesCount` ([`AnalysisVulnerabilitiesCount`](/api/graphql/documentation/objects/analysis-vulnerabilities-count))
+
+#### `vulnerabilitiesCountByStatus` ([`ProjectVulnerabilitiesStatusCount`](/api/graphql/documentation/objects/project-vulnerabilities-status-count))
+
+#### `waiting` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))

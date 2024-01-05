@@ -1,0 +1,37 @@
+---
+id: contract-search
+title: ContractSearch
+---
+
+export const Tag = ({children, color}) => (
+<span
+style={{
+      backgroundColor: color,
+      borderRadius: '2px',
+      color: '#fff',
+      padding: '0.2rem',
+    }}>
+{children}
+</span>
+);
+
+No description
+
+```graphql
+type ContractSearch {
+  descriptionEq: String
+  descriptionCont: String
+  scopeLabelCont: String
+  status: String
+}
+```
+
+### Fields
+
+#### `descriptionEq` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `descriptionCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `scopeLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+
+#### `status` ([`String`](/api/graphql/documentation/scalars/string))
