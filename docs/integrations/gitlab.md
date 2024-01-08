@@ -127,7 +127,9 @@ steps:
 ```
 
 
-If you have access to multiple business units (BU), we recommend defining a variable COMPANY_ID. To locate the COMPANY_ID, you need to check directly in the URL, for example, https://app.convisoappsec.com/spa/scopes/0000/projects. It is located between /scopes/000/projects.
+If you have access to multiple business units (BU), we recommend defining a variable COMPANY_ID. To obtain the ID, click on the company name located in the bottom left, as exemplified in the image
+
+[![img](../../static/img/company_id.png
 
 
 ```
