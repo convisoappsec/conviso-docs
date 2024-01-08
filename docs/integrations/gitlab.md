@@ -129,7 +129,7 @@ steps:
 
 If you have access to multiple business units (BU), we recommend defining a variable COMPANY_ID. To obtain the ID, click on the company name located in the bottom left, as exemplified in the image
 
-[![img](../../static/img/company_id.png)
+![img](../../static/img/company_id.png)
 
 
 
