@@ -8,10 +8,15 @@ image: '/static/img/securitygateseo.png'
 ---
 
 ## Introduction
+
 With Conviso CLI's **Security Gate** feature you can define vulnerability policies, such as the number of vulnerabilities by severity and sources, and automatically block your CI/CD pipeline if these policies are not complied, ensuring that your code is secure from potential threats.
 
 ### Prerequisites
-To successfully run this command [authenticate](/cli/installation#authentication) your machine and set the project key with ```export FLOW_PROJECT_CODE='your-project-code'```. The "Project Code" is found on the specific project page.
+
+To successfully run this command, authenticate your machine and set the API key with export CONVISO_API_KEY='your-api'.
+
+[Generate API-KEY](../general/api/generate-apikey.md) 
+
 
 ## Usage
 To use this feature, follow these steps:
@@ -24,9 +29,10 @@ First, you need to define the policies for the specific project. This CLI featur
 
 - Vulnerability sources (for example, external integrations such as Checkmarx or Qualys, and also Conviso Platform scanners)
 
-**Note:** It's important to highlight that the definition of vulnerability policies must be defined in the vulnerability management process, considering risk appetite, team maturity and other factors.
+**Note:**  It's important to highlight that the definition of vulnerability policies must be done in the vulnerability management process, considering risk appetite, team maturity, and other factors.
 
 ### 2. Creating the Security Gate rules in the YAML file
+
 The policy file structure is based on YAML format and can be defined with rules. 
 
 For example, you can define a policy that will block your CI/CD pipeline if there are more than 5 high severity vulnerabilities from any scanners:
@@ -45,11 +51,11 @@ rules:
       maximum: 0
 ```
 
-If the policy that was defined is true and the asset in fact has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline.
+If the policy that was defined is true and the asset indeed has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline.
 
-To avoid validating a specific severity value, just remove it from the rules content. 
-
+To avoid validating a specific severity value, just remove it from the rules content.
 For example, in case you want to validate only critical and high severity:
+
 
 ```yml
 rules:
@@ -64,7 +70,8 @@ rules:
 Save the file in the repository where the CLI will run and record its name that will be used in the next step.
 
 
-### 3. Running Security Gate with the CLI
+### 3. Running Security Gate with the Conviso-CLI
+
 After defining the vulnerability policy file, run the following command:
 
 ```
@@ -96,14 +103,14 @@ Starting vulnerabilities security rules assertion
 Error: Vulnerabilities quantity offending security rules
 ```
 
-## Video Tutorial in Portuguese
-To see the tool working in practice, we recommend watching this video:
+You have access to multiple companies, specify one using CONVISO_COMPANY_ID
 
-<div style={{textAlign: 'center'}}>
+```
+conviso vulnerability assert-security-rules --company-id 000 --rules-file security-gate.yml
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/pLbjG1-xFOo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
 
-</div>
+
 
 ## Support
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
