@@ -14,21 +14,6 @@ sidebar_label: Fortify
 First time using Fortify? Please refer to the [following documentation](https://www.microfocus.com/pt-br/documentation/fortify-software-security-center/).
 :::
 
-## Introduction---
-id: fortify
-title: Fortify
-sidebar_label: Fortify
----
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/fortify.png)
-
-</div>
-
-:::note
-First time using Fortify? Please refer to the [following documentation](https://www.microfocus.com/pt-br/documentation/fortify-software-security-center/).
-:::
 
 ## Introduction
 
