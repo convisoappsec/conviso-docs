@@ -8,18 +8,20 @@ image: '/static/img/generateapikeyseo.png'
 ---
 
 ## Introduction
-To perform activities with Conviso CLI, Conviso Platform Integrations and also Conviso API, it is important to generate an API Key to authenticate your user. 
+To perform activities with Conviso CLI, Conviso Platform Integrations, and Conviso API, it is important to generate an API Key to authenticate your user.
+
+ 
 
 ## Usage
 Follow these steps as shown in the gif:
 
-1. Log in to Conviso Platform and go to **"Edit Profile"** in the upper right corner;
-2. Click on API Key tab and **Generate** button to create your key;
-3. Click **Confirm** after generating the key for successful creation.
+1. Log in to the Conviso platform through the link https://app.convisoappsec.com/
+2. On the Security Feeds screen, look for Generate API Key
+3. Click on generate API key.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/cli-overview2.gif)
+![img](../../static/img/cli-overview2.png)
 
 </div>
 
