@@ -105,6 +105,11 @@ Error: Vulnerabilities quantity offending security rules
 
 You have access to multiple companies, specify one using CONVISO_COMPANY_ID
 
+
+To view the company ID, click on the company logo icon, as exemplified in the image.
+
+![img](../../static/img/company_id.png)
+
 ```
 conviso vulnerability assert-security-rules --company-id 000 --rules-file security-gate.yml
 
