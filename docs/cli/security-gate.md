@@ -15,7 +15,7 @@ With Conviso CLI's **Security Gate** feature you can define vulnerability polici
 
 To successfully run this command, authenticate your machine and set the API key with export CONVISO_API_KEY='your-api'.
 
-[Generate API-KEY](../general/api/generate-apikey.md) 
+[Generate API-KEY](../api/generate-apikey.md) 
 
 
 ## Usage
