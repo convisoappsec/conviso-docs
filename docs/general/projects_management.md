@@ -52,7 +52,7 @@ After selecting a project, the default “Details” screen will be displayed. Y
 
 On the screen, you will find information about the vulnerabilities identified in this specific project based on their status:
 
-**Unpublished**: indicates that the vulnerability was identified by a security analyst and has not yet been published by the project analysis.
+**Created**: indicates that the vulnerability was identified by a security analyst and has not yet been published by the project analysis.
 
 **Identified**: indicates that the vulnerability has been identified and recorded in the vulnerability management system.
 
@@ -60,9 +60,7 @@ On the screen, you will find information about the vulnerabilities identified in
 
 **In progress**: indicates that the responsible team is actively working on fixing the vulnerability.
 
-**Fix refused**: indicates that the security team refused to fix the vulnerability.
-
-**Fix accepted**: indicates that the security team accepted the fix proposed by the development team.
+**Fix**: indicates that the security team accepted the fix proposed by the development team.
 
 This menu presents some sections that help to understand the situation and progression of the project, but may differ depending on the type of product or service contracted.
 
@@ -91,33 +89,6 @@ If you need to share user access or support documents for a specific system, we 
 
 </div>
 
-
-### Findings
-
-In "Findings," it is possible to view security issues and potential vulnerabilities identified during a security analysis of the project in question.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/projects_management-img6.png)
-
-</div>
-
-
-### Deploys
-
-This section refers to the code deployment process after the security analysis and possibly some changes made to it.
-
-After the analysis and commit of the changes, a deploy is generated, which brings comparisons of the code before and after the analysis.
-
-This allows for the visualization of differences (diffs) between code versions and provides evidence of the changes made.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/projects_management-img7.png)
-
-</div>
-
-
 ### Reports 
 
 "Report" is used to insert custom content into technical reports. The feature is used so that users can extract the results of a project executed on the platform.
@@ -126,7 +97,8 @@ The purpose of the technical report is to document everything that occurred duri
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/projects_management-img8.png)
+
+![img](../../static/img/projects_management-img9.png)
 
 </div>
 
@@ -139,7 +111,7 @@ They are divided into status according to the situation in which they are: not s
  
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/projects_management-img9.png)
+![img](../../static/img/projects_management-img8.png)
 
 </div>
 
