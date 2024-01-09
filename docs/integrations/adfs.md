@@ -15,24 +15,19 @@ The ADFS integration - SSO or Single Sign-On - aims to increase user security on
 This documentation was designed to guide users so that they can perform authentication within Conviso Platform through their own ADFS Identity Provider, using the SAML 2.0 protocol.
 
 For this configuration we will need 3 pieces of information:
-
 - SAML IdP SSO Target;
-
 - SAML IdP entity ID;
-
 - SAML IdP Certificate.
 
-### Requirements
+
+## Requirements
 
 - Microsoft Windows Server 2008, 2012 or 2012 R2 server;
-
 - Active Directory instance where all users have the email attribute configured;
-
 - ADFS configured along with your SSL certificate;
-
 - Users (emails) that will use Conviso Platform must be previously created on the platform;
-
 - The ADFS server must have the clock synchronized. Integration errors may occur if there are differences with the Conviso Platform and ADFS server's clock.
+
 
 ### Adding the Relying Party Trust to ADFS
 
@@ -225,12 +220,12 @@ Fill in the SSO ADFS modal form with proper data:
 
 </div>
 
-For the **Login URL**, use ```https://<your-fqdndomain-name>/adfs/ls```:
+For the Login URL, use ```https://<your-fqdndomain-name>/adfs/ls:```
 
-Fill the **Federation Service Identifier** and **Certificate** fields with the previously obtained information. 
+Fill the Federation Service Identifier and Certificate fields with the previously obtained information.
+Fill the Authorized Domains field with all of your domain aliases.
 
-Fill the **Authorized Domains** field with all of your domain aliases.
+After clicking on the Save button, we must disable the Conviso Platform default authentication option.
 
-After clicking on the **Save** button, we must disable Conviso Platform default authentication option.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
