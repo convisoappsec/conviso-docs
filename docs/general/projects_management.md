@@ -52,7 +52,7 @@ After selecting a project, the default “Details” screen will be displayed. Y
 
 On the screen, you will find information about the vulnerabilities identified in this specific project based on their status:
 
-**Created**: indicates that the vulnerability was identified by a security analyst and has not yet been published by the project analysis.
+**Created**: These vulnerabilities are identified either by a scanning tool or by a security analyst. They are subject to analysis by a specialist to verify their authenticity as vulnerabilities or to determine if they are false positives.
 
 **Identified**: indicates that the vulnerability has been identified and recorded in the vulnerability management system.
 
