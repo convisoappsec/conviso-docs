@@ -6,13 +6,11 @@ sidebar_label: Resources
 
 ## Introduction
 
-Manage credentials and attached files in Conviso Platform. This feature allows you to register access to the security test environment and if there is documentation such as; topology or architectural design of the environment, we recommend that you use this feature of Conviso Platform.
-
-This ensures control over who should have access to this information, as it is critical information.
+Manage credentials and attached files in the Conviso Platform. This feature enables you to register access to the security test environment, and if there is documentation, such as topology or architectural design of the environment, we recommend using this feature of the Conviso Platform. This ensures control over who should have access to this critical information.
 
 ## Credentials
 
-To register a credential, on the main left menu click on **Resources** and then on **Credentials**:
+To register a credential, on the main left menu, click on **Resources** and then on Credentials:
 
 <div style={{textAlign: 'center'}}>
 
@@ -50,6 +48,14 @@ To add an existing credential to a new or an existing project, create (or edit) 
 
 In the project configuration form, check the option **Will credentials be provided?**, and then select the credential filled in the previous steps in the **Credentials** text box, as shown in the image below. It is possible to fill in more than one credential in this text box:
 
+Edit project
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/resources-img10.png)
+
+</div>
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/resources-img4.png)
@@ -59,6 +65,8 @@ In the project configuration form, check the option **Will credentials be provid
 ## Attachments
 
 To register an attachment, on the main left menu click on **Resources** and then on **Attachments**:
+
+Next, click on **New Attachment** to start setting up your file attachment:
 
 <div style={{textAlign: 'center'}}>
 
@@ -82,10 +90,5 @@ Fill the form with proper data:
 
 The **Access Management** section of the form allows you to restrict the file attachment access to one or more users, by selecting them by clicking on the drop-down list **Users**. When done, click on the **Save** button to store your attachment configuration settings:
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/resources-img7.png)
-
-</div>
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
