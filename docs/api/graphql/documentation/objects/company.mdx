@@ -1,19 +1,17 @@
 ---
 id: company
 title: Company
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -29,15 +27,19 @@ type Company {
   brandFilename: String
   brandId: String
   brandSize: String
+  brandUrl: String
   cnpj: String
   contactEmail: String
   contactName: String
   contractedTime: Int
   createdAt: ISO8601DateTime!
+  customFeatures: [String!]
   description: String
+  estimatedLinesConsumed: Int
   expirationAt: ISO8601DateTime
   headquarterId: [Int!]
   id: ID!
+  integrations: [String!]!
   label: String!
   notifyOpenVulns: Boolean
   notifyOpenVulnsCritical: Int
@@ -53,66 +55,158 @@ type Company {
 }
 ```
 
+
 ### Fields
 
-#### `active` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>active</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `address` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>address</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `bountyCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>bountyCritical</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `bountyHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>bountyHigh</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `bountyLow` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>bountyLow</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `bountyMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>bountyMedium</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `brandContentType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>brandContentType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `brandFilename` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>brandFilename</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `brandId` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>brandId</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `brandSize` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>brandSize</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `cnpj` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>brandUrl</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `contactEmail` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>cnpj</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `contactName` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>contactEmail</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `contractedTime` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>contactName</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>contractedTime</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `expirationAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>customFeatures</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `headquarterId` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>description</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>estimatedLinesConsumed</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `label` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>expirationAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `notifyOpenVulns` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>headquarterId</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `notifyOpenVulnsCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `notifyOpenVulnsHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>integrations</b></code>](#)<Bullet />[`[String!]!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `notifyOpenVulnsLow` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>label</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `notifyOpenVulnsMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>notifyOpenVulns</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `sendEmailNotification` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>notifyOpenVulnsCritical</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `sid` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>notifyOpenVulnsHigh</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>notifyOpenVulnsLow</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `titleColor` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>notifyOpenVulnsMedium</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>sendEmailNotification</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `visibleDeploysReview` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>sid</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>tags</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>titleColor</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>updatedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Company.<b>visibleDeploysReview</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`company`](/api/graphql/documentation/queries/company)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`Asset`](/api/graphql/documentation/objects/asset)  <Badge class="secondary" text="object"/><Bullet />[`Chat`](/api/graphql/documentation/objects/chat)  <Badge class="secondary" text="object"/><Bullet />[`CompanyCollection`](/api/graphql/documentation/objects/company-collection)  <Badge class="secondary" text="object"/><Bullet />[`Contact`](/api/graphql/documentation/objects/contact)  <Badge class="secondary" text="object"/><Bullet />[`Contract`](/api/graphql/documentation/objects/contract)  <Badge class="secondary" text="object"/><Bullet />[`Deploy`](/api/graphql/documentation/objects/deploy)  <Badge class="secondary" text="object"/><Bullet />[`EducationUser`](/api/graphql/documentation/objects/education-user)  <Badge class="secondary" text="object"/><Bullet />[`ImportedScan`](/api/graphql/documentation/objects/imported-scan)  <Badge class="secondary" text="object"/><Bullet />[`Invite`](/api/graphql/documentation/objects/invite)  <Badge class="secondary" text="object"/><Bullet />[`Notification`](/api/graphql/documentation/objects/notification)  <Badge class="secondary" text="object"/><Bullet />[`OverallRiskScoreHistory`](/api/graphql/documentation/objects/overall-risk-score-history)  <Badge class="secondary" text="object"/><Bullet />[`PendingDeploy`](/api/graphql/documentation/objects/pending-deploy)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserAccess`](/api/graphql/documentation/objects/portal-user-access)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserAccessProfiles`](/api/graphql/documentation/objects/portal-user-access-profiles)  <Badge class="secondary" text="object"/><Bullet />[`Project`](/api/graphql/documentation/objects/project)  <Badge class="secondary" text="object"/><Bullet />[`Requirement`](/api/graphql/documentation/objects/requirement)  <Badge class="secondary" text="object"/><Bullet />[`SamlIntegration`](/api/graphql/documentation/objects/saml-integration)  <Badge class="secondary" text="object"/><Bullet />[`ScheduledProjects`](/api/graphql/documentation/objects/scheduled-projects)  <Badge class="secondary" text="object"/><Bullet />[`ScopeIntegration`](/api/graphql/documentation/objects/scope-integration)  <Badge class="secondary" text="object"/><Bullet />[`Team`](/api/graphql/documentation/objects/team)  <Badge class="secondary" text="object"/><Bullet />[`UserAccess`](/api/graphql/documentation/objects/user-access)  <Badge class="secondary" text="object"/><Bullet />[`Vulnerability`](/api/graphql/documentation/objects/vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`VulnerabilityTemplate`](/api/graphql/documentation/objects/vulnerability-template)  <Badge class="secondary" text="object"/>
+
+
+

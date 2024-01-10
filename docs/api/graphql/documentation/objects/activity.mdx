@@ -1,19 +1,17 @@
 ---
 id: activity
 title: Activity
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -31,6 +29,7 @@ type Activity {
   justify: String
   playbook: Requirement!
   portalUser: PortalUser
+  project: Project
   projectId: Int
   reference: String
   startedAt: ISO8601DateTime
@@ -40,40 +39,90 @@ type Activity {
 }
 ```
 
+
 ### Fields
 
-#### `archiveContentType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>archiveContentType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `archiveFilename` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>archiveFilename</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `archiveSize` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>archiveSize</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `deletedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>deletedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>description</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `evidenceText` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>evidenceText</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `finishedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>finishedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `justify` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>justify</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `playbook` ([`Requirement!`](/api/graphql/documentation/objects/requirement))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>playbook</b></code>](#)<Bullet />[`Requirement!`](/api/graphql/documentation/objects/requirement) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>portalUser</b></code>](#)<Bullet />[`PortalUser`](/api/graphql/documentation/objects/portal-user) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>project</b></code>](#)<Bullet />[`Project`](/api/graphql/documentation/objects/project) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `reference` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>projectId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `startedAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>reference</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `status` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>startedAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `title` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>status</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>title</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Activity.<b>updatedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`Project`](/api/graphql/documentation/objects/project)  <Badge class="secondary" text="object"/><Bullet />[`UpdateActivityStatusToFinishPayload`](/api/graphql/documentation/objects/update-activity-status-to-finish-payload)  <Badge class="secondary" text="object"/><Bullet />[`UpdateActivityStatusToNotApplyPayload`](/api/graphql/documentation/objects/update-activity-status-to-not-apply-payload)  <Badge class="secondary" text="object"/><Bullet />[`UpdateActivityStatusToRestartPayload`](/api/graphql/documentation/objects/update-activity-status-to-restart-payload)  <Badge class="secondary" text="object"/><Bullet />[`UpdateActivityStatusToStartPayload`](/api/graphql/documentation/objects/update-activity-status-to-start-payload)  <Badge class="secondary" text="object"/>
+
+
+

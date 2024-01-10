@@ -1,0 +1,48 @@
+---
+id: overall-risk-score-history
+title: OverallRiskScoreHistory
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type OverallRiskScoreHistory {
+  company: Company!
+  current: RiskScoreHistoriesCurrent
+  differenceFromLast: RiskScoreHistoriesDifferenceFromLast
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OverallRiskScoreHistory.<b>company</b></code>](#)<Bullet />[`Company!`](/api/graphql/documentation/objects/company) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OverallRiskScoreHistory.<b>current</b></code>](#)<Bullet />[`RiskScoreHistoriesCurrent`](/api/graphql/documentation/objects/risk-score-histories-current) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OverallRiskScoreHistory.<b>differenceFromLast</b></code>](#)<Bullet />[`RiskScoreHistoriesDifferenceFromLast`](/api/graphql/documentation/objects/risk-score-histories-difference-from-last) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`overallRiskScoreHistory`](/api/graphql/documentation/queries/overall-risk-score-history)  <Badge class="secondary" text="query"/>
+
+
+

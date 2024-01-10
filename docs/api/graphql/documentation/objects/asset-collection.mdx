@@ -1,19 +1,17 @@
 ---
 id: asset-collection
 title: AssetCollection
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -24,8 +22,26 @@ type AssetCollection {
 }
 ```
 
+
 ### Fields
 
-#### `collection` ([`[Asset!]!`](/api/graphql/documentation/objects/asset))
+#### [<code style={{ fontWeight: 'normal' }}>AssetCollection.<b>collection</b></code>](#)<Bullet />[`[Asset!]!`](/api/graphql/documentation/objects/asset) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))
+#### [<code style={{ fontWeight: 'normal' }}>AssetCollection.<b>metadata</b></code>](#)<Bullet />[`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`assets`](/api/graphql/documentation/queries/assets)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`DeleteAssetPayload`](/api/graphql/documentation/objects/delete-asset-payload)  <Badge class="secondary" text="object"/>
+
+
+

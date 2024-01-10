@@ -1,19 +1,17 @@
 ---
 id: order-params
 title: OrderParams
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -24,12 +22,22 @@ enum OrderParams {
 }
 ```
 
+
 ### Values
 
-#### `DESC`
+#### [<code style={{ fontWeight: 'normal' }}>OrderParams.<b>DESC</b></code>](#) 
+> descending order
+> 
 
-descending order
+#### [<code style={{ fontWeight: 'normal' }}>OrderParams.<b>ASC</b></code>](#) 
+> ascending order
+> 
 
-#### `ASC`
 
-ascending order
+
+### Member of
+
+[`analysts`](/api/graphql/documentation/queries/analysts)  <Badge class="secondary" text="query"/><Bullet />[`companies`](/api/graphql/documentation/queries/companies)  <Badge class="secondary" text="query"/><Bullet />[`teamsByScope`](/api/graphql/documentation/queries/teams-by-scope)  <Badge class="secondary" text="query"/><Bullet />[`vulnerabilities`](/api/graphql/documentation/queries/vulnerabilities)  <Badge class="secondary" text="query"/>
+
+
+

@@ -1,19 +1,17 @@
 ---
 id: chat-edge
 title: ChatEdge
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 An edge in a connection.
 
@@ -24,12 +22,22 @@ type ChatEdge {
 }
 ```
 
+
 ### Fields
 
-#### `cursor` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ChatEdge.<b>cursor</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A cursor for use in pagination.
+> 
 
-A cursor for use in pagination.
+#### [<code style={{ fontWeight: 'normal' }}>ChatEdge.<b>node</b></code>](#)<Bullet />[`Chat`](/api/graphql/documentation/objects/chat) <Badge class="secondary" text="object"/>
+> The item at the end of the edge.
+> 
 
-#### `node` ([`Chat`](/api/graphql/documentation/objects/chat))
 
-The item at the end of the edge.
+
+### Member of
+
+[`ChatConnection`](/api/graphql/documentation/objects/chat-connection)  <Badge class="secondary" text="object"/>
+
+
+

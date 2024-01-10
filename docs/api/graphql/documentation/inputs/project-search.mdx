@@ -1,24 +1,22 @@
 ---
 id: project-search
 title: ProjectSearch
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
-type ProjectSearch {
+input ProjectSearch {
   continuousDeliveryEq: Boolean
   createdAtGteq: ISO8601DateTime
   createdAtLteq: ISO8601DateTime
@@ -32,79 +30,139 @@ type ProjectSearch {
   projectStatusLabelEq: String
   projectTypeLabelCont: String
   projectTypeLabelEq: String
+  apiCodeEq: String
   startDate: ISO8601DateTime
   startDateEq: ISO8601DateTime
   startDateCont: ISO8601DateTime
   tagNameEq: String
   scopeLabelCont: String
-  scopeIdEq: Int
+  scopeIdEq: ID
   search: String
   engagementTypes: [Int!]
   engagementStatuses: [Int!]
   tags: [String!]
   teams: [Int!]
   continuousDelivery: String
+  showHidden: Boolean
 }
 ```
 
+
 ### Fields
 
-#### `continuousDeliveryEq` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>continuousDeliveryEq</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> Verify if is Continuous Code Review
+> 
 
-Verify if is Continuous Code Review
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>createdAtGteq</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> Search in created_at dates with greater than or equal
+> 
 
-#### `createdAtGteq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>createdAtLteq</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> Search in created_at dates with less than or equal
+> 
 
-Search in created_at dates with greater than or equal
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>endDateCont</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `createdAtLteq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>endDateEq</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Search in created_at dates with less than or equal
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>endDate</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `endDateCont` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>labelCont</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `endDateEq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>labelEq</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `endDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>idEq</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `labelCont` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>projectStatusLabelCont</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `labelEq` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>projectStatusLabelEq</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Search Status
+> 
 
-#### `idEq` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>projectTypeLabelCont</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectStatusLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>projectTypeLabelEq</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Search Type
+> 
 
-#### `projectStatusLabelEq` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>apiCodeEq</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Search by Project Code
+> 
 
-Search Status
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>startDate</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectTypeLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>startDateEq</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectTypeLabelEq` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>startDateCont</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Search Type
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>tagNameEq</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `startDate` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>scopeLabelCont</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `startDateEq` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>scopeIdEq</b></code>](#)<Bullet />[`ID`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `startDateCont` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>search</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `tagNameEq` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>engagementTypes</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scopeLabelCont` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>engagementStatuses</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scopeIdEq` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>tags</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `search` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>teams</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `engagementTypes` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>continuousDelivery</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `engagementStatuses` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectSearch.<b>showHidden</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> Show hidden projects when is true
+> 
 
-#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
 
-#### `teams` ([`[Int!]`](/api/graphql/documentation/scalars/int))
 
-#### `continuousDelivery` ([`String`](/api/graphql/documentation/scalars/string))
+### Member of
+
+[`projects`](/api/graphql/documentation/queries/projects)  <Badge class="secondary" text="query"/>
+
+
+

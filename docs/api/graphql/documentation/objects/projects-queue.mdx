@@ -1,19 +1,17 @@
 ---
 id: projects-queue
 title: ProjectsQueue
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -25,10 +23,26 @@ type ProjectsQueue {
 }
 ```
 
+
 ### Fields
 
-#### `allocatedProjects` ([`[AllocatedProjects!]`](/api/graphql/documentation/objects/allocated-projects))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsQueue.<b>allocatedProjects</b></code>](#)<Bullet />[`[AllocatedProjects!]`](/api/graphql/documentation/objects/allocated-projects) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `portalUser` ([`PortalUser`](/api/graphql/documentation/objects/portal-user))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsQueue.<b>portalUser</b></code>](#)<Bullet />[`PortalUser`](/api/graphql/documentation/objects/portal-user) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `scheduledProjects` ([`[ScheduledProjects!]`](/api/graphql/documentation/objects/scheduled-projects))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsQueue.<b>scheduledProjects</b></code>](#)<Bullet />[`[ScheduledProjects!]`](/api/graphql/documentation/objects/scheduled-projects) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`ProjectsQueueCollection`](/api/graphql/documentation/objects/projects-queue-collection)  <Badge class="secondary" text="object"/>
+
+
+

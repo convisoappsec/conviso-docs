@@ -1,19 +1,17 @@
 ---
 id: asset-scan
 title: AssetScan
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -27,24 +25,34 @@ enum AssetScan {
 }
 ```
 
+
 ### Values
 
-#### `Server`
+#### [<code style={{ fontWeight: 'normal' }}>AssetScan.<b>Server</b></code>](#) 
+> Server
+> 
 
-Server
+#### [<code style={{ fontWeight: 'normal' }}>AssetScan.<b>DAST</b></code>](#) 
+> DAST
+> 
 
-#### `DAST`
+#### [<code style={{ fontWeight: 'normal' }}>AssetScan.<b>SAST</b></code>](#) 
+> SAST
+> 
 
-DAST
+#### [<code style={{ fontWeight: 'normal' }}>AssetScan.<b>Container</b></code>](#) 
+> Container
+> 
 
-#### `SAST`
+#### [<code style={{ fontWeight: 'normal' }}>AssetScan.<b>None</b></code>](#) 
+> None
+> 
 
-SAST
 
-#### `Container`
 
-Container
+### Member of
 
-#### `None`
+[`CreateAssetInput`](/api/graphql/documentation/inputs/create-asset-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateAssetInput`](/api/graphql/documentation/inputs/update-asset-input)  <Badge class="secondary" text="input"/>
 
-None
+
+

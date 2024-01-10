@@ -1,0 +1,53 @@
+---
+id: projects-permissions
+title: ProjectsPermissions
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+permissions to projects
+
+```graphql
+enum ProjectsPermissions {
+  create_projects
+  view_projects
+  edit_projects
+  delete_projects
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsPermissions.<b>create_projects</b></code>](#) 
+> Allows user to create projects
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsPermissions.<b>view_projects</b></code>](#) 
+> Allows user to view projects
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsPermissions.<b>edit_projects</b></code>](#) 
+> Allows user to edit projects
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProjectsPermissions.<b>delete_projects</b></code>](#) 
+> Allows user to delete or cancel projects
+> 
+
+
+
+### Member of
+
+[`PortalUserAccessProfiles`](/api/graphql/documentation/objects/portal-user-access-profiles)  <Badge class="secondary" text="object"/>
+
+
+

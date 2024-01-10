@@ -1,19 +1,17 @@
 ---
 id: integration
 title: Integration
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -35,30 +33,70 @@ type Integration {
 }
 ```
 
+
 ### Fields
 
-#### `assets` ([`[Asset!]`](/api/graphql/documentation/objects/asset))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>assets</b></code>](#)<Bullet />[`[Asset!]`](/api/graphql/documentation/objects/asset) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `checkmarxPassword` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>checkmarxPassword</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `checkmarxPasswordBidx` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>checkmarxPasswordBidx</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `checkmarxUrl` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>checkmarxUrl</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `checkmarxUsername` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>checkmarxUsername</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `importedScans` ([`[ImportedScan!]`](/api/graphql/documentation/objects/imported-scan))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>importedScans</b></code>](#)<Bullet />[`[ImportedScan!]`](/api/graphql/documentation/objects/imported-scan) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `integrationType` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>integrationType</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `name` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>name</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `schedule` ([`IntegrationSchedule`](/api/graphql/documentation/objects/integration-schedule))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>schedule</b></code>](#)<Bullet />[`IntegrationSchedule`](/api/graphql/documentation/objects/integration-schedule) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `scopeId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>scopeId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Integration.<b>updatedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`loadCheckmarxIntegration`](/api/graphql/documentation/queries/load-checkmarx-integration)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`CreateIntegrationPayload`](/api/graphql/documentation/objects/create-integration-payload)  <Badge class="secondary" text="object"/><Bullet />[`UpdateIntegrationPayload`](/api/graphql/documentation/objects/update-integration-payload)  <Badge class="secondary" text="object"/>
+
+
+

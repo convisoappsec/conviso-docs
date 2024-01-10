@@ -1,19 +1,17 @@
 ---
 id: integration-schedule-cycle-collection
 title: IntegrationScheduleCycleCollection
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -24,8 +22,22 @@ type IntegrationScheduleCycleCollection {
 }
 ```
 
+
 ### Fields
 
-#### `collection` ([`[IntegrationScheduleCycle!]!`](/api/graphql/documentation/objects/integration-schedule-cycle))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationScheduleCycleCollection.<b>collection</b></code>](#)<Bullet />[`[IntegrationScheduleCycle!]!`](/api/graphql/documentation/objects/integration-schedule-cycle) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `metadata` ([`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationScheduleCycleCollection.<b>metadata</b></code>](#)<Bullet />[`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`integrationScheduleCycles`](/api/graphql/documentation/queries/integration-schedule-cycles)  <Badge class="secondary" text="query"/>
+
+
+

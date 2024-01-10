@@ -1,19 +1,17 @@
 ---
 id: occurrence-meta
 title: OccurrenceMeta
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -31,22 +29,50 @@ type OccurrenceMeta {
 }
 ```
 
+
 ### Fields
 
-#### `currentPage` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>currentPage</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `limitValue` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>limitValue</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalCount` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalCount</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalCritical</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalHigh</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalLow` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalLow</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalMedium</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalNotifications` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalNotifications</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalPages` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>OccurrenceMeta.<b>totalPages</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`VulnerabilityCollection`](/api/graphql/documentation/objects/vulnerability-collection)  <Badge class="secondary" text="object"/>
+
+
+

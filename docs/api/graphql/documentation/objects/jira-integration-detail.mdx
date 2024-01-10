@@ -1,0 +1,53 @@
+---
+id: jira-integration-detail
+title: JiraIntegrationDetail
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type JiraIntegrationDetail {
+  issueType: String!
+  projectId: String!
+  projectKey: String!
+  projectLabel: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>JiraIntegrationDetail.<b>issueType</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Jira issue type
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>JiraIntegrationDetail.<b>projectId</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Jira project id
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>JiraIntegrationDetail.<b>projectKey</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Jira project key
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>JiraIntegrationDetail.<b>projectLabel</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Jira project label
+> 
+
+
+
+### Member of
+
+[`DefectTrackerConfiguration`](/api/graphql/documentation/objects/defect-tracker-configuration)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,24 +1,22 @@
 ---
 id: integration-mapped-fields-input
 title: IntegrationMappedFieldsInput
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
-type IntegrationMappedFieldsInput {
+input IntegrationMappedFieldsInput {
   id: ID
   assetOption: [Int!]!
   outsideKey: String
@@ -31,22 +29,50 @@ type IntegrationMappedFieldsInput {
 }
 ```
 
+
 ### Fields
 
-#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>id</b></code>](#)<Bullet />[`ID`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `assetOption` ([`[Int!]!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>assetOption</b></code>](#)<Bullet />[`[Int!]!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `outsideKey` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>outsideKey</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `issueType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>issueType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `extraKey` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>extraKey</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scopeIntegrationId` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>scopeIntegrationId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectExternalId` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>projectExternalId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectExternalLabel` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>projectExternalLabel</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `mapFields` ([`[MappedFieldIntegrationType!]!`](/api/graphql/documentation/inputs/mapped-field-integration-type))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationMappedFieldsInput.<b>mapFields</b></code>](#)<Bullet />[`[MappedFieldIntegrationType!]!`](/api/graphql/documentation/inputs/mapped-field-integration-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+
+
+### Member of
+
+[`CreateIntegrationMappedFieldsInput`](/api/graphql/documentation/inputs/create-integration-mapped-fields-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateIntegrationMappedFieldsInput`](/api/graphql/documentation/inputs/update-integration-mapped-fields-input)  <Badge class="secondary" text="input"/>
+
+
+

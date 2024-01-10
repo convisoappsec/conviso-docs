@@ -1,0 +1,63 @@
+---
+id: vulnerabilities-permissions
+title: VulnerabilitiesPermissions
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Permissions to Vulnerabilities
+
+```graphql
+enum VulnerabilitiesPermissions {
+  view_vulnerability
+  update_vulnerability
+  create_vulnerability
+  delete_vulnerability
+  change_status_to_false_positive
+  change_status_to_risk_accepted
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>VulnerabilitiesPermissions.<b>view_vulnerability</b></code>](#) 
+> Allows user to view vulnerabilities
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VulnerabilitiesPermissions.<b>update_vulnerability</b></code>](#) 
+> Allows user to edit vulnerabilities. False Positive and Risk Accepted status update does not apply for this permission.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VulnerabilitiesPermissions.<b>create_vulnerability</b></code>](#) 
+> Allows user to create vulnerabilities
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VulnerabilitiesPermissions.<b>delete_vulnerability</b></code>](#) 
+> Allows user to delete vulnerabilities
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VulnerabilitiesPermissions.<b>change_status_to_false_positive</b></code>](#) 
+> Allows user to mark or unmark vulnerabilities as false positives.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VulnerabilitiesPermissions.<b>change_status_to_risk_accepted</b></code>](#) 
+> Allows user to mark or unmark vulnerabilities as risk accepted.
+> 
+
+
+
+### Member of
+
+[`PortalUserAccessProfiles`](/api/graphql/documentation/objects/portal-user-access-profiles)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,19 +1,17 @@
 ---
 id: finding
 title: Finding
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -24,6 +22,7 @@ type Finding {
   affectedSourceFile: String
   applicationId: Int
   applicationName: String
+  assetTags: [String!]
   businessSeverity: String
   category: String
   commitReference: String
@@ -53,66 +52,142 @@ type Finding {
 }
 ```
 
+
 ### Fields
 
-#### `affectedIp` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>affectedIp</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `affectedLineNumbers` ([`[Int!]`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>affectedLineNumbers</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `affectedSourceFile` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>affectedSourceFile</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `applicationId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>applicationId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `applicationName` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>applicationName</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `businessSeverity` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>assetTags</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `category` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>businessSeverity</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `commitReference` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>category</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `component` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>commitReference</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>component</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `cves` ([`[String!]`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `descriptionEn` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>cves</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `evaluationStatus` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>descriptionEn</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `flowDeployId` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>evaluationStatus</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `flowProjectId` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>flowDeployId</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `hashIssue` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>flowProjectId</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>hashIssue</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `integrationName` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>id</b></code>](#)<Bullet />[`ID`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `originalSeverity` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>integrationName</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `rawOutputFromScanner` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>originalSeverity</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `recommendationsEn` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>rawOutputFromScanner</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `references` ([`[String!]`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>recommendationsEn</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scanId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>references</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scanType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>scanId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `shortCommitRef` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>scanType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `source` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>shortCommitRef</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `sourceFile` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>source</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>sourceFile</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `technicalSeverity` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>tags</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `titleEn` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>technicalSeverity</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `version` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>titleEn</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Finding.<b>version</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`FindingCollection`](/api/graphql/documentation/objects/finding-collection)  <Badge class="secondary" text="object"/>
+
+
+

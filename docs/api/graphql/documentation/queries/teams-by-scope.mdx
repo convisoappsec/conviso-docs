@@ -1,42 +1,65 @@
 ---
 id: teams-by-scope
 title: teamsByScope
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Return teams avaiable to company
 
 ```graphql
 teamsByScope(
   id: ID!
-  page: Int = 0
-  limit: Int = 0
+  page: Int
+  limit: Int
   params: TeamSearch
+  orderType: OrderParams
+  order: OrderTeamsParams
 ): TeamCollection
-
 ```
+
 
 ### Arguments
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>teamsByScope.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>teamsByScope.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>teamsByScope.<b>limit</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `params` ([`TeamSearch`](/api/graphql/documentation/inputs/team-search))
+#### [<code style={{ fontWeight: 'normal' }}>teamsByScope.<b>params</b></code>](#)<Bullet />[`TeamSearch`](/api/graphql/documentation/inputs/team-search) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>teamsByScope.<b>orderType</b></code>](#)<Bullet />[`OrderParams`](/api/graphql/documentation/enums/order-params) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>teamsByScope.<b>order</b></code>](#)<Bullet />[`OrderTeamsParams`](/api/graphql/documentation/enums/order-teams-params) <Badge class="secondary" text="enum"/>
+> 
+> 
 
 ### Type
 
-#### [`TeamCollection`](/api/graphql/documentation/objects/team-collection)
+#### [`TeamCollection`](/api/graphql/documentation/objects/team-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

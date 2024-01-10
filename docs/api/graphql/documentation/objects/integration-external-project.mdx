@@ -1,19 +1,17 @@
 ---
 id: integration-external-project
 title: IntegrationExternalProject
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -34,28 +32,62 @@ type IntegrationExternalProject {
 }
 ```
 
+
 ### Fields
 
-#### `asset` ([`Asset`](/api/graphql/documentation/objects/asset))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>asset</b></code>](#)<Bullet />[`Asset`](/api/graphql/documentation/objects/asset) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `customMetadata` ([`IntegrationExternalProjectCollection`](/api/graphql/documentation/objects/integration-external-project-collection))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>customMetadata</b></code>](#)<Bullet />[`IntegrationExternalProjectCollection`](/api/graphql/documentation/objects/integration-external-project-collection) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `extraKey` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>extraKey</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `integrationId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>integrationId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `issueType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>issueType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `outsideKey` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>outsideKey</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `project` ([`Project`](/api/graphql/documentation/objects/project))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>project</b></code>](#)<Bullet />[`Project`](/api/graphql/documentation/objects/project) <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `projectExternalId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>projectExternalId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectExternalLabel` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>projectExternalLabel</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>projectId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scopeIntegrationId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationExternalProject.<b>scopeIntegrationId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`CustomFieldIntegration`](/api/graphql/documentation/objects/custom-field-integration)  <Badge class="secondary" text="object"/><Bullet />[`IntegrationExternalProjectCollection`](/api/graphql/documentation/objects/integration-external-project-collection)  <Badge class="secondary" text="object"/><Bullet />[`MappedFields`](/api/graphql/documentation/objects/mapped-fields)  <Badge class="secondary" text="object"/>
+
+
+

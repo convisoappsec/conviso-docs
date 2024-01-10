@@ -1,37 +1,77 @@
 ---
 id: scope-integration
 title: ScopeIntegration
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
 type ScopeIntegration {
+  accessToken: String
   createdAt: ISO8601DateTime!
   id: ID!
+  mappedPriorities: [IntegrationMappedPriority!]
   name: String!
+  scope: Company!
   updatedAt: ISO8601DateTime!
+  webhookUrl: String
 }
 ```
 
+
 ### Fields
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>accessToken</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `name` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>mappedPriorities</b></code>](#)<Bullet />[`[IntegrationMappedPriority!]`](/api/graphql/documentation/objects/integration-mapped-priority) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>name</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>scope</b></code>](#)<Bullet />[`Company!`](/api/graphql/documentation/objects/company) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>updatedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScopeIntegration.<b>webhookUrl</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`loadIntegration`](/api/graphql/documentation/queries/load-integration)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`CreateIntegrationPriorityMapPayload`](/api/graphql/documentation/objects/create-integration-priority-map-payload)  <Badge class="secondary" text="object"/><Bullet />[`DefectTrackerConfiguration`](/api/graphql/documentation/objects/defect-tracker-configuration)  <Badge class="secondary" text="object"/>
+
+
+

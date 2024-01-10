@@ -1,19 +1,17 @@
 ---
 id: asset
 title: Asset
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -21,62 +19,206 @@ No description
 type Asset {
   architectureType: String
   assetType: String
-  assetsTagList: String
+  assetsTagList: [String!]
   audience: String
-  companyId: Int
+  businessImpact: BusinessImpactLevel
+  company: Company!
+  convisoResponsible: Boolean!
   createdAt: ISO8601DateTime!
   criticity: String
-  dataClassification: String
+  dataClassification: [DataClassification!]!
   description: String
+  developers(
+  page: Int
+  perPage: Int
+): DeveloperTypeCollection
   developmentModel: String
   developmentTeam: String
   environment: String
+  exploitability: Exploitability
   id: ID!
+  integrationDetails: IntegrationDetailsCollection
+  integrations: [String!]
   lifeCycle: String
   name: String
-  projects: [Project!]
+  pendingVulnerabilitiesStats: [IssueSeverityStat!]!
+  projects(
+  includeAst: Boolean
+): [Project!]
+  riskScore: AssetRiskScoreHistories
   scanType: String
+  scannersExecutionHistories(
+  page: Int
+  perPage: Int
+): ScanHistoryCollection!
+  teams: [Team!]
+  technologies: [String!]!
+  threat: ThreatLevel
   updatedAt: ISO8601DateTime!
   url: String
+  users: [UserType!]
+  vulnerabilities: VulnerabilitiesDetail
 }
 ```
 
+
 ### Fields
 
-#### `architectureType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>architectureType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `assetType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>assetType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `assetsTagList` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>assetsTagList</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `audience` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>audience</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `companyId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>businessImpact</b></code>](#)<Bullet />[`BusinessImpactLevel`](/api/graphql/documentation/enums/business-impact-level) <Badge class="secondary" text="enum"/>
+> 
+> 
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>company</b></code>](#)<Bullet />[`Company!`](/api/graphql/documentation/objects/company) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `criticity` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>convisoResponsible</b></code>](#)<Bullet />[`Boolean!`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `dataClassification` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `description` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>criticity</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `developmentModel` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>dataClassification</b></code>](#)<Bullet />[`[DataClassification!]!`](/api/graphql/documentation/enums/data-classification) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
-#### `developmentTeam` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>description</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `environment` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>developers</b></code>](#)<Bullet />[`DeveloperTypeCollection`](/api/graphql/documentation/objects/developer-type-collection) <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>Asset.developers.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+##### [<code style={{ fontWeight: 'normal' }}>Asset.developers.<b>perPage</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `lifeCycle` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>developmentModel</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `name` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>developmentTeam</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projects` ([`[Project!]`](/api/graphql/documentation/objects/project))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>environment</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `scanType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>exploitability</b></code>](#)<Bullet />[`Exploitability`](/api/graphql/documentation/enums/exploitability) <Badge class="secondary" text="enum"/>
+> 
+> 
 
-#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `url` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>integrationDetails</b></code>](#)<Bullet />[`IntegrationDetailsCollection`](/api/graphql/documentation/objects/integration-details-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>integrations</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>lifeCycle</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>name</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>pendingVulnerabilitiesStats</b></code>](#)<Bullet />[`[IssueSeverityStat!]!`](/api/graphql/documentation/objects/issue-severity-stat) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>projects</b></code>](#)<Bullet />[`[Project!]`](/api/graphql/documentation/objects/project) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>Asset.projects.<b>includeAst</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>riskScore</b></code>](#)<Bullet />[`AssetRiskScoreHistories`](/api/graphql/documentation/objects/asset-risk-score-histories) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>scanType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>scannersExecutionHistories</b></code>](#)<Bullet />[`ScanHistoryCollection!`](/api/graphql/documentation/objects/scan-history-collection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>Asset.scannersExecutionHistories.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.scannersExecutionHistories.<b>perPage</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>teams</b></code>](#)<Bullet />[`[Team!]`](/api/graphql/documentation/objects/team) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>technologies</b></code>](#)<Bullet />[`[String!]!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>threat</b></code>](#)<Bullet />[`ThreatLevel`](/api/graphql/documentation/enums/threat-level) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>updatedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>url</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>users</b></code>](#)<Bullet />[`[UserType!]`](/api/graphql/documentation/objects/user-type) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>vulnerabilities</b></code>](#)<Bullet />[`VulnerabilitiesDetail`](/api/graphql/documentation/objects/vulnerabilities-detail) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`asset`](/api/graphql/documentation/queries/asset)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`AssetCollection`](/api/graphql/documentation/objects/asset-collection)  <Badge class="secondary" text="object"/><Bullet />[`AssociateProjectData`](/api/graphql/documentation/objects/associate-project-data)  <Badge class="secondary" text="object"/><Bullet />[`Contact`](/api/graphql/documentation/objects/contact)  <Badge class="secondary" text="object"/><Bullet />[`CreateAssetPayload`](/api/graphql/documentation/objects/create-asset-payload)  <Badge class="secondary" text="object"/><Bullet />[`DastFinding`](/api/graphql/documentation/objects/dast-finding)  <Badge class="secondary" text="object"/><Bullet />[`DefectTrackerConfiguration`](/api/graphql/documentation/objects/defect-tracker-configuration)  <Badge class="secondary" text="object"/><Bullet />[`FindingInterface`](/api/graphql/documentation/interfaces/finding-interface)  <Badge class="secondary" text="interface"/><Bullet />[`ImportedScan`](/api/graphql/documentation/objects/imported-scan)  <Badge class="secondary" text="object"/><Bullet />[`Integration`](/api/graphql/documentation/objects/integration)  <Badge class="secondary" text="object"/><Bullet />[`IntegrationExternalProject`](/api/graphql/documentation/objects/integration-external-project)  <Badge class="secondary" text="object"/><Bullet />[`IssueInterface`](/api/graphql/documentation/interfaces/issue-interface)  <Badge class="secondary" text="interface"/><Bullet />[`IssuesAggregation`](/api/graphql/documentation/objects/issues-aggregation)  <Badge class="secondary" text="object"/><Bullet />[`NetworkVulnerability`](/api/graphql/documentation/objects/network-vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`Project`](/api/graphql/documentation/objects/project)  <Badge class="secondary" text="object"/><Bullet />[`SastFinding`](/api/graphql/documentation/objects/sast-finding)  <Badge class="secondary" text="object"/><Bullet />[`ScaFinding`](/api/graphql/documentation/objects/sca-finding)  <Badge class="secondary" text="object"/><Bullet />[`ScanHistory`](/api/graphql/documentation/objects/scan-history)  <Badge class="secondary" text="object"/><Bullet />[`SourceCodeVulnerability`](/api/graphql/documentation/objects/source-code-vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`UpdateAssetPayload`](/api/graphql/documentation/objects/update-asset-payload)  <Badge class="secondary" text="object"/><Bullet />[`VulnerabilityInterface`](/api/graphql/documentation/interfaces/vulnerability-interface)  <Badge class="secondary" text="interface"/><Bullet />[`WebVulnerability`](/api/graphql/documentation/objects/web-vulnerability)  <Badge class="secondary" text="object"/>
+
+
+

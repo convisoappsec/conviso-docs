@@ -1,0 +1,43 @@
+---
+id: integration-details-collection
+title: IntegrationDetailsCollection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type IntegrationDetailsCollection {
+  collection: [IntegrationDetails!]!
+  metadata: CollectionMetadata!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationDetailsCollection.<b>collection</b></code>](#)<Bullet />[`[IntegrationDetails!]!`](/api/graphql/documentation/objects/integration-details) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationDetailsCollection.<b>metadata</b></code>](#)<Bullet />[`CollectionMetadata!`](/api/graphql/documentation/objects/collection-metadata) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`Asset`](/api/graphql/documentation/objects/asset)  <Badge class="secondary" text="object"/>
+
+
+

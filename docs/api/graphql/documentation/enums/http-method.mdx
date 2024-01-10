@@ -1,0 +1,73 @@
+---
+id: http-method
+title: HttpMethod
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+enum HttpMethod {
+  GET
+  POST
+  PUT
+  PATCH
+  DELETE
+  OPTIONS
+  HEAD
+  TRACE
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>GET</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>POST</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>PUT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>PATCH</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>DELETE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>OPTIONS</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>HEAD</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>HttpMethod.<b>TRACE</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`CreateDastFindingInput`](/api/graphql/documentation/inputs/create-dast-finding-input)  <Badge class="secondary" text="input"/><Bullet />[`CreateWebVulnerabilityInput`](/api/graphql/documentation/inputs/create-web-vulnerability-input)  <Badge class="secondary" text="input"/><Bullet />[`DastFindingDetail`](/api/graphql/documentation/objects/dast-finding-detail)  <Badge class="secondary" text="object"/><Bullet />[`UpdateWebVulnerabilityInput`](/api/graphql/documentation/inputs/update-web-vulnerability-input)  <Badge class="secondary" text="input"/><Bullet />[`WebVulnerabilityDetail`](/api/graphql/documentation/objects/web-vulnerability-detail)  <Badge class="secondary" text="object"/>
+
+
+

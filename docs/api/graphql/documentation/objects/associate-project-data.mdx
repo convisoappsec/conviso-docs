@@ -1,0 +1,43 @@
+---
+id: associate-project-data
+title: AssociateProjectData
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type AssociateProjectData {
+  asset: Asset
+  externalToolProject: ImportedScan
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AssociateProjectData.<b>asset</b></code>](#)<Bullet />[`Asset`](/api/graphql/documentation/objects/asset) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssociateProjectData.<b>externalToolProject</b></code>](#)<Bullet />[`ImportedScan`](/api/graphql/documentation/objects/imported-scan) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`AssociateProjectPayload`](/api/graphql/documentation/objects/associate-project-payload)  <Badge class="secondary" text="object"/>
+
+
+

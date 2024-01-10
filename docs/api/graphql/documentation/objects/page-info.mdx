@@ -1,19 +1,17 @@
 ---
 id: page-info
 title: PageInfo
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Information about pagination in a connection.
 
@@ -26,20 +24,30 @@ type PageInfo {
 }
 ```
 
+
 ### Fields
 
-#### `endCursor` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>endCursor</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> When paginating forwards, the cursor to continue.
+> 
 
-When paginating forwards, the cursor to continue.
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasNextPage</b></code>](#)<Bullet />[`Boolean!`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> When paginating forwards, are there more items?
+> 
 
-#### `hasNextPage` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasPreviousPage</b></code>](#)<Bullet />[`Boolean!`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> When paginating backwards, are there more items?
+> 
 
-When paginating forwards, are there more items?
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>startCursor</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> When paginating backwards, the cursor to continue.
+> 
 
-#### `hasPreviousPage` ([`Boolean!`](/api/graphql/documentation/scalars/boolean))
 
-When paginating backwards, are there more items?
 
-#### `startCursor` ([`String`](/api/graphql/documentation/scalars/string))
+### Member of
 
-When paginating backwards, the cursor to continue.
+[`ChatConnection`](/api/graphql/documentation/objects/chat-connection)  <Badge class="secondary" text="object"/><Bullet />[`ChatMessageConnection`](/api/graphql/documentation/objects/chat-message-connection)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserConnection`](/api/graphql/documentation/objects/portal-user-connection)  <Badge class="secondary" text="object"/>
+
+
+

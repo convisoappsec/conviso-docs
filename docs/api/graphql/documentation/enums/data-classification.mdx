@@ -1,0 +1,48 @@
+---
+id: data-classification
+title: DataClassification
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+enum DataClassification {
+  PERSONALLY_IDENTIFIABLE_INFORMATION
+  PAYMENT_CARD_INDUSTRY
+  NON_SENSITIVE
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DataClassification.<b>PERSONALLY_IDENTIFIABLE_INFORMATION</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DataClassification.<b>PAYMENT_CARD_INDUSTRY</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DataClassification.<b>NON_SENSITIVE</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`Asset`](/api/graphql/documentation/objects/asset)  <Badge class="secondary" text="object"/><Bullet />[`CreateAssetInput`](/api/graphql/documentation/inputs/create-asset-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateAssetInput`](/api/graphql/documentation/inputs/update-asset-input)  <Badge class="secondary" text="input"/>
+
+
+

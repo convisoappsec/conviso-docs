@@ -1,45 +1,60 @@
 ---
 id: contracts
 title: contracts
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Returns all contracts
 
 ```graphql
 contracts(
-  page: Int = 0
-  limit: Int = 0
-  sortBy: String
+  page: Int
+  limit: Int
+  sortBy: ContractSortByType
   descending: Boolean
   params: ContractSearch
 ): ContractCollection!
-
 ```
+
 
 ### Arguments
 
-#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>contracts.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>contracts.<b>limit</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `sortBy` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>contracts.<b>sortBy</b></code>](#)<Bullet />[`ContractSortByType`](/api/graphql/documentation/enums/contract-sort-by-type) <Badge class="secondary" text="enum"/>
+> 
+> 
 
-#### `descending` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>contracts.<b>descending</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `params` ([`ContractSearch`](/api/graphql/documentation/inputs/contract-search))
+#### [<code style={{ fontWeight: 'normal' }}>contracts.<b>params</b></code>](#)<Bullet />[`ContractSearch`](/api/graphql/documentation/inputs/contract-search) <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`ContractCollection`](/api/graphql/documentation/objects/contract-collection)
+#### [`ContractCollection`](/api/graphql/documentation/objects/contract-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

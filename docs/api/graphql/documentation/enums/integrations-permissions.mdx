@@ -1,0 +1,38 @@
+---
+id: integrations-permissions
+title: IntegrationsPermissions
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+permissions to integrations
+
+```graphql
+enum IntegrationsPermissions {
+  manage_integrations
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationsPermissions.<b>manage_integrations</b></code>](#) 
+> Allows user to create and modify configurations for integrations.
+> 
+
+
+
+### Member of
+
+[`PortalUserAccessProfiles`](/api/graphql/documentation/objects/portal-user-access-profiles)  <Badge class="secondary" text="object"/>
+
+
+

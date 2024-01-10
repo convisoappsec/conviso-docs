@@ -1,24 +1,22 @@
 ---
 id: finding-search
 title: FindingSearch
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
-type FindingSearch {
+input FindingSearch {
   applicationId: Int
   commitReference: String
   createdAt: ISO8601DateTime
@@ -35,56 +33,66 @@ type FindingSearch {
 }
 ```
 
+
 ### Fields
 
-#### `applicationId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>applicationId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> Application id
+> 
 
-Application id
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>commitReference</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Commit Reference
+> 
 
-#### `commitReference` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="scalar"/>
+> Created at
+> 
 
-Commit Reference
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>deployId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> Deploy id
+> 
 
-#### `createdAt` ([`ISO8601DateTime`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>evaluationStatus</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> Status
+> 
 
-Created at
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>integrationName</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Integration name
+> 
 
-#### `deployId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>projectKey</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Flow Project Key
+> 
 
-Deploy id
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>scopeId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> Company id
+> 
 
-#### `evaluationStatus` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>scanType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Scan type
+> 
 
-Status
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>source</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> Source
+> 
 
-#### `integrationName` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>sourceFile</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Source file
+> 
 
-Integration name
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>technicalSeverity</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> Severity label
+> 
 
-#### `projectKey` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>FindingSearch.<b>title</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title
+> 
 
-Flow Project Key
 
-#### `scopeId` ([`Int`](/api/graphql/documentation/scalars/int))
 
-Scope id
+### Member of
 
-#### `scanType` ([`String`](/api/graphql/documentation/scalars/string))
+[`findings`](/api/graphql/documentation/queries/findings)  <Badge class="secondary" text="query"/>
 
-Scan type
 
-#### `source` ([`Int`](/api/graphql/documentation/scalars/int))
 
-Source
-
-#### `sourceFile` ([`String`](/api/graphql/documentation/scalars/string))
-
-Source file
-
-#### `technicalSeverity` ([`Int`](/api/graphql/documentation/scalars/int))
-
-Severity label
-
-#### `title` ([`String`](/api/graphql/documentation/scalars/string))
-
-Title

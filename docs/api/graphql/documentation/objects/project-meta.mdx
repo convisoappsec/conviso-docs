@@ -1,19 +1,17 @@
 ---
 id: project-meta
 title: ProjectMeta
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -43,46 +41,98 @@ type ProjectMeta {
 }
 ```
 
+
 ### Fields
 
-#### `currentPage` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>currentPage</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `engagementStatuses` ([`[AnalysisStatusType!]`](/api/graphql/documentation/objects/analysis-status-type))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>engagementStatuses</b></code>](#)<Bullet />[`[AnalysisStatusType!]`](/api/graphql/documentation/objects/analysis-status-type) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `engagementTypes` ([`[ProjectType!]`](/api/graphql/documentation/objects/project-type))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>engagementTypes</b></code>](#)<Bullet />[`[ProjectType!]`](/api/graphql/documentation/objects/project-type) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `limitValue` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>limitValue</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `tags` ([`[String!]`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>tags</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `teams` ([`[Team!]`](/api/graphql/documentation/objects/team))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>teams</b></code>](#)<Bullet />[`[Team!]`](/api/graphql/documentation/objects/team) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `total` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>total</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalAnalysis` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalAnalysis</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalCount` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalCount</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalDone` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalDone</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalEstimate` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalEstimate</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalFixing` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalFixing</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalPages` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalPages</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalPaused` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalPaused</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalPlanned` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalPlanned</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalVulnsCount` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalVulnsCount</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalVulnsCritical` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalVulnsCritical</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalVulnsHigh` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalVulnsHigh</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalVulnsLow` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalVulnsLow</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalVulnsMedium` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalVulnsMedium</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `totalVulnsNotification` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>ProjectMeta.<b>totalVulnsNotification</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`ProjectCollection`](/api/graphql/documentation/objects/project-collection)  <Badge class="secondary" text="object"/>
+
+
+
