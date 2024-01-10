@@ -2,7 +2,7 @@
 id: jira
 title: Jira Integration
 sidebar_label: Jira
-description:  A step-by-step guide on how to seamlessly integrate Conviso Platform with Jira for efficient vulnerability management and issue control.
+description:  A step-by-step guide on how to integrate Conviso Platform with Jira for efficient vulnerability management and issue control.
 keywords:  [Jira integration]
 ---
 
