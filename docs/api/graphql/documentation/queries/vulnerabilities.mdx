@@ -1,47 +1,60 @@
 ---
 id: vulnerabilities
 title: vulnerabilities
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Returns all vulnerabilities the user has access
 
 ```graphql
 vulnerabilities(
-  page: Int = 0
-  limit: Int = 0
+  page: Int
+  limit: Int
   params: VulnerabilitySearch
   order: OrderOccurrencesParams
   orderType: OrderParams
 ): VulnerabilityCollection
-
 ```
+
 
 ### Arguments
 
-#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>vulnerabilities.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>vulnerabilities.<b>limit</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `params` ([`VulnerabilitySearch`](/api/graphql/documentation/inputs/vulnerability-search))
+#### [<code style={{ fontWeight: 'normal' }}>vulnerabilities.<b>params</b></code>](#)<Bullet />[`VulnerabilitySearch`](/api/graphql/documentation/inputs/vulnerability-search) <Badge class="secondary" text="input"/>
+> 
+> 
 
-#### `order` ([`OrderOccurrencesParams`](/api/graphql/documentation/enums/order-occurrences-params))
+#### [<code style={{ fontWeight: 'normal' }}>vulnerabilities.<b>order</b></code>](#)<Bullet />[`OrderOccurrencesParams`](/api/graphql/documentation/enums/order-occurrences-params) <Badge class="secondary" text="enum"/>
+> 
+> 
 
-#### `orderType` ([`OrderParams`](/api/graphql/documentation/enums/order-params))
-
-ASC or DESC
+#### [<code style={{ fontWeight: 'normal' }}>vulnerabilities.<b>orderType</b></code>](#)<Bullet />[`OrderParams`](/api/graphql/documentation/enums/order-params) <Badge class="secondary" text="enum"/>
+> ASC or DESC
+> 
 
 ### Type
 
-#### [`VulnerabilityCollection`](/api/graphql/documentation/objects/vulnerability-collection)
+#### [`VulnerabilityCollection`](/api/graphql/documentation/objects/vulnerability-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

@@ -1,39 +1,50 @@
 ---
 id: findings
 title: findings
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Returns findings
 
 ```graphql
 findings(
-  limit: Int = 0
-  page: Int = 0
+  page: Int!
+  limit: Int
   params: FindingSearch
 ): FindingCollection!
-
 ```
+
 
 ### Arguments
 
-#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>findings.<b>page</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>findings.<b>limit</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `params` ([`FindingSearch`](/api/graphql/documentation/inputs/finding-search))
+#### [<code style={{ fontWeight: 'normal' }}>findings.<b>params</b></code>](#)<Bullet />[`FindingSearch`](/api/graphql/documentation/inputs/finding-search) <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`FindingCollection`](/api/graphql/documentation/objects/finding-collection)
+#### [`FindingCollection`](/api/graphql/documentation/objects/finding-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

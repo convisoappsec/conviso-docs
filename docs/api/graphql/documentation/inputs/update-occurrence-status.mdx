@@ -1,24 +1,22 @@
 ---
 id: update-occurrence-status
 title: UpdateOccurrenceStatus
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
-type UpdateOccurrenceStatus {
+input UpdateOccurrenceStatus {
   comment: String
   deployId: String
   evidencesAttributes: [NewEvidence!]
@@ -26,20 +24,30 @@ type UpdateOccurrenceStatus {
 }
 ```
 
+
 ### Fields
 
-#### `comment` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>UpdateOccurrenceStatus.<b>comment</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Comment
+> 
 
-Comment
+#### [<code style={{ fontWeight: 'normal' }}>UpdateOccurrenceStatus.<b>deployId</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Deploy id
+> 
 
-#### `deployId` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>UpdateOccurrenceStatus.<b>evidencesAttributes</b></code>](#)<Bullet />[`[NewEvidence!]`](/api/graphql/documentation/inputs/new-evidence) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Evidences attributes
+> 
 
-Deploy id
+#### [<code style={{ fontWeight: 'normal' }}>UpdateOccurrenceStatus.<b>status</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Status
+> 
 
-#### `evidencesAttributes` ([`[NewEvidence!]`](/api/graphql/documentation/inputs/new-evidence))
 
-Evidences attributes
 
-#### `status` ([`String!`](/api/graphql/documentation/scalars/string))
+### Member of
 
-Status
+[`UpdateOccurrenceInput`](/api/graphql/documentation/inputs/update-occurrence-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -1,0 +1,63 @@
+---
+id: scan-history
+title: ScanHistory
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type ScanHistory {
+  asset: Asset
+  finalState: ScanState!
+  finishedAt: ISO8601DateTime!
+  kind: ScanType!
+  logs: [String!]!
+  startedAt: ISO8601DateTime!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ScanHistory.<b>asset</b></code>](#)<Bullet />[`Asset`](/api/graphql/documentation/objects/asset) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScanHistory.<b>finalState</b></code>](#)<Bullet />[`ScanState!`](/api/graphql/documentation/enums/scan-state) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScanHistory.<b>finishedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScanHistory.<b>kind</b></code>](#)<Bullet />[`ScanType!`](/api/graphql/documentation/enums/scan-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScanHistory.<b>logs</b></code>](#)<Bullet />[`[String!]!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ScanHistory.<b>startedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`ScanHistoryCollection`](/api/graphql/documentation/objects/scan-history-collection)  <Badge class="secondary" text="object"/>
+
+
+

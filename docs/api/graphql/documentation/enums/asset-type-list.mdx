@@ -1,19 +1,17 @@
 ---
 id: asset-type-list
 title: AssetTypeList
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -34,52 +32,62 @@ enum AssetTypeList {
 }
 ```
 
+
 ### Values
 
-#### `none`
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>none</b></code>](#) 
+> None
+> 
 
-None
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>client_server</b></code>](#) 
+> Client-server
+> 
 
-#### `client_server`
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>api</b></code>](#) 
+> api
+> 
 
-Client-server
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>progressive_web_app</b></code>](#) 
+> Progressive Web App
+> 
 
-#### `api`
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>web</b></code>](#) 
+> web
+> 
 
-api
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>native_mobile</b></code>](#) 
+> Native Mobile
+> 
 
-#### `progressive_web_app`
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>hybrid_mobile</b></code>](#) 
+> Hybrid Mobile
+> 
 
-Progressive Web App
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>database</b></code>](#) 
+> Database
+> 
 
-#### `web`
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>dmz</b></code>](#) 
+> DMZ
+> 
 
-web
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>legacy</b></code>](#) 
+> Legacy
+> 
 
-#### `native_mobile`
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>cluster</b></code>](#) 
+> Cluster
+> 
 
-Native Mobile
+#### [<code style={{ fontWeight: 'normal' }}>AssetTypeList.<b>node</b></code>](#) 
+> Node
+> 
 
-#### `hybrid_mobile`
 
-Hybrid Mobile
 
-#### `database`
+### Member of
 
-Database
+[`CreateAssetInput`](/api/graphql/documentation/inputs/create-asset-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateAssetInput`](/api/graphql/documentation/inputs/update-asset-input)  <Badge class="secondary" text="input"/>
 
-#### `dmz`
 
-DMZ
 
-#### `legacy`
-
-Legacy
-
-#### `cluster`
-
-Cluster
-
-#### `node`
-
-Node

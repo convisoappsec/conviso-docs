@@ -1,39 +1,60 @@
 ---
 id: companies
 title: companies
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Returns all companies the user has access
 
 ```graphql
 companies(
-  page: Int = 0
-  limit: Int = 0
+  page: Int
+  limit: Int
   params: CompanySearch
+  order: OrderScopesParams
+  orderType: OrderParams
 ): CompanyCollection
-
 ```
+
 
 ### Arguments
 
-#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>companies.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>companies.<b>limit</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `params` ([`CompanySearch`](/api/graphql/documentation/inputs/company-search))
+#### [<code style={{ fontWeight: 'normal' }}>companies.<b>params</b></code>](#)<Bullet />[`CompanySearch`](/api/graphql/documentation/inputs/company-search) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>companies.<b>order</b></code>](#)<Bullet />[`OrderScopesParams`](/api/graphql/documentation/enums/order-scopes-params) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>companies.<b>orderType</b></code>](#)<Bullet />[`OrderParams`](/api/graphql/documentation/enums/order-params) <Badge class="secondary" text="enum"/>
+> ASC or DESC
+> 
 
 ### Type
 
-#### [`CompanyCollection`](/api/graphql/documentation/objects/company-collection)
+#### [`CompanyCollection`](/api/graphql/documentation/objects/company-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

@@ -1,0 +1,45 @@
+---
+id: deploys-by-company
+title: deploysByCompany
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returns deploys by company id
+
+```graphql
+deploysByCompany(
+  pagination: PaginationInput
+  filters: DeploysFiltersInput
+): DeployCollection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>deploysByCompany.<b>pagination</b></code>](#)<Bullet />[`PaginationInput`](/api/graphql/documentation/inputs/pagination-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>deploysByCompany.<b>filters</b></code>](#)<Bullet />[`DeploysFiltersInput`](/api/graphql/documentation/inputs/deploys-filters-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`DeployCollection`](/api/graphql/documentation/objects/deploy-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

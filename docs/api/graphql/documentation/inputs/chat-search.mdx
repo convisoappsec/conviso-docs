@@ -1,0 +1,58 @@
+---
+id: chat-search
+title: ChatSearch
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+input ChatSearch {
+  scopeIdIn: [Int!]
+  teamIdIn: [Int!]
+  allocatedAnalystIdIn: [Int!]
+  textSearchMatch: String
+  status: SecurityExpertStatus
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ChatSearch.<b>scopeIdIn</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Search for company IDS
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ChatSearch.<b>teamIdIn</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Search by Team IDS
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ChatSearch.<b>allocatedAnalystIdIn</b></code>](#)<Bullet />[`[Int!]`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Search by Analyst IDS
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ChatSearch.<b>textSearchMatch</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Search through company name, message content, project label or vulnerability title
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ChatSearch.<b>status</b></code>](#)<Bullet />[`SecurityExpertStatus`](/api/graphql/documentation/enums/security-expert-status) <Badge class="secondary" text="enum"/>
+> Search conversations by status
+> 
+
+
+
+### Member of
+
+[`chatSearch`](/api/graphql/documentation/queries/chat-search)  <Badge class="secondary" text="query"/>
+
+
+

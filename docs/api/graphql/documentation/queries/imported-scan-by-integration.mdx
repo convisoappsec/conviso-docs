@@ -1,39 +1,50 @@
 ---
 id: imported-scan-by-integration
 title: importedScanByIntegration
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 Returns imported scans from a scan tool
 
 ```graphql
 importedScanByIntegration(
   integrationId: Int!
-  page: Int = 0
-  limit: Int = 0
+  page: Int
+  limit: Int
 ): ImportedScanCollection!
-
 ```
+
 
 ### Arguments
 
-#### `integrationId` ([`Int!`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>importedScanByIntegration.<b>integrationId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `page` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>importedScanByIntegration.<b>page</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `limit` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>importedScanByIntegration.<b>limit</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`ImportedScanCollection`](/api/graphql/documentation/objects/imported-scan-collection)
+#### [`ImportedScanCollection`](/api/graphql/documentation/objects/imported-scan-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

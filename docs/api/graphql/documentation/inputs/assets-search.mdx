@@ -1,0 +1,108 @@
+---
+id: assets-search
+title: AssetsSearch
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+input AssetsSearch {
+  name: String
+  technology: [String!]
+  tags: [String!]
+  architectureType: [AssetArch!]
+  lifeCycle: [AssetLifeCycle!]
+  dataClassification: [AssetDataClassification!]
+  integrationTypes: [IntegrationsTypes!]
+  businessImpact: [BusinessImpactLevel!]
+  teamIds: [ID!]
+  createdAt: DateTimeSearch
+  updatedAt: DateTimeSearch
+  exploitability: [Exploitability!]
+  threat: [ThreatLevel!]
+  sortBy: AssetSortByEnum
+  order: OrderEnum
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>name</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>technology</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>tags</b></code>](#)<Bullet />[`[String!]`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>architectureType</b></code>](#)<Bullet />[`[AssetArch!]`](/api/graphql/documentation/enums/asset-arch) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>lifeCycle</b></code>](#)<Bullet />[`[AssetLifeCycle!]`](/api/graphql/documentation/enums/asset-life-cycle) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>dataClassification</b></code>](#)<Bullet />[`[AssetDataClassification!]`](/api/graphql/documentation/enums/asset-data-classification) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>integrationTypes</b></code>](#)<Bullet />[`[IntegrationsTypes!]`](/api/graphql/documentation/enums/integrations-types) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>businessImpact</b></code>](#)<Bullet />[`[BusinessImpactLevel!]`](/api/graphql/documentation/enums/business-impact-level) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>teamIds</b></code>](#)<Bullet />[`[ID!]`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>createdAt</b></code>](#)<Bullet />[`DateTimeSearch`](/api/graphql/documentation/inputs/date-time-search) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>updatedAt</b></code>](#)<Bullet />[`DateTimeSearch`](/api/graphql/documentation/inputs/date-time-search) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>exploitability</b></code>](#)<Bullet />[`[Exploitability!]`](/api/graphql/documentation/enums/exploitability) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>threat</b></code>](#)<Bullet />[`[ThreatLevel!]`](/api/graphql/documentation/enums/threat-level) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>sortBy</b></code>](#)<Bullet />[`AssetSortByEnum`](/api/graphql/documentation/enums/asset-sort-by-enum) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AssetsSearch.<b>order</b></code>](#)<Bullet />[`OrderEnum`](/api/graphql/documentation/enums/order-enum) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+### Member of
+
+[`assets`](/api/graphql/documentation/queries/assets)  <Badge class="secondary" text="query"/>
+
+
+

@@ -1,0 +1,38 @@
+---
+id: order-scopes-params
+title: OrderScopesParams
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+enum OrderScopesParams {
+  label
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderScopesParams.<b>label</b></code>](#) 
+> order by label
+> 
+
+
+
+### Member of
+
+[`companies`](/api/graphql/documentation/queries/companies)  <Badge class="secondary" text="query"/>
+
+
+

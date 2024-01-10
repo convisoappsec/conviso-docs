@@ -1,0 +1,68 @@
+---
+id: issue-status-history
+title: IssueStatusHistory
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type IssueStatusHistory {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  label: IssueStatusLabel!
+  previous: IssueStatusHistory
+  reason: String
+  source: PortalUser!
+  status: IssueStatusLabel!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>label</b></code>](#)<Bullet />[`IssueStatusLabel!`](/api/graphql/documentation/enums/issue-status-label) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>previous</b></code>](#)<Bullet />[`IssueStatusHistory`](/api/graphql/documentation/objects/issue-status-history) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>reason</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> Reason why the status has changed
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>source</b></code>](#)<Bullet />[`PortalUser!`](/api/graphql/documentation/objects/portal-user) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>IssueStatusHistory.<b>status</b></code>](#)<Bullet />[`IssueStatusLabel!`](/api/graphql/documentation/enums/issue-status-label) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DastFinding`](/api/graphql/documentation/objects/dast-finding)  <Badge class="secondary" text="object"/><Bullet />[`FindingInterface`](/api/graphql/documentation/interfaces/finding-interface)  <Badge class="secondary" text="interface"/><Bullet />[`IssueInterface`](/api/graphql/documentation/interfaces/issue-interface)  <Badge class="secondary" text="interface"/><Bullet />[`IssueStatusHistory`](/api/graphql/documentation/objects/issue-status-history)  <Badge class="secondary" text="object"/><Bullet />[`NetworkVulnerability`](/api/graphql/documentation/objects/network-vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`SastFinding`](/api/graphql/documentation/objects/sast-finding)  <Badge class="secondary" text="object"/><Bullet />[`ScaFinding`](/api/graphql/documentation/objects/sca-finding)  <Badge class="secondary" text="object"/><Bullet />[`SourceCodeVulnerability`](/api/graphql/documentation/objects/source-code-vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`VulnerabilityInterface`](/api/graphql/documentation/interfaces/vulnerability-interface)  <Badge class="secondary" text="interface"/><Bullet />[`WebVulnerability`](/api/graphql/documentation/objects/web-vulnerability)  <Badge class="secondary" text="object"/>
+
+
+

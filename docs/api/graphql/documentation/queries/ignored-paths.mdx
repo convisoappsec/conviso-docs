@@ -1,0 +1,45 @@
+---
+id: ignored-paths
+title: ignoredPaths
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Return ignored paths
+
+```graphql
+ignoredPaths(
+  paths: [String!]!
+  projectKey: String!
+): IgnoredPathsResult!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>ignoredPaths.<b>paths</b></code>](#)<Bullet />[`[String!]!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ignoredPaths.<b>projectKey</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`IgnoredPathsResult`](/api/graphql/documentation/objects/ignored-paths-result) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

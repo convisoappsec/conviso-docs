@@ -1,24 +1,22 @@
 ---
 id: integration-custom-fields-input
 title: IntegrationCustomFieldsInput
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
-type IntegrationCustomFieldsInput {
+input IntegrationCustomFieldsInput {
   id: ID
   name: String!
   value: String!
@@ -27,14 +25,34 @@ type IntegrationCustomFieldsInput {
 }
 ```
 
+
 ### Fields
 
-#### `id` ([`ID`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationCustomFieldsInput.<b>id</b></code>](#)<Bullet />[`ID`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `name` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationCustomFieldsInput.<b>name</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `value` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationCustomFieldsInput.<b>value</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectExternalKeyId` ([`Int`](/api/graphql/documentation/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationCustomFieldsInput.<b>projectExternalKeyId</b></code>](#)<Bullet />[`Int`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `fieldType` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>IntegrationCustomFieldsInput.<b>fieldType</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`CreateIntegrationMappedFieldsInput`](/api/graphql/documentation/inputs/create-integration-mapped-fields-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateIntegrationMappedFieldsInput`](/api/graphql/documentation/inputs/update-integration-mapped-fields-input)  <Badge class="secondary" text="input"/>
+
+
+

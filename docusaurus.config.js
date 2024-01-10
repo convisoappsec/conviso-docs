@@ -105,7 +105,10 @@ module.exports = {
         schema: "./static/schema.graphql",
         rootPath: "./docs", // docs will be generated under './docs/swapi' (rootPath/baseURL)
         baseURL: "api/graphql/documentation",
-        homepage: "./docs/api/graphql/introduction.md"
+        homepage: "./docs/api/graphql/introduction.md",
+        loaders: {
+          GraphQLFileLoader: "@graphql-tools/graphql-file-loader", // local file schema
+        },
       }
     ],
     [

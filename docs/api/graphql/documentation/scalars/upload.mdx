@@ -1,22 +1,30 @@
 ---
 id: upload
 title: Upload
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
 scalar Upload
 ```
+
+
+
+
+### Member of
+
+[`ContactTypeInput`](/api/graphql/documentation/inputs/contact-type-input)  <Badge class="secondary" text="input"/><Bullet />[`CreateAttachmentInput`](/api/graphql/documentation/inputs/create-attachment-input)  <Badge class="secondary" text="input"/><Bullet />[`CreateChatMessageInput`](/api/graphql/documentation/inputs/create-chat-message-input)  <Badge class="secondary" text="input"/><Bullet />[`CreateContractInput`](/api/graphql/documentation/inputs/create-contract-input)  <Badge class="secondary" text="input"/><Bullet />[`CreateDeployInput`](/api/graphql/documentation/inputs/create-deploy-input)  <Badge class="secondary" text="input"/><Bullet />[`CreateNotificationInput`](/api/graphql/documentation/inputs/create-notification-input)  <Badge class="secondary" text="input"/><Bullet />[`NewEvidence`](/api/graphql/documentation/inputs/new-evidence)  <Badge class="secondary" text="input"/><Bullet />[`UpdateActivityStatusToFinishInput`](/api/graphql/documentation/inputs/update-activity-status-to-finish-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateContractInput`](/api/graphql/documentation/inputs/update-contract-input)  <Badge class="secondary" text="input"/><Bullet />[`UpdateDeployInput`](/api/graphql/documentation/inputs/update-deploy-input)  <Badge class="secondary" text="input"/>
+
+
+

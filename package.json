@@ -9,7 +9,8 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
-    "clear": "docusaurus clear"
+    "clear": "docusaurus clear",
+    "doc": "docusaurus graphql-to-doc"
   },
   "dependencies": {
     "@docusaurus/core": "^2.2.0",
@@ -17,6 +18,8 @@
     "@docusaurus/preset-classic": "^2.3.0",
     "@easyops-cn/docusaurus-search-local": "^0.36.0",
     "@graphql-markdown/docusaurus": "^1.16.3",
+    "@graphql-tools/graphql-file-loader": "^8.0.0",
+    "@graphql-tools/url-loader": "^8.0.1",
     "@mdx-js/react": "^1.6.21",
     "clsx": "^2.0.0",
     "docusaurus-gtm-plugin": "^0.0.2",

@@ -1,0 +1,67 @@
+---
+id: defect-tracker-configuration
+title: DefectTrackerConfiguration
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type DefectTrackerConfiguration {
+  asset: Asset!
+  detail: JiraIntegrationDetail!
+  fieldMappings: [DefectTrackerFieldMapping!]!
+  id: ID!
+  scopeIntegration: ScopeIntegration!
+  statusMappings: [DefectTrackerStatusMapping!]!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DefectTrackerConfiguration.<b>asset</b></code>](#)<Bullet />[`Asset!`](/api/graphql/documentation/objects/asset) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DefectTrackerConfiguration.<b>detail</b></code>](#)<Bullet />[`JiraIntegrationDetail!`](/api/graphql/documentation/objects/jira-integration-detail) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DefectTrackerConfiguration.<b>fieldMappings</b></code>](#)<Bullet />[`[DefectTrackerFieldMapping!]!`](/api/graphql/documentation/objects/defect-tracker-field-mapping) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Field mapping between Conviso Platform and and defect tracker tool
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DefectTrackerConfiguration.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Defect tracker configuration ID
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DefectTrackerConfiguration.<b>scopeIntegration</b></code>](#)<Bullet />[`ScopeIntegration!`](/api/graphql/documentation/objects/scope-integration) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DefectTrackerConfiguration.<b>statusMappings</b></code>](#)<Bullet />[`[DefectTrackerStatusMapping!]!`](/api/graphql/documentation/objects/defect-tracker-status-mapping) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Status mapping between Conviso Platform and defect tracker tool
+> 
+
+
+
+### Returned by
+
+[`defectTrackerConfiguration`](/api/graphql/documentation/queries/defect-tracker-configuration)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`CreateJiraConfigurationPayload`](/api/graphql/documentation/objects/create-jira-configuration-payload)  <Badge class="secondary" text="object"/><Bullet />[`DefectTrackerConfigurationCollection`](/api/graphql/documentation/objects/defect-tracker-configuration-collection)  <Badge class="secondary" text="object"/><Bullet />[`DeleteDefectTrackerConfigurationPayload`](/api/graphql/documentation/objects/delete-defect-tracker-configuration-payload)  <Badge class="secondary" text="object"/><Bullet />[`UpdateJiraConfigurationPayload`](/api/graphql/documentation/objects/update-jira-configuration-payload)  <Badge class="secondary" text="object"/>
+
+
+

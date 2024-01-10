@@ -1,19 +1,17 @@
 ---
 id: readed-chat-message
 title: ReadedChatMessage
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
@@ -28,16 +26,38 @@ type ReadedChatMessage {
 }
 ```
 
+
 ### Fields
 
-#### `chat` ([`Chat!`](/api/graphql/documentation/objects/chat))
+#### [<code style={{ fontWeight: 'normal' }}>ReadedChatMessage.<b>chat</b></code>](#)<Bullet />[`Chat!`](/api/graphql/documentation/objects/chat) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `createdAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ReadedChatMessage.<b>createdAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>ReadedChatMessage.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `lastMessageReaded` ([`ChatMessage!`](/api/graphql/documentation/objects/chat-message))
+#### [<code style={{ fontWeight: 'normal' }}>ReadedChatMessage.<b>lastMessageReaded</b></code>](#)<Bullet />[`ChatMessage!`](/api/graphql/documentation/objects/chat-message) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `portalUser` ([`PortalUser!`](/api/graphql/documentation/objects/portal-user))
+#### [<code style={{ fontWeight: 'normal' }}>ReadedChatMessage.<b>portalUser</b></code>](#)<Bullet />[`PortalUser!`](/api/graphql/documentation/objects/portal-user) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-#### `updatedAt` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+#### [<code style={{ fontWeight: 'normal' }}>ReadedChatMessage.<b>updatedAt</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`ReadedChatMessagesUpdatePayload`](/api/graphql/documentation/objects/readed-chat-messages-update-payload)  <Badge class="secondary" text="object"/>
+
+
+

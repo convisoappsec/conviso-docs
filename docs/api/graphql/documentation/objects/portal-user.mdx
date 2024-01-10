@@ -1,92 +1,145 @@
 ---
 id: portal-user
 title: PortalUser
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 No description
 
 ```graphql
 type PortalUser {
-  allocatedAnalyses: [Project!]
+  allocatedAnalyses(
+  companyId: Int!
+): [Project!]
   analyst: Boolean
+  avatarUrl: String
   blocked: Boolean
   dashboardOnly: Boolean
   email: String!
-  endWorkTime: String
-  financial: Boolean
-  githubUser: String
   id: ID!
-  jiraUser: String
+  invite(
+  companyId: ID!
+): Invite
   name: String
-  oper: Boolean
-  pendingDeploys: [PendingDeploy!]
-  pendingProjectComments: [ProjectComment!]
-  phone: String
-  projectsInEstimate: [ProjectsInEstimate!]
+  pendingDeploys(
+  companyId: Int!
+): [PendingDeploy!]
+  projectsInEstimate(
+  companyId: Int!
+): [ProjectsInEstimate!]
   reviewedDeploys(
-    initialDate: ISO8601DateTime!
-    finishDate: ISO8601DateTime!
-  ): [Deploy!]
-  slackUser: String
-  sshPublicKey: String
-  submittedVulnerabilities: [Vulnerability!]
+  initialDate: ISO8601DateTime!
+  finishDate: ISO8601DateTime!
+  companyId: Int!
+): [Deploy!]
+  submittedVulnerabilities(
+  companyId: Int!
+): [Vulnerability!]
+  teams(
+  companyId: Int!
+): [Team!]
 }
 ```
 
+
 ### Fields
 
-#### `allocatedAnalyses` ([`[Project!]`](/api/graphql/documentation/objects/project))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>allocatedAnalyses</b></code>](#)<Bullet />[`[Project!]`](/api/graphql/documentation/objects/project) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.allocatedAnalyses.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `analyst` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>analyst</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `blocked` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>avatarUrl</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `dashboardOnly` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>blocked</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `email` ([`String!`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>dashboardOnly</b></code>](#)<Bullet />[`Boolean`](/api/graphql/documentation/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `endWorkTime` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>email</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `financial` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>id</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `githubUser` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>invite</b></code>](#)<Bullet />[`Invite`](/api/graphql/documentation/objects/invite) <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.invite.<b>companyId</b></code>](#)<Bullet />[`ID!`](/api/graphql/documentation/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `id` ([`ID!`](/api/graphql/documentation/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>name</b></code>](#)<Bullet />[`String`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `jiraUser` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>pendingDeploys</b></code>](#)<Bullet />[`[PendingDeploy!]`](/api/graphql/documentation/objects/pending-deploy) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.pendingDeploys.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `name` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>projectsInEstimate</b></code>](#)<Bullet />[`[ProjectsInEstimate!]`](/api/graphql/documentation/objects/projects-in-estimate) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.projectsInEstimate.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `oper` ([`Boolean`](/api/graphql/documentation/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>reviewedDeploys</b></code>](#)<Bullet />[`[Deploy!]`](/api/graphql/documentation/objects/deploy) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.reviewedDeploys.<b>initialDate</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `pendingDeploys` ([`[PendingDeploy!]`](/api/graphql/documentation/objects/pending-deploy))
+##### [<code style={{ fontWeight: 'normal' }}>PortalUser.reviewedDeploys.<b>finishDate</b></code>](#)<Bullet />[`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso8601-date-time) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `pendingProjectComments` ([`[ProjectComment!]`](/api/graphql/documentation/objects/project-comment))
+##### [<code style={{ fontWeight: 'normal' }}>PortalUser.reviewedDeploys.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `phone` ([`String`](/api/graphql/documentation/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>submittedVulnerabilities</b></code>](#)<Bullet />[`[Vulnerability!]`](/api/graphql/documentation/objects/vulnerability) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.submittedVulnerabilities.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `projectsInEstimate` ([`[ProjectsInEstimate!]`](/api/graphql/documentation/objects/projects-in-estimate))
+#### [<code style={{ fontWeight: 'normal' }}>PortalUser.<b>teams</b></code>](#)<Bullet />[`[Team!]`](/api/graphql/documentation/objects/team) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> ##### [<code style={{ fontWeight: 'normal' }}>PortalUser.teams.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### `reviewedDeploys` ([`[Deploy!]`](/api/graphql/documentation/objects/deploy))
 
-- ##### `initialDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
 
-- ##### `finishDate` ([`ISO8601DateTime!`](/api/graphql/documentation/scalars/iso-8601-date-time))
+### Returned by
 
-#### `slackUser` ([`String`](/api/graphql/documentation/scalars/string))
+[`currentUserProfile`](/api/graphql/documentation/queries/current-user-profile)  <Badge class="secondary" text="query"/><Bullet />[`portalUserProfile`](/api/graphql/documentation/queries/portal-user-profile)  <Badge class="secondary" text="query"/>
 
-#### `sshPublicKey` ([`String`](/api/graphql/documentation/scalars/string))
+### Member of
 
-#### `submittedVulnerabilities` ([`[Vulnerability!]`](/api/graphql/documentation/objects/vulnerability))
+[`Activity`](/api/graphql/documentation/objects/activity)  <Badge class="secondary" text="object"/><Bullet />[`AnalystAllocations`](/api/graphql/documentation/objects/analyst-allocations)  <Badge class="secondary" text="object"/><Bullet />[`Attachment`](/api/graphql/documentation/objects/attachment)  <Badge class="secondary" text="object"/><Bullet />[`Chat`](/api/graphql/documentation/objects/chat)  <Badge class="secondary" text="object"/><Bullet />[`ChatMessage`](/api/graphql/documentation/objects/chat-message)  <Badge class="secondary" text="object"/><Bullet />[`DastFinding`](/api/graphql/documentation/objects/dast-finding)  <Badge class="secondary" text="object"/><Bullet />[`Deploy`](/api/graphql/documentation/objects/deploy)  <Badge class="secondary" text="object"/><Bullet />[`EducationUser`](/api/graphql/documentation/objects/education-user)  <Badge class="secondary" text="object"/><Bullet />[`FindingInterface`](/api/graphql/documentation/interfaces/finding-interface)  <Badge class="secondary" text="interface"/><Bullet />[`History`](/api/graphql/documentation/objects/history)  <Badge class="secondary" text="object"/><Bullet />[`Invite`](/api/graphql/documentation/objects/invite)  <Badge class="secondary" text="object"/><Bullet />[`IssueInterface`](/api/graphql/documentation/interfaces/issue-interface)  <Badge class="secondary" text="interface"/><Bullet />[`IssueStatusHistory`](/api/graphql/documentation/objects/issue-status-history)  <Badge class="secondary" text="object"/><Bullet />[`NetworkVulnerability`](/api/graphql/documentation/objects/network-vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`Notification`](/api/graphql/documentation/objects/notification)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserAccess`](/api/graphql/documentation/objects/portal-user-access)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserCollection`](/api/graphql/documentation/objects/portal-user-collection)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserConnection`](/api/graphql/documentation/objects/portal-user-connection)  <Badge class="secondary" text="object"/><Bullet />[`PortalUserEdge`](/api/graphql/documentation/objects/portal-user-edge)  <Badge class="secondary" text="object"/><Bullet />[`Project`](/api/graphql/documentation/objects/project)  <Badge class="secondary" text="object"/><Bullet />[`ProjectsQueue`](/api/graphql/documentation/objects/projects-queue)  <Badge class="secondary" text="object"/><Bullet />[`ReadedChatMessage`](/api/graphql/documentation/objects/readed-chat-message)  <Badge class="secondary" text="object"/><Bullet />[`ResultFiles`](/api/graphql/documentation/objects/result-files)  <Badge class="secondary" text="object"/><Bullet />[`SastFinding`](/api/graphql/documentation/objects/sast-finding)  <Badge class="secondary" text="object"/><Bullet />[`ScaFinding`](/api/graphql/documentation/objects/sca-finding)  <Badge class="secondary" text="object"/><Bullet />[`SourceCodeVulnerability`](/api/graphql/documentation/objects/source-code-vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`Team`](/api/graphql/documentation/objects/team)  <Badge class="secondary" text="object"/><Bullet />[`Vulnerability`](/api/graphql/documentation/objects/vulnerability)  <Badge class="secondary" text="object"/><Bullet />[`VulnerabilityInterface`](/api/graphql/documentation/interfaces/vulnerability-interface)  <Badge class="secondary" text="interface"/><Bullet />[`WebVulnerability`](/api/graphql/documentation/objects/web-vulnerability)  <Badge class="secondary" text="object"/>
+
+
+

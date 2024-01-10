@@ -1,19 +1,17 @@
 ---
 id: chat-connection
 title: ChatConnection
+hide_table_of_contents: false
 ---
 
-export const Tag = ({children, color}) => (
-<span
-style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-{children}
-</span>
-);
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
 
 The connection type for Chat.
 
@@ -25,16 +23,26 @@ type ChatConnection {
 }
 ```
 
+
 ### Fields
 
-#### `edges` ([`[ChatEdge]`](/api/graphql/documentation/objects/chat-edge))
+#### [<code style={{ fontWeight: 'normal' }}>ChatConnection.<b>edges</b></code>](#)<Bullet />[`[ChatEdge]`](/api/graphql/documentation/objects/chat-edge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> A list of edges.
+> 
 
-A list of edges.
+#### [<code style={{ fontWeight: 'normal' }}>ChatConnection.<b>nodes</b></code>](#)<Bullet />[`[Chat]`](/api/graphql/documentation/objects/chat) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> A list of nodes.
+> 
 
-#### `nodes` ([`[Chat]`](/api/graphql/documentation/objects/chat))
+#### [<code style={{ fontWeight: 'normal' }}>ChatConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/api/graphql/documentation/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Information to aid in pagination.
+> 
 
-A list of nodes.
 
-#### `pageInfo` ([`PageInfo!`](/api/graphql/documentation/objects/page-info))
 
-Information to aid in pagination.
+### Returned by
+
+[`chats`](/api/graphql/documentation/queries/chats)  <Badge class="secondary" text="query"/><Bullet />[`chatSearch`](/api/graphql/documentation/queries/chat-search)  <Badge class="secondary" text="query"/>
+
+
+

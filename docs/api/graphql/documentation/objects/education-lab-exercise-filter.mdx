@@ -1,0 +1,43 @@
+---
+id: education-lab-exercise-filter
+title: EducationLabExerciseFilter
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+type EducationLabExerciseFilter {
+  exercises: EducationLabExerciseCollection!
+  lab: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>EducationLabExerciseFilter.<b>exercises</b></code>](#)<Bullet />[`EducationLabExerciseCollection!`](/api/graphql/documentation/objects/education-lab-exercise-collection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>EducationLabExerciseFilter.<b>lab</b></code>](#)<Bullet />[`String!`](/api/graphql/documentation/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`educationLabExercisesFilter`](/api/graphql/documentation/queries/education-lab-exercises-filter)  <Badge class="secondary" text="query"/>
+
+
+

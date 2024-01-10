@@ -1,0 +1,40 @@
+---
+id: most-used-technologies
+title: mostUsedTechnologies
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returns the most used technologies on the company database.
+
+```graphql
+mostUsedTechnologies(
+  companyId: Int!
+): MostUsedTechnologiesCollection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>mostUsedTechnologies.<b>companyId</b></code>](#)<Bullet />[`Int!`](/api/graphql/documentation/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`MostUsedTechnologiesCollection`](/api/graphql/documentation/objects/most-used-technologies-collection) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+
+

@@ -1,0 +1,58 @@
+---
+id: deploy-status-enum
+title: DeployStatusEnum
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+No description
+
+```graphql
+enum DeployStatusEnum {
+  pending
+  in_review
+  reviewed
+  discarded
+  archived
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DeployStatusEnum.<b>pending</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DeployStatusEnum.<b>in_review</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DeployStatusEnum.<b>reviewed</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DeployStatusEnum.<b>discarded</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DeployStatusEnum.<b>archived</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`DeploysFiltersInput`](/api/graphql/documentation/inputs/deploys-filters-input)  <Badge class="secondary" text="input"/>
+
+
+
