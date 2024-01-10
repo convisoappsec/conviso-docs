@@ -53,7 +53,7 @@ Fill in the Username, Password, and API URL with the required data. When you hav
 
 ## Synchronize Project
 
-After setting up the integration, we need to synchronize the projects with the Conviso Platform.
+After setting up the integration, you need to synchronize the projects with the Conviso Platform.
 
 
 <div style={{textAlign: 'center'}}>

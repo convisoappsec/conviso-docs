@@ -60,7 +60,7 @@ On the screen, you will find information about the vulnerabilities identified in
 
 **In progress**: indicates that the responsible team is actively working on fixing the vulnerability.
 
-**Fix**: indicates that the security team accepted the fix proposed by the development team.
+**Fixed**: indicates that the security team accepted the fix proposed by the development team.
 
 This menu presents some sections that help to understand the situation and progression of the project, but may differ depending on the type of product or service contracted.
 

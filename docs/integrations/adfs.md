@@ -225,7 +225,7 @@ For the Login URL, use ```https://<your-fqdndomain-name>/adfs/ls:```
 Fill the Federation Service Identifier and Certificate fields with the previously obtained information.
 Fill the Authorized Domains field with all of your domain aliases.
 
-After clicking on the Save button, we must disable the Conviso Platform default authentication option.
+After clicking on the Save button, you must disable the Conviso Platform default authentication option.
 
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

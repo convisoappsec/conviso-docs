@@ -9,7 +9,7 @@ image: '/static/img/azureadseo.png'
 
 ## Introduction
 
-The integration of Active Directory (AD) with the Conviso Platform significantly streamlines user management for enterprise customers. By installing the Conviso Platform Single Sign-On (SSO) Application from the Azure marketplace, you enable SSO authentication, which facilitates direct management of access to the Conviso Platform via Azure.
+The integration of Active Directory (AD) with the Conviso Platform significantly user management for enterprise customers. By installing the Conviso Platform Single Sign-On (SSO) Application from the Azure marketplace, you enable SSO authentication, which facilitates direct management of access to the Conviso Platform via Azure.
 
 ### Prerequisites
 

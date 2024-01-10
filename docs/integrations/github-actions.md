@@ -102,7 +102,7 @@ conviso-ast:
 ```
 
 
-**Note:** You'll require your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
+**Note:** You will need your API Key, which you can find by following this [tutorial](../api/generate-apikey.md).
 
 
 The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.

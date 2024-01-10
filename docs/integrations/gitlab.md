@@ -51,25 +51,6 @@ Before you can use Conviso Platform with Gitlab, you need to make sure that:
 </div>
 
 
-This will allow you to write the code that we will use in this tutorial!
-
-
-## Usage
-
-
-By the end of this tutorial, you will know how to:
-
-
-* [**Perform a Conviso AST scan to analyze your application's security**](#perform-a-conviso-ast-scan-to-analyze-your-applications-security)
-* [**Run a scan exclusively using Conviso SAST**](#run-a-scan-exclusively-using-conviso-sast)
-* [**Run a scan exclusively using Conviso SCA**](#run-a-scan-exclusively-using-conviso-sca)
-* [**How to Send Your Code to Conviso Platform for Code Review**](#how-to-send-your-code-to-conviso-platform-for-code-review)
-* [**How to Use Code Review, SAST and SCA Together**](#how-to-use-code-review-sast-and-sca-together)
-
-
-**[Learn more about Conviso Platform integrations!](https://bit.ly/3NzvomE)**
-
-
 ## Perform a Conviso AST scan to analyze your application's security
 
 
