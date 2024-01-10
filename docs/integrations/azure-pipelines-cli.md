@@ -1,7 +1,7 @@
 ---
 id: azure-pipelines-cli
 title:  Azure Pipelines Integration
-description:  Integrate the Conviso Platform seamlessly into your Azure DevOps Pipelines to automate and streamline your security processes. Discover!
+description:  Seamlessly integrate the Conviso Platform into your Azure DevOps Pipelines to automate your processes.security processes. Discover!
 keywords:  [Azure Pipelines Integration]
 image: '/static/img/azurepipelinesseo.png'
 ---
@@ -11,35 +11,6 @@ image: '/static/img/azurepipelinesseo.png'
 [![img](../../static/img/azure-pipelines.png 'Azure Pipelines')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
-
-
-## Introduction
-
-Integrate the Conviso Platform seamlessly into your [Azure DevOps Pipelines](https://dev.azure.com/) to automate and streamline your security processes. This integration ensures thorough security assessments for your applications throughout the development lifecycle.
-
-You can run the Conviso Platform AST (Application Security Testing), which offers Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review directly on your Azure Pipelines.
-
-This integration provides the **CLI as a Docker** image for executing tasks and establishing connections with the Conviso Platform.
-
-[Explore our Integration page to learn more and supercharge your Application Security Program with Conviso Platform.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-## Prerequisites
-id: azure-pipelines-cli
-title:  Azure Pipelines Integration
-description:  Seamlessly integrate the Conviso Platform into your Azure DevOps Pipelines to automate and enhance your security processes. This integration allows for a more streamlined workflow, ensuring that security is a key component of your development process right from the start. Discover how the Conviso Platform can elevate your Azure DevOps experience by providing robust security solutions directly within your pipeline!
-keywords:  [Azure Pipelines Integration]
-image: '/static/img/azurepipelinesseo.png'
----
-
-
-<div style={{textAlign: 'center'}}>
-
-
-[![img](../../static/img/azure-pipelines.png 'Azure Pipelines')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-
-</div>
-
 
 
 
@@ -47,6 +18,7 @@ image: '/static/img/azurepipelinesseo.png'
 
 
 With Conviso Platform integrated into your [Azure DevOps Pipelines](https://dev.azure.com/) CI/CD Pipeline, you can automate your security processes, ensuring that your applications undergo through automated security assessments in new versions of your code.
+
 You can run Conviso Platform **AST (Application Security Testing)**. This product offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, Infrastructure as Code (IaC) and enables **Continuous Code Review** performed by our Security Analysts directly on your Gitlab pipeline.
 
 
