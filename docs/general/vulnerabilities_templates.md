@@ -5,10 +5,12 @@ sidebar_label: Vulnerabilities Templates
 ---
 
 ## Introduction
-Conviso Platform allows users access to a comprehensive collection of vulnerability templates used daily on the platform. Users can also create their own templates based on their specific needs.
+
+Conviso Platform provides users access to an extensive collection of vulnerability templates that are regularly utilized on the platform. Additionally, users have the option to create custom templates based on their specific needs.
 
 ## Usage
-To access the vulnerability templates on the Conviso Platform, click on "**Intelligence**" in the left menu and select the "**Vulnerabilities Template**" option:
+
+To access the vulnerability templates on the Conviso Platform, click on the **'Vulnerability Template'** option.
 
 <div style={{textAlign: 'center'}}>
 
@@ -19,6 +21,7 @@ To access the vulnerability templates on the Conviso Platform, click on "**Intel
 On this screen, you will have a complete view of all vulnerability templates for Conviso Platform.
 
 ## Creating Vulnerabilities Templates
+
 Creating a new vulnerability template is simple! Just follow these steps:
 
 **Step 1** - Click on the "+ New" button located at the top left of the table.
@@ -75,12 +78,18 @@ At Conviso, we regularly review and update our templates. Through internal techn
 
 Some headers and good practices may not directly allow exploitation, but their implementation strengthens security measures and makes exploitation more difficult. Hence, we classify such cases as notifications.
 
+When the "Notification" box is checked, the template is changed from Vulnerability to Notification, displaying only the Title, Vulnerability, Reference, and Solution fields.
+Impact, Probability, Categories, and Standards are not required for notifications.
+
+
 
 ## Support
+
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
 
 ## Resources
-By exploring our content you'll find resources to help you understand vulnerability management:
+
+Exploring our content you'll find resources to help you understand vulnerability management:
 
 [How Vulnerability Management Works in Conviso Platform:](https://bit.ly/3LBxR0m) Discover the key features of the platform and how it helps detect, prioritize, and remediate vulnerabilities.
 
