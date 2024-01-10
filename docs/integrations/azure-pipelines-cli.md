@@ -64,17 +64,6 @@ This process will lead you to your pipeline's ```YAML document```.
 </div>
 
 
-## Usage
-By the end of this tutorial, you will know how to:
-* [Perform a Conviso AST scan to analyze your application's security](#perform-a-conviso-ast-scan-to-analyze-your-applications-security​)
-* [Run a scan exclusively using Conviso SAST](#run-a-scan-exclusively-using-conviso-sast​)
-* [Run a scan exclusively using Conviso SCA](#run-a-scan-exclusively-using-conviso-sca​)
-* [How to Send Your Code to Conviso Platform for Code Review](#how-to-send-your-code-to-conviso-platform-for-code-review​)
-* [How to Use Code Review, SAST and SCA Together](#getting-everything-together-code-review--sast--sca-deployment)
-
-
-[Learn more about Conviso Platform integrations!](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
 
 ## Perform a Conviso AST scan to analyze your application's security
 Follow the script below to integrate Security Code Review seamlessly into your pipeline, creating a comprehensive solution within your ```azure-pipelines.yml``` file:
