@@ -57,12 +57,12 @@ module.exports = {
       ],
     },
     {
-      CLI: [
-        'cli/installation',
-        'cli/ast',
-        'cli/security-gate',
-        'cli/assets',
-        'cli/findings',
+      Tools: [
+        'tools/installation',
+        'tools/ast',
+        'tools/security-gate',
+        'tools/assets',
+        'tools/findings',
       ]
     },
     {

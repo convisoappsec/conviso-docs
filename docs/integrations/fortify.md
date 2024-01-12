@@ -56,7 +56,7 @@ Fill in the Username, Password, and API URL with the required data. When you hav
 After setting up the integration, you need to synchronize the projects with the Conviso Platform.
 
 
-<div style={{textAlign: 'center'}}>
+<div style={{ textAlign: 'center' }}>
 
 ![img](../../static/img/fortify-img3.png)
 
@@ -85,6 +85,7 @@ If you wish to synchronize manually, click on the 'synchronize' button.
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/fortify-img7.png)
+</div>
 
 When you click the synchronize button, the asset will start synchronization.
 
@@ -92,6 +93,7 @@ When you click the synchronize button, the asset will start synchronization.
 
 ![img](../../static/img/fortify-img80.png)
 
+</div>
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 

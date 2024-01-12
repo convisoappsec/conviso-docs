@@ -8,8 +8,6 @@ keywords:  [Gitlab Integration]
 
 <div style={{textAlign: 'center'}}>
 
-<div style={{textAlign: 'center'}}>
-
 
 [![img](../../static/img/gitlab.png  "Image for Gitlab, Secure CI/CD Pipeline, security testing with Conviso Platform")](https://bit.ly/3JyRdl8)
 
@@ -79,7 +77,6 @@ conviso-ast:
        - conviso ast run
    tags:
        - docker
-
 ```
 
 
