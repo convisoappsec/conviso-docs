@@ -12,7 +12,6 @@ Release date: January 12th, 2024
 - Improved Security Feed with the addition of Top Asset Risk Scores card;
 - Optimized asset synchronization with external scanners, achieving a 5x speed boost;
 - Real-time monitoring of asset synchronization progress;
-- Introduction of a "Responsible" column in the asset view for clear ownership identification.
 
 ## What's New
 
