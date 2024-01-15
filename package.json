@@ -13,9 +13,12 @@
     "doc": "docusaurus graphql-to-doc"
   },
   "dependencies": {
+    "@algolia/client-search": "^4.22.1",
     "@docusaurus/core": "^2.2.0",
+    "@docusaurus/logger": "^3.1.0",
     "@docusaurus/plugin-ideal-image": "^2.3.0",
     "@docusaurus/preset-classic": "^2.3.0",
+    "@docusaurus/theme-common": "^2.0.0-rc.1",
     "@easyops-cn/docusaurus-search-local": "^0.36.0",
     "@graphql-markdown/docusaurus": "^1.16.3",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
@@ -25,8 +28,15 @@
     "docusaurus-gtm-plugin": "^0.0.2",
     "graphql": "^16.8.0",
     "plugin-image-zoom": "flexanalytics/plugin-image-zoom",
+    "prop-types": "^15.8.1",
+    "quill-delta": "^5",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-loadable": "^5.5.0",
+    "rxjs": "7",
+    "search-insights": "^2.13.0",
+    "sharp": "0.30.7",
+    "typescript": "^5.3.3"
   },
   "browserslist": {
     "production": [
