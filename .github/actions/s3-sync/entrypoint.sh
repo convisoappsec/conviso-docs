@@ -37,10 +37,14 @@ aws_access_key_id = ${AWS_ACCESS_KEY_ID}
 aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/credentials
 
 echo "Install dependencies"
-yarn install
+yarn
+
+echo "Generate docs"
+yarn doc
+rm -rf docs/api/graphql/documentation/introduction.md
 
 echo "Run yarn build"
-yarn run build
+yarn build
 
 echo "Copying to website folder"
 aws s3 sync ./build s3://${AWS_S3_BUCKET} --exact-timestamps --delete --region ${AWS_DEFAULT_REGION} $*
