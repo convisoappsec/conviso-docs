@@ -41,16 +41,3 @@ To complement this, we have added the Top Asset Risk Scores card to the Security
 Efficiency is at the core of our latest improvements in asset synchronization. We've revamped the synchronization process, boosting its speed by five times compared to the previous version. Now, users can experience faster and more responsive asset updates, ensuring timely awareness of security postures.
 
 But that's not all - with our real-time monitoring feature, users can track asset synchronization progress as it happens. Gain insights into the status of your assets at any given moment, empowering you to take immediate action when needed.
-
-#### *Enhancement*
-### Clear Ownership with the "Responsible" Column
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/responsible-column-4.2.png)
-
-</div>
-
-In our commitment to transparency and accountability, we have introduced a "Responsible" column in the asset view. This column clearly indicates whether Conviso or the client is responsible for each asset, streamlining communication and ensuring clarity in asset ownership.
-
-These enhancements further solidify our position as an Application Security Posture Management (ASPM) software, providing users with the tools they need to proactively manage and secure their application landscape.
