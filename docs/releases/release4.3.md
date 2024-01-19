@@ -33,7 +33,7 @@ To complement this, we have added the Top Asset Risk Scores card to the Security
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/asset-synchronization-4.2.gif)
+![img](../../static/img/asset-synchronization-4.3.gif)
 
 </div>
 

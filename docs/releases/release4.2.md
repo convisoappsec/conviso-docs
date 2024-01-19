@@ -31,7 +31,7 @@ We are constantly working to promote a better experience for our users. We rely 
 You are in control of your applications. That was our purpose in building the new Security Feed, to provide you with the vital information and insights you need to make decisions about the security of your products.
 
 - We've added a **Risk Score chart** that provides a holistic view of an asset's risk based on factors such as open vulnerabilities, attack surface, business impact, and data classification. You can also view your highest assets, allowing users to evaluate and prioritize assets with the highest risk scores quickly.
-- In "You might like to know" are, you will receive the news that we have prepared for you and suggestions for some practices you can carry out to improve the security of your applications.
+- In "You might like to know" area, you will receive the news that we have prepared for you and suggestions for some practices you can carry out to improve the security of your applications.
 - You can get quick access to some essential actions to make your day-to-day easier;  
 - Now, you can view a history of security tests performed on the company's applications through the “Scans” section.
 
@@ -59,7 +59,7 @@ We've launched a new experience in Asset Management. We're dedicated to enhancin
 
 </div>
 
-We have made several improvements in the experience related to registering,  managing, and monitoring vulnerability corrections.  These improvements seek to provide greater context in the vulnerabilities identified, group similar vulnerabilities, and facilitate the management process.
+We have made several improvements in the experience related to registering, managing, and monitoring vulnerability corrections.  These improvements seek to provide greater context in the vulnerabilities identified, group similar vulnerabilities, and facilitate the management process.
 
 - Our main change is that **findings and vulnerabilities have been unified**, enabling more complete management;   
 - We create a **new grouping**, Needs Attention, and its function is to gather all the vulnerabilities that need correction and are already being worked on or are still pending;
