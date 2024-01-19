@@ -20,7 +20,7 @@ Release date: January 12th, 2024
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/asset-risk-scores-4.3.png)
+![img](../../static/img/asset-risk-scores-4.2.png)
 
 </div>
 
