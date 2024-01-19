@@ -59,7 +59,7 @@ We've launched a new experience in Asset Management. We're dedicated to enhancin
 
 </div>
 
-We have made several improvements in the experience related to registering,  managing, and monitoring vulnerability corrections.  These improvements seek to provide greater context in the vulnerabilities identified, group similar vulnerabilities, and facilitate the management process.
+We have made several improvements in the experience related to registering, managing, and monitoring vulnerability corrections.  These improvements seek to provide greater context in the vulnerabilities identified, group similar vulnerabilities, and facilitate the management process.
 
 - Our main change is that **findings and vulnerabilities have been unified**, enabling more complete management;   
 - We create a **new grouping**, Needs Attention, and its function is to gather all the vulnerabilities that need correction and are already being worked on or are still pending;
