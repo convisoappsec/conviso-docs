@@ -77,7 +77,7 @@ To proceed to the next step, click "**Save**".
 
 5. **Save the security requirements in a new project**
 
-<div style={{textAlign: 'center' , maxWidth: '60%'}}>
+<div style={{textAlign: 'center' , maxWidth: '90%'}}>
 
 ![img](../../static/img/secure-by-design-img6.png)
 

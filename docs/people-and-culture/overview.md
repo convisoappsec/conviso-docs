@@ -79,12 +79,6 @@ This tool analyzes the data from all assets on the platform to pinpoint the most
 
 ### Student list
 
-<div style={{textAlign: 'center' , maxWidth: '40%'}}>
-
-![img](../../static/img/people-and-culture-img6.png)
-
-</div>
-
 Introducing the "Student List" feature, your gateway to a comprehensive overview of all registered students:
 
 <div style={{textAlign: 'center'}}>
@@ -93,6 +87,13 @@ Introducing the "Student List" feature, your gateway to a comprehensive overview
 
 </div>
 
+To add a new user in the People Culture module, click on the 'New Student' button
+
+<div>
+
+![img](../../static/img/people-and-culture-img6.png)
+
+</div>
 Stay informed about the individuals who are embarking on their learning journey. 
 
 In this feature, you can view the total points and exercises solved by students, in addition to being able to add or remove people from the program.
@@ -173,6 +174,15 @@ By clicking on start, you will be able to solve the exercise. [See here how to s
 
 Completing exercises, you enhance your understanding of secure coding practices and strengthen your ability to mitigate vulnerabilities effectively.
 
+## Solving practical exercises in the virtualized development environment
+
+In People & Culture, when you click on a chosen technology, you can access an exercise path. For this example, we will use the "Pseudocode" track.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/people-and-culture-img90.gif)
+
+</div>
 
 ## Getting support for the People & Culture
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).

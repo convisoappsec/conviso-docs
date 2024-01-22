@@ -26,12 +26,12 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'CLI',
-              to: 'cli/installation',
+              label: 'Conviso CLI',
+              to: 'tools/conviso-cli/installation',
             },
             {
               label: 'Github Actions',
-              to: 'integrations/github-actions',
+              to: 'modules/integrations/github-actions',
             },
           ],
         },

@@ -68,8 +68,7 @@ jobs:
     container:
       image: convisoappsec/flowcli:1.12.0-rc.2
       env:
-        FLOW_API_KEY: ${{secrets.CONVISO_API_KEY}}
-        FLOW_PROJECT_CODE: ${{secrets.CONVISO_PROJECT_CODE}}
+        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

@@ -1,19 +1,28 @@
 ---
 id: index
 title: Conviso Platform Docs, an ASPM platform
-sidebar_label: Getting Started
+sidebar_label: Overview
 description:   Here you will find all the details related to our tools, integrations and better usability of the Conviso Platform, an ASPM platform. Welcome!
 keywords: [ASPM platform, Conviso Platform]
 slug: /
 ---
-
 **Howdy**! Welcome to Conviso's Technical Documentation.
 Here you can find all the details related to our tools and integrations for [**Conviso Platform**](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826), a solution for Application Security Posture Management (ASPM). 
 
-If this is your **first time accessing the platform**, we recommend checking out our [**Quickstart**](/quickstart/quickstart.md) documentation for step-by-step instructions on getting started. If you are interested in **collaborating with the documentation**, access this [**guide**](../docs/general/contributing.md).
+<div style={{textAlign: 'center' , maxWidth: '100%'}}>
+
+[![img](../static/img/esmp.png 'Conviso Platform, a solution for ASPM')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+</div>
+
+
+
+If this is your **first time accessing the platform**, we recommend checking out our [**Start Here**](/start-here/start-here.md) documentation for step-by-step instructions on getting started. If you are interested in **collaborating with the documentation**, access this [**How To**](/how-to/contributing.md).
+
 
 >
 Conviso Platform is a comprehensive AppSec management solution that empowers secure development for development teams. A detailed view of the software, associated application risks, and potential business impact supports the implementation and definition of a structured application security program. 
+
+
 
 <div style={{textAlign: 'center' , maxWidth: '60%'}}>
 
