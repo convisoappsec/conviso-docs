@@ -46,7 +46,7 @@ On the main menu to the left, click on **Integrations**. At the panel to the rig
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/dependency-track-img3.png)
+![img](../../static/img/dependency-track-img3-new.png)
 
 </div>
 
@@ -54,7 +54,7 @@ You will be presented with the following form that should be filled with the tok
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/dependency-track-img4.png)
+![img](../../static/img/dependency-track-img4-new.png)
 
 </div>
 
@@ -62,18 +62,82 @@ If everything goes right, you’ll be presented with the following screen. Check
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/dependency-track-img5.png)
+![img](../../static/img/dependency-track-img5-new.png)
 
 </div>
 
-When the sync is done, go to the **Assets Management** screen and open the corresponding one for the imported project. On the bottom of the page there will be a **Synchronize** button. You may click on **Logs** to keep track of the process while it is being carried out: 
+After this, the import process will be initiated, and depending on the size of the project, this may take a few minutes.
+
+After creating the integration, you can add more assets through the integration configuration page, which can be accessed in two ways:
+
+1. Through the Asset Management page as shown in the figure below.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/dependency-track-img6.png)
+![img](../../static/img/dependency-track-img8-new.png)
 
 </div>
 
-When the synchronization is finished, you’ll be able to find the project and its associated findings on their respective pages.
+1. Configure button on the integrations screen.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/dependency-track-img9-new.png)
+
+</div>
+
+When accessing the configuration page, here are some explanations about it:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/dependency-track-img10-new.png)
+
+</div>
+
+1. Table displaying the projects integrated into the platform, along with the date of the last synchronization and its current status.
+
+2. Button to add new projects to the platform, leading to the project selection screen as shown earlier in this document.
+
+3. Information used for the integration, e.g., token and API URL.
+
+4. Button to remove the integration.
+
+## General Information on Operation
+
+In this section, we will address crucial information about the integration's operation. This includes details about the synchronization process, as well as the status mapping between the involved platforms.
+
+### Status Mapping
+
+When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Dependency Track according to the following mapping:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/dependency-track-img7-new.png)
+
+</div>
+
+Given that the issues reported by Dependency Track are of the SCA (Software Component Analysis) type, they are automatically created in the Identified status, not in Created. Therefore, the mapping for the Not Set/Blank state starts from Identified.
+
+The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to Dependency Track, and the same applies in reverse.
+
+**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like Dependency Track. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those issues that are no longer identified by Dependency Track will be marked as FIXED in the Conviso Platform.**
+
+When changing the status in the Conviso Platform, these changes will be replicated immediately to Dependency Track. However, if a change is first made in Dependency Track, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
+
+### Monitoring and Initiation of Synchronization
+
+To monitor the progress of an import/synchronization or initiate a synchronization, follow the steps below:
+
+1. Go to Asset Management.
+2. Click on the name of the asset for which you want to initiate or monitor synchronization.
+3. On the asset's details page, click on View All next to Integration, as shown in the image below.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/dependency-track-img6-new.png)
+
+</div>
+
+4. A page displaying a progress bar indicating the current status of synchronization, as well as the button to initiate synchronization, will appear. In case of errors during synchronization, they will also be presented on this page.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
