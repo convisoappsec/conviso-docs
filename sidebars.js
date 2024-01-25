@@ -70,6 +70,7 @@ module.exports = {
       label: "Guides",
       items: [
         'guides/code-review-strategies',
+        'guides/integrate-asset-with-graphql',
         {
           type: "category",
           label: "Burp Extension",
