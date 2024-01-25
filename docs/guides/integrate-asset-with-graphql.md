@@ -69,6 +69,8 @@ After using this mutation, the response follows the template below:
 
 The data available at ```data.associateProject.data.asset.id ("id": "50")``` can be used for other activities in the pipeline, such as initiating the synchronization of an asset with a specific platform, as we will demonstrate in the next section.
 
+**NOTE: The process of importing/synchronizing an asset is asynchronous. The success confirmation message refers to adding this asset to the processing queue. The processing of the import/synchronization may take a few minutes. Further below, we demonstrate how to monitor the synchronization status.**
+
 ## Initiating synchronization via GraphQL
 
 To initiate an integration via GraphQL, we need some information:
