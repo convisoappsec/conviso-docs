@@ -25,6 +25,7 @@ Follow these steps to integrate Conviso Platform with Power BI Desktop:
 
 **Step 1 -** In the main **"Home”**, access the **"Get data" (1)** icon and then select the **"Blank query" (2)** option:
 
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/powerbi-img1.png)
@@ -52,14 +53,14 @@ Follow these steps to integrate Conviso Platform with Power BI Desktop:
 ```bash
 let
    Source = Web.Contents(
- "https://convisoappsec.com/graphql",
+ "https://app.convisoappsec.com/graphql",
  [
    Headers=[
      #"Method"="POST",
      #"Content-Type"="application/json",
-     #"x-api-key"=" < YOUR CONVISO_API_KEY"
+     #"x-api-key"=" {{ YOUR_API_KEY }} "
    ],
-   Content=Text.ToBinary("{""query"": ""query{ company(id: < YOUR COMPANY ID > ) { estimatedLinesConsumed }}""}")
+   Content=Text.ToBinary("{""query"": ""query{ company(id: {{ COMPANY_ID }} ) { label }}""}")
  ]
    ),
    #"JSON" = Json.Document(Source),
@@ -73,11 +74,11 @@ In the code above, we are using a query that retrieves the total lines of code f
 
 Please make sure to replace the following details with your own:
 
-**CONVISO_API_KEY:** Generate your ```x-api-key``` by following the instructions provided [here](/docs/api/generate-apikey.md).
+**YOUR_API_KEY:** Generate your ```x-api-key``` by following the instructions provided [here](/docs/api/generate-apikey.md).
 
 **COMPANY_ID:** Obtain your company id by navigating to the "Companies" section under "Settings" in the Conviso Platform.
 
-**YOUR QUERY:** Configure the desired query in the ```Content``` line. You can find a detailed description of all available queries at this [link](/docs/api/graphql/introduction.md).
+Configure the desired query in the ```Content``` line. You can find a detailed description of all available queries at this [link](/docs/api/graphql/introduction.md).
 
 Once you have pasted the code, the data will be loaded within seconds.
 
@@ -166,7 +167,7 @@ After storing the configuration, you can connect the Conviso Platform to PowerBI
 
 </div>
 
-## Using Pagination​ in PowerBI
+## Using Pagination in PowerBI
 
 Pagination in PowerBI allows you to retrieve data from the Conviso Platform in smaller, manageable chunks or pages, rather than loading all the data at once.
 
@@ -220,13 +221,13 @@ We change the initial part by incrementing ```(page as text) =>```**(1)** and ed
 
 Implementing pagination ensures you can efficiently handle and process large volumes of data from the Conviso Platform within PowerBI, enabling you to create comprehensive reports and visualizations based on the complete dataset.
 
-## Paginating Multiple Pages to a Table​ in PowerBI  
+## Paginating Multiple Pages to a Table in PowerBI  
 
 Paginating multiple pages to a table in PowerBI allows you to retrieve and consolidate data from various pages of the Conviso Platform API into a single table. T
 
 his is particularly useful when the data you need spans multiple pages and you want to combine it for comprehensive analysis and reporting within PowerBI.
 
-**To paginate multiple pages to a table​ in PowerBI, follow these steps:**
+**To paginate multiple pages to a table in PowerBI, follow these steps:**
 
 **Step 1 -** After following the previous steps for ["Using pagination"](#using-pagination-in-powerbi), select the **"Enter Data" (1)** option to see the **“Create Table” (2)** window:
 
