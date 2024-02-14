@@ -9,7 +9,7 @@ image: '/static/img/cliastseo.png'
 
 ### Introduction
 
-Protect your code from security threats with our **AST (Application Security Testing)** using Conviso CLI. 
+Protect your code from security threats with our **AST (Application Security Testing)** using Conviso CLI.
 
 The tool offers both **Static Application Security Testing (SAST)** and **Software Composition Analysis (SCA)** tools, which can be accessed through the Conviso Platform.
 
@@ -19,8 +19,7 @@ The tool offers both **Static Application Security Testing (SAST)** and **Softwa
 To trigger this function is very simple, one of the methods is to export the settings to be used by the CLI to environment variables. Below an example:
 
 ```bash
-export FLOW_API_KEY='your-api-key'
-export FLOW_PROJECT_CODE='your-project-code'
+export CONVISO_API_KEY='your-api-key'
 cd your_source_code_repository
 conviso ast run
 ```
@@ -29,17 +28,16 @@ Or if you prefer to do it in a single command, the instructions below have the s
 
 ```bash
 conviso --api-key 'your-api-key' ast run \
-  --project-code 'your-project-code' \
   --repository-dir 'your_source_code_repository_path'
 ```
 
-**Note:** To scan your repository with AST, you need to have a project registered on Conviso Platform, the "Project Code" is found on the specific project page. You also need your API Key, you can find it in the [authentication part of this documentation](/cli/installation#authentication).
+**Note:** You need an API Key. Refer to the following documentation to know how to generate one [here](/cli/installation#authentication).
 
-The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
-### Deploy
+### Deploy, aka code versions
 
-When running the AST scan with the CLI, a [Deploy](../guides/code-review-strategies.md) creation is automatically performed to send diff code to Conviso Platform security Code Review. 
+When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies.md) is automatically created and diff code will be sent to Conviso Platform security for later human review.
 
 <div style={{textAlign: 'center'}}>
 
@@ -47,7 +45,7 @@ When running the AST scan with the CLI, a [Deploy](../guides/code-review-strateg
 
 </div>
 
-Thus, it is possible to verify if the code added or changed in the commit has known security vulnerabilities and compare it with the original repository. 
+It is possible to verify if the code added or changed in the commit has known security vulnerabilities and compare it with the original repository.
 
 **Note:** This feature is essential for performing Security Code Review by the security team. Conviso offers the continuous code review service, [see more](https://bit.ly/457M2Cb).
 
@@ -57,8 +55,7 @@ Thus, it is possible to verify if the code added or changed in the commit has kn
 As an additional custom configuration of the Conviso CLI, it’s possible to perform SAST-only in your code using the following command:
 
 ```bash
-export FLOW_API_KEY='your-api-key'
-export FLOW_PROJECT_CODE='your-project-code'
+export CONVISO_API_KEY='your-api-key'
 cd your_source_code_repository
 conviso sast run
 ```
@@ -67,7 +64,7 @@ The following instructions have the same effect:
 
 ```bash
 cd my_source_code_repository
-conviso --api-key 'your-api-key' sast run --project-code 'your-project-code'
+conviso --api-key 'your-api-key' sast run
 ```
 
 In case of any results, they will be automatically sent to Conviso Platform for assessment.
