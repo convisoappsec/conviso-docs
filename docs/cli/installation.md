@@ -119,7 +119,7 @@ python3 -m pip install conviso-cli==1.12.0rc2
 
 **Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/).
 
-- If you want to use Container Image with a specific version. Versions can be found on Github.
+- If you want to use Container Image with a specific version. Versions can be found in [Dockerhub](https://hub.docker.com/r/convisoappsec/convisocli/tags).
 
 ```bash
 docker run convisoappsec/convisocli conviso --help
