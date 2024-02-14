@@ -11,10 +11,10 @@ image: '/static/img/cliinstallationseo.png'
 
 The CLI is a command-line interface tool to interact with Conviso Platform. The primary goal of the CLI is to be a developer friendly tool which brings the functionality of Conviso Platform into your development workflow.
 
-You can use the CLI locally and also inside your CI/CD to be able to use the following features:
+You can use the CLI locally and also within your CI/CD to be able to use the following features:
 
-- Perform security scans project (SAST, SCA, IaC, Container);
-- Set policies to block the pipeline depending on different criteria;
+- Run Conviso AST Add-on (SAST, SCA, IaC, Container);
+- Set policies to block the pipeline depending on different criterias;
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license).
 
 [Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
@@ -39,13 +39,13 @@ Follow the download instructions for each dependency.
 Run the following installation command for the Conviso CLI:
 
 ```bash
-pip install conviso-flowcli
+pip install conviso-cli
 ```
 
 or
 
 ```bash
-python3 -m pip install conviso-flowcli
+python3 -m pip install conviso-cli
 ```
 
 **Note:** If it's not working, we recommend visiting the [other installation commands](#other-installation-commands) section that shows other ways to install.
@@ -60,34 +60,20 @@ After installation, test your installation. For a quick test, run:
 conviso --help
 ```
 
-The following shows an example:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/cli-overview.png 'Conviso CLI in Windows Porwershell')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
 The command will print CLI commands and options summary. Now we are ready to proceed!
 
 **Note:** Conviso recommends always keeping your CLI installation updated to the latest version. You can check by running ```conviso --version```.
 
 ## Authentication
 
-In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../api/generate-apikey.md). Just go to "Edit Profile", and then click on "API Key" as follows the gif below:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/cli-overview2.gif 'Generate Conviso API Key in Conviso Platofrm')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
+In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../api/generate-apikey.md). You can generate an API Key within Security Feed -> Quick Actions -> Generate API KEY.
 
 **Note:** Every time you do this process, you will need to change the API Key from the CLI settings.
 
 When retrieving it, you can export the key as system environment variable:
 
 ```bash
-export FLOW_API_KEY='you-api-key'
+export CONVISO_API_KEY='you-api-key'
 ```
 
 **Note:** The command for setting environment variables can vary slightly between operating systems, but generally follows the same idea. On Windows, you can use the ```set``` command.
@@ -116,19 +102,19 @@ In case the main method didn't work, there are several other ways:
 - If you haven't system admin privileges:
 
 ```bash
-pip install --user conviso-flowcli
+pip install --user conviso-cli
 ```
 
 or
 
 ```bash
-python3 -m pip install --user conviso-flowcli
+python3 -m pip install --user conviso-cli
 ```
 
-- If you want to install a specific version. Versions can be found on [PypI](https://pypi.org/project/conviso-flowcli/#history).
+- If you want to install a specific version. Versions can be found on [PypI](https://pypi.org/project/conviso-cli/#history).
 
 ```bash
-python3 -m pip install conviso-flowcli==1.12.0rc2
+python3 -m pip install conviso-cli==1.12.0rc2
 ```
 
 **Note:** If you are unsuccessful in running the command, check that the Python path is validated by following this [guide](https://realpython.com/add-python-to-path/).
@@ -154,7 +140,7 @@ Shell Completion is a feature that helps complete commands and command line argu
 Open your ```.bashrc``` file at ```~/.bashrc``` and place the following snippet in the end of file.
 
 ```bash
-CONVISO_COMPLETER="$(which flow_bash_completer.sh)"
+CONVISO_COMPLETER="$(which conviso_bash_completer.sh)"
 
 [ -f "$CONVISO_COMPLETER" ] && {
   source "$CONVISO_COMPLETER"
@@ -168,7 +154,7 @@ Start a new bash shell session and the shell completion will be available.
 Open your ```.zshrc``` file at ```~/.zshrc``` and place the following snippet in the end of file.
 
 ```bash
-CONVISO_COMPLETER="$(which flow_zsh_completer.sh)"
+CONVISO_COMPLETER="$(which conviso_zsh_completer.sh)"
 
 [ -f "$CONVISO_COMPLETER" ] && {
   source "$CONVISO_COMPLETER"
@@ -183,7 +169,7 @@ Start a fish shell session and execute the following command.
 
 ```bash
 mkdir -p ~/.config/fish/completions
-cp (which flow_fish_completer.fish) ~/.config/fish/completions/flow.fish
+cp (which conviso_fish_completer.fish) ~/.config/fish/completions/conviso.fish
 ```
 
 Start a new fish shell session and the shell completion will be available.
