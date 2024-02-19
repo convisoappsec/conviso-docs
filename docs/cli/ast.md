@@ -37,13 +37,13 @@ The identified vulnerabilities will be automatically associated with the Asset i
 
 ### Naming an asset
 
-You can enter a custom name for the asset on the conviso platform, by default conviso ast uses the repository name as the asset name on the platform, you may want a custom name, this is possible as follows:
+You can enter a custom name for the asset on the Conviso Platform, by default conviso ast uses the repository name as the asset name, you may want a custom name, this is possible as follows:
 
 ```bash
 conviso ast run --asset-name 'your custom asset name'
 ```
 
-This will work for any type of scan, ast, sast and sca, for example:
+This will work on SCA and SAST too:
 
 ```bash
 conviso sca run --asset-name 'your custom asset name'
@@ -57,7 +57,7 @@ conviso sast run --asset-name 'your custom asset name'
 
 ### Auto closing vulnerabilities
 
-We have an experimental function that is the automatic closure of vulnerabilities in the conviso platform, This functionality is still in the testing stages and if you want to try it and give us some feedback you can use it as follows:
+We've developed an experimental feature for automatically closing vulnerabilities in the Conviso Platform. This functionality is currently in the testing phase. If you're interested in trying it out and providing feedback, here's how you can use it:
 
 ```bash
 conviso ast run --vulnerability-auto-close
@@ -66,16 +66,16 @@ conviso ast run --vulnerability-auto-close
 This will work on sca and sast too:
 
 ```bash
-conviso sca run --vulnerability-auto-close'
+conviso sca run --vulnerability-auto-close
 ```
 
 and
 
 ```bash
-conviso sast run --vulnerability-auto-close'
+conviso sast run --vulnerability-auto-close
 ```
 
-This will perform the scan as it has always been done and as a last step it will validate with the platform if any vulnerability has been fixed.
+This will perform the scan as it has always been done and as a last step it will validate with the Conviso Platform if any vulnerability has been fixed.
 
 ### Deploy, aka code versions
 
