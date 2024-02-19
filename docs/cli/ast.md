@@ -35,6 +35,50 @@ conviso --api-key 'your-api-key' ast run \
 
 The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
+### Naming an asset
+
+When using the Conviso AST, you have the flexibility to assign custom names to your assets on the Conviso Platform. By default, Conviso AST utilizes the repository name as the asset name. However, you may prefer to use a custom name for better organization or clarity.
+
+To set a custom name for your asset, run the command like the following:
+
+```bash
+conviso ast run --asset-name 'your custom asset name'
+```
+
+This will work on SCA and SAST too:
+
+```bash
+conviso sca run --asset-name 'your custom asset name'
+```
+
+and
+
+```bash
+conviso sast run --asset-name 'your custom asset name'
+```
+
+### Auto closing vulnerabilities
+
+We've developed an experimental feature for automatically closing vulnerabilities in the Conviso Platform. This functionality is currently in the testing phase. If you're interested in trying it out and providing feedback, here's how you can use it:
+
+```bash
+conviso ast run --vulnerability-auto-close
+```
+
+This will work on sca and sast too:
+
+```bash
+conviso sca run --vulnerability-auto-close
+```
+
+and
+
+```bash
+conviso sast run --vulnerability-auto-close
+```
+
+This will perform the scan as it has always been done and as a last step it will validate with the Conviso Platform if any vulnerability has been fixed.
+
 ### Deploy, aka code versions
 
 When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies.md) is automatically created and diff code will be sent to Conviso Platform security for later human review.
