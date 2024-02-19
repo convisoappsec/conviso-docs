@@ -37,7 +37,9 @@ The identified vulnerabilities will be automatically associated with the Asset i
 
 ### Naming an asset
 
-You can enter a custom name for the asset on the Conviso Platform, by default conviso ast uses the repository name as the asset name, you may want a custom name, this is possible as follows:
+When using the Conviso AST tool, you have the flexibility to assign custom names to your assets on the Conviso Platform. By default, Conviso AST utilizes the repository name as the asset name. However, you may prefer to use a custom name for better organization or clarity.
+
+To set a custom name for your asset, run the command like the following:
 
 ```bash
 conviso ast run --asset-name 'your custom asset name'
