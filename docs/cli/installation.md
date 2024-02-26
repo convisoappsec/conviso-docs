@@ -16,6 +16,8 @@ You can use the CLI locally and also within your CI/CD to be able to use the fol
 - Run Conviso AST Add-on (SAST, SCA, IaC, Container);
 - Set policies to block the pipeline depending on different criterias;
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license).
+- It is capable of creating the asset, if it does not exist, and filling in the technologies found during execution.
+- It can close open vulnerabilities on the platform that are no longer identified during its execution, and can reopen them if they were closed but identified later.
 
 [Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
