@@ -1,7 +1,8 @@
 name: Conviso Security Test Suite
 on:
   push:
-    branches: [main]
+    branches:
+      - '*'
 
 jobs:
   conviso-test-suite:
