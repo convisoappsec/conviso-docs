@@ -170,7 +170,7 @@ You have the ability to decide the following permissions:
 ### Editing Profile type
 To edit the Profile type, click the "Edit Profile" button in the "Profile" subarea in Access Control:
 
-<div style={{ textAlign: 'center'}}>>
+<div style={{ textAlign: 'center'}}>
 
 ![img](../../static/img/user_management-img11.png)
 
