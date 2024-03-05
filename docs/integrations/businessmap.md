@@ -16,7 +16,7 @@ keywords:  [BusinessMap Integration Business Map]
 ## Introduction
 The [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826) integrates with [BusinessMap](https://businessmap.io/) enabling the creation of issues and a Webhook for updating issue status.
 
-This integration streamlines issue control management and vulnerability consolidation.
+Integrate the Conviso Platform with BusinessMap to enhance your vulnerability management and issue control. This integration allows you to synchronize vulnerability statuses between the Conviso Platform and BusinessMap using Webhooks.
 
 ### Integration Capabilities
 This integration enhances issue control management and vulnerability consolidation between systems. It facilitates seamless interaction and communication between various aspects of the process. The integration offers the following capabilities:
