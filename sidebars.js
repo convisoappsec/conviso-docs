@@ -149,6 +149,7 @@ module.exports = {
           label: "Defect/Bug Tracking",
           items: [
             'integrations/bitbucket',
+            'integrations/businessmap',
             'integrations/clickup',
             'integrations/github',
             'integrations/jira',
