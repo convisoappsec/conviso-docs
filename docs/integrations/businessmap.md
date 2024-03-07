@@ -77,31 +77,34 @@ Follow the instructions below to complete the integration setup.
 
 ### Custom Configuration vs Default Configuration
 
-At this stage, you can choose between a **Custom Configuration** or a **Default Configuration**. The **Custom Configuration** allows you to map Conviso Platform asset to a single BusinessMap board, meanwhile the **Default configuration** allows you to map all the assets available under Conviso Platform to a single BusinessMap board - a default configuration for the integration.
+At this point in the process, you have two options: **Custom Configuration** or **Default Configuration**.
 
-**Note**: If you have a custom configuration for an asset named "My-Asset" and also have a default configuration for the integration, the custom configuration always will take precedence over the default configuration.
+With **Custom Configuration**, you can specifically link a Conviso Platform asset to a single BusinessMap board. On the other hand, **Default Configuration** enables you to link all available assets under Conviso Platform to a single BusinessMap board by default — providing a standard integration setup.
+
+**Note**: In the event that you have both a custom configuration for an asset named "My-Asset" and a default configuration for the integration, the custom configuration will always take precedence over the default configuration.
 
 ### a) Custom Configuration
 
-**Step 8 -** In order to add a new integration between a Conviso Asset and a BusinessMap Board, click on the **Add Custom Configuration** button to start pairing Conviso Platform Assets with specific **BusinessMap Boards:**
+**Step 8 -** In order to add a new integration between a Conviso Asset and a BusinessMap Board, click on the **Add Custom Configuration** button to start pairing Conviso Platform Assets with specific **BusinessMap Boards**.
 
 [![img](../../static/img/businessmap-img7.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 9 -** Select the **Conviso Platform Asset** you want to associate with your **BusinessMap Workspace**, **BusinessMap Board**, **BusinessMap Workflow** and finally **BusinessMap Lane**:
+**Step 9 -** Select the **Conviso Platform Asset** you want to associate with your **BusinessMap Workspace**, **BusinessMap Board**, **BusinessMap Workflow**, and finally **BusinessMap Lane**.
 
 [![img](../../static/img/businessmap-img8-a.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 10 -** Consider the following in order to map Conviso Platform statuses to BusinessMap statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to BusinessMap, while **other fields (2)** are optional. After mapping all the statuses, click on the** Save button (3)**:
+**Step 10 -** Consider the following in order to map Conviso Platform statuses to BusinessMap statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to BusinessMap, while **other fields (2)** are optional. After mapping all the statuses, click on the **Save button (3)**.
 
 [![img](../../static/img/businessmap-img9-a.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 11** - After saving your integration configuration, you may want to review, modify or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right:
+**Step 11** - After saving your integration configuration, you may want to review, modify, or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right.
 
-[![img](../../static/img/businessmap-img10.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/businessmap-img10-a.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 12** - After that, make sure you click under the "Finish" button:
+**Step 12** - After that, make sure you click under the "Finish" button.
 
-[![img](../../static/img/businessmap-img11.png  'A clipping of a BusinessMap platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/businessmap-img11-a.png  'A clipping of a BusinessMap platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
 
 
 ### b) Default Configuration
@@ -124,8 +127,7 @@ At this stage, you can choose between a **Custom Configuration** or a **Default 
 
 **Step 12** - After that, make sure you click under the "Finish" button:
 
-[![img](../../static/img/businessmap-img11.png  'A clipping of a BusinessMap platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
+[![img](../../static/img/businessmap-img11-b.png  'A clipping of a BusinessMap platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 ## Synchronize vulnerability statuses between Conviso Platform and BusinessMap using Webhooks
 
