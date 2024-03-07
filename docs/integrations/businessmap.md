@@ -71,35 +71,40 @@ Follow the instructions below to complete the integration setup.
 
 [![img](../../static/img/businessmap-img6.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
+**Step 7 -** Then, in **Configuration** page, click on the **Check connection (1)** button to verify if the authentication is **working properly (2)**:
 
-**Step 7 -** Then, in **Configuration**, click on the **Add** button to start pairing Conviso Platform Assets with **BusinessMap Boards/Lanes:**
+[![img](../../static/img/businessmap-img14.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+**Step 8 -** In order to add a new integration between a Conviso Asset and a BusinessMap Board, click on the **Add Custom Configuration** button to start pairing Conviso Platform Assets with specific **BusinessMap Boards:**
 
 [![img](../../static/img/businessmap-img7.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 
-**Step 8 -** Select the **Conviso Platform Asset** you want to associate with your **BusinessMap Workspace**, **BusinessMap Board**, **BusinessMap Workflow** and finally **BusinessMap Lane**:
+**Step 9 -** Select the **Conviso Platform Asset** you want to associate with your **BusinessMap Workspace**, **BusinessMap Board**, **BusinessMap Workflow** and finally **BusinessMap Lane**:
 
 [![img](../../static/img/businessmap-img8.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 9 -** After mapping all Conviso Platform statuses to BusinessMap statuses, click on the** Save button**:
+**Step 10 -** After mapping all Conviso Platform statuses to BusinessMap statuses, click on the** Save button**:
 
 [![img](../../static/img/businessmap-img9.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 10** - After saving your integration configuration, you may want to review, modify or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right:
+**Step 11** - After saving your integration configuration, you may want to review, modify or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right:
 
 [![img](../../static/img/businessmap-img10.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
-**Step 11** - After that, make sure you click under the "Finish" button:
+**Step 12** - After that, make sure you click under the "Finish" button:
 
 [![img](../../static/img/businessmap-img11.png  'A clipping of a BusinessMap platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 ## Synchronize vulnerability statuses between Conviso Platform and BusinessMap using Webhooks
 
-This feature facilitates seamless bidirectional synchronization of vulnerability statuses between the Conviso Platform and BusinessMap.
+This feature facilitates seamless bidirectional synchronization of vulnerability statuses between the Conviso Platform and BusinessMap specific board.
 
 **Step 1: Copy Webhook URL**
 
-Access the configuration page for the BusinessMap integration from the Conviso Platform. Copy the webhook URL provided by the Conviso Platform.
+Access the configuration page for the BusinessMap integration from the Conviso Platform. Copy the webhook URL provided by the Conviso Platform clicking on the **"Copy" button (1)**, as shown in the image below:
+
+[![img](../../static/img/businessmap-img15.png  'A clipping of a BusinessMap platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 **Step 2: Configure the Webhook in BusinessMap**
 
