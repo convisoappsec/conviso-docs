@@ -4,16 +4,16 @@ title: Release 4.4
 sidebar_label: Release 4.4
 ---
 
-Release date: March 6th, 2024
+Release date: March 7th, 2024
 
 ## Key Benefits
 
 
 
-*   BusinessMap Integration
+*   BusinessMap Integration;
 *   Conviso AST new capabilities;
 *   Risk Score calculation enhancement;
-*   Security Experts UX ;
+*   Security Experts UX 
 
 
 
@@ -79,7 +79,7 @@ You can start using this new capability adding the parameter `--vulnerability-au
 
 
 
-More details in our [documentation](https://docs.convisoappsec.com/cli/ast#naming-an-asset).
+More details in our [documentation](https://docs.convisoappsec.com/cli/ast#auto-closing-vulnerabilities).
 
 
 
