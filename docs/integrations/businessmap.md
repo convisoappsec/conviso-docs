@@ -37,6 +37,12 @@ To set up the integration, you'll need the following information:
 
 2. API Token for authentication purposes. See **[here to get the API Token from BusinessMap](https://businessmap.io/api)**.
 
+:::warning
+
+The API Token used in the integration must have full access and permission to all boards in order to the integration work as expected.
+
+:::
+
 ## Usage
 To seamlessly integrate Conviso Platform with BusinessMap, follow these step-by-step procedures:
 
@@ -101,10 +107,6 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 ![img](../../static/img/businessmap-img10-a.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
-**Step 12** - After that, make sure you click under the "Finish" button.
-
-![img](../../static/img/businessmap-img11-a.png  'A clipping of a BusinessMap platform screen in the backlog.')
-
 
 ### b) Default Configuration
 
@@ -121,10 +123,6 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 ![img](../../static/img/businessmap-img9-b.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
 **Step 11** - After saving your integration configuration, you may want to review, modify or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right:
-
-![img](../../static/img/businessmap-img10-b.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
-
-**Step 12** - After that, make sure you click under the "Finish" button:
 
 ![img](../../static/img/businessmap-img11-b.png  'A clipping of a BusinessMap platform screen in the backlog.')
 ## Synchronize vulnerability statuses between Conviso Platform and BusinessMap using Webhooks
