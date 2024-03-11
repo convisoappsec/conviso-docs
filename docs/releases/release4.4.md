@@ -39,7 +39,7 @@ We are glad to announce that a native integration with Businessmap has been rele
 
 Integrating Businessmap in Conviso Platform will let developers gain productivity while we do all the hard work by automating the whole vulnerability management triage process.
 
-Receive in real time new vulnerabilities identified in Conviso Platfom, directly in Businessmap lanes. With our two-way integration capability, every status update from both solutions are automatically updated in order to reduce the toil and increase the productivity of your developers.
+Receive in real time new vulnerabilities identified in Conviso Platfom, directly in Businessmap lanes. With our two-way integration capability, every status update from both solutions are automatically updated in order to reduce the toil and increase developers productivity.
 
 Check out the documentation [here](https://docs.convisoappsec.com/integrations/businessmap).
 
