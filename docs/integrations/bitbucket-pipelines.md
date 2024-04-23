@@ -56,7 +56,7 @@ In order for the environment to be ready for the execution of all Conviso CLI re
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/bitbucket-img2.png)
+![img](../../static/img/generate-api-key.png)
 
 </div>
 
