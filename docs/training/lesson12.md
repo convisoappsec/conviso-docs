@@ -1,7 +1,7 @@
 ---
 id: lesson12
-title: Lesson 12 - OWASP Top 10 2017 - A8:2017-Insecure Deserialization
-sidebar_label: Lesson 12 - OWASP Top 10 2017 - A8:2017-Insecure Deserialization
+title: A8:2017-Insecure Deserialization
+sidebar_label: A8:2017-Insecure Deserialization
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

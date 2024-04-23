@@ -1,7 +1,7 @@
 ---
 id: lesson04
-title: Lesson 04 - OWASP Top 10 Basics
-sidebar_label: Lesson 04 - OWASP Top 10 Basics
+title: OWASP Top 10 Basics
+sidebar_label: OWASP Top 10 Basics
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

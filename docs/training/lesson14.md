@@ -1,7 +1,7 @@
 ---
 id: lesson14
-title: Lesson 14 - OWASP Top 10 2017 - A10:2017-Insufficient Logging & Monitoring
-sidebar_label: Lesson 14 - OWASP Top 10 2017 - A10:2017-Insufficient Logging & Monitoring
+title: A10:2017-Insufficient Logging & Monitoring
+sidebar_label: A10:2017-Insufficient Logging & Monitoring
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

@@ -1,7 +1,7 @@
 ---
 id: lesson07
-title: Lesson 07 - OWASP Top 10 2017 - A3:2017-Sensitive Data Exposure
-sidebar_label: Lesson 07 - OWASP Top 10 2017 - A3:2017-Sensitive Data Exposure
+title: A3:2017-Sensitive Data Exposure
+sidebar_label: A3:2017-Sensitive Data Exposure
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.

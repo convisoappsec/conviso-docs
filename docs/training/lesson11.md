@@ -1,7 +1,7 @@
 ---
 id: lesson11
-title: Lesson 11 - OWASP Top 10 2017 - A7:2017-Cross-Site Scripting (XSS)
-sidebar_label: Lesson 11 - OWASP Top 10 2017 - A7:2017-Cross-Site Scripting (XSS)
+title: A7:2017-Cross-Site Scripting (XSS)
+sidebar_label: A7:2017-Cross-Site Scripting (XSS)
 ---
 
 AppSec Starter is a basic application security awareness training applied to onboarding new developers. It is not the purpose of this training to discuss advanced and practical topics. Conviso has customized training and practical training platforms.
