@@ -107,7 +107,13 @@ If you're not already using Secret Manager, follow these steps to set up a new v
 4. Below, a list of key-value objects is expected;
 
 
-5. Enter Key-Value: In the key-value section, input  ```CONVISO_API_KEY``` as the key and fill in the value with your Conviso Platform API key. If you don't have one, follow [this guide](/how-to/generate-apikey.md) to generate it;
+5. Enter Key-Value: In the key-value section, input  ```CONVISO_API_KEY``` as the key and fill in the value with your Conviso Platform API key. 
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/generate-api-key.png)
+
+</div>
 
 
 6. Choose an encryption key and click **Next**;
