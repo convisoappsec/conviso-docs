@@ -7,7 +7,7 @@ keywords: [Conviso CLI]
 image: '/static/img/cliinstallationseo.png'
 ---
 
-<span style="color:yellow">**Note:**</span>
+**Note:**
 There is currently an incompatibility with the library that handles git repositories in actions/checkout@v4 causing an **unsupported extension name extensions.worktreeconfig (Rugged::RepositoryError)**, there are two solutions, downgrade to version 3 of actions or use 4.1.x, however we recommend the downgrade as there is not yet a version with the definitive solution.
 Reference: https://github.com/actions/checkout/issues/1690
 
