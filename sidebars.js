@@ -148,7 +148,7 @@ module.exports = {
           type: "category",
           label: "Defect/Bug Tracking",
           items: [
-            'integrations/azure-boards',
+            'integrations/azure_boards',
             'integrations/bitbucket',
             'integrations/businessmap',
             'integrations/clickup',
