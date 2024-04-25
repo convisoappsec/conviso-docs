@@ -171,22 +171,19 @@ Correct Buildspec Configuration: The buildspec file (conviso-buildspec.yml) shou
 ```yml
 version: 0.2
 
-
 env:
-variables:
-secrets-manager:
-  CONVISO_API_KEY: Conviso:CONVISO_API_KEY
-
+  secrets-manager:
+    CONVISO_API_KEY: DEFINED_SECRET_NAME_HERE:CONVISO_API_KEY
 
 phases:
-install:
-  commands:
-    - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
-    - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-    - pip3 install conviso-cli
-pre_build:
-  commands:
-    - conviso ast run
+  install:
+    commands:
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+      - pip3 install conviso-cli
+  pre_build:
+    commands:
+      - conviso ast run
 ```
 
 
