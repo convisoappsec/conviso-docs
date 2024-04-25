@@ -7,9 +7,12 @@ keywords: [Conviso CLI]
 image: '/static/img/cliinstallationseo.png'
 ---
 
-<span style="color:yellow">**Note:**</span>
-There is currently an incompatibility with the library that handles git repositories in actions/checkout@v4 causing an **unsupported extension name extensions.worktreeconfig (Rugged::RepositoryError)**, there are two solutions, downgrade to version 3 of actions or use 4.1.x, however we recommend the downgrade as there is not yet a version with the definitive solution.
+:::note
+There is currently an incompatibility with the library that handles git repositories in `actions/checkout@v4` causing an **unsupported extension name extensions.worktreeconfig (Rugged::RepositoryError)**
+
+
 Reference: https://github.com/actions/checkout/issues/1690
+:::
 
 ## Introduction
 
@@ -18,7 +21,7 @@ The CLI is a command-line interface tool to interact with Conviso Platform. The 
 You can use the CLI locally and also within your CI/CD to be able to use the following features:
 
 - Run Conviso AST Add-on (SAST, SCA, IaC, Container);
-- Set policies to block the pipeline depending on different criterias;
+- Set policies to block the pipeline depending on different criteria;
 - Send diff versions of your source code application to later be reviewed by your own security team or Conviso's (when subscribed to our professional services license).
 - It is capable of creating the asset, if it does not exist, and filling in the technologies found during execution.
 - It can close open vulnerabilities on the platform that are no longer identified during its execution, and can reopen them if they were closed but identified later.
