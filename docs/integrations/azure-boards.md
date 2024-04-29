@@ -151,7 +151,7 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 </div>
 
-**Step 7 -** Consider the following in order to map Conviso Platform statuses to Azure Boards statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to Azure Boards, while **other fields (2)** are optional. After mapping all the statuses, click on the **Add button (3)**.
+**Step 7 -** Consider the following in order to map Conviso Platform statuses to Azure Boards statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to Azure Boards, while **other fields (2)** are optional. After mapping all the statuses, click on the **Add button**.
 
 <div style={{textAlign: 'center'}}>
 
