@@ -12,7 +12,7 @@
 
 ## Introduction[​](https://docs.convisoappsec.com/integrations/azure_boards/#introduction)
 
-The [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826&__hstc=36751231.4f0e20f0cfb8e070ca47855aa5207464.1713288582555.1713795830588.1713802784475.4&__hssc=36751231.3.1713802784475&__hsfp=202023877)integrates with [Azure Boards](https://azure.microsoft.com/en-us/products/devops/boards) enabling the creation of issues and a Webhook for updating issue status.
+The [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826&__hstc=36751231.4f0e20f0cfb8e070ca47855aa5207464.1713288582555.1713795830588.1713802784475.4&__hssc=36751231.3.1713802784475&__hsfp=202023877) integrates with [Azure Boards](https://azure.microsoft.com/en-us/products/devops/boards) enabling the creation of issues and a Webhook for updating issue status.
 
 
 
@@ -50,11 +50,11 @@ To set up the integration, you'll need the following information:
 
 To seamlessly integrate Conviso Platform with Azure Boards, follow these step-by-step procedures:
 
-**[1 - Configure the integration between Conviso Platform and AzureBoards](#configure-the-integration-between-conviso-platform-and-azure-boards)
+[1 - Configure the integration between Conviso Platform and AzureBoards](#configure-the-integration-between-conviso-platform-and-azure-boards)
 
-**[2 - Synchronize vulnerability statuses between Conviso Platform and Azure Boards using Webhooks](#synchronize-vulnerability-statuses-between-conviso-platform-and-azure-boards-using-webhooks)
+[2 - Synchronize vulnerability statuses between Conviso Platform and Azure Boards using Webhooks](#synchronize-vulnerability-statuses-between-conviso-platform-and-azure-boards-using-webhooks)
 
-**[3 - Check integration status](#check-integration-status)
+[3 - Check integration status](#check-integration-status)
 
 ## Configure the integration between Conviso Platform and Azure Boards
 
@@ -106,7 +106,7 @@ Follow the instructions below to complete the integration setup.
 
 
 
-If you don't know your **Organization Name**, there's no problem, you can get it by logging in your **Azure Boards's** account, it show in the page and the url
+If you don't know your **Organization Name**, there's no problem, you can get it by logging in your **Azure Boards's** account, it shows in the page and in the url
 
 <div style={{textAlign: 'center'}}>
 
@@ -123,6 +123,14 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
+### Custom Configuration vs Default Configuration
+At this point in the process, you have two options: **Custom Configuration** or **Default Configuration**.
+
+With **Custom Configuration**, you can specifically link a Conviso Platform asset to a single Azure Boards board. On the other hand, Default Configuration enables you to link all available assets under Conviso Platform to a single Azure Boards board by default — providing a standard integration setup.
+
+**Note:** In the event that you have both a custom configuration for a specific asset and a default configuration for the integration, the custom configuration will always take precedence over the default configuration.
+
+### a) Custom Configuration
 
 
 **Step 6 -** Select the **Conviso Platform Asset** you want to associate with your **Azure Boards Project**, **Teams**, **Boards**, and finally **Azure Boards Lane**.
@@ -133,9 +141,17 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
+### b) Default Configuration
 
+**Step 6 -** Check the **Default Configuration** field, notice that the Asset label will is no longer available, select the **Azure Boards Project**, **Boards**, and **Lane**.  
 
-**Step 7 -** Consider the following in order to map Conviso Platform statuses to Azure Boards statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to Azure Boards, while **other fields (2)** are optional. After mapping all the statuses, click on the **Add button (3)**.
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/default-config.png)
+
+</div>
+
+**Step 7 -** Consider the following in order to map Conviso Platform statuses to Azure Boards statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to Azure Boards, while **other fields (2)** are optional. After mapping all the statuses, click on the **Add button**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -143,15 +159,9 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
-
-
-
-
 ## Synchronize vulnerability statuses between Conviso Platform and Azure Boards using Webhooks
 
 **Step 1 -** Copy and save the **WebHook URL**, you're going to use it in Azure Boards for a future step
-
-
 
 <div style={{textAlign: 'center'}}>
 
@@ -159,11 +169,7 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
-
-
 **Step 2 -** In the Project page, go for **Project Settings**, then to **Service hooks(you'll only be able to get here if you're a project admin) ,** and then, click in the add icon
-
-
 
 <div style={{textAlign: 'center'}}>
 
@@ -171,19 +177,13 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
-
-
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-boards/azure-service-hooks.png)
 
 </div>
 
-
-
 **Step 3 -** In the service hooks, choose the option **Web Hooks**
-
-
 
 <div style={{textAlign: 'center'}}>
 
@@ -191,11 +191,7 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
-
-
-**Step 4 -** Select the Trigger(1) **Work item updated**, and select the **State** option in the Field filter(2)
-
-
+**Step 4 -** Select the Trigger(1) **Work item updated**, and select the **Board Column** option in the Field filter(2)
 
 <div style={{textAlign: 'center'}}>
 
@@ -203,11 +199,7 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
-
-
 **Step 5 -** Paste your **WebHook URL** that you got from **Conviso Platform**
-
-
 
 <div style={{textAlign: 'center'}}>
 
@@ -215,13 +207,9 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 
 </div>
 
-
-
 The integration with **Azure Boards** is done and every update in your boards will be updated in **Conviso Platform** as well
 
-
-
-# Check integration status
+## Check integration status
 
 In **Configuration** page, click on the **Check connection (1)** button to verify if the authentication is **working properly (2)**:
 
@@ -230,8 +218,6 @@ In **Configuration** page, click on the **Check connection (1)** button to verif
 ![img](../../static/img/azure-boards/check-connection.png)
 
 </div>
-
-
 
 ## Support[​](https://docs.convisoappsec.com/integrations/azure_boards#support)
 

@@ -71,6 +71,7 @@ Unlock the full potential of your data by integrating it into our platform! Expo
 ## Defect/Bug Tracking Integration
 
 By integrating the Conviso Platform with your Defect Tracker tool, you can seamlessly manage and track defects within your development workflow. This streamlines the process of identifying and addressing issues, enhancing collaboration and efficiency. Our platform supports the following Defect Tracker integrations:
+* **[Azure Boards](../integrations/azure-boards.md)**
 * **[Bitbucket](../integrations/bitbucket.md)**
 * **[BusinessMap](../integrations/businessmap.md)**
 * **[ClickUp](../integrations/clickup.md)**
