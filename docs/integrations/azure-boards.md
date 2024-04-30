@@ -4,7 +4,7 @@
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-boards/azure-boards-logo.png)
+![img](../../static/img/azure-boards/integration-azureboards.png)
 
 </div>
 
