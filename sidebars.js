@@ -24,6 +24,7 @@ module.exports = {
           label: "GraphQL",
           items: [
             'api/graphql/introduction',
+            'api/graphql/limit',
             {
               type: "category",
               label: "References",
