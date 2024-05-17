@@ -23,7 +23,7 @@ This integration enables the automatic import of issues (vulnerabilities) identi
 
 To integrate Checkmarx with the Conviso Platform, you will need the following data:
 
-- Permission to access and modify projects and vulnerabilities, you can find the list of permissions [here](#list-of-permissions-needed)
+- Permission to access and modify projects and vulnerabilities, the account you use to create the API key needs to have the "ast-admin" role in Checkmarx.
 
 - API KEY from an user with correct permissions 
 
@@ -31,9 +31,8 @@ To integrate Checkmarx with the Conviso Platform, you will need the following da
 
 To perform the integration between the two platforms, follow these steps after logging into the platform:
 
-1. In the environment, choose the option where your Checkmarx is hosted.
-2. Look for the Checkmarx image in the integrations; you can use the "Scanners" filter to simplify the search.
-3. Click on the "Integrate" button, and a form similar to the image below will appear.
+1. Click on the Integrations option in the side menu.
+2. Look for the Checkmarx One icon and then click on Integrate button.
 
 <div style={{textAlign: 'center'}}>
 
@@ -41,12 +40,7 @@ To perform the integration between the two platforms, follow these steps after l
 
 </div>
 
-4. Fill in the environment where your checkmarx is hosted.
-5. Enter your API token.
-6. Enter your tenant name.
-7. Click on "Save."
-
-After completing the seventh step, the following screen will appear. On this screen, you can manage your Checkmarx integration, view and import projects, and test if your Checkmarx connection is active.
+A form similar to the image below will appear.
 
 <div style={{textAlign: 'center'}}>
 
@@ -54,17 +48,57 @@ After completing the seventh step, the following screen will appear. On this scr
 
 </div>
 
-## Importing Assets
+If you're not sure where to get the information below, follow our tutorial [here](#how-to-get-the-necessary-information-for-the-integration).
 
-1. To import a project, go to the integration configuration page by selecting the "Integrations" option from the side menu. If you already have a Checkmarx integration, click on "Configure."
-2. After accessing the integration configuration screen, click on "New Project," and a screen displaying the names of the projects will appear.
-3. You can use the search bar to filter by project name. After selecting the projects you want to import, click "Add" at the top of the modal.
+1. Fill in the environment where your checkmarx is hosted.
+2. Enter your API token.
+3. Enter your tenant name.
+4. Click on "Save."
+
+After completing the steps, the following screen will appear.
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/checkmarx-img3.png)
 
 </div>
+
+On this screen, you can manage your Checkmarx integration, view and import projects, and test if your Checkmarx connection is active.
+
+1. View this documentation.
+2. Check if the communication with your Checkmarx One is active.
+3. Add a new Checkmarx project to the Conviso Platform.
+4. Table containing all the assets in the Conviso Platform that you imported from Checkmarx.
+5. Button to return to the Checkmarx credentials configuration.
+
+
+## Importing Assets
+
+To import a new project from Checkmarx One to the Conviso Platform, follow the steps below:
+1. Click on Integration in the side menu.
+2. Look for the Checkmarx One icon and then click on the Configure button.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/checkmarx-img9.png)
+
+</div>
+
+This will take you to the Checkmarx One configuration page.
+
+1. Click on the Add Project button.
+
+The Selection Form showing the projects registered in Checkmarx One will appear as shown in the image below.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/checkmarx-img4.png)
+
+</div>
+
+1. You can use the search bar to filter by project name.
+2. Select which projects to import.
+3. Click on the Add button at the top of the form.
 
 **Obs: Currently, when you select and import a project from Checkmarx, an asset will be created for each existing branch in that project in Checkmarx, and the vulnerabilities present in the latest scan of each branch will be imported.**
 
@@ -100,25 +134,65 @@ When changing the status in the Conviso Platform, these changes will be replicat
 
 ### Synchronization
 
-To monitor or initiate a synchronization, you can follow the steps below:
+The synchronization of assets is automatically initiated every time a scan is successfully completed in Checkmarx One. You can also start a manual synchronization.
+
+To check the status or start a manual synchronization, follow the steps below:
 
 1. Go to the Assets Management page.
-2. Click on the name of the asset you want to synchronize.
-3. On the asset's detail page, click on View All next to Integration, as shown in the image below.
+2. Click on the name of the asset that has the integration with Checkmarx.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/fortify-img7-new.png)
+![img](../../static/img/checkmarx-img11.png)
 
 </div>
 
-4. A new screen will open, where you will find the button to initiate an integration, along with a progress bar indicating the status if synchronization is in progress. In case of any errors, they will also be displayed on this screen.
 
-### List of Permissions needed
+On the asset's detail page, click on View All next to Integration, as shown in the image below.
 
-- manage-application
-- ast-admin
-- manage-project
+<div style={{textAlign: 'center'}}>
 
+![img](../../static/img/checkmarx-img5.png)
+
+</div>
+
+A modal will appear as shown in the photo below.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/checkmarx-img6.png)
+
+</div>
+
+In this modal, you will have the following information:
+1. Time when the last synchronization was initiated.
+2. Progress bar showing the progress of the synchronization if it is in progress.
+3. Button to start a synchronization. A synchronization can only be initiated if the previous one has already finished.
+
+## How to get the necessary information for the integration.
+
+To get this information, you will need to log in to Checkmarx One and follow the steps below:
+
+1. In the side menu, hover your mouse over the gear icon.
+2. Click on the Identity and Access Management option.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/checkmarx-img7.png)
+
+</div>
+
+1. In the side menu, click on API Keys.
+2. To get the information of environment, you can check the URL and look at the name that comes before the first dot.
+3. Still in the URL of the page, where marker 3 points, you will find your tenant name.
+4. Create a new API key.
+
+With this information, you can now create the integration in the Conviso Platform by following the steps mentioned above.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/checkmarx-img8.png)
+
+</div>
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
