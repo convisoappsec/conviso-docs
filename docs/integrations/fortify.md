@@ -106,9 +106,17 @@ In this section, we will address crucial information about the integration's ope
 
 When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Fortify according to the following mapping:
 
-<div style={{textAlign: 'center'}}>
+<div style={{display: 'ruby-text'}}>
 
-![img](../../static/img/fortify-img6-new.png)
+| Conviso Platform     | Fortify        |
+|----------------------|----------------|
+| Created              | Not Set/Blank  |
+| identified           | Exploitable    |
+| false positive       | Not an Issue   |
+| risk accepted        | Suspicious     |
+| Fixed                | Removed        |
+| Suppressed           | Suppressed     |
+
 
 </div>
 
