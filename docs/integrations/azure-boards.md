@@ -12,13 +12,11 @@
 
 ## Introduction[​](https://docs.convisoappsec.com/integrations/azure_boards/#introduction)
 
-The [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826&__hstc=36751231.4f0e20f0cfb8e070ca47855aa5207464.1713288582555.1713795830588.1713802784475.4&__hssc=36751231.3.1713802784475&__hsfp=202023877) integrates with [Azure Boards](https://azure.microsoft.com/en-us/products/devops/boards) enabling the creation of issues and a Webhook for updating issue status.
+Integrating Azure Boards in Conviso Platform will let developers gain productivity while we do all the hard work by automating the whole vulnerability management triage process.
 
+New vulnerabilities identified in Conviso Platfom are created in real time directly in Azure Boards.
 
-
-This integration streamlines issue control management and vulnerability consolidation. Integrate the Conviso Platform with Azure Boards. Through this integration, you can use Webhooks to synchronize vulnerability statuses between the Conviso Platform and Azure Boards.
-
-
+With our two-way integration capability, every status update from both solutions are automatically updated in order to reduce the toil and increase productivity.
 
 ### Integration Capabilities[​](https://docs.convisoappsec.com/integrations/azure-#integration-capabilities)
 
