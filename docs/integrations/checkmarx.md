@@ -17,7 +17,11 @@ First time using Checkmarx? Please refer to the [following documentation](https:
 
 ## Introduction
 
-This integration enables the automatic import of issues (vulnerabilities) identified by Checkmarx into the Conviso Platform, allowing the user to leverage all the features of the Conviso Platform in managing these issues.
+This integration consolidates scan results of applications in Checkmarx with Conviso Platform, keeping both solutions synced in real time.
+
+It supports a two-way integration regarding new vulnerabilities and status mapping, so every update in Checkmarx will also update Conviso Platform, as well as updates in the triage of vulnerabilities within Conviso Platform vulnerability management, specifically for False Positives and Accepted Risks transitions.
+
+Aggregating Checkmarx results and other security tools with Conviso Platform will let you have a centralized view for a more efficient prioritization and security risk management of your applications. 
 
 ## Requirements
 
@@ -108,7 +112,7 @@ In this section, we will address crucial information about the integration's ope
 
 ### Status Mapping
 
-When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Checkmarx according to the following mapping:
+When moving Vulnerabilities from one status to another, the Conviso platform will communicate and mark the Vulnerabilities in Checkmarx according to the following mapping:
 
 <div style={{display: 'ruby-text'}}>
 
@@ -128,7 +132,7 @@ The modifications are bidirectional, meaning that when changes are made in the C
 
 When changing the status in the Conviso Platform, these changes will be replicated immediately to Checkmarx. However, if a change is first made in Checkmarx, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
 
-**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like Checkmarx. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those issues that are no longer identified by Checkmarx will be marked as FIXED in the Conviso Platform.**
+**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like Checkmarx. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those vulnerabilities that are no longer identified by Checkmarx will be marked as FIXED in the Conviso Platform.**
 
 
 
