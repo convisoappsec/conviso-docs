@@ -6,7 +6,7 @@ sidebar_label: Checkmarx
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/checkmarx-logo.webp)
+![img](../../static/img/integration_checkmarx.png)
 
 </div>
 
