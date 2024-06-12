@@ -2,16 +2,16 @@
 id: security-gate
 title: CI/CD Pipeline Security Control with Security Gate
 sidebar_label: CI/CD Pipeline Security Control with Security Gate
-description:  With Conviso CLI's Security Gate feature, you can set vulnerability policies and if those policies are not being met, learn more!
+description:  With Conviso CLI's Security Gate feature, you can set vulnerability policies and check if those policies are being met, learn more!
 keywords:  [CI/CD Pipeline Security Control]
 image: '/static/img/securitygateseo.png'
 ---
 
 ## Introduction
-With Conviso CLI's **Security Gate** feature you can define vulnerability policies, such as the number of vulnerabilities by severity and sources, and automatically block your CI/CD pipeline if these policies are not complied, ensuring that your code is secure from potential threats.
+With Conviso CLI's **Security Gate** feature you can define vulnerability policies, such as the number of vulnerabilities by severity and sources, and automatically block your CI/CD pipeline if these policies are not complied.
 
 ### Prerequisites
-To successfully run this command [authenticate](/cli/installation#authentication) your machine and set the project key with ```export FLOW_PROJECT_CODE='your-project-code'```. The "Project Code" is found on the specific project page.
+Set the API Key ```export CONVISO_API_KEY='your-api-key'```.
 
 ## Usage
 To use this feature, follow these steps:
@@ -45,7 +45,7 @@ rules:
       maximum: 0
 ```
 
-If the policy that was defined is true and the asset in fact has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline.
+If the policy that was defined is true and the Asset in fact has more than 5 high severity vulnerabilities, then the Security Gate feature will break the job execution of the pipeline.
 
 To avoid validating a specific severity value, just remove it from the rules content. 
 
@@ -95,15 +95,6 @@ Starting vulnerabilities security rules assertion
 ]
 Error: Vulnerabilities quantity offending security rules
 ```
-
-## Video Tutorial in Portuguese
-To see the tool working in practice, we recommend watching this video:
-
-<div style={{textAlign: 'center'}}>
-
-<iframe width="800" height="450" src="https://www.youtube.com/embed/pLbjG1-xFOo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-</div>
 
 ## Support
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
