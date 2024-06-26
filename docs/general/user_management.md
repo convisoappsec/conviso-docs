@@ -11,7 +11,7 @@ Conviso Platform allows you to manage users, groups and roles to ensure the prop
 There are types of **Users** that are categorized according to the type of permission, called **Profiles** and it is possible to group them into **Teams**.
 
 ### About Users
-Conviso Platform users are all those who have access to the platform and are linked to an email and one or more companies. They are created through the [Invite New Users](#adding-new-users-by-sending-invites) action and can be managed in [Access Control](#using-access-control-to-perform-user-management).
+Conviso Platform users are all those who have access to the platform and are linked to an email and one or more companies. They are created through the [Invite New Users](#inviting-a-user) action and can be managed in [Access Control](#usage).
 
 Users have different levels of permissions, and are defined in Profiles.
 
@@ -24,9 +24,9 @@ Custom profiles are created by administrators and allow you to define access per
 
 There are more resources to come in the [following releases](../releases/intro.md) so you can make a more granular configuration of your custom profiles. 
 
-[Learn how to create Profiles.](#creating-a-new-profile-type)
+[Learn how to create Profiles.](#creating-a-profile)
 
-#### Standard Profiles
+#### Default Profiles
 On the Platform, there are 3 default profiles:
 
 #### Developer Profile
@@ -36,7 +36,7 @@ Profile Developer was created with the aim of streamlining the platform for soft
 - Create, view, and edit Assets;
 - Create, view, and edit Projects.
 
-To add new users with Developer Profile roles, [see here how to invite new users.](#adding-new-users-by-sending-invites)
+To add new users with Developer Profile roles, [see here how to invite new users.](#inviting-a-user)
 
 #### Admin Profile
 The Admin profile is designed to provide full access to all the functionalities of the company's platform to which they belong, in addition to the following exclusive accesses:
@@ -51,168 +51,29 @@ The Admin profile is designed to provide full access to all the functionalities 
 The Viewer-Only profile,  a global Profile, refers to users who only have permission to view what was assigned to them on the platform by the administrator.  
 
 ### About Teams
-On the platform, you can assign responsibilities in project activities to groups of users that represent similar roles, for which we have the Teams feature.
+You can create Teams to represent different types of users within your organization.
+A Team in Conviso Platform let you organize users but also manage permissions and accesses for a more efficiente user management.
+For example, you can create a team called Squad A, associate to it a Profile and also define the Access the users of thar team will have. Instead of configuring every user one by one, you can just add a user to their specific team and inherit the permissions and accesses of that team.
 
-Our goal is to offer a more effective interconnection between profiles and users. So you can create a team for developers, security analysts, QA, product team and much more! 
-
-[See how to create a team.](#creating-a-new-team)
+[See how to create a team.](#creating-a-team)
 
 ## Usage
-In this section we explain the following ways to manage users in Conviso Platform:
 
-## Using Access Control to perform User Management
-To access “Access Control”, go to "settings" next to your profile picture in the upper right corner:
+### Inviting a User
+You can invite a user from the Security Feed or through the **Settings>Users** option within the left menu.
+From there you need to provide the email or emails (comma-separated), select a Profile and define the Access that User will have.
 
+### Creating a Profile
+You can create a new Profile with custom permission from the **Settings>Users** option as well.
+Just press on New Profile and follow the instructions to define a name an specific permissions divided by resource.
 
-<div style={{textAlign: 'center', maxWidth: '60%' }}>
+### Creating a Team
+You can create a new team from the **Settings>Users** option as well.
+Just press on New Team, provide a name, add the users that you want to be part of that team,select a Profile and define the Access.
 
-![img](../../static/img/user_management-img1.png)
+### Add/Remove a User to a Team
+You need to navigate to the Teams section, edit the specific Team that you want and add/remove the user from it. Simple as that.
 
-</div>
-
-On this screen, you can edit the permissions that your users have in your company. In addition, it is also possible to edit, create/invite or delete **users**, types of permissions "**profiles**" or **teams**:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/user_management-img2.png)
-
-</div>
-
-### Adding New Users by sending invites
-To add new users to your company, you can do it in two ways:
-
-- **Sending invitation through Access Control**
-Clicking the "Invite New Users" button on the right in the "Users" subarea of Access Control:
-
-<div style={{textAlign: 'center', maxWidth: '60%' }}>
-
-![img](../../static/img/user_management-img3.png)
-
-</div>
-
-- **Sending invitation through “Invite your team” button**
-On the top bar you will see an "Invite your team" button to add new users to the platform:
-
-<div style={{textAlign: 'center', maxWidth: '60%' }}>
-
-![img](../../static/img/user_management-img4.png)
-
-</div>
-
-To add, you will need to have the guest's email and then decide if he will participate in any **Team** and what kind of permission he will receive as **Profile**. If your Profile is of type "Developer" you can invite other developers to Profile Developer.  
-
-Next, choose what kind of access will be granted to the user, by choosing one of the three radio buttons: Companies, Projects or Vulnerabilities:
-
-<div style={{textAlign: 'center', maxWidth: '70%' }}>
-
-![img](../../static/img/user_management-img5.png)
-
-</div>
-
-- **Companies**: Here it refers to the company in which you are working.
-
-- **Projects**: The user will only have control of the projects he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the Projects drop-down list.
-
-- **Vulnerabilities**: The user will only have control of the vulnerabilities he has been granted access to. You need to choose what project (or projects) the user will be granted access to, by clicking on the Projects drop-down list, and then choose what vulnerabilities the user will be granted access to, by clicking on the Vulnerabilities drop-down list:
-
-### Canceling user invitation
-If you need to cancel a user's invite, just go to actions and press the "Cancel User's Invitation" button in the "User" subarea in Access Control:
-
-<div style={{textAlign: 'center', maxWidth: '40%' }}>
-
-![img](../../static/img/user_management-img6.png)
-
-</div>
-
-Once this button is clicked, the email will not activate the subscription.
-
-### Editing User Access
-To edit the user's access type, as well as the team he belongs to, click on the "Edit User Access" button in the "User" subarea in Access Control:
-
-<div style={{textAlign: 'center', maxWidth: '40%' }}>
-
-![img](../../static/img/user_management-img7.png)
-
-</div>
-
-### Removing user
-And to remove a user is also very simple, just click on "Remove Analyst Profile" button in the "User" subarea in Access Control:
-
-<div style={{textAlign: 'center', maxWidth: '40%' }}>
-
-![img](../../static/img/user_management-img8.png)
-
-</div>
-
-### Creating a new Profile type
-To create a new type of Profile for your company, simply click on the "New Profile" button in the "Profiles" subarea of the Access Control page:
-
-<div style={{textAlign: 'center', maxWidth: '60%' }}>
-
-![img](../../static/img/user_management-img9.png)
-
-</div>
-
-And then a form will appear for you to fill in the following information for your new type of Profile:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/user_management-img10.gif)
-
-</div>
-
-You have the ability to decide the following permissions:
-
-- **User Access**: View, Invite Users
-- **Vulnerabilities**: View, Create, Edit, Delete
-- **Projects**: View, Create, Edit, Delete
-
-### Editing Profile type
-To edit the Profile type, click the "Edit Profile" button in the "Profile" subarea in Access Control:
-
-<div style={{ textAlign: 'center'}}>>
-
-![img](../../static/img/user_management-img11.png)
-
-</div>
-
-**Note:** As you can see, it is not possible to edit the platform's default Profiles.
-
-### Creating a new Team
-
-Creating a team on the Conviso Platform is also very simple. Just go to the "Teams" section of Access Control and click on the "+ New Team" button on the right side:
-
-<div style={{textAlign: 'center', maxWidth: '50%' }}>
-
-![img](../../static/img/user_management-img12.png)
-
-</div>
-
-This action will prompt a form where you can easily define the team's name and enter the email addresses of the registered users.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/user_management-img13.gif)
-
-</div>
-
-### Editing team
-In the Actions of the Teams area,click on the following icon  to edit a team:
-
-<div style={{textAlign: 'center', maxWidth: '40%'}}>
-
-![img](../../static/img/user_management-img14.png)
-
-</div>
-
-### Removing team
-In Actions of the Teams area, click on the following icon to remove a team:
-
-<div style={{textAlign: 'center', maxWidth: '40%'}}>
-
-![img](../../static/img/user_management-img15.png)
-
-</div>
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
