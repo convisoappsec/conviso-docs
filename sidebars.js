@@ -179,7 +179,6 @@ module.exports = {
           items: [
             'integrations/amazon-inspector',
             'integrations/checkmarx',
-            'integrations/dast',
             'integrations/fortify',
             'integrations/nessus',
             'integrations/qualys',
