@@ -21,6 +21,7 @@ Release date: July 10, 2024
 
 ## Redefined Dashboard Experience
 
+### AppSec Posture
 <div style={{textAlign:'center'}}>
 
 ![img](../../static/img/release46-dashboard-1.png)
@@ -33,6 +34,8 @@ Introducing AppSec Posture insights, tailored by AppSec specialists to guide you
 Here you will be able to assess how's your Overall Risk Score at the moment, and how is it been given a specific period of time.
 
 Another very important maturity indicator related to MTTR (Mean Time To Resolve), that will guide your time in relation to how fast your devs are fixing new risks in your application from the moment they are identified.
+
+### AppSec KPIs
 
 <div style={{textAlign:'center'}}>
 
