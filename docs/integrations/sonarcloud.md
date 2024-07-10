@@ -59,7 +59,7 @@ If you're not sure where to get the information below, follow our tutorial [here
 2. Enter your user token from SonarCloud.
 3. Click on "Save."
 
-After completing the steps, the following screen will appear.
+After completing the steps, the following screen will appear:
 
 <div style={{textAlign: 'center'}}>
 
@@ -149,7 +149,7 @@ To check the status or start a manual synchronization, follow the steps below:
 </div>
 
 
-On the asset's detail page, click on View All next to Integration, as shown in the image below.
+On the asset's detail page, click on View All next to Integration, as shown in the image below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -157,7 +157,7 @@ On the asset's detail page, click on View All next to Integration, as shown in t
 
 </div>
 
-A modal will appear as shown in the photo below.
+A modal will appear as shown in the photo below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -192,7 +192,7 @@ To get this information, you will need to log in to SonarCloud and follow the st
 
 </div>
 
-Now you have your User Token. To get the Organization ID, follow the steps below.
+Now you have your User Token. To get the Organization ID, follow the steps below:
 
 1. Click on the Organization tab  
 2. Click on the Organization you want to integrate
@@ -203,7 +203,7 @@ Now you have your User Token. To get the Organization ID, follow the steps below
 
 </div>
 
-1. The Organization ID can be found on the right side of the page as shown below.
+1. The Organization ID can be found on the right side of the page as shown below:
 
 <div style={{textAlign: 'center'}}>
 

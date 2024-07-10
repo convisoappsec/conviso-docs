@@ -12,7 +12,7 @@ sidebar_label: SonarQube
 
 
 :::note
-First time using SonarQube? Please refer to the [following documentation](https://docs.sonarsource.com/sonarcloud/).
+First time using SonarQube? Please refer to the [following documentation](https://docs.sonarsource.com/sonarqube).
 :::
 
 ## Introduction
@@ -92,7 +92,7 @@ This will take you to the integration configuration page.
 
 Click on the Add Project button.
 
-The Selection Form showing the projects registered in SonarQube will appear as shown in the image below.
+The Selection Form showing the projects registered in SonarQube will appear as shown in the image below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -150,7 +150,7 @@ To check the status or start a manual synchronization, follow the steps below:
 </div>
 
 
-On the asset's detail page, click on View All next to Integration, as shown in the image below.
+On the asset's detail page, click on View All next to Integration, as shown in the image below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -158,7 +158,7 @@ On the asset's detail page, click on View All next to Integration, as shown in t
 
 </div>
 
-A modal will appear as shown in the photo below.
+A modal will appear as shown in the photo below:
 
 <div style={{textAlign: 'center'}}>
 
