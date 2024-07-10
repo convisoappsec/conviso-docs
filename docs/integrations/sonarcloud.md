@@ -131,6 +131,8 @@ When changing the status in the Conviso Platform, these changes will be replicat
 
 **Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like SonarCloud. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those vulnerabilities that are no longer identified by SonarCloud will be marked as FIXED in the Conviso Platform.**
 
+**Note: When changing the vulnerability to an unmapped status, it will revert to the last mapped status when a synchronization occurs.**
+
 
 
 ### Synchronization
