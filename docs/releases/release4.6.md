@@ -28,7 +28,7 @@ Release date: July 10, 2024
 
 </div>
 
-We are exited to present a brand-new experience related to Dashboard.
+We are excited to present a brand-new experience related to Dashboard.
 Introducing AppSec Posture insights, tailored by AppSec specialists to guide you and your team to the correct path of AppSec maturity.
 
 Here you will be able to assess how's your Overall Risk Score at the moment, and how is it been given a specific period of time.
@@ -81,7 +81,7 @@ Check out the documentation [here](https://docs.convisoappsec.com/integrations/s
 
 </div>
 
-We are also exited to introduce a brand-new native integration with Sonarqube, the on-premise version of Sonarcloud.
+We are also excited to introduce a brand-new native integration with Sonarqube, the on-premise version of Sonarcloud.
 
 Similar as Sonarcloud, this integration consolidates scan results of applications in Sonarqube with Conviso Platform, keeping both solutions synced in real time.
 
