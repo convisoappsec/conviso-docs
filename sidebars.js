@@ -31,8 +31,7 @@ module.exports = {
               items: sidebarSchema.schemaSidebar
             }
           ]
-        },
-        'api/rest/index'
+        }
       ]
     },
     {
@@ -132,13 +131,6 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Container Security Platform",
-          items: [
-            'integrations/aqua'
-          ]
-        },
-        {
-          type: "category",
           label: "Data Analytics",
           items: [
             'integrations/datastudio',
@@ -150,12 +142,9 @@ module.exports = {
           label: "Defect/Bug Tracking",
           items: [
             'integrations/azure-boards',
-            'integrations/bitbucket',
             'integrations/businessmap',
             'integrations/clickup',
-            'integrations/github',
-            'integrations/jira',
-            'integrations/trello'
+            'integrations/jira'
           ]
         },
         {
@@ -169,22 +158,17 @@ module.exports = {
           type: "category",
           label: "SCA",
           items: [
-            'integrations/dependency-track',
-            'integrations/github-sca'
+            'integrations/dependency-track'
           ]
         },
         {
           type: "category",
           label: "Scanners",
           items: [
-            'integrations/amazon-inspector',
             'integrations/checkmarx',
             'integrations/fortify',
-            'integrations/nessus',
-            'integrations/qualys',
             'integrations/sonarcloud',
             'integrations/sonarqube',
-            'integrations/veracode'
           ]
         },
       ]
@@ -242,7 +226,6 @@ module.exports = {
       items: [
         'general/assets_import',
         'general/assets_management',
-        'general/bug_bounty',
         'general/email_notifications',
         'general/integration_policies',
         'general/projects_management',
