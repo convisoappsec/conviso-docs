@@ -22,7 +22,6 @@ Conviso Platform seamlessly integrates with your current tools and workflows, en
 **This guide will walk you through various integration options with Conviso Platform:** 
 - [Single Sign-On (SSO)](#set-up-conviso-platform-single-sign-on-sso)
 - [CI/CD](#conviso-platform-cicd-integration)
-- [Container Security](#container-security-platform)
 - [Data Analytics](#data-analytics-integration)
 - [Defect/Bug Tracking](#defectbug-tracking-integration)
 - [Notifications](#communication-and-notification)
@@ -56,12 +55,6 @@ Incrementally incorporating CI/CD Integration has become a prevalent practice, e
 * **[Jenkins](../integrations/jenkins.md)**
 * **[Jenkins Single Pipeline for Multiple Repositories using Webhooks](../integrations/jenkins-single-pipeline.md)**
 
-
-## Container Security Platform
-
-Our integration enables the synchronization of vulnerabilities found in Cloud Workload Protection Platforms (CWPP) and Cloud Security Posture Management (CSPM) solutions. You can import these vulnerabilities into the Conviso Platform, allowing for consolidated management on a single platform:
-* **[Aqua](../integrations/aqua.md)**
-
 ## Data Analytics Integration
 
 Unlock the full potential of your data by integrating it into our platform! Export information and create customized dashboards to visualize and analyze your application security data dynamically and flexibly.
@@ -72,12 +65,9 @@ Unlock the full potential of your data by integrating it into our platform! Expo
 
 By integrating the Conviso Platform with your Defect Tracker tool, you can seamlessly manage and track defects within your development workflow. This streamlines the process of identifying and addressing issues, enhancing collaboration and efficiency. Our platform supports the following Defect Tracker integrations:
 * **[Azure Boards](../integrations/azure-boards.md)**
-* **[Bitbucket](../integrations/bitbucket.md)**
 * **[BusinessMap](../integrations/businessmap.md)**
 * **[ClickUp](../integrations/clickup.md)**
-* **[Github](../integrations/github.md)**
 * **[Jira](../integrations/jira.md)**
-* **[Trello](../integrations/trello.md)**
 
 ## Communication and Notification
 Efficient collaboration and communication are crucial for successful application development. By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel:
@@ -87,18 +77,13 @@ Efficient collaboration and communication are crucial for successful application
 
 This integration enables the platform to identify and mitigate risks in your software supply chain effectively. Leveraging the capabilities of a Software Bill of Materials (SBOM), our unique approach goes beyond traditional Software Composition Analysis (SCA) solutions, providing enhanced capabilities that drive comprehensive security measures:
 * **[Dependency-Track](../integrations/dependency-track.md)**
-* **[Github SCA](../integrations/github-sca.md)**
 
 ## Consolidate Vulnerability Management through Integrated Security Scans
 
 Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
-* **[Amazon Inspector](../integrations/amazon-inspector.md)**
 * **[Fortify](../integrations/fortify.md)**
-* **[Nessus](../integrations/nessus.md)**
-* **[Qualys](../integrations/qualys.md)**
 * **[SonarCloud](../integrations/sonarcloud.md)**
 * **[SonarQube](../integrations/sonarqube.md)**
-* **[Veracode](../integrations/veracode.md)**
 
 ## Support for Conviso Platform Integrations
 
