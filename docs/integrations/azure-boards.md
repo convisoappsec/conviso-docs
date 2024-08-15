@@ -8,8 +8,6 @@
 
 </div>
 
-
-
 ## Introduction[​](https://docs.convisoappsec.com/integrations/azure_boards/#introduction)
 
 Integrating Azure Boards in Conviso Platform will let developers gain productivity while we do all the hard work by automating the whole vulnerability management triage process.
@@ -24,16 +22,14 @@ This integration enhances issue control management and vulnerability consolidati
 
 **From Azure Boards to Conviso Platform:**
 
-*   Foster interaction by providing data from Azure Boards with the development team responsible for corrections in Vulnerability Management from Conviso Platform.
+- Foster interaction by providing data from Azure Boards with the development team responsible for corrections in Vulnerability Management from Conviso Platform.
 
 **From Conviso Platform to Azure Boards:**
 
-*   Generates new issues in Azure Boards based on events within Conviso Platform's Vulnerability Management System, such as identified vulnerabilities or completed security assessments.
-*   Establishes a linkage between vulnerabilities detected in Conviso Platform and their relevant issues in Azure Boards, enhancing traceability and collaborative efforts.
-*   Updates Azure Boards issues when specific actions occur in Conviso Platform's Vulnerability Management System, such as changes in vulnerability status, assessment completions, or updates to risk levels.
-*   Transitions Azure Boards issues to appropriate workflow stages when vulnerabilities are resolved or mitigated within Conviso Platform's Vulnerability Management System.
-
-
+- Generates new issues in Azure Boards based on events within Conviso Platform's Vulnerability Management System, such as identified vulnerabilities or completed security assessments.
+- Establishes a linkage between vulnerabilities detected in Conviso Platform and their relevant issues in Azure Boards, enhancing traceability and collaborative efforts.
+- Updates Azure Boards issues when specific actions occur in Conviso Platform's Vulnerability Management System, such as changes in vulnerability status, assessment completions, or updates to risk levels.
+- Transitions Azure Boards issues to appropriate workflow stages when vulnerabilities are resolved or mitigated within Conviso Platform's Vulnerability Management System.
 
 ### Prerequirements[​](https://docs.convisoappsec.com/integrations/azure_boards#prerequirements)
 
@@ -41,8 +37,6 @@ To set up the integration, you'll need the following information:
 
 1. Azure Boards's login
 2. Admin permission in the project you're integrating
-
-
 
 ## Usage[​](https://docs.convisoappsec.com/integrations/azure_boards#usage)
 
@@ -60,19 +54,13 @@ Follow the instructions below to complete the integration setup.
 
 **Step 1 -** Go to **Conviso Platform**, look for the **Integrations (1)** on the left side menu, choose **Defect Tracker (2)** at the Categories panel to the right and finally click the **Integrate (3)** button just below Azure Boards's card, as illustrated in the example image below:
 
-
-
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-boards/integration-page-azure.png)
 
 </div>
 
-
-
-**Step 2** **Log in** with your **Azure** account and authorize **Conviso Platform** to integrate with your Organization and Projects
-
-
+**Step 2 -** **Log in** with your **Azure** account and authorize **Conviso Platform** to integrate with your Organization and Projects
 
 <div style={{textAlign: 'center'}}>
 
@@ -80,19 +68,13 @@ Follow the instructions below to complete the integration setup.
 
 </div>
 
-
-
 **Step 3 -** **Severity Mapping** refers to Azure Boards's card priority. Select which severity will be referenced to Azure Boards's priority:
-
-
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-boards/severity-mapping.png)
 
 </div>
-
-
 
 **Step 4 -** Enter your **Organization Name(1)**, then click **Continue(2)**, you can get it by following **image 2**
 
@@ -102,8 +84,6 @@ Follow the instructions below to complete the integration setup.
 
 </div>
 
-
-
 If you don't know your **Organization Name**, there's no problem, you can get it by logging in your **Azure Boards's** account, it shows in the page and in the url
 
 <div style={{textAlign: 'center'}}>
@@ -111,7 +91,6 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 ![img](../../static/img/azure-boards/azure-organization.png)
 
 </div>
-
 
 **Step 5 -** Click the **Add** button the link an asset in **Conviso Platform** to a board in **Azure Boards**
 
@@ -122,6 +101,7 @@ If you don't know your **Organization Name**, there's no problem, you can get it
 </div>
 
 ### Custom Configuration vs Default Configuration
+
 At this point in the process, you have two options: **Custom Configuration** or **Default Configuration**.
 
 With **Custom Configuration**, you can specifically link a Conviso Platform asset to a single Azure Boards board. On the other hand, Default Configuration enables you to link all available assets under Conviso Platform to a single Azure Boards board by default — providing a standard integration setup.
@@ -130,22 +110,23 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 ### a) Custom Configuration
 
-
-**Step 6 -** Select the **Conviso Platform Asset** you want to associate with your **Azure Boards Project**, **Teams**, **Boards**, and finally **Azure Boards Lane**.
+**Step 6 -** Select the **Conviso Platform Asset** you want to associate with your
+**Azure Boards Project**, **Team**, **Board**, **Work Item Type**, and finally the **Lane**.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-boards/azure-add-config.png)
+![img](../../static/img/azure-boards/azure-add-custom-config.png)
 
 </div>
 
 ### b) Default Configuration
 
-**Step 6 -** Check the **Default Configuration** field, notice that the Asset label will is no longer available, select the **Azure Boards Project**, **Boards**, and **Lane**.  
+**Step 6 -** Check the **Default Configuration** field, notice that the Asset label will is no longer available,
+select the **Azure Boards Project**, **Team**, **Board**, **Work Item Type**, and finally the **Lane**.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/azure-boards/default-config.png)
+![img](../../static/img/azure-boards/azure-add-default-config.png)
 
 </div>
 
@@ -159,7 +140,7 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 ## Synchronize vulnerability statuses between Conviso Platform and Azure Boards using Webhooks
 
-**Step 1 -** Copy and save the **WebHook URL**, you're going to use it in Azure Boards for a future step
+**Step 1 -** Copy and save the **WebHook URL**, you're going to use it in Azure Boards for a future step.
 
 <div style={{textAlign: 'center'}}>
 
@@ -167,7 +148,9 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 </div>
 
-**Step 2 -** In the Project page, go for **Project Settings**, then to **Service hooks(you'll only be able to get here if you're a project admin) ,** and then, click in the add icon
+**Step 2 -** In the Project page, go for **Project Settings**, then
+to **Service hooks(you'll only be able to get here if you're a project admin)**,
+and then, click in the add icon.
 
 <div style={{textAlign: 'center'}}>
 
@@ -181,7 +164,7 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 </div>
 
-**Step 3 -** In the service hooks, choose the option **Web Hooks**
+**Step 3 -** In the service hooks, choose the option **Web Hooks**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -189,7 +172,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 </div>
 
-**Step 4 -** Select the Trigger(1) **Work item updated**, and select the **Board Column** option in the Field filter(2)
+**Step 4 -** Select the Trigger(1) **Work item updated**, and select
+the **Board Column** option in the Field filter(2) and then click in **Next**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -198,6 +182,7 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 </div>
 
 **Step 5 -** Paste your **WebHook URL** that you got from **Conviso Platform**
+and then click in **Finish**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -205,7 +190,35 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 </div>
 
-The integration with **Azure Boards** is done and every update in your boards will be updated in **Conviso Platform** as well
+**Step 6 -** Now, let's add a second webook, clicking on add button
+and choosing the option **Web Hooks**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/web-hooks-azure.png)
+
+</div>
+
+**Step 7 -** Select the Trigger(1) **Work item updated**, and select
+the **State** option in the Field filter(2) and then click in **Next**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/add-webhook-state.png)
+
+</div>
+
+**Step 8 -** Paste your **WebHook URL** that you got from **Conviso Platform**
+and then click in **Finish**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/azure-url.png)
+
+</div>
+
+The integration with **Azure Boards** is done and every update in your
+boards will be updated in **Conviso Platform** as well.
 
 ## Check integration status
 
