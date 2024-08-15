@@ -60,7 +60,7 @@ Follow the instructions below to complete the integration setup.
 
 </div>
 
-**Step 2** **Log in** with your **Azure** account and authorize **Conviso Platform** to integrate with your Organization and Projects
+**Step 2 -** **Log in** with your **Azure** account and authorize **Conviso Platform** to integrate with your Organization and Projects
 
 <div style={{textAlign: 'center'}}>
 
