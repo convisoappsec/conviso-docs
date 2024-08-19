@@ -7,11 +7,15 @@ jobs:
   conviso-test-suite:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisocli:latest
+      image: convisoappsec/convisocli:beta
       env:
         CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
         CONVISO_COMPANY_ID: '11'
     steps:
       - uses: actions/checkout@v3
+
+      - name: Diplay current version
+        run: conviso --version
+
       - name: Run AST
-        run: conviso ast run
+        run: conviso ast run --vulnerability-auto-close
