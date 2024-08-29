@@ -28,6 +28,7 @@ Currently we support the following languages:
 - GO Gosec
 - iOS: grapper
 - Java: pmd
+- Kotlin: Semgrep
 - Node: njsscan
 - PHP: rips, progpilot
 - Python: bandit, dlint
@@ -45,11 +46,15 @@ For IaC, Conviso AST uses [Checkov](https://github.com/bridgecrewio/checkov).
 Start checking for exposed credentials, api keys or tokens in your source code.
 For Secret Detection, Conviso AST uses [Gitleaks](https://github.com/gitleaks/gitleaks)
 
-## How to use Conviso AST?**
+## How to use Conviso AST?
 
-Scan directly from your terminal with the **Conviso CLI**; **[see the tutorial here](../cli/installation.md)**.
+Scan directly from your terminal with [**Conviso CLI**](../cli/installation.md) and combine other capabilities such as: 
 
-You can also implement **Conviso AST directly in your DevOps/DevSecOps pipeline**, whether on Github Actions, Gitlab, Jenkins, and many others; **discover[ our integrations here](../integrations/integrations_intro.md)**.
+- Set policies to block the pipeline depending on different criteria;
+- Send diff versions of your source code application to later be reviewed by your own security team or - Conviso's (when subscribed to our professional services license).
+- Auto-close open vulnerabilities on the platform that are no longer identified during its execution, and can reopen them if they were closed but identified later.
+
+**Conviso AST integrates with all the major CI/CD tools in the market**, whether on Github Actions, Gitlab, Jenkins, and many others; **discover[ our integrations here](../integrations/integrations_intro.md)**.
 
 The analysis results are sent to Conviso Platform, where you can view, prioritize and fix the vulnerabilities found using our **[Vulnerability Management](../general/vulnerabilities_management.md)** feature.
 
