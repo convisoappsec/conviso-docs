@@ -32,7 +32,7 @@ You must have Workspace Admin privileges in Azure to create this integration.
 First, ensure you have a channel created on Microsoft Teams to receive Conviso notifications. Next, create an Incoming Webhook by following these steps:
 1. In the New Teams client, select **Teams** and navigate to the channel where you want to add an Incoming Webhook;
 2. Select **More options** on the right side of the channel name;
-3. Select Manage channel:
+3. Select **Manage channel**:
 
 <div style={{textAlign: 'center'}}>
 
