@@ -151,6 +151,7 @@ module.exports = {
           type: "category",
           label: "Notifications",
           items: [
+            'integrations/microsoft-teams',
             'integrations/slack'
           ]
         },
