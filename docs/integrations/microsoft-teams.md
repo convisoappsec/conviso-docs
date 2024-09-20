@@ -12,7 +12,7 @@ sidebar_label: Microsoft Teams
 
 ## Introduction
 
-The integration between Conviso Platform and Microsoft Teams helps those managing activities stay informed by sending real-time alerts directly to the development team or management channel. This integration provides six types of alerts with the following benefits:
+The integration between Conviso Platform and Microsoft Teams helps those managing activities stay informed by sending real-time alerts directly to the development team or management channel. This integration provides five types of alerts with the following benefits:
 1. A notification can be sent when the Risk Score of an asset decreases;
 2. A notification can be sent when the Risk Score of an asset increases;
 3. A notification can be sent when a vulnerability is fixed;
