@@ -107,9 +107,9 @@ module.exports = {
           label: "Authentication/SSO",
           items: [
             'integrations/adfs',
-            'integrations/azure-ad',
             'integrations/google',
             'integrations/ldap',
+            'integrations/microsoft-entra-id',
             'integrations/saml'
           ]
         },
