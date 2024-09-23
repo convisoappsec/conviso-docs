@@ -18,180 +18,177 @@ If you are entering for the first time, the following screen will appear for you
 
 <div style={{textAlign: 'center', maxWidth: '50%' }}>
 
-[![img](../../static/img/quickstart-img1.1.png 'Login to Conviso Platform')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img1.png 'Login to Conviso Platform')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-On this screen you can set your name and password. Then you can define a Multiple Factor setting.
+On the screen above, you can set your name and password. Then you can configure a Multi-Factor Authentication (MFA).
 
-To perform this configuration, click on "Setup now", follow the tutorial in the image, using your phone's camera to scan the code and authenticate:
+To perform this configuration, click on **Setup now** and follow the steps shown in the image. Use your phone's camera to scan the code and authenticate:
 
 <div style={{textAlign: 'center', maxWidth: '50%' }}>
 
-[![img](../../static/img/quickstart-img1.2.png 'Setup a Multiple Factor setting')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img2.png 'Setup a Multiple Factor setting')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-When scanning the image, your cell phone will present you with a form of authentication to provide a secret 6-digit code.
+After scanning the image, your cell phone will display an authentication method that provides a secret 6-digit code.
 
-Now that you have this secret code, enter it on the line to the left of "Next". That's it, 2FA authentication done!
+Once you have this secret code, **enter it in the line to the left of Next**. That's it, 2FA authentication done!
 
-
-To access the platform, you can use the traditional login with "username" and "password."  Alternatively, you can enhance your login security using a single sign-on (SSO).
+To access the platform, you can use the traditional login with username and password. Alternatively, you can enhance your login security by using single sign-on (SSO).
 
 <div style={{textAlign: 'center', maxWidth: '90%'}}>
 
-[![img](../../static/img/quickstart-img1.png 'Login security using a single sign-on (SSO)')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img3.png 'Login security using a single sign-on (SSO)')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
 Learn how to connect via [SSO based on our platform integrations](/integrations/google.md).
 
-## Step 2 - Add a profile picture
-In "Edit Profile" and “Details”,   click the “Select File” button to add your photo. This will make it easier for you to be identified by your team. Only .jpg and .png are supported.
+## Step 2 - Invite your team to strengthen the AppSec work
+To invite new developers from your team to the platform, use the **Invite team members** button directly from your Security Feed:
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-[![img](../../static/img/quickstart-img2.png 'In "Edit Profile" and “Details”')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img4.png 'Invite your team')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-
-## Step 3 - Configure email notifications
-
-In "Edit Profile," click "Preferences," then choose when you want to receive notifications:
+Next, enter your team members' email addresses, select a profile, and choose an access type.
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-[![img](../../static/img/quickstart-img3.png 'In "Edit Profile')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img4.png 'Invite your team')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-[See how to do it works](/general/email_notifications.md).
+<!--If you have any questions about profiles and access types, [click here]("Users Management").-->
 
-## Step 4 - Invite your team to strengthen the AppSec work
+## Step 3 - Set up a Conviso Platform integration
 
-To invite new developers from your team to the platform, use the "Invite your team" button next to your profile or go to "Access Control" in the settings. 
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/quickstart-img4.png '"Invite your team" button')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-
-[See how to do it in this documentation](/general/user_management.md).
-
-## Step 5 - Set up a Conviso Platform integration
-
-In "Integrations", you will have access to a wide range of technologies with which Conviso Platform integrates.
+In **Integrations**, you will have access to a wide range of technologies with which Conviso Platform integrates.
 
 In addition to connecting with your code, we integrate with defect tracker/bug, CI/CD systems, SSO authentication, Business Intelligence tools, and various other solutions and platforms.
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/quickstart-img5.gif 'In "Integrations"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img6.png 'Integrations')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
 [See how to do it here.](/integrations/integrations_intro.md)
 
-## Step 6 - Know your company's Assets and its attack surface
+## Step 4 - Know your company's Assets and your Risk Score
 
-In the Assets Management section, you will obtain a comprehensive understanding of your company's assets and have the dimension of the attack surface. 
+In the **Asset Management** section, you will obtain a comprehensive understanding of your company's assets and the associated risks.
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/quickstart-img6.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img7.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+Let's create a new Asset by clicking on **New Asset (1)** and selecting **Manual (2)**:
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/start-here/start-here-img8.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+Now, enter the **Asset Name (3)** and the following information (4):
+1. Business Impact - Defines how critical/relevant the Asset is for the business (High, Medium or Low);
+2. Attack Surface - Defines the attack surface for the asset (Internet Facing or Internal);
+3. Data Classification - Defines the classification of data the Asset interacts/stores (Personally Identified Information, Payment Card Information or Non-sensitive).
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/start-here/start-here-img9.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+Once you click **Save**, the platform will automatically calculate the asset's Risk Score.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/start-here/start-here-img10.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
 [Learn more by reading this documentation](/general/assets_management.md).
 
-## Step 7 - Stay informed about vulnerabilities identified in your assets
+## Step 5 - Stay informed about your vulnerabilities​
 
-In Vulnerabilities Management section, you will have a broad view of the vulnerabilities found in your company's assets. You can also track the progress of the correction workflow there. 
-
-Review the results carefully and take appropriate action based on the specific details of the identified issues.
+In the **Vulnerabilities** section, you'll have a comprehensive view of the vulnerabilities found in your company's assets. When you click on **Vulnerabilities** in the side menu, a filter will be applied to display the open vulnerabilities:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/quickstart-img7.png 'In Vulnerabilities Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img11.png 'Vulnerabilities')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
+To view more details about a specific vulnerability, simply click on its title. A page like the following will be displayed:
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/start-here/start-here-img9.png 'In the Assets Management section')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+On the left column of the above image, you can find more information about the vulnerability, such as the description, solution, and reference links. Additionally, you can see how many times the same vulnerability occurs in the asset in question, as shown in **Occurrences**.
+
+On the right column, you can see the severity, status, source, and other details about this specific occurrence of the vulnerability.
 
 [See how it works here](https://docs.convisoappsec.com/general/vulnerabilities_management).
 
-## Step 8 - Prepare to handle vulnerabilities through *just in time* training
+## Step 6 - Fixing your vulnerabilities
 
-In People and Culture, you can study and practice secure coding methods in a virtualized environment that simulates real-world security challenge scenarios.
+Different approaches can be taken to fix a vulnerability. To proceed, select the topic that corresponds to the origin of your vulnerability:
+- AST Vulnerability;
+- DAST Vulnerability;
+- External Vulnerability (from external scanners);
+- Pentest Vulnerability.
 
-<div style={{textAlign: 'center'}}>
+### AST Vulnerability
 
-[![img](../../static/img/quickstart-img8.png 'In People and Culture')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+For a vulnerability found by Conviso's AST, locate it in your code, apply the fix, and run a new scan, making sure it is executed as follows:
+```conviso ast run --vulnerability-auto-close```
 
-</div>
+### DAST Vulnerability
 
-When you find a vulnerability, you will have the proper training to handle it. 
+For a vulnerability found by Conviso's DAST, simply fix it, and the next scan will be able to identify it and change its status in the platform to "Fixed."
 
+### External Vulnerability
 
-<div style={{textAlign: 'center'}}>
+For vulnerabilities imported from an external scanner, the scanner must detect the fix, and after the next sync, the vulnerability will be automatically marked as fixed.
 
-[![img](../../static/img/quickstart-img9.png 'Learn how to prevent this kind of vulnerability button')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+### Pentest Vulnerability
 
-</div>
+For pentest vulnerabilities, the standard process is for the vulnerability to follow this lifecycle:
+- **Identified** -> **In Progress** -> **Awaiting Validation** -> **Fixed**
+When changing the vulnerability status to "Awaiting Validation", Conviso's analysts will retest it to verify whether it has truly been fixed or if it still persists. If the vulnerability has been fixed, the analyst will change the status to "Fixed". If not, the vulnerability will revert to the "Identified" status.
 
+<!-- ATUALIZAR IMAGENS DO DASHBOARD -->
+## Step 7 - View your Dashboard
 
-[Learn more about People & Culture here](/people-and-culture/overview.md).
-
-## Step 9 - Create AppSec projects for your company
-
-In Projects, you will have an overview of the AppSec initiatives, including projects focused on SAST, DAST, Pentest, and more!
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/quickstart-img10.png 'In Projects')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-Learn how to [build your project for a security initiative in your application](/general/projects_management.md).
-
-## Step 10 - Perform threat modeling to Shift-Left
-
-In "Secure by Design", perform automated threat modeling by defining security requirements based on MITRE CAPEC to strengthen the security of your application from the beginning! 
+After fixing your first vulnerability, click the **Dashboard** button in the side menu. Here, you can view KPIs and your AppSec Posture. Since we’ve just fixed a vulnerability, you will already see a slight reduction in the Risk Score and an increase in MTTR:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/quickstart-img11.png 'In "Secure by Design"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img13.png 'Dashboard')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-[See how it works here.](/secure-by-design/overview.md)
-
-## Step 11 - Update any vulnerability templates
-
-In "Intelligence", under the Vulnerabilities Template section, you can update and study various vulnerability templates, which provide information about the type of vulnerability and how to address it. 
+Additionally, under AppSec KPI, you can also see how many vulnerabilities were opened or fixed during the selected time period in the filter, among other information:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/quickstart-img12.png 'In "Intelligence"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+[![img](../../static/img/start-here/start-here-img14.png 'Dashboard')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
 
-[Learn the process here.](/general/vulnerabilities_templates.md)
-
-## Step 12 - Still have questions? Reach out to our Security Experts
-
-By clicking "Security Expert", you can request help regarding project details and vulnerabilities. 
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/quickstart-img13.png 'In "Security Expert"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-If you need platform assistance, please chat with our Customer Experience team.
+<!--Learn how to [build your project for a security initiative in your application](/general/projects_management.md).-->
 
 ## Support
 
