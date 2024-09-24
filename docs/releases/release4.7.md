@@ -4,7 +4,7 @@ title: Release 4.7
 sidebar_label: Release 4.7
 ---
 
-Release date: Semptember 23rd, 2024
+Release date: Semptember 24rd, 2024
 
 ## Key Benefits
 
