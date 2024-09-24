@@ -34,9 +34,9 @@ Conviso Platform seamlessly integrates with your current tools and workflows, en
 
 Set up Single Sign-On (SSO) to allow your developers and teams easy access to Conviso Platform through your current SSO provider. Let's start with the SSO setup process to streamline access on the Conviso platform:
 * **[ADFS](../integrations/adfs.md)**
-* **[Azure AD](../integrations/azure-ad.md)**
 * **[Google](../integrations/google.md)**
 * **[LDAP](../integrations/ldap.md)**
+* **[Microsoft Entra ID](../integrations/microsoft-entra-id.md)**
 * **[SAML 2.0](../integrations/saml.md)**
 
 **Note:** It is possible to configure custom Identity providers that support SAML 2.0 protocol. So, if there is no specific integration for your tool, you can just use the generic SAML 2.0 integration instead.
