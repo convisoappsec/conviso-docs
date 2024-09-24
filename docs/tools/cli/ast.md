@@ -33,7 +33,7 @@ conviso --api-key 'your-api-key' ast run \
 
 **Note:** You need an API Key. Refer to the following documentation to know how to generate one [here](/cli/installation#authentication).
 
-The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities Management](../../general/vulnerabilities_management) resource to work on the correction flow.
 
 ### Naming an asset
 
@@ -81,7 +81,7 @@ This will perform the scan as it has always been done and as a last step it will
 
 ### Deploy, aka code versions
 
-When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies.md) is automatically created and diff code will be sent to Conviso Platform security for later human review.
+When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies) is automatically created and diff code will be sent to Conviso Platform security for later human review.
 
 <div style={{textAlign: 'center'}}>
 

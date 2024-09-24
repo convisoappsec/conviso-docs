@@ -12,7 +12,7 @@ keywords: [assets with the Conviso Platform CLI]
 The Conviso CLI allows you to create and list assets of your company registered on the Conviso Platform.
 
 ### Prerequisites
-To successfully run  `conviso assets` command you need to [authenticate with the API Key](../cli/installation.md/#authentication).
+To successfully run  `conviso assets` command you need to [authenticate with the API Key](../cli/installation/#authentication).
 
 ## Usage
 See how to use the `conviso assets` command.
@@ -87,7 +87,7 @@ conviso assets create --company-id $YOUR_COMPANY_ID --repository-dir "." --name 
 ```
 
 
-From the moment it is created, you can access [Assets Management](../general/assets_management.md) to have asset visibility on the platform.
+From the moment it is created, you can access [Assets Management](../../general/assets_management) to have asset visibility on the platform.
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
