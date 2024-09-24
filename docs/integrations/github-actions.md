@@ -29,7 +29,7 @@ Before you can use Conviso Platform with Github Actions, you need to make sure t
 
 * You have your API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
 
-* You must also set two environment variables for the runner: **FLOW_API_KEY** and **FLOW_PROJECT_CODE.** These codes tell Conviso Platform which project and account you are using. To do this on Github, you must:
+* You must also set an environment variable for the runner: **CONVISO_API_KEY**. This code tells Conviso Platform which account you are using. To do this on Github, you must:
     * Go to your project’s **Settings > Secrets and Variables** and expand the **Actions** section.
     * Select **New Repository Secret** and fill in the details. 
 * After creating a variable, you can use it in the ```.yml``` configuration file or job scripts.
@@ -68,18 +68,15 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v3
+   - uses: actions/checkout@v4
 
    - name: Run AST
      run: conviso ast run
 ```
 
-**Note:** To scan your repository with AST, you need to have a project registered on Conviso Platform. The **"Project Code**" is found on the specific project page. You also need your API Key, which [you can find using this tutorial](../api/generate-apikey.md).
-
-The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
 
 ## Run a scan exclusively using Conviso SAST
 
@@ -99,10 +96,9 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v3
+   - uses: actions/checkout@v4
 
    - name: Run SAST
      run: conviso sast run
@@ -126,10 +122,9 @@ jobs:
    container:
      image: convisoappsec/convisocli
      env:
-       FLOW_API_KEY:  ${{secrets.CONVISO_API_KEY}}
-       FLOW_PROJECT_CODE: "<project code>"
+       CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v3
+   - uses: actions/checkout@v4
 
    - name: Run SCA
      run: conviso sca run

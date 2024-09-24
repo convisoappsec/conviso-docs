@@ -76,7 +76,7 @@ Authentication between [CLI](../cli/installation) and the Conviso Platform is do
 At the right corner of pipeline editing screen, there is a menu with **Steps**, **Triggers**, **Variables** and **Help** options. 
 
 1. Click **Variables**, then **Add Variable**;
-2. At **Key** field, input the variable name: ```FLOW_API_KEY``` ;
+2. At **Key** field, input the variable name: ```CONVISO_API_KEY``` ;
 3. At **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide](../api/generate-apikey).
 4. After pasting the API key at the **Value** field, you will notice a padlock with the **Encrypt** option. Click the **Encrypt** option and confirm.
 
@@ -88,7 +88,7 @@ To create global variables, the user must have account administrator privileges.
 2. At the **Configuration** section, click **Shared Configuration**;
 3. Click **Add Shared Value**. If you already have other contexts, click **Add Configuration Context**;
 4. Select **Shared Secret** option and label it as **Conviso**;
-5. At the **Key** field, input the variable name: ```FLOW_API_KEY``` ;
+5. At the **Key** field, input the variable name: ```CONVISO_API_KEY``` ;
 6. At the **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide];
 7. Click **Add variable** and then **Save**.
 
@@ -103,112 +103,17 @@ After fully completing the above tasks, the API key will be available in the pip
 
 Notice that if we hadn't configured it that way, every command that require authentication would also require the ```-k``` option with the API key value, as shown by the ```--help``` option at first execution.
 
-## Code Review
+## Let us configure Codefresh pipeline in order to run Conviso AST:
 
-Before proceeding, we strongly recommend reading [this guide](../guides/code-review-strategies) to understand the different strategies/approaches for deploying Code Review.
-
-After choosing the strategy used to send deploys to Code Review, it is possible to create a specific Pipeline for this action, as well as integrate with other existing pipelines. The requirements for executing this feature are the ```FLOW_API_KEY``` variable, configured at the pipeline or imported through shared context and ```FLOW_PROJECT_CODE``` (identified as the project key in Conviso Platform), which must be defined individually by pipeline.
-
-Next, we present sample code snippets for each of the approaches, assuming the target project was cloned in an earlier step.
-
-**With TAGS, sorted by timestamp**
+The following code snippet will trigger an AST scan and send the results to Conviso Platform:
 
 ```yml
 conviso_sample:
-    title: "Conviso Deploy"
+    title: "Conviso AST"
     type: "freestyle"
     image: "convisoappsec/convisocli"
     commands:
-      - "conviso deploy create with tag-tracker sort-by time"
-    working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
-```     
-
-**With TAGS, sorted by versioning-style**
-
-```yml
-conviso_sample:
-    title: "Conviso Deploy"
-    type: "freestyle"
-    image: "convisoappsec/convisocli"
-    commands:
-      - "conviso deploy create with tag-tracker sort-by versioning-style"
-    working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
-```
-
-**Without TAGS, sorted by GIT Tree**
-
-```yml
-conviso_sample:
-    title: "Conviso Deploy"
-    type: "freestyle"
-    image: "convisoappsec/convisocli"
-    commands:
-      - "conviso deploy create with values"
-    working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
-```
-
-## SAST
-
-In addition to deploying for code review, it is also possible to integrate a SAST-type scan into the development pipeline, which will automatically perform a scan for potential vulnerabilities, treated in Conviso Platform as findings.
-The requirements for running the job are the same as already shown: ```FLOW_API_KEY``` (in the context or project) and ```FLOW_PROJECT_CODE```, defined as environment variables.
-Next, we present the sample code snippets for each of the approaches, assuming the target project was cloned in a previous step.
-
-```yml
-conviso_sample:
-    title: "Conviso SAST"
-    type: "freestyle"
-    image: "convisoappsec/convisocli"
-    commands:
-      - "conviso sast run"
-    stage: "test"
-    working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
-```
-
-Notice that we didn't provide any option to the command ```conviso sast run``` at the above pipeline. In this case, the default behavior is to perform the project of the entire repository. This is because the default values used for the ```--start-commit``` and ```--end-commit``` options use first commit and current commit (HEAD), respectively.
-
-Alternatively, we can specify the diff range manually. In the example presented below, we scan between the current commit and the immediately previous one, at the current branch.
-
-```yml
-conviso_sample:
-    title: "Conviso SAST"
-    type: "freestyle"
-    image: "convisoappsec/convisocli"
-    commands:
-      - "conviso sast run --start_commit `git rev-parse @~1` --end-commit $CF_REVISION"
-    stage: "test"
-    working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
-```
-
-## SCA
-
-The following code snippet will trigger an SCA scan and send the results to Conviso Platform:
-
-```yml
-conviso_sample:
-    title: "Conviso SCA"
-    type: "freestyle"
-    image: "convisoappsec/convisocli"
-    commands:
-      - "conviso sca run"
-    stage: "test"
-    working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
-```
-
-## Getting everything together: Code Review + SAST + SCA Deployment
-
-The SAST and SCA projects can be complementary to the code review performed by a Conviso professional, acting as input for that professional, too. 
-Assuming the target project was cloned in an earlier step, the following job snippet sample will deploy code for code review and use the same diff identifiers to perform the SAST and SCA projects in the pipeline: 
-
-```yml
-conviso_sample:
-    title: "Conviso Full Job"
-    type: "freestyle"
-    image: "convisoappsec/convisocli"
-    commands:
-      - "conviso deploy create -f env_vars with values > created_deploy_vars"
-      - "source created_deploy_vars"
-      - "conviso sast run --start-commit \"$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT\" --end-commit \"$FLOW_DEPLOY_CURRENT_VERSION_COMMIT\""
-      - "conviso sca run"
+      - "conviso ast run"
     stage: "test"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
 ```

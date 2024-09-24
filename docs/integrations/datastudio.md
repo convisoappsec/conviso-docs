@@ -19,113 +19,135 @@ keywords: [Google Looker Studio]
 
 **[Explore our Integration page to learn more and supercharge your Application Security Program  with Conviso Platform.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
-## Usage
-Access the **"Integrations" (1)** menu in the Conviso Platform. Navigate to the **"Business Intelligence" (2)** section in the right panel. Click on the **"Integrate" (3)** button.
+## Integrating directly into Google Apps Script​
 
+Follow these steps to integrate Conviso Platform with Google Apps Script:
 
-<div style={{textAlign: 'center' }}>
+**Step 1 -** With a new spreadsheet created, select the **Apps Script** option:
 
-[![img](../../static/img/datastudio-img1.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+<div style={{textAlign: 'center'}}>
 
-</div>
-
-
-There are four types of endpoints available to generate a JSON file and feed the BI tool:
-
-
-* **Deploys:** Returns a JSON with all company deployments.
-* **Projects:** Returns all projects linked to the user's scope.
-* **Assets:** Returns all company assets.
-* **Users:** Returns a JSON with all company users.
-
-<div style={{textAlign: 'center' }}>
-
-[![img](../../static/img/datastudio-img2.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/datastudio/datastudio-img1.png)
 
 </div>
 
-To create a connector with your BI tool, you will need the following information:
+Step 2 - Paste the code provided below and click **Run**:
 
-* **Conviso Platform URL:** Use the URL "https://app.convisoappsec.com".
-* **Endpoint:** Select one of the four available endpoints mentioned above.
-* **x-API-key:** Generate your API Key by following the instructions provided [here](../api/generate-apikey.md).
+```
+function test() {
+  var queryTemplate = `
+  {
+    assets(
+      companyId: "<YOUR_COMPANY_ID>"
+      page: %d
+      limit: 10
+      search: {}
+    ) {
+      collection {
+        id
+        name
+        businessImpact
+        riskScore {
+          current {
+            value
+          }
+        }
+      }
+      metadata {
+        totalPages
+      }
+    }
+  }
+  `;
 
-**[Learn more about Conviso Platform integrations!](https://bit.ly/3NzvomE)**
+  var url = "https://app.convisoappsec.com/graphql";
+  var options = {
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': '<YOUR_CONVISO_API_KEY>'
+    },
+    method: "POST"
+  };
 
-## Google Looker Studio Setup
+  try {
+    var page = 1;
+    var totalPages = 1;
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    sheet.clear();
+    
+    var headers = ["Asset ID", "Asset Name", "Business Impact", "Risk Score"];
+    sheet.appendRow(headers);
 
-To set up Conviso Platform integration with Google Data Studio, follow these steps:
+    do {
+      var query = Utilities.formatString(queryTemplate, page);
+      options.payload = JSON.stringify({ query: query });
 
-**Step 1 -** Log in to your Google Data Studio account. Click on the **"Create" (4)** button and select  **"Report"(5)** from the menu:
+      var response = UrlFetchApp.fetch(url, options);
+      var jsonResponse = JSON.parse(response.getContentText());
 
+      if (jsonResponse.errors) {
+        Logger.log("GraphQL Error: " + JSON.stringify(jsonResponse.errors));
+        return;
+      }
 
-<div style={{textAlign: 'center' }}>
+      var assets = jsonResponse.data.assets.collection;
+      totalPages = jsonResponse.data.assets.metadata.totalPages;
 
-[![img](../../static/img/datastudio-img3.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+      assets.forEach(function(asset) {
+        var row = [
+          asset.id || "",
+          asset.name || "",
+          asset.businessImpact || "NULL",
+          asset.riskScore.current.value || "NULL"
+        ];
+        sheet.appendRow(row);
+      });
+
+      page++;
+    } while (page <= totalPages);
+
+    Logger.log("Data inserted into sheet successfully.");
+
+  } catch (e) {
+    Logger.log("Error: " + e.toString());
+  }
+}
+```
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/datastudio/datastudio-img2.png)
 
 </div>
 
-**Step 2 -** In the search box, **search for "JSON/CSV/XML"(6)** and choose the ```JSON/CSV/XML``` **Connector (7):**
+**Step 3 -** Allow Google Apps Script to access your data:
 
+<div style={{textAlign: 'center'}}>
 
-<div style={{textAlign: 'center' }}>
-
-[![img](../../static/img/datastudio-img4.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-
-**Step 3 -** Click on the **"Authorize" (8)** button to grant Data Studio access to your Google user account:
-
-
-<div style={{textAlign: 'center' }}>
-
-[![img](../../static/img/datastudio-img5.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/datastudio/datastudio-img3.png)
 
 </div>
 
-**Step 4 -** Select your **user account** or provide an existing user's credentials in the floating window that appears and click on the **"Allow" (9)** button to grant access to the connector.
+**Step 4 -** Check the result in the script execution log:
 
-<div style={{textAlign: 'center' }}>
+<div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/datastudio-img6.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-
-**Step 5 -** Click on the **"Authorize"(10)**  button** below the ```JSON/CSV/XML```  authorization box.
-
-<div style={{textAlign: 'center' }}>
-
-[![img](../../static/img/datastudio-img7.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/datastudio/datastudio-img4.png)
 
 </div>
 
+**Step 5 -** View the information in the spreadsheet that was created earlier:
 
-**Step 6 -** Finally, click on the **close icon to close the Supermetrics floating** window. The following window will be displayed. Fill in the form with the following data:
+<div style={{textAlign: 'center'}}>
 
-<div style={{textAlign: 'center' }}>
-
-[![img](../../static/img/datastudio-img8.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-* **Data Type (11):** Select ```JSON```.
-* **Source URL or Google Drive path (12):** Insert ```https://app.convisoappsec.com/api/v2/projects```
-* **HTTP headers (13):** Enter ```x-api-key:<your-generated-api-key>```. Check [here](../api/generate-apikey.md)to find out how to find it.
-
-Once you have filled in the form, click on the **"Add" (14)** button in the lower right corner. A confirmation window will appear. Click on the **"Add to Report**" button to save the configuration.
-
-<div style={{textAlign: 'center' }}>
-
-[![img](../../static/img/datastudio-img9.png "Image for Google Looker Studio, Application security reports, Data analysis, Business intelligence integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/datastudio/datastudio-img5.png)
 
 </div>
 
+<!--Your automatically generated data analysis dashboard will be displayed, providing valuable insights for your Application Security Program. 
 
-Your automatically generated data analysis dashboard will be displayed, providing valuable insights for your Application Security Program. 
-
-These dashboards empower you to visualize and analyze your application security data effectively, enabling informed decision-making and proactive risk management.
+These dashboards empower you to visualize and analyze your application security data effectively, enabling informed decision-making and proactive risk management.-->
 
 **[Unlock the full potential of your Application Program  with Conviso Platform integrations. Visit our Integration page now to get started.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
