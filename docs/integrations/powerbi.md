@@ -17,10 +17,6 @@ With this integration, you can quickly generate customized reports and extract d
 
 ## Usage
 
-There are two ways to integrate the Conviso Platform and Power BI: [through the Conviso Platform](#integrating-using-conviso-platform-configuration) or [directly in Power BI using our API](#integrating-directly-into-powerbi-desktop).
-
-## Integrating directly into PowerBI Desktop
-
 Follow these steps to integrate Conviso Platform with Power BI Desktop:
 
 **Step 1 -** In the main **Home**, access the **Get data (1)** icon and then select the **Blank query (2)** option:
