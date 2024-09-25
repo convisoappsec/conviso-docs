@@ -110,6 +110,10 @@ The Selection Form showing the projects registered in Checkmarx One will appear 
 
 In this section, we will address crucial information about the integration's operation. This includes details about the synchronization process, as well as the status mapping between the involved platforms.
 
+The integration with Checkmarx will enable the import of SCA, SAST, and IaC (Kics) vulnerabilities identified in your project, making it easier to triage and manage these risks directly in Conviso Platform.
+
+Due to the way scans are processed in Checkmarx, we recommend using a full scan. This is because, to close (mark as 'Fixed') SAST vulnerabilities, the entire code must be thoroughly analyzed by Checkmarx. Otherwise, only SCA and IaC (Kics) vulnerabilities will be closed. When using incremental scans, SAST vulnerabilities will be created or their content updated if they already exist.
+
 ### Status Mapping
 
 When moving Vulnerabilities from one status to another, the Conviso platform will communicate and mark the Vulnerabilities in Checkmarx according to the following mapping:
