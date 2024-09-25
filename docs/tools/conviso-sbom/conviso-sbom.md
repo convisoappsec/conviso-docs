@@ -15,9 +15,9 @@ An SBOM allows organizations to track and manage the software components and dep
 
 ## How to generate and view dependencies
 
-A SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sca run`.
+An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sca run`.
 
-After run our AST, you can simply access the asset and you will find a Components section, just click in `View All`:
+After running our AST, you can simply access the asset and you will find a Components section, just click on `View All`:
 
 <div style={{textAlign: 'center'}}>
 
@@ -43,7 +43,7 @@ If you don't use Conviso AST, you can import an SBOM in CycloneDX format using o
 
 The base URL for Conviso API GraphQL endpoints is `https://app.convisoappsec.com/graphql`.
 
-You need to pass the SBOM file in CycloneDX format, asset id and company id to be able to import a SBOM file.
+You need to pass the SBOM file in CycloneDX format, asset id and company id to be able to import an SBOM file.
 
 The request body looks like this:
 
