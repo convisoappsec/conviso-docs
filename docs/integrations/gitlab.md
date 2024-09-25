@@ -23,6 +23,10 @@ The [CLI](https://docs.convisoappsec.com/cli/installation/) is a docker image in
 
 ### Prerequisites
 
+:::info
+This integration works for both Cloud and On-Premises Gitlab solutions.
+:::
+
 Before you can use Conviso Platform with Gitlab, you need to make sure that:
 * You have your API Key, which is a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
 
