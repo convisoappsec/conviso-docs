@@ -6,14 +6,27 @@ sidebar_label: Conviso SBOM
 
 ## Introduction
 
-An SBOM (Software Bill of Materials) is essentially a list of your application's dependencies, including the name, version, license, and vulnerability information for each component. Combined with Software Composition Analysis (SCA), can automatically identify and assess open-source and third-party components in their applications.
+Today, it is almost impossible to develop software without using third-party libraries. Many solutions have already been designed and transformed into libraries that we can use and adapt in our software. However, this reliance on external libraries poses risks to our applications, as these third-party components may contain vulnerabilities and/or have licenses that conflict with our own applications.
 
+A Software Bill of Materials (SBOM) helps us build an inventory of our dependencies, providing us with the necessary visibility into what components are included in our software. By utilizing an SBOM, organizations can:
 
-## Why is it important?
+1. **Identify Vulnerabilities**: Organizations can easy see what components has vulnerabilities, quantity and cves related.
 
-An SBOM allows organizations to track and manage the software components and dependencies used in their applications. This is crucial for enhancing software transparency, security, and compliance. By providing visibility into the existence of vulnerabilities for each component, an SBOM aids in decision-making and prioritization. Additionally, when you obtain information about licenses, you can determine whether the software complies with the respective dependency licenses.
+2. **Ensure Compliance**: Helps ensure compliance with licensing requirements and can help avoid legal complications.
 
-## How to generate and view dependencies
+3. **Streamline Audits**: Simplifies the audit process by providing a clear and comprehensive list of software components.
+
+4. **Enhance Supply Chain Security**: Organizations can better assess the security of their software supply chain and take action against potential risks.
+
+5. **Facilitate Incident Response**: Provides critical information to identify affected components quickly, allowing for a more efficient response.
+
+This is crucial for enhancing software transparency, security, and compliance. By providing visibility into the existence of vulnerabilities for each component, an SBOM aids in decision-making and prioritization.
+
+You can always learn more in our blog:
+- [Software bill of materials what it is and how it works](https://blog.convisoappsec.com/en/software-bill-of-materials-sbom-what-it-is-and-how-it-works/) to learn more about SBOM.
+- [The importance of supply chain to application security](https://blog.convisoappsec.com/en/the-importance-of-supply-chain-to-application-security/) to learn more about Supply Chain.
+
+## How to generate and view dependencies in Conviso Platform
 
 An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sca run`.
 
