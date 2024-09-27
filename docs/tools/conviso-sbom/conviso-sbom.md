@@ -8,7 +8,7 @@ sidebar_label: Conviso SBOM
 
 Today, it is almost impossible to develop software without using third-party libraries. Many solutions have already been designed and transformed into libraries that we can use and adapt in our software. However, this reliance on external libraries poses risks to our applications, as these third-party components may contain vulnerabilities and/or have licenses that conflict with our own applications.
 
-A Software Bill of Materials (SBOM) helps us build an inventory of our dependencies, providing us with the necessary visibility into what components are included in our software. By utilizing an SBOM, organizations can:
+A Software Bill of Materials (SBOM) helps us build an inventory of our components, providing us with the necessary visibility into what components are included in our software. By utilizing an SBOM, organizations can:
 
 1. **Identify Vulnerabilities**: Organizations can easy see what components has vulnerabilities, quantity and cves related.
 
@@ -26,7 +26,24 @@ You can always learn more in our blog:
 - [Software bill of materials what it is and how it works](https://blog.convisoappsec.com/en/software-bill-of-materials-sbom-what-it-is-and-how-it-works/) to learn more about SBOM.
 - [The importance of supply chain to application security](https://blog.convisoappsec.com/en/the-importance-of-supply-chain-to-application-security/) to learn more about Supply Chain.
 
-## How to generate and view dependencies in Conviso Platform
+## SBOM Formats Overview
+
+SBOMs (Software Bill of Materials) describe the components, dependencies, and metadata of software. Below are the key formats:
+
+- **CycloneDX**: Lightweight format for application security and risk management. Supports XML and JSON formats. 
+- **SPDX**: Focuses on license compliance and component tracking. Supports multiple formats like JSON, YAML, and RDF/XML.
+- **SWID**: ISO standard for identifying software assets installed on systems. Uses XML.
+- **VEX**: Focuses on vulnerability exploitability data within SBOMs, helping prioritize vulnerabilities.
+
+### Common SBOM Elements:
+- **Component Name**: The name of the software or library.
+- **Version**: The version number of the component.
+- **License**: Licensing information.
+- **Checksum**: Hash values for integrity verification.
+- **Supplier**: Entity providing the software.
+- **Dependency Relationships**: How components depend on each other.
+
+## How to generate and view components in Conviso Platform
 
 An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sca run`.
 
@@ -38,7 +55,7 @@ After running our AST, you can simply access the asset and you will find a Compo
 
 </div>
 
-Once you enter the page, you'll see all the dependencies of this asset, including the component name, version, technology, license (if available), package manager, CVEs, and open vulnerabilities. You can filter by component name, as shown in the first reference in the image, and you can also display only components with vulnerabilities, as indicated in the second reference in the image.
+Once you enter the page, you'll see all the components of this asset, including the component name, version, technology, license (if available), package manager, CVEs, and open vulnerabilities. You can filter by component name, as shown in the first reference in the image, and you can also display only components with vulnerabilities, as indicated in the second reference in the image.
 
 <div style={{textAlign: 'center'}}>
 
