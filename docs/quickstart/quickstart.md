@@ -116,7 +116,7 @@ Once you click **Save**, the platform will automatically calculate the asset's R
 
 </div>
 
-[Learn more by reading this documentation](/general/assets_management.md).
+[Learn more by reading this documentation](/modules/asset-management.md).
 
 ## Step 5 - Stay informed about your vulnerabilities​
 
@@ -140,15 +140,15 @@ On the left column of the above image, you can find more information about the v
 
 On the right column, you can see the severity, status, source, and other details about this specific occurrence of the vulnerability.
 
-[See how it works here](https://docs.convisoappsec.com/general/vulnerabilities_management).
+[See how it works here](/modules/vulnerabilities.md).
 
 ## Step 6 - Fixing your vulnerabilities
 
 Different approaches can be taken to fix a vulnerability. To proceed, select the topic that corresponds to the origin of your vulnerability:
-- AST Vulnerability;
-- DAST Vulnerability;
-- External Vulnerability (from external scanners);
-- Pentest Vulnerability.
+- [AST Vulnerability](#ast-vulnerability);
+- [DAST Vulnerability](#dast-vulnerability);
+- [External Vulnerability](#external-vulnerability) (from external scanners);
+- [Pentest Vulnerability](#pentest-vulnerability).
 
 ### AST Vulnerability
 
@@ -169,7 +169,6 @@ For pentest vulnerabilities, the standard process is for the vulnerability to fo
 - **Identified** -> **In Progress** -> **Awaiting Validation** -> **Fixed**
 When changing the vulnerability status to "Awaiting Validation", Conviso's analysts will retest it to verify whether it has truly been fixed or if it still persists. If the vulnerability has been fixed, the analyst will change the status to "Fixed". If not, the vulnerability will revert to the "Identified" status.
 
-<!-- ATUALIZAR IMAGENS DO DASHBOARD -->
 ## Step 7 - View your Dashboard
 
 After fixing your first vulnerability, click the **Dashboard** button in the side menu. Here, you can view KPIs and your AppSec Posture. Since we’ve just fixed a vulnerability, you will already see a slight reduction in the Risk Score and an increase in MTTR:
@@ -187,6 +186,8 @@ Additionally, under AppSec KPI, you can also see how many vulnerabilities were o
 [![img](../../static/img/start-here/start-here-img14.png 'Dashboard')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
+
+[Learn more by reading this documentation](/modules/dashboard.md).
 
 <!--Learn how to [build your project for a security initiative in your application](/general/projects_management.md).-->
 

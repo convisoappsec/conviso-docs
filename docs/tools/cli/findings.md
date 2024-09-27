@@ -41,7 +41,7 @@ When everything goes well, you will receive the following message in the termina
 The results were successfully imported!
 ```
 
-The identified vulnerabilities will be automatically sent to your Project on Conviso Platform, now you can use the [Vulnerabilities Management](../../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your Project on Conviso Platform, now you can use the [Vulnerabilities](../../modules/vulnerabilities) resource to work on the correction flow.
 
 ## Video Tutorial in Portuguese
 To see the tool working in practice, we recommend watching this video:
