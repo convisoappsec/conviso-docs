@@ -7,7 +7,7 @@ jobs:
   conviso-test-suite:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisocli:beta
+      image: convisoappsec/convisocli:latest
       env:
         CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
         CONVISO_COMPANY_ID: '11'
