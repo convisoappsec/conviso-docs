@@ -32,8 +32,8 @@ SBOMs (Software Bill of Materials) describe the components, dependencies, and me
 
 - **CycloneDX**: Lightweight format for application security and risk management. Supports XML and JSON formats. 
 - **SPDX**: Focuses on license compliance and component tracking. Supports multiple formats like JSON, YAML, and RDF/XML.
-- **SWID**: ISO standard for identifying software assets installed on systems. Uses XML.
-- **VEX**: Focuses on vulnerability exploitability data within SBOMs, helping prioritize vulnerabilities.
+- **SWID**: An ISO-standardized format primarily used for identifying and managing software assets installed on systems. Leverages XML for data structuring and interchange.
+- **VEX**: A specification within CycloneDX for representing vulnerability exploitability data, aiding in prioritizing and understanding the potential impact of vulnerabilities. This enables more informed security decisions. VEX information can be embedded within an existing CycloneDX BOM or presented as a standalone VEX BOM.
 
 ### Common SBOM Elements:
 - **Component Name**: The name of the software or library.
