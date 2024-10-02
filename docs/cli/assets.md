@@ -4,7 +4,7 @@ title: Creating assets with the CLI
 sidebar_label: Creating assets with the CLI
 description: The Conviso CLI allows you to create and list assets of your company registered on the Conviso Platform. Learn how! 
 keywords: [assets with the Conviso Platform CLI]
-image: '/static/img/cliassetsseo.png'
+#image: '/static/img/cliassetsseo.png'
 ---
 
 ## Introduction
@@ -87,7 +87,7 @@ conviso assets create --company-id $YOUR_COMPANY_ID --repository-dir "." --name 
 ```
 
 
-From the moment it is created, you can access [Assets Management](../general/assets_management.md) to have asset visibility on the platform.
+From the moment it is created, you can access [Asset Management](../../modules/asset-management) to have asset visibility on the platform.
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).

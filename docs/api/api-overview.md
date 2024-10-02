@@ -26,7 +26,7 @@ With the Conviso API, you can perform a variety of actions related to applicatio
 - Management of communication and notifications.
 
 
-As a reminder, you can also allow Conviso access to your development flow using the Conviso Platform [integrations](../integrations/integrations_intro.md) and the [Conviso CLI](../tools/cli/installation.md).
+As a reminder, you can also allow Conviso access to your development flow using the Conviso Platform [integrations](../integrations/integrations_intro.md) and the [Conviso CLI](../cli/installation.md).
 
 **Note:** There may be differences in output of the Conviso API, the Conviso CLI, and Conviso Platform Integrations. 
 

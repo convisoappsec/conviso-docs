@@ -18,7 +18,7 @@ First time using Jenkins? Please refer to the [following documentation](https://
 
 ## Introduction
 
-This integration uses the [CLI](../tools/cli/installation) as a docker image for all the execution and communication with Conviso Platform.  
+This integration uses the [CLI](../cli/installation) as a docker image for all the execution and communication with Conviso Platform.  
 By the end of this tutorial you will know how to:
 - Run an AST scan
 - Run an SAST scan

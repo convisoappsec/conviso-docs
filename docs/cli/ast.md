@@ -33,7 +33,7 @@ conviso --api-key 'your-api-key' ast run \
 
 **Note:** You need an API Key. Refer to the following documentation to know how to generate one [here](/cli/installation#authentication).
 
-The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities](../../modules/vulnerabilities) resource to work on the correction flow.
 
 ### Naming an asset
 
@@ -81,7 +81,7 @@ This will perform the scan as it has always been done and as a last step it will
 
 ### Deploy, aka code versions
 
-When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies.md) is automatically created and diff code will be sent to Conviso Platform security for later human review.
+When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies) is automatically created and diff code will be sent to Conviso Platform security for later human review.
 
 <div style={{textAlign: 'center'}}>
 
@@ -94,7 +94,7 @@ It is possible to verify if the code added or changed in the commit has known se
 **Note:** This feature is essential for performing Security Code Review by the security team. Conviso offers the continuous code review service, [see more](https://bit.ly/457M2Cb).
 
 
-## Run scan only with Conviso SAST
+## Run scan only with Conviso SAST or SCA
 
 As an additional custom configuration of the Conviso CLI, it’s possible to perform SAST-only in your code using the following command:
 
@@ -102,6 +102,8 @@ As an additional custom configuration of the Conviso CLI, it’s possible to per
 export CONVISO_API_KEY='your-api-key'
 cd your_source_code_repository
 conviso sast run
+# or
+conviso sca run
 ```
 
 The following instructions have the same effect:
@@ -109,6 +111,8 @@ The following instructions have the same effect:
 ```bash
 cd my_source_code_repository
 conviso --api-key 'your-api-key' sast run
+# or
+conviso --api-key 'your-api-key' sca run
 ```
 
 In case of any results, they will be automatically sent to Conviso Platform for assessment.

@@ -7,13 +7,6 @@ keywords: [Conviso CLI]
 image: '/static/img/cliinstallationseo.png'
 ---
 
-:::note
-There is currently an incompatibility with the library that handles git repositories in `actions/checkout@v4` causing an **unsupported extension name extensions.worktreeconfig (Rugged::RepositoryError)**
-
-
-Reference: https://github.com/actions/checkout/issues/1690
-:::
-
 ## Introduction
 
 The CLI is a command-line interface tool to interact with Conviso Platform. The primary goal of the CLI is to be a developer friendly tool which brings the functionality of Conviso Platform into your development workflow.
@@ -59,7 +52,7 @@ python3 -m pip install conviso-cli
 
 **Note:** If it's not working, we recommend visiting the [other installation commands](#other-installation-commands) section that shows other ways to install.
 
-**You can use the CLI in your CI/CD environment**. For details, please check the [menu](../integrations/integrations_intro.md) with all the different tools that we are integrated with. If your tool is not there, please contact us to assess it.
+**You can use the CLI in your CI/CD environment**. For details, please check the [menu](../../integrations/integrations_intro.md) with all the different tools that we are integrated with. If your tool is not there, please contact us to assess it.
 
 ### Test your installation
 
@@ -75,7 +68,7 @@ The command will print CLI commands and options summary. Now we are ready to pro
 
 ## Authentication
 
-In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../api/generate-apikey.md). You can generate an API Key within Security Feed -> Quick Actions -> Generate API KEY.
+In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../../api/generate-apikey). You can generate an API Key within Security Feed -> Quick Actions -> Generate API KEY.
 
 **Note:** Every time you do this process, you will need to change the API Key from the CLI settings.
 
@@ -99,10 +92,10 @@ conviso --api-key 'you-api-key' [SOME COMMAND]
 
 Once the CLI is installed and your machine is authenticated, perform the following actions to run your AppSec Program with the Conviso Platform:
 
-- Perform **Application Security Testing (AST)** type scans, following this [tutorial](../cli/ast.md).
-- Validate your opened vulnerabilities for a specific project and **block your CI/CD pipeline depending on pre-defined vulnerability policies**, [see more](../cli/security-gate.md).
-- Perform the **Management of your Assets**, see this [guide](../cli/assets.md).
-- **Import findings and vulnerabilities from other security tools** that support .SARIF files to Conviso Platform, see [more](../cli/findings.md).
+- Perform **Application Security Testing (AST)** type scans, following this [tutorial](../cli/ast).
+- Validate your opened vulnerabilities for a specific project and **block your CI/CD pipeline depending on pre-defined vulnerability policies**, [see more](../cli/security-gate).
+- Perform the **Management of your Assets**, see this [guide](../cli/assets).
+- **Import findings and vulnerabilities from other security tools** that support .SARIF files to Conviso Platform, see [more](../cli/findings).
 
 ## Other installation commands
 
@@ -138,7 +131,13 @@ docker run convisoappsec/convisocli conviso --help
 
 ## Updating Conviso CLI
 
-We release new Conviso CLI versions often! See [Releases Notes](../releases/intro.md) for more details.
+We release new Conviso CLI versions often! See [Releases Notes](../../releases/intro) for more details.
+
+If you need to update your Conviso CLI, use the following command:
+
+```bash
+pip install conviso-cli --upgrade
+```
 
 ## Tips: Shell Completion
 
