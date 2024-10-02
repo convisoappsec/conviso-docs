@@ -13,13 +13,19 @@ To perform activities with Conviso CLI, Conviso Platform Integrations and also C
 ## Usage
 Follow these steps as shown in the gif:
 
-1. Log in to Conviso Platform and go to **"Edit Profile"** in the upper right corner;
-2. Click on API Key tab and **Generate** button to create your key;
+1. Log in to Conviso Platform and go to **Security Feed**;
+2. Click on **Generate API Key** button to create your key;
 3. Click **Confirm** after generating the key for successful creation.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/cli-overview2.gif)
+![img](../../static/img/cli-overview2.png)
+
+</div>
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/confirm-api-key.png)
 
 </div>
 

@@ -28,7 +28,7 @@ Conviso Platform seamlessly integrates with your current tools and workflows, en
 - [Software Composition Analysis (SCA)](#software-composition-analysis-sca-integration)
 - [Security Scans](#consolidate-vulnerability-management-through-integrated-security-scans)
 
-**Note:** You can also check the **[Conviso CLI](../cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
+**Note:** You can also check the **[Conviso CLI](../tools/cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
 
 ## Set up Conviso Platform Single Sign-On (SSO)
 
@@ -72,6 +72,7 @@ By integrating the Conviso Platform with your Defect Tracker tool, you can seaml
 ## Communication and Notification
 Efficient collaboration and communication are crucial for successful application development. By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel:
 * **[Slack](../integrations/slack.md)**
+* **[Microsoft Teams](../integrations/microsoft-teams.md)**
 
 ## Software Composition Analysis (SCA) Integration
 
@@ -81,6 +82,7 @@ This integration enables the platform to identify and mitigate risks in your sof
 ## Consolidate Vulnerability Management through Integrated Security Scans
 
 Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
+* **[Checkmarx](../integrations/checkmarx.md)**
 * **[Fortify](../integrations/fortify.md)**
 * **[SonarCloud](../integrations/sonarcloud.md)**
 * **[SonarQube](../integrations/sonarqube.md)**

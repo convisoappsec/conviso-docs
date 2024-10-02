@@ -8,95 +8,6 @@ module.exports = {
       label: 'Quickstart',
       id: 'quickstart/quickstart',
     },
-    //{
-      //type: 'doc',
-      //label: 'Security Feed',
-      //id: 'security-feed/security-feed',
-    //},
-    {
-      type: "category",
-      label: "API",
-      items: [
-        'api/api-overview',
-        'api/generate-apikey',
-        {
-          type: "category",
-          label: "GraphQL",
-          items: [
-            'api/graphql/introduction',
-            'api/graphql/limit',
-            {
-              type: "category",
-              label: "References",
-              items: sidebarSchema.schemaSidebar
-            }
-          ]
-        }
-      ]
-    },
-    {
-      type: "category",
-      label: "AppSec Starter Training",
-      items: [
-        'training/introduction',
-        'training/lesson01',
-        'training/lesson02',
-        'training/lesson03',
-        'training/lesson04',
-        'training/lesson05',
-        'training/lesson06',
-        'training/lesson07',
-        'training/lesson08',
-        'training/lesson09',
-        'training/lesson10',
-        'training/lesson11',
-        'training/lesson12',
-        'training/lesson13',
-        'training/lesson14',
-        'training/lesson15'
-      ],
-    },
-    {
-      CLI: [
-        'cli/installation',
-        'cli/ast',
-        'cli/security-gate',
-        'cli/assets',
-        'cli/findings',
-      ]
-    },
-    {
-      type: "category",
-      label: "Guides",
-      items: [
-        'guides/code-review-strategies',
-        'guides/integrate-asset-with-graphql',
-        {
-          type: "category",
-          label: "Burp Extension",
-          items: [
-            'guides/burp-extension/home',
-            'guides/burp-extension/add-extension-to-burp',
-            'guides/burp-extension/define-endpoint',
-            'guides/burp-extension/test-api-key',
-            'guides/burp-extension/issues-tab',
-            'guides/burp-extension/auto-fill',
-            'guides/burp-extension/as-new-issue',
-            'guides/burp-extension/as-new-issue-with-evidence',
-            'guides/burp-extension/as-evidence',
-            'guides/burp-extension/requirements-tabs',
-            'guides/burp-extension/finish-activity',
-            'guides/burp-extension/not-applicable-activity',
-            'guides/burp-extension/not-started',
-            'guides/burp-extension/restart-activity',
-            'guides/burp-extension/not-applicable',
-            'guides/burp-extension/working-analysis',
-            'guides/burp-extension/reload-working-analyses'
-          ]
-        },
-
-      ]
-    },
     {
       type: "category",
       label: "Integrations",
@@ -157,16 +68,10 @@ module.exports = {
         },
         {
           type: "category",
-          label: "SCA",
-          items: [
-            'integrations/dependency-track'
-          ]
-        },
-        {
-          type: "category",
           label: "Scanners",
           items: [
             'integrations/checkmarx',
+            'integrations/dependency-track',
             'integrations/fortify',
             'integrations/sonarcloud',
             'integrations/sonarqube',
@@ -175,24 +80,122 @@ module.exports = {
       ]
     },
     {
-      type: 'doc',
-      label: 'Scan Application with Conviso',
-      id: 'conviso-ast/conviso-ast',
+      type: "category",
+      label: "API",
+      items: [
+        'api/api-overview',
+        'api/generate-apikey',
+        {
+          type: "category",
+          label: "GraphQL",
+          items: [
+            'api/graphql/introduction',
+            'api/graphql/limit',
+            {
+              type: "category",
+              label: "References",
+              items: sidebarSchema.schemaSidebar
+            }
+          ]
+        }
+      ]
     },
     {
       type: "category",
-      label: "People & Culture",
+      label: "Resources",
+      items: [ 
+        {
+          type: "category",
+          label: "CLI",
+          items: [
+            'tools/cli/installation',
+            'tools/cli/ast',
+            'tools/cli/security-gate',
+            'tools/cli/assets',
+            'tools/cli/findings',
+          ]
+        },
+        {
+          type: "category",
+          label: "Guides",
+          items: [
+            'tools/guides/code-review-strategies',
+            'tools/guides/integrate-asset-with-graphql',
+            {
+              type: "category",
+              label: "Burp Extension",
+              items: [
+                'tools/guides/burp-extension/home',
+                'tools/guides/burp-extension/add-extension-to-burp',
+                'tools/guides/burp-extension/define-endpoint',
+                'tools/guides/burp-extension/test-api-key',
+                'tools/guides/burp-extension/issues-tab',
+                'tools/guides/burp-extension/auto-fill',
+                'tools/guides/burp-extension/as-new-issue',
+                'tools/guides/burp-extension/as-new-issue-with-evidence',
+                'tools/guides/burp-extension/as-evidence',
+                'tools/guides/burp-extension/requirements-tabs',
+                'tools/guides/burp-extension/finish-activity',
+                'tools/guides/burp-extension/not-applicable-activity',
+                'tools/guides/burp-extension/not-started',
+                'tools/guides/burp-extension/restart-activity',
+                'tools/guides/burp-extension/not-applicable',
+                'tools/guides/burp-extension/working-analysis',
+                'tools/guides/burp-extension/reload-working-analyses'
+              ]
+            }
+          ]
+        },
+        {
+          type: 'doc',
+          label: 'Scan Application with Conviso',
+          id: 'tools/conviso-ast/conviso-ast'
+        },
+        {
+          type: 'doc',
+          label: 'Scan Application with Conviso DAST',
+          id: 'tools/conviso-dast/conviso-dast'
+        }
+      ]
+    },
+    {
+      type: "category",
+      label: "Modules",
       items: [
-        'people-and-culture/overview',
-        'people-and-culture/solving-code-review'
+        'modules/asset-management',
+        'modules/attachments',
+        'modules/credentials',
+        'modules/dashboard',
+        'modules/policies',
+        'modules/projects',
+        'modules/requirements',
+        'modules/security-expert',
+        'modules/security-feed',
+        'modules/threat-modeling',
+        'modules/user-management',
+        'modules/vulnerabilities'
       ],
     },
     {
       type: "category",
-      label: "Secure by Design",
+      label: "AppSec Starter Training",
       items: [
-        'secure-by-design/overview',
-        'secure-by-design/threat-modeling'
+        'training/introduction',
+        'training/lesson01',
+        'training/lesson02',
+        'training/lesson03',
+        'training/lesson04',
+        'training/lesson05',
+        'training/lesson06',
+        'training/lesson07',
+        'training/lesson08',
+        'training/lesson09',
+        'training/lesson10',
+        'training/lesson11',
+        'training/lesson12',
+        'training/lesson13',
+        'training/lesson14',
+        'training/lesson15'
       ],
     },
     {
@@ -221,24 +224,7 @@ module.exports = {
         'releases/appsecflow304',
         'releases/appsecflow302'
       ],
-    },
-    {
-      type: "category",
-      label: "User Manual",
-      items: [
-        'general/assets_import',
-        'general/assets_management',
-        'general/email_notifications',
-        'general/integration_policies',
-        'general/projects_management',
-        'general/requirements',
-        'general/resources',
-        'general/user_management',
-        'general/vulnerabilities_management',
-        'general/vulnerabilities_templates',
-        'general/contributing'
-      ],
-    },
+    }
   ],
   ...sidebarSchema,
 }

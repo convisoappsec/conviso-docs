@@ -19,7 +19,7 @@ With Conviso Platform integrated with [Github Actions](https://github.com/) in y
 
 You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, and **Code Review** directly on your pipeline.
 
-The [CLI](../cli/installation.md) is a docker image in this integration for all execution and connection with the Conviso Platform.
+The [CLI](../tools/cli/installation.md) is a docker image in this integration for all execution and connection with the Conviso Platform.
 
 **[Explore our Integration page to learn more and supercharge your Application Security Program with Conviso Platform.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
@@ -76,7 +76,7 @@ jobs:
      run: conviso ast run
 ```
 
-The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities Management](../general/vulnerabilities_management.md) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities](../modules/vulnerabilities) resource to work on the correction flow.
 
 ## Run a scan exclusively using Conviso SAST
 
