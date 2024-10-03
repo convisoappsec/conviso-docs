@@ -52,7 +52,7 @@ python3 -m pip install conviso-cli
 
 **Note:** If it's not working, we recommend visiting the [other installation commands](#other-installation-commands) section that shows other ways to install.
 
-**You can use the CLI in your CI/CD environment**. For details, please check the [menu](../../integrations/integrations_intro.md) with all the different tools that we are integrated with. If your tool is not there, please contact us to assess it.
+**You can use the CLI in your CI/CD environment**. For details, please check the [menu](../integrations/integrations_intro.md) with all the different tools that we are integrated with. If your tool is not there, please contact us to assess it.
 
 ### Test your installation
 

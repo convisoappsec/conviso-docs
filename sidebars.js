@@ -62,6 +62,17 @@ module.exports = {
     },
     {
       type: "category",
+      label: "CLI",
+      items: [
+          'cli/installation',
+          'cli/ast',
+          'cli/security-gate',
+          'cli/assets',
+          'cli/findings'
+      ]
+    },
+    {
+      type: "category",
       label: "Integrations",
       items: [
         'integrations/integrations_intro',
@@ -151,38 +162,6 @@ module.exports = {
     },
     {
       type: "category",
-      label: "API",
-      items: [
-        'api/api-overview',
-        'api/generate-apikey',
-        {
-          type: "category",
-          label: "GraphQL",
-          items: [
-            'api/graphql/introduction',
-            'api/graphql/limit',
-            {
-              type: "category",
-              label: "References",
-              items: sidebarSchema.schemaSidebar
-            }
-          ]
-        }
-      ]
-    },
-    {
-      type: "category",
-      label: "CLI",
-      items: [
-          'cli/installation',
-          'cli/ast',
-          'cli/security-gate',
-          'cli/assets',
-          'cli/findings'
-      ]
-    },
-    {
-      type: "category",
       label: "Releases 🚀",
       items: [
         'releases/intro',
@@ -208,6 +187,31 @@ module.exports = {
         'releases/appsecflow302'
       ],
     }
+  ],
+  apiSidebar: [
+    {
+      type: "category",
+      label: "API",
+      collapsible: false,
+      collapsed: false,
+      items: [
+        'api/api-overview',
+        'api/generate-apikey',
+        {
+          type: "category",
+          label: "GraphQL",
+          items: [
+            'api/graphql/introduction',
+            'api/graphql/limit',
+            {
+              type: "category",
+              label: "References",
+              items: sidebarSchema.schemaSidebar
+            }
+          ]
+        },
+      ]
+    },
   ],
   ...sidebarSchema,
 }

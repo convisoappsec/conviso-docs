@@ -17,7 +17,14 @@ module.exports = () => {
                     alt: 'Conviso Platform Docs Logo',
                     src: 'img/favicon.ico',
                 },
-                items: [],
+                items: [
+                    
+                    {
+                        to: 'api/api-overview',
+                        label: 'API',
+                        position: 'left', // or 'right' depending on where you want the link
+                        },
+                ],
             },
             image: 'img/indexseo.png',
 
