@@ -1,7 +1,7 @@
 ---
-id: release4.7
-title: Release 4.7
-sidebar_label: Release 4.7
+id: release4.8
+title: Release 4.8
+sidebar_label: Release 4.8
 ---
 
 Release date: Semptember 23rd, 2024

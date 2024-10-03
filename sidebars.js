@@ -10,6 +10,69 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Security Suite",
+      items: [
+        {
+          type: 'doc',
+          label: 'Scan Application with Conviso',
+          id: 'security-suite/conviso-ast/conviso-ast'
+        },
+        {
+          type: 'doc',
+          label: 'Scan Application with Conviso DAST',
+          id: 'security-suite/conviso-dast/conviso-dast'
+        },
+        {
+          type: 'doc',
+          label: 'Software Bill of Materials (SBOM)',
+          id: 'security-suite/conviso-sbom/conviso-sbom'
+        }, 
+        {
+          type: "category",
+          label: "Guides",
+          items: [
+            'security-suite/guides/code-review-strategies',
+            'security-suite/guides/integrate-asset-with-graphql',
+            {
+              type: "category",
+              label: "Burp Extension",
+              items: [
+                'security-suite/guides/burp-extension/home',
+                'security-suite/guides/burp-extension/add-extension-to-burp',
+                'security-suite/guides/burp-extension/define-endpoint',
+                'security-suite/guides/burp-extension/test-api-key',
+                'security-suite/guides/burp-extension/issues-tab',
+                'security-suite/guides/burp-extension/auto-fill',
+                'security-suite/guides/burp-extension/as-new-issue',
+                'security-suite/guides/burp-extension/as-new-issue-with-evidence',
+                'security-suite/guides/burp-extension/as-evidence',
+                'security-suite/guides/burp-extension/requirements-tabs',
+                'security-suite/guides/burp-extension/finish-activity',
+                'security-suite/guides/burp-extension/not-applicable-activity',
+                'security-suite/guides/burp-extension/not-started',
+                'security-suite/guides/burp-extension/restart-activity',
+                'security-suite/guides/burp-extension/not-applicable',
+                'security-suite/guides/burp-extension/working-analysis',
+                'security-suite/guides/burp-extension/reload-working-analyses'
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      type: "category",
+      label: "CLI",
+      items: [
+          'cli/installation',
+          'cli/ast',
+          'cli/security-gate',
+          'cli/assets',
+          'cli/findings'
+      ]
+    },
+    {
+      type: "category",
       label: "Integrations",
       items: [
         'integrations/integrations_intro',
@@ -81,86 +144,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "API",
-      items: [
-        'api/api-overview',
-        'api/generate-apikey',
-        {
-          type: "category",
-          label: "GraphQL",
-          items: [
-            'api/graphql/introduction',
-            'api/graphql/limit',
-            {
-              type: "category",
-              label: "References",
-              items: sidebarSchema.schemaSidebar
-            }
-          ]
-        }
-      ]
-    },
-    {
-      type: "category",
-      label: "Resources",
-      items: [ 
-        {
-          type: "category",
-          label: "CLI",
-          items: [
-            'tools/cli/installation',
-            'tools/cli/ast',
-            'tools/cli/security-gate',
-            'tools/cli/assets',
-            'tools/cli/findings',
-          ]
-        },
-        {
-          type: "category",
-          label: "Guides",
-          items: [
-            'tools/guides/code-review-strategies',
-            'tools/guides/integrate-asset-with-graphql',
-            {
-              type: "category",
-              label: "Burp Extension",
-              items: [
-                'tools/guides/burp-extension/home',
-                'tools/guides/burp-extension/add-extension-to-burp',
-                'tools/guides/burp-extension/define-endpoint',
-                'tools/guides/burp-extension/test-api-key',
-                'tools/guides/burp-extension/issues-tab',
-                'tools/guides/burp-extension/auto-fill',
-                'tools/guides/burp-extension/as-new-issue',
-                'tools/guides/burp-extension/as-new-issue-with-evidence',
-                'tools/guides/burp-extension/as-evidence',
-                'tools/guides/burp-extension/requirements-tabs',
-                'tools/guides/burp-extension/finish-activity',
-                'tools/guides/burp-extension/not-applicable-activity',
-                'tools/guides/burp-extension/not-started',
-                'tools/guides/burp-extension/restart-activity',
-                'tools/guides/burp-extension/not-applicable',
-                'tools/guides/burp-extension/working-analysis',
-                'tools/guides/burp-extension/reload-working-analyses'
-              ]
-            }
-          ]
-        },
-        {
-          type: 'doc',
-          label: 'Scan Application with Conviso',
-          id: 'tools/conviso-ast/conviso-ast'
-        },
-        {
-          type: 'doc',
-          label: 'Scan Application with Conviso DAST',
-          id: 'tools/conviso-dast/conviso-dast'
-        }
-      ]
-    },
-    {
-      type: "category",
-      label: "Modules",
+      label: "Platform Modules",
       items: [
         'modules/asset-management',
         'modules/attachments',
@@ -178,29 +162,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "AppSec Starter Training",
-      items: [
-        'training/introduction',
-        'training/lesson01',
-        'training/lesson02',
-        'training/lesson03',
-        'training/lesson04',
-        'training/lesson05',
-        'training/lesson06',
-        'training/lesson07',
-        'training/lesson08',
-        'training/lesson09',
-        'training/lesson10',
-        'training/lesson11',
-        'training/lesson12',
-        'training/lesson13',
-        'training/lesson14',
-        'training/lesson15'
-      ],
-    },
-    {
-      type: "category",
-      label: "Releases",
+      label: "Releases 🚀",
       items: [
         'releases/intro',
         'releases/release4.7',
@@ -225,6 +187,31 @@ module.exports = {
         'releases/appsecflow302'
       ],
     }
+  ],
+  apiSidebar: [
+    {
+      type: "category",
+      label: "API",
+      collapsible: false,
+      collapsed: false,
+      items: [
+        'api/api-overview',
+        'api/generate-apikey',
+        {
+          type: "category",
+          label: "GraphQL",
+          items: [
+            'api/graphql/introduction',
+            'api/graphql/limit',
+            {
+              type: "category",
+              label: "References",
+              items: sidebarSchema.schemaSidebar
+            }
+          ]
+        },
+      ]
+    },
   ],
   ...sidebarSchema,
 }

@@ -20,9 +20,9 @@ To use this feature, follow these steps:
 
 First, you need to define the policies for the specific project. This CLI feature helps you with that, allowing you to define policies such as:
 
-- Vulnerability quantity by severity (Low, Medium, High, Critical)
+- Number of vulnerabilities by severity (Low, Medium, High, Critical)
 
-- Vulnerability sources (for example, external integrations such as Checkmarx or Qualys, and also Conviso Platform scanners)
+- Number of vulnerabilities based on how long they've been open
 
 **Note:** It's important to highlight that the definition of vulnerability policies must be defined in the vulnerability management process, considering risk appetite, team maturity and other factors.
 
@@ -95,6 +95,34 @@ Starting vulnerabilities security rules assertion
 ]
 Error: Vulnerabilities quantity offending security rules
 ```
+
+### 4. Running Security Gate with Vulnerabilities Aging
+
+Vulnerabilities aging allows you to configure how many days vulnerabilities of certain severities can remain open before they are considered for blocking the pipeline, effectively serving as an SLA definition for fixing vulnerabilities. You can apply this to all severities or just to specific ones, as shown in the example below:
+
+```yml
+rules:
+- from: any
+  severity:
+    critical:
+      # Will block the pipeline if there is at least one critical vulnerability open, 
+      # regardless of how long it has been open.
+      maximum: 0
+    high:
+      # Will block the pipeline if there is at least one high vulnerability open for more than 10 days.
+      maximum: 0
+	  max_days_to_fix: 10
+    medium:
+      # Will block the pipeline if there are at least two medium vulnerabilities open for more than 30 days.
+      maximum: 1
+      max_days_to_fix: 30
+    low:
+      # Will block the pipeline if there are at least six low vulnerabilities open for more than 90 days.
+      maximum: 5
+      max_days_to_fix: 90
+```
+
+If the rules are not followed, the pipeline will be blocked as well.
 
 ## Support
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).

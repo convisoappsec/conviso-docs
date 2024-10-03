@@ -1,8 +1,8 @@
 ---
 id: integrations_intro
-title: Integrations Conviso Platform
+title: Integrations
 description: Discover the integrations that Conviso Platform makes with your current tools and workflows, enabling you to enhance your secure software development lifecycle.
-sidebar_label: Integrations Conviso Platform
+sidebar_label: Intro
 keywords: [Integrations Conviso Platform]
 image: '/static/img/integrationsoverviewseo.png'
 ---
@@ -28,7 +28,7 @@ Conviso Platform seamlessly integrates with your current tools and workflows, en
 - [Software Composition Analysis (SCA)](#software-composition-analysis-sca-integration)
 - [Security Scans](#consolidate-vulnerability-management-through-integrated-security-scans)
 
-**Note:** You can also check the **[Conviso CLI](../tools/cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
+**Note:** You can also check the **[Conviso CLI](../cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
 
 ## Set up Conviso Platform Single Sign-On (SSO)
 
