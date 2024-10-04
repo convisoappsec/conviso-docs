@@ -42,6 +42,14 @@ SBOMs (Software Bill of Materials) describe the components, dependencies, and me
 - **Supplier**: Entity providing the software.
 - **Dependency Relationships**: How components depend on each other.
 
+## Sub-dependencies and License Detection in SBOM Generation
+When generating a Software Bill of Materials (SBOM), it's crucial to track both direct and sub-dependencies (transitive dependencies). The tools used in SBOM generation, such as the one we employ, aim to provide a comprehensive list of software components. However, the ability to detect sub-dependencies varies across different ecosystems and package managers. In some cases, sub-dependencies may not always be fully captured, depending on how the tool integrates with the specific technology stack.
+
+In addition to dependency tracking, detecting licenses is a critical aspect of SBOM generation. Our tool supports the detection of various licenses, helping ensure compliance with open-source and proprietary software requirements. However, complete license detection is not always possible, particularly for packages that lack clear metadata or license information. Despite these limitations, our approach provides significant visibility into both dependencies and their licenses, helping to manage legal and security risks.
+
+## Use of Syft
+To achieve this level of detail in our SBOM generation, we use Syft, a powerful tool that scans container images and filesystems for dependencies and licenses.
+
 ## How to generate and view components in Conviso Platform
 
 An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sca run`.
