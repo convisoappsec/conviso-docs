@@ -4,11 +4,12 @@ title: Release 4.8
 sidebar_label: Release 4.8
 ---
 
-Release date: Semptember 23rd, 2024
+Release date: October 4th, 2024
 
 ## Key Benefits
 
 *   Empower your Security Supply Chain: Introducing SBOM Generation Support;
+*   Enhanced Access Control: Associate Profiles and Access with Teams in a refreshed UI;
 *   Plans & Usage: Better visibility and management;
 *   Improvements to vulnerability filtering and perfomance loading time
 
@@ -21,7 +22,7 @@ Release date: Semptember 23rd, 2024
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release47-sbom.png)
+![img](../../static/img/release48-sbom.png)
 
 </div>
 
@@ -33,9 +34,9 @@ Key features:
 - Links Open Vulnerabilities associated with the dependency;
 
 How does it work: Generate your SBOM effortlessly using Conviso CLI within your repository or CI/CD pipeline through one of the following commands:
-`conviso ast run`
-`conviso sca run`
-`conviso sbom generate`
+- `conviso ast run`
+- `conviso sca run`
+- `conviso sbom generate`
 
 :::info
 This feature is available when using the latest version of Conviso CLI or version 2.2.2 and above.
@@ -45,7 +46,30 @@ Next improvements:
 - Licensing security compliance validation;
 - Dependency Graph generation for each dependency
 
-Enhance the security posture and compliance of your applications with our SBOM generation support!
+Enhance the security posture and compliance of your applications with our SBOM generation support!<br></br><br></br>
+
+
+**_New Feature_**
+## Enhanced Access Control: Associate Profiles and Access with Teams in a refreshed UI
+
+<div style={{textAlign:'center'}}>
+
+![img](../../static/img/release48-access-control-teams.png)
+
+</div>
+
+We’re thrilled to introduce an update to our Access Control feature! You can now associate Profiles and Access definition at the Team level, providing a more organized and scalable way to manage roles and permissions across your organization.
+
+<div style={{textAlign:'center'}}>
+
+![img](../../static/img/release48-access-control-ui.png)
+
+</div>
+
+Along with this functionality, we've completely refreshed the UI to ensure a smoother and more intuitive experience. The new interface is designed to enhance usability, allowing you to quickly navigate, configure, and manage access with improved clarity and efficiency. 
+
+Dive into these updates today and take full control of your team's security with ease!<br></br><br></br>
+
 
 
 **_New Feature_**
@@ -54,7 +78,7 @@ Enhance the security posture and compliance of your applications with our SBOM g
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release47-plans-usage.png)
+![img](../../static/img/release48-plans-usage.png)
 
 </div>
 
@@ -64,7 +88,7 @@ Basic usage metrics such as Users, Assets and Integrations;
 Advance usage information of Active Developers for an easy and transparent assessment;
 Add-ons management.
 
-Only users with Admin profile will have access to this page.
+Only users with Admin profile will have access to this page.<br></br><br></br>
 
 
 **_UX Improvement_**
@@ -73,7 +97,7 @@ Only users with Admin profile will have access to this page.
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release47-vulns-ux.png)
+![img](../../static/img/release48-vulns-ux.png)
 
 </div>
 
