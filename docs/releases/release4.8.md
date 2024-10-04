@@ -4,7 +4,7 @@ title: Release 4.7
 sidebar_label: Release 4.7
 ---
 
-Release date: Semptember 23rd, 2024
+Release date: October 4th, 2024
 
 ## Key Benefits
 
@@ -21,7 +21,7 @@ Release date: Semptember 23rd, 2024
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release47-sbom.png)
+![img](../../static/img/release48-sbom.png)
 
 </div>
 
@@ -47,6 +47,29 @@ Next improvements:
 
 Enhance the security posture and compliance of your applications with our SBOM generation support!
 
+**_New Feature_**
+
+## Enhanced Access Control: Associate Profiles and Access with Teams in a refreshed UI
+
+<div style={{textAlign:'center'}}>
+
+![img](../../static/img/release48-access-control-teams.png)
+
+</div>
+
+We’re thrilled to introduce an update to our Access Control feature! You can now associate Profiles and Access definition at the Team level, providing a more organized and scalable way to manage roles and permissions across your organization.
+
+<div style={{textAlign:'center'}}>
+
+![img](../../static/img/release48-access-control-ui.png)
+
+</div>
+
+Along with this functionality, we've completely refreshed the UI to ensure a smoother and more intuitive experience. The new interface is designed to enhance usability, allowing you to quickly navigate, configure, and manage access with improved clarity and efficiency. 
+
+Dive into these updates today and take full control of your team's security with ease!
+
+
 
 **_New Feature_**
 
@@ -54,7 +77,7 @@ Enhance the security posture and compliance of your applications with our SBOM g
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release47-plans-usage.png)
+![img](../../static/img/release48-plans-usage.png)
 
 </div>
 
@@ -73,7 +96,7 @@ Only users with Admin profile will have access to this page.
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release47-vulns-ux.png)
+![img](../../static/img/release48-vulns-ux.png)
 
 </div>
 
