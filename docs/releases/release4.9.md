@@ -19,13 +19,13 @@ Release date: October 28th, 2024
 
 ## SAML Group Mapping: Automatically Assign User Access and Permissions
 
-<!--
+
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release49-saml-groups.png)
+![img](../../static/img/release49-group-mapping.png)
 
 </div>
--->
+
 
 We're excited to introduce SAML Group Mapping into the user management workflow, making it easier than ever to manage user access and permissions. With this new feature, administrators can automatically map users to specific groups within the Conviso Platform based on their SAML attributes, simplifying the assignment of roles and permissions across your organization.
 
