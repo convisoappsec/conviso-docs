@@ -27,6 +27,12 @@ With features ranging from security analysis to integration with external tools,
 
 By centralizing and correlating security information, Conviso Platform offers a holistic view of an application's security posture, helping to anticipate potential risks with business impact. Thus, development professionals are equipped with the tools and insights needed to plan, build, and deliver secure software with agility, confidence, and consistency. 
 
+<div style={{textAlign: 'center'}}>
+
+![img](../static/img/getting-started/getting-started3.png)
+
+</div>
+
 ---
 
 ## Getting Started with Conviso Platform
