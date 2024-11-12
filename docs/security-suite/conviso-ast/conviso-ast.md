@@ -56,7 +56,7 @@ Scan directly from your terminal with [**Conviso CLI**](../../cli/installation) 
 
 **Conviso AST integrates with all the major CI/CD tools in the market**, whether on Github Actions, Gitlab, Jenkins, and many others; **discover[ our integrations here](../../integrations/integrations_intro)**.
 
-The analysis results are sent to Conviso Platform, where you can view, prioritize and fix the vulnerabilities found using our **[Vulnerabilities](../../modules/vulnerabilities)** feature.
+The analysis results are sent to Conviso Platform, where you can view, prioritize and fix the vulnerabilities found using our **[Vulnerabilities](../../platform/vulnerabilities)** feature.
 
 ## How to fix a vulnerability with Conviso AST?
 

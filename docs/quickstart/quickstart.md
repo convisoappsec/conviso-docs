@@ -116,7 +116,7 @@ Once you click **Save**, the platform will automatically calculate the asset's R
 
 </div>
 
-[Learn more by reading this documentation](/modules/asset-management.md).
+[Learn more by reading this documentation](/platform/asset-management.md).
 
 ## Step 5 - Stay informed about your vulnerabilities​
 
@@ -140,7 +140,7 @@ On the left column of the above image, you can find more information about the v
 
 On the right column, you can see the severity, status, source, and other details about this specific occurrence of the vulnerability.
 
-[See how it works here](/modules/vulnerabilities.md).
+[See how it works here](/platform/vulnerabilities.md).
 
 ## Step 6 - Fixing your vulnerabilities
 
@@ -187,7 +187,7 @@ Additionally, under AppSec KPI, you can also see how many vulnerabilities were o
 
 </div>
 
-[Learn more by reading this documentation](/modules/dashboard.md).
+[Learn more by reading this documentation](/platform/dashboard.md).
 
 <!--Learn how to [build your project for a security initiative in your application](/general/projects_management.md).-->
 

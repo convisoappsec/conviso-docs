@@ -144,20 +144,20 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Platform Modules",
+      label: "Platform",
       items: [
-        'modules/asset-management',
-        'modules/attachments',
-        'modules/credentials',
-        'modules/dashboard',
-        'modules/policies',
-        'modules/projects',
-        'modules/requirements',
-        'modules/security-expert',
-        'modules/security-feed',
-        'modules/threat-modeling',
-        'modules/user-management',
-        'modules/vulnerabilities'
+        'platform/asset-management',
+        'platform/attachments',
+        'platform/credentials',
+        'platform/dashboard',
+        'platform/policies',
+        'platform/projects',
+        'platform/requirements',
+        'platform/security-expert',
+        'platform/security-feed',
+        'platform/threat-modeling',
+        'platform/user-management',
+        'platform/vulnerabilities'
       ],
     },
     {

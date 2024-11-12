@@ -33,7 +33,7 @@ conviso --api-key 'your-api-key' ast run \
 
 **Note:** You need an API Key. Refer to the following documentation to know how to generate one [here](/cli/installation#authentication).
 
-The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities](../../modules/vulnerabilities) resource to work on the correction flow.
+The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities](../../platform/vulnerabilities) resource to work on the correction flow.
 
 ### Naming an asset
 
