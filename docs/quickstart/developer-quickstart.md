@@ -199,7 +199,7 @@ Alternatively, you can navigate via the sidebar by clicking on "Vulnerabilities,
 
 This will display all vulnerabilities with the status Identified, In Progress, or Awaiting Validation. Locate the relevant vulnerability and click on its title. To simplify your search, filters are available for creation date, asset name, asset tags, vulnerability type, and many other options.
 
-When you have multiple vulnerabilities in your company, the Risk Context Prioritization Funnel will assist you in prioritizing vulnerabilities. For this, it is necessary to have previously configured the **Business Impact**, **Attack Surface** and **Data Classification** information in [Asset Management](../modules/asset-management.md). Notice that, in the example shown in the image below, there are 1,552 Open Vulnerabilities, but only 167 have a High Business Impact, are exposed to the Internet, and deal with or store Sensitive Data:
+When you have multiple vulnerabilities in your company, the Risk Context Prioritization Funnel will assist you in prioritizing vulnerabilities. For this, it is necessary to have previously configured the **Business Impact**, **Attack Surface** and **Data Classification** information in [Asset Management](../platform/asset-management.md). Notice that, in the example shown in the image below, there are 1,552 Open Vulnerabilities, but only 167 have a High Business Impact, are exposed to the Internet, and deal with or store Sensitive Data:
 
 <div style={{textAlign: 'center'}}>
 
