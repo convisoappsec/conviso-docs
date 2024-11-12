@@ -4,9 +4,20 @@ module.exports = {
   docs: [
     'index',
     {
-      type: 'doc',
+      type: 'category',
       label: 'Quickstart',
-      id: 'quickstart/quickstart',
+      items: [
+        {
+          type: 'doc',
+          label: 'Quickstart',
+          id: 'quickstart/quickstart',
+        },
+        {
+          type: 'doc',
+          label: 'Developer Quickstart',
+          id: 'quickstart/developer-quickstart',
+        },
+      ]
     },
     {
       type: "category",
