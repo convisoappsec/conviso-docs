@@ -59,9 +59,9 @@ Explore our integration options to connect Conviso Platform with your CI/CD pipe
 
 Learn how to use Conviso’s scanning features to protect your code, libraries, infrastructure, and secrets:
 
-- **[Scan with Conviso AST](./security-suite/conviso-ast/conviso-ast.md)** - Scan application source code, open-source libraries, and more.
-- **[Scan with Conviso DAST](./security-suite/conviso-dast/conviso-dast.md)** - Dynamic analysis to detect vulnerabilities during runtime.
-- **[Generate Conviso SBOM](./security-suite/conviso-sbom/conviso-sbom.md)** - Automatically produce a Software Bill of Materials for your applications.
+- **[Scan with Conviso AST](./security-scans/conviso-ast/conviso-ast.md)** - Scan application source code, open-source libraries, and more.
+- **[Scan with Conviso DAST](./security-scans/conviso-dast/conviso-dast.md)** - Dynamic analysis to detect vulnerabilities during runtime.
+- **[Generate Conviso SBOM](./security-scans/conviso-sbom/conviso-sbom.md)** - Automatically produce a Software Bill of Materials for your applications.
 - **[Conviso Security Gate](./cli/security-gate.md)** - Secure your CI/CD pipeline with enhanced control and oversight on security checks.
 - **[Conviso CLI](./cli/installation.md)** - Command-line tool enabling seamless integration with Security Gate, AST execution, and vulnerability import from SARIF files, enhancing automation and security in development workflows.
 ---
