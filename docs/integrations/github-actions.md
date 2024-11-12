@@ -76,7 +76,7 @@ jobs:
      run: conviso ast run
 ```
 
-The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities](../modules/vulnerabilities) resource to work on the correction flow.
+The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities](../platform/vulnerabilities) resource to work on the correction flow.
 
 ## Run a scan exclusively using Conviso SAST
 
