@@ -10,65 +10,54 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Security Suite",
+      label: "Scanning your Application",
       items: [
         {
           type: 'doc',
           label: 'Scan Application with Conviso',
-          id: 'security-suite/conviso-ast/conviso-ast'
+          id: 'security-scans/conviso-ast/conviso-ast'
         },
         {
           type: 'doc',
           label: 'Scan Application with Conviso DAST',
-          id: 'security-suite/conviso-dast/conviso-dast'
+          id: 'security-scans/conviso-dast/conviso-dast'
         },
         {
           type: 'doc',
           label: 'Software Bill of Materials (SBOM)',
-          id: 'security-suite/conviso-sbom/conviso-sbom'
+          id: 'security-scans/conviso-sbom/conviso-sbom'
         }, 
         {
           type: "category",
           label: "Guides",
           items: [
-            'security-suite/guides/code-review-strategies',
-            'security-suite/guides/integrate-asset-with-graphql',
+            'security-scans/guides/code-review-strategies',
+            'security-scans/guides/integrate-asset-with-graphql',
             {
               type: "category",
               label: "Burp Extension",
               items: [
-                'security-suite/guides/burp-extension/home',
-                'security-suite/guides/burp-extension/add-extension-to-burp',
-                'security-suite/guides/burp-extension/define-endpoint',
-                'security-suite/guides/burp-extension/test-api-key',
-                'security-suite/guides/burp-extension/issues-tab',
-                'security-suite/guides/burp-extension/auto-fill',
-                'security-suite/guides/burp-extension/as-new-issue',
-                'security-suite/guides/burp-extension/as-new-issue-with-evidence',
-                'security-suite/guides/burp-extension/as-evidence',
-                'security-suite/guides/burp-extension/requirements-tabs',
-                'security-suite/guides/burp-extension/finish-activity',
-                'security-suite/guides/burp-extension/not-applicable-activity',
-                'security-suite/guides/burp-extension/not-started',
-                'security-suite/guides/burp-extension/restart-activity',
-                'security-suite/guides/burp-extension/not-applicable',
-                'security-suite/guides/burp-extension/working-analysis',
-                'security-suite/guides/burp-extension/reload-working-analyses'
+                'security-scans/guides/burp-extension/home',
+                'security-scans/guides/burp-extension/add-extension-to-burp',
+                'security-scans/guides/burp-extension/define-endpoint',
+                'security-scans/guides/burp-extension/test-api-key',
+                'security-scans/guides/burp-extension/issues-tab',
+                'security-scans/guides/burp-extension/auto-fill',
+                'security-scans/guides/burp-extension/as-new-issue',
+                'security-scans/guides/burp-extension/as-new-issue-with-evidence',
+                'security-scans/guides/burp-extension/as-evidence',
+                'security-scans/guides/burp-extension/requirements-tabs',
+                'security-scans/guides/burp-extension/finish-activity',
+                'security-scans/guides/burp-extension/not-applicable-activity',
+                'security-scans/guides/burp-extension/not-started',
+                'security-scans/guides/burp-extension/restart-activity',
+                'security-scans/guides/burp-extension/not-applicable',
+                'security-scans/guides/burp-extension/working-analysis',
+                'security-scans/guides/burp-extension/reload-working-analyses'
               ]
             }
           ]
         }
-      ]
-    },
-    {
-      type: "category",
-      label: "CLI",
-      items: [
-          'cli/installation',
-          'cli/ast',
-          'cli/security-gate',
-          'cli/assets',
-          'cli/findings'
       ]
     },
     {
@@ -142,6 +131,18 @@ module.exports = {
         },
       ]
     },
+    {
+      type: "category",
+      label: "CLI",
+      items: [
+          'cli/installation',
+          'cli/ast',
+          'cli/security-gate',
+          'cli/assets',
+          'cli/findings'
+      ]
+    },
+    
     {
       type: "category",
       label: "Platform",
