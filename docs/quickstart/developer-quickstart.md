@@ -13,6 +13,15 @@ Conviso Platform offers a practical and integrated experience to track the full 
 
 Follow the steps below to gain a practical and integrated experience with the features that will be most present in your daily workflow as a developer.
 
+## How to Bring Vulnerabilities into the Conviso Platform
+
+To bring vulnerabilities into the Conviso Platform, different approaches can be taken:
+- Execution of Conviso AST via [CLI](../cli/ast.md) or [CI/CD tool](../integrations/integrations_intro#conviso-platform-cicd-integration);
+- Integration with an [External Scanner](../../integrations/integrations_intro/) (e.g., Checkmarx, Dependency-Track, Fortify, SonarQube, SonarCloud);
+- Execution of [Conviso DAST](../security-suite/conviso-dast/conviso-dast.md);
+- Importing vulnerabilities from a [SARIF file](../cli/findings.md);
+- Manual registration of vulnerabilities.
+
 ## Create a Vulnerability Using Conviso AST
 
 Your journey on the platform will begin the moment a vulnerability is created. To do this, let’s create a vulnerability. You can achieve this by copying the code below and pasting it into your IDE in a new file named "vulnerable.js":
@@ -133,8 +142,6 @@ To help users stay aware of risks associated with the company, Conviso Platform 
 ![img](../../static/img/quickstart/developer1.png)
 
 </div>
-
-<!-- To see more details on how to configure user-level notifications (Email or In-App), click here.-->
 
 ## View Vulnerability Information in a Defect Tracker Tool
 
@@ -274,6 +281,48 @@ Once a vulnerability has been fixed, you can receive a notification via Slack, M
 ![img](../../static/img/quickstart/developer8.png)
 
 </div>
+
+## Conviso Secure Code
+
+Conviso Secure Code is an AI-powered IDE plugin designed to identify and suggest fixes for insecure code while providing contextual explanations for vulnerabilities. Beyond correcting issues, it acts as a learning tool, helping developers understand the "why" and "how" behind each fix. This unique approach promotes skill development and safer coding practices directly within the developer's workflow.
+
+With seamless integration into the Conviso Platform, Conviso Secure Code tracks performance metrics, ranks common vulnerabilities, and empowers developers to learn in real-time. By ensuring an optimal balance between security and productivity, it supports efficient, secure development while safeguarding your data and intellectual property.
+
+To use Conviso Secure Code, ensure that your Company Administrator has enabled a valid license for you. After that, **generate an API Key from the Security Feed**:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/quickstart/developer11.png)
+
+</div>
+
+Next, install the **Conviso Secure Code** extension in VS Code:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/quickstart/developer12.png)
+
+</div>
+
+Press **Ctrl + Shift + P** and select the option Conviso: **Add API Key**. Enter your **API Key** and press **Enter**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/quickstart/developer13.gif)
+
+</div>
+
+Now, open any file and **select a snippet of code you want to check for vulnerabilities**. Press **Ctrl + L** to analyze it. The results will then be displayed:
+
+If you want to apply the suggested fix, confirm the correction, copy the updated code snippet, and replace the vulnerable code segment:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/quickstart/developer14.gif)
+
+</div>
+
+With Conviso Secure Code, you'll gain valuable insights and practical knowledge on how to write safer code. This not only strengthens your skills but also ensures the development of secure and reliable applications.
 
 ## Next Steps
 Congratulations on taking your first steps with the Conviso Platform! By following the guide above, you have gained insight into some of the core features that empower you to maintain a strong and proactive security posture in your development workflow.
