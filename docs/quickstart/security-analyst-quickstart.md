@@ -31,7 +31,7 @@ In the Security Feed, you can observe information such as the company's Risk Sco
 
 To stay updated on everything happening in the Conviso Platform, you can enable notifications to be alerted as soon as a vulnerability is identified or fixed, when an Asset is created, when there is a change in an Asset's Risk Score, or when you receive a new message from the Security Expert. This can be set up through tools like Slack and Microsoft Teams, but you can also receive notifications via email or directly on the Conviso Platform.
 
-By enabling notifications, a Security Champion can quickly respond to emerging security concerns, monitor the status of critical assets in real time, and ensure that the development team is aware of and can address security issues efficiently, fostering proactive and continuous application security.
+By enabling notifications, a Security Analyst can quickly respond to emerging security concerns, monitor the status of critical assets in real time, and ensure that the development team is aware of and can address security issues efficiently, fostering proactive and continuous application security.
 
 [Click here](../../integrations/integrations_intro#communication-and-notification) to enable notifications through integrations or [click here](https://app.convisoappsec.com/spa/user/notifications-center) to activate email/in-app notifications.
 
@@ -57,13 +57,13 @@ From the Asset details page, you can [schedule a DAST execution](../security-sca
 
 ## Understanding Risk Score
 
-The Risk Score on Conviso Platform is a crucial metric that enables Security Champions to prioritize and address potential security issues effectively. It evaluates the risk of each Asset by analyzing key factors: Business Impact, Threats, Attack Surface, and Data Classification.
+The Risk Score on Conviso Platform is a crucial metric that enables Security Analysts to prioritize and address potential security issues effectively. It evaluates the risk of each Asset by analyzing key factors: Business Impact, Threats, Attack Surface, and Data Classification.
 - Business Impact reflects the criticality of an Asset, determined by indicators such as developer activity.
 - Threats represent the active vulnerabilities associated with the Asset.
 - Attack Surface assesses the exposure level, considering if the Asset is accessible over the internet.
 - Data Classification identifies whether the Asset handles sensitive data, like PII.
 
-With this comprehensive view, Security Champions can understand the overall security posture, track changes over time, and focus on actions to mitigate risks. The visibility of top high-risk and improving Assets, along with guidance on how to reduce risk, supports efficient and informed decision-making.
+With this comprehensive view, Security Analysts can understand the overall security posture, track changes over time, and focus on actions to mitigate risks. The visibility of top high-risk and improving Assets, along with guidance on how to reduce risk, supports efficient and informed decision-making.
 
 ## View Vulnerability Information on the Platform
 
@@ -241,7 +241,7 @@ The Conviso Platform Dashboard offers three distinct views:
 #### AppSec Posture
 This dashboard displays information about the Risk Score and MTTR (Mean Time to Remediate). It shows the company’s current status and tracks changes over time, based on the applied filters. With this data, you can monitor the overall health of your organization’s application security and identify trends or areas requiring immediate attention.
 
-This view enables Security Champions to gain insights into how risk is evolving across the organization and helps them advocate for improvements. By understanding both the current security posture and historical performance, they can prioritize efforts and guide their teams in reducing risk efficiently.
+This view enables Security Analysts to gain insights into how risk is evolving across the organization and helps them advocate for improvements. By understanding both the current security posture and historical performance, they can prioritize efforts and guide their teams in reducing risk efficiently.
 
 #### AppSec KPIs
 This dashboard provides information on:
@@ -254,7 +254,7 @@ This dashboard provides information on:
 
 With this information, you can measure your team’s progress in resolving vulnerabilities and understand where to focus remediation efforts.
 
-The AppSec KPIs view empowers Security Champions by providing concrete metrics that help track the effectiveness of security initiatives. It offers visibility into how well vulnerabilities are being managed and resolved, helping Champions to drive accountability and improvement in secure development practices.
+The AppSec KPIs view empowers Security Analysts by providing concrete metrics that help track the effectiveness of security initiatives. It offers visibility into how well vulnerabilities are being managed and resolved, helping Champions to drive accountability and improvement in secure development practices.
 
 #### Secure Code Metrics
 If you have Secure Code licenses, this dashboard helps you understand how developers are leveraging the feature. It displays information such as:
@@ -267,7 +267,7 @@ If you have Secure Code licenses, this dashboard helps you understand how develo
 
 With this data, you can measure developer engagement and the impact of secure coding practices.
 
-This view provides Security Champions with insights into the effectiveness of secure coding efforts within the team. It highlights proactive measures taken by developers and celebrates key contributors, encouraging a culture of security awareness and continuous improvement. This helps Champions support and guide developers in building secure software from the ground up.
+This view provides Security Analysts with insights into the effectiveness of secure coding efforts within the team. It highlights proactive measures taken by developers and celebrates key contributors, encouraging a culture of security awareness and continuous improvement. This helps Champions support and guide developers in building secure software from the ground up.
 
 [Click here](../platform/dashboard.md) to view more information about the Conviso Platform Dashboard.
 
