@@ -11,7 +11,7 @@ image: '/static/img/quickstartseo.png'
 
 Conviso Platform offers a practical and integrated experience to track the full application security lifecycle. From vulnerability creation to resolution, the platform streamlines continuous risk detection, tracking, and remediation. With notifications in communication tools like Slack and Teams, integration with defect tracking systems, and a detailed view of assets and the SBOM (Software Bill of Materials), developers gain full visibility and control over application vulnerabilities. This empowers development teams to work efficiently and consistently, strengthening their ability to build secure applications.
 
-Follow the steps below to gain a practical and integrated experience with the features that will be most present in your daily workflow as a developer.
+Follow the steps below to gain a practical and integrated experience with the features that will be most present in your daily workflow as a security champion.
 
 ## Who is a Security Champion?
 
