@@ -107,7 +107,7 @@ To set up the Conviso Platform, follow these steps:
 4. Fill out the form with the corresponding information obtained previously. Enter the domain name and all domain aliases used by your organization to log in at the **Authorized Domains** field. Click the Save button after completing the form to save your SSO configuration.
 - **Authorized Domains example: company.com**
 
-<div style={{textAlign: 'center', maxWidth: '60%'}}>
+<div style={{textAlign: 'center'}}>
 
 [![img](../../static/img/entra-id-img8.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
@@ -159,6 +159,45 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 </div>
 
 Finally, you can view the Microsoft Entra ID users with access to the Conviso Platform.
+
+:::note
+Users must be invited to the Conviso Platform beforehand to be able to log in.
+:::
+
+
+## Setup Group Mapping Integration
+
+To enable integration with group mapping support in Entra ID, follow the steps below:
+
+1. Within the Conviso Platform SSO application, ensure that the fields highlighted below are created.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/entra-id-img14.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+2. Assign users to the Entra ID group.
+
+3. [Create a Team](../platform/user-management.md) in the Conviso Platform, specifying the desired Profile and Access Type for the group's users.
+
+4. Retrieve the Entra ID group ID.
+
+5. In the Entra ID integration page within the Conviso Platform, select the Team you created and associate it with the Entra ID group ID.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/entra-id-img15.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+6. Click **Save**.
+
+This setup simplifies user management, as permissions and access will be managed through the Team, while users are managed via Entra ID.
+
+:::note
+Users must be invited to the Conviso Platform beforehand to be able to log in.
+:::
 
 You are now ready to go. To log in again with an email from the domain specified in the integration, use the **SSO Access** option on the [Conviso Platform website](https://app.convisoappsec.com/).
 
