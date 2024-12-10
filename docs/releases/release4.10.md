@@ -22,7 +22,7 @@ Release date: December 10th, 2024
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/platform/risk-context-prioritization-funnel-view.png)
+![img](../../static/img/release410-risk-context-prioritization-funnel-view.png)
 
 </div>
 
@@ -66,7 +66,7 @@ Check the documentation [here](../integrations/clickup)
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/release410-quick-start.png)
+![img](../../static/img/release410-quick-start.gif)
 
 </div>
 
