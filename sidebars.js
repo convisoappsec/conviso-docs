@@ -154,6 +154,7 @@ module.exports = {
         'platform/policies',
         'platform/projects',
         'platform/requirements',
+        'platform/risk-context-funnel',
         'platform/security-expert',
         'platform/security-feed',
         'platform/threat-modeling',
