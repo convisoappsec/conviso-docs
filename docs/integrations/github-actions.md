@@ -1,7 +1,7 @@
 ---
 id: github-actions
 title:  Integrating Conviso Platform with Github Actions 
-sidebar_label: Githubs Action Integration
+sidebar_label: Githubs Action
 description:  With the Conviso platform integrated with Github Actions in your CI/CD pipeline, you can automate and streamline your security processes. Know more!
 keywords: [Github Actions]
 ---
@@ -131,6 +131,14 @@ jobs:
 ```
 
 **[Unlock the full potential of your Application Program with Conviso Platform integrations. Visit our Integration page now to get started.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
+
+## Troubleshooting
+
+### Enabling External Actions for GitHub Actions
+
+If you encounter issues running workflows that rely on external actions, such as `actions/checkout`, ensure that your account or repository's settings allow the use of external actions. 
+More information [here](https://docs.github.com/en/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise)
+
 
 ## Support
 
