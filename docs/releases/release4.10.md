@@ -32,7 +32,7 @@ We’re excited to announce the launch of the Risk Context Prioritization Funnel
 This feature evaluates vulnerabilities across critical factors such as severity, business impact, exposure, and sensitivity of data. By incorporating these dimensions, the Risk Context Funnel ensures that resources are focused where they matter most, aligning remediation efforts with organizational priorities and reducing overall risk.
 
 Start using the Risk Context Prioritization Funnel today to take your vulnerability management to the next level!
-More information [here](../platform/risk-context-funnel).
+More information [here](../../platform/risk-context-funnel).
 <br></br><br></br>
 
 
@@ -55,7 +55,7 @@ New vulnerabilities identified in Conviso Platform are created in real time dire
 With our two-way integration capability, every status update from both solutions are automatically
 updated in order to reduce the toil and increase developers productivity.
 
-Check the documentation [here](../integrations/clickup)
+Check the documentation [here](../../integrations/clickup)
 <br></br><br></br>
 
 
