@@ -6,6 +6,9 @@ description:  Azure Pipelines is a CI/CD module of the Azure DevOps platform; le
 keywords:   [Azure Pipelines Graph Mode Integration]
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-pipelines.png)
@@ -24,7 +27,15 @@ In order for the experience with Conviso's services to be complete, it is necess
 
 1. Hosted Agent Pool (Ubuntu 22.04 or higher) with Docker installed or Agent Cloud Azure;
 
-2. External access (can be limited to Conviso's registry for SAST, Dockerhub and Conviso Platform).
+2. [Script access to the OAuth token enabled](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/options?view=azure-devops#allow-scripts-to-access-the-oauth-token):
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-pipelines-graph-mode4.png)
+
+</div>
+
+3. External access (can be limited to Conviso's registry for AST, Dockerhub and Conviso Platform).
 
 ## First Steps
 
@@ -50,11 +61,24 @@ Given an Azure Devops project, to create a Welcome Pipeline you can follow the s
 
 10. To configure Conviso AST, within the script field, add the code snippet presented below:
 
-```yml
-echo "Installing Conviso CLI..."
-sudo pip3 install conviso-cli
-conviso -k $(CONVISO_API_KEY) ast run
-```
+<Tabs>
+    <TabItem value="windows" label="Windows Agent">
+        ```bash
+        echo "Installing Conviso CLI..."
+        pip3 install conviso-cli
+        conviso -k $(CONVISO_API_KEY) ast run
+        ```
+    </TabItem> 
+
+    <TabItem value="linux" label="Linux Agent">
+        ```bash
+        echo "Installing Conviso CLI..."
+        sudo pip3 install conviso-cli
+        conviso -k $(CONVISO_API_KEY) ast run
+        ```
+    </TabItem> 
+</Tabs>
+
 
 11. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
 
@@ -102,5 +126,29 @@ Follow these steps to verify and update it:
 </div>
 
 5. Restart the agent service.
+
+### Allowing Script Access to the OAuth Token
+
+If you encounter the following error, it indicates that the script does not have access to the OAuth token:
+
+```
+Error: Cmd('git') failed due to: exit code(128)
+    cmdline: git fetch --unshallow
+    stderr: 'fatal: could not read user Password for 'https://organization@dev.azure.com': terminal prompts disabled' 
+```
+
+To resolve this issue, follow these steps:
+
+1. Open the Agent job configuration in your pipeline settings.
+
+2. Under **Additional options**, select the checkbox labeled [**Allow scripts to access the OAuth token**](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/options?view=azure-devops#allow-scripts-to-access-the-oauth-token):
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-pipelines-graph-mode4.png)
+
+</div>
+
+3. Save the changes and rerun the pipeline.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
