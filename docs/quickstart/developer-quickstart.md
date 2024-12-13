@@ -13,129 +13,16 @@ Conviso Platform offers a practical and integrated experience to track the full 
 
 Follow the steps below to gain a practical and integrated experience with the features that will be most present in your daily workflow as a developer.
 
-## How to Bring Vulnerabilities into the Conviso Platform
+## How to Bring your Applications into the Conviso Platform
 
-To bring vulnerabilities into the Conviso Platform, different approaches can be taken:
-- Execution of Conviso AST via [CLI](../cli/ast.md) or [CI/CD tool](../integrations/integrations_intro#conviso-platform-cicd-integration);
-- Integration with an [External Scanner](../../integrations/integrations_intro/) (e.g., Checkmarx, Dependency-Track, Fortify, SonarQube, SonarCloud);
-- Execution of [Conviso DAST](../security-suite/conviso-dast/conviso-dast.md);
-- Importing vulnerabilities from a [SARIF file](../cli/findings.md);
-- Manual registration of vulnerabilities.
+To begin using the Conviso Platform effectively, you’ll need to onboard your applications. Here are two main approaches, tailored to your requirements:
 
-## Create a Vulnerability Using Conviso AST
+- Execution of [Conviso AST](./bring-applications#performing-conviso-ast);
+- Integration with an [External Scanner](./bring-applications#) (e.g., Checkmarx, Dependency-Track, Fortify, SonarQube, SonarCloud).
 
-Your journey on the platform will begin the moment a vulnerability is created. To do this, let’s create a vulnerability. You can achieve this by copying the code below and pasting it into your IDE in a new file named "vulnerable.js":
+## Receiving Security Notifications
 
-```js
-const SECRET = 'my-secret';
-```
-
-With the vulnerability added to the code, simply commit your code to trigger the analysis by Conviso AST. At this point, your company has likely already set up the scan to run in the pipeline, but an example YAML for GitHub Actions is shown below:
-
-```yaml
-name: CI
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  conviso-ast:
-    runs-on: ubuntu-latest
-    container:
-      image: convisoappsec/convisocli
-      env:
-        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Run AST
-        run: conviso ast run --vulnerability-auto-close
-```
-
-The code above is responsible for executing Conviso AST, which performs SAST, SCA, IaC analysis, secret detection, and generates the SBOM. You can find examples of other tools [here](../integrations/integrations_intro.md#conviso-platform-cicd-integration).
-
-## Observe Scan Execution
-
-Whenever Conviso AST runs, you can monitor its results through the log. From there, you can see how many SAST, SCA, and IaC vulnerabilities were found in that specific scan, how many vulnerabilities have been fixed, and track how many were resolved in the current execution.
-
-```code
-Run conviso ast run --vulnerability-auto-close
-✅ Asset found...
-✅ AST Project found...
-Creating new deploy...
-warning: Creating diff comparing revision[44c391c7475fa19221ceb8362808da72fe89c1ed] and the repository beginning
-warning: Creating diff stats comparing revision[44c391c7475fa19221ceb8362808da72fe89c1ed] and the repository beginning
-Deploy stats:
-  current_version.commit=44c391c7475fa19221ceb8362808da72fe89c1ed
-  current_version.tag=None
-  previous_version.commit=4b825dc642cb6eb9a060e54bf8d69288fbee4904
-  previous_version.tag=None
-        
-Running SAST on deploy ID "131458"...
-Checking SASTBox authorization...
-Starting SAST scan diff...
-[*] Preparing Codebase...
-Result saved to /tmp/prepare-codebase.20241110_192606.json
-[*] Running fingerprint
-Result saved to /tmp/fingerprint.20241110_192606.json
-[*] Technologies detected:
-    javascript,unknown
-[*] Installing scanners, waiting ...
-[*] Running app_inspector
-    Sarif result saved to /tmp/app_inspector.20241110_192634.sarif
-[*] Finished app_inspector
-[*] Running secrets_scanner_gitleaks
-    Sarif result saved to /tmp/secrets_scanner_gitleaks.20241110_192635.sarif
-[*] Finished secrets_scanner_gitleaks
-[*] Running nodejs_scanner_njsscan
-    Sarif result saved to /tmp/nodejs_scanner_njsscan.20241110_192635.sarif
-[*] Finished nodejs_scanner_njsscan
-[*] Aggregating results from scanners...
-[*] Running SastBox SARIF aggregator...
-    Sarif result saved to /tmp/aggregator.20241110_192637.sarif
-[*] Doing postscan analysis...
-[*] Starting analysis on /tmp/aggregator.20241110_192637.sarif...
-[*] Stats:
-    Scanner app_inspector                 :     0 issue(s) found
-    Scanner nodejs_scanner_njsscan        :     1 issue(s) found
-    Scanner secrets_scanner_gitleaks      :     0 issue(s) found
-    Total issue(s) found                  :     1
-[*] Starting dedup process...
-    No duplicated entries found
-SastBoxV1 compatible result saved to /tmp/output.json
-Result saved to /tmp/output.sarif
-Time elapsed: 00:00:31
-SAST scan diff done.
-💬 0 issue(s) ignored due to duplication.
-/tmp/tmpkhf9g06d/tmp/output.json
-Running SCA on deploy ID "131458"...
-💬 Preparing Environment...
-💬 Starting SCA...
-   Scanner osv_scanner is running.
-💬 Processing Results...
-Sending data to the Conviso Platform...
-💬 0 issue(s) ignored due to duplication.
-✅ SCA Scan Finished.
-💬 Generating SBOM file...
-✅ SBOM file generated successfully!
-💬 Sending SBOM to the Conviso Platform...
-✅ SBOM file sent successfully!
-Running IAC on deploy ID "131458"...
-💬 Preparing Environment...
-💬 Starting IaC...
-   Scanner iac_scanner_checkov is running.
-💬 Processing Results...
-💬 0 Issue/Issues ignored due to duplication.
-✅ IaC Scan Finished.
-```
-
-If any issues arise during the scan execution, they will also be visible in the log. Should this happen, please contact our support team to have the issue resolved.
-
-## Observe the vulnerability notification on Slack/Teams
-
-To help users stay aware of risks associated with the company, Conviso Platform provides integration with Slack and Microsoft Teams for sending notifications. For instance, when a vulnerability has just been created, you can be alerted about this event in one of the mentioned tools. Below is an example of how the vulnerability notification appears in Slack:
+To help users stay informed about risks associated with their company, the Conviso Platform integrates with Slack and Microsoft Teams for sending notifications. Additionally, it allows notifications to be sent via email and directly within the Conviso application. For example, when a vulnerability is identified, you will receive an alert through one of these channels. Below is an example of how a vulnerability notification appears in Slack:
 
 <div style={{textAlign: 'center'}}>
 
@@ -143,9 +30,11 @@ To help users stay aware of risks associated with the company, Conviso Platform 
 
 </div>
 
-## View Vulnerability Information in a Defect Tracker Tool
+[Click here](../../integrations/integrations_intro#communication-and-notification) to enable notifications through integrations or [click here](https://app.convisoappsec.com/spa/user/notifications-center) to activate email/in-app notifications.
 
-Conviso Platform integrates with various Defect Tracking tools so that developers can access vulnerability details without disrupting their usual workflow. This allows for the automatic transfer of vulnerabilities from Conviso Platform to tools like Jira, Azure Boards, or Businessmap, ensuring seamless integration.
+## Sending Vulnerabilities Information to a Defect Tracker Tool
+
+Conviso Platform integrates with various Defect Tracking tools so that developers can access vulnerability details without disrupting their usual workflow. This allows for the automatic transfer of vulnerabilities from Conviso Platform to tools like Jira, Azure Boards, ClickUp, or Businessmap, ensuring seamless integration.
 
 Once a vulnerability is created in the Defect Tracking tool via Conviso Platform, a bidirectional communication system comes into play. If the status of the vulnerability is updated on Conviso Platform, the change will be reflected in the external tool immediately. Likewise, if the status is first modified in the external tool, the update will be promptly synchronized back to Conviso Platform.
 
@@ -224,6 +113,42 @@ This way, you can easily prioritize which vulnerabilities should be fixed. To do
 
 Once you've accessed the vulnerability, you can view general information such as description, solution, and references. Depending on the vulnerability type, you may also find the vulnerable code snippet, file name, and line number. Other types of vulnerabilities may display different details, like the request made to exploit the vulnerability and the server's response, for example.
 
+## Fix Vulnerability
+
+Once you understand how to address the vulnerability with support from the Conviso Platform, the next step is to identify the vulnerable file and line, which is information also provided by the platform. After that, simply apply the fix and follow your organization’s process for submitting code to the remote repository.
+
+At this stage, there are different paths depending on how the vulnerability was identified.
+
+### Vulnerability Identified by Conviso AST
+
+If the vulnerability was detected by Conviso AST, the next scan run will recognize the fix and automatically change the status of the vulnerability to **Fixed**.
+
+Ensure the command used to run the scan includes the `--vulnerability-auto-close` parameter.
+
+### Vulnerability Identified by Conviso DAST
+
+If the vulnerability was detected by Conviso DAST, the next scan run will similarly identify the fix and automatically update the status to **Fixed**.
+
+### Vulnerability Identified Manually (e.g., via pentest)
+
+If the vulnerability was found manually, such as during a pentest, you should change its status to Awaiting Validation. The Conviso security team will then retest the vulnerability to confirm whether it has been fully resolved or if it can still be exploited.
+
+If the vulnerability is indeed fixed, a Conviso specialist will update the status to **Fixed**. If it remains exploitable, it will revert to its previous status.
+
+### Vulnerability Identified by External Scanners
+
+If the vulnerability was found using an external scanner and imported into Conviso via integration, the external tool must confirm the fix. Once that happens, the next sync with Conviso Platform will update the status to **Fixed**.
+
+## Viewing Closed Vulnerability Notification
+
+Once a vulnerability has been fixed, you can receive a notification via Slack, Microsoft Teams, email, or directly on the Conviso Platform. Below is an example of how the closed vulnerability notification appears in Slack:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/quickstart/developer8.png)
+
+</div>
+
 ## View SBOM Information
 
 An SBOM (Software Bill of Materials) is a detailed list of all components, libraries, and dependencies used in an application. It is crucial for building secure applications as it helps identify potential vulnerabilities and ensures transparency in software composition.
@@ -246,41 +171,44 @@ Here, you can explore your Asset’s dependencies, including details like compon
 
 To learn more about Conviso SBOM, click [here](../security-suite/conviso-sbom/conviso-sbom.md).
 
-## Fix Vulnerability
+## Understanding the Dashboard
+The Conviso Platform Dashboard offers three distinct views:
+- AppSec Posture;
+- AppSec KPIs;
+- Secure Code Metrics.
 
-Once you understand how to address the vulnerability with support from the Conviso Platform, the next step is to identify the vulnerable file and line, which is information also provided by the platform. After that, simply apply the fix and follow your organization’s process for submitting code to the remote repository.
+### AppSec Posture
+This dashboard displays information about the Risk Score and MTTR (Mean Time to Remediate). It shows the company’s current status and tracks changes over time, based on the applied filters. With this data, you can monitor the overall health of your organization’s application security and identify trends or areas requiring immediate attention.
 
-At this stage, there are different paths depending on how the vulnerability was identified:
+This view enables Developers to gain insights into how risk is evolving across the organization and helps them advocate for improvements. By understanding both the current security posture and historical performance, they can prioritize efforts and guide their teams in reducing risk efficiently.
 
-### Vulnerability Identified by Conviso AST
+### AppSec KPIs
+This dashboard provides information on:
+- Open vulnerabilities;
+- Fixed vulnerabilities;
+- Vulnerabilities Over Time by Status;
+- Vulnerabilities Over Time by Severity;
+- Vulnerability by Severity;
+- Project by status.
 
-If the vulnerability was detected by Conviso AST, the next scan run will recognize the fix and automatically change the status of the vulnerability to **Fixed**.
+With this information, you can measure your team’s progress in resolving vulnerabilities and understand where to focus remediation efforts.
 
-Ensure the command used to run the scan includes the `--vulnerability-auto-close` parameter.
+The AppSec KPIs view empowers Developers by providing concrete metrics that help track the effectiveness of security initiatives. It offers visibility into how well vulnerabilities are being managed and resolved, helping Developers to drive accountability and improvement in secure development practices.
 
-### Vulnerability Identified by Conviso DAST
+### Secure Code Metrics
+If you have Secure Code licenses, this dashboard helps you understand how developers are leveraging the feature. It displays information such as:
+- Prevented Vulnerabilities;
+- Developer Engagement;
+- Top Prevented Vulnerability;
+- Top 3 Users;
+- Top 5 Prevented Vulnerabilities;
+- Prevented Vulnerabilities Over Time.
 
-If the vulnerability was detected by Conviso DAST, the next scan run will similarly identify the fix and automatically update the status to **Fixed**.
+With this data, you can measure developer engagement and the impact of secure coding practices.
 
-### Vulnerability Identified Manually (e.g., via pentest)
+This view provides Developers with insights into the effectiveness of secure coding efforts within the team. It highlights proactive measures taken by developers and celebrates key contributors, encouraging a culture of security awareness and continuous improvement. This helps Developersin building secure software from the ground up.
 
-If the vulnerability was found manually, such as during a pentest, you should change its status to Awaiting Validation. The Conviso security team will then retest the vulnerability to confirm whether it has been fully resolved or if it can still be exploited.
-
-If the vulnerability is indeed fixed, a Conviso specialist will update the status to **Fixed**. If it remains exploitable, it will revert to its previous status.
-
-### Vulnerability Identified by External Scanners
-
-If the vulnerability was found using an external scanner and imported into Conviso via integration, the external tool must confirm the fix. Once that happens, the next sync with Conviso Platform will update the status to **Fixed**.
-
-## Viewing Closed Vulnerability Notification on Slack/Teams
-
-Once a vulnerability has been fixed, you can receive a notification via Slack, Microsoft Teams, email, or directly on the Conviso Platform. Below is an example of how the closed vulnerability notification appears in Slack:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/quickstart/developer8.png)
-
-</div>
+[Click here](../platform/dashboard.md) to view more information about the Conviso Platform Dashboard.
 
 ## Conviso Secure Code
 
