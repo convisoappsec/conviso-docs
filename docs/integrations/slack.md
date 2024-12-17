@@ -12,7 +12,7 @@ sidebar_label: Slack
 
 ## Introduction
 
-The integration of Conviso Platform with the Slack tool aims to help monitor those who are managing activities and don't want to miss anything at the timeline. This integration generates 3 types of alerts directly in the channel of the development team or the manager, with the benefits listed below:
+The integration of Conviso Platform with the Slack tool aims to help monitor those who are managing activities and don't want to miss anything at the timeline. This integration generates 6 types of alerts directly in the channel of the development team or the manager, with the benefits listed below:
 
 1. When the Risk Score of an asset decreases, an alert is generated directly in the Slack channel;
 
