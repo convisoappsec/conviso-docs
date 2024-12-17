@@ -8,7 +8,14 @@ keywords: [Code Insights, application security, development, code]
 
 ## Introduction
 
-The **Code Insights** module in the Conviso Platform offers a powerful way to analyze your entire codebase, focusing on mapped assets in a secure virtual environment. This feature provides deep visibility into your code, identifying potential vulnerabilities, insecure coding practices, and areas for improvement. By leveraging Code Insights, you ensure that your application meets high security standards throughout its development lifecycle.
+The **Code Insights** module in the Conviso Platform offers a powerful way to analyze your entire codebase, focusing on inspecting assets in a secure virtual environment.
+This feature provides deep visibility into your code, being possible to analyze vulnerabilities based on the specific context of your asset.
+
+### Prerequisites
+
+Before you can use **Code Insights**, ensure that:
+
+- You have at least one asset integrated with [GitHub](../integrations/github.md) or [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)
 
 ## Usage
 
@@ -20,7 +27,11 @@ The **Code Insights** module helps you maintain a secure codebase by providing:
 
 ### Locate the Configured Asset
 
-To access **Code Insights**, locate the configured asset, navigate to **More Details > Code Insights**, and click **View**.
+To access **Code Insights**, locate the configured asset that has an integration with **GitHub** or **Conviso AST**, and navigate to **More Details > Code Insights**, and click **View**.
+
+:::note
+In the following example, the asset has integration with **GitHub**.
+:::
 
 ![img](../../static/img/platform/code-insights-01.png)
 
