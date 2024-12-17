@@ -129,6 +129,13 @@ module.exports = {
             'integrations/sonarqube',
           ]
         },
+        {
+          type: "category",
+          label: "Source Control",
+          items: [
+            'integrations/github',
+          ]
+        },
       ]
     },
     {
