@@ -2,13 +2,13 @@
 id: github
 title: GitHub Integration
 sidebar_label: GitHub
-description: You can inspect Code Insights with the Conviso Platform integrated into your GitHub. Know more!
+description: You can inspect Code Insights with the Conviso Platform integrated into your GitHub. Learn more!
 keywords: [GitHub Integration]
 ---
 
 <div style={{textAlign: 'center'}}>
 
-<!-- FIXME: @dsmlucas use image for github -->
+<!-- FIXME: @dsmlucas use image for GitHub -->
 
 [![img](../../static/img/gitlab.png "Image for GitHub")](https://bit.ly/3JyRdl8)
 
@@ -16,118 +16,110 @@ keywords: [GitHub Integration]
 
 ## Introduction
 
-The **Conviso Platform** integration with [GitHub](https://github.com/) allows you to seamlessly incorporate security checks into your software development lifecycle. By connecting your GitHub repositories to Conviso, you gain access to check code insights directly within the platform directly on a virtual environment. This integration enables continuous monitoring of your repositories, helping to identify vulnerabilities, insecure code patterns, and other risks without interrupting your development workflow.
+The **Conviso Platform** integration with [GitHub](https://github.com/) enables seamless integration of security checks into your development workflow. By connecting your GitHub repositories to the Conviso Platform, you can easily monitor and analyze code insights directly from within a secure virtual environment. This integration ensures continuous code inspection, identifying vulnerabilities, insecure coding practices, and other potential risks without disrupting your development process.
 
 ### Prerequisites
 
-Before you can use Conviso Platform with GitHub, you need to make sure that:
+Before you can use Conviso Platform with GitHub, ensure that:
 
-- Administrator access to your GitHub organization or repositories.
+- You have **administrator access** to your GitHub organization or repositories.
 
-This will allow you to grant access to the desired respositories.
+This permission allows you to grant Conviso the necessary access to the desired repositories.
 
-## Configure the integration between Conviso Platform and GitHub
+## Configuring the Integration Between Conviso Platform and GitHub
 
-Follow the instructions below to complete the integration setup.
+Follow these steps to configure the GitHub integration with Conviso Platform.
 
-### Step 1 - Select integration
+### Step 1 - Select the Integration
 
-Go to the integrations page, search for GitHub and then click "Connect".
+Navigate to the integrations page, search for **GitHub**, and click **Connect**.
 
 ![img](../../static/img/github/github-01.png)
 
 ### Step 2 - Authorize GitHub App
 
-In this step, you be able to click in "Authorize GitHub App" and then you be redirected to GitHub
-page to grant the needed permissions.
+Click **Authorize GitHub App**, which will redirect you to GitHub's authorization page where you can grant the required permissions.
 
 ![img](../../static/img/github/github-02.png)
 
 ### Step 3 - Select the Organization or Account
 
-In this step, you will see the organizations that you have access.
-This way, you can select the desired organization to move on and integrate with Conviso Platform.
+You will be presented with a list of organizations you have access to. Select the desired organization to proceed with the integration.
 
 ![img](../../static/img/github/github-03.png)
 
-In this case we will use **lab-example** as an example.
+### Step 4 - Grant Access to Repositories
 
-### Step 4 - Grant access to the desired resources
-
-In this step, you be able to select **All repositories** or **Only select repositories**
-to grant access manually to the repositories.
+You can now choose whether to grant access to **All repositories** or manually select specific repositories by choosing **Only select repositories**.
 
 ![img](../../static/img/github/github-04.png)
 
-After you grant access, you will be redirected to **Conviso Platform**.
+After granting access, you will be redirected to the **Conviso Platform**.
 
 ![img](../../static/img/github/github-05.png)
 
-After redirect, click on **Continue** to save the integration and proceed to the next step.
+Once redirected, click **Continue** to save the integration and proceed.
 
 :::info
-You will be notified with a success message "Integration saved successfully".
+A success message, "Integration saved successfully," will confirm the integration is complete.
 :::
 
-### Step 5 - Configure asset mapping
+### Step 5 - Configure Asset Mapping
 
-In this step, after click on **Add** you be able to map the **Conviso Platform** asset based on **GitHub** repository.
+Click **Add** to map a **Conviso Platform** asset to a **GitHub** repository.
 
 ![img](../../static/img/github/github-06.png)
 
-Here, you can select the asset and the repository:
+Select the asset and the corresponding repository:
+
 ![img](../../static/img/github/github-07.png)
 
-### Step 6 - Check configuration mappings
+### Step 6 - Verify Configuration Mappings
 
-After execute the previous steps, you can see the configured assets similar to:
+After completing the previous steps, you can view your configured assets:
 
 ![img](../../static/img/github/github-08.png)
 
 ## Usage
 
-The GitHub integration provides the following resources:
+The GitHub integration provides the following key resources:
 
 - [Code Insights](#code-insights)
 
 ### Code Insights
 
-The **Code Insights** module allows you to thoroughly analyze your entire codebase,
-focusing on the mapped assets within a secure virtual environment.
-This module provides deep visibility into your code, identifying potential vulnerabilities,
-insecure coding practices, and areas for improvement.
-By leveraging this feature, you can ensure your application meets high-security standards throughout its development lifecycle.
+The **Code Insights** module offers a comprehensive analysis of your entire codebase, focusing on the mapped assets in a secure virtual environment. This module provides deep insights into your code, identifying potential vulnerabilities, unsafe coding patterns, and areas for improvement. By using this feature, you ensure that your application maintains high security standards throughout its development lifecycle.
 
-### Locate the configured asset
+### Locate the Configured Asset
 
-First, you need to locate the configured asset and search for the option **More Details > Code Insights** and click on **View**
+To access the **Code Insights**, first locate the configured asset and navigate to **More Details > Code Insights**. Then click **View**.
 
 ![img](../../static/img/github/github-09.png)
 
-After click, this dialog will be showed, then you can click on **Start a virtual environment**:
+After clicking **View**, a dialog box will appear where you can initiate the process by clicking **Start a virtual environment**:
 
 ![img](../../static/img/github/github-10.png)
 
-Now, you will wait until the environment be provided:
+Wait until the virtual environment is provisioned:
 
 ![img](../../static/img/github/github-11.png)
 
 ### Accessing Code Insights
 
-After the environment be ready, you be able to access through the **link** and **password**:
+Once the environment is ready, you will receive a **link** and **password** to access it:
 
 ![img](../../static/img/github/github-12.png)
 
-After accessing the link, a new tab will open with the following:
+After accessing the link, a new tab will open, displaying the following:
 
 ![img](../../static/img/github/github-13.png)
 
-After paste the **password** available on previous dialog, the repository will be ready on the virtual environment:
+Enter the **password** provided in the previous dialog, and your repository will be fully accessible in the virtual environment:
 
 ![img](../../static/img/github/github-14.png)
 
 ## Support
 
-If you have any questions or need help using our product, please don't hesitate to contact our support team.
+If you have any questions or need assistance using our product, feel free to contact our support team.
 
 **[Unlock the full potential of your Application Program with Conviso Platform integrations. Visit our Integration page now to get started.](https://bit.ly/3NzvomE)**
