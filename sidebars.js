@@ -157,6 +157,7 @@ module.exports = {
         'platform/asset-management',
         'platform/attachments',
         'platform/credentials',
+        'platform/code-insights',
         'platform/dashboard',
         'platform/policies',
         'platform/projects',

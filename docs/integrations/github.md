@@ -2,15 +2,13 @@
 id: github
 title: GitHub Integration
 sidebar_label: GitHub
-description: You can inspect Code Insights with the Conviso Platform integrated into your GitHub. Learn more!
+description: Learn how to integrate GitHub with Conviso Platform.
 keywords: [GitHub Integration]
 ---
 
 <div style={{textAlign: 'center'}}>
 
-<!-- FIXME: @dsmlucas use image for GitHub -->
-
-[![img](../../static/img/gitlab.png "Image for GitHub")](https://bit.ly/3JyRdl8)
+[![img](../../static/img/github/github-00.png "Image for GitHub")](https://bit.ly/3JyRdl8)
 
 </div>
 
@@ -79,44 +77,6 @@ Select the asset and the corresponding repository:
 After completing the previous steps, you can view your configured assets:
 
 ![img](../../static/img/github/github-08.png)
-
-## Usage
-
-The GitHub integration provides the following key resources:
-
-- [Code Insights](#code-insights)
-
-### Code Insights
-
-The **Code Insights** module offers a comprehensive analysis of your entire codebase, focusing on the mapped assets in a secure virtual environment. This module provides deep insights into your code, identifying potential vulnerabilities, unsafe coding patterns, and areas for improvement. By using this feature, you ensure that your application maintains high security standards throughout its development lifecycle.
-
-### Locate the Configured Asset
-
-To access the **Code Insights**, first locate the configured asset and navigate to **More Details > Code Insights**. Then click **View**.
-
-![img](../../static/img/github/github-09.png)
-
-After clicking **View**, a dialog box will appear where you can initiate the process by clicking **Start a virtual environment**:
-
-![img](../../static/img/github/github-10.png)
-
-Wait until the virtual environment is provisioned:
-
-![img](../../static/img/github/github-11.png)
-
-### Accessing Code Insights
-
-Once the environment is ready, you will receive a **link** and **password** to access it:
-
-![img](../../static/img/github/github-12.png)
-
-After accessing the link, a new tab will open, displaying the following:
-
-![img](../../static/img/github/github-13.png)
-
-Enter the **password** provided in the previous dialog, and your repository will be fully accessible in the virtual environment:
-
-![img](../../static/img/github/github-14.png)
 
 ## Support
 
