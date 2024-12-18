@@ -1,7 +1,7 @@
 ---
 id: github-actions
 title:  Integrating Conviso Platform with Github Actions 
-sidebar_label: Githubs Action
+sidebar_label: GitHub Actions
 description:  With the Conviso platform integrated with Github Actions in your CI/CD pipeline, you can automate and streamline your security processes. Know more!
 keywords: [Github Actions]
 ---
@@ -130,15 +130,50 @@ jobs:
      run: conviso sca run
 ```
 
-**[Unlock the full potential of your Application Program with Conviso Platform integrations. Visit our Integration page now to get started.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
+## Manually Triggering the Workflow
+
+In addition to automated triggers, GitHub Actions workflows can be executed manually. This is particularly useful for running specific tests or scans on demand. Below are the steps to enable and use this feature:
+
+### Configuring the Workflow for Manual Execution
+
+To allow manual execution of the workflow, you need to add the `workflow_dispatch` event to your .yml configuration file. Here's an example:
+
+```yml
+name: CI
+on:
+  workflow_dispatch:
+
+jobs:
+  conviso-ast:
+    runs-on: ubuntu-latest
+    container:
+      image: convisoappsec/convisocli
+      env:
+        CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run AST
+        run: conviso ast run
+```
+
+### Running the Workflow Manually
+
+1. Navigate to your GitHub repository.
+2. Click on the Actions tab at the top of the repository page.
+3. Select the workflow you want to run from the list on the left.
+4. Click the Run workflow button at the top right of the page.
+5. Choose the branch or parameters (if applicable) and confirm.
+
+After following these steps, the workflow will start executing.
 
 ## Troubleshooting
 
 ### Enabling External Actions for GitHub Actions
 
 If you encounter issues running workflows that rely on external actions, such as `actions/checkout`, ensure that your account or repository's settings allow the use of external actions. 
-More information [here](https://docs.github.com/en/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise)
+More information [here](https://docs.github.com/en/enterprise-cloud@latest/admin/enforcing-policies/enforcing-policies-for-your-enterprise).
 
+**[Unlock the full potential of your Application Program with Conviso Platform integrations. Visit our Integration page now to get started.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
 ## Support
 
