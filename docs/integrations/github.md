@@ -20,7 +20,7 @@ This integration ensures continuous code inspection, identifying vulnerabilities
 
 ### Prerequisites
 
-Before you can use Conviso Platform with GitHub, ensure that:
+Before you can use the Conviso Platform with GitHub, ensure that:
 
 - You have **administrator access** to your GitHub organization or repositories.
 
