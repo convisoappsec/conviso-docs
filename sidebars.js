@@ -129,6 +129,13 @@ module.exports = {
             'integrations/sonarqube',
           ]
         },
+        {
+          type: "category",
+          label: "Source Control",
+          items: [
+            'integrations/github',
+          ]
+        },
       ]
     },
     {
@@ -150,6 +157,7 @@ module.exports = {
         'platform/asset-management',
         'platform/attachments',
         'platform/credentials',
+        'platform/code-insights',
         'platform/dashboard',
         'platform/policies',
         'platform/projects',
