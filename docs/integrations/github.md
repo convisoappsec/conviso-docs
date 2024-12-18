@@ -14,7 +14,7 @@ keywords: [GitHub Integration]
 
 ## Introduction
 
-The **Conviso Platform** integration with [GitHub](https://github.com/) enables seamless integration into your development workflow.
+The **Conviso Platform** integration with [GitHub](https://github.com/) enables seamless incorporation into your development workflow.
 By connecting your GitHub repositories to the Conviso Platform, you can easily monitor and analyze code insights directly from within a secure virtual environment.
 This integration ensures continuous code inspection, identifying vulnerabilities, insecure coding practices, and other potential risks without disrupting your development process.
 
