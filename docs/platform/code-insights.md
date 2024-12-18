@@ -9,7 +9,7 @@ keywords: [Code Insights, application security, development, code]
 ## Introduction
 
 The **Code Insights** module in the Conviso Platform offers a powerful way to analyze your entire codebase, focusing on inspecting assets in a secure virtual environment.
-This feature provides deep visibility into your code, being possible to analyze vulnerabilities based on the specific context of your asset.
+This feature provides deep visibility into your code, allowing you to analyze vulnerabilities based on the specific context of your asset.
 
 ### Prerequisites
 
