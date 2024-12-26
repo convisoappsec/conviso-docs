@@ -220,7 +220,14 @@ module.exports = {
               type: "category",
               label: "References",
               items: sidebarSchema.schemaSidebar
-            }
+            },
+            {
+              type: "category",
+              label: "Examples",
+              items: [
+                'api/graphql/examples/how-to-retrieve-assets',
+              ]
+            },
           ]
         },
       ]
