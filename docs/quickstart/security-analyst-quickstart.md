@@ -1,9 +1,9 @@
 ---
 id: security-analyst-quickstart
-title: First steps with the Conviso Platform
+title: First steps with the Conviso Platform as a Security Analyst
 sidebar_label: Security Analyst Quickstart
 description:  You are about to take your first steps with the Conviso Platform and start a new experience with secure development. Let's go!
-keywords:  [First steps with the Conviso Platform]
+keywords:  [Quickstart, Security Analyst]
 image: '/static/img/quickstartseo.png'
 ---
 
