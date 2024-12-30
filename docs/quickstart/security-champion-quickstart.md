@@ -1,9 +1,9 @@
 ---
 id: security-champion-quickstart
-title: First steps with the Conviso Platform
+title: First Steps with the Conviso Platform as a Security Champion
 sidebar_label: Security Champion Quickstart
 description:  You are about to take your first steps with the Conviso Platform and start a new experience with secure development. Let's go!
-keywords:  [First steps with the Conviso Platform]
+keywords:  [Quickstart, Security Champion]
 image: '/static/img/quickstartseo.png'
 ---
 
