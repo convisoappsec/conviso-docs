@@ -1,9 +1,9 @@
 ---
 id: manager-quickstart
-title: First steps with the Conviso Platform
+title: First steps with the Conviso Platform as a Manager
 sidebar_label: Manager Quickstart
 description:  You are about to take your first steps with the Conviso Platform and start a new experience with secure development. Let's go!
-keywords:  [First steps with the Conviso Platform]
+keywords:  [Quickstart, Manager]
 image: '/static/img/quickstartseo.png'
 ---
 
