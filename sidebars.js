@@ -226,6 +226,12 @@ module.exports = {
               label: "Examples",
               items: [
                 'api/graphql/examples/how-to-retrieve-assets',
+                'api/graphql/examples/how-to-retrieve-issues',
+                'api/graphql/examples/how-to-retrieve-fixed-issues-in-a-month',
+                'api/graphql/examples/how-to-retrieve-users-invited-to-my-company',
+                'api/graphql/examples/how-to-synchronize-vulnerabilities-with-defect-tracking-tool',
+                'api/graphql/examples/how-to-retrieve-an-assets-risk-score-history',
+                'api/graphql/examples/how-to-retrieve-an-assets-sbom'
               ]
             },
           ]
