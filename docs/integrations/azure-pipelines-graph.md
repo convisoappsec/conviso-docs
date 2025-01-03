@@ -64,9 +64,9 @@ sudo pip3 install conviso-cli
 conviso -k $(CONVISO_API_KEY) ast run
 ```
 
-1.  Click at **Save & Queue**. The pipeline execution will begin in a few moments.
+11.  Click at **Save & Queue**. The pipeline execution will begin in a few moments.
 
-2.  The resulsts will be sent to Conviso Platform.
+12.  The results will be sent to Conviso Platform.
 
 ## Troubleshooting
 
