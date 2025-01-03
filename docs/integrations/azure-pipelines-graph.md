@@ -6,9 +6,6 @@ description:  Azure Pipelines is a CI/CD module of the Azure DevOps platform; le
 keywords:   [Azure Pipelines Graph Mode Integration]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-pipelines.png)
@@ -61,24 +58,13 @@ Given an Azure Devops project, to create a Welcome Pipeline you can follow the s
 
 10. To configure Conviso AST, within the script field, add the code snippet presented below:
 
-<Tabs>
-    <TabItem value="windows" label="Windows Agent">
-        ```bash
-        echo "Installing Conviso CLI..."
-        pip3 install conviso-cli
-        conviso -k $(CONVISO_API_KEY) ast run
-        ```
-    </TabItem> 
-
-    <TabItem value="linux" label="Linux Agent">
-        ```bash
-        echo "Installing Conviso CLI..."
-        sudo pip3 install conviso-cli
-        conviso -k $(CONVISO_API_KEY) ast run
-        ```
-    </TabItem> 
-</Tabs>
-
+```bash
+echo "Installing Conviso CLI..."
+sudo pip3 install conviso-cli
+echo "Installing Syft"
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+conviso -k $(CONVISO_API_KEY) ast run --vulnerability-auto-close
+```
 
 11. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
 
