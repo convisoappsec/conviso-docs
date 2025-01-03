@@ -12,7 +12,7 @@ The following GraphQL query can be used to synchronize vulnerabilities with defe
 
 ```graphql
 mutation {
-  syncVulnerabilityWithDefectTracker(input: {id: ISSUE_ID}) {
+  syncVulnerabilityWithDefectTracker(input: {id: <ISSUE_ID>}) {
     issue {
       id
     }
@@ -27,7 +27,7 @@ mutation {
   "data": {
     "syncVulnerabilityWithDefectTracker": {
       "issue": {
-        "id": "ISSUE_ID"
+        "id": "2032807"
       }
     }
   }

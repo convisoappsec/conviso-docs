@@ -12,7 +12,7 @@ The following GraphQL query can be used to retrieve an asset's risk score histor
 
 ```graphql
 {
-  riskScoreOverTime(companyId: "COMPANY_ID", params: {assetIds: ["ASSET_ID"], startDate: "2024-01-01", endDate: "2025-12-31"}) {
+  riskScoreOverTime(companyId: "<COMPANY_ID>", params: {assetIds: ["<ASSET_ID>"], startDate: "2024-01-01", endDate: "2025-12-31"}) {
     date
     value
   }

@@ -231,7 +231,8 @@ module.exports = {
                 'api/graphql/examples/how-to-retrieve-users-invited-to-my-company',
                 'api/graphql/examples/how-to-synchronize-vulnerabilities-with-defect-tracking-tool',
                 'api/graphql/examples/how-to-retrieve-an-assets-risk-score-history',
-                'api/graphql/examples/how-to-retrieve-an-assets-sbom'
+                'api/graphql/examples/how-to-retrieve-an-assets-sbom',
+                'api/graphql/examples/how-to-create-vulnerabilities'
               ]
             },
           ]

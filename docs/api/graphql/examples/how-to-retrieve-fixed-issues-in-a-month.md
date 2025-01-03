@@ -13,7 +13,7 @@ The following GraphQL query can be used to retrieve fixed issues in a month for 
 ```graphql
 {
   issues(
-    companyId: "YOUR_COMPANY_ID"
+    companyId: "<YOUR_COMPANY_ID>"
     pagination: {page: 1, perPage: 1}
     filters: {
       statuses: [FIX_ACCEPTED]
@@ -91,7 +91,7 @@ The following GraphQL query can be used to retrieve fixed issues in a month for 
         {
           "asset": {
             "id": "33056",
-            "name": "Sigma-Bank"
+            "name": "My-Vulnerable-App"
           },
           "createdAt": "2024-07-01T17:14:27-03:00",
           "id": "1488450",

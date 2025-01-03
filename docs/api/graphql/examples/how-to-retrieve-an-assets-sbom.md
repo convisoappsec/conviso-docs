@@ -12,7 +12,7 @@ The following GraphQL query can be used to retrieve an asset's SBOM:
 
 ```graphql
 {
-  asset(id: "ASSET_ID") {
+  asset(id: "<ASSET_ID>") {
     name
     sbomComponents(search: {vulnerableOnly: false}, page: 1, limit: 1) {
       additionalData {
@@ -44,7 +44,7 @@ The following GraphQL query can be used to retrieve an asset's SBOM:
 {
   "data": {
     "asset": {
-      "name": "Sigma-Bank",
+      "name": "My-Vulnerable-App",
       "sbomComponents": {
         "additionalData": {
           "totalOpenVulnerabilities": 38,

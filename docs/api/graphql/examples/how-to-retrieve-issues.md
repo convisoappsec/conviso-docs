@@ -13,7 +13,7 @@ The following GraphQL query can be used to retrieve issues for a given company:
 ```graphql
 {
   issues(
-    companyId: "YOUR_COMPANY_ID"
+    companyId: "<YOUR_COMPANY_ID>"
     pagination: {page: 1, perPage: 1}
     filters: {
       statuses: [IDENTIFIED, IN_PROGRESS, AWAITING_VALIDATION]
@@ -156,7 +156,7 @@ The following GraphQL query can be used to retrieve issues for a given company:
         {
           "asset": {
             "id": "35831",
-            "name": "payment-service-node"
+            "name": "My-Vulnerable-App"
           },
           "author": {
             "name": "Ilya"
@@ -164,7 +164,7 @@ The following GraphQL query can be used to retrieve issues for a given company:
           "createdAt": "2024-08-23T08:29:29-03:00",
           "id": "2032807",
           "project": {
-            "label": "payment-service-node_ast"
+            "label": "Pentest - My-Vulnerable-App"
           },
           "status": "IDENTIFIED",
           "statusHistory": [

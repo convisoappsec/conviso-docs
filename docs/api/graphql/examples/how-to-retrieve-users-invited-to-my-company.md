@@ -12,27 +12,27 @@ The following GraphQL query can be used to retrieve users invited to your compan
 
 ```graphql
 {
-  portalUserByCompany(companyId: "YOUR_COMPANY_ID", page: 1, limit: 1, params: {}) {
+  portalUserByCompany(companyId: "<YOUR_COMPANY_ID>", page: 1, limit: 1, params: {}) {
     collection {
       id
       name
       email
       createdAt
-      profile(companyId: "YOUR_COMPANY_ID") {
+      profile(companyId: "<YOUR_COMPANY_ID>") {
         name
       }
       blocked
-      invite(companyId: "YOUR_COMPANY_ID") {
+      invite(companyId: "<YOUR_COMPANY_ID>") {
         invitedByUser {
           email
           name
         }
         status
       }
-      teams(companyId: "YOUR_COMPANY_ID") {
+      teams(companyId: "<YOUR_COMPANY_ID>") {
         label
       }
-      licenses(companyId: "YOUR_COMPANY_ID")
+      licenses(companyId: "<YOUR_COMPANY_ID>")
       updatedAt
     }
     metadata {

@@ -12,7 +12,7 @@ The following GraphQL query can be used to retrieve assets for a given company:
 
 ```graphql
 {
-  assets(companyId: "YOUR_COMPANY_ID", page: 1, limit: 1, search: {}) {
+  assets(companyId: "<YOUR_COMPANY_ID>", page: 1, limit: 1, search: {}) {
     collection {
       activeDevelopers(lastDays: 1, pagination: {page: 1, perPage: 1}) {
         collection {
@@ -120,7 +120,7 @@ The following GraphQL query can be used to retrieve assets for a given company:
             "FORTIFY",
             "DEPENDENCY_TRACK"
           ],
-          "name": "Sigma-Bank",
+          "name": "My-Vulnerable-App",
           "pendingVulnerabilitiesStats": [
             {
               "count": 0,
@@ -145,10 +145,10 @@ The following GraphQL query can be used to retrieve assets for a given company:
           ],
           "projects": [
             {
-              "label": "Pentest - Sigma Bank"
+              "label": "Pentest - My-Vulnerable-App"
             }
           ],
-          "repoUrl": "https://github.com/user/Sigma-Bank",
+          "repoUrl": "https://github.com/user/My-Vulnerable-App",
           "riskScore": {
             "current": {
               "value": 99
