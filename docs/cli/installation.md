@@ -39,10 +39,6 @@ To install the CLI some dependencies are required:
 - git. See [git download](https://git-scm.com/downloads).
 - Docker. See [docker download](https://docs.docker.com/engine/install/).
 
-:::note
-While not mandatory, having [Syft](https://github.com/anchore/syft) installed on your machine can significantly reduce the CLI's execution time.
-:::
-
 Follow the download instructions for each dependency.
 
 ### Installation
