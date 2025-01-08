@@ -6,9 +6,6 @@ description:  Azure Pipelines is a CI/CD module of the Azure DevOps platform; le
 keywords:   [Azure Pipelines Graph Mode Integration]
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-pipelines.png)
@@ -39,7 +36,7 @@ In order for the experience with Conviso's services to be complete, it is necess
 
 ## First Steps
 
-Given an Azure Devops project, to create a Welcome Pipeline you can follow the steps below:
+Given an Azure DevOps project, to create a Welcome Pipeline you can follow the steps below:
 
 1. At the DevOps Project root, click at **Pipelines**;
 
@@ -55,34 +52,33 @@ Given an Azure Devops project, to create a Welcome Pipeline you can follow the s
 
 7. At Conviso Agent, click at the **+** icon to add a new task;
 
-8. Add a **Bash** type task, rename the Display Name to **Install Conviso CLI** and modify its type to **Inline**;
+8. Add a **Bash** type task, rename the Display Name to **Run Conviso AST** and modify its type to **Inline**;
 
-9. You need to define an environment variable for CONVISO_API_KEY and set the value from Conviso Platform. It is important to set this variable as a secret.
+9. You need to define an environment variable for `CONVISO_API_KEY` and set the value from Conviso Platform. It is important to set this variable as a secret.
 
-10. To configure Conviso AST, within the script field, add the code snippet presented below:
+10. You will also need to define the `DOCKER_HOST` environment variable and set its value to `unix:///var/run/docker.sock`:
 
-<Tabs>
-    <TabItem value="windows" label="Windows Agent">
-        ```bash
-        echo "Installing Conviso CLI..."
-        pip3 install conviso-cli
-        conviso -k $(CONVISO_API_KEY) ast run
-        ```
-    </TabItem> 
+<div style={{textAlign: 'center'}}>
 
-    <TabItem value="linux" label="Linux Agent">
-        ```bash
-        echo "Installing Conviso CLI..."
-        sudo pip3 install conviso-cli
-        conviso -k $(CONVISO_API_KEY) ast run
-        ```
-    </TabItem> 
-</Tabs>
+![img](../../static/img/azure-pipelines-graph-mode5.png)
 
+</div>
 
-11. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
+11.  To configure Conviso AST, within the script field, add the code snippet presented below:
 
-12. The resulsts will be sent to Conviso Platform.
+```bash
+docker run --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $(pwd):/opt/flowcli \
+  -e DOCKER_HOST=$(DOCKER_HOST) \
+  -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
+  convisoappsec/convisocli:latest \
+  conviso ast run --vulnerability-auto-close
+```
+
+12. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
+
+13. The resulsts will be sent to Conviso Platform.
 
 ## Troubleshooting
 
