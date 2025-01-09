@@ -43,22 +43,6 @@ Before you can use Conviso Platform with Gitlab, you need to make sure that:
 
 This will allow you to write the code that we will use in this tutorial!
 
-## Usage
-
-By the end of this tutorial, you will know how to:
-
-- [Introduction](#introduction)
-  - [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [Perform a Conviso AST scan to analyze your application's security](#perform-a-conviso-ast-scan-to-analyze-your-applications-security)
-- [Running the Conviso Image Scan](#running-the-conviso-image-scan)
-- [Run a scan exclusively using Conviso SAST](#run-a-scan-exclusively-using-conviso-sast)
-- [Run a scan exclusively using Conviso SCA](#run-a-scan-exclusively-using-conviso-sca)
-- [Support](#support)
-- [Resources](#resources)
-
-**[Learn more about Conviso Platform integrations!](https://bit.ly/3NzvomE)**
-
 ## Perform a Conviso AST scan to analyze your application's security
 
 Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. This versatile tool combines Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review capabilities, providing comprehensive security analysis directly within your pipeline.
