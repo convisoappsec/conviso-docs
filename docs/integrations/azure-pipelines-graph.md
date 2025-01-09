@@ -61,7 +61,7 @@ Given an Azure DevOps project, to create a Welcome Pipeline you can follow the s
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-pipelines-graph-mode5.png)
-
+  
 </div>
 
 11.  To configure Conviso AST, within the script field, add the code snippet presented below:
