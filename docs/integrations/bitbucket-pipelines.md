@@ -88,6 +88,54 @@ pipelines:
             - docker
 ```
 
+## Running the Conviso Image Scan
+
+To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+
+```yml
+image: convisoappsec/convisocli:latest
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Conviso Image Scan
+          script:
+            - export DOCKER_BUILDKIT=1
+            - export IMAGE_NAME="my-image"
+            - export IMAGE_TAG="latest"
+            - docker pull $IMAGE_NAME:$IMAGE_TAG
+            - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+            - conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+          services: 
+            - docker
+```
+
+If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
+
+```yml
+image: convisoappsec/convisocli:latest
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Conviso Image Scan
+          script:
+            - export IMAGE_NAME="vulnerables/web-dvwa"
+            - export IMAGE_TAG="latest"
+            - docker pull $IMAGE_NAME:$IMAGE_TAG
+            - conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+          services: 
+            - docker
+```
+
+:::note
+These are only examples. You are required to provide the image for scanning, and you can use alternative methods based on your environment.
+
+The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
+:::
+
 ## Troubleshooting
 If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
 

@@ -78,6 +78,65 @@ jobs:
 
 The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities](../platform/vulnerabilities) resource to work on the correction flow.
 
+## Running the Conviso Image Scan
+
+To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+
+```yml
+name: CI
+on:
+ workflow_dispatch:
+ push:
+   branches: [ main ]
+jobs:
+ conviso-ast:
+   runs-on: ubuntu-latest
+   container:
+     image: convisoappsec/convisocli:latest
+     env:
+       CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
+   steps:
+   - uses: actions/checkout@v4
+   - name: Run AST
+     run: |
+          export DOCKER_BUILDKIT=1
+          export IMAGE_NAME="my-image"
+          export IMAGE_TAG="latest"
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+```
+
+If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
+
+```yml
+name: CI
+on:
+ workflow_dispatch:
+ push:
+   branches: [ main ]
+jobs:
+ conviso-ast:
+   runs-on: ubuntu-latest
+   container:
+     image: convisoappsec/convisocli:latest
+     env:
+       CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
+   steps:
+   - uses: actions/checkout@v4
+   - name: Run AST
+     run: |
+          export IMAGE_NAME="vulnerables/web-dvwa"
+          export IMAGE_TAG="latest"
+          docker pull $IMAGE_NAME:$IMAGE_TAG
+          conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+```
+
+:::note
+These are only examples. You are required to provide the image for scanning, and you can use alternative methods based on your environment.
+
+The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
+:::
+
 ## Run a scan exclusively using Conviso SAST
 
 The steps below will show you what your ```.yml``` must have to perform Static Application Security Testing (SAST):

@@ -47,9 +47,15 @@ This will allow you to write the code that we will use in this tutorial!
 
 By the end of this tutorial, you will know how to:
 
-* [**Perform a Conviso AST scan to analyze your application's security**](#perform-a-conviso-ast-scan-to-analyze-your-applications-security)
-* [**Run a scan exclusively using Conviso SAST**](#run-a-scan-exclusively-using-conviso-sast)
-* [**Run a scan exclusively using Conviso SCA**](#run-a-scan-exclusively-using-conviso-sca)
+- [Introduction](#introduction)
+  - [Prerequisites](#prerequisites)
+- [Usage](#usage)
+- [Perform a Conviso AST scan to analyze your application's security](#perform-a-conviso-ast-scan-to-analyze-your-applications-security)
+- [Running the Conviso Image Scan](#running-the-conviso-image-scan)
+- [Run a scan exclusively using Conviso SAST](#run-a-scan-exclusively-using-conviso-sast)
+- [Run a scan exclusively using Conviso SCA](#run-a-scan-exclusively-using-conviso-sca)
+- [Support](#support)
+- [Resources](#resources)
 
 **[Learn more about Conviso Platform integrations!](https://bit.ly/3NzvomE)**
 
@@ -75,6 +81,54 @@ conviso-ast:
 ```
 
 The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities](../platform/vulnerabilities) resource to work on the correction flow.
+
+## Running the Conviso Image Scan
+
+To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+
+```yml
+conviso-image-scan:
+  image: convisoappsec/convisocli:latest
+  services:
+    - docker:dind
+  variables:
+    CONVISO_COMPANY_ID: <YOUR_COMPANY_ID>
+  only:
+    variables:
+      - $CONVISO_API_KEY
+  script:
+    - export DOCKER_BUILDKIT=1
+    - export IMAGE_NAME="my-image"
+    - export IMAGE_TAG="latest"
+    - docker pull $IMAGE_NAME:$IMAGE_TAG
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+```
+
+If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
+
+```yml
+conviso-image-scan:
+  image: convisoappsec/convisocli:latest
+  services:
+    - docker:dind
+  variables:
+    CONVISO_COMPANY_ID: <YOUR_COMPANY_ID>
+  only:
+    variables:
+      - $CONVISO_API_KEY
+  script:
+    - export IMAGE_NAME="vulnerables/web-dvwa"
+    - export IMAGE_TAG="latest"
+    - docker pull $IMAGE_NAME:$IMAGE_TAG
+    - conviso container run "IMAGE_NAME:$IMAGE_TAG"
+```
+
+:::note
+These are only examples. You are required to provide the image for scanning, and you can use alternative methods based on your environment.
+
+The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
+:::
 
 ## Run a scan exclusively using Conviso SAST
 

@@ -28,6 +28,11 @@ module.exports = {
           id: 'security-scans/conviso-sbom/conviso-sbom'
         }, 
         {
+          type: 'doc',
+          label: 'Scan Container with Conviso',
+          id: 'security-scans/conviso-containers/conviso-containers'
+        }, 
+        {
           type: "category",
           label: "Guides",
           items: [
