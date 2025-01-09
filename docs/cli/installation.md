@@ -26,9 +26,14 @@ You can use the CLI locally and also within your CI/CD to be able to use the fol
 
 To use the CLI, install it and [authenticate](#authentication) your machine.
 
+:::note
+For an effortless setup, use the Conviso Docker image available on [DockerHub](https://hub.docker.com/r/convisoappsec/convisocli/). This plug-and-play solution significantly reduces setup time and minimizes the risk of misconfiguration, allowing you to get started quickly and reliably.
+:::
+
 ### Prerequisites
 
 To install the CLI some dependencies are required:
+- A Unix-like operating system.
 - python3 >= 3.4. See [python3 download](https://www.python.org/downloads/).
 - pip. See [pip guide](https://packaging.python.org/tutorials/installing-packages/#installing-from-pypi).
 - git. See [git download](https://git-scm.com/downloads).
@@ -77,8 +82,6 @@ When retrieving it, you can export the key as system environment variable:
 ```bash
 export CONVISO_API_KEY='you-api-key'
 ```
-
-**Note:** The command for setting environment variables can vary slightly between operating systems, but generally follows the same idea. On Windows, you can use the ```set``` command.
 
 Also, the API Key can be set as option argument:
 
