@@ -51,12 +51,6 @@ To set a variable for a build pipeline:
 [![img](../../static/img/azure-pipelines2.png) 'Azure Pipelines page for "review your yaml pipeline"')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 </div>
 
-## Usage
-By the end of this tutorial, you will know how to:
-* [Perform a Conviso AST scan to analyze your application's security](#perform-a-conviso-ast-scan-to-analyze-your-applications-security​)
-
-[Learn more about Conviso Platform integrations!](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
 ## Perform a Conviso AST scan to analyze your application's security
 Empower your security analysis with Application Security Testing (AST) by directly incorporating the Conviso AST scan into your pipeline. This versatile tool offers SAST, SCA, and Code Review capabilities, all integrated within your pipeline.
 
@@ -83,6 +77,66 @@ jobs:
 ```
 
 The identified vulnerabilities will be automatically sent the new Asset created on Conviso Platform. 
+
+## Running the Conviso Containers
+
+To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+
+```yml
+trigger: none
+  - master  
+jobs:
+- job: Conviso_Containers
+  pool:
+    vmImage: ubuntu-latest
+  container:
+    image: 'convisoappsec/convisocli'
+
+  steps:
+    - checkout: self
+      persistCredentials: true
+    - bash: |
+          export DOCKER_BUILDKIT=1
+          export IMAGE_NAME='vulnerables/web-dvwa'
+          export IMAGE_TAG='latest'
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+      displayName: 'Running Conviso AST'
+      env:
+         CONVISO_API_KEY: $(CONVISO_API_KEY)
+```
+
+If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
+
+```yml
+trigger: none
+  - master  
+jobs:
+- job: Conviso_Containers
+  pool:
+    vmImage: ubuntu-latest
+  container:
+    image: 'convisoappsec/convisocli'
+
+  steps:
+    - checkout: self
+      persistCredentials: true
+    - bash: |
+          export IMAGE_NAME='vulnerables/web-dvwa'
+          export IMAGE_TAG='latest'
+          docker pull $IMAGE_NAME:$IMAGE_TAG
+          conviso container run "$IMAGE_NAME:$IMAGE_TAG"
+      displayName: 'Running Conviso AST'
+      env:
+         CONVISO_API_KEY: $(CONVISO_API_KEY)
+
+```
+
+:::note
+These are only examples. You are required to provide the image for scanning, and you can use alternative methods based on your environment.
+
+The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
+:::
 
 ## Troubleshooting
 If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.

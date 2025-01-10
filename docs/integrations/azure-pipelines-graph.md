@@ -61,7 +61,7 @@ Given an Azure DevOps project, to create a Welcome Pipeline you can follow the s
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/azure-pipelines-graph-mode5.png)
-  
+
 </div>
 
 11.  To configure Conviso AST, within the script field, add the code snippet presented below:
@@ -78,7 +78,50 @@ docker run --rm \
 
 12. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
 
-13. The resulsts will be sent to Conviso Platform.
+13. The results will be sent to Conviso Platform.
+
+## Running the Conviso Containers
+
+To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+
+```bash
+docker run --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $(pwd):/opt/flowcli \
+  -e DOCKER_HOST=$(DOCKER_HOST) \
+  -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
+  convisoappsec/convisocli:latest \
+  sh -c "
+    export DOCKER_BUILDKIT=1 &&
+    export IMAGE_NAME='my-image' &&
+    export IMAGE_TAG='latest' &&
+    docker build -t \$IMAGE_NAME:\$IMAGE_TAG . &&
+    conviso container run \"\$IMAGE_NAME:\$IMAGE_TAG\"
+  "
+```
+
+If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
+
+```bash
+docker run --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $(pwd):/opt/flowcli \
+  -e DOCKER_HOST=$(DOCKER_HOST) \
+  -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
+  convisoappsec/convisocli:latest \
+  sh -c "
+    export IMAGE_NAME='my-image' &&
+    export IMAGE_TAG='latest' &&
+    docker pull \$IMAGE_NAME:\$IMAGE_TAG &&
+    conviso container run \"\$IMAGE_NAME:\$IMAGE_TAG\"
+  "
+```
+
+:::note
+These are only examples. You are required to provide the image for scanning, and you can use alternative methods based on your environment.
+
+The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
+:::
 
 ## Troubleshooting
 
