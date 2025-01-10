@@ -68,7 +68,7 @@ The identified vulnerabilities will be automatically sent to your Project on Con
 
 ## Running the Conviso Containers
 
-To perform the [Conviso Containers Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```yml
 conviso-containers:

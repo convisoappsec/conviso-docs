@@ -61,11 +61,11 @@ The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on 
 
 If you want to integrate the Image Scan into your CI/CD pipeline, follow the instructions in the respective integration guides:
 
-- [Azure Pipelines Integration](../../integrations/azure-pipelines-cli.md#running-the-conviso-image-scan).
-- [Azure Pipelines Graph Mode](../../integrations/azure-pipelines-graph.md#running-the-conviso-image-scan).
-- [Bitbucket Pipelines](../../integrations/bitbucket-pipelines.md#running-the-conviso-image-scan).
-- [GitHub Actions](../../integrations/github-actions.md#running-the-conviso-image-scan).
-- [GitLab](../../integrations/gitlab.md#running-the-conviso-image-scan).
+- [Azure Pipelines Integration](../../integrations/azure-pipelines-cli.md#running-the-conviso-containers).
+- [Azure Pipelines Graph Mode](../../integrations/azure-pipelines-graph.md#running-the-conviso-containers).
+- [Bitbucket Pipelines](../../integrations/bitbucket-pipelines.md#running-the-conviso-containers).
+- [GitHub Actions](../../integrations/github-actions.md#running-the-conviso-containers).
+- [GitLab](../../integrations/gitlab.md#running-the-conviso-containers).
 
 :::note
 To obtain detailed insights from our image scans, we utilize Trivy, a robust tool that efficiently scans container images and filesystems for vulnerabilities.

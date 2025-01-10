@@ -80,7 +80,7 @@ The identified vulnerabilities will be automatically sent the new Asset created 
 
 ## Running the Conviso Containers
 
-To perform the [Conviso Containers Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```yml
 trigger: none
