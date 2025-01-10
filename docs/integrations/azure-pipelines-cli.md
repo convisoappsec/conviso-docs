@@ -78,15 +78,15 @@ jobs:
 
 The identified vulnerabilities will be automatically sent the new Asset created on Conviso Platform. 
 
-## Running the Conviso Image Scan
+## Running the Conviso Containers
 
-To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+To perform the [Conviso Containers Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```yml
 trigger: none
-#  - master  
+  - master  
 jobs:
-- job: Conviso_Appsec_AST
+- job: Conviso_Containers
   pool:
     vmImage: ubuntu-latest
   container:
@@ -112,7 +112,7 @@ If you'd like to scan a public image available on DockerHub, modify the configur
 trigger: none
   - master  
 jobs:
-- job: Conviso_Image_Scan
+- job: Conviso_Containers
   pool:
     vmImage: ubuntu-latest
   container:

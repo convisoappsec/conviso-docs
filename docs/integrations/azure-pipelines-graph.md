@@ -80,9 +80,9 @@ docker run --rm \
 
 13. The results will be sent to Conviso Platform.
 
-## Running the Conviso Image Scan
+## Running the Conviso Containers
 
-To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```bash
 docker run --rm \

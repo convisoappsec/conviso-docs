@@ -66,12 +66,12 @@ conviso-ast:
 
 The identified vulnerabilities will be automatically sent to your Project on Conviso Platform. Now you can use the [Vulnerabilities](../platform/vulnerabilities) resource to work on the correction flow.
 
-## Running the Conviso Image Scan
+## Running the Conviso Containers
 
-To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+To perform the [Conviso Containers Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```yml
-conviso-image-scan:
+conviso-containers:
   image: convisoappsec/convisocli:latest
   services:
     - docker:dind
@@ -92,7 +92,7 @@ conviso-image-scan:
 If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
 
 ```yml
-conviso-image-scan:
+conviso-containers:
   image: convisoappsec/convisocli:latest
   services:
     - docker:dind

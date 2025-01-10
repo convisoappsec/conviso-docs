@@ -88,9 +88,9 @@ pipelines:
             - docker
 ```
 
-## Running the Conviso Image Scan
+## Running the Conviso Containers
 
-To perform the [Conviso Image Scan](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```yml
 image: convisoappsec/convisocli:latest
@@ -99,7 +99,7 @@ pipelines:
   branches:
     master:
       - step:
-          name: Conviso Image Scan
+          name: Conviso Containers
           script:
             - export DOCKER_BUILDKIT=1
             - export IMAGE_NAME="my-image"
@@ -120,7 +120,7 @@ pipelines:
   branches:
     master:
       - step:
-          name: Conviso Image Scan
+          name: Conviso Containers
           script:
             - export IMAGE_NAME="vulnerables/web-dvwa"
             - export IMAGE_TAG="latest"
