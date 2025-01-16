@@ -34,7 +34,7 @@ For an effortless setup, use the Conviso Docker image available on [DockerHub](h
 
 To install the CLI some dependencies are required:
 - A Unix-like operating system.
-- python3 >= 3.4. See [python3 download](https://www.python.org/downloads/).
+- python >= 3.9. See [python3 download](https://www.python.org/downloads/).
 - pip. See [pip guide](https://packaging.python.org/tutorials/installing-packages/#installing-from-pypi).
 - git. See [git download](https://git-scm.com/downloads).
 - Docker. See [docker download](https://docs.docker.com/engine/install/).
