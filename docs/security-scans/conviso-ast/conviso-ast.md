@@ -33,6 +33,7 @@ Currently we support the following languages:
 - PHP: rips, progpilot
 - Python: bandit, dlint
 - Typescript: tslint
+- Ruby: Semgrep
 
 ## SCA
 Conviso AST also analyzes the dependencies of your application and identifies vulnerable ones that need to be updated.
