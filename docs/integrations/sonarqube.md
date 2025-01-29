@@ -119,7 +119,6 @@ When moving Vulnerabilities from one status to another, the Conviso platform wil
 
 | Conviso Platform     | SonarQube                |
 |----------------------|--------------------------|
-| Created              | TO REVIEW                |
 | Identified           | ACKNOWLEDGED             |
 | False positive       | SAFE                     |
 | Fix accepted         | FIXED                    |
