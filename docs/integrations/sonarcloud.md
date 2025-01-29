@@ -1,7 +1,7 @@
 ---
 id: sonarcloud
-title: SonarCloud
-sidebar_label: SonarCloud
+title: SonarQube Cloud
+sidebar_label: SonarQube Cloud
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -12,24 +12,24 @@ sidebar_label: SonarCloud
 
 
 :::note
-First time using SonarCloud? Please refer to the [following documentation](https://docs.sonarsource.com/sonarcloud/).
+First time using SonarQube Cloud? Please refer to the [following documentation](https://docs.sonarsource.com/sonarcloud/).
 :::
 
 ## Introduction
 
-This integration consolidates scan results of applications in SonarCloud with Conviso Platform, keeping both solutions synced in real time.
+This integration consolidates scan results of applications in SonarQube Cloud with Conviso Platform, keeping both solutions synced in real time.
 
-It supports a two-way integration regarding new vulnerabilities and status mapping, so every update in SonarCloud will also update Conviso Platform, as well as updates in the triage of vulnerabilities within Conviso Platform vulnerability management.
+It supports a two-way integration regarding new vulnerabilities and status mapping, so every update in SonarQube Cloud will also update Conviso Platform, as well as updates in the triage of vulnerabilities within Conviso Platform vulnerability management.
 
-Aggregating SonarCloud results and other security tools with Conviso Platform will let you have a centralized view for a more efficient prioritization and security risk management of your applications. 
+Aggregating SonarQube Cloud results and other security tools with Conviso Platform will let you have a centralized view for a more efficient prioritization and security risk management of your applications. 
 
 ## Requirements
 
-To integrate SonarCloud with the Conviso Platform, you will need the following data:
+To integrate SonarQube Cloud with the Conviso Platform, you will need the following data:
 
-- A user with the System Administrator permission in SonarCloud
+- A user with the System Administrator permission in SonarQube Cloud
 - User Token of the user with the permission
-- Organization ID in SonarCloud
+- Organization ID in SonarQube Cloud
 
 ## Conviso Platform Setup
 
@@ -37,7 +37,7 @@ To perform the integration between the two platforms, follow these steps after l
 
 1. Click on the Integrations option in the side menu.
 2. Click on Scanners category
-3. Look for the SonarCloud icon and then click on Integrate button.
+3. Look for the SonarQube Cloud icon and then click on Integrate button.
 
 <div style={{textAlign: 'center'}}>
 
@@ -56,7 +56,7 @@ A form similar to the image below will appear.
 If you're not sure where to get the information below, follow our tutorial [here](#how-to-get-the-necessary-information-for-the-integration).
 
 1. Fill the organization ID.
-2. Enter your user token from SonarCloud.
+2. Enter your user token from SonarQube Cloud.
 3. Click on "Save."
 
 After completing the steps, the following screen will appear:
@@ -67,12 +67,12 @@ After completing the steps, the following screen will appear:
 
 </div>
 
-On this screen, you can manage your integration, view and import projects, and test if your SonarCloud connection is active.
+On this screen, you can manage your integration, view and import projects, and test if your SonarQube Cloud connection is active.
 
-1. Check if the communication with your SonarCloud is active.
+1. Check if the communication with your SonarQube Cloud is active.
 2. View this documentation.
-3. Table containing all the assets in the Conviso Platform that you imported from SonarCloud.
-4. Add a new SonarCloud project to the Conviso Platform.
+3. Table containing all the assets in the Conviso Platform that you imported from SonarQube Cloud.
+4. Add a new SonarQube Cloud project to the Conviso Platform.
 5. Button to return to the integration credentials configuration.
 
 
@@ -80,7 +80,7 @@ On this screen, you can manage your integration, view and import projects, and t
 
 To import a new project to the Conviso Platform, follow the steps below:
 1. Click on Integration in the side menu.
-2. Look for the Sonarcloud icon and then click on the Configure button.
+2. Look for the SonarQube Cloud icon and then click on the Configure button.
 
 <div style={{textAlign: 'center'}}>
 
@@ -92,7 +92,7 @@ This will take you to the integration configuration page.
 
 Click on the Add Project button.
 
-The Selection Form showing the projects registered in SonarCloud will appear as shown in the image below.
+The Selection Form showing the projects registered in SonarQube Cloud will appear as shown in the image below.
 
 <div style={{textAlign: 'center'}}>
 
@@ -105,7 +105,7 @@ The Selection Form showing the projects registered in SonarCloud will appear as 
 3. Select which branch from project you want to import
 4. Click on the Add button at the top of the form.
 
-**Obs: Currently, when you select and import a project from SonarCloud, an asset will be created for each branch that you choose to import.**
+**Obs: Currently, when you select and import a project from SonarQube Cloud, an asset will be created for each branch that you choose to import.**
 
 ## General Information on Operation
 
@@ -113,23 +113,23 @@ In this section, we will address crucial information about the integration's ope
 
 ### Status Mapping
 
-When moving Vulnerabilities from one status to another, the Conviso platform will communicate and mark the Vulnerabilities in SonarCloud according to the following mapping:
+When moving Vulnerabilities from one status to another, the Conviso platform will communicate and mark the Vulnerabilities in SonarQube Cloud according to the following mapping:
 
 <div style={{display: 'ruby-text'}}>
 
-| Conviso Platform     | SonarCloud               |
+| Conviso Platform     | SonarQube Cloud          |
 |----------------------|--------------------------|
-| Created              | TO REVIEW                |
+| Identified           | TO REVIEW                |
 | False positive       | SAFE                     |
 | Fix accepted         | FIXED                    |
 
 </div>
 
-The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to SonarCloud, and the same applies in reverse.
+The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to SonarQube Cloud, and the same applies in reverse.
 
-When changing the status in the Conviso Platform, these changes will be replicated immediately to SonarCloud. However, if a change is first made in SonarCloud, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
+When changing the status in the Conviso Platform, these changes will be replicated immediately to SonarQube Cloud. However, if a change is first made in SonarQube Cloud, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
 
-**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like SonarCloud. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those vulnerabilities that are no longer identified by SonarCloud will be marked as FIXED in the Conviso Platform.**
+**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like SonarQube Cloud. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those vulnerabilities that are no longer identified by SonarQube Cloud will be marked as FIXED in the Conviso Platform.**
 
 **Note: When changing the vulnerability to an unmapped status, it will revert to the last mapped status when a synchronization occurs.**
 
@@ -137,7 +137,7 @@ When changing the status in the Conviso Platform, these changes will be replicat
 
 ### Synchronization
 
-The synchronization of assets is automatically initiated every time a scan is successfully completed in SonarCloud. You can also start a manual synchronization.
+The synchronization of assets is automatically initiated every time a scan is successfully completed in SonarQube Cloud. You can also start a manual synchronization.
 
 To check the status or start a manual synchronization, follow the steps below:
 
@@ -174,7 +174,7 @@ In this modal, you will have the following information:
 
 ## How to get the necessary information for the integration.
 
-To get this information, you will need to log in to SonarCloud and follow the steps below:
+To get this information, you will need to log in to SonarQube Cloud and follow the steps below:
 
 1. Click on your profile picture.
 2. Click on My Account.

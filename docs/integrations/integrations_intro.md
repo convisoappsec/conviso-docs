@@ -20,13 +20,16 @@ Conviso Platform seamlessly integrates with your current tools and workflows, en
 [Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
  
 **This guide will walk you through various integration options with Conviso Platform:** 
-- [Single Sign-On (SSO)](#set-up-conviso-platform-single-sign-on-sso)
-- [CI/CD](#conviso-platform-cicd-integration)
-- [Data Analytics](#data-analytics-integration)
-- [Defect/Bug Tracking](#defectbug-tracking-integration)
-- [Notifications](#communication-and-notification)
-- [Software Composition Analysis (SCA)](#software-composition-analysis-sca-integration)
-- [Security Scans](#consolidate-vulnerability-management-through-integrated-security-scans)
+- [Introduction](#introduction)
+- [Set up Conviso Platform Single Sign-On (SSO)](#set-up-conviso-platform-single-sign-on-sso)
+- [Conviso Platform CI/CD Integration](#conviso-platform-cicd-integration)
+- [Data Analytics Integration](#data-analytics-integration)
+- [Defect/Bug Tracking Integration](#defectbug-tracking-integration)
+- [Communication and Notification](#communication-and-notification)
+- [Software Composition Analysis (SCA) Integration](#software-composition-analysis-sca-integration)
+- [Consolidate Vulnerability Management through Integrated Security Scans](#consolidate-vulnerability-management-through-integrated-security-scans)
+- [Support for Conviso Platform Integrations](#support-for-conviso-platform-integrations)
+- [Resources](#resources)
 
 **Note:** You can also check the **[Conviso CLI](../cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
 
@@ -84,7 +87,7 @@ This integration enables the platform to identify and mitigate risks in your sof
 Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
 * **[Checkmarx](../integrations/checkmarx.md)**
 * **[Fortify](../integrations/fortify.md)**
-* **[SonarCloud](../integrations/sonarcloud.md)**
+* **[SonarQube Cloud](../integrations/sonarcloud.md)**
 * **[SonarQube](../integrations/sonarqube.md)**
 
 ## Support for Conviso Platform Integrations
