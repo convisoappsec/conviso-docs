@@ -83,7 +83,7 @@ pipelines:
           name: Conviso BitBucket Pipeline
           script:
             - |
-                conviso ast run \
+                conviso ast run --vulnerability-auto-close \
           services:
             - docker
 ```
@@ -164,7 +164,7 @@ To view the company ID, click on the company logo icon, as exemplified in the im
 Example
 ```
    - export CONVISO_COMPANY_ID=0000
-   - conviso ast run
+   - conviso ast run --vulnerability-auto-close
 ```
 
 

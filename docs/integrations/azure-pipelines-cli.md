@@ -70,7 +70,7 @@ jobs:
     - checkout: self
       persistCredentials: true
     - bash: |
-          conviso ast run
+          conviso ast run --vulnerability-auto-close
       displayName: 'Running Conviso AST'
       env:
          CONVISO_API_KEY: $(CONVISO_API_KEY)

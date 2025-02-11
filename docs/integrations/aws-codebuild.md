@@ -183,16 +183,8 @@ phases:
       - pip3 install conviso-cli
   pre_build:
     commands:
-      - conviso ast run
+      - conviso ast run --vulnerability-auto-close
 ```
-
-
-In the previously mentioned pipeline setup, the ```conviso ast run``` command is used without additional options. By default, this command analyzes the entire repository. This default behavior is due to the preset values for the ```--start-commit``` and ```--end-commit``` options which are set to the first commit and the current commit (HEAD), respectively.
-
-
-However, there is flexibility to customize the range of commits for analysis. For example, you can specifically scan the differences between the current commit and the one immediately preceding it on the current branch. This targeted approach ensures that the findings are restricted to the changes made in the latest commit.
-
-
 
 ## Troubleshooting
 

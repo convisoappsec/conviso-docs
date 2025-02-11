@@ -58,7 +58,7 @@ conviso-ast:
         variables:
             - $CONVISO_API_KEY
     script:
-        - conviso ast run
+        - conviso ast run --vulnerability-auto-close
     tags:
         - docker
 
