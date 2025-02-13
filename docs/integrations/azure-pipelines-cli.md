@@ -138,6 +138,38 @@ These are only examples. You are required to provide the image for scanning, and
 The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
 :::
 
+## Importing and Synchronizing Assets from External Scanners
+
+Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
+
+1. Access the Azure DevOps Marketplace.
+2. Search for **Conviso Azure Sync Task** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
+3. Click on **Get it free**.
+4. Edit Your Azure DevOps Pipeline.
+5. Configure the Pipeline with the Following Code:
+```yaml
+steps:
+  - task: convisoAzureSyncTask@1
+    inputs:
+      API_KEY: $(CONVISO_API_KEY)
+      PROJECT_ID: 'external-tool-project-id'
+      INTEGRATION: 'FORTIFY' # or 'DEPENDENCY_TRACK' or 'CHECKMARX'
+      COMPANY_ID: 'your-company-id'
+```
+6. Save it and run the pipeline.
+
+**Field Descriptions**:
+- API_KEY: Your [Conviso API Key](https://docs.convisoappsec.com/api/generate-apikey), referenced as `$(CONVISO_API_KEY)` in the pipeline variables.
+- PROJECT_ID: The project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency-Track).
+- INTEGRATION: The name of the integration as specified in Conviso's GraphQL schema (e.g., 'FORTIFY', 'CHECKMARX', 'DEPENDENCY_TRACK').
+- COMPANY_ID: Your company ID in the Conviso Platform.
+
+**Expected Behaviors**:
+- **Importing a New Project**: If the external scanner's project does not exist in the Conviso Platform, it will be imported as a new asset.
+- **Synchronizing an Existing Project**: If the project already exists in the Conviso Platform, it will be synchronized to update its data.
+
+In both scenarios, the process is triggered by the pipeline and executed asynchronously. You can monitor the progress directly within the respective asset on the Conviso Platform.
+
 ## Troubleshooting
 If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
 

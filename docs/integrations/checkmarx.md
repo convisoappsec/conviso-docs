@@ -177,6 +177,8 @@ In this modal, you will have the following information:
 2. Progress bar showing the progress of the synchronization if it is in progress.
 3. Button to start a synchronization. A synchronization can only be initiated if the previous one has already finished.
 
+Alternatively, refer to the [Azure Pipelines documentation](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners) to automatically synchronize your assets.
+
 ## How to get the necessary information for the integration.
 
 To get this information, you will need to log in to Checkmarx One and follow the steps below:
