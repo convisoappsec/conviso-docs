@@ -64,7 +64,9 @@ Given an Azure DevOps project, to create a Welcome Pipeline you can follow the s
 
 </div>
 
-11.  To configure Conviso AST, within the script field, add the code snippet presented below:
+## Running the Conviso AST
+
+1.  To configure Conviso AST, within the script field, add the code snippet presented below:
 
 ```bash
 docker run --rm \
@@ -76,13 +78,13 @@ docker run --rm \
   conviso ast run --vulnerability-auto-close
 ```
 
-12. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
+2. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
 
-13. The results will be sent to Conviso Platform.
+3. The results will be sent to Conviso Platform.
 
 ## Running the Conviso Containers
 
-To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
+1. To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```bash
 docker run --rm \
@@ -100,7 +102,7 @@ docker run --rm \
   "
 ```
 
-If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
+2. If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
 
 ```bash
 docker run --rm \
@@ -122,6 +124,29 @@ These are only examples. You are required to provide the image for scanning, and
 
 The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on your project. For example, you may want to name the image after your project or version it differently.
 :::
+
+## Importing and Synchronizing Assets from External Scanners
+
+Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
+
+1. Access the Azure DevOps Marketplace.
+2. Search for **Conviso Azure Sync Task** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
+3. Click on **Get it free**.
+4. Edit Your Azure DevOps Pipeline.
+5. In the **Pipelines variables** section, add the `CONVISO_API_KEY` variable and set its value to your [Conviso API Key](https://docs.convisoappsec.com/api/generate-apikey).
+6. Within the pipeline configuration, add the **Conviso Azure Sync Task**.
+7. Fill in the fields as follows:
+   - Conviso API Key: `$(CONVISO_API_KEY)`.
+   - Project ID in the external tool: Project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency_Track).
+   - Integration Name: Name of the integration in Conviso's GraphQL schema (e.g., Fortify, Checkmarx, Dependency_Track).
+   - Company ID: Company ID in Conviso Platform.
+8. Save the pipeline configuration and execute it to initiate the synchronization process.
+
+**Expected Behaviors**:
+- **Importing a New Project**: If the external scanner's project does not exist in the Conviso Platform, it will be imported as a new asset.
+- **Synchronizing an Existing Project**: If the project already exists in the Conviso Platform, it will be synchronized to update its data.
+
+In both scenarios, the process is triggered by the pipeline and executed asynchronously. You can monitor the progress directly within the respective asset on the Conviso Platform.
 
 ## Troubleshooting
 
