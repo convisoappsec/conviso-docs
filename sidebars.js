@@ -168,6 +168,7 @@ module.exports = {
         'platform/projects',
         'platform/requirements',
         'platform/risk-context-funnel',
+        'platform/risk-score',
         'platform/security-expert',
         'platform/security-feed',
         'platform/threat-modeling',
