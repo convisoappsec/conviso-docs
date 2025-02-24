@@ -87,6 +87,7 @@ This integration enables the platform to identify and mitigate risks in your sof
 Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
 * **[Checkmarx](../integrations/checkmarx.md)**
 * **[Fortify](../integrations/fortify.md)**
+* **[GitHub Advanced Security](../integrations/github-advanced-security.md)**
 * **[SonarQube Cloud](../integrations/sonarcloud.md)**
 * **[SonarQube](../integrations/sonarqube.md)**
 

@@ -130,6 +130,7 @@ module.exports = {
             'integrations/checkmarx',
             'integrations/dependency-track',
             'integrations/fortify',
+            'integrations/github-advanced-security',
             'integrations/sonarcloud',
             'integrations/sonarqube',
           ]
