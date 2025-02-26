@@ -73,7 +73,7 @@ jobs:
    - uses: actions/checkout@v4
 
    - name: Run AST
-     run: conviso ast run
+     run: conviso ast run --vulnerability-auto-close
 ```
 
 The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities](../platform/vulnerabilities) resource to work on the correction flow.
@@ -212,7 +212,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run AST
-        run: conviso ast run
+        run: conviso ast run --vulnerability-auto-close
 ```
 
 ### Running the Workflow Manually

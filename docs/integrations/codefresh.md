@@ -113,7 +113,7 @@ conviso_sample:
     type: "freestyle"
     image: "convisoappsec/convisocli"
     commands:
-      - "conviso ast run"
+      - "conviso ast run --vulnerability-auto-close"
     stage: "test"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
 ```
