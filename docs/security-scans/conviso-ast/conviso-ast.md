@@ -14,26 +14,28 @@ Scan and protect your codebase with Conviso AST, a combination of open source sc
 
 
 With Conviso AST, you can analyze your source code and consolidate the results in Conviso Platform Vulnerability management module.
-We have selected the best open source security scan tools and unified them in one single engine that aggregates and dedup results.
+We utilize a unified security engine featuring Semgrep with Conviso-managed rules, this engine aggregates and deduplicates scan results.
 
 ## SAST
-Currently we support the following languages:
+Currently we support the following languages using Semgrep with Conviso managed rules:
 
-- Android: Qark
-- Angular:  ESlint
-- Apex: pmd
-- C/C++: check
-- .NET:  Devskim
-- Elixir: Sobelow
-- GO Gosec
-- iOS: grapper
-- Java: pmd
-- Kotlin: Semgrep
-- Node: njsscan
-- PHP: rips, progpilot
-- Python: bandit, dlint
-- Typescript: tslint
-- Ruby: Semgrep
+- C#
+- Go
+- Java
+- JavaScript
+- Kotlin
+- Python
+- Typescript
+- C / C++
+- JSX
+- Ruby
+- Scala
+- Swift
+- Rust
+- PHP
+- Generic
+- JSON
+- Elixir: Sobelow (due to lack of Semgrep support)
 
 ## SCA
 Conviso AST also analyzes the dependencies of your application and identifies vulnerable ones that need to be updated.
