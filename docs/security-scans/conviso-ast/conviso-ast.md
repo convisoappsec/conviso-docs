@@ -37,7 +37,7 @@ Currently we support the following languages using Semgrep with Conviso managed 
 - JSON
 
 :::note
-Elixir is not yet supported by Semgrep's dedicated rules. We use Sobelow, enhanced with Conviso-managed generic Semgrep rules, for Elixir security scans.
+Elixir is not yet supported by Semgrep. We use Sobelow, enhanced with Conviso-managed generic Semgrep rules, for Elixir security scans.
 :::
 
 ## SCA
