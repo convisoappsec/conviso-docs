@@ -39,10 +39,6 @@ The identified vulnerabilities will be automatically associated with the Asset i
 
 You can customize your Conviso AST scans by using several command-line arguments. Below is a list of the available options:
 
-- `--no-send-to-flow`  
-  **Disable sending analysis result reports to the Conviso Platform.**  
-  When the `--no-send-to-flow` option is set, the vulnerabilities will not be sent to the Conviso Platform for further analysis.
-
 - `--repository-dir or -r`  
   **Specify the source code repository directory.**  
   Use this to point to the local directory containing the source code you wish to scan.
