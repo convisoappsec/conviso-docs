@@ -35,6 +35,38 @@ conviso --api-key 'your-api-key' ast run \
 
 The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities](../../platform/vulnerabilities) resource to work on the correction flow.
 
+### Available Arguments for Conviso AST
+
+You can customize your Conviso AST scans by using several command-line arguments. Below is a list of the available options:
+
+- `--no-send-to-flow`  
+  **Disable sending analysis result reports to the Conviso Platform.**  
+  When the `--no-send-to-flow` option is set, the vulnerabilities will not be sent to the Conviso Platform for further analysis.
+
+- `--repository-dir or -r`  
+  **Specify the source code repository directory.**  
+  Use this to point to the local directory containing the source code you wish to scan.
+
+- `--current-commit or -c`  
+  **Specify the commit to be analyzed.**  
+  If no value is provided, the `HEAD` commit of the current branch will be used.
+
+- `--previous-commit or -p`  
+  **Specify the previous commit for comparison.**  
+  If no value is provided, the value is retrieved from the latest deploy on the Conviso Platform.
+
+- `--company-id`  
+  **Specify your Company ID on the Conviso Platform.**  
+This option is required if you have access to multiple companies, as it links the scan results to the appropriate company account.
+
+- `--asset-name`  
+  **Assign a custom name to your asset.**  
+  This allows you to better organize and identify assets within the Conviso Platform.
+
+- `--vulnerability-auto-close`  
+  **Enable auto-fixing of vulnerabilities.**  
+  This option will attempt to automatically close vulnerabilities on the Conviso Platform after the scan is completed.
+
 ### Naming an asset
 
 When using the Conviso AST, you have the flexibility to assign custom names to your assets on the Conviso Platform. By default, Conviso AST utilizes the repository name as the asset name. However, you may prefer to use a custom name for better organization or clarity.
