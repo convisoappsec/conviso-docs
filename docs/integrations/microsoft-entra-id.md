@@ -229,6 +229,18 @@ Note: Also consult the [Microsoft Documentation](https://learn.microsoft.com/en-
 ## Email Field Mapping in SAML 2.0 for Microsoft Entra ID
 When configuring the Microsoft Entra ID SSO integration via SAML, it's essential to ensure that the email field is correctly mapped. The email configured in your Microsoft Entra ID identity provider must match the email of the logged-in user on the Conviso Platform to ensure proper authentication.
 
+To do this, in the **Attributes & Claims** section, make sure that the `name` (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) is mapped to the attribute corresponding to the email the user uses to log in:
+
+<div style={{textAlign: 'center', maxWidth: '80%' }}>
+
+[![img](../../static/img/entra-id-img16.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+:::note
+The `user.userprincipalname` attribute is not mandatory. Just make sure you're using the email the user uses to log in.
+:::
+
 ### How this works:
 During the SSO authentication process, the email is used as the primary identifier to map the user's identity in the Conviso Platform. This means the email value provided by the Microsoft Entra ID identity provider in the SAML Assertion must match exactly with the user's email in Conviso. If it doesn't match, login may fail.
 
