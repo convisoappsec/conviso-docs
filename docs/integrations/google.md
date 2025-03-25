@@ -191,4 +191,14 @@ If **Disabled**, login will be done via SSO. When **Enabled**, the login and pas
  In order to disable the login and password option, we must have an SSO integration already configured.
 :::
 
+### Email Field Mapping in SAML 2.0
+
+When configuring the Google SSO integration via SAML, it is important to ensure that the **email field** is used correctly as the mapping parameter. The email configured in your SSO identity provider must match the **email of the logged-in user on the Conviso Platform** to ensure proper authentication.
+
+#### How this works:
+
+During the SSO authentication process, the **email** is used as the primary identifier to map the user's identity in the Conviso Platform. This means the email value provided by the SSO identity provider in the **SAML Assertion** must match exactly with the user's email in Conviso. If not, login might fail.
+
+Therefore, when configuring the identity provider (such as Google Workspaces or others), make sure the `email` field is mapped correctly and matches the email associated with the user's account in the Conviso Platform.
+
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
