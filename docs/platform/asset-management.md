@@ -54,8 +54,8 @@ Need to find something specific? No problem. Use our intuitive filters to search
 ### Creating Assets
 
 You can create assets in different ways:
-1. Through integration with external scanners (click here);
-2. By running the Conviso AST (click here);
+1. Through integration with external scanners [click here](../integrations/integrations_intro.md);
+2. By running the Conviso AST [click here](../security-scans/conviso-ast/conviso-ast.md);
 3. Manually through the Conviso Platform.
 
 To manually create an asset through the platform, click on **New Asset (1)** and then **Manual (2)**:
@@ -66,7 +66,7 @@ To manually create an asset through the platform, click on **New Asset (1)** and
 
 </div>
 
-An asset can be an application of your company, so let's call it **"My Application"**. Then, fill in the fields "Business Impact" (which indicates the asset's impact on your business), "Data Classification" (which indicates the sensitivity of the data), and "Attack Surface" (which indicates whether the application is exposed to the internet or not). Finally, click **Create (3)**:
+An asset can be an application of your company, so let's call it **"My Application"**. Then, fill in the fields "Business Impact" (which indicates the asset's impact on your business), "Data Classification" (which indicates the sensitivity of the data), and "Attack Surface" (which indicates whether the application is exposed to the internet or not). Finally, click **Create a new asset (3)**:
 
 <div style={{textAlign: 'center'}}>
 
@@ -102,7 +102,7 @@ If you need to remove an asset, find it in the list and click on the trash can i
 
 </div>
 
-Next, type "DELETE" and confirm the removal by clicking "Confirm" (5):
+Next, type `DELETE` and confirm the removal by clicking **Confirm** (5):
 
 <div style={{textAlign: 'center'}}>
 
