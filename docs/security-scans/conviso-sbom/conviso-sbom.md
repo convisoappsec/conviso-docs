@@ -52,27 +52,45 @@ To achieve this level of detail in our SBOM generation, we use Syft, a powerful 
 
 ## How to generate and view components in Conviso Platform
 
-An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sca run`.
+An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run`, `conviso sca run` or `conviso sbom generate`.
 
-After running our AST, you can simply access the asset and you will find a Components section, just click on `View All`:
+After executing any of these commands, simply navigate to the **SBOM Management** section:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../../static/img/asset_page.png)
+![img](../../../static/img/platform/sbom-management1.png)
 
 </div>
 
-Once you enter the page, you'll see all the components of this asset, including the component name, version, technology, license (if available), package manager, CVEs, and open vulnerabilities. You can filter by component name, as shown in the first reference in the image, and you can also display only components with vulnerabilities, as indicated in the second reference in the image.
+On this page, you'll see all components used in your assets, including the component name, version, technology, license (if available), package manager, CVEs, and open vulnerabilities. You can quickly filter by component name, as shown in the first reference in the image, and you can also display only components with vulnerabilities, as indicated in the second reference in the image.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../../static/img/filter_by_name_or_only_components_with_vulns.png)
+![img](../../../static/img/platform/sbom-management2.png)
 
 </div>
 
 If a component has vulnerabilities, you can click on the severity to be redirected to the associated vulnerability or vulnerabilities, as shown in the image below.
 
-![img](../../../static/img/go_to_vulnerability.png)
+<div style={{textAlign: 'center'}}>
+
+![img](../../../static/img/platform/sbom-management3.png)
+
+</div>
+
+You can also filter by Asset name or Asset tag. To do this, click **Add filter** and select the desired filter, as demonstrated below:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../../static/img/platform/sbom-management4.png)
+
+</div>
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../../static/img/platform/sbom-management5.png)
+
+</div>
 
 ## Via API
 
