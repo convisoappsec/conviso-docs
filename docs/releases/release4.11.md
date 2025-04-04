@@ -42,7 +42,7 @@ More information [here](../../platform/projects).
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/sbom-invetarygif.gif)
+![img](../../static/img/sbom-inventarygif.gif)
 
 </div>
 
