@@ -33,8 +33,7 @@ This update brings significant improvements to project management. You can easil
 
 Take advantage of these improvements to manage your security projects more efficiently than ever!
 More information [here](../../platform/projects).
-<br></br><br></br>
-
+<br></br>
 
 **_New Feature_**
 ## SBOM Inventary
@@ -46,11 +45,8 @@ More information [here](../../platform/projects).
 
 </div>
 
-
 Users now manage and understand more efficiently the security and compliance posture of their assets, making data-driven decisions and prioritizing remediation efforts based on shared dependencies and libraries all in one place.
-
-<br></br><br></br>
-
+<br></br>
 
 **_Improved Feature_**
 
@@ -60,7 +56,7 @@ Users now manage and understand more efficiently the security and compliance pos
 AST now uses Semgrep as the main scanner, with a rule management system powered by Conviso, enabling more precise and customizable security scans. Older scanners will remain available during a transition period to ensure vulnerabilities are properly addressed, preventing premature closure of issues actively being fixed.
 
 More reliability, usability, and speed in your security workflow!
-
+<br></br>
 
 **_Improved Feature_**
 ## Save Filters in the Vulnerability Screen
