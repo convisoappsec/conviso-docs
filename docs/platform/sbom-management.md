@@ -10,6 +10,12 @@ Today, it is almost impossible to develop software without using third-party lib
 
 For more information about SBOM in Conviso Platform, [click here](../security-scans/conviso-sbom/conviso-sbom.md).
 
+<div style={{textAlign:'center'}}>
+
+![img](../../static/img/sbom-inventarygif.gif)
+
+</div>
+
 ## How to generate and view components in Conviso Platform
 
 An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run`, `conviso sca run` or `conviso sbom generate`.
