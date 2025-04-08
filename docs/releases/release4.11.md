@@ -9,7 +9,7 @@ Release date: April 4th, 2025
 ## Key Benefits
 
 *   New Project Management Enhancements: Makes managing security projects easier and more efficient;
-*   SBOM Inventary: View a global inventory of SBOM dependencies across all assets;
+*   SBOM Inventory: View a global inventory of SBOM dependencies across all assets;
 *   Conviso AST 2.3.0: More Precision, simplicity, and speed
 *   Save Filters in the Vulnerability Screen: display the most relevant issues for you, boosting productivity and focus;
 
@@ -36,7 +36,7 @@ More information [here](../../platform/projects).
 <br></br><br></br>
 
 **_New Feature_**
-## SBOM Inventary
+## SBOM Inventory
 
 
 <div style={{textAlign:'center'}}>
