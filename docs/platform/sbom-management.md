@@ -12,7 +12,7 @@ For more information about SBOM in Conviso Platform, [click here](../security-sc
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/sbom-inventarygif.gif)
+![img](../../static/img/sbom-inventory-resized.gif)
 
 </div>
 
