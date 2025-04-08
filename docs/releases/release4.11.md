@@ -41,7 +41,7 @@ More information [here](../../platform/projects).
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/sbom-inventarygif.gif)
+![img](../../static/img/sbom-inventory-resized.gif)
 
 </div>
 
