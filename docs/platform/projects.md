@@ -285,6 +285,10 @@ Projects represent a set of activities carried out over a specific period on one
 
 </div>
 
+:::note
+Only the following project types support association with Assets: Code Review, Reverse Engineering, AI Penetration Testing, API Penetration Testing, IoT Penetration Testing, Mobile Penetration Testing, Network Penetration Testing, Web Penetration Testing, Threat Modeling, and Consulting.
+:::
+
 #### Vulnerabilities
 
 Certain types of projects lead to the identification and creation of vulnerabilities within the Conviso Platform. In this section, you can easily create a new vulnerability by clicking **New Vulnerability** or filter existing vulnerabilities within the project by clicking **View All**:
