@@ -22,7 +22,7 @@ Release date: April 4th, 2025
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/projectsgif.gif)
+![img](../../static/img/projects.gif)
 
 </div>
 
@@ -64,7 +64,7 @@ More reliability, usability, and speed in your security workflow!
 
 <div style={{textAlign:'center'}}>
 
-![img](../../static/img/save-filtersgif.gif)
+![img](../../static/img/save-filters.gif)
 
 </div>
 
