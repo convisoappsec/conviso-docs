@@ -24,8 +24,6 @@ The integration of Conviso Platform with the Slack tool aims to help monitor tho
 
 5. When a vulnerability is identified, an alert is generated directly in the Slack channel;
 
-6. When a new message in Security Expert is sent, an alert is generated directly in the Slack channel.
-
 ## Conviso Platform integration with Slack
 
 In this guide, we will integrate Conviso Platform with Slack, so that you can receive notification of each action taken in Conviso Platform. 
