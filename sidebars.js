@@ -171,7 +171,6 @@ module.exports = {
         'platform/risk-context-funnel',
         'platform/risk-score',
         'platform/sbom-management',
-        'platform/security-expert',
         'platform/security-feed',
         'platform/threat-modeling',
         'platform/user-management',

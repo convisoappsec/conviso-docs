@@ -86,14 +86,6 @@ Activating this action redirects users to the "[Integrations](../integrations/in
 
 Choosing this action instantly generates an API Key for users. The pop-up window that appears after clicking this action provides the user with the API Key and offers a "**Copy to Clipboard**" button for convenience. 
 
-## Engage with Security Experts: Pending Conversations
-
-Through this feature you can engage in conversations with security experts regarding pending security matters. 
-
-[![img](../../static/img/security-feed-img8.png "Clipping of a screenshot of the Conviso Platform showing the Security Experts: Pending Conversations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-Upon clicking on "**View All**," users can access the complete "**Security Experts**" page, where they can continue and review their previous conversations:
-
 ## In-Depth Security Scans
 
 Our platform's 'Security Scans' section provides a comprehensive history of [security scans](https://blog.convisoappsec.com/consolidacao-de-scans-otimize-o-trabalho-do-seu-time-de-desenvolvimento/) performed on the company's applications. 

@@ -303,24 +303,6 @@ Certain types of projects lead to the identification and creation of vulnerabili
 To add a new vulnerability using the **New Vulnerability** button, ensure that your user is assigned to the project (under Assigned Users) and that the project status is set to **Running**.
 :::
 
-#### Security Expert
-
-The Security Expert feature allows users to easily contact Conviso specialists to ask questions and discuss project-related or vulnerability-related topics. In this section, you can view the most recent message sent in the project chat. Clicking on the message will redirect you to the corresponding chat:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/projects/projects26.png "Projects.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-If no chat has been created for the project yet, you will see a screen similar to the one below. In this case, simply click **Start Conversation** to initiate a new chat associated with the project:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/projects/projects27.png "Projects.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
 #### Attachments
 
 The Conviso Platform allows you to associate attachments with projects, enabling file sharing. In the section below, you can download the attachments linked to the project:
