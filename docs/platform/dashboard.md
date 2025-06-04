@@ -82,13 +82,13 @@ AVOIDED_COST = PREVENTED_VULNERABILITIES × HOURS_PER_VULNERABILITY × HOURLY_RA
 ```
 
 - PREVENTED_VULNERABILITIES: Estimated number of vulnerabilities that were avoided thanks to secure development practices.
-- HOURS_PER_VULNERABILITY: Average time required to investigate, fix, and validate a vulnerability (e.g., 8 hours).
+- HOURS_PER_VULNERABILITY: Average time required to investigate, fix, and validate a vulnerability (e.g., 6 hours).
 - HOURLY_RATE: Average cost per developer hour (e.g., USD 40).
 
-Example: If 250 vulnerabilities were prevented, each requiring 8 hours to fix at USD 40/hour, then:
+Example: If 250 vulnerabilities were prevented, each requiring 6 hours to fix at USD 40/hour, then:
 
 ```
-AVOIDED_COST = 250 × 8 × 40 = USD 80,000
+AVOIDED_COST = 250 × 6 × 40 = USD 60,000
 ```
 
 This value represents the amount of money the organization saved by not having to fix vulnerabilities that were proactively prevented.
