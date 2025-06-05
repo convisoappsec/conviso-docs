@@ -51,12 +51,6 @@ Enhance risk management and support more informed decision-making regarding the 
 **_New Feature_**
 ## JetBrains IDE Plugin Support
 
-<div style={{textAlign:'center'}}>
-
-![img](../../static/img/jetbrains-plugin-resized.gif)
-
-</div>
-
 Conviso Secure Code Mentor is now also available on JetBrains IDEs. With intelligent suggestions, technical explanations, and resources linked directly to your code, the plugin continues to support your AppSec learning journey — now within the development environment you already use.
 
 **Compatible with**: IntelliJ IDEA, PyCharm, WebStorm, PhpStorm, RubyMine, GoLand, CLion, Rider, DataSpell, DataGrip, and more.
