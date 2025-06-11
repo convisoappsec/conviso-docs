@@ -58,7 +58,7 @@ You will be presented with the following form that should be filled with the tok
 
 </div>
 
-If everything goes right, you’ll be presented with the following screen. Click the **Check connection** to confirm that the integration was performed correctly.
+If everything goes right, you’ll be presented with the following screen. Click the **Check connection** button to confirm that the integration was performed correctly.
 
 <div style={{textAlign: 'center'}}>
 
@@ -88,7 +88,7 @@ After creating the integration, you can add more assets through the integration 
 
 </div>
 
-2. Configure button on the integrations screen.
+2. **Integration Settings** button on the integrations screen.
 
 <div style={{textAlign: 'center'}}>
 
