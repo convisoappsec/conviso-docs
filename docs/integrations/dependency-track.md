@@ -66,9 +66,9 @@ If everything goes right, you’ll be presented with the following screen. Click
 
 </div>
 
-Com a integração configurada, você já pode começar a importar seus projetos. Para fazê-lo, clique no botão **Add project**.
+With the integration configured, you can now start importing your projects. To do so, click the **Add project** button.
 
-Agora, selecione os projetos que você deseja importar para a Conviso Platform e clique em **Add**.
+Next, select the projects you want to import into the Conviso Platform and click **Add**.
 
 <div style={{textAlign: 'center'}}>
 
