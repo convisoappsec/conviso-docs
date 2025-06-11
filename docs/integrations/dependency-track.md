@@ -42,7 +42,7 @@ Click on the **Administrators** row to open the options, and under the **API Key
 
 Log in to the [Conviso Platform](https://app.convisoappsec.com);
 
-On the main menu to the left, click on **Integrations**. At the panel to the right, click on the **SCA** option, then click on the **Integrate** button on the **Dependency Track** card:
+On the main menu to the left, click on **Integrations**. At the search bar, type **Dependency Track**, then click on the **Connect** button on the **Dependency Track** card:
 
 <div style={{textAlign: 'center'}}>
 
@@ -50,7 +50,7 @@ On the main menu to the left, click on **Integrations**. At the panel to the rig
 
 </div>
 
-You will be presented with the following form that should be filled with the token mentioned in the **API Token** field and your **Dependency Track address** in the format of ```http://<service_ip>:<service_port>/api``` in the **API URL** field. After filling all the fields in this modal, click on the **Save** button to store you integration configuration:
+You will be presented with the following form that should be filled with the token mentioned in the **API Token** field and your **Dependency Track address** in the format of ```http://<service_ip>:<service_port>/api``` in the **API URL** field. After filling all the fields in this modal, click on the **Continue** button to store you integration configuration:
 
 <div style={{textAlign: 'center'}}>
 
@@ -58,11 +58,21 @@ You will be presented with the following form that should be filled with the tok
 
 </div>
 
-If everything goes right, you’ll be presented with the following screen. Check the box of the project you want to import and click **Finish** on the corner:
+If everything goes right, you’ll be presented with the following screen. Click the **Check connection** to confirm that the integration was performed correctly.
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/dependency-track-img5-new.png)
+
+</div>
+
+Com a integração configurada, você já pode começar a importar seus projetos. Para fazê-lo, clique no botão **Add project**.
+
+Agora, selecione os projetos que você deseja importar para a Conviso Platform e clique em **Add**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/dependency-track-img11.png)
 
 </div>
 
@@ -78,29 +88,13 @@ After creating the integration, you can add more assets through the integration 
 
 </div>
 
-1. Configure button on the integrations screen.
+2. Configure button on the integrations screen.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/dependency-track-img9-new.png)
+![img](../../static/img/dependency-track-img12.png)
 
 </div>
-
-When accessing the configuration page, here are some explanations about it:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/dependency-track-img10-new.png)
-
-</div>
-
-1. Table displaying the projects integrated into the platform, along with the date of the last synchronization and its current status.
-
-2. Button to add new projects to the platform, leading to the project selection screen as shown earlier in this document.
-
-3. Information used for the integration, e.g., token and API URL.
-
-4. Button to remove the integration.
 
 ## General Information on Operation
 
@@ -134,7 +128,7 @@ To monitor the progress of an import/synchronization or initiate a synchronizati
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/dependency-track-img6-new.png)
+![img](../../static/img/dependency-track-img13.png)
 
 </div>
 
