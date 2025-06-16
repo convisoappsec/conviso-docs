@@ -37,6 +37,8 @@ To seamlessly integrate Conviso Platform with Jira, follow these step-by-step pr
 
 **[3 - How to Modify the Policy to Automatically Create Issues in Jira](#how-to-modify-the-policy-to-automatically-create-issues-in-jira)**
 
+**[4 - How to Manually Create Issues in Jira](#how-to-manually-create-issues-in-jira)**
+
 ## Configure the initial integration setup between Conviso Platform and Jira
 
 **Step 1 -** First, access **Jira** and copy the **URL** of your site, as shown in the image below:
@@ -71,7 +73,9 @@ To seamlessly integrate Conviso Platform with Jira, follow these step-by-step pr
 
 </div>
 
-**Note:** The Verify SSL checkbox must be checked only if the certificate associated with Jira is issued by a Public Certificate Authority. For Private CAs or self-signed certificates, use https:// at the site address URL and leave this box unchecked.
+:::note
+The Verify SSL checkbox must be checked only if the certificate associated with Jira is issued by a Public Certificate Authority. For Private CAs or self-signed certificates, use https:// at the site address URL and leave this box unchecked.
+:::
 
 **Step 5 - Severity Mapping** refers to Jira's two-way integration with Conviso Platform. Select which severity will be referenced to Jira's priority:
 
@@ -157,7 +161,9 @@ To access the webhooks configuration in Jira, you can follow these steps:
 
 Open your web browser and enter the following URL: **https://YOUR_SPACE_NAME.atlassian.net/plugins/servlet/webhooks#**
 
-**Note:** Replace YOUR_SPACE_NAME with the actual name of your Jira space.
+:::note
+Replace YOUR_SPACE_NAME with the actual name of your Jira space.
+:::
 
 <div style={{textAlign: 'center'}}>
 
@@ -186,6 +192,51 @@ Conviso Platform allows you to enable a policy that defines which vulnerability 
 [![img](../../static/img/jira-img23.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
+
+## How to Manually Create Issues in Jira
+
+If you need to manually create a vulnerability in Jira, there are two available methods:
+
+1. [Creating a vulnerability in Jira from the vulnerability details page](#creating-a-vulnerability-in-jira-from-the-vulnerability-details-page)
+
+2. [Creating a vulnerability in Jira via API](#creating-a-vulnerability-in-jira-via-api)
+
+### Creating a vulnerability in Jira from the vulnerability details page
+
+To create a vulnerability in Jira from the vulnerability details page, follow the steps below:
+
+1. Go to the vulnerability details page.
+
+2. Click the three-dot icon, as shown in the example below.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/jira-img24.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+3. Select **Sync with defect tracker**.
+
+### Creating a vulnerability in Jira via API
+
+To create a vulnerability in Jira using the API, follow the steps below:
+
+1. Retrieve the vulnerability ID.
+2. Execute the following mutation, replacing the ID with the one you retrieved:
+
+```graphql
+mutation {
+  syncVulnerabilityWithDefectTracker(input: {id: <YOUR_VULNERABILITY_ID>}) {
+    issue {
+      id
+    }
+  }
+}
+```
+
+:::note
+If you need help using our API, [click here](../api/api-overview.md).
+:::
 
 ## Support
 
