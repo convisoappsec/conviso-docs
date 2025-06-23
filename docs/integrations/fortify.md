@@ -20,20 +20,20 @@ This integration enables the automatic import of issues (vulnerabilities) identi
 
 ## Requirements
 
-To integrate Fortify with the Conviso Platform, you will need the following data:
+To integrate Fortify with the Conviso Platform, you will need the following:
 
 - Administrator-level user registered in Fortify:
-    * Ensure that you have a user account in Fortify with administrator privileges.
+    * Ensure you have a Fortify account with administrator privileges.
 
 - API URL: The API URL address obtained from Fortify subscription, e.g. ```192.168.1.15/ssc/api/v1```.
 
 ## Conviso Platform Setup
 
-To perform the integration between the two platforms, follow these steps after logging into the platform:
+After logging into the Conviso Platform, follow these steps:
 
-1. In the sidebar menu, click on the "Integrations" option.
-2. Look for the Fortify image in the integrations; you can use the "Scanners" filter to simplify the search.
-3. Click on the "Integrate" button, and a form similar to the image below will appear.
+1. In the sidebar menu, click **Integrations**.
+2. Use the search bar to find **Fortify**.
+3. Click the **Connect** button.
 
 <div style={{textAlign: 'center'}}>
 
@@ -41,28 +41,31 @@ To perform the integration between the two platforms, follow these steps after l
 
 </div>
 
-4. Fill in the username and password fields with the login credentials of the user with administrative-level access.
-5. Fill in the API URL as per the example provided in the Requirements section.
-6. Click on "Save."
+4. Enter the administrator credentials in the Username and Password fields.
+5. Enter the API URL as described above.
+6. Click **Continue**.
 
+<div style={{textAlign: 'center'}}>
 
+![img](../../static/img/fortify-img8.png)
 
-By completing these steps, the two platforms will be integrated and able to communicate. Now, let's proceed to the importation of assets/repositories.
+</div>
+
+Once completed, the platforms will be connected and ready to synchronize data. You can now proceed to import your Fortify assets.
 
 ## Importing Assets
 
-After the sixth step, the following screen displaying assets registered in Fortify will appear. On reaching this screen, you can now select which projects to import into the Conviso Platform. Utilize the search field to look for a specific project.
+If everything goes right, you’ll be presented with the following screen. Click the **Check connection** button to confirm that the integration was performed correctly.
 
-After selecting the projects, simply click on "Finish," and the assets will enter the queue to be imported. Depending on the project's size, this process may take a few minutes for completion.
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/fortify-img2-new.png)
 
 </div>
 
-**There are other ways to access this screen if you have configured the integration previously. Simply go to the Integration Configuration screen, and you can access it in two ways:**
+With the integration configured, you can now start importing your projects. To do so, click the **Add project** button.
 
-1. Through the Assets Management screen, by clicking on "New Asset" as shown in the figure below.
+Next, select the projects you want to import into the Conviso Platform and click **Add**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -70,7 +73,11 @@ After selecting the projects, simply click on "Finish," and the assets will ente
 
 </div>
 
-2. Through the "Configure" button in the Integrations tab.
+After this, the import process will be initiated, and depending on the size of the project, this may take a few minutes.
+
+After creating the integration, you can add more assets through the integration configuration page, which can be accessed in two ways:
+
+1. Through the Asset Management page as shown in the figure below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -78,25 +85,13 @@ After selecting the projects, simply click on "Finish," and the assets will ente
 
 </div>
 
-After completing either of the two steps, the configuration screen below will appear.
+2. From the **Integration Settings** button in the Integrations section:
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/fortify-img5-new.png)
 
 </div>
-
-On this screen, there is a wealth of important information. Below is an explanation of the elements on this screen.
-
-1. Table displaying the projects integrated into the platform, along with the date of the last synchronization and its current status.
-
-2. Button to add new projects to the platform, leading to the project selection screen as shown earlier in this document.
-
-3. Connection status between the platforms, aiding in monitoring whether the communication between the platforms is active.
-
-4. Information used for the integration, e.g., username and API URL.
-
-5. Button to remove the integration.
 
 ## General Information on Operation
 
@@ -111,12 +106,11 @@ When moving issues from one status to another, the Conviso platform will communi
 | Conviso Platform     | Fortify        |
 |----------------------|----------------|
 | Created              | Not Set/Blank  |
-| identified           | Exploitable    |
-| false positive       | Not an Issue   |
-| risk accepted        | Suspicious     |
+| Identified           | Exploitable    |
+| False Positive       | Not an Issue   |
+| Risk Accepted        | Suspicious     |
 | Fixed                | Removed        |
 | Suppressed           | Suppressed     |
-
 
 </div>
 
@@ -130,17 +124,17 @@ When changing the status in the Conviso Platform, these changes will be replicat
 
 To monitor or initiate a synchronization, you can follow the steps below:
 
-1. Go to the Assets Management page.
-2. Click on the name of the asset you want to synchronize.
-3. On the asset's detail page, click on View All next to Integration, as shown in the image below.
+1. Go to the **Assets** page.
+2. Click on the name of the asset you want to sync.
+3. On the asset detail page, click on **View All** next to Integration, as shown in the image below:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/fortify-img7-new.png)
+![img](../../static/img/fortify-img6-new.png)
 
 </div>
 
-4. A new screen will open, where you will find the button to initiate an integration, along with a progress bar indicating the status if synchronization is in progress. In case of any errors, they will also be displayed on this screen.
+4. A new screen will appear with the option to start a sync and view the progress. Any errors encountered during syncing will also be displayed here.
 
 Alternatively, refer to the [Azure Pipelines documentation](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners) to automatically synchronize your assets.
 
