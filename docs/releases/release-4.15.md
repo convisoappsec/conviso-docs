@@ -34,7 +34,7 @@ This release brings significant improvements to help you manage security risks m
 ## Workflow Optimization
 
 - Save Your Custom Views  
-  Save your frequently used filters and views in the asset list. No more recreating the same searches every time - your custom views are always available for quick access.
+  Save your frequently used filters and views in the vulnerabilities list. No more recreating the same searches every time - your custom views are always available for quick access.
 
 - Automatic Closure for Container-Type Vulnerabilities  
   Vulnerabilities detected in container scans are now automatically closed if matching resolution criteria are met—reducing manual effort and improving data hygiene.
