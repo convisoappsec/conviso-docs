@@ -34,26 +34,20 @@ This release brings significant improvements to help you manage security risks m
 ## Workflow Optimization
 
 - Save Your Custom Views  
-  Save your frequently used filters and views in the vulnerabilities list. No more recreating the same searches every time - your custom views are always available for quick access.
+  Save your frequently used filters and views in the project list. No more recreating the same searches every time - your custom views are always available for quick access.
 
 - Automatic Closure for Container-Type Vulnerabilities  
   Vulnerabilities detected in container scans are now automatically closed if matching resolution criteria are met—reducing manual effort and improving data hygiene.
-
-- Automatic Sync for DAST Results  
-  Ensure up-to-date vulnerability data by automatically syncing results from DAST sources at defined intervals.
 
 ---
 
 **_Improvements_**
 ## UX and Visibility Enhancements
 
-- Quick Security Status Overview  
-  See at a glance which security scanning tools are active for each asset with new visual indicators in the asset list.
-
 - Show Last Execution Date for Each Source  
   Adds a field with the last execution timestamp per scanning source in the vulnerability detail view.
 
-- Show Integration Source Icon on Vulnerability Row  
+- Tag indicating the vulnerability source directly in the list  
   A visual icon now shows which source generated the vulnerability, helping with quick scanning and triage.
 
 - Asset Name with Link on Vulnerability Detail  
@@ -62,8 +56,8 @@ This release brings significant improvements to help you manage security risks m
 - Add File Name on Attachment Timeline  
   Improve traceability and context by displaying file names for uploaded documents in requirement timelines.
 
-- Add Column Management to Asset List  
-  Allows users to show/hide columns in the asset list table, customizing their view for better focus.
+- Better view of DAST configuration on assets list  
+  Ability to filter DAST results by configured source.
 
 ---
 
