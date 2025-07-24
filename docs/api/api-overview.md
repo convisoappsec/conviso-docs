@@ -1,7 +1,7 @@
 ---
 id: api-overview
-title: Conviso API Overview
-sidebar_label: Conviso API Overview
+title: API Getting Started
+sidebar_label: API Getting Started
 description:  Conviso's API supports seamless integration with existing tools and processes, enabling developers to customize security automation to their workflows for a consistent experience. Get to know!
 keywords:  [Conviso API Overview]
 image: '/static/img/apioverviewseo.png'
@@ -10,45 +10,68 @@ image: '/static/img/apioverviewseo.png'
 ## Introduction
 Conviso's API supports seamless integration with existing tools and processes, enabling developers to customize security automation to their workflows for a consistent experience.
 
-[Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-
-## When to use Conviso API
-
-With the Conviso API, you can perform a variety of actions related to application security, such as:
-
-- Project management and its related security activities;
-
-- Analysis and management of vulnerabilities from different sources;
-
-- Management of integrations with other tools and platforms;
-
-- Management of communication and notifications.
-
-
-As a reminder, you can also allow Conviso access to your development flow using the Conviso Platform [integrations](../integrations/integrations_intro.md) and the [Conviso CLI](../cli/installation.md).
-
-**Note:** There may be differences in output of the Conviso API, the Conviso CLI, and Conviso Platform Integrations. 
-
-## Conviso API GraphQL
-We use and recommend using our GraphQL API, it is available for you to try as endpoints are released, see the [documentation here](../api/graphql/introduction.md). Conviso's GraphQL API will replace Conviso's Rest API.
+## API GraphQL
+The GraphQL API offers advantages over other API options such as flexibility, reduced overfetching and underfetching, integrated documentation, and a growing ecosystem of developers and tools.
 
 ### What is GraphQL?
-[GraphQL](https://graphql.org/) is a query language for APIs. It provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+[GraphQL](https://graphql.org/) is a query language for APIs. It provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools. To try see the [documentation here](../api/graphql/introduction.md).
 
-## Conviso API Rest
-The Conviso REST API is being deprecated. To ensure optimal performance and access to the latest features, we recommend switching to the GraphQL API for full benefits of updated technology. 
+## GraphQL Overview
 
+One of the key features of the Conviso GraphQL API is the ability to perform actions through queries and mutations.
+
+### Queries
+[Queries](../graphql/documentation/queries/allocated-analyses.mdx) allow you to retrieve data from the API, such as information about projects, vulnerabilities, and scans. You can also use queries to filter data based on specific criteria, making it easy to retrieve exactly the information you need.
+
+### Mutations
+[Mutations](../graphql/documentation/mutations/configure-integration-schedule.mdx), on the other hand, enable you to modify data. With mutations, you can create new entities, such as projects, scans, and vulnerabilities. You can also update and delete existing entities.
+
+The Conviso API offers diverse queries and mutations that enable you to manage projects and vulnerabilities.
+
+## Understanding the GraphQL Schema Language  
+Directives, Objects, Enums, Inputs, and Scalars are all components of the GraphQL schema language used in the Conviso API GraphQL.
+
+### Directives
+[Directives](../graphql/documentation/directives/deprecated.mdx) are used to control the behavior of GraphQL operations. The ```deprecated``` directive can be used to mark a field or enum value as deprecated, while ```include``` and ```skip``` directives can be used to conditionally include or skip parts of a query based on a Boolean argument. The ```specifiedBy``` directive can be used to specify a URL that provides information about the field or enum value.
+
+### Objects
+[Objects](../graphql/documentation/objects/activity.mdx) are complex data types that can have fields and methods. They are used to represent various entities and concepts in the system, such as ```Asset```, ```Project```, and ```Vulnerability```. These objects can be queried and mutated using GraphQL operations.
+
+
+### Enums
+[Enums](../graphql/documentation/enums/asset-arch.mdx) are used to represent a fixed set of possible values for a field. The system includes various enums such as ```AssetArch```, ```AssetAudience```, and ```AssetSeverity``` which represent different characteristics of assets.
+
+### Inputs
+[Inputs](../graphql/documentation/inputs/company-search.mdx) are used to pass arguments to mutation operations. These are used to create or update entities in the system, such as ```CreateProjectInput```, ```CreateAssetInput```, and ```UpdateSamlIntegrationInput```.
+
+### Scalars
+[Scalars](../graphql/documentation/scalars/boolean.mdx) are basic data types that represent a single value. The system includes various scalars such as ```Boolean```, ```Int```, ```String```, and ```ISO8601Date```. These are used as field types in objects and as argument types in operations.
+
+## API access limit
+
+As the Conviso GraphQL API is a shared service, we apply quotas and limitations to make sure it's used fairly by all users and to protect the overall health of the system.
+
+By exceeding the quota, you'll receive a ``429: Too many requests`` HTTP status code response. If this happens, you should consider using a backoff algorithm to keep your requests within our limits and try again later.
+
+Currently, our requests are limited to ``` 1200 requests per minute ``` to our GraphQL endpoint. 
+
+### Dealing with time-based errors
+
+For all time-based errors (you triggered more requests than the quota), we recommend your code to catch the exception and use a backoff algorithm to reduce the frequency of the requests until it normalizes. 
+
+If the requests are still unsuccessful, it is important that the delay between requests increase over time until the request gets another status rather than 429.
+
+## Generate API Key
+To perform activities with Conviso CLI, Conviso Platform Integrations and also Conviso API, it is important to generate an API Key to authenticate your user. 
+
+Follow these steps as shown in the gif:
+
+1. Log in to Conviso Platform and go to **Security Feed**;
+2. Click on **Generate API Key** button in **Quick Actions** box to create your key;
+3. Click **Confirm** after generating the key for successful creation.
+
+After clicking on **Confirm**, the confirmation of your new API Key will appear with its respective value. We recommend storing this API Key somewhere safe as a password vault.
+
+**Note:** This key can be generated as many times as you wish. However, the previously generated key will expire.
 ## Getting support for the Conviso API
-If you have any questions or need help using our API, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
-
-## Resources
-By exploring our content, you'll find resources that will enhance your understanding of the importance of a Security Application Program.
-
-[Conviso Blog](https://bit.ly/3JtXM8A): Explore our blog, which offers a collection of articles and posts covering a wide range of AppSec topics. The content on the blog is primarily in English.
-
-[Conviso's YouTube Channel](https://bit.ly/3NIbbfM): Access a wealth of informative videos covering various topics related to AppSec. Please note that the content is primarily in Portuguese.
-
-[AppSec to Go - Conviso's Podcast on AppSec](https://spoti.fi/43UJQwN): Tune in to our podcast, where we discuss AppSec-related subjects, providing valuable insights and discussions. The podcast is conducted in Portuguese.
-
-[![Discover Conviso Platform, a solution for ASPM!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+If you have any questions or need help using our API, please don't hesitate to contact our [support team](https://support.convisoappsec.com/tickets).

@@ -16,11 +16,12 @@
     "@algolia/client-search": "^5.6.1",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/logger": "^3.1.0",
-    "@docusaurus/plugin-ideal-image": "^3.5.2",
+    "@docusaurus/plugin-content-docs": "^3.8.1",
+    "@docusaurus/plugin-ideal-image": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
-    "@docusaurus/theme-common": "^3.5.2",
+    "@docusaurus/theme-classic": "^3.8.1",
+    "@docusaurus/theme-common": "^3.8.1",
     "@easyops-cn/docusaurus-search-local": "^0.44.5",
-    "@graphiql/toolkit": "^0.4.3",
     "@graphql-markdown/docusaurus": "^1.16.3",
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/url-loader": "^8.0.1",
@@ -28,7 +29,7 @@
     "clsx": "^2.0.0",
     "docusaurus-gtm-plugin": "^0.0.2",
     "docusaurus2-dotenv": "^1.4.0",
-    "graphiql": "^2.0.9",
+    "graphiql": "^2.4.7",
     "graphql": "^16.8.0",
     "plugin-image-zoom": "^1.2.0",
     "prop-types": "^15.8.1",
@@ -41,16 +42,8 @@
     "typescript": "^5.3.3"
   },
   "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.5%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "engines": {
     "node": ">=16.14.1"
