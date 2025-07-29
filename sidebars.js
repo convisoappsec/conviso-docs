@@ -176,6 +176,8 @@ module.exports = {
           'cli/findings'
       ]
     },
+  ],
+  apiSidebar: [
     {
       type: "category",
       label: "API",
@@ -202,6 +204,7 @@ module.exports = {
           type: "category",
           label: "Release Notes 🚀",
           items: [
+            'releases/release4.15',
             'releases/release4.14',  
             'releases/release4.13',
             'releases/release4.12',
