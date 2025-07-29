@@ -146,18 +146,6 @@ module.exports = {
     },
     {
       type: "category",
-      label: "CLI",
-      items: [
-          'cli/installation',
-          'cli/ast',
-          'cli/security-gate',
-          'cli/assets',
-          'cli/findings'
-      ]
-    },
-    
-    {
-      type: "category",
       label: "Platform",
       items: [
         'platform/asset-management',
@@ -179,64 +167,75 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Releases 🚀",
+      label: "CLI",
       items: [
-        'releases/intro',
-        'releases/release4.15',
-        'releases/release4.14',  
-        'releases/release4.13',
-        'releases/release4.12',
-        'releases/release4.11',
-        'releases/release4.10',
-        'releases/release4.9',
-        'releases/release4.8',
-        'releases/release4.7',
-        'releases/release4.6',
-        'releases/release4.5',
-        'releases/release4.4',
-        'releases/release4.3',
-        'releases/release4.2',
-        'releases/release4.1',
-        'releases/release4.0',
-        'releases/release3.9',
-        'releases/release3.8',
-        'releases/release3.7',
-        'releases/release3.6',
-        'releases/release35',
-        'releases/release34',
-        'releases/release33',
-        'releases/release32',
-        'releases/release31',
-        'releases/appsecflow305',
-        'releases/appsecflow304',
-        'releases/appsecflow302'
-      ],
-    }
+          'cli/installation',
+          'cli/ast',
+          'cli/security-gate',
+          'cli/assets',
+          'cli/findings'
+      ]
+    },
   ],
   apiSidebar: [
     {
       type: "category",
       label: "API",
-      collapsible: false,
-      collapsed: false,
       items: [
         'api/api-overview',
-        'api/generate-apikey',
+        'api/graphql/playground',
         {
           type: "category",
-          label: "GraphQL",
-          items: [
-            'api/graphql/introduction',
-            'api/graphql/limit',
-            {
-              type: "category",
-              label: "References",
-              items: sidebarSchema.schemaSidebar
-            }
-          ]
-        },
+          label: "References",
+          items: sidebarSchema.schemaSidebar
+        }
       ]
     },
   ],
+  releaseSidebar: [
+    {
+      type: "category",
+      label: "Release Notes",
+      collapsible: false,
+      collapsed: false,
+      items: [
+        'releases/intro',
+        {
+          type: "category",
+          label: "Release Notes 🚀",
+          items: [
+            'releases/release4.15',
+            'releases/release4.14',  
+            'releases/release4.13',
+            'releases/release4.12',
+            'releases/release4.11',
+            'releases/release4.10',
+            'releases/release4.9',
+            'releases/release4.8',
+            'releases/release4.7',
+            'releases/release4.6',
+            'releases/release4.5',
+            'releases/release4.4',
+            'releases/release4.3',
+            'releases/release4.2',
+            'releases/release4.1',
+            'releases/release4.0',
+            'releases/release3.9',
+            'releases/release3.8',
+            'releases/release3.7',
+            'releases/release3.6',
+            'releases/release35',
+            'releases/release34',
+            'releases/release33',
+            'releases/release32',
+            'releases/release31',
+            'releases/appsecflow305',
+            'releases/appsecflow304',
+            'releases/appsecflow302'
+          ] // <-- Esse array fecha aqui, sem colchete extra depois
+        }
+      ]
+    }
+  ],  
   ...sidebarSchema,
 }
