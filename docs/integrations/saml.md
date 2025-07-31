@@ -39,14 +39,18 @@ Use this URL for the **ACS URL** (on Google) or **Reply URL (Assertion Consumer 
 ```https://app.convisoappsec.com/portal_users/saml/auth```
 
 Use this URL for the **Entity ID** (on Google or Azure Active Directory), **Data Source** (on ADFS):
-```https://app.convisoappsec.com/portal_users/saml/metadata```
+```https://auth.app.convisoappsec.com/realms/conviso-platform/broker/saml_{YOUR_COMPANY_ID}/endpoint```
 
 Use this URL for the **Start URL** (on Google):
 ```https://app.convisoappsec.com```
 
+:::note
+Replace `{YOUR_COMPANY_ID}` in the Reply URL with your actual company identifier.
+:::
+
 ## Conviso Platform SAML 2.0 SSO integration
 
-Log in to Conviso Platform. At the left-side menu, click at **Integrations**. Then, at the left panel shown, choose **Authentication**. Choose the **SAML** card and click on the **Integrate** button, as shown below:
+Log in to Conviso Platform. At the left-side menu, click at **Integrations**. Then, at the left panel shown, choose **Identity Management**. Choose the **SAML** card and click on the **Connect** button, as shown below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -61,6 +65,38 @@ After retrieving the necessary data from your SSO platform, paste them to their 
 [![img](../../static/img/saml-img2.png  "Conviso Platform integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
 
 </div>
+
+## Test application
+
+Before testing the SSO integration, ensure you are logged out of the Conviso Platform.
+
+Follow these steps to test the integration:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/google-img6.png)
+
+</div>
+
+1. Click this link: https://app.convisoappsec.com/spa/auth/login
+
+2. You You will be redirected to the new Conviso login page. Click **SSO access**.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/new-page-login-img1.png  "Conviso Platform integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+3. Enter your provider email and click **Log in**.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/new-page-login-img2.png  "Conviso Platform integration.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+The test will verify that the SSO configuration is working correctly between SAML and the Conviso Platform.
 
 ### Email Field Mapping in SAML 2.0
 
