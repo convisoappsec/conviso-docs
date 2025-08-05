@@ -27,6 +27,7 @@ This section provides a comprehensive guide on using the Conviso Platform SSO Ap
 - [Usage](#usage)
 - [Installing the Conviso Platform SSO Application](#installing-the-conviso-platform-sso-application)
 - [Performing Conviso Platform setup](#performing-conviso-platform-setup)
+- [Test in Microsoft Entra ID](#test-in-microsoft-entra-id)
 - [Assigning users to the Conviso Platform SSO Application](#assigning-users-to-the-conviso-platform-sso-application)
 - [Setup Group Mapping Integration](#setup-group-mapping-integration)
 - [Email Field Mapping in SAML 2.0 for Microsoft Entra ID](#email-field-mapping-in-saml-20-for-microsoft-entra-id)
@@ -71,7 +72,15 @@ To install the Conviso Platform SSO application, follow these steps:
 
 </div>
 
-8. The **Basic SAML Configuration** must be edited as it is a requirement by Microsoft itself. Select **Edit**, then **Save** with the data already filled in and close the pop-up window.
+8. The **Basic SAML Configuration** must be edited as it is a requirement by Microsoft. Select **Edit**, then **Save** with the following data:
+   - **Identifier (Entity ID)**: `https://auth.app.convisoappsec.com/realms/conviso-platform`
+   - **Reply URL (Assertion Consumer Service URL)**: `https://auth.app.convisoappsec.com/realms/conviso-platform/broker/azure_{YOUR_COMPANY_ID}/endpoint`
+   - **Sign on URL**: `https://app.convisoappsec.com/spa/auth/login`
+ - Close the pop-up window.
+
+:::note
+Replace `{YOUR_COMPANY_ID}` in the Reply URL with your actual company identifier.
+:::
 
 <div style={{textAlign: 'center'}}>
 
@@ -79,7 +88,7 @@ To install the Conviso Platform SSO application, follow these steps:
 
 </div>
 
-9. In the **Attributes & Claims** section, make sure that the `name` (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) is mapped to the attribute corresponding to the email the user uses to log in:
+1. In the **Attributes & Claims** section, make sure that the `name` (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) is mapped to the attribute corresponding to the email the user uses to log in:
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
@@ -134,6 +143,46 @@ To set up the Conviso Platform, follow these steps:
 </div>
 
 The next step is to assign which Microsoft Entra users will use SSO to access the Conviso Platform.
+
+## Test in Microsoft Entra ID[](https://docs.convisoappsec.com/integrations/microsoft-entra-id/#test-in-microsoft-entra-id)
+
+Before testing the SSO integration, ensure you are logged out of the Conviso Platform.
+
+The SSO test process is mandatory in the Microsoft Entra ID provider. Follow these steps to test the integration:
+
+1. In the **Single sign-on** page, click **Test this application**.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/entra-id-img17.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+2. Click **Test sign in**.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/entra-id-img18.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+3. You will be redirected to the new Conviso login page. Click **SSO access**.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/new-page-login-img1.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+4. Enter your provider email and click **Log in**.
+
+<div style={{textAlign: 'center'}}>
+
+[![img](../../static/img/new-page-login-img2.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+
+</div>
+
+The test will verify that the SSO configuration is working correctly between Microsoft Entra ID and the Conviso Platform.
 
 ## Assigning users to the Conviso Platform SSO Application[](https://docs.convisoappsec.com/integrations/microsoft-entra-id/#assigning-users)
 To assign users to the Conviso Platform SSO application, follow these steps:

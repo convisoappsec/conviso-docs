@@ -59,8 +59,8 @@ In order to configure Google SSO, it is necessary to have Admin privileges on th
 
 6. At this point you must provide the following URLs:
 
-- At the **ACS URL** field, paste ```https://app.convisoappsec.com/portal_users/saml/auth```
-- At the **Entity ID** field, paste ```https://app.convisoappsec.com/portal_users/saml/metadata```
+- At the **ACS URL** field, paste ```https://auth.app.convisoappsec.com/realms/conviso-platform/broker/google_<YOUR_COMPANY_ID>/endpoint```
+- At the **Entity ID** field, paste ```https://auth.app.convisoappsec.com/realms/conviso-platform```
 - At the **Start URL** field, paste ```https://app.convisoappsec.com```
 
 Also, you must check the **Signed Response** checkbox, before clicking on the **Continue** button:
@@ -121,7 +121,7 @@ When done, click on the **Finish** button:
 
 </div>
 
-2. Log on to **Conviso Platform**. Make sure your **Company** is selected at the upper blue bar, select **Integrations** on the left menu and then select **Authentication** on **Categories** panel:
+2. Log on to **Conviso Platform**. Make sure your **Company** is selected. Select **Integrations** on the left menu and then select **Identity Management**. Find the Google SSO card and click on Connect::
 
 <div style={{textAlign: 'center'}}>
 
@@ -129,15 +129,7 @@ When done, click on the **Finish** button:
 
 </div>
 
-3. At the right panel, find the Google card and click on **Configure**:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/google-img3.png)
-
-</div>
-
-4. The following floating screen will open. Copy the matching fields obtained from **Google Workspaces** to the corresponding fields at this screen. First, the **SSO URL**. Next, the **Entity ID** and, then, the **Certificate**. Finally, fill the **Authorized Domains** field with all your domain name and aliases, if they exist:
+3. The following screen will open. Copy the matching fields obtained from **Google Workspaces** to the corresponding fields at this screen. First, the **SSO URL**. Next, the **Entity ID** and, then, the **Certificate**. Finally, fill the **Authorized Domains** field with all your domain name and aliases, if they exist:
 
 <div style={{textAlign: 'center'}}>
 
@@ -145,11 +137,11 @@ When done, click on the **Finish** button:
 
 </div>
 
-5. At last, click Save to store your Google SSO integration configuration.  
+4. At last, click Save to store your Google SSO integration configuration.  
 
 ## Verifying Google SSO Integration
 
-To check if everything is correct, you may click **Integrations**, then **Authentication** and then **Integrations Made**:
+To check if everything is correct, you may click **Integrations**, then **Identity Managment**:
 
 <div style={{textAlign: 'center'}}>
 
@@ -157,7 +149,13 @@ To check if everything is correct, you may click **Integrations**, then **Authen
 
 </div>
 
-Select the integration you want to view and click at the icon **Edit** on the column **Actions**:
+Select the integration you want to view and click at the **Integration Settings**
+
+## Test application
+
+Before testing the SSO integration, ensure you are logged out of the Conviso Platform.
+
+The SSO test process is mandatory in the Google provider. Follow these steps to test the integration:
 
 <div style={{textAlign: 'center'}}>
 
@@ -165,31 +163,11 @@ Select the integration you want to view and click at the icon **Edit** on the co
 
 </div>
 
-Check if everything is OK. Make changes if needed and click close to leave this screen without saving it or click the button **Save** to store the modified configuration.
+1. Click **TEST SAML LOGIN**.
 
-<div style={{textAlign: 'center'}}>
+2. You will be redirected to the Conviso Platform and automatically authenticated.
 
-![img](../../static/img/google-img7.png)
-
-</div>
-
-## Post-configuration Actions
-
-In order to change the authentication type in Conviso Platform, we must go to the **Integrations** screen and click on **Authentication**.
-
-Click the button below the Conviso icon to change the authentication type from SSO (Disabled) to Default Login and Password (Enabled), or vice-versa:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/google-img8.png)
-
-</div>
-
-If **Disabled**, login will be done via SSO. When **Enabled**, the login and password will be used to access Conviso Platform.
-
-:::note
- In order to disable the login and password option, we must have an SSO integration already configured.
-:::
+The test will verify that the SSO configuration is working correctly between Google SSO and the Conviso Platform.
 
 ### Email Field Mapping in SAML 2.0
 

@@ -74,9 +74,7 @@ module.exports = {
           type: "category",
           label: "Authentication/SSO",
           items: [
-            'integrations/adfs',
             'integrations/google',
-            'integrations/ldap',
             'integrations/microsoft-entra-id',
             'integrations/saml'
           ]
