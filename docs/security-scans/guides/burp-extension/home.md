@@ -15,7 +15,7 @@ If needed, you can define a customized endpoint:
 * [Define endpoint](./define-endpoint)
 
 After the installation process has concluded, you will need to configure the API KEY to start using the the extension properly: 
-* [Getting API Key](../../../api/generate-apikey)
+* [Getting API Key](../../../platform/security-feed.md#generate-api-key)
 
 Now that you have your API Key, let's configure and test the communication with the API.
 

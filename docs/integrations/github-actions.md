@@ -27,7 +27,7 @@ The [CLI](../cli/installation.md) is a docker image in this integration for all 
 
 Before you can use Conviso Platform with Github Actions, you need to make sure that:
 
-* You have your API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/generate-apikey.md).
+* You have your API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../platform/security-feed.md#generate-api-key).
 
 * You must also set an environment variable for the runner: **CONVISO_API_KEY**. This code tells Conviso Platform which account you are using. To do this on Github, you must:
     * Go to your project’s **Settings > Secrets and Variables** and expand the **Actions** section.
