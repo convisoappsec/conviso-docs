@@ -133,7 +133,7 @@ Integrating the Conviso Platform with external scanners such as Checkmarx, Forti
 2. Search for **Conviso Azure Sync Task** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
 3. Click on **Get it free**.
 4. Edit Your Azure DevOps Pipeline.
-5. In the **Pipelines variables** section, add the `CONVISO_API_KEY` variable and set its value to your [Conviso API Key](https://docs.convisoappsec.com/api/generate-apikey).
+5. In the **Pipelines variables** section, add the `CONVISO_API_KEY` variable and set its value to your [Conviso API Key](../platform/security-feed.md#generate-api-key).
 6. Within the pipeline configuration, add the **Conviso Azure Sync Task**.
 7. Fill in the fields as follows:
    - Conviso API Key: `$(CONVISO_API_KEY)`.

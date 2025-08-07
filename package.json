@@ -28,7 +28,6 @@
     "@mdx-js/react": "^3.0.1",
     "clsx": "^2.0.0",
     "docusaurus-gtm-plugin": "^0.0.2",
-    "docusaurus2-dotenv": "^1.4.0",
     "graphiql": "^2.4.7",
     "graphql": "^16.8.0",
     "plugin-image-zoom": "^1.2.0",
@@ -42,10 +41,22 @@
     "typescript": "^5.3.3"
   },
   "browserslist": {
-    "production": [">0.5%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "engines": {
     "node": ">=16.14.1"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.1",
+    "dotenv-webpack": "^8.1.1"
   }
 }

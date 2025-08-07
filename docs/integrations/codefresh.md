@@ -77,7 +77,7 @@ At the right corner of pipeline editing screen, there is a menu with **Steps**, 
 
 1. Click **Variables**, then **Add Variable**;
 2. At **Key** field, input the variable name: ```CONVISO_API_KEY``` ;
-3. At **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide](../api/generate-apikey).
+3. At **Value** field, paste the Conviso Platform API key value. To generate a key, follow this [guide](../platform/security-feed#generate-api-key).
 4. After pasting the API key at the **Value** field, you will notice a padlock with the **Encrypt** option. Click the **Encrypt** option and confirm.
 
 ### Account Variables Setup
