@@ -77,11 +77,11 @@ The response will be a list ordered from 1 to the total number of pages you've o
 
 Please make sure to replace the following details with your own:
 
-**CONVISO_API_KEY:** Generate your ```x-api-key``` by following the instructions provided [here](/docs/api/generate-apikey.md).
+**CONVISO_API_KEY:** Generate your ```x-api-key``` by following the instructions provided [here](/docs/platform/security-feed.md#generate-api-key).
 
 <!--**COMPANY_ID:** Obtain your company id by navigating to the "Companies" section under "Settings" in the Conviso Platform.-->
 
-**YOUR QUERY:** Configure the desired query in the ```Content``` line. You can find a detailed description of all available queries at this [link](/docs/api/graphql/introduction.md).
+**YOUR QUERY:** Configure the desired query in the ```Content``` line. You can find a detailed description of all available queries at this [link](/docs/api/api-overview.md).
 
 Once you have pasted the code, the data will be loaded within seconds.
 
