@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 // Plugin de proxy para evitar CORS
 async function proxyPlugin() {
     return {
@@ -21,6 +23,20 @@ async function proxyPlugin() {
   module.exports = async () => {
     require('dotenv').config();
     const proxy = await proxyPlugin();
+
+    const dotenvPlugin = {
+      name: 'custom-dotenv',
+      configureWebpack() {
+        return {
+          plugins: [
+            new Dotenv({
+              path: './.env',
+              systemvars: true,
+            }),
+          ],
+        };
+      },
+    };
   
     let graphqlDocsPlugin = [];
 
@@ -148,13 +164,19 @@ async function proxyPlugin() {
       ],
   
       plugins: [
-        [
-          'docusaurus2-dotenv',
-          {
-            path: './.env',
-            systemvars: true,
+        () => ({
+          name: 'custom-dotenv',
+          configureWebpack() {
+            return {
+              plugins: [
+                new Dotenv({
+                  path: './.env',
+                  systemvars: true,
+                }),
+              ],
+            };
           },
-        ],
+        }),
         [
           require.resolve('plugin-image-zoom'),
           {},
