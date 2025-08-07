@@ -32,7 +32,6 @@ async function proxyPlugin() {
             schema: 'https://app.convisoappsec.com/graphql',
             rootPath: './docs',
             baseURL: 'api/graphql/documentation',
-            homepage: './docs/api/graphql/introduction.md',
             loaders: {
               UrlLoader: {
                 module: '@graphql-tools/url-loader',
