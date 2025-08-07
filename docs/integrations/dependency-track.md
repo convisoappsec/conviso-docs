@@ -58,6 +58,14 @@ You will be presented with the following form that should be filled with the tok
 
 </div>
 
+Select which vulnerability severities you want to import from Dependency-Track:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/dependency-track-img14.png)
+
+</div>
+
 If everything goes right, you’ll be presented with the following screen. Click the **Check connection** button to confirm that the integration was performed correctly.
 
 <div style={{textAlign: 'center'}}>
