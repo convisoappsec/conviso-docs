@@ -27,7 +27,7 @@ This integration provides the **CLI as a Docker** image for executing tasks and 
 
 Before using Conviso Platform with Azure Pipelines, you must ensure that:
 
-1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](https://docs.convisoappsec.com/api/generate-apikey).
+1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../platform/security-feed.md#generate-api-key).
 
 2. A [new pipeline is created to run the automation](https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?view=azure-devops#:~:text=Go%20to%20the%20Pipelines%20tab,start%20with%20an%20Empty%20job.). Follow these steps:
 * Click on "**Pipelines**" in the left-hand menu.
@@ -159,7 +159,7 @@ steps:
 6. Save it and run the pipeline.
 
 **Field Descriptions**:
-- API_KEY: Your [Conviso API Key](https://docs.convisoappsec.com/api/generate-apikey), referenced as `$(CONVISO_API_KEY)` in the pipeline variables.
+- API_KEY: Your [Conviso API Key](../platform/security-feed.md#generate-api-key), referenced as `$(CONVISO_API_KEY)` in the pipeline variables.
 - PROJECT_ID: The project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency-Track).
 - INTEGRATION: The name of the integration as specified in Conviso's GraphQL schema (e.g., 'FORTIFY', 'CHECKMARX', 'DEPENDENCY_TRACK').
 - COMPANY_ID: Your company ID in the Conviso Platform.

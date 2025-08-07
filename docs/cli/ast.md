@@ -31,7 +31,7 @@ conviso --api-key 'your-api-key' ast run \
   --repository-dir 'your_source_code_repository_path'
 ```
 
-**Note:** You need an API Key. Refer to the following documentation to know how to generate one [here](/cli/installation#authentication).
+**Note:** You need an API Key. Refer to the following documentation to know how to generate one [here](../platform/security-feed.md#generate-api-key).
 
 The identified vulnerabilities will be automatically associated with the Asset in Conviso Platform. Now you can use the [Vulnerabilities](../../platform/vulnerabilities) resource to work on the correction flow.
 

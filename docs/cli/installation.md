@@ -73,7 +73,7 @@ The command will print CLI commands and options summary. Now we are ready to pro
 
 ## Authentication
 
-In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../../api/generate-apikey). You can generate an API Key within Security Feed -> Quick Actions -> Generate API KEY.
+In order to start using the CLI you will need to provide your [API Key for your Conviso Platform account](../platform/security-feed.md#generate-api-key). You can generate an API Key within Security Feed -> Quick Actions -> Generate API KEY.
 
 **Note:** Every time you do this process, you will need to change the API Key from the CLI settings.
 
