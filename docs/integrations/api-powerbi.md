@@ -21,7 +21,7 @@ To create a connector with the BI tool, you we'll need:
 
 
 1. Conviso Platform GraphQL URL (https://app.convisoappsec.com/graphql);
-2. Your x-api-key (you can generate your x-api-key by following the instructions here) and; 
+2. Your x-api-key (you can generate your x-api-key by following the instructions [here](../platform/security-feed.md#generate-api-key)) and; 
 3. The integration script avaliable in this documentation;
 4. Conviso's GraphQL documentation: https://docs.convisoappsec.com/;
 
