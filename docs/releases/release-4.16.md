@@ -46,9 +46,6 @@ This release brings comprehensive improvements to the Conviso Platform ecosystem
 - **Asset Classification Dashboard**  
   New comprehensive filtering system for assets based on their classification status (Classified, Partially Classified, Unclassified) with visual charts showing distribution across different categories.
 
-- **Enhanced Asset Management**  
-  Better asset filtering options for development, staging, and production environments with improved search capabilities.
-
 ---
 
 **_New Feature_**
