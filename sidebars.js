@@ -10,6 +10,19 @@ module.exports = {
     },
     {
       type: "category",
+      label: "API",
+      items: [
+        'api/api-overview',
+        'api/graphql/playground',
+        {
+          type: "category",
+          label: "References",
+          items: sidebarSchema.schemaSidebar
+        }
+      ]
+    },
+    {
+      type: "category",
       label: "Scanning your Application",
       items: [
         {
@@ -173,22 +186,7 @@ module.exports = {
           'cli/assets',
           'cli/findings'
       ]
-    },
-  ],
-  apiSidebar: [
-    {
-      type: "category",
-      label: "API",
-      items: [
-        'api/api-overview',
-        'api/graphql/playground',
-        {
-          type: "category",
-          label: "References",
-          items: sidebarSchema.schemaSidebar
-        }
-      ]
-    },
+    }
   ],
   releaseSidebar: [
     {
