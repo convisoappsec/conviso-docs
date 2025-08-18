@@ -52,6 +52,7 @@ This release brings comprehensive improvements to the Conviso Platform ecosystem
 ## DAST Report
 
 - **DAST Scan Generation**  
+  Easily generate DAST reports. Get clear visibility into your scan results to identify vulnerabilities and support faster, informed security decisions.
 
 ---
 
