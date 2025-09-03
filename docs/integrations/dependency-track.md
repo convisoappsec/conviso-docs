@@ -147,17 +147,17 @@ To monitor the progress of an import/synchronization or initiate a synchronizati
 The **webhook token** is used for communication between **Dependency Track** and **Conviso Platform**.  
 It notifies Conviso Platform whenever a **new vulnerability** is identified in Dependency Track.  
 
-> ⚠️ **Important:** If you use the **same Dependency Track instance** for more than one *company* in Conviso Platform, you must use the **same webhook token** for all of them.
+> ⚠️ **Important:** If you use the **same Dependency Track instance** for more than one company in Conviso Platform, you must use the **same webhook token** for all of them.
 
 ### How to Configure
 1. Go to the **Credentials** section of your integration in Conviso Platform.  
 2. Copy the displayed **webhook token**.  
-3. Open the integration settings of the other *company* that uses the same Dependency Track instance.  
+3. Open the integration settings of the other company that uses the same Dependency Track instance.  
 4. Paste the copied token into the corresponding field.  
 5. Click the **Continue** button to save and proceed.  
 6. In the **Severity Filters** section, you don’t need to make any changes. Simply click **Continue** again to save the webhook token update.  
 
-This ensures that all *companies* sharing the same Dependency Track instance use the same token, guaranteeing consistency and proper delivery of notifications.  
+This ensures that all companies sharing the same Dependency Track instance use the same token, guaranteeing consistency and proper delivery of notifications.  
 
 
 
