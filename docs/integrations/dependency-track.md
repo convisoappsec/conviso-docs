@@ -1,7 +1,7 @@
 ---
 id: dependency-track
-title: Dependency-Track
-sidebar_label: Dependency-Track
+title: Dependency Track
+sidebar_label: Dependency Track
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -11,18 +11,18 @@ sidebar_label: Dependency-Track
 </div>
 
 :::note
-First time using Dependency-Track? Please refer to the [following documentation](https://docs.dependencytrack.org/).  
+First time using Dependency Track? Please refer to the [following documentation](https://docs.dependencytrack.org/).  
 :::
 
 ## Introduction
 
-Dependency-Track is an intelligent Component Analysis platform that allows organizations to identify and reduce risk in the software supply chain. Dependency-Track takes a unique and highly beneficial approach by leveraging the capabilities of Software Bill of Materials (SBOM). This approach provides capabilities that traditional Software Composition Analysis (SCA) solutions cannot achieve.
+Dependency Track is an intelligent Component Analysis platform that allows organizations to identify and reduce risk in the software supply chain. Dependency Track takes a unique and highly beneficial approach by leveraging the capabilities of Software Bill of Materials (SBOM). This approach provides capabilities that traditional Software Composition Analysis (SCA) solutions cannot achieve.
 
-Dependency-Track monitors component usage across all versions of every application in its portfolio in order to proactively identify risk across an organization. The platform has an API-first design and is ideal for use in CI/CD environments. The Dependency-Track integration with Conviso Platform is done through this API.
+Dependency Track monitors component usage across all versions of every application in its portfolio in order to proactively identify risk across an organization. The platform has an API-first design and is ideal for use in CI/CD environments. The Dependency Track integration with Conviso Platform is done through this API.
 
-## Dependency-Track Setup
+## Dependency Track Setup
 
-In order to set up the Dependency-Track integration, you’re going to need a token that can be generated at your dedicated instance of the Dependency-Track system. To find it, go to **Administration** at the left sidebar, then select **Access Management**, and under it, **Teams**. You’ll be presented with a field showing a few rows of predefined teams, one of them being **Administrators**:
+In order to set up the Dependency Track integration, you’re going to need a token that can be generated at your dedicated instance of the Dependency Track system. To find it, go to **Administration** at the left sidebar, then select **Access Management**, and under it, **Teams**. You’ll be presented with a field showing a few rows of predefined teams, one of them being **Administrators**:
 
 <div style={{textAlign: 'center'}}>
 
@@ -58,7 +58,7 @@ You will be presented with the following form that should be filled with the tok
 
 </div>
 
-Select which vulnerability severities you want to import from Dependency-Track:
+Select which vulnerability severities you want to import from Dependency Track:
 
 <div style={{textAlign: 'center'}}>
 
@@ -141,6 +141,25 @@ To monitor the progress of an import/synchronization or initiate a synchronizati
 </div>
 
 4. A page displaying a progress bar indicating the current status of synchronization, as well as the button to initiate synchronization, will appear. In case of errors during synchronization, they will also be presented on this page.
+
+### Webhook
+
+The **webhook token** is used for communication between **Dependency Track** and **Conviso Platform**.  
+It notifies Conviso Platform whenever a **new vulnerability** is identified in Dependency Track.  
+
+> ⚠️ **Important:** If you use the **same Dependency Track instance** for more than one *company* in Conviso Platform, you must use the **same webhook token** for all of them.
+
+### How to Configure
+1. Go to the **Credentials** section of your integration in Conviso Platform.  
+2. Copy the displayed **webhook token**.  
+3. Open the integration settings of the other *company* that uses the same Dependency Track instance.  
+4. Paste the copied token into the corresponding field.  
+5. Click the **Continue** button to save and proceed.  
+6. In the **Severity Filters** section, you don’t need to make any changes. Simply click **Continue** again to save the webhook token update.  
+
+This ensures that all *companies* sharing the same Dependency Track instance use the same token, guaranteeing consistency and proper delivery of notifications.  
+
+
 
 Alternatively, refer to the [Azure Pipelines documentation](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners) to automatically synchronize your assets.
 
