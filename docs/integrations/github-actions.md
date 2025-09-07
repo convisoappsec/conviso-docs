@@ -225,6 +225,71 @@ jobs:
 
 After following these steps, the workflow will start executing.
 
+## How to Configure Conviso AST and Security Gate with a Reusable Workflow
+
+If you want to create a repository that works as a **template** so that other repositories can call its workflows, you can use a configuration like the one below.
+
+### Consumer Repository
+
+In the repository that calls the reusable workflow (i.e., the consumer), you need to add a GitHub Actions workflow similar to the following:
+
+```yaml
+name: CI
+on:
+ push:
+   branches: [ staging ]
+ pull_request:
+   branches: [ staging ]
+jobs:
+ run-conviso-ast:
+   uses: your-org/reusable-workflow/.github/workflows/main.yml@main
+   secrets:
+      CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
+```
+
+:::note
+You need to replace `your-org/reusable-workflow/.github/workflows/main.yml@main` with the path to your reusable workflow YAML file.
+:::
+
+### Reusable Workflow (Template Repository)
+
+In the template repository, where the reusable workflow is defined, add a workflow file similar to this:
+
+```yaml
+on:
+  workflow_call:
+    secrets:
+      CONVISO_API_KEY:
+        description: 'API Key for Conviso Platform'
+        required: true
+
+jobs:
+  conviso:
+    runs-on: ubuntu-latest
+    container:
+      image: convisoappsec/convisocli:latest
+    env:
+      CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
+    steps:
+    - uses: actions/checkout@v4
+  
+    - name: Create Security Gate Rules File
+      run: |
+        cat <<EOF > security-gate.yml
+        rules:
+        - from: any
+          severity:
+            critical:
+              maximum: 50
+        EOF
+
+    - name: Run AST
+      run: conviso ast run --vulnerability-auto-close
+  
+    - name: Run Security Gate
+      run: conviso vulnerability assert-security-rules --rules-file 'security-gate.yml'
+```
+
 ## Troubleshooting
 
 ### Enabling External Actions for GitHub Actions
