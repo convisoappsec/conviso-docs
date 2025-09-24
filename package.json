@@ -10,7 +10,7 @@
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
-    "doc": "docusaurus graphql-to-doc"
+    "doc": "docusaurus graphql-to-doc --force"
   },
   "dependencies": {
     "@algolia/client-search": "^5.6.1",
