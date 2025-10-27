@@ -31,12 +31,18 @@ This integration enhances issue control management and vulnerability consolidati
 - Updates Azure Boards issues when specific actions occur in Conviso Platform's Vulnerability Management System, such as changes in vulnerability status, assessment completions, or updates to risk levels.
 - Transitions Azure Boards issues to appropriate workflow stages when vulnerabilities are resolved or mitigated within Conviso Platform's Vulnerability Management System.
 
-### Prerequirements[​](https://docs.convisoappsec.com/integrations/azure_boards#prerequirements)
+### Prerequisites[​](https://docs.convisoappsec.com/integrations/azure_boards#prerequirements)
 
 To set up the integration, you'll need the following information:
 
 1. Azure Boards's login
-2. Admin permission in the project you're integrating
+2. Admin permission for the project you're integrating (to ensure this, verify that your user is listed on the page below by accessing **Project Settings**):
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/azure-project-settings.png)
+
+</div>
 
 ## Usage[​](https://docs.convisoappsec.com/integrations/azure_boards#usage)
 
