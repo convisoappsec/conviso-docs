@@ -44,6 +44,14 @@ To set up the integration, you'll need the following information:
 
 </div>
 
+3. Ensure you have the **Third-party application access via OAuth** policy enabled.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/azure-3rd-party-policy.png)
+
+</div>
+
 ## Usage[​](https://docs.convisoappsec.com/integrations/azure_boards#usage)
 
 To seamlessly integrate Conviso Platform with Azure Boards, follow these step-by-step procedures:
