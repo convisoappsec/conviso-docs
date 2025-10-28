@@ -8,7 +8,7 @@ keywords:  [Jira integration]
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira.png  'Jira')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira.png  'Jira')
 
 </div>
 
@@ -22,174 +22,96 @@ With our two-way integration capability, every status update from both solutions
 ### Prerequirements
 To set up the integration, you'll need the following information:
 
-1. Jira's website address.
+1. A user with **Admin permissions in Jira**.
 
-2. Email associated with Jira.
-
-3. API Token for authentication purposes. See **[how to get the API Token from Jira](https://id.atlassian.com/manage-profile/security/api-tokens)**.
+2. A user with **Admin permissions in Conviso Platform**.
 
 ## Usage
 To seamlessly integrate Conviso Platform with Jira, follow these step-by-step procedures:
 
-**[1 - Configure the initial integration setup between Conviso Platform and Jira](#configure-the-initial-integration-setup-between-conviso-platform-and-jira)**
+**[1 - Configure the integration between Conviso Platform and Jira](#configure-the-integration-between-conviso-platform-and-jira)**
 
-**[2 - Synchronize vulnerability statuses between Conviso Platform and Jira](#synchronize-vulnerability-statuses-between-conviso-platform-and-jira)**
+**[2 - How to Modify the Policy to Automatically Create Issues in Jira](#how-to-modify-the-policy-to-automatically-create-issues-in-jira)**
 
-**[3 - How to Modify the Policy to Automatically Create Issues in Jira](#how-to-modify-the-policy-to-automatically-create-issues-in-jira)**
+**[3 - How to Manually Create Issues in Jira](#how-to-manually-create-issues-in-jira)**
 
-**[4 - How to Manually Create Issues in Jira](#how-to-manually-create-issues-in-jira)**
+## Configure the integration between Conviso Platform and Jira
 
-## Configure the initial integration setup between Conviso Platform and Jira
-
-**Step 1 -** First, access **Jira** and copy the **URL** of your site, as shown in the image below:
+**Step 1** - Access the **Conviso Platform**, look for **Integrations** on the left-side menu, select **Defect Tracking**, and finally, click the **Connect** button located just below the Jira card, as shown in the example image below:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img1.png  'A clipping of a Jira platform screen')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img1.png  'A clipping of a Jira platform screen.')
 
 </div>
 
-**Step 2 -** Next, to generate the **API Token**, visit the following [link](https://id.atlassian.com/manage-profile/security/api-tokens). After clicking the Create API token button, as shown in the image above, copy the API key.
+**Step 2** - Click the **Log in with Jira** button to authenticate with Jira:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img2.png  'A clipping of a Jira platform screen.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img2.png  'A clipping of a Jira platform screen.')
 
 </div>
 
-**Step 3** - Now that you have the required information, go to **Conviso Platform**, look for the **Integrations** on the left side menu, choose **Defect Tracking** and finally click the **Connect** button just below Jira’s card, as illustrated in the example image below:
+**Step 3** - On the page below, grant the necessary permitions so the Conviso Platform application can perform the required actios on your Jira.
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img21.png  'A clipping of a Jira platform screen.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img3.png  'A clipping of a Jira platform screen.')
 
 </div>
 
-**Step 4** - Then, enter all **Jira** information in the fields requested by [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826), as demonstrated in the initial integration setup section:
+**Step 4** - **Severity Mapping** refers to Jira's two-way integration with Conviso Platform. Select which severity will be mapped to Jira's priority:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img4.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img4.png  'A screenshot of a Conviso Platform screen for integration with Jira.')
 
 </div>
 
-:::note
-The Verify SSL checkbox must be checked only if the certificate associated with Jira is issued by a Public Certificate Authority. For Private CAs or self-signed certificates, use https:// at the site address URL and leave this box unchecked.
-:::
-
-**Step 5 - Severity Mapping** refers to Jira's two-way integration with Conviso Platform. Select which severity will be referenced to Jira's priority:
+**Step 5** - Then, in **Configuration**, click on the **Add Project** button to start pairing Conviso Platform Projects with **Jira Projects**:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img5.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img5.png  'A screenshot of a Conviso Platform screen for integration with Jira.')
 
 </div>
 
-**Step 6 -** Then, in **Configuration**, click on the **Add Project** button to start pairing Conviso Platform Projects with **Jira Projects**:
+**Step 6** - Finally, to add a new project, select the **Asset** in Conviso Platform that you want to associate with your **Jira Project**. Then, choose the appropriate **Jira Issue Type** and **map the Conviso Platform statuses to the corresponding Jira statuses**. Once everything is configured, click **Save**.
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img6.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img6.png  'A screenshot of a Conviso Platform screen for integration with Jira.')
 
 </div>
 
-**Step 7 -** Finally, to add a new project, select the **Asset** in Conviso Platform that you want to associate with your **Jira Project**. Then, choose the appropriate **Jira Issue Type** and **map the Conviso Platform statuses to the corresponding Jira statuses**. Once everything is configured, click **Save**.
+**Step 7** - After saving your integration settings, you can review, update, or delete the configuration in the Conviso Platform. To do so, go to your integration panel and click the **Edit** icon to review or make change changes; or the **Trash** icon to permanently delete the integration:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img8.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img7.png  'A screenshot of a Conviso Platform screen for integration with Jira.')
 
 </div>
 
-**Step 8** - After saving your integration settings, you can review, update, or delete the configuration in the Conviso Platform. To do so, go to your integration panel and click the **Edit** icon to review or make change changes; or the **Trash** icon to permanently delete the integration:
+**Step 8** - Whenever a new vulnerability is detected, it will be automatically sent to the linked Jira project, as shown in the example below:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img9.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img8.png  'A clipping of a Jira platform screen in the backlog.')
 
 </div>
-
-**Step 9** - Whenever a new vulnerability is detected, it will be automatically sent to the linked Jira project, as shown in the example below:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img10.png  'A clipping of a Jira platform screen in the backlog.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-## Synchronize vulnerability statuses between Conviso Platform and Jira
-
-This feature allows seamless bidirectional synchronization of vulnerability statuses between Conviso Platform and Jira.
-
-**Step 1 -** To begin setting up the bidirectional synchronization, copy the **Webhook URL**, as shown in the example below:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img12.png  'A screenshot of a Conviso Platform screen for integration with Jira.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-**Step 2 -** To configure the **WebHook** in Jira, go to the **Administration Console (1)** and then to **System (2)**. In the left-hand menu, look for **Webhooks (3)**, as shown in the image below:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img11.png  'A clipping of a Jira platform screen in the Webhook.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-**Step 3 -** Click **Create a WebHook**:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img20.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-**Step 4 -** In the **URL** field, paste the **Webhook URL** you copied in **Step 1**.
-
-**Step 5 -** Enable the **issue** event and check the **updated** option to complete the WebHook setup:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img17.png  'A clipping of a Jira platform screen in the Webhook.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-## How to find webhooks configuration in Jira?
-
-To access the webhooks configuration in Jira, you can follow these steps:
-
-Open your web browser and enter the following URL: **https://YOUR_SPACE_NAME.atlassian.net/plugins/servlet/webhooks#**
-
-:::note
-Replace YOUR_SPACE_NAME with the actual name of your Jira space.
-:::
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img19.png  'A clipping of a Jira platform screen in the Webhook.')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-By directly accessing this URL, you can navigate to the webhooks configuration page in Jira, where you can manage and set up webhooks for integrating with external applications like Conviso Platform.
 
 ## How to Modify the Policy to Automatically Create Issues in Jira
 
 Conviso Platform allows you to enable a policy that defines which vulnerability severities will be automatically sent to Jira. To configure it, follow the steps below:
 
-**Step 1 -** At the bottom of the sidebar menu, **click on your Company name** and then select **Policies**.
+**Step 1 -** At the sidebar menu, click **Policies**.
+
+**Step 2 -** Enable the **Convert vulnerabilities into issues in defect tracking tools** policy. You can choose to send vulnerabilities of all severities (selecting **All vulnerabilities**) or enable only specific severities:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img22.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
-</div>
-
-**Step 2 -** Enable the **Transform vulnerabilities in issues at defect trackers** policy. You can choose to send vulnerabilities of all severities (selecting **All vuln**) or enable only specific severities, as shown in the example below:
-
-<div style={{textAlign: 'center'}}>
-
-[![img](../../static/img/jira-img23.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img9.png)
 
 </div>
 
@@ -211,7 +133,7 @@ To create a vulnerability in Jira from the vulnerability details page, follow th
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jira-img24.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jira/jira-img10.png)
 
 </div>
 
@@ -237,6 +159,60 @@ mutation {
 :::note
 If you need help using our API, [click here](../api/api-overview.md).
 :::
+
+## Migrating Jira Configuration
+
+If you already have an existing Jira integration configured but need to migrate your setup, follow the steps below:
+
+**Step 1** - Access the **Conviso Platform**, look for **Integrations** on the left-side menu, select **Defect Tracking**, and finally, click the **Connect** button located just below the **Jira V2** card, as shown in the example image below:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira/jira-migration1.png)
+
+</div>
+
+**Step 2** - Click the **Log in with Jira** button to authenticate with Jira:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira/jira-img2.png)
+
+</div>
+
+**Step 3** - On the page below, grant the necessary permitions so the Conviso Platform application can perform the required actios on your Jira.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira/jira-img3.png)
+
+</div>
+
+**Step 4** - **Severity Mapping** refers to Jira's two-way integration with Conviso Platform. Select which severity will be mapped to Jira's priority:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira/jira-img4.png)
+
+</div>
+
+**Step 5** - Then, in **Configuration**, you’ll see your imported settings, as shown in the example below.
+
+**Original Jira Configuration**:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira/jira-migration2.png)
+
+</div>
+
+**Imported Configuration in the New Version**:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira/jira-migration3.png)
+
+</div>
 
 ## Support
 
