@@ -16,7 +16,7 @@ In the left menu, click on **Vulnerabilities** to view all the vulnerabilities o
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img1.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img1.png "Vulnerabilities.")
 
 </div>
 
@@ -30,10 +30,9 @@ If you wish to view all vulnerabilities in your company at once, click "Remove f
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img2.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img2.png "Vulnerabilities.")
 
 </div>
-
 
 To apply specific filters, you have two options:
 
@@ -41,7 +40,7 @@ To apply specific filters, you have two options:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img3.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img3.png "Vulnerabilities.")
 
 </div>
 
@@ -49,13 +48,13 @@ To apply specific filters, you have two options:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img4.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img4.png "Vulnerabilities.")
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img5.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img5.png "Vulnerabilities.")
 
 </div>
 
@@ -67,13 +66,13 @@ In the vulnerabilities list, vulnerabilities are grouped by title, asset, and ty
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img6.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img6.png "Vulnerabilities.")
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img7.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img7.png "Vulnerabilities.")
 
 </div>
 
@@ -87,7 +86,7 @@ To update the status of a vulnerability, check how many lines are selected in th
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img8.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img8.png "Vulnerabilities.")
 
 </div>
 
@@ -95,7 +94,7 @@ A warning will appear to confirm the status change. Simply click "Confirm" to pr
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img9.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img9.png "Vulnerabilities.")
 
 </div>
 
@@ -103,7 +102,7 @@ If more than one vulnerability is selected, the change will be processed in the 
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img10.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img10.png "Vulnerabilities.")
 
 </div>
 
@@ -122,7 +121,7 @@ To export vulnerability information from the platform, click on the highlighted 
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img11.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img11.png "Vulnerabilities.")
 
 </div>
 
@@ -130,7 +129,7 @@ As indicated, a CSV file will be generated based on the applied filters. If no f
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/vulnerabilities-img12.png "Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/vulnerabilities-img12.png "Vulnerabilities.")
 
 </div>
 

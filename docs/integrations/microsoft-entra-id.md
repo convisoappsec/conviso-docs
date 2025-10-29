@@ -84,7 +84,7 @@ Replace `{YOUR_COMPANY_ID}` in the Reply URL with your actual company identifier
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img4.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img4.png)
 
 </div>
 
@@ -92,7 +92,7 @@ Replace `{YOUR_COMPANY_ID}` in the Reply URL with your actual company identifier
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-[![img](../../static/img/entra-id-img16.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img16.png)
 
 </div>
 
@@ -104,7 +104,7 @@ The `user.userprincipalname` attribute is not mandatory. Just make sure you're u
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-[![img](../../static/img/entra-id-img5.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img5.png)
 
 </div>
 
@@ -112,7 +112,7 @@ The `user.userprincipalname` attribute is not mandatory. Just make sure you're u
 
 <div style={{textAlign: 'center', maxWidth: '80%'}}>
 
-[![img](../../static/img/entra-id-img6.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img6.png)
 
 </div>
 
@@ -129,7 +129,7 @@ To set up the Conviso Platform, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img7.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img7.png "Conviso Platform integrations.")
 
 </div>
 
@@ -138,7 +138,7 @@ To set up the Conviso Platform, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img8.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img8.png "Conviso Platform integrations.")
 
 </div>
 
@@ -154,7 +154,7 @@ The SSO test process is mandatory in the Microsoft Entra ID provider. Follow the
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img17.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img17.png "Conviso Platform integrations.")
 
 </div>
 
@@ -162,7 +162,7 @@ The SSO test process is mandatory in the Microsoft Entra ID provider. Follow the
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img18.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img18.png "Conviso Platform integrations.")
 
 </div>
 
@@ -170,7 +170,7 @@ The SSO test process is mandatory in the Microsoft Entra ID provider. Follow the
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/new-page-login-img1.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/new-page-login-img1.png "Conviso Platform integrations.")
 
 </div>
 
@@ -178,7 +178,7 @@ The SSO test process is mandatory in the Microsoft Entra ID provider. Follow the
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/new-page-login-img2.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/new-page-login-img2.png "Conviso Platform integrations.")
 
 </div>
 
@@ -191,7 +191,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img9.png "Microsoft Entra platform - enterprise applications.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img9.png "Microsoft Entra platform - enterprise applications.")
 
 </div>
 
@@ -199,7 +199,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '50%'}}>
 
-[![img](../../static/img/entra-id-img10.png "Microsoft Entra platform - overview.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img10.png "Microsoft Entra platform - overview.")
 
 </div>
 
@@ -207,7 +207,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center', maxWidth: '50%'}}>
 
-[![img](../../static/img/entra-id-img11.png "Microsoft Entra - SSO.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img11.png "Microsoft Entra - SSO.")
 
 </div>
 
@@ -215,7 +215,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img12.png "Microsot Entra platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img12.png "Microsot Entra platform.")
 
 </div>
 
@@ -223,7 +223,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img13.png "Microsot Entra platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img13.png "Microsot Entra platform.")
 
 </div>
 
@@ -241,7 +241,7 @@ To enable integration with group mapping support in Entra ID, follow the steps b
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img14.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img14.png)
 
 </div>
 
@@ -259,7 +259,7 @@ Make sure that the claim `name` is mapped to the attribute corresponding to the 
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/entra-id-img15.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img15.png)
 
 </div>
 
@@ -282,7 +282,7 @@ To do this, in the **Attributes & Claims** section, make sure that the `name` (h
 
 <div style={{textAlign: 'center', maxWidth: '80%' }}>
 
-[![img](../../static/img/entra-id-img16.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/entra-id-img16.png)
 
 </div>
 

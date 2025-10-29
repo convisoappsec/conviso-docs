@@ -8,7 +8,8 @@ keywords: [Jenkins Single Pipeline]
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/jenkins.png 'Azure Pipelines page for “create a new pipeline')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/jenkins.png 'Azure Pipelines page for “create a new pipeline"')
+
 </div>
 
 :::note

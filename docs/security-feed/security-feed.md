@@ -16,8 +16,7 @@ It serves as a centralized hub of knowledge, helping users understand the curren
 ## Usage
 To access the Security Feed, simply click on the **“Home”** icon located in the left-hand corner menu:
 
-[![img](../../static/img/security-feed-img1.png "Clipping of a screenshot of the Conviso Platform showing the Access Security Feed to  real-time appsec insights.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
+![img](../../static/img/security-feed-img1.png "Clipping of a screenshot of the Conviso Platform showing the Access Security Feed to  real-time appsec insights.")
 
 Upon access, you will encounter the following essential features. These are designed to provide users with relevant information and enable them to perform vital security-related tasks efficiently..
 
@@ -28,7 +27,7 @@ Our feature offers a comprehensive and real-time view of your application securi
 In addition, this feature includes a dynamic graphical representation that allows users to **filter** the risk score for the last 30 days or more, enabling them to monitor security trends and proactively manage their assets' risk. 
 
 
-[![img](../../static/img/security-feed-img2.png "Clipping of a screenshot of the Conviso Platform showing the Prioritize Security Efforts.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img2.png "Clipping of a screenshot of the Conviso Platform showing the Prioritize Security Efforts.")
 
 Utilize this indispensable tool to make informed decisions, bolster your application security, and effectively strengthen your overall security posture.
 
@@ -36,7 +35,7 @@ Utilize this indispensable tool to make informed decisions, bolster your applica
 
 In this section, you'll find all the vulnerabilities detected in the applications, categorized by their severity levels. 
 
-[![img](../../static/img/security-feed-img3.png "Clipping of a screenshot of the Conviso Platform showing the Pending Vulnerabilities.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img3.png "Clipping of a screenshot of the Conviso Platform showing the Pending Vulnerabilities.")
 
 Such transparent categorization allows users to prioritize their efforts based on the criticality of each vulnerability. 
 
@@ -46,7 +45,7 @@ By clicking on "View All," users will access the [Vulnerability Management](../g
 
 Our platform also provides a "You Might Like to Know" feature, ensuring that you receive relevant and insightful information, enriching your understanding of AppSec and empowering you to elevate the maturity of your applications. 
 
-[![img](../../static/img/security-feed-img4.png "Clipping of a screenshot of the Conviso Platform showing the You Might Like to Know to discover relevant content to elevate your application's security.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img4.png "Clipping of a screenshot of the Conviso Platform showing the You Might Like to Know to discover relevant content to elevate your application's security.")
 
 Delve into and uncover content that aligns perfectly with your interests, making your experience on our platform even more rewarding and valuable.
 
@@ -56,7 +55,7 @@ Our platform's 'Recent Deploys' section  provides users with an overview of the 
 
 Moreover, users have the option to load more deploys by clicking on the "**Load More**" button, revealing an extended list. 
 
-[![img](../../static/img/security-feed-img5.png "Clipping of a screenshot of the Conviso Platform showing the Deploys to  stay updated with recent Deploys.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img5.png "Clipping of a screenshot of the Conviso Platform showing the Deploys to  stay updated with recent Deploys.")
 
 This tool provides a comprehensive view of your application's development history.
 
@@ -64,7 +63,7 @@ This tool provides a comprehensive view of your application's development histor
 
 Providing a well-organized and clear view, our platform enables users to efficiently track project progress and identify areas that need attention. With a simplified approach to [Project Management](../general/projects_management.md), you can easily understand each project's current state without navigating complex interfaces. 
 
-[![img](../../static/img/security-feed-img6.png "Clipping of a screenshot of the Conviso Platform showing the Projects to organize and track project progress with ease.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img6.png "Clipping of a screenshot of the Conviso Platform showing the Projects to organize and track project progress with ease.")
 
 Featuring the number of projects associated with each status, users can assess the workload and prioritize actions accordingly.
 
@@ -72,7 +71,7 @@ Featuring the number of projects associated with each status, users can assess t
 
 Our "Quick Actions" section offers users three essential shortcuts to streamline their security-related tasks:
 
-[![img](../../static/img/security-feed-img7.png "Clipping of a screenshot of the Conviso Platform showing the Quick Actions to offer shortcuts to streamline security-related tasks.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img7.png "Clipping of a screenshot of the Conviso Platform showing the Quick Actions to offer shortcuts to streamline security-related tasks.")
 
 ### Invite Team Members
 
@@ -92,7 +91,7 @@ Our platform's 'Security Scans' section provides a comprehensive history of [sec
 
 Initially, the section displays the latest five scans, with the option to load more scans by clicking the "**Load More**" button:
 
-[![img](../../static/img/security-feed-img9.png "Clipping of a screenshot of the Conviso Platform showing the Scans to view a detailed history of security scans for monitoring application security.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/security-feed-img9.png "Clipping of a screenshot of the Conviso Platform showing the Scans to view a detailed history of security scans for monitoring application security.")
 
 Having a detailed history of security scans equips users with essential information to [monitor application security](https://blog.convisoappsec.com/en/attack-surface-continuous-monitoring-and-management-of-the-application/), identify vulnerabilities, and take timely actions to ensure the safety and integrity of their systems.
 

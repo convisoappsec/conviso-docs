@@ -16,7 +16,7 @@ To register a credential, in the main left menu, click on **your company's name
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/credentials-img1.png "Credentials.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/credentials-img1.png "Credentials.")
 
 </div>
 
@@ -24,7 +24,7 @@ Next, click on **New Credential** to start creating your credential:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/credentials-img2.png "Credentials.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/credentials-img2.png "Credentials.")
 
 </div>
 
@@ -38,13 +38,13 @@ If you wish to better describe you credential purposes, use the optional **Desc
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/credentials-img3.png "Credentials.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/credentials-img3.png "Credentials.")
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/credentials-img4.png "Credentials.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/credentials-img4.png "Credentials.")
 
 </div>
 
@@ -55,7 +55,7 @@ In the project configuration form, check the option **Will credentials be provi
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/credentials-img5.png "Credentials.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/credentials-img5.png "Credentials.")
 
 </div>
 
