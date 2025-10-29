@@ -16,7 +16,7 @@ To view all requirements, click on the **Secure by Design (1)** and **Requiremen
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/requirements-img1.png "Requirements.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/requirements-img1.png "Requirements.")
 
 </div>
 
@@ -26,7 +26,7 @@ Conviso provides some standardized requirements, but if you need to create a new
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/requirements-img2.png "Requirements.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/requirements-img2.png "Requirements.")
 
 </div>
 
@@ -34,7 +34,7 @@ Enter the requirement to be created, along with its **activities**, and click **
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/requirements-img3.png "Requirements.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/requirements-img3.png "Requirements.")
 
 </div>
 
@@ -44,7 +44,7 @@ To edit a requirement, find it in the list and click on the pencil icon highligh
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/requirements-img4.png "Requirements.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/requirements-img4.png "Requirements.")
 
 </div>
 
@@ -58,13 +58,13 @@ To delete a requirement, find it in the list and click on the trash can icon hig
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/requirements-img5.png "Requirements.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/requirements-img5.png "Requirements.")
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/platform/requirements-img6.png "Requirements.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/platform/requirements-img6.png "Requirements.")
 
 </div>
 

@@ -8,8 +8,7 @@ keywords: [Github Actions]
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/github-actions.png 'Github Actions')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
-
+![img](../../static/img/github-actions.png 'Github Actions')
 
 </div>
 
@@ -35,7 +34,7 @@ Before you can use Conviso Platform with Github Actions, you need to make sure t
 * After creating a variable, you can use it in the ```.yml``` configuration file or job scripts.
   * To make the ```.yml``` file, go to your repository page and click on **“Actions”** and **“set up a workflow yourself”:**
 
-[![img](../../static/img/github-actions-img1.png 'GithubActions page')](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/github-actions-img1.png 'GithubActions page')
 
 This will allow you to write the code we will use in this tutorial!
 

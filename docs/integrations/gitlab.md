@@ -38,7 +38,7 @@ Before you can use Conviso Platform with Gitlab, you need to make sure that:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/gitlab-img1.png "Image for Gitlab, Secure CI/CD Pipeline, security testing with Conviso Platform")](https://bit.ly/3JyRdl8)
+![img](../../static/img/gitlab-img1.png "Image for Gitlab, Secure CI/CD Pipeline, security testing with Conviso Platform")
 </div>
 
 This will allow you to write the code that we will use in this tutorial!

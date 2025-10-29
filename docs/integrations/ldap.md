@@ -43,7 +43,7 @@ In order to get access to the LDAP configuration, you need to be logged in to yo
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img1.png "Conviso Platform integrations.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img1.png "Conviso Platform integrations.")
 
 </div>
 
@@ -65,7 +65,7 @@ First, open the LDP.EXE tool:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img2.png "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img2.png "LDAP.")
 
 </div>
 
@@ -73,7 +73,7 @@ Next, choose **Connection** at the menu bar, and then choose **Connect...**:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img3.png "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img3.png "LDAP.")
 
 </div>
 
@@ -81,7 +81,7 @@ You will be prompted to provide **Server** and **port** data. These are the same
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img4.png "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img4.png "LDAP.")
 
 </div>
 
@@ -89,7 +89,7 @@ Now we have to bind to LDAP. Choose **Connection** at the menu bar, and then cho
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img5.png "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img5.png "LDAP.")
 
 </div>
 
@@ -97,7 +97,7 @@ You will be prompted to provide **User**, **Password** and **Domain** data for t
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img6.png "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img6.png "LDAP.")
 
 </div>
 
@@ -105,7 +105,7 @@ After you are bound to LDAP, go to **View** at the menu bar and select **Tree**:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img7.png "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img7.png "LDAP.")
 
 </div>
 
@@ -113,7 +113,7 @@ A floating window will be shown. At **Base DN**, select your Domain DN (in our e
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img8.png  "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img8.png  "LDAP.")
 
 </div>
 
@@ -123,7 +123,7 @@ From the left panel, you can extract the **LDAP Domain** (1); from the right pan
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img9.png  "LDAP.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img9.png  "LDAP.")
 
 </div>
 
@@ -131,7 +131,7 @@ Now we have all data required to fill the integration form at Conviso Platform:
 
 <div style={{textAlign: 'center'}}>
 
-[![img](../../static/img/ad-ldap-img10.png  "Conviso Platform.")](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+![img](../../static/img/ad-ldap-img10.png  "Conviso Platform.")
 
 </div>
 
