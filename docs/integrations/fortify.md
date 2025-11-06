@@ -126,9 +126,44 @@ When moving issues from one status to another, the Conviso platform will communi
 
 The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to Fortify, and the same applies in reverse.
 
-**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like Fortify. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those issues that are no longer identified by Fortify will be marked as FIXED in the Conviso Platform.**
+:::note
+The only exception to these status changes is for the **FIXED** status in the Conviso Platform.  
+In the case of **FIXED**, it is not allowed for a user to manually set this status when the issue was opened by a scanner like Fortify.  
+In this scenario, Fortify itself should identify that the issue has been resolved or no longer detected.  
+Therefore, in the next synchronization, those issues that are no longer present in Fortify will automatically be marked as **FIXED** in the Conviso Platform.
+:::
+---
 
-When changing the status in the Conviso Platform, these changes will be replicated immediately to Fortify. However, if a change is first made in Fortify, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
+### Two-Way Updates and Bidirectional Logic
+
+The integration operates under a **two-way synchronization model**, ensuring that updates made in one platform are consistently mirrored in the other.
+
+#### Direction of Updates
+
+- **From Conviso Platform → Fortify:**  
+  Any change of status (such as *Risk Accepted*, *False Positive*, or *Suppressed*) is immediately propagated to Fortify through API communication.
+
+- **From Fortify → Conviso Platform:**  
+  When Fortify modifies, suppresses, or removes an issue, these updates are reflected in the Conviso Platform after the next synchronization cycle.
+
+- **Automatic Fixed Synchronization:**  
+  When Fortify no longer detects a vulnerability in a subsequent scan, that issue is automatically marked as *Fixed* in the Conviso Platform.
+
+#### Bidirectional Summary Table
+
+| Action | Origin | Reflected In | Behavior |
+|--------|---------|--------------|-----------|
+| Status change (e.g., Risk Accepted, False Positive) | Conviso Platform | Fortify | Immediate reflection |
+| Suppression or removal of issue | Fortify | Conviso Platform | Applied at next synchronization |
+| Issue no longer detected (Fixed) | Fortify | Conviso Platform | Automatically marked as Fixed |
+| New issue detected | Fortify | Conviso Platform | Imported automatically |
+| Notes/comments updates | Conviso Platform | Fortify | Reflected if supported by API |
+
+:::tip
+This **two-way update mechanism** ensures that both systems — Fortify and Conviso Platform — maintain **data integrity, consistent statuses, and synchronized workflows** without manual duplication of actions.
+:::
+
+---
 
 ### Synchronization
 
@@ -147,5 +182,15 @@ To monitor or initiate a synchronization, you can follow the steps below:
 4. A new screen will appear with the option to start a sync and view the progress. Any errors encountered during syncing will also be displayed here.
 
 Alternatively, refer to the [Azure Pipelines documentation](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners) to automatically synchronize your assets.
+
+---
+
+### Bidirectional Summary
+
+The **two-way integration** ensures that both platforms remain synchronized at all times:
+
+- Updates performed in **Conviso Platform** are instantly reflected in **Fortify**.  
+- Changes performed directly in **Fortify** are replicated back to **Conviso Platform** during the next sync.  
+- This synchronization keeps both platforms aligned, avoiding discrepancies between scanner results and vulnerability management workflows.
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
