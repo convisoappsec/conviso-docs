@@ -126,12 +126,12 @@ When moving issues from one status to another, the Conviso platform will communi
 
 The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to Fortify, and the same applies in reverse.
 
-**Note:**  
+:::note
 The only exception to these status changes is for the **FIXED** status in the Conviso Platform.  
-In the case of FIXED, it is not allowed for a user to manually set this status when the issue was opened by a scanner like Fortify.  
+In the case of **FIXED**, it is not allowed for a user to manually set this status when the issue was opened by a scanner like Fortify.  
 In this scenario, Fortify itself should identify that the issue has been resolved or no longer detected.  
 Therefore, in the next synchronization, those issues that are no longer present in Fortify will automatically be marked as **FIXED** in the Conviso Platform.
-
+:::
 ---
 
 ### Two-Way Updates and Bidirectional Logic
