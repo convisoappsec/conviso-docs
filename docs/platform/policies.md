@@ -12,7 +12,7 @@ image: '/static/img/securityfeedseo.png'
 Manage policies to tailor your experience on the Conviso Platform, enabling features that enhance usability according to your needs.
 
 ## Usage
-To manage your policies, in the main left menu, click on **your company's name (1)**, **Settings (2)** and **Policies (3)**:
+To manage your policies, in the main left menu, click on **Policies**:
 
 <div style={{textAlign: 'center'}}>
 
@@ -20,7 +20,7 @@ To manage your policies, in the main left menu, click on **your company's name 
 
 </div>
 
-The **Transform vulnerabilities in issues at defect trackers** policy allows you to automatically create issues in Defect Tracking Tools based on your vulnerabilities. You can configure this policy to apply only to **specific vulnerability severities** or all severities, selecting the **All vuln** checkbox:
+The **Transform vulnerabilities into issues in defect trackers** policy allows you to automatically create issues in Defect Tracking Tools based on your vulnerabilities. You can configure this policy to apply only to **specific vulnerability severities** or all severities, selecting the **All vuln** checkbox:
 
 <div style={{textAlign: 'center'}}>
 
@@ -36,11 +36,27 @@ The **Transform scans findings in vulnerabilities** policy allows you to automat
 
 </div>
 
-The **Transform SCA findings states** policy lets you adjust the initial status of SCA findings. By default, the initial status is **Identified**. However, by selecting this checkbox, the initial status will be set to **Created**.
+The **Transform SCA findings states** policy lets you adjust the initial status of SCA findings. By default, the initial status is **Created**. However, by selecting this checkbox, the initial status will be set to **Identified**.
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/platform/policies-img4.png "Policies.")
+
+</div>
+
+The **Transform Container vulnerabilities states** policy lets you adjust the initial status of Container findings. By default, the initial status is **Created**. However, by selecting this checkbox, the initial status will be set to **Identified**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/policies-img5.png "Policies.")
+
+</div>
+
+The **False Positive Analysis Agent Policies** policy allows you to enable **False Positive Analysis** to analyze vulnerabilities with our AI agent, giving you the possibility to analyze issues with **Created** and/or **Identified** status.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/policies-img6.png "Policies.")
 
 </div>
 

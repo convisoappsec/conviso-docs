@@ -26,7 +26,7 @@ Once selected, all open vulnerabilities will be listed, including those with the
 
 ### Filtering Vulnerabilities
 
-If you wish to view all vulnerabilities in your company at once, click "Remove filters" as indicated below:
+If you wish to view all vulnerabilities in your company at once, click "Clear" as indicated below:
 
 <div style={{textAlign: 'center'}}>
 
@@ -44,7 +44,7 @@ To apply specific filters, you have two options:
 
 </div>
 
-2. Click "Add Filters" for a more detailed search:
+2. Click "More filters" for a more detailed search:
 
 <div style={{textAlign: 'center'}}>
 
@@ -115,9 +115,10 @@ The process for fixing vulnerabilities depends on their source. For example:
 3. Conviso AST Vulnerabilities: After remediation, if the flag --vulnerability-auto-close is used, the fix will be detected and the vulnerability status will change automatically to "Fixed";
 4. Manually Created Vulnerabilities: For manually created vulnerabilities (e.g., from Code Review or Pentest), the status change is not automatic. These must be manually updated to "Fixed" on the platform after being remediated.
 
-### Exporting Vulnerabilities Information
+#### False Positive Analysis
 
-To export vulnerability information from the platform, click on the highlighted button below:
+The **AppSec AI Agent** features an incredible False Positive Analysis that analyzes your vulnerabilities with our AI, providing greater accuracy and faster response time.
+When accessing the **Vulnerabilities** area, you will find our agent activated in the icon above the filtered issue list in the **False Positive Analysis Enabled** image.
 
 <div style={{textAlign: 'center'}}>
 
@@ -125,11 +126,61 @@ To export vulnerability information from the platform, click on the highlighted 
 
 </div>
 
-As indicated, a CSV file will be generated based on the applied filters. If no filters are applied, a CSV of all vulnerabilities in your company will be created. The process is asynchronous, and the file will be sent to your email. Depending on the number of vulnerabilities, this may take a few minutes. Confirm the report generation by clicking the button below:
+In the example below, we will review our agent's analysis of an issue where the status was changed to False Positive.
+Upon entering the issue and checking the **Timeline** tab located below the main vulnerability information, we can see that the agent changed the status to False Positive and provided a justification for its analysis.
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/platform/vulnerabilities-img12.png "Vulnerabilities.")
+
+</div>
+
+In this other example, we will review our agent's analysis of an issue that was changed to Identified status.
+Again, by checking its **Timeline**, we can see the status change and its justification.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/vulnerabilities-img13.png "Vulnerabilities.")
+
+</div>
+
+To use **False Positive Analysis**, you must first enable it in the **Policies**.
+
+#### How to Fix
+
+As a way to help developers, our **AppSec AI Agent** proposes to assist in solving these identified vulnerabilities.
+In the lower left corner, we have a dedicated area with a mitigation suggestion for the vulnerability found, and now with the agent providing the **How to fix**.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/vulnerabilities-img14.png "Vulnerabilities.")
+
+</div>
+
+By clicking the **How to fix** button, our **AppSec AI Agent** will open, showing step-by-step instructions on how to fix the vulnerability, thus speeding up and assisting the developer in prioritizing code correction.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/vulnerabilities-img15.png "Vulnerabilities.")
+
+</div>
+
+
+### Exporting Vulnerabilities Information
+
+To export vulnerability information from the platform, click on the highlighted button below:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/vulnerabilities-img16.png "Vulnerabilities.")
+
+</div>
+
+As indicated, a CSV file will be generated based on the applied filters. If no filters are applied, a CSV of all vulnerabilities in your company will be created. The process is asynchronous, and the file will be sent to your email. Depending on the number of vulnerabilities, this may take a few minutes. Confirm the report generation by clicking the button below:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/platform/vulnerabilities-img17.png "Vulnerabilities.")
 
 </div>
 
