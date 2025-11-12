@@ -159,7 +159,7 @@ module.exports = {
       type: "category",
       label: "Platform",
       items: [
-        'plataform/appsec-ai-agent',
+        // 'plataform/appsec-ai-agent',
         'platform/asset-management',
         'platform/attachments',
         'platform/credentials',
@@ -176,6 +176,13 @@ module.exports = {
         'platform/user-management',
         'platform/vulnerabilities'
       ],
+    },
+    {
+      type: "category",
+      label: "AppSec AI Agent",
+      items: [
+        'aaa/appsec-ai-agent',
+      ]
     },
     {
       type: "category",
