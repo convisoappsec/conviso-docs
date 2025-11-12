@@ -4,7 +4,7 @@ title: AppSec AI Agent
 sidebar_label: AppSec AI Agent
 description: AppSec AI Agent aims not only to reduce the operational burden on security teams but also to increase triage accuracy, ensuring that efforts are directed toward real vulnerabilities that pose effective risk to the business.
 keywords: [AppSec AI Agent, Conviso Platform, issues, application security, risk score, proactive risk management, findings]
-
+image: '/static/img/securityfeedseo.png'
 ---
 ## Introduction
 
