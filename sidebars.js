@@ -181,7 +181,7 @@ module.exports = {
       type: "category",
       label: "AppSec AI Agent",
       items: [
-        'aaa/appsec-ai-agent',
+        'plataform/appsec-ai-agent',
       ]
     },
     {
