@@ -92,8 +92,6 @@ export CONVISO_COMPANY_ID="your-company-id"
 conviso:
   apiKey: ${CONVISO_API_KEY}
   companyId: ${CONVISO_COMPANY_ID}
-  environment: ${CONVISO_ENVIRONMENT:-production}
-  apiBase: ${CONVISO_API_BASE}  # Required if environment is 'local'
 ```
 
 :::important
