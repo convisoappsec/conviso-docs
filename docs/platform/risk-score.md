@@ -55,9 +55,43 @@ This factor assesses the sensitivity of the data that the asset processes, such 
 
 Each of these factors is converted into a numerical value and then combined using predetermined weights. The final Risk Score provides a clear, quantitative measure of an asset's risk level, enabling better prioritization of remediation efforts and more informed decision-making regarding asset security.
 
-:::note
-The precise mathematical formula used to compute the Risk Score is proprietary. However, understanding that the calculation leverages weighted inputs for Business Impact, Threats, Attack Surface, and Data Classification can help you interpret the risk levels assigned to your assets.
-:::
+## Risk Score Formula
+
+The formula used to calculate the Risk Score is as follows:
+```math
+RiskScore = round(
+  0.99 × [
+    50 × (BI / 3) +
+    15 × (T / 10) +
+    10 × E +
+    15 × DC
+  ],
+  2
+)
+```
+
+### Variable Definitions
+| Symbol | Description         | Possible Values                                                          |
+| :----: | :------------------ | :----------------------------------------------------------------------- |
+| **BI** | Business Impact     | `low = 1`, `medium = 2`, `high = 3`                                      |
+|  **T** | Threat Level        | `notification = 0`, `low = 3`, `medium = 6`, `high = 9`, `critical = 10` |
+|  **E** | Exploitability      | `internal = 1`, `internet_facing = 2`                                    |
+| **DC** | Data Classification | `confidential`, `PII`, `PCI` → `1`; others → `0`                         |
+
+### Notes
+* The final score is **scaled by 0.99** and **rounded to two decimal places**.
+* Maximum possible score ≈ **99.00**.
+* Relative weight distribution:
+  * **Business Impact:** 50%
+  * **Threat:** 15%
+  * **Exploitability:** 10%
+  * **Data Classification:** 15%
+
+---
+If your documentation renderer doesn’t support `math` blocks (like some static site generators), you can fall back to a plain Markdown code block version:
+```markdown
+RiskScore = round(0.99 * [ 50 * (BI / 3) + 15 * (T / 10) + 10 * E + 15 * DC ], 2)
+```
 
 ## Using the Risk Score Informations to Prioritize Vulnerabilities
 
