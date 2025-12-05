@@ -96,7 +96,6 @@ mutation ImportMobsf($file: Upload!, $companyId: ID) {
       company_id: $companyId
     }
   ) {
-    jobId
     controlSyncStatus {
       id
       status
@@ -146,7 +145,6 @@ mutation {
       asset_id: "123"
     }
   ) {
-    jobId
     controlSyncStatus {
       id
       status
@@ -168,7 +166,6 @@ mutation {
       company_id: "456"
     }
   ) {
-    jobId
     controlSyncStatus {
       id
       status
@@ -265,7 +262,6 @@ The integration provides the following GraphQL mutation:
 
 #### Response Fields
 
-- `jobId`: Background job ID for async processing
 - `controlSyncStatus`: Status tracking object with the following fields:
   - `id`: Status record ID
   - `status`: Current status (`pending`, `succeeded`, `failed`)
@@ -292,7 +288,7 @@ The integration provides the following GraphQL mutation:
 curl -X POST https://api.convisoappsec.com/graphql \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: multipart/form-data" \
-  -F "operations={\"query\":\"mutation($file: Upload!) { importMobsf(input: {file: $file, company_id: \\\"123\\\"}) { jobId errors } }\",\"variables\":{\"file\":null}}" \
+  -F "operations={\"query\":\"mutation($file: Upload!) { importMobsf(input: {file: $file, company_id: \\\"123\\\"}) { controlSyncStatus { id status } errors } }\",\"variables\":{\"file\":null}}" \
   -F "map={\"0\":[\"variables.file\"]}" \
   -F "0=@mobsf_report.json"
 ```
@@ -310,7 +306,6 @@ const IMPORT_MOBSF = gql`
         company_id: $companyId
       }
     ) {
-      jobId
       controlSyncStatus {
         id
         status
@@ -336,7 +331,6 @@ const handleImport = async (file, companyId) => {
       }
     });
     
-    console.log('Import job ID:', result.data.importMobsf.jobId);
     console.log('Status:', result.data.importMobsf.controlSyncStatus);
   } catch (error) {
     console.error('Import failed:', error);
