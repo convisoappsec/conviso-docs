@@ -144,6 +144,7 @@ module.exports = {
             'integrations/github-advanced-security',
             'integrations/sonarcloud',
             'integrations/sonarqube',
+            'integrations/mobsf',
           ]
         },
         {
