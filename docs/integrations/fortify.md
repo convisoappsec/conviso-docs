@@ -136,8 +136,8 @@ When moving issues from one status to another, the Conviso platform will communi
 | In Progress          | -                              |
 | Awaiting Validation  | -                              |
 | Fixed                | Removed, Not Found             |
-| Risk Accepted        | Suspicious, Bad Practive       |
-| False Positive       | Not an Issue, Suppresses       |
+| Risk Accepted        | Suspicious, Bad Practice       |
+| False Positive       | Not an Issue, Suppressed       |
 
 </div>
 
