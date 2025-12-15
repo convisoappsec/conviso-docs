@@ -182,10 +182,6 @@ When moving issues from one status to another, the Conviso platform will communi
 
 The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to GitHub Advanced Security, and the same applies in reverse.
 
-:::note
-The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like GitHub Advanced Security. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those issues that are no longer identified by GitHub Advanced Security will be marked as FIXED in the Conviso Platform.
-:::
-
 When changing the status in the Conviso Platform, these changes will be replicated immediately to GitHub Advanced Security. However, if a change is first made in GitHub Advanced Security, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
 
 ### Synchronization

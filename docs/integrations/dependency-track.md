@@ -122,8 +122,6 @@ Given that the issues reported by Dependency Track are of the SCA (Software Comp
 
 The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to Dependency Track, and the same applies in reverse.
 
-**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like Dependency Track. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those issues that are no longer identified by Dependency Track will be marked as FIXED in the Conviso Platform.**
-
 When changing the status in the Conviso Platform, these changes will be replicated immediately to Dependency Track. However, if a change is first made in Dependency Track, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
 
 ### Monitoring and Initiation of Synchronization

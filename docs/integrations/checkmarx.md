@@ -136,8 +136,6 @@ The modifications are bidirectional, meaning that when changes are made in the C
 
 When changing the status in the Conviso Platform, these changes will be replicated immediately to Checkmarx. However, if a change is first made in Checkmarx, it will only be replicated to the Conviso Platform after a synchronization between the platforms is performed.
 
-**Note: The only exception to these status changes is for the FIXED status in the Conviso Platform. In the case of FIXED, it is not allowed for a user to move it to FIXED when the issue was opened by a scanner like Checkmarx. In this scenario, the tool itself should identify the changes and recognize that the issue has been removed. Therefore, in the next synchronization, those vulnerabilities that are no longer identified by Checkmarx will be marked as FIXED in the Conviso Platform.**
-
 
 
 ### Synchronization
