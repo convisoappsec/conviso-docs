@@ -7,18 +7,20 @@ async function proxyPlugin() {
       configureWebpack() {
         return {
           devServer: {
-            proxy: {
-              '/graphql': {
+            proxy: [
+              {
+                context: ['/graphql'],
                 target: 'https://api.convisoappsec.com',
                 changeOrigin: true,
                 pathRewrite: { '^/graphql': '/graphql' },
               },
-            },
+            ],
           },
         };
       },
     };
   }
+  
   
   module.exports = async () => {
     require('dotenv').config();
@@ -71,10 +73,14 @@ async function proxyPlugin() {
       url: 'https://docs.convisoappsec.com/',
       baseUrl: '/',
       onBrokenLinks: 'throw',
-      onBrokenMarkdownLinks: 'warn',
       favicon: 'img/favicon.ico',
       organizationName: 'convisoappsec',
       projectName: 'conviso-docs',
+      markdown: {
+        hooks: {
+          onBrokenMarkdownLinks: 'warn',
+        },
+      },
       themeConfig: {
         navbar: {
           title: 'Conviso Platform Docs',

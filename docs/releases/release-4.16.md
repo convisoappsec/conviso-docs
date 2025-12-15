@@ -9,7 +9,7 @@ Release date: August 13th, 2025
 ## Key Benefits
 
 * [New Authentication Service](#new-authentication-service);
-* [Asset Classification](#asset-classification-enhancements);
+* [Asset Classification](#asset-classification);
 * [DAST Report](#dast-report);
 * [User Experience & Workflow Optimization](#user-experience--workflow-optimization);
 * [Performance & Reliability Improvements](#performance--reliability-improvements);
