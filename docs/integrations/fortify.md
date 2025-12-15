@@ -37,7 +37,7 @@ After logging into the Conviso Platform, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/fortify-img1-new.png)
+![img](../../static/img/fortify-img1.png)
 
 </div>
 
@@ -47,19 +47,35 @@ After logging into the Conviso Platform, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/fortify-img8.png)
+![img](../../static/img/fortify-img2.png)
 
 </div>
 
-7. Select which vulnerability severities you want to import from Fortify:
+9. Configure how vulnerability statuses are synchronized between Conviso Platform and Fortify.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/fortify-img9.png)
+![img](../../static/img/fortify-img3.png)
 
 </div>
 
-8. Click **Continue**.
+- Drag and drop Fortify statuses to map and reorder them. You can restore Conviso's default mapping at any time.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/fortify-gif1.gif)
+
+</div>
+
+8. Select which vulnerability severities you want to import from Fortify:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/fortify-img4.png)
+
+</div>
+
+9. Click **Continue**.
    
 Once completed, the platforms will be connected and ready to synchronize data. You can now proceed to import your Fortify assets.
 
@@ -69,7 +85,7 @@ If everything goes right, you’ll be presented with the following screen. Click
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/fortify-img2-new.png)
+![img](../../static/img/fortify-img5.png)
 
 </div>
 
@@ -109,29 +125,25 @@ In this section, we will address crucial information about the integration's ope
 
 ### Status Mapping
 
-When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Fortify according to the following mapping:
+When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Fortify according to a default mapping configuration. This default mapping can be customized during the Status Mapping step to match your organization's specific workflow requirements:
 
 <div style={{display: 'ruby-text'}}>
 
-| Conviso Platform     | Fortify        |
-|----------------------|----------------|
-| Created              | Not Set/Blank  |
-| Identified           | Exploitable    |
-| False Positive       | Not an Issue   |
-| Risk Accepted        | Suspicious     |
-| Fixed                | Removed        |
-| Suppressed           | Suppressed     |
+| Conviso Platform     | Fortify                        |
+|----------------------|--------------------------------|
+| Created              | Not Set                        |
+| Identified           | Exploitable, Reliability Issue |
+| In Progress          | -                              |
+| Awaiting Validation  | -                              |
+| Fixed                | Removed, Not Found             |
+| Risk Accepted        | Suspicious, Bad Practive       |
+| False Positive       | Not an Issue, Suppresses       |
 
 </div>
 
 The modifications are bidirectional, meaning that when changes are made in the Conviso Platform, these changes will be replicated to Fortify, and the same applies in reverse.
 
-:::note
-The only exception to these status changes is for the **FIXED** status in the Conviso Platform.  
-In the case of **FIXED**, it is not allowed for a user to manually set this status when the issue was opened by a scanner like Fortify.  
-In this scenario, Fortify itself should identify that the issue has been resolved or no longer detected.  
-Therefore, in the next synchronization, those issues that are no longer present in Fortify will automatically be marked as **FIXED** in the Conviso Platform.
-:::
+
 ---
 
 ### Two-Way Updates and Bidirectional Logic
@@ -141,7 +153,8 @@ The integration operates under a **two-way synchronization model**, ensuring tha
 #### Direction of Updates
 
 - **From Conviso Platform → Fortify:**  
-  Any change of status (such as *Risk Accepted*, *False Positive*, or *Suppressed*) is immediately propagated to Fortify through API communication.
+  Any change of status (such as *Risk Accepted*, *False Positive*, or *Identified*) is immediately propagated to Fortify through API communication. Note that only mapped statuses will be synchronized.  
+  Specifically for the Conviso Platform → Fortify direction, if a single Conviso status is mapped to multiple Fortify statuses, only the first Fortify status in the mapping will be used.
 
 - **From Fortify → Conviso Platform:**  
   When Fortify modifies, suppresses, or removes an issue, these updates are reflected in the Conviso Platform after the next synchronization cycle.

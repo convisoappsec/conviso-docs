@@ -22,3 +22,6 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 .idea
+
+# Auto-generated GraphQL documentation
+docs/api/graphql/documentation
