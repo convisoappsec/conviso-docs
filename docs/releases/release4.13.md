@@ -8,7 +8,7 @@ Release date: May 28th, 2025
 
 ## Key Benefits
 
-*   [Global searchbar on every page](#global-searchbar);
+*   [Global searchbar on every page](#global-searchbar-on-every-page);
 *   [End of Security Expert](#end-of-security-expert);
 
 ## What's New

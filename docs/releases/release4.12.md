@@ -10,7 +10,6 @@ Release date: May 16th, 2025
 
 *   [New Analytics Dashboard](#new-analytics-dashboard);
 *   [Estimated savings with Secure Code](#estimated-savings-with-secure-code-mentor);
-*   [Other recent improvements](#other-recent-improvements).
 
 ## What's New
 

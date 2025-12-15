@@ -104,4 +104,4 @@ Integration with Data Analytics and Data Science. Optimize your time by easily i
 
 </div>
 
-To learn more about BI, click here [Business Intelligence](../../integrations/datastudio/#!)
+To learn more about BI, click here [Business Intelligence](../integrations/datastudio)
