@@ -87,16 +87,4 @@ After selecting your desired options, simply click the Save button to successful
 
 ## Support
 
-If you have any questions or need help using Conviso Platform, please don't hesitate to contact our support team. 
-
-## Resources
-
-By exploring our content you'll find resources to help you understand vulnerability management:
-
-[How Vulnerability Management Works in Conviso Platform](https://blog.convisoappsec.com/en/how-vulnerability-management-works-in-conviso-platform/): Discover the key features of the platform and how it helps detect, prioritize, and remediate vulnerabilities.
-
-[Prioritization of Vulnerabilities](https://blog.convisoappsec.com/en/how-vulnerability-management-works-in-conviso-platform/): Learn best practices for prioritizing vulnerabilities and creating a strategy that works for your organization.
-
-[Vulnerability Management Process](https://blog.convisoappsec.com/en/vulnerability-management-process-what-is-it/): Get an overview of the process and learn how to implement it in your organization.
-
-[![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
+If you have any questions or need help using Conviso Platform, please don't hesitate to contact our support team.

@@ -94,18 +94,3 @@ Integrate external scanning tools with Conviso Platform to synchronize and conso
 ## Support for Conviso Platform Integrations
 
 If you have any questions or don’t find a specific tool in our list of integrations, please don't hesitate to contact our support team.
-
-## Resources
-By exploring our content you'll find resources to help you to understand the benefits of Conviso Platform integrations:
-
-[Securing your code on GitHub with Conviso Platform integration](https://bit.ly/3oFnBvv): In this post, we will guide you to guarantee the security of the code of your application stored and managed on GitHub using the Conviso Platform.
-
-[Elevating the security of your application through the integration of Bitbucket with Conviso Platform](https://bit.ly/3qunqDK): To ensure we can implement a security-first mindset without impacting development speed, we built our platform integration with Bitbucket.
-
-[Integration with Jira and GitHub, a unified vision of vulnerabilities:](https://bit.ly/3IYTZjw) With Conviso Platform we can centralize all the development process information in one platform to have all data and structured information delivered to the teams.
-
-[AppSec: Integrations with CI/CD tools through Conviso Platform:](https://bit.ly/3ODN0jw) Follow this article to understand how we can integrate your main tools within a single platform.
-
-[Conviso Platform now offers an integration with ClickUp:](https://bit.ly/45QL5hF) Managing tasks is often challenging for a team of developers in a day-to-day life that involves tight deadlines. Therefore, adopting a product that facilitates this routine by creating calendars, scheduling tasks, and setting reminders is essential. The integration of ClickUp with the Conviso Platform aims to optimize this routine.
-
-[![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

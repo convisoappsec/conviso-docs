@@ -27,16 +27,3 @@ Threat Modeling is crucial in Secure by Design, providing automation benefits to
 
 ## Getting support for the Secure by Design
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
-
-## Resources
-By exploring our content, you'll find resources to help you understand the importance of Threat Modeling:
-
-[Secure By Design – Building secure applications:](https://bit.ly/3qiUDSv) Performing Threat Modeling is a guarantee that your application is more secure, as it will identify scenarios that may allow an attacker to compromise or even cause some damage to the application. 
-
-[3 Benefits of Threat Modeling:](https://bit.ly/3oLi2eG) In this post the approach is on the benefits that might not be directly visualized when applied to Threat Modeling. 
-
-[What Is Threat Modeling:](https://bit.ly/3q8JlQw) Why should we think about Threat Modeling? During the software development process, some steps must be observed so the final result is truly a secure application and is able to reach all established requisites.
-
-[Threat Modeling – What is it and why developers should learn about it:](https://bit.ly/43x9w1F) Within the process of building software, understanding its functionality, and identifying possible security requirements is a key function. That can be a huge difference between your software becoming secure or not. This article aims to introduce development teams to the concept of Threat Modeling.
-
-[![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
