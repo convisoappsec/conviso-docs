@@ -107,21 +107,6 @@ conviso sast run --vulnerability-auto-close
 
 This will perform the scan as it has always been done and as a last step it will validate with the Conviso Platform if any vulnerability has been fixed.
 
-### Deploy, aka code versions
-
-When running the AST scan using the CLI, a [Deploy](../guides/code-review-strategies) is automatically created and diff code will be sent to Conviso Platform security for later human review.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/cli-ast1.png 'Conviso Platform security Code Review')
-
-</div>
-
-It is possible to verify if the code added or changed in the commit has known security vulnerabilities and compare it with the original repository.
-
-**Note:** This feature is essential for performing Security Code Review by the security team. Conviso offers the continuous code review service, [see more](https://bit.ly/457M2Cb).
-
-
 ## Run scan only with Conviso SAST or SCA
 
 As an additional custom configuration of the Conviso CLI, it’s possible to perform SAST-only in your code using the following command:
