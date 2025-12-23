@@ -188,13 +188,3 @@ Start a new fish shell session and the shell completion will be available.
 ## Getting support for the Conviso CLI
 
 If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
-
-## Resources
-
-By exploring our content you'll find resources to help you understand the benefits of the Conviso CLI:
-
-[What is SARIF and how it could revolutionize software security:](https://bit.ly/3nqqcbK) The article explains how SARIF can improve transparency and collaboration in the security software industry and highlights how the Conviso Platform already supports the SARIF format with Conviso CLI.
-
-[Securing customers CI/CD pipelines using Conviso CLI:](https://bit.ly/3LS1oD7) This article brings a presentation of the possibilities of using the Conviso CLI for your CI/CD pipeline.
-
-[![Discover Conviso Platform, a solution for ASPM!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

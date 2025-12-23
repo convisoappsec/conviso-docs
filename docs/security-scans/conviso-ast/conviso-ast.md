@@ -83,9 +83,3 @@ By using this feature, the vulnerability status will be automatically updated. Y
 ## Support
 
 Should you have any questions or require assistance while using the Conviso Application Security Testing, feel free to contact our dedicated support team.
-
-## Resources
-
-By exploring our comprehensive content, you’ll discover resources that will enhance your understanding of AppSec.
-
-[Securing customers CI/CD pipelines using Conviso CLI:](https://bit.ly/3LS1oD7) This article presents the possibilities of using the Conviso CLI for your CI/CD pipeline.

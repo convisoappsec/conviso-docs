@@ -78,12 +78,3 @@ Some headers and good practices may not directly allow exploitation, but their i
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
-
-## Resources
-By exploring our content you'll find resources to help you understand vulnerability management:
-
-[How Vulnerability Management Works in Conviso Platform:](https://bit.ly/3LBxR0m) Discover the key features of the platform and how it helps detect, prioritize, and remediate vulnerabilities.
-
-[Prioritization of Vulnerabilities:](https://bit.ly/3LBxR0m) Learn best practices for prioritizing vulnerabilities and creating a strategy that works for your organization.
-
-[Vulnerability Management Process:](https://bit.ly/3LgMDIn) Get an overview of the process and learn how to implement it in your organization.
