@@ -19,9 +19,6 @@ export default function ResourcesFooter() {
         wealth of informative videos covering various topics related to AppSec.
         Please note that the content is primarily in Portuguese.
       </p>
-
-      teste 
-      
     </section>
   );
 }
