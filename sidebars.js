@@ -180,7 +180,6 @@ module.exports = {
         'platform/appsec-ai-agent',
         'platform/asset-management',
         'platform/credentials',
-        'platform/code-insights',
         'platform/dashboard',
         'platform/policies',
         'platform/projects',
