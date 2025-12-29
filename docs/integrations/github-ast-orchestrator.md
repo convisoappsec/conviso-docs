@@ -17,6 +17,10 @@ The Orchestrator model provides several benefits:
 - **Consistency**: Ensure all repositories use the same tools and configurations.
 - **Ease of Use**: Quickly onboard new repositories without manual workflow setup.
 
+:::note
+**Execution Costs**: Since the Orchestrator runs within your GitHub Actions environment, the execution time is consumed from your organization's GitHub Actions minutes.
+:::
+
 ## Prerequisites
 
 Before configuring the Orchestrator, ensure that:
@@ -43,6 +47,10 @@ Fill in the **Orchestrator Configuration** section with the following details:
 - **Orchestrator Repo (owner/repo)**: The full path to your orchestrator repository (e.g., `my-org/security-orchestrator`).
 - **Workflow Filename or ID**: The name of the YAML file containing the orchestrator workflow (e.g., `ast-scan.yml`).
 - **Ref (Branch/Tag)**: The branch or tag where the workflow is defined (e.g., `main`).
+
+### Disabling the Orchestrator
+
+You can disable the AST Orchestrator at any time by toggling the **AST Scans** switch to **Off** in the Conviso Platform integration page. This will prevent any further automatic triggers from the platform.
 
 ![Orchestrator Configuration](../../static/img/github/github-ast-orchestrator.png)
 
