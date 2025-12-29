@@ -25,12 +25,12 @@ The Orchestrator model provides several benefits:
 
 Before configuring the Orchestrator, ensure that:
 1. You have configured the [GitHub Integration](./github.md).
-2. You have a **designated repository** to act as the Orchestrator.
+2. You have a **designated repository** to act as the Orchestrator. We recommend cloning our public template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/).
 3. You have a Conviso API Key. Find yours [in this tutorial](../platform/security-feed.md#generate-api-key).
 4. Go to your Orchestrator repository's **Settings > Secrets and Variables > Actions** and create a **New Repository Secret** named `CONVISO_API_KEY` with your API Key value.
 
 :::important
-You must create the Orchestrator repository manually and ensure the Conviso GitHub App integration has permission to see and access it.
+You must create or clone the Orchestrator repository and ensure the Conviso GitHub App integration has permission to see and access it.
 :::
 
 ## Configuring the AST Orchestrator
@@ -44,13 +44,13 @@ In the Conviso Platform UI, navigate to the GitHub Integration settings and ensu
 ### Step 2 - Configure Orchestrator Settings
 
 Fill in the **Orchestrator Configuration** section with the following details:
-- **Orchestrator Repo (owner/repo)**: The full path to your orchestrator repository (e.g., `my-org/security-orchestrator`).
-- **Workflow Filename or ID**: The name of the YAML file containing the orchestrator workflow (e.g., `ast-scan.yml`).
+- **Orchestrator Repo (owner/repo)**: The full path to your orchestrator repository (e.g., `my-org/pipeline-orchestrator`).
+- **Workflow Filename or ID**: The name of the YAML file containing the orchestrator workflow. If using our template, use `ast.yml`.
 - **Ref (Branch/Tag)**: The branch or tag where the workflow is defined (e.g., `main`).
 
 ### Disabling the Orchestrator
 
-You can disable the AST Orchestrator at any time by toggling the **AST Scans** switch to **Off** in the Conviso Platform integration page. This will prevent any further automatic triggers from the platform.
+You can disable the AST Orchestrator feature entirely by toggling the **AST Scans** switch to **Off** in the Conviso Platform integration page. This will prevent any further automatic triggers from the platform.
 
 ![Orchestrator Configuration](../../static/img/github/github-ast-orchestrator.png)
 
@@ -58,11 +58,12 @@ You can disable the AST Orchestrator at any time by toggling the **AST Scans** s
 Recommended setting: In the GitHub App installation on GitHub, allow access to **All repositories** to ensure the Orchestrator can scan any mapped asset.
 :::
 
-### Step 3 - Asset Mapping
+### Step 3 - Asset Mapping and Control
 
 Map your Conviso Assets to specific branches. This mapping is primarily for **edge cases** where an asset does not follow the branch defined in your default Orchestrator configuration.
 
 - **Simplified Setup**: If you leave the branch mapping empty for an asset, the Orchestrator will automatically use the default configuration provided in Step 2.
+- **Granular Control**: Use the **Enabled** toggle in the configuration table to activate or deactivate scans for specific assets without affecting the entire integration.
 - **Automatic Triggers**: By integrating with Conviso, we automatically trigger the scanning workflow whenever you **merge a Pull Request (PR)** into a branch mapped to an active asset.
 
 :::important
@@ -75,7 +76,9 @@ The Orchestrator workflow is triggered via `workflow_dispatch`. It receives seve
 
 ### Required Workflow Inputs
 
-Your workflow file (e.g., `ast-scan.yml`) must define the following inputs:
+If you are using our [pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/) template, the workflow is already pre-configured at `.github/workflows/ast.yml`. 
+
+If you choose to create your own, it must define the following inputs:
 - `repo_full_name`: The full name of the repository to scan.
 - `branch`: The branch to scan.
 - `commit_sha`: The specific commit SHA for the scan.
@@ -83,7 +86,7 @@ Your workflow file (e.g., `ast-scan.yml`) must define the following inputs:
 
 ### Workflow Template
 
-Copy the YAML content below into your Orchestrator repository at the path specified in your configuration (e.g., `.github/workflows/ast-scan.yml`):
+Copy the YAML content below as a reference for your Orchestrator repository:
 
 ```yaml
 name: Conviso AST Orchestrator
@@ -127,7 +130,8 @@ jobs:
 
 ## Scan Logic and Execution
 
-- **Environment**: The scan runs using the `convisoappsec/convisocli:latest` Docker image.
+- **Environment**: The scan runs using the `convisoappsec/convisocli:latest` Docker image within **your GitHub Actions environment**.
+- **Execution Costs**: As the scan executes on your runners, the time consumed counts towards your GitHub Actions minutes.
 - **Command**: `conviso ast run --vulnerability-auto-close --company-id [ID]`
 - **Blocking Status**: The scan is currently configured as **non-blocking**.
 - **Results**: Identified vulnerabilities are automatically sent to the mapped asset on the Conviso Platform.
