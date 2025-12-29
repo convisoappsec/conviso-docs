@@ -1,0 +1,15 @@
+.cta {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+}
+
+.cta h2 {
+  margin-bottom: 0.5rem;
+}
+
+.cta p {
+  margin-bottom: 1rem;
+}
