@@ -8,8 +8,7 @@ Release date: December 2025
 
 ## Key Benefits
 
-* [SNYK Cloud Integration](#synk-cloud-integrations);
-* [Modernized Veracode Integration](#modernized-veracode-integration);
+* [Snyk Integration](#synk-integrations);
 * [Backstage Integration](#backstage-integration);
 * [Mobile Security Import (MobSF)](#mobile-security-import-mobsf);
 * [Platform Stability & Reliability](#platform-stability--reliability);
@@ -30,24 +29,11 @@ Together, these updates reinforce Conviso Platform as a **centralized, scalable,
 ---
 
 **_New Feature_**
-## SNYK Cloud Integration
+## Snyk Integration
 
 - Introduced native integration with **Snyk Cloud**, enabling visibility into cloud-native security findings directly within Conviso Platform.  
 - Expands coverage beyond traditional application scanning to include **cloud posture and runtime-related insights**.  
 - Strengthens Conviso’s role as a unified security aggregation layer across application and cloud security tools.
-
----
-
-**_New Feature_**
-## Modernized Veracode Integration
-
-- Fully modernized the **Veracode integration**, replacing legacy code with the platform’s **current integration architecture**.  
-- The new implementation aligns with modern SAST/SCA integrations such as Checkmarx, Fortify, SonarQube, and Snyk.  
-- Key benefits include:
-  - Improved reliability and consistency of scan synchronization.
-  - Better observability and traceability of integration workflows.
-  - Standardized behavior across all SAST integrations.
-- This modernization significantly improves maintainability and long-term scalability of the Veracode integration.
 
 ---
 
