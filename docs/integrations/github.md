@@ -80,6 +80,12 @@ After completing the previous steps, you can view your configured assets:
 
 ![img](../../static/img/github/github-08.png)
 
+## Advanced Features: GitHub AST Orchestrator
+
+For larger organizations, Conviso offers the **AST Orchestrator** model. This feature allows you to centralize security scanning logic in a single gateway repository, preventing the need to manage individual workflows in every project.
+
+[Learn how to configure the GitHub AST Orchestrator](./github-ast-orchestrator.md)
+
 ## Support
 
 If you have any questions or need assistance using our product, feel free to contact our support team.

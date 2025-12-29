@@ -56,12 +56,12 @@ module.exports = {
           type: 'doc',
           label: 'Software Bill of Materials (SBOM)',
           id: 'security-scans/conviso-sbom/conviso-sbom'
-        }, 
+        },
         {
           type: 'doc',
           label: 'Scan Container with Conviso',
           id: 'security-scans/conviso-containers/conviso-containers'
-        }, 
+        },
         {
           type: "category",
           label: "Guides",
@@ -168,7 +168,17 @@ module.exports = {
           type: "category",
           label: "Source Control",
           items: [
-            'integrations/github',
+            {
+              type: "category",
+              label: "GitHub",
+              link: {
+                type: 'doc',
+                id: 'integrations/github',
+              },
+              items: [
+                'integrations/github-ast-orchestrator',
+              ]
+            },
           ]
         },
       ]
@@ -199,11 +209,11 @@ module.exports = {
       type: "category",
       label: "CLI",
       items: [
-          'cli/installation',
-          'cli/ast',
-          'cli/security-gate',
-          'cli/assets',
-          'cli/findings'
+        'cli/installation',
+        'cli/ast',
+        'cli/security-gate',
+        'cli/assets',
+        'cli/findings'
       ]
     }
   ],
@@ -224,7 +234,7 @@ module.exports = {
             'releases/release4.17',
             'releases/release4.16',
             'releases/release4.15',
-            'releases/release4.14',  
+            'releases/release4.14',
             'releases/release4.13',
             'releases/release4.12',
             'releases/release4.11',
@@ -255,5 +265,5 @@ module.exports = {
         }
       ]
     }
-  ],  
+  ],
 }
