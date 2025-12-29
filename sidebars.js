@@ -29,11 +29,6 @@ module.exports = {
   docs: [
     'index',
     {
-      type: 'doc',
-      label: 'Quickstart',
-      id: 'quickstart/quickstart',
-    },
-    {
       type: "category",
       label: "API",
       items: apiItems,
