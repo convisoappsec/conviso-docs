@@ -71,6 +71,7 @@ By integrating the Conviso Platform with your Defect Tracker tool, you can seaml
 * **[BusinessMap](../integrations/businessmap.md)**
 * **[ClickUp](../integrations/clickup.md)**
 * **[Jira](../integrations/jira.md)**
+* **[ServiceNow](../integrations/servicenow.md)**
 
 ## Communication and Notification
 Efficient collaboration and communication are crucial for successful application development. By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel:
