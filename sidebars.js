@@ -140,7 +140,8 @@ module.exports = {
             'integrations/azure-boards',
             'integrations/businessmap',
             'integrations/clickup',
-            'integrations/jira'
+            'integrations/jira',
+            'integrations/servicenow'
           ]
         },
         {
