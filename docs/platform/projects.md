@@ -19,6 +19,8 @@ To access the project dashboard, navigate to **Projects** in the left-hand menu:
 
 </div>
 
+> ⚠️ **Important:** Tags will be automatically deleted from the system when they are no longer associated with any project.
+
 On this screen, you'll find an overview of your project statuses. You can quickly filter projects by status by clicking on the corresponding status name:
 
 <div style={{textAlign: 'center'}}>
@@ -39,7 +41,7 @@ Additionally, you can filter projects by name or ID:
 
 </div>
 
-For more advanced filtering options, click **Add filter** to refine your search:
+For more advanced filtering options, click **More filters** to refine your search:
 
 <div style={{textAlign: 'center'}}>
 
