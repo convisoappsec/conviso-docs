@@ -3,14 +3,26 @@ id: projects
 title: Projects
 sidebar_label: Projects
 description: With the Projects Management feature, you can create different types of projects and centralize the results of security analyses, such as code review, penetration testing, and requirement validation (Threat Modeling), all in one place.
-keywords: [Projects, Conviso Platform, projects, application security, code review, proactive risk management, threat modeling, pentest, gap analysis]
-
+keywords:
+  [
+    Projects,
+    Conviso Platform,
+    projects,
+    application security,
+    code review,
+    proactive risk management,
+    threat modeling,
+    pentest,
+    gap analysis,
+  ]
 ---
+
 ## Introduction
 
 The **Projects** feature allows you to create and manage different types of security projects in a centralized way. You can consolidate the results of security analyses, such as code reviews, penetration testing, and requirement validation (Threat Modeling), all in one place.
 
 ## Usage
+
 To access the project dashboard, navigate to **Projects** in the left-hand menu:
 
 <div style={{textAlign: 'center'}}>
@@ -201,13 +213,13 @@ The Conviso Platform allows the following status transitions for projects:
 
 <div style={{display: 'ruby-text'}}>
 
-| Current Status    | Allowed Statuses                     |
-|-------------------|--------------------------------------|
-| To Do             | Running, Discontinued                |
-| Running           | To Do, Paused, Discontinued, Done    |
-| Paused            | Running, Discontinued                |
-| Discontinued      | To Do, Running                       |
-| Done              | Running                              |
+| Current Status | Allowed Statuses                  |
+| -------------- | --------------------------------- |
+| To Do          | Running, Discontinued             |
+| Running        | To Do, Paused, Discontinued, Done |
+| Paused         | Running, Discontinued             |
+| Discontinued   | To Do, Running                    |
+| Done           | Running                           |
 
 </div>
 
@@ -315,7 +327,7 @@ The Conviso Platform allows you to associate attachments with projects, enabling
 
 </div>
 
-To add an attachment to the project, you can either [edit the project](#editing-projects) or do so from the [Attachments](./attachments.md#creating-attachments) page.
+To add an attachment to the project, you can [edit the project](#editing-projects).
 
 ### Requirements
 
