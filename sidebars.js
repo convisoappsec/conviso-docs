@@ -29,11 +29,6 @@ module.exports = {
   docs: [
     'index',
     {
-      type: 'doc',
-      label: 'Quickstart',
-      id: 'quickstart/quickstart',
-    },
-    {
       type: "category",
       label: "API",
       items: apiItems,
@@ -190,9 +185,7 @@ module.exports = {
       items: [
         'platform/appsec-ai-agent',
         'platform/asset-management',
-        'platform/attachments',
         'platform/credentials',
-        'platform/code-insights',
         'platform/dashboard',
         'platform/policies',
         'platform/projects',

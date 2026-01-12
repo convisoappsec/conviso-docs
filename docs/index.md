@@ -37,7 +37,6 @@ By centralizing and correlating security information, Conviso Platform offers a 
 
 ## Getting Started with Conviso Platform
 
-- **[Quickstart](./quickstart/quickstart.md)** - Get started with the Conviso Platform in your organization.
 - **[Platform](./platform/asset-management.md)** - Explore the main features and tools within Conviso Platform.
 
 ---
