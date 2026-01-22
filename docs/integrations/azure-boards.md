@@ -18,7 +18,7 @@ With our two-way integration capability, every status update from both solutions
 
 ### Integration Capabilities[​](https://docs.convisoappsec.com/integrations/azure-#integration-capabilities)
 
-This integration enhances issue control management and vulnerability consolidation between systems. It facilitates seamless interaction and communication between various aspects of the process. The integration offers the following capabilities:
+This integration enhances issue control management and vulnerability consolidation between systems. It facilitates seamless interaction and communication between various aspects of the process. The integration offers the following capabilities
 
 **From Azure Boards to Conviso Platform:**
 
