@@ -16,7 +16,7 @@ keywords:   [Azure Pipelines Graph Mode Integration]
 
 Integrate the Conviso Platform seamlessly into your [Azure DevOps Pipelines](https://dev.azure.com/) to automate and streamline your security processes. This integration ensures thorough security assessments for your applications throughout the development lifecycle.
 
-The Azure Pipelines is a CI/CD module of the [Azure Devops](https://aex.dev.azure.com/) platform. Through this module, it is possible to create automation routines with various tasks that are available on Azure's marketplace. Currently, the integration with Conviso consists of Bash-type tasks. Among the tasks are: the CLI command line interface ([CLI available at PyPi](https://pypi.org/project/conviso-cli/)).
+The Azure Pipelines is a CI/CD module of the [Azure Devops](https://aex.dev.azure.com/) platform. Through this module, it is possible to create automation routines with various tasks that are available on Azure's marketplace. Currently, the integration with Conviso consists of Bash-type tasks. Among the tasks are: the AST command line interface ([AST available at PyPi](https://pypi.org/project/conviso-ast/)).
 
 ## Requirements
 
@@ -74,7 +74,7 @@ docker run --rm \
   -v $(pwd):/opt/flowcli \
   -e DOCKER_HOST=$(DOCKER_HOST) \
   -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
-  convisoappsec/convisocli:latest \
+  convisoappsec/convisoast:latest \
   conviso ast run --vulnerability-auto-close
 ```
 
@@ -92,7 +92,7 @@ docker run --rm \
   -v $(pwd):/opt/flowcli \
   -e DOCKER_HOST=$(DOCKER_HOST) \
   -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
-  convisoappsec/convisocli:latest \
+  convisoappsec/convisoast:latest \
   sh -c "
     export DOCKER_BUILDKIT=1 &&
     export IMAGE_NAME='my-image' &&
@@ -110,7 +110,7 @@ docker run --rm \
   -v $(pwd):/opt/flowcli \
   -e DOCKER_HOST=$(DOCKER_HOST) \
   -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
-  convisoappsec/convisocli:latest \
+  convisoappsec/convisoast:latest \
   sh -c "
     export IMAGE_NAME='my-image' &&
     export IMAGE_TAG='latest' &&

@@ -30,10 +30,10 @@ To set up a repository, follow the steps below:
 1. At the BitBucket project page, click at the **Pipelines** section;
 2. Click **Select** at the **Starter Pipeline** option;
 3. A text editor will appear; delete all of its content;
-4. As the first job, let's invoke the CLI help menu. To do so, paste the snippet below:
+4. As the first job, let's invoke the AST help menu. To do so, paste the snippet below:
 
 ```yml
-image: convisoappsec/convisocli
+image: convisoappsec/convisoast
 
 pipelines:
   branches:
@@ -48,7 +48,7 @@ pipelines:
 
 ## Setting up Environment Variable
 
-In order for the environment to be ready for the execution of all Conviso CLI resources, it is necessary to configure some environment variable. To accomplish that, follow the steps below:
+In order for the environment to be ready for the execution of all Conviso AST resources, it is necessary to configure some environment variable. To accomplish that, follow the steps below:
 
 1. Generate API Key. This key is available for Conviso Platform users at the user profile page;
 
@@ -74,7 +74,7 @@ In order for the environment to be ready for the execution of all Conviso CLI re
 You can run Conviso Platform **AST (Application Security Testing)**. This product offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, **Infrastructure as Code (IaC)** and enables **Continuous Code Review** to be performed by Security Analysts of Conviso (when supported in your plan) or by your own Security Analysts team.
 
 ```yml
-image: convisoappsec/convisocli
+image: convisoappsec/convisoast
 
 pipelines:
   branches:
@@ -93,7 +93,7 @@ pipelines:
 To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
 
 ```yml
-image: convisoappsec/convisocli:latest
+image: convisoappsec/convisoast:latest
 
 pipelines:
   branches:
@@ -114,7 +114,7 @@ pipelines:
 If you'd like to scan a public image available on DockerHub, modify the configuration as shown below:
 
 ```yml
-image: convisoappsec/convisocli:latest
+image: convisoappsec/convisoast:latest
 
 pipelines:
   branches:
@@ -137,7 +137,7 @@ The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on 
 :::
 
 ## Troubleshooting
-If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
+If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the AST.
 
 
 Error. ‘credentials’ cannot be null.

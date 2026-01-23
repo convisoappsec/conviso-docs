@@ -1,15 +1,15 @@
 ---
 id: assets
-title: Creating assets with the CLI
-sidebar_label: Creating assets with the CLI
-description: The Conviso CLI allows you to create and list assets of your company registered on the Conviso Platform. Learn how! 
-keywords: [assets with the Conviso Platform CLI]
+title: Creating assets with the AST
+sidebar_label: Creating assets with the AST
+description: The Conviso AST allows you to create and list assets of your company registered on the Conviso Platform. Learn how! 
+keywords: [assets with the Conviso Platform AST]
 #image: '/static/img/cliassetsseo.png'
 ---
 
 ## Introduction
 
-The Conviso CLI allows you to create and list assets of your company registered on the Conviso Platform.
+The Conviso AST allows you to create and list assets of your company registered on the Conviso Platform.
 
 ### Prerequisites
 To successfully run  `conviso assets` command you need to [authenticate with the API Key](../cli/installation/#authentication).

@@ -2,13 +2,13 @@
 id: security-gate
 title: CI/CD Pipeline Security Control with Security Gate
 sidebar_label: CI/CD Pipeline Security Control with Security Gate
-description:  With Conviso CLI's Security Gate feature, you can set vulnerability policies and check if those policies are being met, learn more!
+description:  With Conviso AST's Security Gate feature, you can set vulnerability policies and check if those policies are being met, learn more!
 keywords:  [CI/CD Pipeline Security Control]
 image: '/static/img/securitygateseo.png'
 ---
 
 ## Introduction
-With Conviso CLI's **Security Gate** feature you can define vulnerability policies, such as the number of vulnerabilities by severity and sources, and automatically block your CI/CD pipeline if these policies are not complied.
+With Conviso AST's **Security Gate** feature you can define vulnerability policies, such as the number of vulnerabilities by severity and sources, and automatically block your CI/CD pipeline if these policies are not complied.
 
 ### Prerequisites
 Set the API Key ```export CONVISO_API_KEY='your-api-key'```.
@@ -18,7 +18,7 @@ To use this feature, follow these steps:
 
 ### 1. Defining vulnerability policies
 
-First, you need to define the policies for the specific project. This CLI feature helps you with that, allowing you to define policies such as:
+First, you need to define the policies for the specific project. This AST feature helps you with that, allowing you to define policies such as:
 
 - Number of vulnerabilities by severity (Low, Medium, High, Critical)
 
@@ -61,10 +61,10 @@ rules:
       maximum: 5
 ```
 
-Save the file in the repository where the CLI will run and record its name that will be used in the next step.
+Save the file in the repository where the AST will run and record its name that will be used in the next step.
 
 
-### 3. Running Security Gate with the CLI
+### 3. Running Security Gate with the AST
 After defining the vulnerability policy file, run the following command:
 
 ```
@@ -125,4 +125,4 @@ rules:
 If the rules are not followed, the pipeline will be blocked as well.
 
 ## Support
-If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help using Conviso AST, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).

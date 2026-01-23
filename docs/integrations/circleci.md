@@ -17,7 +17,8 @@ First time using CircleCI? Please refer to the [following documentation](https:/
 
 ## Introduction
 
-CircleCI is a CI/CD platform that has the purpose of bringing agility to the pipeline creation process. One of its main features is its extensibility, through the so-called Orbs it is possible to add custom jobs, commands and executors. Currently, the integration with Conviso's products takes advantage of CircleCI's native docker support, and runs through a docker image made available on [Dockerhub](https://hub.docker.com/r/convisoappsec/convisocli) with a CLI-like tool available on [PyPi](https://pypi.org/project/conviso-cli/).
+CircleCI is a CI/CD platform that has the purpose of bringing agility to the pipeline creation process. One of its main features is its extensibility, through the so-called Orbs it is possible to add custom jobs, commands and executors. Currently, the integration with Conviso's products takes advantage of CircleCI's native docker support, and runs through a docker image made available on [Dockerhub](https://hub.docker.com/r/convisoappsec/convisoast
+) with a CLI-like tool available on [PyPi](https://pypi.org/project/conviso-ast/).
 
 ## Requirements
 
@@ -68,7 +69,8 @@ version: 2.1
 jobs:
   conviso-ast:
     docker:
-      - image: convisoappsec/convisocli:latest
+      - image: convisoappsec/convisoast
+:latest
     steps:
       - setup_remote_docker
       - checkout

@@ -1,22 +1,22 @@
 ---
 id: ast
-title: Scan projects using the Conviso CLI
-sidebar_label: Scan projects using the CLI
-description:  Protect your code from security threats with our AST (Application Security Testing) using Conviso CLI. Know more about!
-keywords:  [Scan projects using the Conviso Platform CLI]
+title: Scan projects using the Conviso AST
+sidebar_label: Scan projects using the AST
+description:  Protect your code from security threats with our AST (Application Security Testing) using Conviso AST. Know more about!
+keywords:  [Scan projects using the Conviso Platform AST]
 image: '/static/img/cliastseo.png'
 ---
 
 ### Introduction
 
-Protect your code from security threats with our **AST (Application Security Testing)** using Conviso CLI.
+Protect your code from security threats with our **AST (Application Security Testing)** using Conviso AST.
 
 The tool offers both **Static Application Security Testing (SAST)** and **Software Composition Analysis (SCA)** tools, which can be accessed through the Conviso Platform.
 
 
 ### Usage
 
-To trigger this function is very simple, one of the methods is to export the settings to be used by the CLI to environment variables. Below an example:
+To trigger this function is very simple, one of the methods is to export the settings to be used by the AST to environment variables. Below an example:
 
 ```bash
 export CONVISO_API_KEY='your-api-key'
@@ -109,7 +109,7 @@ This will perform the scan as it has always been done and as a last step it will
 
 ## Run scan only with Conviso SAST or SCA
 
-As an additional custom configuration of the Conviso CLI, it’s possible to perform SAST-only in your code using the following command:
+As an additional custom configuration of the Conviso AST, it’s possible to perform SAST-only in your code using the following command:
 
 ```bash
 export CONVISO_API_KEY='your-api-key'
@@ -131,4 +131,4 @@ conviso --api-key 'your-api-key' sca run
 In case of any results, they will be automatically sent to Conviso Platform for assessment.
 
 ## Support
-If you have any questions or need help using Conviso CLI, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help using Conviso AST, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
