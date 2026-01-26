@@ -7,59 +7,150 @@ keywords: [ASPM platform, Conviso Platform]
 slug: /
 ---
 
-# Conviso Platform Docs - An ASPM Platform
+# Getting Started
 
-[Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826) is a comprehensive solution for Application Security Posture Management (ASPM), designed to empower development teams in building secure applications from the outset. The platform provides a detailed view of the entire application security ecosystem, encompassing threat modeling, risk and vulnerability identification, remediation, and metrics gathering, all integrated within a single environment. This process supports teams in structuring application security programs in a continuous and efficient manner.
+Choose the area you want to explore and go straight to the right documentation.
 
-<div style={{textAlign: 'center'}}>
+<div className="landing-grid">
+  <a className="landing-card" href="./platform/asset-management.md">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />
+        </svg>
+      </span>
+      <div className="landing-card__title">Platform User Guide</div>
+    </div>
+    <div className="landing-card__body">
+      Learn the core features, navigation, and day-to-day workflows inside the platform.
+    </div>
+    <div className="landing-card__cta">Open platform docs</div>
+  </a>
 
-![img](../static/img/getting-started/getting-started1.png)
+  <a className="landing-card" href="./cli/installation.md">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75l2.25 2.25L15 9.75M12 3l7.5 4.5v5.25c0 4.142-2.72 7.964-7.5 9.75-4.78-1.786-7.5-5.608-7.5-9.75V7.5L12 3z" />
+        </svg>
+      </span>
+      <div className="landing-card__title">Scanning your Application</div>
+    </div>
+    <div className="landing-card__body">
+      Install the CLI, run AST/DAST/SBOM scans, and enforce Security Gate checks.
+    </div>
+    <div className="landing-card__cta">Start scanning</div>
+  </a>
 
+  <a className="landing-card" href="./integrations/integrations_intro.md">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 21h6m-6 0v-3m6 3v-3M6 7.5V6a6 6 0 1112 0v1.5M9 18h6a3 3 0 003-3V9a3 3 0 00-3-3H9a3 3 0 00-3 3v6a3 3 0 003 3z" />
+        </svg>
+      </span>
+      <div className="landing-card__title">Integrations</div>
+    </div>
+    <div className="landing-card__body">
+      Connect CI/CD, defect tracking, notifications, SSO, and security scanners.
+    </div>
+    <div className="landing-card__cta">Browse integrations</div>
+  </a>
+
+  <a className="landing-card" href="./api/api-overview.md">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 6.75L17.25 12l-3 5.25M9.75 17.25L6.75 12l3-5.25" />
+        </svg>
+      </span>
+      <div className="landing-card__title">API</div>
+    </div>
+    <div className="landing-card__body">
+      Use the GraphQL API to automate and extend platform workflows.
+    </div>
+    <div className="landing-card__cta">Go to API docs</div>
+  </a>
+
+  <a className="landing-card" href="./new-cli.md">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 8l4 4-4 4M12 16h6" />
+        </svg>
+      </span>
+      <div className="landing-card__title">New CLI</div>
+    </div>
+    <div className="landing-card__body">
+      Learn the new CLI commands, bulk operations, and SBOM tooling.
+    </div>
+    <div className="landing-card__cta">Open New CLI</div>
+  </a>
 </div>
 
-With features ranging from security analysis to integration with external tools, Conviso Platform adapts to development workflows, enabling security practices to be seamlessly and sustainably embedded. In this way, the platform fosters a security-driven culture integrated into the development lifecycle and across all teams involved.
+<style>{`
+  .landing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 24px 0 8px;
+  }
 
-<div style={{textAlign: 'center'}}>
+  .landing-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid #e0e4ea;
+    border-radius: 12px;
+    background: linear-gradient(160deg, #ffffff 0%, #f6f8fb 100%);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  }
 
-![img](../static/img/getting-started/getting-started2.png)
+  .landing-card:hover {
+    transform: translateY(-2px);
+    border-color: #c5d2e6;
+    box-shadow: 0 6px 18px rgba(20, 40, 80, 0.12);
+  }
 
-</div>
+  .landing-card__heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-By centralizing and correlating security information, Conviso Platform offers a holistic view of an application's security posture, helping to anticipate potential risks with business impact. Thus, development professionals are equipped with the tools and insights needed to plan, build, and deliver secure software with agility, confidence, and consistency. 
+  .landing-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #eef2f7;
+    color: #23395d;
+  }
 
-<div style={{textAlign: 'center'}}>
+  .landing-card__icon svg {
+    width: 18px;
+    height: 18px;
+  }
 
-![img](../static/img/getting-started/getting-started3.png)
+  .landing-card__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
 
-</div>
+  .landing-card__body {
+    font-size: 0.95rem;
+    color: #4a5568;
+  }
 
----
-
-## Getting Started with Conviso Platform
-
-- **[Platform](./platform/asset-management.md)** - Explore the main features and tools within Conviso Platform.
-
----
-
-## Integrate with Conviso Platform
-
-Explore our integration options to connect Conviso Platform with your CI/CD pipelines, defect tracking, notifications, and more:
-
-- **[Integrations for CI/CD](./integrations/integrations_intro.md#conviso-platform-cicd-integration)** - Adopt incremental CI/CD integration with Conviso Platform to automate analysis and enhance team insights.
-- **[Integrations for Defect Tracking](./integrations/integrations_intro.md#defectbug-tracking-integration)** - Integrate Conviso Platform with your Defect Tracker to streamline defect management, enhancing workflow and team collaboration.
-- **[Notification Integrations](./integrations/integrations_intro.md#communication-and-notification)** - Integrate with a communication tool to send platform events, including vulnerability updates, directly to your team’s designated channel.
-- **[Scanner Integrations](./integrations/integrations_intro.md#consolidate-vulnerability-management-through-integrated-security-scans)** - Integrate external scanners with Conviso Platform to centralize findings, providing a unified view for effective vulnerability management across tools.
-- **[Identity Management](./integrations/integrations_intro.md#set-up-conviso-platform-single-sign-on-sso)** - Set up Single Sign-On (SSO) to allow your developers and teams easy access to Conviso Platform through your current SSO provider.
-- **[API](./api/api-overview.md)** - Access Conviso Platform's GraphQL API documentation to seamlessly interact with our services, retrieve data, and integrate security workflows into your development process.
-
----
-
-## Scan using Conviso Platform
-
-Learn how to use Conviso’s scanning features to protect your code, libraries, infrastructure, and secrets:
-
-- **[Scan with Conviso AST](./security-scans/conviso-ast/conviso-ast.md)** - Scan application source code, open-source libraries, and more.
-- **[Scan with Conviso DAST](./security-scans/conviso-dast/conviso-dast.md)** - Dynamic analysis to detect vulnerabilities during runtime.
-- **[Generate Conviso SBOM](./security-scans/conviso-sbom/conviso-sbom.md)** - Automatically produce a Software Bill of Materials for your applications.
-- **[Conviso Security Gate](./cli/security-gate.md)** - Secure your CI/CD pipeline with enhanced control and oversight on security checks.
-- **[Conviso CLI](./cli/installation.md)** - Command-line tool enabling seamless integration with Security Gate, AST execution, and vulnerability import from SARIF files, enhancing automation and security in development workflows.
+  .landing-card__cta {
+    margin-top: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2b5fd9;
+  }
+`}</style>

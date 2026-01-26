@@ -30,13 +30,30 @@ module.exports = {
     'index',
     {
       type: "category",
-      label: "API",
-      items: apiItems,
+      label: "Platform User Guide",
+      items: [
+        'platform/appsec-ai-agent',
+        'platform/asset-management',
+        'platform/credentials',
+        'platform/dashboard',
+        'platform/policies',
+        'platform/projects',
+        'platform/requirements',
+        'platform/risk-context-funnel',
+        'platform/risk-score',
+        'platform/sbom-management',
+        'platform/security-feed',
+        'platform/threat-modeling',
+        'platform/user-management',
+        'platform/vulnerabilities'
+      ],
     },
     {
       type: "category",
       label: "Scanning your Application",
       items: [
+        'cli/installation',
+        'cli/ast',
         {
           type: 'doc',
           label: 'Scan Application with Conviso',
@@ -57,37 +74,7 @@ module.exports = {
           label: 'Scan Container with Conviso',
           id: 'security-scans/conviso-containers/conviso-containers'
         },
-        {
-          type: "category",
-          label: "Guides",
-          items: [
-            'security-scans/guides/code-review-strategies',
-            'security-scans/guides/integrate-asset-with-graphql',
-            {
-              type: "category",
-              label: "Burp Extension",
-              items: [
-                'security-scans/guides/burp-extension/home',
-                'security-scans/guides/burp-extension/add-extension-to-burp',
-                'security-scans/guides/burp-extension/define-endpoint',
-                'security-scans/guides/burp-extension/test-api-key',
-                'security-scans/guides/burp-extension/issues-tab',
-                'security-scans/guides/burp-extension/auto-fill',
-                'security-scans/guides/burp-extension/as-new-issue',
-                'security-scans/guides/burp-extension/as-new-issue-with-evidence',
-                'security-scans/guides/burp-extension/as-evidence',
-                'security-scans/guides/burp-extension/requirements-tabs',
-                'security-scans/guides/burp-extension/finish-activity',
-                'security-scans/guides/burp-extension/not-applicable-activity',
-                'security-scans/guides/burp-extension/not-started',
-                'security-scans/guides/burp-extension/restart-activity',
-                'security-scans/guides/burp-extension/not-applicable',
-                'security-scans/guides/burp-extension/working-analysis',
-                'security-scans/guides/burp-extension/reload-working-analyses'
-              ]
-            }
-          ]
-        }
+        'cli/security-gate',
       ]
     },
     {
@@ -181,35 +168,10 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Platform",
-      items: [
-        'platform/appsec-ai-agent',
-        'platform/asset-management',
-        'platform/credentials',
-        'platform/dashboard',
-        'platform/policies',
-        'platform/projects',
-        'platform/requirements',
-        'platform/risk-context-funnel',
-        'platform/risk-score',
-        'platform/sbom-management',
-        'platform/security-feed',
-        'platform/threat-modeling',
-        'platform/user-management',
-        'platform/vulnerabilities'
-      ],
+      label: "API",
+      items: apiItems,
     },
-    {
-      type: "category",
-      label: "CLI",
-      items: [
-        'cli/installation',
-        'cli/ast',
-        'cli/security-gate',
-        'cli/assets',
-        'cli/findings'
-      ]
-    }
+    'new-cli',
   ],
   releaseSidebar: [
     {
