@@ -51,7 +51,7 @@ Follow the steps below to integrate Security Code Review seamlessly into your pi
 
 ```yml
 conviso-ast:
-    image: convisoappsec/convisocli:latest
+    image: convisoappsec/convisoast:latest
     services:
         - docker:dind
     only:
@@ -72,7 +72,7 @@ To perform the [Conviso Containers](../security-scans/conviso-containers/conviso
 
 ```yml
 conviso-containers:
-  image: convisoappsec/convisocli:latest
+  image: convisoappsec/convisoast:latest
   services:
     - docker:dind
   variables:
@@ -93,7 +93,7 @@ If you'd like to scan a public image available on DockerHub, modify the configur
 
 ```yml
 conviso-containers:
-  image: convisoappsec/convisocli:latest
+  image: convisoappsec/convisoast:latest
   services:
     - docker:dind
   variables:
@@ -120,7 +120,7 @@ The steps below will show you what your ```.gitlab-ci.yml``` must have to perfor
 
 ```yml
 conviso-sast:
-    image: convisoappsec/convisocli:latest
+    image: convisoappsec/convisoast:latest
     services:
         - docker:dind
     only:
@@ -136,7 +136,7 @@ Alternatively, you can specify the diff range manually. In the example below, we
 
 ```yml
 conviso-sast:
-    image: convisoappsec/convisocli:latest
+    image: convisoappsec/convisoast:latest
     services:
         - docker:dind
     only:
@@ -154,7 +154,7 @@ The steps below will show you what your ```.gitlab-ci.yml``` must have to perfor
 
 ```yml
 conviso-sca:
-    image: convisoappsec/convisocli:latest
+    image: convisoappsec/convisoast:latest
     services:
         - docker:dind
     only:

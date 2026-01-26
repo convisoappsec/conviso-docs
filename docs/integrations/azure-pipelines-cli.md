@@ -66,7 +66,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   container:
-    image: 'convisoappsec/convisocli'
+    image: 'convisoappsec/convisoast'
 
   steps:
     - checkout: self
@@ -92,7 +92,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   container:
-    image: 'convisoappsec/convisocli'
+    image: 'convisoappsec/convisoast'
 
   steps:
     - checkout: self
@@ -118,7 +118,7 @@ jobs:
   pool:
     vmImage: ubuntu-latest
   container:
-    image: 'convisoappsec/convisocli'
+    image: 'convisoappsec/convisoast'
 
   steps:
     - checkout: self

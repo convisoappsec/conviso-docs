@@ -65,7 +65,7 @@ jobs:
  conviso-ast:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/convisocli
+     image: convisoappsec/convisoast
      env:
        CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
@@ -91,7 +91,7 @@ jobs:
  conviso-ast:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/convisocli:latest
+     image: convisoappsec/convisoast:latest
      env:
        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
    steps:
@@ -117,7 +117,7 @@ jobs:
  conviso-ast:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/convisocli:latest
+     image: convisoappsec/convisoast:latest
      env:
        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
    steps:
@@ -152,7 +152,7 @@ jobs:
  conviso-sast:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/convisocli
+     image: convisoappsec/convisoast
      env:
        CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
@@ -178,7 +178,7 @@ jobs:
  conviso-sca:
    runs-on: ubuntu-latest
    container:
-     image: convisoappsec/convisocli
+     image: convisoappsec/convisoast
      env:
        CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
@@ -205,7 +205,7 @@ jobs:
   conviso-ast:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisocli
+      image: convisoappsec/convisoast
       env:
         CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
     steps:
@@ -266,7 +266,7 @@ jobs:
   conviso:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisocli:latest
+      image: convisoappsec/convisoast:latest
     env:
       CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
     steps:

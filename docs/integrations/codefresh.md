@@ -38,9 +38,9 @@ stages:
 - "test"
 steps:
   conviso_sample:
-    title: "CLI Hello"
+    title: "AST Hello"
     type: "freestyle"
-    image: "convisoappsec/convisocli"
+    image: "convisoappsec/convisoast"
     commands:
       - "conviso --help"
     stage: "test"
@@ -64,7 +64,7 @@ Commands:
   sast
   sca
 Run conviso COMMAND --help for more information on a command.
-Successfully ran freestyle step: CLI Hello
+Successfully ran freestyle step: AST Hello
 ```
 
 ## Variables Setup
@@ -111,7 +111,7 @@ The following code snippet will trigger an AST scan and send the results to Conv
 conviso_sample:
     title: "Conviso AST"
     type: "freestyle"
-    image: "convisoappsec/convisocli"
+    image: "convisoappsec/convisoast"
     commands:
       - "conviso ast run --vulnerability-auto-close"
     stage: "test"
