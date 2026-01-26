@@ -12,7 +12,7 @@ slug: /
 Choose the area you want to explore and go straight to the right documentation.
 
 <div className="landing-grid">
-  <a className="landing-card" href="./platform/asset-management.md">
+  <a className="landing-card" href="./platform/asset-management">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -27,7 +27,7 @@ Choose the area you want to explore and go straight to the right documentation.
     <div className="landing-card__cta">Open platform docs</div>
   </a>
 
-  <a className="landing-card" href="./cli/installation.md">
+  <a className="landing-card" href="./cli/installation">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -42,7 +42,7 @@ Choose the area you want to explore and go straight to the right documentation.
     <div className="landing-card__cta">Start scanning</div>
   </a>
 
-  <a className="landing-card" href="./integrations/integrations_intro.md">
+  <a className="landing-card" href="./integrations/integrations_intro">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -57,7 +57,7 @@ Choose the area you want to explore and go straight to the right documentation.
     <div className="landing-card__cta">Browse integrations</div>
   </a>
 
-  <a className="landing-card" href="./api/api-overview.md">
+  <a className="landing-card" href="./api/api-overview">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -72,7 +72,7 @@ Choose the area you want to explore and go straight to the right documentation.
     <div className="landing-card__cta">Go to API docs</div>
   </a>
 
-  <a className="landing-card" href="./new-cli.md">
+  <a className="landing-card" href="./new-cli">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
