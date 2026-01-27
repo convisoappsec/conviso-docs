@@ -16,6 +16,48 @@ New vulnerabilities identified in Conviso Platfom are created in real time direc
 
 With our two-way integration capability, every status update from both solutions are automatically updated in order to reduce the toil and increase productivity.
 
+This integration is designed to:
+- Maintain traceability between vulnerabilities and development tasks
+- Reduce manual triage effort
+- Ensure continuous technical validation through security scans
+- Provide governance without coupling security validation to workflow actions
+
+### Key Concepts[​](https://docs.convisoappsec.com/integrations/azure_boards/#key-concepts)
+
+Before configuring the integration, it is important to understand how vulnerability lifecycle, status, and workflow states work together.
+
+Core Principle
+- Azure Boards manages the development workflow.
+- Conviso Platform manages vulnerability lifecycle and validation.
+
+Actions taken in Azure Boards reflect progress and intent, but never replace technical validation, which is always scan-driven. Closing or moving a card in Azure Boards does not validate a vulnerability. **Validation only happens through security scans.**
+
+### Vulnerability Lifecycle in Conviso Platform[​](https://docs.convisoappsec.com/integrations/azure_boards/#vulnerabilty-lifecycle)
+
+https://docs.convisoappsec.com/platform/vulnerabilities
+
+### Status Mapping: Conviso ↔ Azure Boards[​](https://docs.convisoappsec.com/integrations/azure-#status-mapping)
+
+**Identified**
+Meaning: Vulnerability detected
+Typical Azure Boards State: New
+
+**In Progress**
+Meaning: Under remediation
+Typical Azure Boards State: Active
+
+**Awaiting Validation**
+Meaning: Fix applied, awaiting scan
+Typical Azure Boards State: Testing / Done
+
+**Risk Accepted**
+Meaning: Business decision
+Typical Azure Boards State: Risk Accepted
+
+**False Positive**
+Meaning: Technical discard
+Typical Azure Boards State: Done
+
 ### Integration Capabilities[​](https://docs.convisoappsec.com/integrations/azure-#integration-capabilities)
 
 This integration enhances issue control management and vulnerability consolidation between systems. It facilitates seamless interaction and communication between various aspects of the process. The integration offers the following capabilities:
@@ -23,11 +65,14 @@ This integration enhances issue control management and vulnerability consolidati
 **From Azure Boards to Conviso Platform:**
 
 - Foster interaction by providing data from Azure Boards with the development team responsible for corrections in Vulnerability Management from Conviso Platform.
+- Synchronizes workflow state and board movement
+- Does **not** trigger scans or technical validation
 
 **From Conviso Platform to Azure Boards:**
 
 - Generates new issues in Azure Boards based on events within Conviso Platform's Vulnerability Management System, such as identified vulnerabilities or completed security assessments.
-- Establishes a linkage between vulnerabilities detected in Conviso Platform and their relevant issues in Azure Boards, enhancing traceability and collaborative efforts.
+- Automatically creates one Azure Boards work item per vulnerability. A vulnerability will never generate more than one card in Azure Boards.
+- Keeps a persistent linkage between vulnerabilities detected in Conviso Platform and their relevant issues in Azure Boards, enhancing traceability and collaborative efforts.
 - Updates Azure Boards issues when specific actions occur in Conviso Platform's Vulnerability Management System, such as changes in vulnerability status, assessment completions, or updates to risk levels.
 - Transitions Azure Boards issues to appropriate workflow stages when vulnerabilities are resolved or mitigated within Conviso Platform's Vulnerability Management System.
 
@@ -243,6 +288,38 @@ In **Configuration** page, click on the **Check connection (1)** button to verif
 ![img](../../static/img/azure-boards/check-connection.png)
 
 </div>
+
+## Card Creation and Update Logic
+
+One vulnerability = one Azure Boards work item
+- A work item is created when the vulnerability is first identified
+- The same work item is updated throughout the vulnerability lifecycle
+- No duplicate work items are created for the same vulnerability
+
+If a vulnerability reappears after being marked as Fixed, the existing card is updated, reflecting the new status.
+
+## Retesting and Validation Behavior
+
+**What triggers validation?**
+Validation occurs only when a new security scan is executed, such as:
+- CI/CD pipeline scans
+- Scheduled scans
+- Manual scans
+
+**What does not trigger validation?**
+- Closing or completing a work item in Azure Boards
+- Changing workflow state
+- Manual status changes without scan execution
+
+A vulnerability may remain marked as Fixed until a new scan runs. If the vulnerability still exists, it will automatically return to **Identified**.
+
+## Webhooks and Synchronization
+Two webhooks must be configured in Azure Boards:
+1. Work item updated – Board Column
+2. Work item updated – State
+
+These webhooks ensure that workflow updates are reflected in Conviso Platform, while security validation remains independent and scan-driven.
+
 
 ## Support[​](https://docs.convisoappsec.com/integrations/azure_boards#support)
 
