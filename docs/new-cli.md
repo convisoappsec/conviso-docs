@@ -25,6 +25,13 @@ The New Conviso CLI is a command-line interface to interact with the Conviso Pla
 - `conviso/core/`: shared utilities (logging, notifications, output manager).
 - `conviso/schemas/`: table schemas/headers for consistent output.
 
+## Clone repository
+
+```bash
+git clone https://github.com/convisolabs/conviso-cli.git
+cd conviso-cli
+```
+
 ## Install (local)
 
 ```bash
