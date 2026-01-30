@@ -9,10 +9,13 @@ image: '/static/img/securityfeedseo.png'
 ---
 ## Introduction
 
-Conviso Platform has a complete workflow for vulnerability management, such as the process cycle to evaluate, remediate, and mitigate security weaknesses in systems or applications.
+The Conviso Platform provides a complete vulnerability management workflow, supporting the full process of identifying, prioritizing, remediating, validating, and continuously monitoring security weaknesses across applications, infrastructure, and software supply chain components.
+The vulnerability lifecycle is designed to be evidence-driven, audit-friendly, and aligned with modern Application Security Posture Management (ASPM) practices.
 
-## Usage
-In the left menu, click on **Vulnerabilities** to view all the vulnerabilities of your company:
+
+## Accessing Vulnerabilities
+To access vulnerabilities:
+1. In the left navigation menu, click **Vulnerabilities**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -20,19 +23,35 @@ In the left menu, click on **Vulnerabilities** to view all the vulnerabilities o
 
 </div>
 
+2. The platform will display the vulnerability list for your company.
+Once accessed, the vulnerability view becomes the central hub for analysis, remediation tracking, and validation.
+
 :::note
 Once selected, all open vulnerabilities will be listed, including those with the statuses "Created," "Draft," "Identified," "In Progress," and "Awaiting Validation."
 :::
 
+### Vulnerability Listing and Visibility
+By default, the vulnerability list displays all open vulnerabilities, including the following statuses:
+* Created
+* Identified
+* In Progress
+* Awaiting Validation
+
+Statuses such as Fixed, Risk Accepted, and False Positive may appear depending on the selected filters.
+
 ### Filtering Vulnerabilities
 
-If you wish to view all vulnerabilities in your company at once, click "Clear" as indicated below:
+**Clear Filters**
+To view all vulnerabilities in your company, click **Clear** in the filters area.
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/platform/vulnerabilities-img2.png "Vulnerabilities.")
 
 </div>
+
+**Quick Filters**
+Quick filters allow rapid segmentation of vulnerabilities based on commonly used criteria such as severity, status, or source.
 
 To apply specific filters, you have two options:
 
@@ -51,6 +70,17 @@ To apply specific filters, you have two options:
 ![img](../../static/img/platform/vulnerabilities-img4.png "Vulnerabilities.")
 
 </div>
+
+**Advanced Filters**
+Click More filters to apply detailed criteria, including:
+* Asset
+* Vulnerability type
+* Source (SAST, DAST, SCA, Container, etc.)
+* Status
+* Severity
+* Date ranges
+All exports and views reflect the filters applied at the moment of action.
+
 
 <div style={{textAlign: 'center'}}>
 
@@ -80,7 +110,7 @@ In the vulnerabilities list, vulnerabilities are grouped by title, asset, and ty
 
 3. On the right-hand column (highlighted with number 2), you will find detailed information about the currently selected occurrence, including its ID, severity, status, source, vulnerable file and lines, code snippet, timeline, and attachments.
 
-### Status Update
+### Updating Vulnerability Status
 
 To update the status of a vulnerability, check how many lines are selected in the "Occurrences" table. In the image below, **two vulnerabilities are selected (1)**. Then, **click on the current status of the vulnerability (2)** and **select the new status (3)**:
 
@@ -106,9 +136,11 @@ If more than one vulnerability is selected, the change will be processed in the 
 
 </div>
 
+All changes are recorded in the Timeline, ensuring full auditability.
+
 ### Fixing Vulnerabilities
 
-The process for fixing vulnerabilities depends on their source. For example:
+The remediation flow depends on the vulnerability source. For example:
 
 1. External Scanners (Checkmarx, Dependency Track, Fortify, SonarCloud, SonarQube): The vulnerability must be recognized as fixed by the scanner. On the next synchronization, the status will change to "Fixed" on the platform;
 2. DAST Vulnerabilities: After remediation, a new scan must be performed. If the vulnerability is no longer found, its status will automatically change to "Fixed" on the platform;
@@ -118,6 +150,14 @@ The process for fixing vulnerabilities depends on their source. For example:
 #### False Positive Analysis
 
 The **AppSec AI Agent** features an incredible False Positive Analysis that analyzes your vulnerabilities with our AI, providing greater accuracy and faster response time.
+
+When enabled via Policies, the agent:
+* Analyzes vulnerabilities using AI
+* May update the status to False Positive or Identified
+* Records justification in the Timeline
+
+All AI-driven decisions remain fully transparent and auditable.
+
 When accessing the **Vulnerabilities** area, you will find our agent activated in the icon above the filtered issue list in the **False Positive Analysis Enabled** image.
 
 <div style={{textAlign: 'center'}}>
@@ -165,6 +205,90 @@ By clicking the **How to fix** button, our **AppSec AI Agent** will open, showin
 
 </div>
 
+## Vulnerability Lifecycle in Conviso Platform[​](https://docs.convisoappsec.com/platform/vulnerabilities/#lifecycle)
+
+In the Conviso Platform, vulnerabilities follow a structured lifecycle that supports continuous validation and traceability.
+
+**Standard Lifecycle Flow**
+
+Created > Identified > In Progress > Awaiting Validation > Fixed ↺ 
+If detected again → Identified
+
+This flow ensures that vulnerabilities are never considered permanently resolved without technical evidence.
+
+### Status Categories and Behavior
+
+Statuses are divided into technical statuses and decision statuses.
+
+#### Status Overview
+
+**Created**
+* Category: Technical
+* Automatic Change: Yes
+* Description: Initial registration of the vulnerability.
+
+**Identified**
+* Category: Technical
+* Automatic Change: Yes
+* Description: Vulnerability confirmed after human review or AI Agent analysis. This status is assigned once the finding has been analyzed and validated, whether it originated from an automated scan or was created manually.
+
+**In Progress**
+* Category: Decision
+* Automatic Change: No
+* Description: Remediation activities are currently underway.
+
+**Awaiting Validation**
+* Category: Decision
+* Automatic Change: No
+* Description: The remediation has been completed by the development team and is awaiting validation or approval by another responsible party, such as a security team or a security champion. This status is used when the fix requires an additional internal review before being considered resolved, for example in organizations where changes deployed to production must be reviewed by a security team prior to final closure.
+
+**Fixed**
+* Category: Technical
+* Automatic Change: Yes
+* Description: The vulnerability is no longer detected or has been validated as resolved.
+
+**Risk Accepted**
+* Category: Decision
+* Automatic Change: No
+* Description: The risk associated with the vulnerability has been formally accepted.
+
+**False Positive**
+* Category: Decision
+* Automatic Change: No
+* Description: The vulnerability has been confirmed as non-exploitable.
+
+### Final vs Non-Final Statuses
+
+**Final statuses**
+* Risk Accepted
+* False Positive
+
+These represent explicit human decisions and cannot be reverted automatically.
+
+**Non-final statuses**
+
+* Created
+* Identified
+* In Progress
+* Awaiting Validation
+* Fixed
+
+These may change based on human interaction or new scan evidence.
+
+### Understanding the Fixed Status
+
+The Fixed status represents a validated outcome, not a permanent decision.
+A vulnerability may be marked as Fixed in two situations:
+* Scan-based Evidence (Automatic): The vulnerability is not detected in the most recent scan for the same fingerprint (file, dependency, endpoint, image, etc.).
+* Human Declaration Awaiting Validation (Manual): A developer or security engineer declares that remediation is complete. The vulnerability is marked as Fixed, pending confirmation via a new scan.
+
+**Important Characteristics**
+* Fixed can be set **automatically** (scan evidence) or **manually** (remediation declaration)
+* If detected again, the status automatically reverts to Identified
+* Fixed does not imply risk acceptance
+* Continuous scans are required to maintain confidence
+* This model prevents false confidence and ensures continuous validation.
+
 
 ### Exporting Vulnerabilities Information
 
@@ -183,6 +307,8 @@ As indicated, a CSV file will be generated based on the applied filters. If no f
 ![img](../../static/img/platform/vulnerabilities-img17.png "Vulnerabilities.")
 
 </div>
+
+
 
 **Enhance your development lifecycle's security with the Conviso Platform. Join us today and foster a security-first culture!**
 
