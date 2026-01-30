@@ -1,17 +1,76 @@
 ---
 id: index
-title: Conviso Platform Docs, an ASPM platform
-sidebar_label: Getting Started
+title: Home
+sidebar_label: Home
 description:   Here you will find all the details related to our tools, integrations and better usability of the Conviso Platform, an ASPM platform. Welcome!
 keywords: [ASPM platform, Conviso Platform]
 slug: /
 ---
 
-# Getting Started
+import LatestReleaseHighlight from '@site/src/components/LatestReleaseHighlight';
 
-Choose the area you want to explore and go straight to the right documentation.
+# Conviso Platform
+
+Application security with clarity, context, and scale
+
+The Conviso Platform is a comprehensive Application Security Posture Management (ASPM) solution designed to help organizations understand, prioritize, and reduce application security risk across the entire software development lifecycle.
+
+By centralizing data from multiple security tools and development pipelines, the platform provides a clear and actionable view of application risk, connecting technical findings with real business impact. It enables security and engineering teams to work from the same source of truth, with less noise and more focus.
+
+Built for modern development environments, the Conviso Platform integrates seamlessly with CI/CD pipelines, code repositories, cloud environments, and security scanners, supporting SAST, DAST, SCA, IaC, container, and cloud security use cases.
+
+<LatestReleaseHighlight />
+
+## What the platform enables
+
+**Unified application security visibility**  
+Aggregate findings from different tools and environments into a single, consistent view, enriched with context about applications, teams, and assets.
+
+**Risk-based prioritization**  
+Focus remediation efforts on what truly matters by correlating vulnerability data with exploitability, asset criticality, and deployment context.
+
+**Security workflows that fit engineering teams**  
+Automate ingestion, triage, and tracking of findings through native integrations with development and collaboration tools.
+
+**Program-level insight and governance**  
+Measure application security posture over time, track maturity, and support informed decision-making with reliable metrics and dashboards.
+
+## AI capabilities applied to AppSec
+
+The Conviso Platform applies artificial intelligence to reduce operational overhead and support better security decisions.
+
+**Automated normalization and deduplication**  
+Reduce noise by intelligently grouping and standardizing findings from multiple sources.
+
+**Assisted risk prioritization**  
+Support security teams in identifying high-impact issues by learning from historical data and contextual signals.
+
+**Remediation support**  
+Help teams understand vulnerabilities faster with contextual insights that shorten investigation and fix cycles.
+
+**Actionable insights at scale**  
+Turn large volumes of security data into clear, usable information for both technical teams and leadership.
+
+## Navigate the documentation
+
+Explore the main areas below to learn how to use the platform, set up scanning, connect integrations, and work with the API.
 
 <div className="landing-grid">
+  <a className="landing-card" href="./platform/appsec-ai-agent">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 4v5c0 5-3.5 8.5-7 9.5C8.5 20.5 5 17 5 12V7l7-4zM9.5 12.5l1.8 1.8L14.5 11" />
+        </svg>
+      </span>
+      <div className="landing-card__title">AppSec AI Agent</div>
+    </div>
+    <div className="landing-card__body">
+      Explore the AI Agent capabilities, workflows, and how to use them in the platform.
+    </div>
+    <div className="landing-card__cta">Open AI Agent docs</div>
+  </a>
+
   <a className="landing-card" href="./platform/asset-management">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
@@ -94,6 +153,62 @@ Choose the area you want to explore and go straight to the right documentation.
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
     margin: 24px 0 8px;
+  }
+
+  .release-highlight {
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 16px 0 28px;
+    background: linear-gradient(180deg, #eef4ff 0%, #f6f9ff 100%);
+    border-left: 4px solid #2b5fd9;
+    box-shadow: 0 10px 22px rgba(43, 95, 217, 0.08);
+  }
+
+  .release-highlight__badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #1f4ec4;
+    margin-bottom: 6px;
+  }
+
+  .release-highlight__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .release-highlight__summary {
+    color: #334155;
+    margin-bottom: 10px;
+  }
+
+  .release-highlight__content {
+    margin-bottom: 12px;
+    color: #334155;
+  }
+
+  .release-highlight__list {
+    margin: 0 0 12px;
+    padding-left: 18px;
+    color: #334155;
+  }
+
+  .release-highlight__list li {
+    margin: 6px 0;
+  }
+
+  .release-highlight__cta {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: #2b5fd9;
+    text-decoration: none;
+  }
+
+  .release-highlight__cta:hover {
+    text-decoration: underline;
   }
 
   .landing-card {

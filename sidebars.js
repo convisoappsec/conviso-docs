@@ -28,11 +28,11 @@ if (hasGraphqlDocs) {
 module.exports = {
   docs: [
     'index',
+    'platform/appsec-ai-agent',
     {
       type: "category",
       label: "Platform User Guide",
       items: [
-        'platform/appsec-ai-agent',
         'platform/asset-management',
         'platform/credentials',
         'platform/dashboard',
