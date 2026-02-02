@@ -21,10 +21,10 @@ The GraphQL API offers advantages over other API options such as flexibility, re
 One of the key features of the Conviso GraphQL API is the ability to perform actions through queries and mutations.
 
 ### Queries
-[Queries](./graphql/documentation/operations/queries/allocated-analyses.mdx) allow you to retrieve data from the API, such as information about projects, vulnerabilities, and scans. You can also use queries to filter data based on specific criteria, making it easy to retrieve exactly the information you need.
+[Queries](./graphql/documentation/operations/queries/allocated-analyses) allow you to retrieve data from the API, such as information about projects, vulnerabilities, and scans. You can also use queries to filter data based on specific criteria, making it easy to retrieve exactly the information you need.
 
 ### Mutations
-[Mutations](./graphql/documentation/operations/mutations/create-project.mdx), on the other hand, enable you to modify data. With mutations, you can create new entities, such as projects, scans, and vulnerabilities. You can also update and delete existing entities.
+[Mutations](./graphql/documentation/operations/mutations/create-project), on the other hand, enable you to modify data. With mutations, you can create new entities, such as projects, scans, and vulnerabilities. You can also update and delete existing entities.
 
 The Conviso API offers diverse queries and mutations that enable you to manage projects and vulnerabilities.
 
@@ -32,21 +32,21 @@ The Conviso API offers diverse queries and mutations that enable you to manage p
 Directives, Objects, Enums, Inputs, and Scalars are all components of the GraphQL schema language used in the Conviso API GraphQL.
 
 ### Directives
-[Directives](./graphql/documentation/types/directives/deprecated.mdx) are used to control the behavior of GraphQL operations. The ```deprecated``` directive can be used to mark a field or enum value as deprecated, while ```include``` and ```skip``` directives can be used to conditionally include or skip parts of a query based on a Boolean argument. The ```specifiedBy``` directive can be used to specify a URL that provides information about the field or enum value.
+[Directives](./graphql/documentation/types/directives/deprecated) are used to control the behavior of GraphQL operations. The ```deprecated``` directive can be used to mark a field or enum value as deprecated, while ```include``` and ```skip``` directives can be used to conditionally include or skip parts of a query based on a Boolean argument. The ```specifiedBy``` directive can be used to specify a URL that provides information about the field or enum value.
 
 
 ### Objects
-[Objects](./graphql/documentation/types/objects/activity.mdx) are complex data types that can have fields and methods. They are used to represent various entities and concepts in the system, such as ```Asset```, ```Project```, and ```Vulnerability```. These objects can be queried and mutated using GraphQL operations.
+[Objects](./graphql/documentation/types/objects/activity) are complex data types that can have fields and methods. They are used to represent various entities and concepts in the system, such as ```Asset```, ```Project```, and ```Vulnerability```. These objects can be queried and mutated using GraphQL operations.
 
 
 ### Enums
-[Enums](./graphql/documentation/types/enums/asset-arch.mdx) are used to represent a fixed set of possible values for a field. The system includes various enums such as ```AssetArch```, ```AssetAudience```, and ```AssetSeverity``` which represent different characteristics of assets.
+[Enums](./graphql/documentation/types/enums/asset-arch) are used to represent a fixed set of possible values for a field. The system includes various enums such as ```AssetArch```, ```AssetAudience```, and ```AssetSeverity``` which represent different characteristics of assets.
 
 ### Inputs
-[Inputs](./graphql/documentation/types/inputs/company-search.mdx) are used to pass arguments to mutation operations. These are used to create or update entities in the system, such as ```CreateProjectInput```, ```CreateAssetInput```, and ```UpdateSamlIntegrationInput```.
+[Inputs](./graphql/documentation/types/inputs/company-search) are used to pass arguments to mutation operations. These are used to create or update entities in the system, such as ```CreateProjectInput```, ```CreateAssetInput```, and ```UpdateSamlIntegrationInput```.
 
 ### Scalars
-[Scalars](./graphql/documentation/types/scalars/boolean.mdx) are basic data types that represent a single value. The system includes various scalars such as ```Boolean```, ```Int```, ```String```, and ```ISO8601Date```. These are used as field types in objects and as argument types in operations.
+[Scalars](./graphql/documentation/types/scalars/boolean) are basic data types that represent a single value. The system includes various scalars such as ```Boolean```, ```Int```, ```String```, and ```ISO8601Date```. These are used as field types in objects and as argument types in operations.
 
 ## API access limit
 

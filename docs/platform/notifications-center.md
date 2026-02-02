@@ -4,7 +4,7 @@ title: Explore the Notifications Center for Proactive AppSec Alerts
 sidebar_label: Notifications Center
 description: Configure and manage how you receive application security notifications in the Conviso Platform. Stay informed about risks, vulnerabilities, projects, and assets through email, in-app, and chat integrations.
 keywords: [Notifications Center,Conviso Platform,AppSec notifications,application security alerts,risk management,vulnerability notifications,Slack integration,Microsoft Teams integration,ASPM]
-image: '/static/img/securityfeedseo.png'
+image: '/img/securityfeedseo.png'
 
 ---
 ## Introduction
@@ -27,13 +27,13 @@ From this page, you can manage all notification channels and event preferences.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/notifications-center-01.png")
+![img](/img/platform/notifications-center-01.png)
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/notifications-center-02.png")
+![img](/img/platform/notifications-center-02.png)
 
 </div>
 
@@ -54,7 +54,7 @@ Email notifications can be customized per event using the Settings option.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/notifications-center-03.png")
+![img](/img/platform/notifications-center-03.png)
 
 </div>
 
@@ -70,7 +70,7 @@ Recommended for:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/notifications-center-04.png")
+![img](/img/platform/notifications-center-04.png)
 
 </div>
 
@@ -88,7 +88,7 @@ To configure chat notifications, expand the Chat section in the Notifications Ce
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/notifications-center-05.png")
+![img](/img/platform/notifications-center-05.png)
 
 </div>
 

@@ -36,7 +36,7 @@ module.exports = {
         'platform/asset-management',
         'platform/credentials',
         'platform/dashboard',
-        'platform/notifications',
+        'platform/notifications-center',
         'platform/policies',
         'platform/projects',
         'platform/requirements',
