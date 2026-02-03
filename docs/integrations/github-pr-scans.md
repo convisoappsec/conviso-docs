@@ -131,6 +131,17 @@ If you opened a PR but do not see the "Conviso Security Check" or any comments f
 2.  **Is the specific repository allowed?** Check the "Asset Mapping" table in the integration settings. The specific repository must be mapped to an asset, and its **Status** toggle must be active.
 3.  **Are permissions correct?** Ensure the installed **Conviso Application Security** GitHub App has the necessary permissions (specifically `read` and `write` access to Pull Requests and Commit Statuses). You may need to update the app permissions in your GitHub Organization settings.
 
+### I already have a pipeline step running Conviso AST. What happens if I enable PR Scanning?
+
+They operate independently. **Automated PR Scanning** triggers exclusively on Pull Request events (via the GitHub App), while your existing CI/CD pipeline triggers based on your YAML configuration (e.g., `on: push` or `on: pull_request`).
+
+If your pipeline is also configured to run on PRs, **both might run simultaneously**. This is okay and often desired:
+
+- **PR Scanning** provides immediate, focused feedback on the "diff" directly in the PR interface.
+- **Pipeline AST** ensures compliance and might run a full repository scan or specific policies required for deployment.
+
+You can choose to keep both for maximum coverage or adjust your pipeline to run only on the main branch (e.g., `on: push` to `main/master`) if you want to avoid duplicate checks during Code Review.
+
 ## Support
 
 If scans are not triggering or you are receiving unexpected errors, please verify that your [GitHub App permissions](./github.md) are up to date, or contact our support team for assistance.
