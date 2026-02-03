@@ -10,6 +10,10 @@ Scan and protect your application with Conviso DAST, consolidating all your vuln
 
 **[At Conviso, we believe that AppSec goes beyond security tools, and we offer a comprehensive approach that includes consulting, training, and support services.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
+:::note
+Conviso DAST can be run self-hosted on your local pipeline. Instructions and further information on self-hosting are available on the [Conviso DAST page at Dockerhub](https://hub.docker.com/r/convisoappsec/convisodast).
+:::
+
 ## Usage
 
 1. The first step to executing a DAST is to create an asset in the Conviso Platform. To do this, click on **Asset Management** in the side menu, then **New Asset (1)** and select **Manual (2)**.
