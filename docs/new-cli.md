@@ -43,6 +43,20 @@ Or run the module directly:
 ```bash
 python -m conviso.app --help
 ```
+## Update CLI
+
+The Conviso CLI is updated via the Git repository.
+
+To update your local copy to the latest version:
+
+```bash
+git pull origin main
+```
+If dependencies change, reinstall them using:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage examples
 
