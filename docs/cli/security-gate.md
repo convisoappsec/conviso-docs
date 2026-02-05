@@ -18,7 +18,7 @@ To use this feature, follow these steps:
 
 ### 1. Defining vulnerability policies
 
-First, you need to define the policies for the specific project. This AST feature helps you with that, allowing you to define policies such as:
+First, you need to define the policies for the specific asset. This AST feature helps you with that, allowing you to define policies such as:
 
 **Option A: Platform-based configuration (Recommended)**
 - Configure policies through the [Conviso Platform Security Gate](/platform/security-gate).
