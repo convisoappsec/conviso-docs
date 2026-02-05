@@ -21,14 +21,14 @@ To use this feature, follow these steps:
 First, you need to define the policies for the specific project. This AST feature helps you with that, allowing you to define policies such as:
 
 **Option A: Platform-based configuration (Recommended)**
-- Configure policies through the [Conviso Platform Security Gate](/platform/security-gate)
-- Policies are managed centrally and can be updated instantly
-- No YAML file needed in your repository
-- Supports both global and asset-specific rules
+- Configure policies through the [Conviso Platform Security Gate](/platform/security-gate).
+- Policies are managed directly in the Platform and take effect instantly.
+- No YAML file needed in your repository.
+- Supports both global and asset-specific rules.
 
 **Option B: YAML file configuration**
-- Define policies as code in your repository - [See YAML configuration guide](#creating-the-security-gate-rules-in-the-yaml-file)
-- Policies are committed alongside your code
+- Define policies as code in your repository - [See YAML configuration guide](#creating-the-security-gate-rules-in-the-yaml-file).
+- Policies are committed alongside your code.
 
 ### 2. Running Security Gate with the AST
 After defining your vulnerability policies (either in a YAML file or in the Platform), run the Security Gate command in your CI/CD pipeline:
