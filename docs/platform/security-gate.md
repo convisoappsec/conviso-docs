@@ -73,7 +73,7 @@ The global policy serves as the default Security Gate rule for all assets. This 
 </div>
 
 :::info
-Determining limits (e.g., "Max 0 Critical") ensures that any asset exceeding this threshold during a pipeline scan will fail the Security Gate check. All assets will use these limits unless they have a custom rule configured.
+Setting limits (e.g., "Max 0 Critical") ensures that any asset exceeding this threshold during a pipeline scan will fail the Security Gate check. All assets will use these limits unless they have a custom rule configured.
 :::
 
 ### Asset-Specific Custom Rules
@@ -127,13 +127,13 @@ To revert an asset to the global policy:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/security-gate-custom-delete.png "Security Gate Custom Rule Card")
+![img](../../static/img/security-gate-custom-delete.png "Security Gate Custom Rule Delete Option")
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/security-gate-custom-delete-confirmation.png "Custom Rule Configuration Modal")
+![img](../../static/img/security-gate-custom-delete-confirmation.png "Delete Custom Rule Confirmation Modal")
 
 </div>
 
@@ -143,5 +143,5 @@ After configuring your policies in the Platform, integrate Security Gate into yo
 
 The AST will evaluate vulnerabilities against your configured policies and block the pipeline if thresholds are exceeded.
 
-**[View the complete CI/CD integration guide →](/cli/security-gate/#3-running-security-gate-with-the-ast)**
+**[View the complete CI/CD integration guide →](/cli/security-gate/#2-running-security-gate-with-the-ast)**
 
