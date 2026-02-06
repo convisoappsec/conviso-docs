@@ -44,6 +44,7 @@ module.exports = {
         'platform/risk-score',
         'platform/sbom-management',
         'platform/security-feed',
+        'platform/security-gate',
         'platform/threat-modeling',
         'platform/user-management',
         'platform/vulnerabilities'
