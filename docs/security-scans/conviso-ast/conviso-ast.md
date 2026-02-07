@@ -54,7 +54,7 @@ For Secret Detection, Conviso AST uses [Gitleaks](https://github.com/gitleaks/gi
 
 ## How to use Conviso AST?
 
-Scan directly from your terminal with [**Conviso CLI**](../../cli/installation) and combine other capabilities such as: 
+Scan directly from your terminal with [**Conviso AST**](../../cli/installation) and combine other capabilities such as: 
 
 - Set policies to block the pipeline depending on different criteria;
 - Send diff versions of your source code application to later be reviewed by your own security team or - Conviso's (when subscribed to our professional services license).
