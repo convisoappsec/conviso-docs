@@ -205,6 +205,28 @@ By clicking the **How to fix** button, our **AppSec AI Agent** will open, showin
 
 </div>
 
+#### Autofix
+
+The **AppSec AI Agent** goes beyond providing guidance: it can automatically generate code fixes for identified vulnerabilities through the **Autofix** capability.
+
+With Autofix, the agent can create pull requests containing the necessary code changes to remediate vulnerabilities, streamlining the remediation process and reducing the time developers spend on security fixes.
+
+**How Autofix Works**
+
+There are two ways to leverage the Autofix capability:
+
+1. **Manual Trigger**: By clicking the **Generate Fix** button within the vulnerability details, the AppSec AI Agent will analyze the vulnerability context, generate the appropriate code fix, and create a pull request in your repository with the proposed changes.
+
+![Generate Fix button](../../static/img/platform/vulnerabilities-img18.png)
+
+2. **Automatic Mode**: When the Autofix policy is enabled in your **Policies** settings, the agent will automatically generate pull requests for eligible vulnerabilities without manual intervention, enabling a proactive and continuous remediation approach.
+
+![Autofix policy](../../static/img/platform/vulnerabilities-img19.png)
+
+
+All generated fixes are submitted as pull requests, allowing your team to review, test, and approve changes before merging into your codebase.
+
+
 ## Vulnerability Lifecycle in Conviso Platform[​](https://docs.convisoappsec.com/platform/vulnerabilities/#lifecycle)
 
 In the Conviso Platform, vulnerabilities follow a structured lifecycle that supports continuous validation and traceability.
