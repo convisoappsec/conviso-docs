@@ -47,49 +47,73 @@ Finally, in the **URL** field, enter the URL where the DAST will be executed and
 
 </div>
 
-4. Now, click on the highlighted text below to schedule:
+4. Now, click on the **CI/CD** tab:
 
 <div style={{textAlign: 'center' , maxWidth: '100%'}}>
 
-![img](../../../static/img/conviso-dast/conviso-dast-img5.png 'Conviso DAST')
+![img](../../../static/img/conviso-dast/conviso-dast-img12.png 'Conviso DAST tab')
 
 </div>
 
-Select whether the DAST should be executed monthly or weekly, enter the day of the week, the execution time (in GMT-3), and the type of analysis.
-
-If the Type of analysis is **web**, no additional options need to be considered. If the Type of analysis is **API**, you will need to specify the API format (SOAP, GraphQL, or OpenAPI). In this case, the URL should contain the API structure. Here is an example: https://swagger.io/docs/specification/basic-structure/.
-
-5. With the configuration complete, click **Create**, and your scheduling will be set up:
+5. Click on the gear icon to configure the scan. If you have already configured the scan previously, you can simply click **Run Now** to execute the scan with the existing configuration.
 
 <div style={{textAlign: 'center' , maxWidth: '60%'}}>
 
-![img](../../../static/img/conviso-dast/conviso-dast-img6.png 'Conviso DAST')
+![img](../../../static/img/conviso-dast/conviso-dast-img13.png 'Conviso DAST icon')
 
 </div>
 
-6. A message indicating that the scheduling has been completed should appear on the screen:
+
+6. On the DAST configuration screen, you need to configure the following settings:
 
 <div style={{textAlign: 'center' , maxWidth: '100%'}}>
 
-![img](../../../static/img/conviso-dast/conviso-dast-img7.png 'Conviso DAST')
+![img](../../../static/img/conviso-dast/conviso-dast-img14.png 'Conviso DAST configuration')
 
 </div>
 
-7. You can view information about the most recent scans of the asset, as well as monitor the current status, from the area indicated below:
+**Required fields:**
+- **Scan Profile**: Choose between **Basic** or **Deep Scan**. The Deep Scan performs a more comprehensive analysis and may take longer to complete.
+- **Type of analysis**: Select **web** for web applications or **API** for API testing. If you select **API**, you will need to specify the API format (SOAP, GraphQL, or OpenAPI). In this case, the URL should contain the API structure. Here is an example: https://swagger.io/docs/specification/basic-structure/.
+
+**Optional fields:**
+- **Authentication**: Configure authentication credentials if your application requires login to access protected areas.
+- **Scheduling**: Define when the DAST should be executed (monthly or weekly), enter the day of the week, and the execution time (in GMT-3).
+- **Scope Definition**: Use regex patterns to define which URLs should be included or excluded from the scan.
+
+After configuring the settings, click **Save** to complete the setup.
+
+7. You can view information about the most recent scans of the asset, as well as monitor the current status, from the area on the right:
 
 <div style={{textAlign: 'center' , maxWidth: '100%'}}>
 
-![img](../../../static/img/conviso-dast/conviso-dast-img8.png 'Conviso DAST')
+![img](../../../static/img/conviso-dast/conviso-dast-img15.png 'Conviso DAST scans')
 
 </div>
 
-8. To view the DAST results, click on **Vulnerabilities** in the left side menu:
+To view the scan details, just select your execution and you will be redirected to the DAST details page.
 
-<div style={{textAlign: 'center' , maxWidth: '60%'}}>
 
-![img](../../../static/img/conviso-dast/conviso-dast-img9.png 'Conviso DAST')
+8. The scan details page displays comprehensive information about the execution:
+
+<div style={{textAlign: 'center' , maxWidth: '100%'}}>
+
+![img](../../../static/img/conviso-dast/conviso-dast-img16.png 'Conviso DAST details')
 
 </div>
+
+- **Target URL**: The URL that was scanned
+- **Scanned URLs**: Which URLs were analyzed during the scan
+- **Total Vulnerabilities**: The total number of vulnerabilities found
+- **New Vulnerabilities**: The number of newly discovered vulnerabilities
+- **Fixed Vulnerabilities**: The number of vulnerabilities that were resolved since the last scan
+- **Execution Time**: The date and time when the scan was executed
+- **Duration**: How long the scan took to complete
+- **Execution Logs**: Detailed logs of the scan execution process
+
+You can also generate a detailed report of the scan execution from this page clicking on **Generate report** button.
+
+9. To view the DAST results, click on **New vulnerabilities** reference
 
 9. To view more information about a specific vulnerability, click on the title:
 
