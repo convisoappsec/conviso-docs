@@ -31,7 +31,7 @@ Conviso Platform seamlessly integrates with your current tools and workflows, en
 - [Support for Conviso Platform Integrations](#support-for-conviso-platform-integrations)
 - [Resources](#resources)
 
-**Note:** You can also check the **[Conviso CLI](../cli/installation.md)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
+**Note:** You can also check the **[Conviso Security Scans](../security-scans/conviso-ast)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
 
 ## Set up Conviso Platform Single Sign-On (SSO)
 
@@ -95,3 +95,9 @@ Integrate external scanning tools with Conviso Platform to synchronize and conso
 ## Support for Conviso Platform Integrations
 
 If you have any questions or don’t find a specific tool in our list of integrations, please don't hesitate to contact our support team.
+
+## Resources
+
+- [Conviso API Getting Started](../api/api-overview.md)
+- [Conviso Security Scans](../security-scans/conviso-ast)
+- [Support Team](https://support.convisoappsec.com/tickets)

@@ -105,7 +105,7 @@ async function proxyPlugin() {
               items: [
                 {
                   label: 'CLI',
-                  to: 'cli/installation',
+                  to: 'new-cli',
                 },
                 {
                   label: 'Github Actions',
@@ -220,6 +220,11 @@ async function proxyPlugin() {
             hashed: true,
             highlightSearchTermsOnTargetPage: true,
             searchResultLimits: 25,
+            searchContextByPaths: [
+              { label: 'API Reference', path: 'api' },
+              { label: 'CLI', path: 'new-cli' },
+            ],
+            useAllContextsWithNoSearchContext: false,
           },
         ],
       ],

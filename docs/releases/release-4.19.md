@@ -8,7 +8,7 @@ Release date: December 2025
 
 ## Key Benefits
 
-* [Snyk Integration](#synk-integrations);
+* [Snyk Integration](#snyk-integration);
 * [Backstage Integration](#backstage-integration);
 * [Mobile Security Import (MobSF)](#mobile-security-import-mobsf);
 * [Platform Stability & Reliability](#platform-stability--reliability);

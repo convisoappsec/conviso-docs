@@ -12,7 +12,7 @@ keywords: [assets with the Conviso Platform AST]
 The Conviso AST allows you to create and list assets of your company registered on the Conviso Platform.
 
 ### Prerequisites
-To successfully run  `conviso assets` command you need to [authenticate with the API Key](../cli/installation/#authentication).
+To successfully run  `conviso assets` command you need to [authenticate with the API Key](../platform/security-feed.md#generate-api-key).
 
 ## Usage
 See how to use the `conviso assets` command.

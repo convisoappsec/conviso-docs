@@ -86,7 +86,7 @@ Explore the main areas below to learn how to use the platform, set up scanning, 
     <div className="landing-card__cta">Open platform docs</div>
   </a>
 
-  <a className="landing-card" href="./cli/installation">
+  <a className="landing-card" href="./security-scans/conviso-ast">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
