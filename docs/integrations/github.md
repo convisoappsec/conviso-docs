@@ -80,9 +80,21 @@ After completing the previous steps, you can view your configured assets:
 
 ![img](../../static/img/github/github-08.png)
 
-## Advanced Features: GitHub AST Orchestrator
+## Next Steps: Enable Security Scanning
 
-For larger organizations, Conviso offers the **AST Orchestrator** model. This feature allows you to centralize security scanning logic in a single gateway repository, preventing the need to manage individual workflows in every project.
+Once the integration is active, you can enable automated security scanning. Conviso Platform provides two methods to suit your workflow needs:
+
+### 1. Automated PR Scanning (Zero Configuration)
+
+**Recommended for most users.**
+This feature provides instant security feedback directly within your Pull Requests without requiring any CI/CD configuration files in your repository. It automatically scans changed files and reports findings as comments.
+
+[Learn how to enable Automated PR Scanning](./github-pr-scans.md)
+
+### 2. GitHub AST Orchestrator (Custom Workflow)
+
+**Recommended for advanced customization.**
+For organizations that need centralized control over scan logic via GitHub Actions workflows. This model allows you to centralize security logic in a single gateway repository.
 
 [Learn how to configure the GitHub AST Orchestrator](./github-ast-orchestrator.md)
 

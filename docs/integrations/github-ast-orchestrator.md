@@ -3,7 +3,13 @@ id: github-ast-orchestrator
 title: GitHub AST Orchestrator
 sidebar_label: AST Orchestrator
 description: Learn how to use the Orchestrator model to centralize security scanning logic across multiple repositories via GitHub Actions.
-keywords: [GitHub AST Orchestrator, Application Security Testing, GitHub Actions, Orchestrator Model]
+keywords:
+  [
+    GitHub AST Orchestrator,
+    Application Security Testing,
+    GitHub Actions,
+    Orchestrator Model,
+  ]
 ---
 
 # GitHub AST Orchestrator
@@ -13,6 +19,7 @@ The Conviso Platform's **GitHub AST Orchestrator** simplifies Application Securi
 ## Overview
 
 The Orchestrator model provides several benefits:
+
 - **Centralized Management**: Maintain and update security scanning logic in one place.
 - **Consistency**: Ensure all repositories use the same tools and configurations.
 - **Ease of Use**: Quickly onboard new repositories without manual workflow setup.
@@ -24,6 +31,7 @@ The Orchestrator model provides several benefits:
 ## Prerequisites
 
 Before configuring the Orchestrator, ensure that:
+
 1. You have configured the [GitHub Integration](./github.md).
 2. You have a **designated repository** to act as the Orchestrator. We recommend cloning our public template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/).
 3. You have a Conviso API Key. Find yours [in this tutorial](../platform/security-feed.md#generate-api-key).
@@ -38,12 +46,14 @@ You must create or clone the Orchestrator repository and ensure the Conviso GitH
 ### Step 1 - Enable Features
 
 In the Conviso Platform UI, navigate to the GitHub Integration settings and ensure the following are toggled **On**:
+
 - **GitHub Advanced Security**
 - **AST Scans**
 
 ### Step 2 - Configure Orchestrator Settings
 
 Fill in the **Orchestrator Configuration** section with the following details:
+
 - **Orchestrator Repo (owner/repo)**: The full path to your orchestrator repository (e.g., `my-org/pipeline-orchestrator`).
 - **Workflow Filename or ID**: The name of the YAML file containing the orchestrator workflow. If using our template, use `ast.yml`.
 - **Ref (Branch/Tag)**: The branch or tag where the workflow is defined (e.g., `main`).
@@ -76,9 +86,10 @@ The Orchestrator workflow is triggered via `workflow_dispatch`. It receives seve
 
 ### Required Workflow Inputs
 
-If you are using our [pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/) template, the workflow is already pre-configured at `.github/workflows/ast.yml`. 
+If you are using our [pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/) template, the workflow is already pre-configured at `.github/workflows/ast.yml`.
 
 If you choose to create your own, it must define the following inputs:
+
 - `repo_full_name`: The full name of the repository to scan.
 - `branch`: The branch to scan.
 - `commit_sha`: The specific commit SHA for the scan.
@@ -111,7 +122,7 @@ jobs:
   conviso-ast:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisocli:latest
+      image: convisoappsec/convisoast:latest
       env:
         CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
     steps:
@@ -125,12 +136,10 @@ jobs:
         run: |
           conviso ast run \
             --vulnerability-auto-close \
-            --company-id [YOUR_COMPANY_ID]
-```
 
 ## Scan Logic and Execution
 
-- **Environment**: The scan runs using the `convisoappsec/convisocli:latest` Docker image within **your GitHub Actions environment**.
+- **Environment**: The scan runs using the `convisoappsec/convisoast:latest` Docker image within **your GitHub Actions environment**.
 - **Execution Costs**: As the scan executes on your runners, the time consumed counts towards your GitHub Actions minutes.
 - **Command**: `conviso ast run --vulnerability-auto-close --company-id [ID]`
 - **Blocking Status**: The scan is currently configured as **non-blocking**.
@@ -139,3 +148,4 @@ jobs:
 ## Support
 
 If you have any questions or need assistance, feel free to contact our support team.
+```
