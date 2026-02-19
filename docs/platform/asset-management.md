@@ -58,7 +58,7 @@ You already have some filters to quickly filter assets if needed, such as: Last 
 ### Creating Assets
 
 You can create assets in different ways:
-1. By running the Conviso AST [click here](../security-scans/conviso-ast/conviso-ast.md);
+1. By running the Conviso AST [click here](../security-scans/conviso-ast);
 2. Through integration with external scanners [click here](../integrations/integrations_intro.md);
 3. Manually through the Conviso Platform.
 

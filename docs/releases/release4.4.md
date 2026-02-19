@@ -79,7 +79,7 @@ You can start using this new capability adding the parameter `--vulnerability-au
 
 
 
-More details in our [documentation](https://docs.convisoappsec.com/cli/ast#auto-closing-vulnerabilities).
+More details in our [documentation](https://docs.convisoappsec.com/security-scans/conviso-ast#auto-closing-vulnerabilities).
 
 
 
@@ -103,7 +103,7 @@ There are two ways to do this:
 
 
 
-More details in our [documentation](https://docs.convisoappsec.com/cli/ast#naming-an-asset).
+More details in our [documentation](https://docs.convisoappsec.com/security-scans/conviso-ast#naming-an-asset).
 
 
 

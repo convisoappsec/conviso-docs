@@ -69,7 +69,7 @@ Successfully ran freestyle step: AST Hello
 
 ## Variables Setup
 
-Authentication between [CLI](../cli/installation) and the Conviso Platform is done using an API key. To do it safely, it is recommended to use the **Variables** of Pipeline. Those variables can be defined by Pipeline or by anything else at the account scope (valid for all projects), via **Shared Configuration**. The second option is more advantageous if there is interaction with the tool in more than one project and/or pipeline.
+Authentication between [security scans workflow](../security-scans/conviso-ast) and the Conviso Platform is done using an API key. To do it safely, it is recommended to use the **Variables** of Pipeline. Those variables can be defined by Pipeline or by anything else at the account scope (valid for all projects), via **Shared Configuration**. The second option is more advantageous if there is interaction with the tool in more than one project and/or pipeline.
 
 ### Pipeline Variables Setup
 

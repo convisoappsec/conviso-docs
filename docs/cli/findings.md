@@ -11,7 +11,7 @@ keywords:  [Sarif]
 The Conviso AST allows you to import results from a [SARIF](http://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) file, such as Trivy or Semgrep, to a project in your account on the Conviso Platform. This can be useful for tracking and managing security vulnerabilities and other issues found by scanning tools.
 
 ### Prerequisites
-To successfully run  `conviso findings` command you need to [authenticate with the API Key](../cli/installation/#authentication). You can export it as shown below:
+To successfully run  `conviso findings` command you need to [authenticate with the API Key](../platform/security-feed.md#generate-api-key). You can export it as shown below:
 
 ```bash
 export CONVISO_API_KEY='<YOUR_CONVISO_API_KEY>'

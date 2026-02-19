@@ -297,3 +297,8 @@ Therefore, when configuring Microsoft Entra ID as the identity provider, make su
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+
+## Resources
+
+- [Microsoft Entra SSO tutorial](https://learn.microsoft.com/en-us/entra/identity/saas-apps/appsec-flow-sso-tutorial)
+- [Conviso Platform](https://app.convisoappsec.com/)

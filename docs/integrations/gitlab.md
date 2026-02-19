@@ -17,7 +17,7 @@ With Conviso Platform integrated into your [Gitlab](https://gitlab.com/) Secure 
 
 You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers both **Static Application Security Testing (SAST)** and **Software Composition Analysis (SCA)** and **Code Review** directly on your Gitlab pipeline.
 
-The [CLI](../cli/installation) is a docker image in this integration for all execution and connection with the Conviso Platform. 
+The [security scans workflow](../security-scans/conviso-ast) is used in this integration for all execution and connection with the Conviso Platform. 
 
 **[Explore our Integration page to learn more and supercharge your Application Security Program  with Conviso Platform.](https://bit.ly/3NzvomE)**
 

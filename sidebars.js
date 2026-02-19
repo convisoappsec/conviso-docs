@@ -54,8 +54,6 @@ module.exports = {
       type: "category",
       label: "Scanning your Application",
       items: [
-        'cli/installation',
-        'cli/ast',
         {
           type: 'doc',
           label: 'Scan Application with Conviso',
