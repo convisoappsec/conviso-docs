@@ -19,7 +19,7 @@ Release date: February 2026
 * [Requirements & Project Experience](#requirements-projects-experience);
 * [Vulnerability Management UX & Bulk Actions](#vulnerability-management-ux--bulk-actions);
 * [Platform Reliability, Performance & Observability](#platform-reliability-performance--observability);
-* [Badge & Seal](#badge-seal-improvements);
+* [New Seal Capability](#seal-capability);
 * [Documentation & Developer Experience](#documentation--developer-experience);
 
 ## Introduction
@@ -157,7 +157,7 @@ Highlights include **ServiceNow integration**, in-platform **SAMM assessments**,
 ---
 
 **_Improvements_**
-## Badge & Seal Improvements
+## Seal Capability
 
 - Expanded and stabilized Badge (Seal) workflows:
   - Domain field support in badge creation/editing.
