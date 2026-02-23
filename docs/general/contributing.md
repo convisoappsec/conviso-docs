@@ -4,7 +4,7 @@ title: Contributing to Conviso Docs
 sidebar_label: Contributing to Conviso Docs
 ---
 
-> To contribute to Conviso Docs, you must follow the [Documentation Writing Best Practices](./documentation-writing-best-practices.md) guide.
+> To contribute to Conviso Docs, you must follow the [Documentation Writing Best Practices](./documentation-writing-best-practices) guide.
 
 ## Quick Start
 
@@ -63,7 +63,7 @@ npm run screenshot:install
 ```
 
 For screenshot execution and standards, follow:
-[Documentation Writing Best Practices](./documentation-writing-best-practices.md#screenshot-execution-standard-flow)
+[Documentation Writing Best Practices](./documentation-writing-best-practices#screenshot-execution-standard-flow)
 
 ## Detailed Visual Guide
 

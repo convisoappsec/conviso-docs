@@ -47,9 +47,6 @@ When generating a Software Bill of Materials (SBOM), it's crucial to track both 
 
 In addition to dependency tracking, detecting licenses is a critical aspect of SBOM generation. Our tool supports the detection of various licenses, helping ensure compliance with open-source and proprietary software requirements. However, complete license detection is not always possible, particularly for packages that lack clear metadata or license information. Despite these limitations, our approach provides significant visibility into both dependencies and their licenses, helping to manage legal and security risks.
 
-## Use of Syft
-To achieve this level of detail in our SBOM generation, we use Syft, a powerful tool that scans container images and filesystems for dependencies and licenses.
-
 ## How to generate and view components in Conviso Platform
 
 An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run`, `conviso sca run` or `conviso sbom generate`.
