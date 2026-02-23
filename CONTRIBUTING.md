@@ -43,6 +43,55 @@ If you want to add an improvement, a new feature or bug fix, follow the steps to
 
 That's it, now just wait!
 
+## Generate standardized screenshots (required)
+
+You must generate platform screenshots with Playwright using the authenticated standardized flow.
+
+Standard is enforced by `screenshot:standard`:
+
+- Fixed resolution: `1440x900`
+- Fixed zoom: `100%`
+- Fixed browser: Playwright `chromium`
+- Fixed theme: `light`
+- Fixed locale/timezone: `en-US` / `UTC`
+- Fixed auto file naming: `nomedatela-YYYYMMDD-HHMMSS.png` (UTC)
+- Session file saved outside repository in `~/.conviso-docs/platform-session.json`
+- Basic masking: emails and hex-like IDs are normalized
+
+### 1. Install the browser runtime
+
+```bash
+npm run screenshot:install
+```
+
+### 2. Save an authenticated session
+
+This opens a Chromium window with default login URL `https://app.convisoappsec.com/spa/auth/login`.
+If needed, you can override with `--loginUrl`.
+
+```bash
+npm run screenshot:auth
+```
+
+### 3. Capture the target page (standard command)
+
+```bash
+npm run screenshot:standard -- --url=https://app.convisoappsec.com/spa/security-feed
+```
+
+The command only accepts:
+
+- `--url` target platform page
+- `--waitFor` optional custom selector (default is `#q-app`)
+
+### 4. Advanced mode (not standardized)
+
+If you need custom captures for one-off cases, use:
+
+```bash
+npm run screenshot:url -- --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
+```
+
 ## Community
 Do you have any questions about Conviso Docs? Let's chat in our [Community](https://discord.gg/jJC9NfmsgA).
 Thank you for your contribution.
