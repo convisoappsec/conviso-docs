@@ -78,7 +78,7 @@ Highlights include **ServiceNow integration**, in-platform **SAMM assessments**,
 **_New Feature_**
 ## Continuous SBOM Monitoring
 
-- Introduced ** SBOM correlation** to improve consistency between Conviso AST and platform monitoring.
+- Introduced **SBOM correlation** to improve consistency between Conviso AST and platform monitoring.
 - Reduces “blinking” findings (open/close/reopen) caused by data source mismatches.
 - Expands advisory coverage and increases trust in supply-chain vulnerability lifecycle.
 - Provides a more reliable foundation for continuous dependency monitoring at scale.
