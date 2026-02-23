@@ -13,10 +13,10 @@ Release date: February 2026
 * [Security Gate Monitoring](#security-gate-monitoring);
 * [New Security Feed Experience](#new-security-feed-experience);
 * [GitHub Pull Request Scanning](#github-pull-request-scanning);
-* [Continuous SBOM Monitoring](#continuous-sbom-monitoring-with-osv);
+* [Continuous SBOM Monitoring](#continuous-sbom-monitoring);
 * [DAST API Enhancements (Swagger, GraphQL, SOAP)](#dast-api-enhancements-swagger-graphql-soap);
-* [AI Agents Improvements (Auto-Fix, DAST FP Review, Chat UX)](#ai-agents-improvements-auto-fix-dast-fp-review-chat-ux);
-* [Requirements & Project Experience](#requirements-projects-experience);
+* [AI Agents Operations (Auto-Fix, DAST FP Review, Chat UX)](#ai-agents-operations-auto-fix-dast-fp-review-chat-ux);
+* [Requirements & Project Experience](#requirements--project-experience);
 * [Vulnerability Management UX & Bulk Actions](#vulnerability-management-ux--bulk-actions);
 * [Platform Reliability, Performance & Observability](#platform-reliability-performance--observability);
 * [New Seal Capability](#seal-capability);
