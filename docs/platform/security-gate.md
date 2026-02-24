@@ -22,7 +22,7 @@ You can monitor all Security Gate runs across your company from the **CI/CD > Se
 
 </div>
 
-This page lists all executions, showing the Status (Passed/Failed), Asset, and Execution Date.
+This page lists all executions, showing the Status, Asset, and Execution Date.
 
 **Features:**
 *   **Filtering:** Filter by **Status** (Passed/Failed/Warning), **Asset**, or **Executed at** date.
@@ -30,9 +30,7 @@ This page lists all executions, showing the Status (Passed/Failed), Asset, and E
 *   **Sorting:** Sort the table by ID, Status, or Execution Date.
 *   **Save Filter:** You can save your current filter configuration to be the default view whenever you access this page.
 
-#### Status Definitions
-
-The Security Gate status is determined by the configured thresholds:
+**Status Definitions:**
 
 *   **Passed:** All vulnerability counts are within the set limits.
 *   **Failed:** At least one vulnerability has exceeded the `Max days to fix` deadline.
@@ -59,7 +57,7 @@ This view provides comprehensive information about why a pipeline passed or fail
     *   It shows the **Threshold** (limit configured) vs. **Found** (actual vulnerabilities detected).
     *   **Max days to fix:** The amount of days a vulnerability can remain open before it blocks the pipeline.
     *   **Expired:** Shows the count of vulnerabilities that have already exceeded the allowed days to fix.
-    *   Statuses like **FAILED** (exceeded deadline or limit), **WARNING** (exceeded limit but within deadline), or **PASSED** (within limits) are clearly marked.
+    *   Statuses like **Failed** (exceeded deadline or limit), **Warning** (exceeded limit but within deadline), or **Passed** (within limits) are clearly marked.
 *   **Latest Asset Scans:** A card at the bottom showing the most recent scans for this asset, providing context on where the vulnerabilities might have originated.
 
 ## Configuring your Security Gate policy
@@ -89,7 +87,7 @@ The global rule serves as the default Security Gate rule for all assets. This is
 </div>
 
 :::info
-Setting limits ensures that any asset exceeding this threshold during a pipeline scan will fail the Security Gate check. All assets will use these limits unless they have a custom rule configured.
+Setting limits ensures that any asset exceeding these thresholds during a pipeline scan will trigger a Security Gate result of either **Warning** or **Failed**.  All assets will use these limits unless they have a custom rule configured.
 :::
 
 ### Asset Rules
@@ -110,7 +108,7 @@ Navigate to **Assets**, select an asset, and go to the **CI/CD** tab. You will s
 
 </div>
 
-#### Creating a Asset Rule
+#### Creating an Asset Rule
 
 1. On the Security Gate card, click the **options menu (...)** and select **Add/Edit configuration**.
 2. In the modal, define the specific vulnerability limits and fix deadlines for this asset.
@@ -121,17 +119,17 @@ Navigate to **Assets**, select an asset, and go to the **CI/CD** tab. You will s
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/security-gate-custom-dialog.png "Security Gate Custom Rule Card")
+![img](../../static/img/security-gate-custom-dialog.png "Security Gate Asset Rule Card")
 
 </div>
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/security-gate-batch-config.png "Batch Custom Rule Configuration Modal")
+![img](../../static/img/security-gate-batch-config.png "Batch Asset Rule Configuration Modal")
 
 </div>
 
-#### Removing a Asset Rule
+#### Removing an Asset Rule
 
 To revert an asset to the global rule:
 
