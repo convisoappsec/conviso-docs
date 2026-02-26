@@ -4,7 +4,7 @@ title: Contributing to Conviso Docs
 sidebar_label: Contributing to Conviso Docs
 ---
 
-> To contribute to Conviso Docs, you must follow the [Documentation Writing Best Practices](./documentation-writing-best-practices.md) guide.
+> To contribute to Conviso Docs, you must follow the [Documentation Writing Best Practices](./documentation-writing-best-practices) guide.
 
 ## Quick Start
 
@@ -36,8 +36,8 @@ Optional:
 ### Flow B: Edit locally
 
 1. Clone your fork.
-2. Run `npm install`.
-3. Start docs locally with `npm run start`.
+2. Run `yarn install`.
+3. Start docs locally with `yarn start`.
 4. Edit files in `docs/`.
 5. Validate the page locally.
 6. Commit, push, and open a pull request.
@@ -59,11 +59,11 @@ Install the screenshot runtime once:
 1. Install browser runtime:
 
 ```bash
-npm run screenshot:install
+yarn screenshot:install
 ```
 
 For screenshot execution and standards, follow:
-[Documentation Writing Best Practices](./documentation-writing-best-practices.md#screenshot-execution-standard-flow)
+[Documentation Writing Best Practices](./documentation-writing-best-practices#screenshot-execution-standard-flow)
 
 ## Detailed Visual Guide
 
