@@ -53,7 +53,7 @@ This view provides comprehensive information about why a pipeline passed or fail
     *   **Rule Types:**
         *   **Global:** Company-wide default rule applied to all assets.
         *   **Asset:** Custom rule configured per asset through the Platform.
-        *   **Custom:** Rules defined directly in your repository using a YAML file or via the GraphQL API, providing an alternative for code-based configuration. You can find more information here [View the YAML configuration guide](/cli/security-gate/#creating-the-security-gate-rules-in-the-yaml-file) and here [View the GraphQL API documentation](/api/graphql/documentation/operations/queries/security-gate-run).
+        *   **Custom:** Rules defined directly in your repository using a YAML file or via the GraphQL API, providing an alternative for code-based configuration. You can find more information here [View the YAML configuration guide](/security-scans/security-gate/#creating-the-security-gate-rules-in-the-yaml-file) and here [View the GraphQL API documentation](/api/graphql/documentation/operations/queries/security-gate-run).
     *   It shows the **Threshold** (limit configured) vs. **Found** (actual vulnerabilities detected).
     *   **Max days to fix:** The amount of days a vulnerability can remain open before it blocks the pipeline.
     *   **Expired:** Shows the count of vulnerabilities that have already exceeded the allowed days to fix.
@@ -156,5 +156,4 @@ After configuring your policies in the Platform, integrate Security Gate into yo
 
 The AST will evaluate vulnerabilities against your configured policies and block the pipeline if thresholds are exceeded.
 
-**[View the complete CI/CD integration guide →](/cli/security-gate/#2-running-security-gate-with-the-ast)**
-
+**[View the complete CI/CD integration guide →](/security-scans/security-gate/#2-running-security-gate-with-the-ast)**
