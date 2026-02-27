@@ -61,7 +61,7 @@ Standard is enforced by `screenshot:standard`:
 ### 1. Install the browser runtime
 
 ```bash
-npm run screenshot:install
+yarn screenshot:install
 ```
 
 ### 2. Save an authenticated session
@@ -70,13 +70,13 @@ This opens a Chromium window with default login URL `https://app.convisoappsec.c
 If needed, you can override with `--loginUrl`.
 
 ```bash
-npm run screenshot:auth
+yarn screenshot:auth
 ```
 
 ### 3. Capture the target page (standard command)
 
 ```bash
-npm run screenshot:standard -- --url=https://app.convisoappsec.com/spa/security-feed
+yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed
 ```
 
 The command only accepts:
@@ -89,7 +89,7 @@ The command only accepts:
 If you need custom captures for one-off cases, use:
 
 ```bash
-npm run screenshot:url -- --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
+yarn screenshot:url --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
 ```
 
 ## Community

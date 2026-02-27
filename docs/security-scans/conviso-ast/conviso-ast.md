@@ -12,11 +12,11 @@ Scan and protect your codebase with Conviso AST, a security scanner focused on S
 
 ## Objective
 
-
 With Conviso AST, you can analyze your source code and consolidate the results in Conviso Platform Vulnerability management module.
 We utilize a unified security engine featuring Semgrep with Conviso-managed rules, this engine aggregates and deduplicates scan results.
 
 ## SAST
+
 Currently we support the following languages using Semgrep with Conviso managed rules:
 
 - C#
@@ -42,7 +42,7 @@ Elixir is not yet supported by Semgrep. We use Sobelow, enhanced with Conviso-ma
 
 ## How to use Conviso AST?
 
-Scan directly from your terminal with [**New CLI**](../../new-cli) and combine other capabilities such as: 
+Scan directly from your terminal with [**New CLI**](../../new-cli) and combine other capabilities such as:
 
 - Set policies to block the pipeline depending on different criteria;
 - Send diff versions of your source code application to later be reviewed by your own security team or - Conviso's (when subscribed to our professional services license).
@@ -66,9 +66,65 @@ With this option enabled, vulnerabilities not found anymore are automatically mo
 
 <div style={{textAlign: 'center' , maxWidth: '60%'}}>
 
-![img](../../../static/img/tools/conviso-ast/conviso-ast-img1.png 'Conviso AST')
+![img](../../../static/img/tools/conviso-ast/conviso-ast-img1.png "Conviso AST")
 
 </div>
+
+## Dry-Run Mode
+
+The **Dry-Run** mode lets you run security scans entirely locally, without interacting with the Conviso Platform. It is designed for fast feedback during development—use it in pre-commit hooks, local validation, or CI pipelines where you need results without creating assets or uploading findings.
+
+### Key principles
+
+- **Local only**: All scans run inside Docker containers on your machine.
+- **No side effects**: Nothing is created or uploaded to the Conviso Platform.
+- **Machine-readable output**: Results are printed as JSON to stdout, or to a file you specify.
+- **Fast**: Skips non-essential platform tasks (e.g., technology recovery) to finish as quickly as possible.
+
+### SAST Dry-Run
+
+Analyzes source code for vulnerabilities. Without any flags it performs a full scan; use `--start-commit` and `--end-commit` to restrict the analysis to a specific commit range—ideal for scanning only what changed in a pull request.
+
+```bash
+# Full scan
+conviso sast dry-run
+
+# Scan only the changes introduced in a PR (base branch → head commit)
+conviso sast dry-run --start-commit origin/main --end-commit HEAD
+```
+
+### SCA Dry-Run
+
+Scans manifest files (e.g., `package-lock.json`, `Gemfile.lock`, `requirements.txt`) for vulnerable third-party dependencies using **osv-scanner**.
+
+```bash
+conviso sca dry-run --repository-dir .
+```
+
+### IaC Dry-Run
+
+Checks infrastructure definitions (Terraform, CloudFormation, Kubernetes, and more) for security misconfigurations using **Checkov**.
+
+```bash
+conviso iac dry-run --repository-dir ./terraform
+```
+
+### AST Dry-Run (Combined)
+
+Runs SAST, SCA, and IaC dry-runs sequentially and returns all results in a single, unified JSON structure.
+
+```bash
+conviso ast dry-run --start-commit <commit_id>
+```
+
+### Command summary
+
+| Command                | Scope                                    | Underlying tool         |
+| :--------------------- | :--------------------------------------- | :---------------------- |
+| `conviso sast dry-run` | Source code vulnerabilities (diff-based) | Semgrep + Conviso rules |
+| `conviso sca dry-run`  | Dependency vulnerabilities               | osv-scanner             |
+| `conviso iac dry-run`  | Infrastructure misconfigurations         | Checkov                 |
+| `conviso ast dry-run`  | All of the above, combined               | All of the above        |
 
 ## Support
 

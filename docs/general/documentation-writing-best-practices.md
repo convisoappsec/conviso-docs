@@ -49,25 +49,25 @@ Use this flow when you need screenshots for documentation pages.
 1. Save authenticated session (default login URL: `https://app.convisoappsec.com/spa/auth/login`):
 
 ```bash
-npm run screenshot:auth
+yarn screenshot:auth
 ```
 
 2. Generate standardized screenshot:
 
 ```bash
-npm run screenshot:standard -- --url=https://app.convisoappsec.com/spa/security-feed
+yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed
 ```
 
 3. Optional custom selector:
 
 ```bash
-npm run screenshot:standard -- --url=https://app.convisoappsec.com/spa/security-feed --waitFor='[data-testid=\"security-feed\"]'
+yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed --waitFor='[data-testid=\"security-feed\"]'
 ```
 
 4. Advanced non-standard mode (only when strictly necessary):
 
 ```bash
-npm run screenshot:url -- --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
+yarn screenshot:url --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
 ```
 
 ### Screenshot standards
@@ -116,7 +116,7 @@ Do not use screenshots when:
 Example:
 
 ```bash
-npm run screenshot:standard -- --url=https://app.convisoappsec.com/spa/security-feed
+yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed
 ```
 
 ## Links and References
