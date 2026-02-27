@@ -6,7 +6,7 @@ sidebar_label: Conviso AST
 
 ## Introduction
 
-Scan and protect your codebase with Conviso AST, a combination of open source scanners for SAST, SCA, Secrets Detection and IaC.
+Scan and protect your codebase with Conviso AST, a security scanner focused on SAST.
 
 **[At Conviso, we believe that AppSec goes beyond security tools, and we offer a comprehensive approach that includes consulting, training, and support services.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
@@ -40,21 +40,6 @@ Currently we support the following languages using Semgrep with Conviso managed 
 Elixir is not yet supported by Semgrep. We use Sobelow, enhanced with Conviso-managed generic Semgrep rules, for Elixir security scans.
 :::
 
-## SCA
-
-Conviso AST also analyzes the dependencies of your application and identifies vulnerable ones that need to be updated.
-For SCA, Conviso AST uses [OSV Scanner](https://github.com/google/osv-scanner).
-
-## IaC
-
-We also support infrastructure as a code security scans to identify possible security problems in different types of technolgies as Terraform, Ansible, Kubernetes, and many more.
-For IaC, Conviso AST uses [Checkov](https://github.com/bridgecrewio/checkov).
-
-## Secrets Detection
-
-Start checking for exposed credentials, api keys or tokens in your source code.
-For Secret Detection, Conviso AST uses [Gitleaks](https://github.com/gitleaks/gitleaks)
-
 ## How to use Conviso AST?
 
 Scan directly from your terminal with [**New CLI**](../../new-cli) and combine other capabilities such as:
@@ -67,15 +52,17 @@ Scan directly from your terminal with [**New CLI**](../../new-cli) and combine o
 
 The analysis results are sent to Conviso Platform, where you can view, prioritize and fix the vulnerabilities found using our **[Vulnerabilities](../../platform/vulnerabilities)** feature.
 
-## How to fix a vulnerability with Conviso AST?
+## How to automatically close resolved vulnerabilities with Conviso AST?
 
-Conviso AST can automatically detect when a vulnerability in the Conviso Platform has been fixed and update its status. After correcting a vulnerability in your code, rerun the Conviso scan, making sure to use the following command:
+Conviso AST does not fix vulnerabilities in your code. Instead, it can automatically close vulnerabilities in Conviso Platform when they are no longer detected in a new scan.
+
+After fixing the code in your repository, rerun the scan with:
 
 ```bash
 conviso ast run --vulnerability-auto-close
 ```
 
-By using this feature, the vulnerability status will be automatically updated. You will see a message indicating that the tool has identified the vulnerability as fixed.
+With this option enabled, vulnerabilities not found anymore are automatically moved to a closed status in Conviso Platform. You will see a message indicating that the issue was auto-closed after validation in the new scan.
 
 <div style={{textAlign: 'center' , maxWidth: '60%'}}>
 
