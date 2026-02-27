@@ -15,89 +15,69 @@ image: '/static/img/integrationsoverviewseo.png'
 
 ## Introduction
 
-Conviso Platform seamlessly integrates with your current tools and workflows, enabling you to effortlessly enhance the security of your applications throughout the entire Secure Software Development Lifecycle (S-SDLC).  
+Conviso Platform integrations are designed to connect security with delivery, not isolate it.  
+Instead of forcing teams to change their existing stack, Conviso plugs into the tools they already use and transforms disconnected security data into one operational workflow.
 
-[Optimize your software security with the Conviso Platform! Schedule a free demo and start strengthening your defenses today.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
- 
-**This guide will walk you through various integration options with Conviso Platform:** 
-- [Introduction](#introduction)
-- [Set up Conviso Platform Single Sign-On (SSO)](#set-up-conviso-platform-single-sign-on-sso)
-- [Conviso Platform CI/CD Integration](#conviso-platform-cicd-integration)
-- [Data Analytics Integration](#data-analytics-integration)
-- [Defect/Bug Tracking Integration](#defectbug-tracking-integration)
-- [Communication and Notification](#communication-and-notification)
-- [Software Composition Analysis (SCA) Integration](#software-composition-analysis-sca-integration)
-- [Consolidate Vulnerability Management through Integrated Security Scans](#consolidate-vulnerability-management-through-integrated-security-scans)
-- [Support for Conviso Platform Integrations](#support-for-conviso-platform-integrations)
-- [Resources](#resources)
+When integrations are configured well, teams gain:
 
-**Note:** You can also check the **[Conviso Security Scans](../security-scans/conviso-ast)** and **[Conviso API](../api/api-overview.md)** guides to check integration possibilities.  If a tool is not found in our list of integrations, please don't hesitate to contact our support team.
+- Faster vulnerability triage with context from code, pipeline, and business scope.
+- Less manual handoff between security and engineering teams.
+- Better governance through consistent, auditable processes.
+- Stronger adoption because security runs where teams already work.
 
-## Set up Conviso Platform Single Sign-On (SSO)
+## Integration Categories
 
-Set up Single Sign-On (SSO) to allow your developers and teams easy access to Conviso Platform through your current SSO provider. Let's start with the SSO setup process to streamline access on the Conviso platform:
-* **[ADFS](../integrations/adfs.md)**
-* **[Google](../integrations/google.md)**
-* **[LDAP](../integrations/ldap.md)**
-* **[Microsoft Entra ID](../integrations/microsoft-entra-id.md)**
-* **[SAML 2.0](../integrations/saml.md)**
+To simplify management, integrations are organized by category.  
+Use the sidebar to access each category and select the tool that matches your environment.
 
-**Note:** It is possible to configure custom Identity providers that support SAML 2.0 protocol. So, if there is no specific integration for your tool, you can just use the generic SAML 2.0 integration instead.
+### Authentication / SSO
 
-## Conviso Platform CI/CD Integration
+Centralize identity and access with your enterprise provider so teams can adopt the platform with secure and scalable authentication.
 
-Incrementally incorporating CI/CD Integration has become a prevalent practice, enabling you to adopt the integration in stages. By integrating Conviso Platform with your development pipeline, automated analysis can be performed, providing transparency and insights to your teams. We support integrations with the following CI/CD platforms:
-* **[AWS Codebuild](../integrations/aws-codebuild.md)**
-* **[Azure Pipelines CLI Mode](../integrations/azure-pipelines-cli.md)**
-* **[Azure Pipelines Graph Mode](../integrations/azure-pipelines-graph.md)**
-* **[Bitbucket Pipelines](../integrations/bitbucket-pipelines.md)**
-* **[CircleCI](../integrations/circleci.md)**
-* **[Codefresh](../integrations/codefresh.md)**
-* **[GitHub Actions](../integrations/github-actions.md)**
-* **[GitLab](../integrations/gitlab.md)**
-* **[Jenkins](../integrations/jenkins.md)**
-* **[Jenkins Single Pipeline for Multiple Repositories using Webhooks](../integrations/jenkins-single-pipeline.md)**
+### CI/CD
 
-## Data Analytics Integration
+Embed security checks into delivery pipelines to automate analysis, enforce standards, and provide feedback at the pace of development.
 
-Unlock the full potential of your data by integrating it into our platform! Export information and create customized dashboards to visualize and analyze your application security data dynamically and flexibly.
-* **[Google Data Studio](../integrations/datastudio.md)**
-* **[PowerBI](../integrations/powerbi.md)**
+### Application Lifecycle Management
 
-## Defect/Bug Tracking Integration
+Connect source-control and lifecycle workflows to keep pull requests, repositories, and security automation aligned with day-to-day engineering delivery.
 
-By integrating the Conviso Platform with your Defect Tracker tool, you can seamlessly manage and track defects within your development workflow. This streamlines the process of identifying and addressing issues, enhancing collaboration and efficiency. Our platform supports the following Defect Tracker integrations:
-* **[Azure Boards](../integrations/azure-boards.md)**
-* **[BusinessMap](../integrations/businessmap.md)**
-* **[ClickUp](../integrations/clickup.md)**
-* **[Jira](../integrations/jira.md)**
-* **[ServiceNow](../integrations/servicenow.md)**
+### Defect / Bug Tracking
 
-## Communication and Notification
-Efficient collaboration and communication are crucial for successful application development. By integrating with Slack, it is possible to send information about vulnerabilities to a specific communication channel:
-* **[Slack](../integrations/slack.md)**
-* **[Microsoft Teams](../integrations/microsoft-teams.md)**
+Synchronize vulnerabilities with issue management tools to keep remediation inside engineering workflows and improve ownership visibility.
 
-## Software Composition Analysis (SCA) Integration
+### Developer Portal
 
-This integration enables the platform to identify and mitigate risks in your software supply chain effectively. Leveraging the capabilities of a Software Bill of Materials (SBOM), our unique approach goes beyond traditional Software Composition Analysis (SCA) solutions, providing enhanced capabilities that drive comprehensive security measures:
-* **[Dependency-Track](../integrations/dependency-track.md)**
+Integrate developer portal experiences to expose security context where engineering teams discover services, ownership, and operational standards.
 
-## Consolidate Vulnerability Management through Integrated Security Scans
+### Notifications
 
-Integrate external scanning tools with Conviso Platform to synchronize and consolidate findings in a centralized manner. This integration allows you to effectively manage and address vulnerabilities identified by various scanning tools, providing a comprehensive view of your application security landscape:
-* **[Checkmarx](../integrations/checkmarx.md)**
-* **[Fortify](../integrations/fortify.md)**
-* **[GitHub Advanced Security](../integrations/github-advanced-security.md)**
-* **[SonarQube Cloud](../integrations/sonarcloud.md)**
-* **[SonarQube](../integrations/sonarqube.md)**
+Route relevant security updates to collaboration channels so teams can react quickly to risk changes, gate failures, and remediation events.
 
-## Support for Conviso Platform Integrations
+### Scanners and Security Sources
 
-If you have any questions or don’t find a specific tool in our list of integrations, please don't hesitate to contact our support team.
+Aggregate findings from external scanners and pentest tooling to create a unified vulnerability lifecycle and reduce operational fragmentation.
+
+### Data Analytics
+
+Export and model security data for custom reporting, trend analysis, and executive visibility across teams, products, and business units.
+
+## How to Choose the Right Integrations
+
+Prioritize integrations in this order:
+
+1. Identity and access (SSO) to enable safe adoption.
+2. CI/CD, Application Lifecycle Management, and scanners to ensure technical coverage.
+3. Defect tracking and notifications to operationalize remediation.
+4. Developer portal and analytics integrations to improve governance and decision quality.
+
+## Support
+
+If your tool is not listed or you need implementation guidance, contact the support team:
+
+- [Support Team](https://support.convisoappsec.com/tickets)
 
 ## Resources
 
 - [Conviso API Getting Started](../api/api-overview.md)
 - [Conviso Security Scans](../security-scans/conviso-ast)
-- [Support Team](https://support.convisoappsec.com/tickets)
