@@ -12,7 +12,11 @@
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "doc": "docusaurus graphql-to-doc --force",
-    "doc:clean": "rm -rf docs/api/graphql/documentation/*"
+    "doc:clean": "rm -rf docs/api/graphql/documentation/*",
+    "screenshot:install": "playwright install chromium",
+    "screenshot:auth": "node scripts/save-auth-session.mjs",
+    "screenshot:url": "node scripts/capture-screenshot.mjs",
+    "screenshot:standard": "node scripts/screenshot-standard.mjs"
   },
   "dependencies": {
     "@algolia/client-search": "^5.38.0",
@@ -60,7 +64,8 @@
   "devDependencies": {
     "@types/react": "^19.2.7",
     "dotenv": "^17.2.2",
-    "dotenv-webpack": "^8.1.1"
+    "dotenv-webpack": "^8.1.1",
+    "playwright": "^1.58.2"
   },
   "resolutions": {
     "tar-fs": "^3.1.1",

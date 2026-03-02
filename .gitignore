@@ -11,6 +11,8 @@
 
 # Misc
 .DS_Store
+.auth
+.tmp/screenshots
 .env
 .env.local
 .env.development.local
