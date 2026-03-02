@@ -51,6 +51,7 @@ module.exports = {
       items: [
         'platform/asset-management',
         'platform/credentials',
+        'platform/dark-mode',
         'platform/dashboard',
         'platform/notifications-center',
         'platform/policies',
