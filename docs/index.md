@@ -35,6 +35,9 @@ Automate ingestion, triage, and tracking of findings through native integrations
 **Program-level insight and governance**  
 Measure application security posture over time, track maturity, and support informed decision-making with reliable metrics and dashboards.
 
+**Role-oriented adoption paths**  
+Use the [Role-Based Guides](./general/role-based-guide-devsecops) to follow practical journeys by profile (Developer, DevSecOps, AppSec Engineer, Penetration Tester, and managers), with focused workflows and priorities.
+
 ## AI capabilities applied to AppSec
 
 The Conviso Platform applies artificial intelligence to reduce operational overhead and support better security decisions.

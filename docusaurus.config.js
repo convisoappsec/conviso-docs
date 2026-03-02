@@ -70,7 +70,7 @@ async function proxyPlugin() {
     return {
       title: 'Conviso Platform Docs',
       tagline: 'Check the documentation of Conviso Platform',
-      url: 'https://docs.convisoappsec.com/',
+      url: 'https://docs.convisoappsec.com',
       baseUrl: '/',
       onBrokenLinks: 'throw',
       favicon: 'img/favicon.ico',

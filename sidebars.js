@@ -28,7 +28,23 @@ if (hasGraphqlDocs) {
 module.exports = {
   docs: [
     'index',
-    'platform/appsec-ai-agent',
+    {
+      type: 'doc',
+      id: 'platform/appsec-ai-agent',
+      label: 'AI Capabilities',
+    },
+    {
+      type: "category",
+      label: "Role-Based Guides",
+      items: [
+        'general/role-based-guide-devsecops',
+        'general/role-based-guide-developer',
+        'general/role-based-guide-penetration-tester',
+        'general/role-based-guide-appsec-engineer',
+        'general/role-based-guide-appsec-manager',
+        'general/role-based-guide-security-manager'
+      ],
+    },
     {
       type: "category",
       label: "Platform User Guide",
@@ -74,7 +90,7 @@ module.exports = {
           label: 'Scan Container with Conviso',
           id: 'security-scans/conviso-containers/conviso-containers'
         },
-        'cli/security-gate',
+        'security-scans/security-gate',
       ]
     },
     {
@@ -95,7 +111,6 @@ module.exports = {
           type: "category",
           label: "CI/CD",
           items: [
-            'integrations/aws-codebuild',
             'integrations/azure-pipelines-cli',
             'integrations/azure-pipelines-graph',
             'integrations/bitbucket-pipelines',
@@ -113,6 +128,13 @@ module.exports = {
           items: [
             'integrations/datastudio',
             'integrations/powerbi'
+          ]
+        },
+        {
+          type: "category",
+          label: "Developer Portal",
+          items: [
+            'integrations/backstage',
           ]
         },
         {
@@ -136,6 +158,13 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Pentest Tools",
+          items: [
+            'integrations/burp',
+          ]
+        },
+        {
+          type: "category",
           label: "Scanners",
           items: [
             'integrations/checkmarx',
@@ -149,7 +178,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Source Control",
+          label: "Application Lifecycle Management",
           items: [
             {
               type: "category",
