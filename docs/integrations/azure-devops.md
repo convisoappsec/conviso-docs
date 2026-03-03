@@ -30,7 +30,7 @@ By the end of this guide, you will have:
 
 Before you start, ensure that:
 
-- You have **administrator or appropriate permissions** in your Azure DevOps organization(s) to authorize the Conviso Platform application.
+- You can **authorize the Conviso Platform application** in the Microsoft consent screen (grant OAuth permissions) and you have **access to the Azure DevOps organization(s)** you want to connect. If your organization restricts who can install or authorize apps, an Entra ID or Azure DevOps administrator may need to approve the app first.
 - You have a **Microsoft account** (or Microsoft Entra ID account) with access to the Azure DevOps organizations you want to connect.
 - Your Conviso Platform **company** has the integration feature available (contact your administrator if the Azure DevOps card does not appear).
 
