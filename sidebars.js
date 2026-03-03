@@ -181,6 +181,7 @@ module.exports = {
           type: "category",
           label: "Application Lifecycle Management",
           items: [
+            'integrations/azure-devops',
             {
               type: "category",
               label: "GitHub",
