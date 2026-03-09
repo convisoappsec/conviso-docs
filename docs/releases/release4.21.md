@@ -41,8 +41,7 @@ This release introduces several improvements to Security Gate management:
 
 By making Security Gate management available directly in the platform, organizations gain a clearer and more accessible way to enforce security standards across their development pipelines while maintaining the speed and flexibility required for modern software delivery.
 
-Learn more in the documentation:  
-https://docs.convisoappsec.com/platform/security-gate
+Learn more in the documentation: [Security Gate](https://docs.convisoappsec.com/platform/security-gate)
 
 ---
 
