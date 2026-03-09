@@ -4,8 +4,10 @@ title: Release 4.21
 sidebar_label: Release 4.21
 date: 2026-03-09
 ---
-
 ## Key benefits
+
+Release date: March 2026
+
 
 - Security Gate management now available directly in the platform
 - Dark Mode support across the Conviso interface
