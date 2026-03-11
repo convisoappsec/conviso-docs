@@ -34,7 +34,6 @@ python -m conviso.app --help
 
 ```bash
 git pull origin main
-pip install -r requirements.txt
 ```
 
 Built-in upgrade command:
