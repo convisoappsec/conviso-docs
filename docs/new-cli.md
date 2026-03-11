@@ -26,7 +26,6 @@ Clone and run locally:
 ```bash
 git clone https://github.com/convisolabs/conviso-cli.git
 cd conviso-cli
-pip install -r requirements.txt
 python -m conviso.app --help
 ```
 
