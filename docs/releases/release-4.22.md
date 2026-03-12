@@ -10,7 +10,7 @@ Release date: March 2026
 ## Key benefits
 
 * **Custom Project Requirements:** Tailor security activities directly within each project, allowing for technical adjustments without affecting global organization templates.
-* **Enhanced Data Classification:** A major upgrade to our Asset risk engine that incorporates data sensitivity (from Public to Confidential) into the final risk score.
+* **Enhanced Data Classification:** A major upgrade to our Asset risk engine that incorporates data sensitivity (from Public to Critical) into the final risk score.
 
 ---
 
