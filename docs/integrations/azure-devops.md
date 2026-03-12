@@ -114,6 +114,17 @@ If you chose to select specific repositories, use the dropdown as in the image b
 
 ![Step 5: Configuration - Integrated assets table](../../static/img/azure-devops/step-06-configuration.png)
 
+---
+
+## Authorize all repositories – how new repos and projects are included
+
+If you turned on **Authorize all repositories** in Step 4, the platform keeps your assets in sync as follows:
+
+- **New repository in an existing project:** When a repository is created in a project that is already part of the integration, the platform is notified and the new repository is imported as an asset automatically.
+- **New project:** Azure DevOps does not notify the platform when a new project is created. The platform runs a **daily sync** (during the night) that finds new projects in your organization(s), imports their existing repositories, and then keeps importing any new repositories created in those projects from that point on.
+
+If you chose **Select specific repositories**, only the repositories you selected at configuration time are imported; no automatic sync runs for new repos or new projects.
+
 ## Validation
 
 - **Login**: After Step 2 and 3, the Login step shows a check mark and you return to Conviso Platform.
