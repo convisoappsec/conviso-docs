@@ -216,6 +216,7 @@ module.exports = {
           type: "category",
           label: "Release Notes 🚀",
           items: [
+            'releases/release4.22',
             'releases/release4.21',
             'releases/release4.20',
             'releases/release4.19',
