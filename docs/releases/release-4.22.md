@@ -5,7 +5,7 @@ sidebar_label: Release 4.22
 date: 2026-03-12
 ---
 
-Release date: March 2026
+Release date: March 12th, 2026
 
 ## Key benefits
 
