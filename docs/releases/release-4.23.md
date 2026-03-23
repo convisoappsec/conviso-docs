@@ -10,7 +10,7 @@ Release date: March 23, 2026
 ## Key benefits
 
 - **Continuous Living Threat Modeling:** Experience a total shift from static security projects to dynamic, versioned artifacts driven by architectural diagrams. Keep security requirements in sync with your architecture through a unified, automated update process.
-- **Integration Sync Visibility:** New dedicated recent deliveries for Defect Trackers to monitor and troubleshoot the synchronization of vulnerabilities in real-time.
+- **Defect Trackers Visibility:** New dedicated recent deliveries for defect trackers to monitor and troubleshoot the synchronization of vulnerabilities in real-time.
 
 ---
 
@@ -35,9 +35,9 @@ Key capabilities of this unified experience:
 
 ---
 
-## Integration Recent Deliveries
+## Defect Trackers Recent Deliveries
 
-To support the reliability of your automated security pipeline, Release 4.23 introduces **Integration Recent Deliveries** for Defect Trackers (such as Jira, ClickUp, ServiceNow, etc.).
+To support the reliability of your automated security pipeline, Release 4.23 introduces **Defect Trackers Recent Deliveries** for Defect Trackers (such as Jira, ClickUp, ServiceNow, etc.).
 
 Users now have a transparent view of the last 1,000 synchronization events between the Conviso Platform and their development tools. These recent deliveries show the status of the synchronization, empowering teams to troubleshoot integration issues independently and ensuring that no vulnerability is lost between security and engineering workflows.
 
