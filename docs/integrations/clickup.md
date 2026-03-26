@@ -159,6 +159,7 @@ To access and navigate the Recent Deliveries page, follow these steps:
 </div>
 
 **Step 2** - You will be directed to the Recent Deliveries page, which displays a table with the following columns:
+
 - **Date**: The timestamp of the delivery attempt.
 - **Level**: The severity level of the log entry (**info**, **error**, or **warn**).
 - **Message**: A detailed description of the communication or event.
@@ -170,6 +171,7 @@ To access and navigate the Recent Deliveries page, follow these steps:
 </div>
 
 **Step 3** - Use the available filters to refine the log list:
+
 - **Date Range**: Filter logs by a specific time period.
 - **Level**: Filter by log severity (Info, Warning, or Error).
 - **Search Box**: Enter text or keywords to search for specific messages.

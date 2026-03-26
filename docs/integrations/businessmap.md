@@ -156,11 +156,11 @@ In the Webhook URL field, paste the URL copied in the previous step.
 
 ## Recent Deliveries
 
-The Recent Deliveries feature provides a detailed log of the interactions between Conviso Platform and Businessmap. This allows users to monitor the status of data transfers and identify any potential issues in the integration process.
+The Recent Deliveries feature provides a detailed log of the interactions between Conviso Platform and BusinessMap. This allows users to monitor the status of data transfers and identify any potential issues in the integration process.
 
 To access and navigate the Recent Deliveries page, follow these steps:
 
-**Step 1** - In the integration configuration panel for Businessmap, locate and click the **Recent Deliveries** button:
+**Step 1** - In the integration configuration panel for BusinessMap, locate and click the **Recent Deliveries** button:
 
 <div style={{textAlign: 'center'}}>
 
@@ -169,6 +169,7 @@ To access and navigate the Recent Deliveries page, follow these steps:
 </div>
 
 **Step 2** - You will be directed to the Recent Deliveries page, which displays a table with the following columns:
+
 - **Date**: The timestamp of the delivery attempt.
 - **Level**: The severity level of the log entry (**info**, **error**, or **warn**).
 - **Message**: A detailed description of the communication or event.
@@ -180,6 +181,7 @@ To access and navigate the Recent Deliveries page, follow these steps:
 </div>
 
 **Step 3** - Use the available filters to refine the log list:
+
 - **Date Range**: Filter logs by a specific time period.
 - **Level**: Filter by log severity (Info, Warning, or Error).
 - **Search Box**: Enter text or keywords to search for specific messages.
