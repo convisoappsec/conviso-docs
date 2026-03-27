@@ -36,6 +36,16 @@ This page lists all executions, showing the Status, Asset, and Execution Date.
 *   **Failed:** At least one vulnerability has exceeded the `Max days to fix` deadline.
 *   **Warning:** At least one vulnerability exceeds the `Max vulnerabilities allowed` threshold, but **none** have exceeded the `Max days to fix` limit yet.
 
+### Vulnerabilities Considered
+
+The Security Gate evaluates and counts vulnerabilities that are in any of the following statuses, as they represent risks that have been validated or are still pending final resolution:
+
+*   **Identified**
+*   **In Progress**
+*   **Awaiting Validation**
+
+Vulnerabilities marked as **Fixed**, **Risk Accepted**, or **False Positive** are **not** counted toward policy thresholds and will not block the pipeline.
+
 ### Execution Details
 
 Clicking on any execution in the list opens the **Execution Details** page.

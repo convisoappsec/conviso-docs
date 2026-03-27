@@ -319,6 +319,44 @@ Two webhooks must be configured in Azure Boards:
 These webhooks ensure that workflow updates are reflected in Conviso Platform, while security validation remains independent and scan-driven.
 
 
+## Recent Deliveries
+
+The Recent Deliveries feature provides a detailed log of the interactions between Conviso Platform and Azure Boards. This allows users to monitor the status of data transfers and identify any potential issues in the integration process.
+
+To access and navigate the Recent Deliveries page, follow these steps:
+
+**Step 1** - In the integration configuration panel for Azure Boards, locate and click the **Recent Deliveries** button:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/azure-boards-recent-deliveries-button.png 'Step 1: Locate the Recent Deliveries button in the configuration step.')
+
+</div>
+
+**Step 2** - You will be directed to the Recent Deliveries page, which displays a table with the following columns:
+
+- **Date**: The timestamp of the delivery attempt.
+- **Level**: The severity level of the log entry (**info**, **error**, or **warn**).
+- **Message**: A detailed description of the communication or event.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/azure-boards-recent-deliveries-page.png 'Step 2: View the Recent Deliveries log table.')
+
+</div>
+
+**Step 3** - Use the available filters to refine the log list:
+
+- **Date Range**: Filter logs by a specific time period.
+- **Level**: Filter by log severity (Info, Warning, or Error).
+- **Search Box**: Enter text or keywords to search for specific messages.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/azure-boards/azure-boards-recent-deliveries-filters.png 'Step 3: Apply filters or use the search box to find specific log entries.')
+
+</div>
+
 ## Support[​](https://docs.convisoappsec.com/integrations/azure_boards#support)
 
 Should you have any questions or require assistance while using the Conviso Platform, feel free to contact our dedicated support team.
