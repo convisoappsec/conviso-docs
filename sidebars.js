@@ -195,6 +195,13 @@ module.exports = {
             },
           ]
         },
+        ,{
+          type: "category",
+          label: "AI",
+          items: [
+            'integrations/conviso-mcp-server',
+          ]
+        }
       ]
     },
     {
