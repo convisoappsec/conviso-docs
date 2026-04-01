@@ -37,6 +37,18 @@ The connector exposes a set of tools to the MCP host. Highlights:
 - An MCP-compatible client (for example, Claude Desktop or Cursor).
 - Python 3.10+ (if using the Python server) or Node.js (if using the Node.js server), or Docker.
 
+## Source repository
+
+The Conviso MCP Server source code is hosted on GitHub: https://github.com/convisoappsec/conviso-mcp
+
+Clone the repository to get the examples, Dockerfiles and both Python and Node.js implementations used in this documentation:
+
+```bash
+git clone https://github.com/convisoappsec/conviso-mcp.git
+```
+
+Many examples below assume you have the repository checked out locally.
+
 ## Quick install — Claude Marketplace
 
 Below is a short, step-by-step flow to install and configure the Conviso MCP Server from the Claude Marketplace.
@@ -124,8 +136,6 @@ Add an MCP server entry in your MCP-compatible client configuration. Below are e
   }
 }
 ```
-
-Note: the `STAGING` environment variable should be provided as a string (`"true"` or `"false"`) to match how environment variables are passed to processes.
 
 ## Verification
 
