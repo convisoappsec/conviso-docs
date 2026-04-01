@@ -29,7 +29,7 @@ The connector exposes a set of tools to the MCP host. Highlights:
 - Generate direct links to issues and projects in Conviso Platform.
 - Retrieve metrics such as MTTR and risk score history.
 
-(For a complete list of endpoints and tools, see the project's README or the MCP server source.)
+(For a complete list of endpoints and tools, see the project's [README](https://github.com/convisoappsec/conviso-mcp/blob/main/README.md) .)
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ The connector exposes a set of tools to the MCP host. Highlights:
 
 ## Quick install — Claude Marketplace
 
-Below is a short, step-by-step flow to install and configure the Conviso MCP Server from the Claude Marketplace. Each step has a placeholder image you can replace with a PNG under `static/img/conviso-mcp/`.
+Below is a short, step-by-step flow to install and configure the Conviso MCP Server from the Claude Marketplace.
 
 1. Create an API Key in the Conviso Platform (**Profile > API Keys**).
 
