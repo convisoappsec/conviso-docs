@@ -15,7 +15,7 @@ export default function ResourcesFooter() {
         AppSec topics. The content on the blog is primarily in English.
       </p>
       <p>
-        <a href="https://bit.ly/3NIbbfM">Conviso&apos;s YouTube Channel</a>: Access a
+        <a href="https://www.youtube.com/@convisoappsec/videos">Conviso&apos;s YouTube Channel</a>: Access a
         wealth of informative videos covering various topics related to AppSec.
         Please note that the content is primarily in Portuguese.
       </p>
