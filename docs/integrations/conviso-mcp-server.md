@@ -57,7 +57,7 @@ Below is a short, step-by-step flow to install and configure the Conviso MCP Ser
 
 <div style={{textAlign: 'center'}}>
 
-![step-1](../../static/img/conviso_mcp-img1.png)
+![step-1](../../static/img/screenshots/new-20260402-123925.png)
 
 </div>
 
