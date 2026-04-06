@@ -1,5 +1,5 @@
 ---
-id: release-4.24
+id: release4.24
 title: Release 4.24
 sidebar_label: Release 4.24
 date: 2026-04-06
