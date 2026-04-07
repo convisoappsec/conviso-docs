@@ -181,7 +181,17 @@ module.exports = {
           type: "category",
           label: "Application Lifecycle Management",
           items: [
-            'integrations/azure-devops',
+            {
+              type: "category",
+              label: "Azure DevOps",
+              link: {
+                type: 'doc',
+                id: 'integrations/azure-devops',
+              },
+              items: [
+                'integrations/azure-devops-ast-orchestrator',
+              ]
+            },
             {
               type: "category",
               label: "GitHub",
