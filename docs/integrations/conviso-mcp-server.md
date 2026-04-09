@@ -29,7 +29,7 @@ The connector exposes a set of tools to the MCP host. Highlights:
 - Generate direct links to issues and projects in Conviso Platform.
 - Retrieve metrics such as MTTR and risk score history.
 
-(For a complete list of endpoints and tools, see the project's [README](https://github.com/convisoappsec/conviso-mcp/blob/main/README.md) .)
+(For a complete list of endpoints and tools, see the project's [README](https://github.com/convisoappsec/conviso-mcp/blob/main/README.md).)
 
 ## Prerequisites
 
