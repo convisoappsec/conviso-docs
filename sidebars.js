@@ -29,9 +29,15 @@ module.exports = {
   docs: [
     'index',
     {
-      type: 'doc',
-      id: 'platform/appsec-ai-agent',
-      label: 'AI Capabilities',
+      type: "category",
+      label: "AI Capabilities",
+      link: {
+        type: "doc",
+        id: "platform/appsec-ai-agent",
+      },
+      items: [
+        'integrations/conviso-mcp-server',
+      ],
     },
     {
       type: "category",
@@ -204,14 +210,7 @@ module.exports = {
               ]
             },
           ]
-        },
-        ,{
-          type: "category",
-          label: "AI",
-          items: [
-            'integrations/conviso-mcp-server',
-          ]
-        }
+        },        
       ]
     },
     {
