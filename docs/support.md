@@ -1,6 +1,6 @@
 ---
 title: Support
-sidebar_position: 999
+displayed_sidebar: docs
 ---
 
 import SupportForm from '@site/src/components/SupportForm';
