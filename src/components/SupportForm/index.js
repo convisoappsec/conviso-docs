@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import Layout from '@theme/Layout';
 
 function HubSpotForm() {
   useEffect(() => {
@@ -49,22 +48,10 @@ function HubSpotForm() {
   return <div id="hubspot-form-container" className="support-form__embed" />;
 }
 
-export default function SupportPage() {
+export default function SupportForm() {
   return (
-    <Layout
-      title="Support"
-      description="Contact Conviso support through the embedded form.">
-      <main className="container margin-vert--xl">
-        <section className="support-form">
-          <h1>Support</h1>
-          <p>
-            Send your request to the Conviso support team using the form below.
-          </p>
-          <BrowserOnly fallback={<p>Loading support form...</p>}>
-            {() => <HubSpotForm />}
-          </BrowserOnly>
-        </section>
-      </main>
-    </Layout>
+    <BrowserOnly fallback={<p>Loading support form...</p>}>
+      {() => <HubSpotForm />}
+    </BrowserOnly>
   );
 }
