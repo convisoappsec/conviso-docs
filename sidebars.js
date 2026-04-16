@@ -28,7 +28,6 @@ if (hasGraphqlDocs) {
 module.exports = {
   docs: [
     'index',
-    'support',
     {
       type: "category",
       label: "AI Capabilities",
