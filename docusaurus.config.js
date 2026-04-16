@@ -94,6 +94,12 @@ async function proxyPlugin() {
               label: 'Release Notes 🚀',
               position: 'right',
             },
+            {
+              to: 'support',
+              label: 'Support',
+              position: 'right',
+              className: 'navbar-support-link',
+            },
  
           ],
         },
