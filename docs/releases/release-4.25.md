@@ -38,3 +38,5 @@ DAST is now fully standardized as a scanner source. This ensures that assets cov
 ## Projects Integration with Jira
 
 Aligning security teams with developers is critical for effective remediation. We have improved the integration between Platform Project Requirements and Jira. This update allows for a more seamless flow of security requirements into the developer's native backlog, ensuring that "Secure by Design" principles are actionable tasks rather than static documentation.
+
+Access the [Conviso Platform](https://app.convisoappsec.com/) to explore these updates.
