@@ -40,9 +40,10 @@ async function proxyPlugin() {
       },
     };
   
+    const enableGraphqlDocs = process.env.ENABLE_GRAPHQL_DOCS === 'true';
     let graphqlDocsPlugin = [];
 
-    try {
+    if (enableGraphqlDocs) {
       graphqlDocsPlugin = [
         [
           '@graphql-markdown/docusaurus',
@@ -63,8 +64,10 @@ async function proxyPlugin() {
           },
         ],
       ];
-    } catch (err) {
-      console.warn('[GraphQL Docs Plugin] Falha ao carregar schema. Ignorando...');
+    } else {
+      console.warn(
+        '[GraphQL Docs Plugin] Skipping remote schema loading. Set ENABLE_GRAPHQL_DOCS=true to regenerate GraphQL docs.'
+      );
     }
     
     return {
