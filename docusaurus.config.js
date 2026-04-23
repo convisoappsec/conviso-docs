@@ -107,15 +107,15 @@ async function proxyPlugin() {
         footer: {
           links: [
             {
-              title: 'Docs',
+              title: 'Resources',
               items: [
                 {
-                  label: 'CLI',
-                  to: 'new-cli',
+                  label: 'Open ticket',
+                  href: 'https://support.convisoappsec.com/tickets',
                 },
                 {
-                  label: 'Github Actions',
-                  to: 'integrations/github-actions',
+                  label: 'Data Retention',
+                  to: 'data-rentention',
                 },
               ],
             },
