@@ -37,6 +37,7 @@ module.exports = {
       },
       items: [
         'integrations/conviso-mcp-server',
+        'integrations/conviso-skills',
       ],
     },
     {

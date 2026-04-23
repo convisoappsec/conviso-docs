@@ -3,7 +3,7 @@ id: conviso-mcp-server
 title: Conviso MCP Server
 sidebar_label: Conviso MCP Server
 description: "Model Context Protocol (MCP) server that exposes Conviso Platform data (companies, projects, assets, vulnerabilities, metrics) to MCP-compatible clients."
-keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, integration, security, vulnerabilities]
+keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, "Claude Code", integration, security, vulnerabilities]
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -14,44 +14,44 @@ keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, integration, secu
 
 ## Introduction
 
-The Conviso MCP Server is a connector that exposes Conviso Platform data and tools to an LLM chatbot via the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client (e.g., Claude or Cursor) can ask the model to fetch live, authoritative context or perform actions instead of relying on cached knowledge.
+The Conviso MCP Server is a connector that exposes Conviso Platform data and tools to an LLM via the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client (e.g., Claude Desktop, Claude Code CLI, or Cursor) can ask the model to fetch live, authoritative security context or perform actions instead of relying on cached knowledge.
 
-This server provides capabilities such as listing companies, projects, assets and vulnerabilities, returning technical details and generating direct links to the platform. It requires a Conviso Platform API Key; data returned is limited by that key's permissions.
+This server provides capabilities such as listing companies, projects, assets and vulnerabilities, returning technical details, generating direct links to the platform, and retrieving security metrics. It requires a Conviso Platform API Key; data returned is limited by that key's permissions.
 
 ## Features
 
-The connector exposes a set of tools to the MCP host. Highlights:
+The connector exposes a set of tools to the MCP host:
 
-- List companies and retrieve company info and plan details.
-- List projects and individual project details.
-- List assets and retrieve asset details.
-- Query vulnerabilities and retrieve full technical details (including code snippets and raw requests/responses when available).
-- Generate direct links to issues and projects in Conviso Platform.
-- Retrieve metrics such as MTTR and risk score history.
-
-(For a complete list of endpoints and tools, see the project's [README](https://github.com/convisoappsec/conviso-mcp/blob/main/README.md).)
+| Tool | Description |
+|------|-------------|
+| `get_companies` | List companies accessible with the provided API key, with optional name search |
+| `get_company_info` | Retrieve detailed company info including plan and integrations |
+| `get_projects` | List active security projects for a company |
+| `get_project` | Retrieve metadata for a specific project |
+| `get_assets` | List assets for a company |
+| `get_asset` | Fetch details for a specific asset |
+| `get_issues` | List vulnerabilities for a company or project |
+| `get_issue` | Fetch full technical details for a vulnerability (code snippets, raw requests/responses) |
+| `get_top_vulnerabilities` | Vulnerability counts grouped by severity (risk overview) |
+| `create_project_url` | Generate a direct link to a project in the Platform |
+| `create_issue_url` | Generate a direct link to a specific issue |
+| `get_mttr_over_time` | MTTR aggregated over a date range, with severity/status/asset filters |
+| `get_overall_risk_score_history` | Historical risk scores for trend analysis and reporting |
+| `get_today_date` | Utility returning the current date (useful for relative metric queries) |
 
 ## Prerequisites
 
 - Conviso Platform API Key (create it in your Conviso account under **Profile > API Keys**).
-- An MCP-compatible client (for example, Claude Desktop or Cursor).
-- Python 3.10+ (if using the Python server) or Node.js (if using the Node.js server), or Docker.
+- An MCP-compatible client: Claude Desktop, Claude Code CLI, Cursor, or any client supporting stdio/HTTP MCP servers.
+- Node.js 18+ (if running locally) or Docker.
 
-## Source repository
+:::tip Security recommendation
+Create a dedicated API key for the MCP server and set an expiration date. Never share or commit the key to version control.
+:::
 
-The Conviso MCP Server source code is hosted on GitHub: https://github.com/convisoappsec/conviso-mcp
+## Installation
 
-Clone the repository to get the examples, Dockerfiles and both Python and Node.js implementations used in this documentation:
-
-```bash
-git clone https://github.com/convisoappsec/conviso-mcp.git
-```
-
-Many examples below assume you have the repository checked out locally.
-
-## Quick install — Claude Marketplace
-
-Below is a short, step-by-step flow to install and configure the Conviso MCP Server from the Claude Marketplace.
+### Claude Desktop — Marketplace (quickest)
 
 1. Create an API Key in the Conviso Platform (**Profile > API Keys**).
 
@@ -61,7 +61,7 @@ Below is a short, step-by-step flow to install and configure the Conviso MCP Ser
 
 </div>
 
-2. Open Claude Desktop and go to **Settings > Extensions > Explore extensions**. Search for **Conviso MCP Server** and click **Install**.
+2. Open Claude Desktop → **Settings > Extensions > Explore extensions**. Search for **Conviso MCP Server** and click **Install**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -69,7 +69,7 @@ Below is a short, step-by-step flow to install and configure the Conviso MCP Ser
 
 </div>
 
-3. After installation, open **Extensions > Configure**. Insert your Conviso API Key and optionally enable **Staging** (if you want the server to point to a staging Conviso instance).
+3. Open **Extensions > Configure**. Insert your Conviso API Key and optionally enable **Staging**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -77,39 +77,80 @@ Below is a short, step-by-step flow to install and configure the Conviso MCP Ser
 
 </div>
 
-4. Test the integration by creating a new chat and checking the MCP server availability (the extension should be listed and active). Use a sample prompt like "List projects for my company" to validate connectivity.
+4. Start a new chat and run a sample prompt such as "List my companies" to confirm the server is active.
 
-:::note
-If you are not installing via the Marketplace, you can run the server locally (Python/Node) or via Docker and then register it in your client's MCP configuration.
+---
+
+### Claude Code CLI (recommended for developers)
+
+Claude Code is the AI coding assistant CLI from Anthropic. It supports MCP servers natively — no separate desktop app required.
+
+#### 1. Register the server
+
+Run the following command, replacing `<your_api_key>` with your Conviso Platform API Key:
+
+```bash
+claude mcp add -e "CONVISO_API_KEY=<your_api_key>" -s user conviso-mcp -- \
+  npx -y @convisoappsec/mcp
+```
+
+- `-s user` makes the server available in all your projects. Use `-s project` to limit it to the current project (stored in `.mcp.json`).
+- `npx` downloads and runs the package automatically — no clone or install required.
+
+#### 3. Verify the connection
+
+```bash
+claude mcp list
+# conviso-mcp: node /path/to/server.js - ✓ Connected
+```
+
+Or inside a Claude Code session, run `/mcp` to see server status and available tools.
+
+#### 4. Use it
+
+Start Claude Code in any project directory and interact naturally:
+
+```
+> List projects for my company
+> Show the top vulnerabilities — what's the breakdown by severity?
+> Get details on issue 5678, including the vulnerable code snippet
+```
+
+:::note Staging environment
+Add `-e "STAGING=true"` to the `claude mcp add` command to point the server to `staging.convisoappsec.com` instead of production.
 :::
 
-## Configuration on other clients
+---
 
-Add an MCP server entry in your MCP-compatible client configuration. Below are example snippets you can adapt — keep absolute paths for commands and arguments.
+### Other clients — manual configuration
 
-#### Local Python
+Add an entry in your MCP client's configuration file.
+
+#### Via npx (no install required)
 
 ```json
 {
   "mcpServers": {
     "conviso-mcp": {
-      "command": "/ABS/PATH/TO/venv/bin/python",
-      "args": ["/ABS/PATH/TO/conviso-mcp/python/src/conviso_mcp/server.py"],
-      "env": { "CONVISO_API_KEY": "your_api_key_here", "STAGING" : "false" }
+      "command": "npx",
+      "args": ["-y", "@convisoappsec/mcp"],
+      "env": { "CONVISO_API_KEY": "your_api_key_here", "STAGING": "false" }
     }
   }
 }
 ```
 
-#### Local Node
+#### Local Python (clone required)
+
+Clone the repository first: `git clone https://github.com/convisoappsec/conviso-mcp.git`
 
 ```json
 {
   "mcpServers": {
     "conviso-mcp": {
-      "command": "node",
-      "args": ["/ABS/PATH/TO/conviso-mcp/node/src/conviso_mcp/server.js"],
-      "env": { "CONVISO_API_KEY": "your_api_key_here", "STAGING" : "false" }
+      "command": "/absolute/path/to/venv/bin/python",
+      "args": ["/absolute/path/to/conviso-mcp/python/src/conviso_mcp/server.py"],
+      "env": { "CONVISO_API_KEY": "your_api_key_here", "STAGING": "false" }
     }
   }
 }
@@ -123,13 +164,9 @@ Add an MCP server entry in your MCP-compatible client configuration. Below are e
     "conviso-mcp-docker": {
       "command": "docker",
       "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "CONVISO_API_KEY=your_api_key_here",
-        "-e",
-        "STAGING=false",
+        "run", "-i", "--rm",
+        "-e", "CONVISO_API_KEY=your_api_key_here",
+        "-e", "STAGING=false",
         "conviso-mcp"
       ]
     }
@@ -137,23 +174,85 @@ Add an MCP server entry in your MCP-compatible client configuration. Below are e
 }
 ```
 
-## Verification
+Restart or reload your MCP client after adding the entry.
 
-1. Restart or reload your MCP client (if necessary) after adding the server entry.
-2. Ensure the extension/server is installed.
-3. Run a simple query such as "List projects for company &lt;your-company-id&gt;" and verify the server returns results from Conviso Platform.
+---
 
 ## Usage examples
 
-- "List projects for company with ID 1234"
-- "Show top vulnerabilities for company X"
-- "Open issue 5678 and return the code snippet where it was detected"
+The following prompts illustrate what you can ask once the server is connected. Adapt them to your client's UX.
 
-Adapt prompts according to the client UX and the server capabilities.
+### Company & project overview
+
+```
+List my companies.
+Show details for company 1234 — what plan are they on?
+List all active projects for company 1234.
+Get the details for project 789.
+```
+
+### Vulnerability triage
+
+```
+List the open vulnerabilities for company 1234.
+Show me the top 10 critical issues for company 1234.
+Get full details for issue 5678, including the vulnerable code snippet.
+What's the severity breakdown for company 1234? How many criticals vs highs?
+```
+
+### Asset inventory
+
+```
+List all assets for company 1234.
+Show details for asset 42 — what technology does it use?
+```
+
+### Security metrics & reporting
+
+```
+What's the MTTR for company 1234 between 2024-01-01 and 2024-12-31?
+Show me the MTTR for critical vulnerabilities only, filtered to the last quarter.
+Get the risk score history for company 1234 — are we improving?
+```
+
+### Navigation shortcuts
+
+```
+Give me a direct link to project 789 for company 1234.
+Open issue 5678 — give me the platform URL.
+```
+
+### Combining tools (agentic workflows)
+
+Claude Code can chain multiple tools in a single request:
+
+```
+For company 1234, list the top vulnerabilities by severity, then open the most
+critical one and show me the vulnerable code. Also give me a direct link to it.
+```
+
+```
+Analyse the security posture of company 1234: show the risk score trend for the
+last 6 months, the current severity breakdown, and the MTTR for critical issues.
+Summarise the findings in a table.
+```
+
+---
 
 ## Security
 
-The server uses the permissions of the provided API Key. Keep your API keys private and follow your organization policies. The `get_issue` tool may return code snippets and technical details when requested; handle them with care. Additionally, for security reasons, it is recommended to create a separate API key for the MCP server and set an expiration date.
+- The server only has the permissions of the provided API Key.
+- `get_issue` with `return_vulnerable_data=true` may return exploit code, raw HTTP requests/responses, or secrets — use with care.
+- Create a dedicated key with an expiration date; do not reuse your personal API key.
+- Keep your API key out of version control. Use environment variables or a secrets manager.
+
+## Open source
+
+The Conviso MCP Server is open source and available at [github.com/convisoappsec/conviso-mcp](https://github.com/convisoappsec/conviso-mcp). Contributions are welcome — bug reports, new tools, and improvements to existing capabilities. See the repository's `CONTRIBUTING.md` to get started.
+
+## See also
+
+- [Conviso Skills](./conviso-skills) — reusable operational playbooks for bulk actions (vulnerability triage, owner assignment, asset risk normalization) via `conviso-cli`, with preview-first safety controls.
 
 ## Support
 
