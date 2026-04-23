@@ -49,9 +49,23 @@ The connector exposes a set of tools to the MCP host:
 Create a dedicated API key for the MCP server and set an expiration date. Never share or commit the key to version control.
 :::
 
+## Choosing your installation mode
+
+The server supports two transport modes depending on where you want to use it:
+
+| Mode | Transport | Works in | How to install |
+|------|-----------|----------|----------------|
+| **Extension** | stdio | Claude Desktop — main chat | Marketplace or manual config |
+| **Connector** | HTTP | Claude Desktop — Cowork/Projects | Run as HTTP server, register URL |
+| **Claude Code CLI** | stdio | Terminal / IDE | `claude mcp add` |
+
+---
+
 ## Installation
 
-### Claude Desktop — Marketplace (quickest)
+### Claude Desktop — Marketplace (Extension mode)
+
+This installs the server as an **Extension**. It works in the **Claude Desktop main chat only** — not in Cowork or Projects mode.
 
 1. Create an API Key in the Conviso Platform (**Profile > API Keys**).
 
@@ -69,7 +83,7 @@ Create a dedicated API key for the MCP server and set an expiration date. Never 
 
 </div>
 
-3. Open **Extensions > Configure**. Insert your Conviso API Key and optionally enable **Staging**.
+3. Go to **Settings > Extensions**, find **Conviso MCP Server** and click **Configure**. Enter your Conviso API Key and click **Save**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -79,15 +93,52 @@ Create a dedicated API key for the MCP server and set an expiration date. Never 
 
 4. Start a new chat and run a sample prompt such as "List my companies" to confirm the server is active.
 
+:::note
+The configuration dialog appears in **Settings → Extensions → Configure**, not during the install step.
+:::
+
+---
+
+### Claude Desktop — Connector mode (Cowork / Projects)
+
+To use the server inside **Cowork or Projects**, you need to run it as an HTTP server and register its URL as a **Connector**.
+
+#### 1. Start the HTTP server
+
+Clone the repository and start the server with a `PORT`:
+
+```bash
+git clone https://github.com/convisoappsec/conviso-mcp.git
+cd conviso-mcp/node
+npm install
+PORT=3000 CONVISO_API_KEY=<your_api_key> node src/conviso_mcp/server.js
+```
+
+The server will listen on `http://localhost:3000`.
+
+#### 2. Register as a Connector
+
+In Claude Desktop, go to **Settings → Connectors → Add Connector** and enter:
+
+```
+http://localhost:3000
+```
+
+#### 3. Use it in Cowork
+
+Open Cowork or a Project and the Conviso tools will be available automatically.
+
+:::tip Running in production
+For persistent use, run the server as a background process or system service. You can also host it on any server and register its public URL as a Connector.
+:::
+
 ---
 
 ### Claude Code CLI (recommended for developers)
 
-Claude Code is the AI coding assistant CLI from Anthropic. It supports MCP servers natively — no separate desktop app required.
+Claude Code is the AI coding assistant CLI from Anthropic. It supports MCP servers natively — no desktop app required.
 
 #### 1. Register the server
-
-Run the following command, replacing `<your_api_key>` with your Conviso Platform API Key:
 
 ```bash
 claude mcp add -e "CONVISO_API_KEY=<your_api_key>" -s user conviso-mcp -- \
@@ -97,16 +148,16 @@ claude mcp add -e "CONVISO_API_KEY=<your_api_key>" -s user conviso-mcp -- \
 - `-s user` makes the server available in all your projects. Use `-s project` to limit it to the current project (stored in `.mcp.json`).
 - `npx` downloads and runs the package automatically — no clone or install required.
 
-#### 3. Verify the connection
+#### 2. Verify the connection
 
 ```bash
 claude mcp list
-# conviso-mcp: node /path/to/server.js - ✓ Connected
+# conviso-mcp: node .../server.js - ✓ Connected
 ```
 
 Or inside a Claude Code session, run `/mcp` to see server status and available tools.
 
-#### 4. Use it
+#### 3. Use it
 
 Start Claude Code in any project directory and interact naturally:
 
@@ -116,17 +167,13 @@ Start Claude Code in any project directory and interact naturally:
 > Get details on issue 5678, including the vulnerable code snippet
 ```
 
-:::note Staging environment
-Add `-e "STAGING=true"` to the `claude mcp add` command to point the server to `staging.convisoappsec.com` instead of production.
-:::
-
 ---
 
 ### Other clients — manual configuration
 
 Add an entry in your MCP client's configuration file.
 
-#### Via npx (no install required)
+#### Via npx (stdio, no install required)
 
 ```json
 {
@@ -134,7 +181,7 @@ Add an entry in your MCP client's configuration file.
     "conviso-mcp": {
       "command": "npx",
       "args": ["-y", "@convisoappsec/mcp"],
-      "env": { "CONVISO_API_KEY": "your_api_key_here", "STAGING": "false" }
+      "env": { "CONVISO_API_KEY": "your_api_key_here" }
     }
   }
 }
@@ -150,7 +197,7 @@ Clone the repository first: `git clone https://github.com/convisoappsec/conviso-
     "conviso-mcp": {
       "command": "/absolute/path/to/venv/bin/python",
       "args": ["/absolute/path/to/conviso-mcp/python/src/conviso_mcp/server.py"],
-      "env": { "CONVISO_API_KEY": "your_api_key_here", "STAGING": "false" }
+      "env": { "CONVISO_API_KEY": "your_api_key_here" }
     }
   }
 }
@@ -166,7 +213,7 @@ Clone the repository first: `git clone https://github.com/convisoappsec/conviso-
       "args": [
         "run", "-i", "--rm",
         "-e", "CONVISO_API_KEY=your_api_key_here",
-        "-e", "STAGING=false",
+
         "conviso-mcp"
       ]
     }
