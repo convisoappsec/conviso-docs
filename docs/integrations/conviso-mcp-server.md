@@ -105,13 +105,10 @@ To use the server inside **Cowork or Projects**, you need to run it as an HTTP s
 
 #### 1. Start the HTTP server
 
-Clone the repository and start the server with a `PORT`:
+Run the server directly with `npx` — no clone or install required:
 
 ```bash
-git clone https://github.com/convisoappsec/conviso-mcp.git
-cd conviso-mcp/node
-npm install
-PORT=3000 CONVISO_API_KEY=<your_api_key> node src/conviso_mcp/server.js
+PORT=3000 CONVISO_API_KEY=<your_api_key> npx -y @convisoappsec/mcp
 ```
 
 The server will listen on `http://localhost:3000`.
@@ -227,62 +224,116 @@ Restart or reload your MCP client after adding the entry.
 
 ## Usage examples
 
-The following prompts illustrate what you can ask once the server is connected. Adapt them to your client's UX.
+Once the server is connected, you can ask the AI in natural language — it will call the right tools, combine results, and synthesize the answer. Below are real-world examples organized by workflow.
 
-### Company & project overview
+---
 
-```
-List my companies.
-Show details for company 1234 — what plan are they on?
-List all active projects for company 1234.
-Get the details for project 789.
-```
+### Discover your environment
+
+Start by finding your company ID — you'll need it for most other queries.
+
+> **"List my companies"**
+
+The model will call `get_companies` and return your accessible companies with their IDs. Use that ID in subsequent prompts.
+
+> **"Show me the details for company 1234 — what plan are they on and which integrations are active?"**
+
+Calls `get_company_info` and returns plan name, configured integrations, and metadata.
+
+> **"List all active projects for company 1234. Which ones are currently in progress?"**
+
+Calls `get_projects` and filters by status, so you immediately see what's active vs. completed.
+
+---
 
 ### Vulnerability triage
 
-```
-List the open vulnerabilities for company 1234.
-Show me the top 10 critical issues for company 1234.
-Get full details for issue 5678, including the vulnerable code snippet.
-What's the severity breakdown for company 1234? How many criticals vs highs?
-```
+> **"What's the current vulnerability breakdown for company 1234? Give me the count by severity."**
 
-### Asset inventory
+Calls `get_top_vulnerabilities` and returns a severity summary — useful for a quick risk snapshot in a standup or report.
 
-```
-List all assets for company 1234.
-Show details for asset 42 — what technology does it use?
-```
+> **"List the 10 most recent vulnerabilities for company 1234."**
 
-### Security metrics & reporting
+Calls `get_issues` with pagination and returns title, severity, asset, and project for each.
 
-```
-What's the MTTR for company 1234 between 2024-01-01 and 2024-12-31?
-Show me the MTTR for critical vulnerabilities only, filtered to the last quarter.
-Get the risk score history for company 1234 — are we improving?
-```
+> **"Show me all vulnerabilities for project 789 — only high and critical, ordered by most recent."**
 
-### Navigation shortcuts
+Combines `get_issues` filtered by `project_id`. The model will filter and sort the results for you.
 
-```
-Give me a direct link to project 789 for company 1234.
-Open issue 5678 — give me the platform URL.
-```
+> **"Get the full details for issue 5678 — what's the description, status, and which asset is affected?"**
 
-### Combining tools (agentic workflows)
+Calls `get_issue`. Returns title, description, severity, status, asset, project, and history.
 
-Claude Code can chain multiple tools in a single request:
+> **"Get issue 5678 with the vulnerable code snippet and raw HTTP request."**
 
-```
-For company 1234, list the top vulnerabilities by severity, then open the most
-critical one and show me the vulnerable code. Also give me a direct link to it.
-```
+Calls `get_issue` with `return_vulnerable_data: true`. Returns the technical detail including code location, request/response, and exploit data. Handle with care — see [Security](#security).
 
-```
-Analyse the security posture of company 1234: show the risk score trend for the
-last 6 months, the current severity breakdown, and the MTTR for critical issues.
-Summarise the findings in a table.
-```
+> **"Give me a direct link to issue 5678 so I can share it with the team."**
+
+Calls `create_issue_url` and returns the deep link to the Platform.
+
+---
+
+### Asset investigation
+
+> **"List all assets for company 1234. How many do we have?"**
+
+Calls `get_assets` and returns the full inventory with asset type, environment, and audience.
+
+> **"Show details for asset 42 — what technology stack is it using and what's its current risk score?"**
+
+Calls `get_asset` and returns architecture type, technologies, business impact, and the current risk score value.
+
+> **"Which vulnerabilities are affecting asset 42?"**
+
+Calls `get_issues` with the asset context. Gives you a scoped view of exposure for a single asset.
+
+---
+
+### Security metrics
+
+> **"What's the MTTR for company 1234 for the full year 2024?"**
+
+Calls `get_mttr_over_time` with `start_date: 2024-01-01` and `end_date: 2024-12-31`. Returns MTTR broken down by severity and date.
+
+> **"Show me the MTTR for critical and high vulnerabilities in Q1 2025."**
+
+Same tool, with `severities: ["CRITICAL", "HIGH"]` and the quarter date range.
+
+> **"Is our overall risk score improving? Show me the trend for company 1234."**
+
+Calls `get_overall_risk_score_history` and returns current score, previous score, and the delta — the model will tell you if you're trending up or down.
+
+---
+
+### Agentic workflows — combining multiple tools
+
+The AI can chain tools in a single prompt to answer complex questions without manual steps.
+
+> **"Give me a security posture summary for company 1234: current severity breakdown, risk score trend, and MTTR for criticals in the last 6 months. Format as a table."**
+
+The model calls `get_top_vulnerabilities`, `get_overall_risk_score_history`, and `get_mttr_over_time` in sequence, then synthesizes the results into a single structured table.
+
+> **"Find the most critical open vulnerability for company 1234, show me the vulnerable code, and give me a direct link to it."**
+
+Chains `get_top_vulnerabilities` → `get_issues` → `get_issue` (with code snippet) → `create_issue_url`. One prompt, full context.
+
+> **"I need to write a security update for my team. For company 1234, summarise: how many open vulnerabilities by severity, which assets are most exposed, and whether MTTR improved compared to last quarter."**
+
+The model orchestrates multiple tools and writes a plain-language summary ready to paste into Slack or a report.
+
+> **"List all assets for company 1234, then for each asset with a high risk score fetch its open vulnerabilities."**
+
+Chains `get_assets` → multiple `get_issues` calls — an asset-centric risk review in one prompt.
+
+---
+
+### Tips for better prompts
+
+- **Always provide the company ID** once you know it — it unlocks most tools. If you don't know it, start with "List my companies".
+- **Ask for links** at the end of any vulnerability query — the model can call `create_issue_url` or `create_project_url` as a follow-up.
+- **Combine context** — the AI maintains conversation context, so you can say "now get the details for the first one" after a list.
+- **Request formats** — ask for tables, bullet lists, or raw JSON depending on what you need ("format as a markdown table", "give me just the IDs").
 
 ---
 
