@@ -118,7 +118,7 @@ async function proxyPlugin() {
                 },
                 {
                   label: 'Data Retention',
-                  to: 'data-rentention',
+                  to: 'data-retention',
                 },
               ],
             },
