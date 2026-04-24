@@ -39,10 +39,6 @@ aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/credentials
 echo "Install dependencies"
 yarn
 
-echo "Generate docs"
-yarn doc
-rm -rf docs/api/graphql/documentation/introduction.md
-
 echo "Run yarn build"
 yarn build
 
