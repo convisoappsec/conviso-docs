@@ -11,7 +11,7 @@
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
-    "doc": "ENABLE_GRAPHQL_DOCS=true docusaurus graphql-to-doc --force",
+    "doc": "docusaurus graphql-to-doc --force",
     "doc:clean": "rm -rf docs/api/graphql/documentation/*",
     "screenshot:install": "playwright install chromium",
     "screenshot:auth": "node scripts/save-auth-session.mjs",
