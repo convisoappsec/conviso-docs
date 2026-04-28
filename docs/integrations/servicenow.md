@@ -129,6 +129,8 @@ Before starting the integration in Conviso Platform, you need to configure an OA
    - **Risk Accepted** → Map to a closed status (e.g., "Closed Complete")
    - **False positive** → Map to a closed incomplete status (e.g., "Closed Incomplete")
 
+   For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 4. **Severity Mapping**: Configure how vulnerability severities map to ServiceNow priorities. ServiceNow has its own built-in rule for calculating priority based on **Impact** and **Urgency** values. When you select a severity (e.g., "Critical"), the system automatically saves the corresponding Impact and Urgency values so that ServiceNow calculates the priority correctly:
    - **Critical**: Impact 1, Urgency 1
    - **High**: Impact 1, Urgency 2

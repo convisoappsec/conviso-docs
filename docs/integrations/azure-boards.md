@@ -32,7 +32,7 @@ Core Principle
 
 Actions taken in Azure Boards reflect progress and intent, but never replace technical validation, which is always scan-driven. Closing or moving a card in Azure Boards does not validate a vulnerability. **Validation only happens through security scans.**
 
-### Vulnerability Lifecycle in Conviso Platform[​](https://docs.convisoappsec.com/platform/vulnerabilities)
+For the Conviso lifecycle model, status meanings, and closure behavior, see [Workflow Status](../vulnerability-management/workflow-status.md). For the operational handling flow inside the platform, see [Process](../vulnerability-management/process.md).
 
 ### Status Mapping: Conviso ↔ Azure Boards[​](https://docs.convisoappsec.com/integrations/azure-#status-mapping)
 
@@ -55,6 +55,8 @@ Typical Azure Boards State: Risk Accepted
 **False Positive**
 Meaning: Technical discard
 Typical Azure Boards State: Done
+
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 ### Integration Capabilities[​](https://docs.convisoappsec.com/integrations/azure-#integration-capabilities)
 

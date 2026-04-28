@@ -30,8 +30,12 @@ Improve application security by triaging findings, reducing risk, and guiding de
 ## Core workflows in Conviso
 
 - Run and review security scans: [Scanning your Application (Conviso AST)](../security-scans/conviso-ast)
-- Vulnerability lifecycle: [Vulnerabilities](../platform/vulnerabilities)
+- Access the vulnerability queue: [Vulnerabilities](../platform/vulnerabilities)
+- Understand lifecycle and statuses: [Workflow Status](../vulnerability-management/workflow-status)
+- Follow triage and remediation flow: [Process](../vulnerability-management/process)
 - Project context and scope: [Projects](../platform/projects)
+- Project execution flow: [Process](../project-management/process)
+- Project status model: [Workflow Status](../project-management/workflow-status)
 - Requirement tracking and validation: [Requirements](../platform/requirements)
 - Secure design context: [Threat Modeling](../platform/threat-modeling)
 

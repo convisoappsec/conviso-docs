@@ -27,7 +27,7 @@ To calculate the Risk Score, you must provide the following information:
 - **Business Impact**: It represents how critical the asset is for the company in terms of impact/loss in case of a security incident occurs.
 - **Attack Surface**: Indicates the asset's exposure — whether it is internet-facing or internal.
 - **Data Classification**: It represents what type of information the asset have access to. For example, does it access sensitive data such as PII, PCI?
-- **Threats**: It represents the numbers of vulnerabilities with their specific severity that are currently open (`Identified`, `In Progress` or `Awaiting Validation` statuses). This information is automatically obtained by Conviso Platform.
+- **Threats**: It represents the numbers of vulnerabilities with their specific severity that are currently open (`Identified`, `In Progress` or `Awaiting Validation` statuses). This information is automatically obtained by Conviso Platform. For the platform's status definitions, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 Until all the necessary information for calculating the Risk Score is provided, you will see a warning icon, as shown below:
 

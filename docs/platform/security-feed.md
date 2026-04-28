@@ -67,7 +67,7 @@ This tool provides a comprehensive view of your application's development histor
 
 ## Effortless Project Management: Projects
 
-Providing a well-organized and clear view, our platform enables users to efficiently track project progress and identify areas that need attention. With a simplified approach to [Projects](./projects), you can easily understand each project's current state without navigating complex interfaces. 
+Providing a well-organized and clear view, our platform enables users to efficiently track project progress and identify areas that need attention. With a simplified approach to [Projects](./projects), you can quickly access the project workspace and review each project's current state. For project status meanings, see [Workflow Status](../project-management/workflow-status.md).
 
 ![img](../../static/img/platform/security-feed-img7.png "Clipping of a screenshot of the Conviso Platform showing the Projects to organize and track project progress with ease.")
 

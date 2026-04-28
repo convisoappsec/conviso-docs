@@ -101,6 +101,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 **Step 10 -** Consider the following in order to map Conviso Platform statuses to BusinessMap statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to BusinessMap, while **other fields (2)** are optional. After mapping all the statuses, click on the **Save button (3)**.
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 ![img](../../static/img/businessmap-img9-a.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
 **Step 11** - After saving your integration configuration, you may want to review, modify, or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right.
@@ -119,6 +121,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 ![img](../../static/img/businessmap-img8-b.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
 **Step 10 -** Consider the following in order to map Conviso Platform statuses to BusinessMap statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to BusinessMap, while **other fields (2)** are optional. After mapping all the statuses, click on the** Save button (3)**:
+
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 ![img](../../static/img/businessmap-img9-b.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 

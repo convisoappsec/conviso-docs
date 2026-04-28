@@ -29,8 +29,12 @@ Ship features with security built into day-to-day development, reducing rework a
 ## Core workflows in Conviso
 
 - Run and review security scans: [Scanning your Application (Conviso AST)](../security-scans/conviso-ast)
-- Remediation tracking: [Vulnerabilities](../platform/vulnerabilities)
+- Access assigned findings: [Vulnerabilities](../platform/vulnerabilities)
+- Understand lifecycle and status changes: [Workflow Status](../vulnerability-management/workflow-status)
+- Follow remediation tracking: [Process](../vulnerability-management/process)
 - Project context and ownership: [Projects](../platform/projects)
+- Project execution flow: [Process](../project-management/process)
+- Project status model: [Workflow Status](../project-management/workflow-status)
 - Secure requirements and validation flow: [Requirements](../platform/requirements)
 
 ## Defect tracker integration

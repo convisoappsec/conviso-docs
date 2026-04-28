@@ -57,6 +57,8 @@ The AppSec KPIs Dashboard shows six key metrics:
 
 </div>
 
+For the platform's vulnerability status definitions and lifecycle rules, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 ## Security Champions Metrics
 
 The Security Champions Metrics Dashboard presents six key metrics:

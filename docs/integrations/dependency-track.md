@@ -112,6 +112,8 @@ In this section, we will address crucial information about the integration's ope
 
 When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Dependency Track according to the following mapping:
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/dependency-track-img7-new.png)

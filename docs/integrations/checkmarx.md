@@ -118,6 +118,8 @@ Due to the way scans are processed in Checkmarx, we recommend using a full scan.
 
 When moving Vulnerabilities from one status to another, the Conviso platform will communicate and mark the Vulnerabilities in Checkmarx according to the following mapping:
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 <div style={{display: 'ruby-text'}}>
 
 | Conviso Platform     | Checkmarx                |
