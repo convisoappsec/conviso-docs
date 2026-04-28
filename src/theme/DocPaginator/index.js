@@ -4,9 +4,16 @@ import { useDoc } from "@docusaurus/plugin-content-docs/client";
 import { useLocation } from "@docusaurus/router";
 
 export default function DocPaginatorWrapper(props) {
-  const { metadata } = useDoc();
+  let metadata = null;
+  try {
+    metadata = useDoc()?.metadata ?? null;
+  } catch (error) {
+    metadata = null;
+  }
   const { pathname } = useLocation();
+  const hasDocContext = Boolean(metadata);
   const hidePaginator =
+    !hasDocContext ||
     metadata?.unversionedId === "index" ||
     pathname === "/" ||
     pathname === "/index" ||
