@@ -115,6 +115,8 @@ In this section, we will address crucial information about the integration's ope
 
 When moving Vulnerabilities from one status to another, the Conviso platform will communicate and mark the Vulnerabilities in SonarQube according to the following mapping:
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 <div style={{display: 'ruby-text'}}>
 
 | Conviso Platform     | SonarQube                |

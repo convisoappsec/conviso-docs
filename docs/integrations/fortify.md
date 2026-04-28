@@ -127,6 +127,8 @@ In this section, we will address crucial information about the integration's ope
 
 When moving issues from one status to another, the Conviso platform will communicate and mark the issues in Fortify according to a default mapping configuration. This default mapping can be customized during the Status Mapping step to match your organization's specific workflow requirements:
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 <div style={{display: 'ruby-text'}}>
 
 | Conviso Platform     | Fortify                        |

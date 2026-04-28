@@ -28,7 +28,7 @@ The **Transform vulnerabilities into issues in defect trackers** policy allows y
 
 </div>
 
-The **Transform scans findings in vulnerabilities** policy allows you to automatically change the  status of vulnerabilities generated from scans to **Identified** instead of the default **Created** status. You can configure this policy to apply only to specific vulnerability severities or all severities, selecting the **All vuln** checkbox:
+The **Transform scans findings in vulnerabilities** policy allows you to automatically change the  status of vulnerabilities generated from scans to **Identified** instead of the default **Created** status. You can configure this policy to apply only to specific vulnerability severities or all severities, selecting the **All vuln** checkbox. To understand how these statuses behave in the platform, see [Workflow Status](../vulnerability-management/workflow-status.md):
 
 <div style={{textAlign: 'center'}}>
 
@@ -36,7 +36,7 @@ The **Transform scans findings in vulnerabilities** policy allows you to automat
 
 </div>
 
-The **Transform SCA findings states** policy lets you adjust the initial status of SCA findings. By default, the initial status is **Created**. However, by selecting this checkbox, the initial status will be set to **Identified**.
+The **Transform SCA findings states** policy lets you adjust the initial status of SCA findings. By default, the initial status is **Created**. However, by selecting this checkbox, the initial status will be set to **Identified**. For status definitions, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 <div style={{textAlign: 'center'}}>
 
@@ -44,7 +44,7 @@ The **Transform SCA findings states** policy lets you adjust the initial status 
 
 </div>
 
-The **Transform Container vulnerabilities states** policy lets you adjust the initial status of Container findings. By default, the initial status is **Created**. However, by selecting this checkbox, the initial status will be set to **Identified**.
+The **Transform Container vulnerabilities states** policy lets you adjust the initial status of Container findings. By default, the initial status is **Created**. However, by selecting this checkbox, the initial status will be set to **Identified**. For status definitions, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 <div style={{textAlign: 'center'}}>
 
@@ -52,7 +52,7 @@ The **Transform Container vulnerabilities states** policy lets you adjust the in
 
 </div>
 
-The **False Positive Analysis Agent Policies** policy allows you to enable **False Positive Analysis** to analyze vulnerabilities with our AI agent, giving you the possibility to analyze issues with **Created** and/or **Identified** status.
+The **False Positive Analysis Agent Policies** policy allows you to enable **False Positive Analysis** to analyze vulnerabilities with our AI agent, giving you the possibility to analyze issues with **Created** and/or **Identified** status. Learn more in [False Positive Analysis](../ai-capabilities/false-positive-analysis.md) and review the related status behavior in [Workflow Status](../vulnerability-management/workflow-status.md).
 
 <div style={{textAlign: 'center'}}>
 

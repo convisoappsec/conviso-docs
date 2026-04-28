@@ -30,196 +30,248 @@ module.exports = {
     'index',
     {
       type: "category",
-      label: "AI Capabilities",
-      link: {
-        type: "doc",
-        id: "platform/appsec-ai-agent",
-      },
+      label: "Core Workflows",
+      collapsible: false,
       items: [
-        'integrations/conviso-mcp-server',
-        'integrations/conviso-skills',
+        {
+          type: "category",
+          label: "Vulnerability Management",
+          collapsed: false,
+          items: [
+            'vulnerability-management/workflow-status',
+            'vulnerability-management/process',
+          ],
+        },
+        {
+          type: "category",
+          label: "Project Management",
+          collapsed: false,
+          items: [
+            'project-management/workflow-status',
+            'project-management/process',
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "Role-Based Guides",
+      label: "Platform Features",
       items: [
-        'general/role-based-guide-devsecops',
-        'general/role-based-guide-developer',
-        'general/role-based-guide-penetration-tester',
-        'general/role-based-guide-appsec-engineer',
-        'general/role-based-guide-appsec-manager',
-        'general/role-based-guide-security-manager'
+        {
+          type: "category",
+          label: "AI Capabilities",
+          link: {
+            type: "doc",
+            id: "platform/appsec-ai-agent",
+          },
+          collapsed: false,
+          items: [
+            'ai-capabilities/false-positive-analysis',
+            'ai-capabilities/how-to-fix',
+            'ai-capabilities/autofix',
+            'integrations/conviso-mcp-server',
+            'integrations/conviso-skills',
+          ],
+        },
+        {
+          type: "category",
+          label: "Platform User Guide",
+          items: [
+            'platform/security-feed',
+            'platform/dashboard',
+            'platform/risk-score',
+            'platform/risk-context-funnel',
+            'platform/vulnerabilities',
+            'platform/projects',
+            'platform/requirements',
+            'platform/security-gate',
+            'platform/asset-management',
+            'platform/sbom-management',
+            'platform/notifications-center',
+            'platform/policies',
+            'platform/threat-modeling',
+            'platform/user-management',
+            'platform/credentials',
+            'platform/dark-mode',
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "Platform User Guide",
-      items: [
-        'platform/asset-management',
-        'platform/credentials',
-        'platform/dark-mode',
-        'platform/dashboard',
-        'platform/notifications-center',
-        'platform/policies',
-        'platform/projects',
-        'platform/requirements',
-        'platform/risk-context-funnel',
-        'platform/risk-score',
-        'platform/sbom-management',
-        'platform/security-feed',
-        'platform/security-gate',
-        'platform/threat-modeling',
-        'platform/user-management',
-        'platform/vulnerabilities'
-      ],
-    },
-    {
-      type: "category",
-      label: "Scanning your Application",
+      label: "Guides and Operations",
       items: [
         {
-          type: 'doc',
-          label: 'Scan Application with Conviso',
-          id: 'security-scans/conviso-ast/conviso-ast'
-        },
-        {
-          type: 'doc',
-          label: 'Scan Application with Conviso DAST',
-          id: 'security-scans/conviso-dast/conviso-dast'
-        },
-        {
-          type: 'doc',
-          label: 'Software Bill of Materials (SBOM)',
-          id: 'security-scans/conviso-sbom/conviso-sbom'
-        },
-        {
-          type: 'doc',
-          label: 'Scan Container with Conviso',
-          id: 'security-scans/conviso-containers/conviso-containers'
-        },
-        'security-scans/security-gate',
-      ]
-    },
-    {
-      type: "category",
-      label: "Integrations",
-      items: [
-        'integrations/integrations_intro',
-        {
           type: "category",
-          label: "Authentication/SSO",
+          label: "Role-Based Guides",
           items: [
-            'integrations/google',
-            'integrations/microsoft-entra-id',
-            'integrations/saml'
-          ]
+            'general/role-based-guide-devsecops',
+            'general/role-based-guide-developer',
+            'general/role-based-guide-penetration-tester',
+            'general/role-based-guide-appsec-engineer',
+            'general/role-based-guide-appsec-manager',
+            'general/role-based-guide-pci-manager',
+            'general/role-based-guide-security-manager'
+          ],
         },
         {
           type: "category",
-          label: "CI/CD",
-          items: [
-            'integrations/azure-pipelines-cli',
-            'integrations/azure-pipelines-graph',
-            'integrations/bitbucket-pipelines',
-            'integrations/circleci',
-            'integrations/codefresh',
-            'integrations/github-actions',
-            'integrations/gitlab',
-            'integrations/jenkins',
-            'integrations/jenkins-single-pipeline'
-          ]
-        },
-        {
-          type: "category",
-          label: "Data Analytics",
-          items: [
-            'integrations/datastudio',
-            'integrations/powerbi'
-          ]
-        },
-        {
-          type: "category",
-          label: "Developer Portal",
-          items: [
-            'integrations/backstage',
-          ]
-        },
-        {
-          type: "category",
-          label: "Defect/Bug Tracking",
-          items: [
-            'integrations/azure-boards',
-            'integrations/businessmap',
-            'integrations/clickup',
-            'integrations/jira',
-            'integrations/servicenow'
-          ]
-        },
-        {
-          type: "category",
-          label: "Notifications",
-          items: [
-            'integrations/microsoft-teams',
-            'integrations/slack'
-          ]
-        },
-        {
-          type: "category",
-          label: "Pentest Tools",
-          items: [
-            'integrations/burp',
-          ]
-        },
-        {
-          type: "category",
-          label: "Scanners",
-          items: [
-            'integrations/checkmarx',
-            'integrations/dependency-track',
-            'integrations/fortify',
-            'integrations/github-advanced-security',
-            'integrations/sonarcloud',
-            'integrations/sonarqube',
-            'integrations/mobsf',
-          ]
-        },
-        {
-          type: "category",
-          label: "Application Lifecycle Management",
+          label: "Scanning your Application",
           items: [
             {
+              type: 'doc',
+              label: 'Scan Application with Conviso',
+              id: 'security-scans/conviso-ast/conviso-ast'
+            },
+            {
+              type: 'doc',
+              label: 'Scan Application with Conviso DAST',
+              id: 'security-scans/conviso-dast/conviso-dast'
+            },
+            {
+              type: 'doc',
+              label: 'Software Bill of Materials (SBOM)',
+              id: 'security-scans/conviso-sbom/conviso-sbom'
+            },
+            {
+              type: 'doc',
+              label: 'Scan Container with Conviso',
+              id: 'security-scans/conviso-containers/conviso-containers'
+            },
+            'security-scans/security-gate',
+          ]
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Integration and Automations",
+      items: [
+        'new-cli',
+        {
+          type: "category",
+          label: "Integrations",
+          items: [
+            'integrations/integrations_intro',
+            {
               type: "category",
-              label: "Azure DevOps",
-              link: {
-                type: 'doc',
-                id: 'integrations/azure-devops',
-              },
+              label: "Authentication/SSO",
               items: [
-                'integrations/azure-devops-ast-orchestrator',
+                'integrations/google',
+                'integrations/microsoft-entra-id',
+                'integrations/saml'
               ]
             },
             {
               type: "category",
-              label: "GitHub",
-              link: {
-                type: 'doc',
-                id: 'integrations/github',
-              },
+              label: "CI/CD",
               items: [
-                'integrations/github-ast-orchestrator',
+                'integrations/azure-pipelines-cli',
+                'integrations/azure-pipelines-graph',
+                'integrations/bitbucket-pipelines',
+                'integrations/circleci',
+                'integrations/codefresh',
+                'integrations/github-actions',
+                'integrations/gitlab',
+                'integrations/jenkins',
+                'integrations/jenkins-single-pipeline'
               ]
             },
+            {
+              type: "category",
+              label: "Data Analytics",
+              items: [
+                'integrations/datastudio',
+                'integrations/powerbi'
+              ]
+            },
+            {
+              type: "category",
+              label: "Developer Portal",
+              items: [
+                'integrations/backstage',
+              ]
+            },
+            {
+              type: "category",
+              label: "Defect/Bug Tracking",
+              items: [
+                'integrations/azure-boards',
+                'integrations/businessmap',
+                'integrations/clickup',
+                'integrations/jira',
+                'integrations/servicenow'
+              ]
+            },
+            {
+              type: "category",
+              label: "Notifications",
+              items: [
+                'integrations/microsoft-teams',
+                'integrations/slack'
+              ]
+            },
+            {
+              type: "category",
+              label: "Pentest Tools",
+              items: [
+                'integrations/burp',
+              ]
+            },
+            {
+              type: "category",
+              label: "Scanners",
+              items: [
+                'integrations/checkmarx',
+                'integrations/dependency-track',
+                'integrations/fortify',
+                'integrations/github-advanced-security',
+                'integrations/sonarcloud',
+                'integrations/sonarqube',
+                'integrations/mobsf',
+              ]
+            },
+            {
+              type: "category",
+              label: "Application Lifecycle Management",
+              link: {
+                type: 'generated-index',
+                title: 'Application Lifecycle Management',
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Azure DevOps",
+                  link: {
+                    type: 'doc',
+                    id: 'integrations/azure-devops',
+                  },
+                  items: [
+                    'integrations/azure-devops-ast-orchestrator',
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "GitHub",
+                  link: {
+                    type: 'doc',
+                    id: 'integrations/github',
+                  },
+                  items: [
+                    'integrations/github-ast-orchestrator',
+                  ]
+                },
+              ]
+            },        
           ]
-        },        
-      ]
+        },
+        {
+          type: "category",
+          label: "API Reference",
+          items: apiItems,
+        },
+      ],
     },
-    {
-      type: "category",
-      label: "API",
-      items: apiItems,
-    },
-    'new-cli',
   ],
   releaseSidebar: [
     {

@@ -31,6 +31,8 @@ Operate AppSec in delivery pipelines with high reliability, low friction, and cl
 - Configure integrations: [Integrations](../integrations/integrations_intro)
 - Manage security gates: [Security Gate](../platform/security-gate)
 - Monitor findings backlog: [Vulnerabilities](../platform/vulnerabilities)
+- Understand which statuses count as open: [Workflow Status](../vulnerability-management/workflow-status)
+- Review the operational handling flow: [Process](../vulnerability-management/process)
 
 ## Defect tracker integration
 

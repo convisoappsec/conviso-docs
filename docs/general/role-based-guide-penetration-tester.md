@@ -29,8 +29,12 @@ Execute penetration testing with consistent evidence quality, fast reporting, an
 ## Core workflows in Conviso
 
 - CLI-based scan workflow: [New CLI](../new-cli)
-- Vulnerability lifecycle management: [Vulnerabilities](../platform/vulnerabilities)
+- Access the vulnerability queue: [Vulnerabilities](../platform/vulnerabilities)
+- Understand lifecycle and statuses: [Workflow Status](../vulnerability-management/workflow-status)
+- Follow validation and retest flow: [Process](../vulnerability-management/process)
 - Scope and target management: [Projects](../platform/projects)
+- Project execution flow: [Process](../project-management/process)
+- Project status model: [Workflow Status](../project-management/workflow-status)
 - Validation tracking and execution evidence: [Requirements](../platform/requirements)
 - Burp extension workflow: [Burp Integration](../integrations/burp)
 

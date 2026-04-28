@@ -46,6 +46,8 @@ The Security Gate evaluates and counts vulnerabilities that are in any of the fo
 
 Vulnerabilities marked as **Fixed**, **Risk Accepted**, or **False Positive** are **not** counted toward policy thresholds and will not block the pipeline.
 
+For the platform's vulnerability status definitions, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 ### Execution Details
 
 Clicking on any execution in the list opens the **Execution Details** page.

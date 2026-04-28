@@ -29,11 +29,14 @@ The standard retention periods below apply unless a longer period is required by
 | Security program data | assets, projects, vulnerabilities, risk scores, findings status, timelines, comments, requirements, threat modeling records | Retained while the subscription or service relationship is active and for up to 60 days after termination or expiration |
 | Scan and analysis data | scan histories, scanner findings, SBOM records, container scan data, DAST execution results, related analysis metadata | Retained while the subscription or service relationship is active and for up to 60 days after termination or expiration |
 | Evidence and generated artifacts | file attachments, remediation evidence, exported reports, generated CSV files, supporting documents uploaded by customers | Retained while needed for service delivery and for up to 60 days after termination or expiration |
+| PCI assessment records | PCI assessment projects, assessment evidence, audit history, attachments, supporting artifacts, and related validation records maintained to support PCI compliance workflows | Retained for at least 36 months |
 | Integration configuration data | integration settings for SSO, defect trackers, CI/CD, chat, scanners, orchestration settings, webhooks, delivery settings | Retained while the integration is active and for up to 60 days after termination or expiration |
 | Operational and delivery logs | integration delivery logs, execution logs, notification events, troubleshooting records, platform diagnostic logs | Typically retained for up to 180 days |
 | Audit and security records | security-relevant access records, status-change history, administrative actions, auditability metadata | Typically retained for up to 12 months |
 | Support records | support requests, troubleshooting information, support attachments, service communications | Typically retained for up to 24 months after ticket closure |
 | Backups | encrypted operational backups required for business continuity and disaster recovery | Typically retained for up to 35 days in rolling backup cycles |
+
+For PCI-related assessment workflows, the specific PCI retention period above overrides the shorter standard retention periods that would otherwise apply to the same audit history or evidence artifacts.
 
 ## Contract Expiration and Service Termination
 
@@ -94,6 +97,8 @@ Conviso may retain data for longer than the standard periods listed above when n
 - enforce contractual rights;
 - preserve evidence related to disputes or claims;
 - fulfill customer-specific contractual commitments.
+
+This includes, for example, retaining PCI assessment audit history and supporting evidence for at least 36 months when required to support PCI compliance obligations.
 
 Where possible, any extended retention will be limited to the minimum scope and duration necessary.
 

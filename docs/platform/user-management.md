@@ -36,6 +36,8 @@ Profile Developer was created with the aim of streamlining the platform for soft
 - Create, view, and edit Assets;
 - Create, view, and edit Projects.
 
+For the meaning of these vulnerability statuses, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 To add new users with Developer Profile roles, [see here how to invite new users.](#inviting-a-user)
 
 #### Admin Profile

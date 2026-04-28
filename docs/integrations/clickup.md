@@ -110,6 +110,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 **Step 7 -** Consider the following in order to map Conviso Platform statuses to ClickUp statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to ClickUp, while **other fields (2)** are optional. After mapping all the statuses, click on the **Save** button.
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/clickup/clickup9.png)

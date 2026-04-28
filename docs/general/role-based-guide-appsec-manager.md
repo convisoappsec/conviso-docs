@@ -31,6 +31,8 @@ Drive AppSec program execution, balancing risk reduction, team capacity, and del
 - Risk ranking and insights: [Risk Score](../platform/risk-score)
 - Governance controls: [Policies](../platform/policies)
 - Operational queue health: [Vulnerabilities](../platform/vulnerabilities)
+- Status model and closure logic: [Workflow Status](../vulnerability-management/workflow-status)
+- Remediation operating flow: [Process](../vulnerability-management/process)
 
 ## Defect tracker integration
 
