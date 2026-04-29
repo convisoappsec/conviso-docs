@@ -138,6 +138,11 @@ module.exports = {
               label: 'Scan Container with Conviso',
               id: 'security-scans/conviso-containers/conviso-containers'
             },
+            {
+              type: 'doc',
+              label: 'Pull Request Scanning',
+              id: 'security-scans/pull-requests/pull-requests'
+            },
             'security-scans/security-gate',
           ]
         },
