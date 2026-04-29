@@ -44,13 +44,13 @@ To enable this, navigate to the GitHub Integration settings in the Conviso Platf
 
 </div>
 
-For detailed instructions on configuring this feature, refer to the [Automated PR Scanning for GitHub](../../integrations/github-pr-scans) documentation.
+For detailed instructions on configuring this feature, refer to the [Automated PR Scanning for GitHub](../../integrations/github-pr-scans.md) documentation.
 
 ### Azure DevOps Integration
 
 Similar to GitHub, the Conviso Platform integrates with Azure DevOps to provide PR scanning capabilities within your Azure Repos. By configuring the integration, Azure DevOps pipelines can trigger differential scans on Pull Requests, ensuring that any code merged into your protected branches meets your organization's security standards.
 
-For more information on setting up Azure DevOps, please refer to the [Azure DevOps Integration](../../integrations/azure-devops) documentation.
+For more information on setting up Azure DevOps, please refer to the [Azure DevOps Integration](../../integrations/azure-devops.md) documentation.
 
 ## Best Practices for PR Scanning
 
@@ -58,7 +58,7 @@ To get the most out of PR Scanning, consider the following best practices:
 
 - **Enforce Branch Protection:** Configure your repository settings (e.g., GitHub Branch Protection Rules or Azure DevOps Branch Policies) to require the Conviso Security Check to pass before a Pull Request can be merged.
 - **Address Findings Promptly:** Encourage developers to treat security findings as critical bugs that must be resolved prior to merge.
-- **Combine with Full Scans:** While PR Scanning is excellent for rapid feedback on incremental changes, it should be complemented by scheduled, full-repository scans (using [Conviso AST](../conviso-ast/conviso-ast)) to ensure comprehensive coverage.
+- **Combine with Full Scans:** While PR Scanning is excellent for rapid feedback on incremental changes, it should be complemented by scheduled, full-repository scans (using [Conviso AST](../conviso-ast/conviso-ast.md)) to ensure comprehensive coverage.
 
 ## Support
 
