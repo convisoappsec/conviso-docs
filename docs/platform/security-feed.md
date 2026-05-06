@@ -1,107 +1,105 @@
 ---
 id: security-feed
-title: Explore Your Security Feed for Real-Time AppSec Insights
+title: Security Feed
 sidebar_label: Security Feed
-description: Explore the Security Feed of the Conviso Platform for real-time insights on application security. Stay informed about pending vulnerabilities, recent deploys, and overall risk scores.
-keywords: [Security Feed, Conviso Platform, real-time appsec insights, application security, overall risk score, ASPM, proactive risk management]
+description: Use the Security Feed as the platform home to monitor risk trends, vulnerability growth, active initiatives, and common next actions.
+keywords: [Security Feed, Conviso Platform, home, risk score, vulnerabilities, projects]
 image: '/static/img/securityfeedseo.png'
-
 ---
-## Introduction
 
-The Security Feed is an essential feature of the [Conviso Platform](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826), designed to provide users with real-time AppSec insights and actionable information related to their application security.
+## Overview
 
-It serves as a centralized hub of knowledge, helping users understand the current state of their company's security and guiding them on what actions to enhance to [improve their application security](https://blog.convisoappsec.com/afinal-o-que-e-seguranca-de-aplicacoes/). 
+The **Security Feed** is the platform home screen.
+It gives you a quick operational summary of your current AppSec scenario so you can understand what needs attention without navigating through multiple areas first.
 
-## Usage
-To access the Security Feed, simply click on the **“Home”** icon located in the left-hand corner menu:
+The current layout is organized around four main blocks:
 
-![img](../../static/img/platform/security-feed-img1.png "Clipping of a screenshot of the Conviso Platform showing the Access Security Feed to  real-time appsec insights.")
+* risk trend visibility;
+* vulnerability growth visibility;
+* active initiatives in execution;
+* quick access to common actions.
 
+## Access the Security Feed
 
-Upon access, you will encounter the following essential features. These are designed to provide users with relevant information and enable them to perform vital security-related tasks efficiently..
+To access the Security Feed, click **Security Feed** in the left-hand menu.
 
-## Discover Your Application's Risk: Overall Risk Score
+<div style={{textAlign: 'center'}}>
 
-Our feature offers a comprehensive and real-time view of your application security posture, making it an essential component of [Application Security Program Management (ASPM)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826). A higher risk score signals a greater level of potential security threats, prompting users to prioritize and address security issues promptly. 
+![Security Feed overview](../../static/img/platform/security-feed-overview.png "Security Feed overview.")
 
-![img](../../static/img/platform/security-feed-img2.png "Clipping of a screenshot of the Conviso Platform showing the Prioritize Security Efforts.")
+</div>
 
-Utilize this indispensable tool to make informed decisions, bolster your application security, and effectively strengthen your overall security posture.
+## What You Can See on This Screen
 
-## Discover Your Critical Assets: Top Risk Score Assets
+### Risk Score Over Time
 
-Our platform ranks your top 5 assets by their risks. A higher risk score signals a greater level of potential security threats, prompting users to prioritize and address security issues promptly. 
+This card shows how the overall risk score evolves over time.
+It helps you understand whether the security posture is improving, remaining stable, or deteriorating.
 
-![img](../../static/img/platform/security-feed-img3.png "Clipping of a screenshot of the Conviso Platform showing the Prioritize Security Efforts.")
+Use this view to:
 
-Utilize this indispensable tool to make informed decisions, bolster your application security, and effectively strengthen your overall security posture.
+* monitor long-term risk movement;
+* detect sudden increases in risk;
+* identify when remediation activity is improving the posture.
 
-## Prioritize Security Efforts: Pending Vulnerabilities
+The card also provides a direct shortcut to [Asset Management](./asset-management.md).
 
-In this section, you'll find all the vulnerabilities detected in the applications, categorized by their severity levels. 
+### New Vulnerabilities
 
-![img](../../static/img/platform/security-feed-img4.png "Clipping of a screenshot of the Conviso Platform showing the Pending Vulnerabilities.")
+This card shows the volume of new vulnerabilities over time, grouped by severity.
+It helps teams identify whether the vulnerability backlog is growing and which severity bands are increasing faster.
 
-Such transparent categorization allows users to prioritize their efforts based on the criticality of each vulnerability. 
+Use this view to:
 
-By clicking on "View All," users will access the [Vulnerabiliies](./vulnerabilities.md) page, where they can obtain more detailed information about each vulnerability and take appropriate actions to address them.
+* monitor the entry rate of new findings;
+* compare growth between critical, high, medium, low, and notification findings;
+* identify when ingestion or scan activity changed materially.
 
-## Dive into AppSec Insights: You Might Like to Know
+The **Manage vulnerabilities** action takes you to the [Vulnerabilities](./vulnerabilities.md) area for detailed investigation and follow-up.
 
-Our platform also provides a "You Might Like to Know" feature, ensuring that you receive relevant and insightful information, enriching your understanding of AppSec and empowering you to elevate the maturity of your applications. 
+### Initiatives in Progress
 
-![img](../../static/img/platform/security-feed-img5.png "Clipping of a screenshot of the Conviso Platform showing the You Might Like to Know to discover relevant content to elevate your application's security.")
+This section lists the projects that are currently active, showing their names, initiative type, and estimated effort information.
 
-Delve into and uncover content that aligns perfectly with your interests, making your experience on our platform even more rewarding and valuable.
+Use this view to:
 
-## Stay Updated with Recent Deploys
+* follow what is currently being executed;
+* identify initiatives that may need operational attention;
+* jump quickly into the [Projects](./projects.md) workspace.
 
-Our platform's 'Recent Deploys' section  provides users with an overview of the recent deploys carried out in their company's projects. Deploys are sorted chronologically, displaying the most recent ones at the top. 
+For project status meanings and transition logic, see [Workflow Status](../project-management/workflow-status.md).
 
-Moreover, users have the option to load more deploys by clicking on the "**Load More**" button, revealing an extended list. 
+### Quick Actions
 
-![img](../../static/img/platform/security-feed-img6.png "Clipping of a screenshot of the Conviso Platform showing the Deploys to  stay updated with recent Deploys.")
+The **Quick actions** block provides shortcuts for common onboarding and activation steps in the platform.
 
-This tool provides a comprehensive view of your application's development history.
+The actions currently available are:
 
-## Effortless Project Management: Projects
+* **Invite users**: open the user invitation flow so more people can collaborate in the platform.
+* **Explore integrations**: navigate to the [Integrations](../integrations/integrations_intro.md) area to connect external tools.
+* **Create an API key**: start using the platform programmatically through the [API](../api/api-overview.md).
 
-Providing a well-organized and clear view, our platform enables users to efficiently track project progress and identify areas that need attention. With a simplified approach to [Projects](./projects), you can quickly access the project workspace and review each project's current state. For project status meanings, see [Workflow Status](../project-management/workflow-status.md).
+## How to Use the Security Feed
 
-![img](../../static/img/platform/security-feed-img7.png "Clipping of a screenshot of the Conviso Platform showing the Projects to organize and track project progress with ease.")
+The Security Feed works best as a starting point for daily navigation:
 
-Featuring the number of projects associated with each status, users can assess the workload and prioritize actions accordingly.
+1. Check whether the risk score trend is stable or rising.
+2. Review whether new vulnerabilities are accumulating.
+3. Look at the initiatives currently in progress.
+4. Use the available shortcuts to continue into deeper operational areas.
 
-## Streamlining Security Tasks: Quick Actions
+In practice, this page is not meant to replace the detailed workflows.
+It is the entry point that helps you decide whether to continue into Assets, Vulnerabilities, Projects, Integrations, or API setup.
 
-Our "Quick Actions" section offers users three essential shortcuts to streamline their security-related tasks:
+## Related Areas
 
-![img](../../static/img/platform/security-feed-img8.png "Clipping of a screenshot of the Conviso Platform showing the Quick Actions to offer shortcuts to streamline security-related tasks.")
+After reviewing the Security Feed, the most common next steps are:
 
-### Invite Team Members
-
-Opting for this action triggers a dialog box which users can input the necessary details (e.g., email, profile, team) to invite new members to the Conviso Platform.
-
-### Integrate with Defect Tracker
-
-Activating this action redirects users to the [Integrations](../integrations/integrations_intro.md) page, filtered specifically for [Defect Tracker](../integrations/integrations_intro.md) tools. This facilitates a smoother integration of the Conviso Platform with their preferred Defect Tracker seamlessly.
-
-### Generate API Key
-
-Choosing this action instantly generates an API Key for users. The pop-up window that appears after clicking this action provides the user with the API Key and offers a "**Copy to Clipboard**" button for convenience. 
-
-## In-Depth Security Scans
-
-Our platform's 'Security Scans' section provides a comprehensive history of [security scans](https://blog.convisoappsec.com/consolidacao-de-scans-otimize-o-trabalho-do-seu-time-de-desenvolvimento/) performed on the company's applications. 
-
-Initially, the section displays the latest five scans, with the option to load more scans by clicking the "**Load More**" button:
-
-![img](../../static/img/platform/security-feed-img10.png "Clipping of a screenshot of the Conviso Platform showing the Scans to view a detailed history of security scans for monitoring application security.")
-
-Having a detailed history of security scans equips users with essential information to [monitor application security](https://blog.convisoappsec.com/en/attack-surface-continuous-monitoring-and-management-of-the-application/), identify vulnerabilities, and take timely actions to ensure the safety and integrity of their systems.
-
-**Enhance your development lifecycle's security with the Conviso Platform. Join us today and foster a security-first culture!**
+* [Asset Management](./asset-management.md)
+* [Vulnerabilities](./vulnerabilities.md)
+* [Projects](./projects.md)
+* [Integrations](../integrations/integrations_intro.md)
+* [API Overview](../api/api-overview.md)
 
 ## Support
 

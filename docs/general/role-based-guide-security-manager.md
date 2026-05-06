@@ -28,7 +28,7 @@ Provide security governance visibility and ensure the organization is reducing a
 
 ## Core workflows in Conviso
 
-- Business risk lens: [Risk Context Funnel](../platform/risk-context-funnel)
+- Business risk lens: [Risk and Posture Management](../posture-management/posture)
 - Policy governance: [Policies](../platform/policies)
 - Asset exposure context: [Asset Management](../platform/asset-management)
 

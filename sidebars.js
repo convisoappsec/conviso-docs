@@ -35,8 +35,19 @@ module.exports = {
       items: [
         {
           type: "category",
+          label: "Posture Management",
+          collapsed: true,
+          items: [
+            'posture-management/posture',
+            'posture-management/vulnerability-kpi',
+            'posture-management/security-champions-metrics',
+            'posture-management/aspm-coverage',
+          ],
+        },
+        {
+          type: "category",
           label: "Vulnerability Management",
-          collapsed: false,
+          collapsed: true,
           items: [
             'vulnerability-management/workflow-status',
             'vulnerability-management/process',
@@ -45,11 +56,56 @@ module.exports = {
         {
           type: "category",
           label: "Project Management",
-          collapsed: false,
+          collapsed: true,
           items: [
             'project-management/workflow-status',
             'project-management/process',
           ],
+        },
+        {
+          type: "category",
+          label: "Threat Modeling",
+          collapsed: true,
+          items: [
+            'threat-modeling/management-threat-modeling-artifacts',
+            'threat-modeling/create-threat-modeling',
+            'threat-modeling/threat-modeling-artefact',
+            'threat-modeling/create-a-new-threat-modeling-artifact',
+            'threat-modeling/management-projects-with-requirements-based-in-tm',
+          ],
+        },
+        {
+          type: "category",
+          label: "Scanning your Application",
+          collapsed: true,
+          items: [
+            {
+              type: 'doc',
+              label: 'Scan Application with Conviso',
+              id: 'security-scans/conviso-ast/conviso-ast'
+            },
+            {
+              type: 'doc',
+              label: 'Scan Application with Conviso DAST',
+              id: 'security-scans/conviso-dast/conviso-dast'
+            },
+            {
+              type: 'doc',
+              label: 'Software Bill of Materials (SBOM)',
+              id: 'security-scans/conviso-sbom/conviso-sbom'
+            },
+            {
+              type: 'doc',
+              label: 'Scan Container with Conviso',
+              id: 'security-scans/conviso-containers/conviso-containers'
+            },
+            {
+              type: 'doc',
+              label: 'Pull Request Scanning',
+              id: 'security-scans/pull-requests/pull-requests'
+            },
+            'security-scans/security-gate',
+          ]
         },
       ],
     },
@@ -64,7 +120,7 @@ module.exports = {
             type: "doc",
             id: "platform/appsec-ai-agent",
           },
-          collapsed: false,
+          collapsed: true,
           items: [
             'ai-capabilities/false-positive-analysis',
             'ai-capabilities/how-to-fix',
@@ -79,8 +135,6 @@ module.exports = {
           items: [
             'platform/security-feed',
             'platform/dashboard',
-            'platform/risk-score',
-            'platform/risk-context-funnel',
             'platform/vulnerabilities',
             'platform/projects',
             'platform/requirements',
@@ -113,33 +167,6 @@ module.exports = {
             'general/role-based-guide-pci-manager',
             'general/role-based-guide-security-manager'
           ],
-        },
-        {
-          type: "category",
-          label: "Scanning your Application",
-          items: [
-            {
-              type: 'doc',
-              label: 'Scan Application with Conviso',
-              id: 'security-scans/conviso-ast/conviso-ast'
-            },
-            {
-              type: 'doc',
-              label: 'Scan Application with Conviso DAST',
-              id: 'security-scans/conviso-dast/conviso-dast'
-            },
-            {
-              type: 'doc',
-              label: 'Software Bill of Materials (SBOM)',
-              id: 'security-scans/conviso-sbom/conviso-sbom'
-            },
-            {
-              type: 'doc',
-              label: 'Scan Container with Conviso',
-              id: 'security-scans/conviso-containers/conviso-containers'
-            },
-            'security-scans/security-gate',
-          ]
         },
       ],
     },
