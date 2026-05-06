@@ -28,7 +28,7 @@ Drive AppSec program execution, balancing risk reduction, team capacity, and del
 
 ## Core workflows in Conviso
 
-- Risk ranking and insights: [Risk Score](../platform/risk-score)
+- Risk ranking and insights: [Risk and Posture Management](../posture-management/posture)
 - Governance controls: [Policies](../platform/policies)
 - Operational queue health: [Vulnerabilities](../platform/vulnerabilities)
 - Status model and closure logic: [Workflow Status](../vulnerability-management/workflow-status)
