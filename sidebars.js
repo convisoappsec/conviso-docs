@@ -125,6 +125,7 @@ module.exports = {
             'ai-capabilities/false-positive-analysis',
             'ai-capabilities/how-to-fix',
             'ai-capabilities/autofix',
+            'ai-capabilities/ai-pentest',
             'integrations/conviso-mcp-server',
             'integrations/conviso-skills',
           ],
