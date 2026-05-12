@@ -2,24 +2,26 @@
 id: program-samm
 title: Program (OWASP SAMM)
 sidebar_label: Program (SAMM)
-description: Manage AppSec programs in the Conviso Platform using OWASP SAMM v2 — charter, assessments, initiatives, roadmap, and PDF reports.
-keywords: [Program, OWASP SAMM, SAMM v2, AppSec program, maturity, charter, roadmap, risk appetite, Conviso Platform]
+description: Build, validate, and monitor your AppSec program in the Conviso Platform using OWASP SAMM v2 — charter, assessments, initiatives, automated roadmap, and executive PDF reports.
+keywords: [Program, OWASP SAMM, SAMM v2, AppSec program, maturity, charter, roadmap, risk appetite, initiatives, executive report, Conviso Platform]
 image: '/static/img/securityfeedseo.png'
 ---
 
 ## Overview
 
-The **Program** module in the Conviso Platform structures your Application Security program around **OWASP SAMM v2**. It lets teams define program scope, run maturity assessments, plan initiatives, track roadmap progress, and generate executive PDF reports.
+The **Program** module is a complete solution for the entire lifecycle of building, validating, and monitoring an Application Security program, structured around **OWASP SAMM v2**.
 
-Use it to:
+Instead of relying on static spreadsheets, it provides an automated governance environment where strategy directly drives action. By linking SAMM maturity gaps and a quantitative risk appetite to an automated roadmap, teams gain immediate visibility into critical risks and what to prioritize. As Conviso projects are associated with initiatives, the platform tracks progress and **dynamically reduces program risk**, producing ready-to-present executive reports for leadership.
 
-* declare the program **charter** (scope, current/target maturity, risk appetite, review cycle);
+Use the Program module to:
+
+* declare the program **charter** — scope, current/target maturity, risk appetite, and review cycle;
 * associate **assets** that belong to the program scope;
-* run **SAMM assessments** manually or by importing the official OWASP SAMM spreadsheet;
+* run **SAMM v2 assessments** manually (with automatic draft saving) or by importing the official OWASP SAMM spreadsheet;
 * visualize maturity through **dual radar charts** (Business Function and Practice level);
-* build a **roadmap** with gap analysis, priority, and initiative mapping;
-* track **initiatives** linked to specific SAMM practices and Conviso projects;
-* generate a **PDF program report** in English or Portuguese.
+* let the platform build an **automated roadmap** with gap analysis, priority, and initiative mapping;
+* manage **initiatives** linked to SAMM practices and Conviso projects to dynamically reduce risk;
+* generate an **executive PDF report** in English or Portuguese.
 
 ## OWASP SAMM in a Nutshell
 
@@ -30,7 +32,7 @@ OWASP SAMM (Software Assurance Maturity Model) organizes AppSec activities acros
 * **2 Streams per practice** — **Stream A** and **Stream B** measure complementary aspects of the same practice.
 * **Maturity levels 0 → 3** — each stream is scored independently and averaged.
 
-The platform follows this structure end-to-end: scoring, charts, and roadmap are all aligned to SAMM v2 practices and streams.
+The Program module follows this structure end-to-end: scoring, charts, and roadmap are all aligned to SAMM v2 practices and streams.
 
 ## Access the Feature
 
@@ -41,7 +43,7 @@ In the left-hand menu, open **Program**. The program workspace exposes the follo
 * **Assessments** — SAMM v2 maturity assessments (manual or imported).
 * **Initiatives** — practice-level improvement initiatives.
 * **Roadmap** — gap analysis and prioritized actions.
-* **Report** — PDF report generation.
+* **Report** — executive PDF report generation.
 
 <div style={{textAlign: 'center'}}>
 
@@ -49,22 +51,34 @@ In the left-hand menu, open **Program**. The program workspace exposes the follo
 
 </div>
 
+## Typical Workflow
+
+The Program module connects strategy to execution. A typical cycle:
+
+1. **Define program strategy & charter.** Set the target maturity level, choose a review cycle (e.g. every 3 months), and configure risk appetite quantitatively with the slider. This is the baseline the platform uses to flag gaps.
+2. **Establish the scope.** Associate the assets and projects that fall under this specific AppSec program — analogous to an ISO statement of applicability.
+3. **Execute or import assessments.** Fill the SAMM v2 questionnaire directly in the platform (with automatic draft saving so progress is never lost) or import an existing OWASP SAMM spreadsheet.
+4. **Let the roadmap generate itself.** When an assessment is set as the reference, the platform calculates the gap between current and target maturity and ranks practices, surfacing those that exceed the defined risk appetite as critical priorities.
+5. **Build the program through initiatives.** Create initiatives to address roadmap gaps (e.g. introducing a SAST tool, configuring pipelines). Associate real Conviso projects to prove execution — as projects are linked, the roadmap reflects the reduced risk level in real time.
+6. **Monitor and compare progress.** Compare assessments over time — practice by practice, domain by domain, or stream by stream — to validate that the program is moving in the right direction.
+7. **Share results with leadership.** Generate an asynchronous executive PDF report consolidating practices, scoped assets, and in-flight initiatives.
+
 ## Program Charter
 
-The **Charter** defines the identity and targets of your AppSec program. It is the reference for all subsequent assessments and roadmap calculations.
+The **Charter** defines the identity and targets of the AppSec program. It is the reference for every subsequent assessment and roadmap calculation.
 
 Editable fields:
 
 * **Scope** — free-text description of what the program covers (e.g. "Customer-facing web platform", "All payment-processing services").
-* **Current Maturity** — current overall maturity (0.0 – 3.0, float). Auto-suggested from the latest assessment but editable.
-* **Target Maturity** — the maturity level the program aims to reach. Displayed with SAMM level badges.
-* **Risk Appetite** — slider from `0` to `100`, mapped to a label:
+* **Current Maturity** — current overall maturity (0.0 – 3.0). Auto-suggested from the latest assessment but editable.
+* **Target Maturity** — the maturity level the program aims to reach, displayed with SAMM level badges.
+* **Risk Appetite** — quantitative slider from `0` to `100`, mapped to a label that directly drives roadmap priorities:
   * `0 – 25` → **Low**
   * `26 – 50` → **Moderate**
   * `51 – 75` → **High**
   * `76 – 100` → **Critical**
 * **Review Cycle (months)** — how often the program is reassessed.
-* **Reference Assessment** — the assessment used as the program's baseline for reporting.
+* **Reference Assessment** — the assessment used as the program's baseline for reporting and roadmap generation.
 
 <div style={{textAlign: 'center'}}>
 
@@ -74,7 +88,7 @@ Editable fields:
 
 ### Risk Appetite Slider
 
-The risk appetite slider is animated and shows the four zones (Low / Moderate / High / Critical) with color indicators. The label updates as the slider moves.
+The risk appetite slider exposes the four zones (Low / Moderate / High / Critical) with color indicators, and the label updates live as the slider moves. This value is not cosmetic — it is the threshold the platform uses to decide which gaps are surfaced as critical in the roadmap.
 
 <div style={{textAlign: 'center'}}>
 
@@ -84,7 +98,7 @@ The risk appetite slider is animated and shows the four zones (Low / Moderate / 
 
 ## Program Assets
 
-The **Assets** tab lets you associate existing platform assets with the program scope. This is what ties SAMM maturity to the actual systems being measured.
+The **Assets** tab associates existing platform assets with the program scope. This is what ties SAMM maturity to the actual systems being measured, so improvements are anchored to real software rather than abstract scores.
 
 You can:
 
@@ -101,15 +115,17 @@ For asset definitions and management outside the program context, see [Asset Man
 
 ## SAMM Assessments
 
-The **Assessments** tab is where maturity is measured. You can create assessments in two ways:
+The **Assessments** tab is where maturity is measured. Assessments can be created in two ways.
 
 ### 1. Manual Assessment
 
-Create a new assessment and answer the SAMM v2 questionnaire directly in the platform. Each of the 15 practices is split into Stream A and Stream B questions; answers feed the score calculator.
+Create a new assessment and answer the SAMM v2 questionnaire directly in the platform. Each of the 15 practices is split into Stream A and Stream B questions that feed the score calculator.
+
+The form has **automatic draft saving (state control)**, so progress is preserved across page navigation and long sessions — partial answers are never lost.
 
 ### 2. Import from Spreadsheet
 
-If you already use the official OWASP SAMM toolbox spreadsheet, import answers directly:
+If your team already uses the official OWASP SAMM toolbox spreadsheet, past executions can be imported directly without re-keying answers:
 
 1. Open the **Assessments** tab.
 2. Click **Import SAMM Spreadsheet**.
@@ -126,16 +142,24 @@ If you already use the official OWASP SAMM toolbox spreadsheet, import answers d
 
 Once created, the assessment opens with a dual-radar visualization:
 
-* **Business Function Radar** — 5-axis radar showing the average maturity for each of Governance, Design, Implementation, Verification, Operations.
+* **Business Function Radar** — 5-axis radar showing the average maturity for each of Governance, Design, Implementation, Verification, and Operations.
 * **Practice Radar** — 15-axis radar showing the average maturity for each individual practice.
 
-A scores table below the charts breaks every practice down by **Stream A** (dark bar) and **Stream B** (gold bar), making partial progress immediately visible — instead of a single number, each practice shows two mini progress bars.
+A scores table below the charts breaks every practice down by **Stream A** (dark bar) and **Stream B** (gold bar). Instead of a single number per practice, each row shows two mini progress bars, making partial progress immediately visible.
 
 <div style={{textAlign: 'center'}}>
 
 ![SAMM Assessment Panel](../../static/img/platform/program-assessment-panel.png "Dual radar (Business Function + Practice) with Stream A/B progress bars.")
 
 </div>
+
+### Comparing Assessments
+
+Assessments can be compared over time to demonstrate evolution and validate that investments are paying off. Comparisons are available at three granularities:
+
+* **Practice by practice** — drill into where a specific practice moved up or down between two assessments;
+* **Domain by domain** — compare the five Business Functions side-by-side;
+* **Stream by stream** — see whether Stream A or Stream B drove the change in a given practice.
 
 ### Viewing Answers
 
@@ -149,13 +173,14 @@ The assessment view page exposes the full answer payload, so reviewers can audit
 
 ## Initiatives
 
-**Initiatives** are improvement actions tied to a specific SAMM practice. Each initiative can be associated with one or more Conviso **projects** to drive execution.
+**Initiatives** are the actionable work items that move the program forward. Each initiative is tied to a specific SAMM practice (e.g. "Roll out SAST across customer-facing repos" under *Secure Build*) and can be associated with one or more Conviso **projects** to drive and prove execution.
 
 Key behaviors:
 
 * initiatives are created **per practice** and enforce the **Stream A** scope on creation/deletion;
 * the **Practice Initiative Card** lists initiatives grouped by practice;
-* the **Associate Project** dialog binds a Conviso project to an initiative so requirement work and vulnerability data flow into the program view.
+* the **Associate Project** dialog binds a Conviso project to an initiative, so requirement work and vulnerability data flow into the program view;
+* as projects are linked and executed, the platform **dynamically reduces the risk level** reflected in the roadmap — turning operational delivery into measurable program progress.
 
 <div style={{textAlign: 'center'}}>
 
@@ -167,14 +192,16 @@ For project workflow details, see [Projects](./projects.md) and [Project Managem
 
 ## Roadmap
 
-The **Roadmap** is generated from the reference assessment and the charter target. It identifies practices that fall **below** the target maturity and ranks them.
+The **Roadmap** is **automatically generated** from the reference assessment and the charter target — there is no manual roadmap editor. The platform identifies every practice that falls **below** the target maturity, ranks them, and uses the configured risk appetite to highlight the most critical gaps.
 
 For each practice in the gap, the roadmap shows:
 
 * **Current** vs **Target** maturity;
 * **Gap** size;
 * **Priority badge** — `Critical` / `High` / `Medium` / `Low`, derived from gap size and risk appetite;
-* **Initiatives** mapped to that practice (with associated projects).
+* **Initiatives** mapped to that practice, with their associated projects.
+
+Because the roadmap is recomputed from the reference assessment and active initiatives, the view stays in sync with the program's real state: linking projects to initiatives reduces risk immediately on screen.
 
 <div style={{textAlign: 'center'}}>
 
@@ -184,16 +211,18 @@ For each practice in the gap, the roadmap shows:
 
 ### Relative Scoring (PTT and PTD)
 
-The roadmap and report use two relative metrics:
+Two relative metrics summarize roadmap progress and are used identically by the in-platform view and the PDF report:
 
-* **PTT — Percent to Target** — how far the current maturity is from the program target.
+* **PTT — Percent to Target** — how far current maturity is from the program target.
 * **PTD — Progress to Date** — how much progress has been made from the baseline toward the target.
 
-Each metric drives a 4-segment bar with pre-computed widths so the report renders identically to the in-platform view.
+Each metric drives a 4-segment bar with pre-computed widths, so the rendered report matches the platform exactly.
 
 ## Program Report (PDF)
 
-The **Report** dialog triggers PDF generation through the `generateProgramReport` mutation. The worker:
+The **Report** dialog triggers asynchronous PDF generation through the `generateProgramReport` mutation. The output is a **complete executive report** — a single document that includes practice-level scores, the dual radars, the gap-based roadmap, the count of initiatives and scoped assets, and the program's overall posture — designed to be presented directly to leadership without further editing.
+
+The worker:
 
 1. Computes practice scores (15 practices × Stream A + B).
 2. Aggregates Business Function averages and total program maturity.
@@ -210,17 +239,6 @@ You can choose the report language: **English** or **Portuguese**.
 ![Program Report Dialog](../../static/img/platform/program-report-dialog.png "Program Report generation dialog with EN/PT language selection.")
 
 </div>
-
-## Typical Workflow
-
-1. **Create the program** and fill the **Charter** (scope, current/target maturity, risk appetite, review cycle).
-2. **Associate assets** that fall under the program scope.
-3. **Run a SAMM assessment** — manually or by importing the OWASP SAMM spreadsheet.
-4. **Set the assessment as the reference** in the charter.
-5. **Review the dual-radar** in the assessment panel to spot weak Business Functions and Practices.
-6. **Create initiatives** for each practice you want to improve, and **associate projects** to drive execution.
-7. **Open the Roadmap** to see prioritized gaps and track PTT / PTD.
-8. **Generate the PDF report** at each review cycle to share progress with leadership.
 
 ## Related Areas
 
