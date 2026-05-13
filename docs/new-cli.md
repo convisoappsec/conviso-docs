@@ -172,7 +172,10 @@ python -m conviso.app projects create \
   --name "Platform Pentest" \
   --goal "Validate critical attack paths" \
   --scope "Main platform" \
-  --type-id 1
+  --type-id 1 \
+  --start-date YYYY-MM-DD \
+  --end-date YYYY-MM-DD \
+  --assets 100,101,102
 ```
 
 Update a project:
