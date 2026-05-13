@@ -46,15 +46,7 @@ If you are unsure which region applies to your account, check the URL of your Sn
 
 ## Conviso Platform Setup
 
-The Snyk integration is configured in three steps: **Login**, **Severity Mapping**, and **Configuration**. The animation below walks through the full setup journey:
-
-<div style={{textAlign: 'center'}}>
-
-![Snyk integration journey](../../static/img/snyk-integration-journey.gif)
-
-</div>
-
-After logging into the Conviso Platform:
+The Snyk integration is configured in three steps: **Login**, **Severity Mapping**, and **Configuration**. After logging into the Conviso Platform:
 
 1. Click on **Integrations** in the side menu.
 2. Find the **Snyk** card and click **Connect**.
