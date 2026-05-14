@@ -4,116 +4,135 @@ title: Tenable
 sidebar_label: Tenable
 ---
 
-<div style={{textAlign: 'center'}}>
-
-![Step 1: Integrations page with the Tenable card visible.](../../static/img/tenable_img1_1773682648987.png)
-
-</div>
-
 :::note
 First time using Tenable? Please refer to the [following documentation](https://docs.tenable.com/).
 :::
 
 ## Introduction
 
-This integration enables the automatic import of issues (vulnerabilities) identified by Tenable into the Conviso Platform, allowing the user to leverage all the features of the Conviso Platform in managing these issues.
+This integration enables the automatic import of vulnerabilities identified by Tenable into the Conviso Platform, allowing you to manage them using all Conviso Platform features. The integration supports both **WAS (Web Application Scanning)** and **VM (Vulnerability Management)** project types from Tenable.
 
 ## Objective
 
-The objective of this guide is to explain how to configure the integration between your Tenable instance and the Conviso Platform to allow for seamless vulnerability synchronization.
+Configure the integration between your Tenable account and the Conviso Platform to synchronize vulnerabilities automatically.
 
 ## Prerequisites
 
-To integrate Tenable with the Conviso Platform, you will need the following:
-
-- **Tenable Account**: An active account with access to generate API keys.
-- **API Keys**: You must obtain an **Access Key** and a **Secret Key** from your Tenable console to authenticate the integration.
+- An active Tenable account.
+- An **Access Key** and a **Secret Key** generated from your Tenable console.
 
 ## Steps
 
-After logging into the Conviso Platform, follow these steps to establish the connection:
+### 1. Access the Integrations page
 
-1. In the sidebar menu, click **Integrations**.
-2. Use the search bar to find **Tenable**.
-3. Click the **Connect** button on the Tenable card.
-
-4. In the Credentials section, enter your **Access Key** and **Secret Key** in the respective fields.
+In the left sidebar, click **Integrations**. Use the search bar to find **Tenable** and click the **Connect** button on the Tenable card.
 
 <div style={{textAlign: 'center'}}>
 
-![Step 4: Initial configuration modal where Tenable credentials are entered.](../../static/img/tenable_img2_1773682696472.png)
+![Step 1: Integrations page with the Tenable card visible, showing the Connect button.](../../static/img/tenable_img2_tenable_card_connected.png)
 
 </div>
 
-5. Click **Continue**.
-6. On the Severity Filters screen, select which vulnerability severities you want to import from Tenable (e.g., Critical, High, Medium, Low).
+### 2. Enter your credentials
+
+On the **Credentials** step, enter your **Access Key** and **Secret Key** in the respective fields, then click **Continue**.
 
 <div style={{textAlign: 'center'}}>
 
-![Step 6: The Severity Filters screen.](../../static/img/tenable_img3_1773682760075.png)
+![Step 2: Credentials step with Access Key and Secret Key fields.](../../static/img/tenable_img8_connect_step1_credentials.png)
 
 </div>
 
-7. Click **Continue**.
+### 3. Configure Status Mapping
+
+On the **Status Mapping** step, drag Tenable statuses from the available list and drop them onto the corresponding Conviso Platform status rows to define how statuses are synchronized between the two platforms.
+
+**Sync behavior:**
+- **Conviso → Tenable:** Only the first mapped Tenable status will be applied.
+- **Tenable → Conviso:** All mapped Tenable statuses will be recognized and synced.
+
+The default mapping is:
+- **Identified** ← Open, Reopened
+- **Fixed** ← Fixed
+
+Unmapped Conviso statuses will remain unsynced. Mapping changes apply only to future synchronizations.
+
+Click **Continue** when done.
 
 <div style={{textAlign: 'center'}}>
 
-![Step 7: The configuration screen showing the Add project and Check connection buttons.](../../static/img/tenable_img4_1773682805248.png)
+![Step 3: Status Mapping step showing the drag-and-drop table with Conviso and Tenable status columns.](../../static/img/tenable_img10_step2_status_mapping.png)
 
 </div>
 
-8. You will reach the Configuration screen. At this point, the platforms are connected.
+### 4. Select Severity Filters
+
+On the **Severity Filters** step, enable the severity levels you want to import from Tenable. All levels are enabled by default: **Notification**, **Low**, **Medium**, **High**, and **Critical**.
+
+> If no severity level is selected, no data will be imported.
+
+Click **Continue**.
+
+<div style={{textAlign: 'center'}}>
+
+![Step 4: Severity Filters step with toggles for each severity level.](../../static/img/tenable_img11_step3_severity_filters.png)
+
+</div>
+
+### 5. Add projects
+
+On the **Configuration** step, add the assets you want to monitor. Tenable supports two project types:
+
+- Click **Add WAS project** to import Web Application Scanning assets.
+- Click **Add VM project** to import Vulnerability Management assets.
+
+In the modal that opens, use the **Search by name** field to find specific projects, or enable the **Import all** toggle to import all available projects. Select the desired projects and click **Add**.
+
+<div style={{textAlign: 'center'}}>
+
+![Step 5: Configuration step showing the Add WAS project and Add VM project buttons, with the imported assets table.](../../static/img/tenable_img4_configuration_step.png)
+
+</div>
+
+<div style={{textAlign: 'center'}}>
+
+![Step 5a: Add WAS project modal with project list and search field.](../../static/img/tenable_img5_add_was_modal.png)
+
+</div>
+
+<div style={{textAlign: 'center'}}>
+
+![Step 5b: Add VM project modal with project list and search field.](../../static/img/tenable_img6_add_vm_modal.png)
+
+</div>
+
+After adding projects, the import process starts automatically. Depending on the number of assets, this may take a few minutes.
 
 ## Validation
 
-To verify that the integration was configured correctly:
+To verify the integration is working correctly:
 
-1. On the Configuration screen, click the **Check connection** button.
-2. An alert message reading "Your connection with Tenable is OK!" should appear in the top right corner.
+1. On the **Configuration** step, click **Check connection**.
+2. A confirmation message should appear indicating the connection with Tenable is active.
 
-<div style={{textAlign: 'center'}}>
+## General Information on Operation
 
-![Step 2 (Validation): The configuration screen displaying the successful connection confirmation message.](../../static/img/tenable_img8_1773683025693.png)
+### Status Mapping
 
-</div>
+Status changes are bidirectional:
 
-Once validated, you can click **Add project** to start mapping your Tenable assets to your Conviso Platform projects.
+- Changes made in the Conviso Platform are immediately replicated to Tenable.
+- Changes made in Tenable are replicated to the Conviso Platform only after the next synchronization cycle.
 
-## Importing Assets
+### Sync Status
 
-To import projects from Tenable:
-
-1. Click the **Add project** button on the configuration screen.
-2. In the "Add new project" modal, use the search field to find the specific project you want to map.
-
-<div style={{textAlign: 'center'}}>
-
-![Step 2: Searching for a specific project.](../../static/img/tenable_img6_1773682860020.png)
-
-</div>
-
-3. Select the desired project from the list.
-
-<div style={{textAlign: 'center'}}>
-
-![Step 3: Selecting the project to be added.](../../static/img/tenable_img7_1773682893507.png)
-
-</div>
-
-4. Click the **Add** button to map the project.
-
-<div style={{textAlign: 'center'}}>
-
-![Step 4: The final view of the modal with the project selected.](../../static/img/tenable_img5_1773682829883.png)
-
-</div>
-
-After this, the import process will be initiated.
+The assets table on the Configuration step displays each imported asset with its **Sync Status** (e.g., Pending, Synced, Error). Use this table to monitor the synchronization state of each asset.
 
 ## Troubleshooting
 
-- **Connection Error**: If clicking "Check connection" results in an error, verify that the Access Key and Secret Key were copied correctly and and that they have the appropriate permissions within Tenable.
-- **No Data Available**: If projects do not appear when attempting to add them, ensure the API keys have visibility over the relevant projects/assets in Tenable.
+- **Invalid credentials error:** Verify that the Access Key and Secret Key were copied correctly from your Tenable console and that the associated user has the required permissions.
+- **No projects available:** Ensure the API keys have visibility over the relevant projects in Tenable. Check that the correct Tenable module (WAS or VM) is licensed and accessible.
+- **Assets stuck in Pending:** The first synchronization may take several minutes. If the status does not change after a long period, click **Check connection** to verify the integration is still active.
 
 ## Support
 
