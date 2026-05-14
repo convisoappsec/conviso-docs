@@ -61,6 +61,8 @@ The platform validates the API key against Snyk. If the key is invalid or the re
 
 If a Snyk integration already exists for this company, the Login step shows the message _"You already have a Snyk integration configured. Update the fields to replace it."_ Submitting will replace the stored credentials.
 
+![Snyk integration — Login step](/img/snyk/01-login.png)
+
 ### Step 2 — Severity Mapping
 
 In this step you choose which severities to import from Snyk into Conviso Platform.
@@ -70,6 +72,8 @@ Available severities: **Low**, **Medium**, **High**, **Critical**.
 Select the severities you want to track and click **Continue**. The platform persists the integration (creating the record on first save) and shows a success toast: _"Integration created successfully"_ or _"Integration updated successfully"_.
 
 You can return to this step at any time from the Settings page of the Snyk integration to adjust the severity filter.
+
+![Snyk integration — Severity Mapping step](/img/snyk/02-severity.png)
 
 ### Step 3 — Configuration
 
@@ -84,6 +88,8 @@ From this screen you can:
 
 The table shows all assets linked to Snyk targets, with columns for **Asset**, **Created at**, and **Sync Status** (`Succeeded`, `Pending`, or `Failed`).
 
+![Snyk integration — Configuration step](/img/snyk/03-configuration.png)
+
 ## Importing Projects from Snyk
 
 To link Snyk targets to Conviso Platform assets:
@@ -92,6 +98,8 @@ To link Snyk targets to Conviso Platform assets:
 2. In the dialog, select a Snyk **Organization** from the dropdown. The list is loaded directly from Snyk.
 3. Optionally, search by project name to filter the list.
 4. Select one or more projects using the checkboxes, then click **Add**. Or click **Add all** to import every project in the selected organization (the import runs page-by-page in the background).
+
+![Snyk integration — Add Project dialog](/img/snyk/04-add-project.png)
 
 The import runs **asynchronously** in the background. You will see the toast: _"Your configurations are saving. This process is asynchronous."_
 
