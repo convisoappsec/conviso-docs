@@ -6,7 +6,7 @@ sidebar_label: Snyk
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/integration_snyk.png)
+<img src="/img/integration_snyk.png" alt="Snyk logo" style={{maxWidth: '200px'}} />
 
 </div>
 
@@ -28,8 +28,6 @@ To integrate Snyk with the Conviso Platform, you will need:
 
 - A Snyk **Service Account API token** with permission to read organizations, targets, projects, and to manage issue ignores.
 - Knowledge of the Snyk **region** your account belongs to (US-1, US-2, EU-1, or AU-1).
-
-The integration uses the Snyk REST API version `2024-10-15` and the legacy `v1` endpoints for ignore management.
 
 ## Supported Snyk regions
 
@@ -59,7 +57,7 @@ You will be taken to the Snyk integration page, starting on the **Login** step.
 2. Select your Snyk **Region** from the dropdown (US-1, US-2, EU-1, AU-1).
 3. Click **Continue**.
 
-The platform validates the API key by calling Snyk's `rest/self` endpoint. If the key is invalid or the region is wrong, the form will not advance.
+The platform validates the API key against Snyk. If the key is invalid or the region is wrong, the form will not advance.
 
 If a Snyk integration already exists for this company, the Login step shows the message _"You already have a Snyk integration configured. Update the fields to replace it."_ Submitting will replace the stored credentials.
 
@@ -95,15 +93,15 @@ To link Snyk targets to Conviso Platform assets:
 3. Optionally, search by project name to filter the list.
 4. Select one or more projects using the checkboxes, then click **Add**. Or click **Add all** to import every project in the selected organization (the import runs page-by-page in the background).
 
-The import runs **asynchronously** via a Kafka background job (`IMPORT_EXTERNAL_PROJECTS`). You will see the toast: _"Your configurations are saving. This process is asynchronous."_
+The import runs **asynchronously** in the background. You will see the toast: _"Your configurations are saving. This process is asynchronous."_
 
-For each Snyk target, the platform:
+For each Snyk project, the platform:
 
-- Creates (or finds) a Conviso Asset with the target's name.
-- Stores an `ImportedScan` record using the composite reference `{organization_id}#{target_id}`.
+- Creates (or finds) a Conviso Asset matching the project's name.
+- Links it to the corresponding Snyk project.
 - Immediately triggers a sync to fetch issues from Snyk.
 
-The imported assets appear in the Configuration table as soon as the job processes them.
+The imported assets appear in the Configuration table as soon as the background job processes them.
 
 ## General Information on Operation
 
@@ -141,11 +139,11 @@ The modifications are bidirectional: changes made in Conviso Platform are pushed
 
 ### Synchronization
 
-A synchronization fetches the current set of issues from Snyk for an associated target and applies them to the Conviso Asset.
+A synchronization fetches the current set of issues from Snyk for a linked project and applies them to the Conviso Asset.
 
 A sync is triggered automatically when:
 
-- A new target is imported via **Add Project**.
+- A new project is imported via **Add Project**.
 - A user clicks the **Sync** button on the asset's integration modal.
 - An external trigger (CI/CD pipeline) calls the `syncAsset` mutation — see [Pipeline integration](#pipeline-integration).
 
@@ -156,6 +154,52 @@ To start a manual synchronization from the UI:
 3. In the modal, find the Snyk row and click **Sync**.
 
 The modal shows the time of the last sync, a progress bar while a sync is in progress, the current status, and any failure reason. A new sync can only be started after the previous one has finished.
+
+#### Sync flow
+
+A sync is a one-way pull from Snyk into Conviso Platform: the trigger (UI, import, or `syncAsset` mutation) starts an asynchronous job that fetches the current issues for the linked Snyk project and updates the Conviso Asset.
+
+```text
+        ┌────────────────────────────────────────┐
+        │  Trigger                               │
+        │  • Add Project (auto on import)        │
+        │  • Manual "Sync" button (UI)           │
+        │  • syncAsset mutation (CI/CD pipeline) │
+        └──────────────────┬─────────────────────┘
+                           │ enqueues sync job
+                           ▼
+        ┌────────────────────────────────────────┐
+        │  Conviso Platform — Sync worker        │
+        │  status: Pending                       │
+        └──────────────────┬─────────────────────┘
+                           │ fetch issues
+                           ▼
+        ┌────────────────────────────────────────┐
+        │  Snyk (linked project)                 │
+        │  returns current issues + ignores      │
+        └──────────────────┬─────────────────────┘
+                           │ map severities & statuses
+                           ▼
+        ┌────────────────────────────────────────┐
+        │  Conviso Asset                         │
+        │  • SCA findings created / updated      │
+        │  • status reflects Snyk state          │
+        │  status: Succeeded (or Failed)         │
+        └────────────────────────────────────────┘
+```
+
+Status changes made in Conviso Platform are pushed back to Snyk **immediately** (ignore / unignore), independently of this sync — they do not wait for the next pull.
+
+```text
+   Conviso Platform                                       Snyk
+   ────────────────                                       ────
+   False positive / Risk accepted / Identified
+                  │
+                  │  (immediate, per-finding)
+                  ▼
+            ignore / unignore  ──────────────────────►  Snyk issue
+                                                         updated
+```
 
 ### Pipeline integration
 
@@ -175,12 +219,12 @@ mutation SyncSnyk($assetId: ID!) {
 
 Variables:
 
-- `assetId` — the Conviso Platform Asset ID linked to the Snyk target.
+- `assetId` — the Conviso Platform Asset ID linked to the Snyk project.
 - `integration` — must be `SNYK`.
 
-The mutation publishes a message to the `asset-integration-sync` Kafka topic; the downstream consumer fetches issues from Snyk and updates the asset.
+The mutation enqueues an asynchronous sync (same flow as the **Sync** button) and returns immediately. The updated issues appear on the asset once the job completes.
 
-Pre-requisite: the asset must already be linked to a Snyk target via the **Add Project** flow described above. `syncAsset` does not create the association.
+Pre-requisite: the asset must already be linked to a Snyk project via the **Add Project** flow described above. `syncAsset` does not create the association.
 
 ## How to get the necessary information for the integration
 
@@ -204,5 +248,5 @@ Inspect the URL of the Snyk web console:
 
 - **"Check connection" fails after configuration.** The API token is invalid, expired, or does not have access to the region selected. Regenerate the token in Snyk and re-run Step 1.
 - **Add Project shows no organizations.** The token has no access to any Snyk organizations, or the wrong region was selected. Verify the token in Snyk and reconfigure.
-- **Sync status stays as Pending.** The Kafka consumer may be delayed. If the status does not progress after a few minutes, check the asset's integration modal for a failure reason and contact support.
+- **Sync status stays as Pending.** Background processing may be delayed. If the status does not progress after a few minutes, check the asset's integration modal for a failure reason and contact support.
 - **Issues are missing after import.** Confirm that the relevant severities are enabled in the **Severity Mapping** step. Severities outside the enabled set are not imported.
