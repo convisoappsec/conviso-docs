@@ -180,6 +180,7 @@ module.exports = {
           type: "category",
           label: "Integrations",
           items: [
+            'integrations/integrations_intro',
             {
               type: "category",
               label: "Authentication/SSO",
@@ -255,6 +256,7 @@ module.exports = {
                 'integrations/github-advanced-security',
                 'integrations/sonarcloud',
                 'integrations/sonarqube',
+                'integrations/tenable',
                 'integrations/mobsf',
               ]
             },
