@@ -145,6 +145,7 @@ module.exports = {
             'platform/notifications-center',
             'platform/policies',
             'platform/threat-modeling',
+            'platform/program-samm',
             'platform/user-management',
             'platform/credentials',
             'platform/dark-mode',
