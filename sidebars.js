@@ -254,6 +254,7 @@ module.exports = {
                 'integrations/dependency-track',
                 'integrations/fortify',
                 'integrations/github-advanced-security',
+                'integrations/snyk',
                 'integrations/sonarcloud',
                 'integrations/sonarqube',
                 'integrations/mobsf',
