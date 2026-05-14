@@ -256,6 +256,7 @@ module.exports = {
                 'integrations/github-advanced-security',
                 'integrations/sonarcloud',
                 'integrations/sonarqube',
+                'integrations/tenable',
                 'integrations/mobsf',
               ]
             },
