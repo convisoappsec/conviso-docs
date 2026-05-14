@@ -56,40 +56,55 @@ Turn large volumes of security data into clear, usable information for both tech
 
 ## Navigate the documentation
 
-Explore the main areas below to learn how to use the platform, set up scanning, connect integrations, and work with the API.
+Explore the main areas below according to the current documentation structure.
 
 <div className="landing-grid">
-  <a className="landing-card" href="./platform/appsec-ai-agent">
+  <a className="landing-card" href="./posture-management/posture">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 4v5c0 5-3.5 8.5-7 9.5C8.5 20.5 5 17 5 12V7l7-4zM9.5 12.5l1.8 1.8L14.5 11" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7.5 4.5v5.25c0 4.142-2.72 7.964-7.5 9.75-4.78-1.786-7.5-5.608-7.5-9.75V7.5L12 3z" />
         </svg>
       </span>
-      <div className="landing-card__title">AppSec AI Agent</div>
+      <div className="landing-card__title">Risk and Posture Management</div>
     </div>
     <div className="landing-card__body">
-      Explore the AI Agent capabilities, workflows, and how to use them in the platform.
+      Understand risk score, posture indicators, contextual prioritization, and the dashboard views used to guide remediation.
     </div>
-    <div className="landing-card__cta">Open AI Agent docs</div>
+    <div className="landing-card__cta">Open posture workflows</div>
   </a>
 
-  <a className="landing-card" href="./platform/asset-management">
+  <a className="landing-card" href="./vulnerability-management/workflow-status">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 4.5h12M6 9h12M6 13.5h8M6 18h8M17 13l2.5 2.5L22 13" />
         </svg>
       </span>
-      <div className="landing-card__title">Platform User Guide</div>
+      <div className="landing-card__title">Vulnerability Management</div>
     </div>
     <div className="landing-card__body">
-      Learn the core features, navigation, and day-to-day workflows inside the platform.
+      Learn the vulnerability lifecycle, status definitions, and the operational process for triage, remediation, and validation.
     </div>
-    <div className="landing-card__cta">Open platform docs</div>
+    <div className="landing-card__cta">Open vulnerability workflows</div>
   </a>
 
-  <a className="landing-card" href="./security-scans/conviso-ast">
+  <a className="landing-card" href="./project-management/process">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M7 4v6m10-6v6M6 20h12a2 2 0 002-2V8H4v10a2 2 0 002 2z" />
+        </svg>
+      </span>
+      <div className="landing-card__title">Project Management</div>
+    </div>
+    <div className="landing-card__body">
+      Follow project statuses, execution flow, requirements, and project-level coordination in the platform.
+    </div>
+    <div className="landing-card__cta">Open project workflows</div>
+  </a>
+
+  <a className="landing-card" href="./security-scans/conviso-ast/conviso-ast">
     <div className="landing-card__heading">
       <span className="landing-card__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -99,9 +114,54 @@ Explore the main areas below to learn how to use the platform, set up scanning, 
       <div className="landing-card__title">Scanning your Application</div>
     </div>
     <div className="landing-card__body">
-      Install the CLI, run AST/DAST/SBOM scans, and enforce Security Gate checks.
+      Run AST, DAST, SBOM, container, pull request, and Security Gate workflows across your delivery pipeline.
     </div>
-    <div className="landing-card__cta">Start scanning</div>
+    <div className="landing-card__cta">Open scanning guides</div>
+  </a>
+
+  <a className="landing-card" href="./platform/appsec-ai-agent">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 4v5c0 5-3.5 8.5-7 9.5C8.5 20.5 5 17 5 12V7l7-4zM9.5 12.5l1.8 1.8L14.5 11" />
+        </svg>
+      </span>
+      <div className="landing-card__title">AI Capabilities</div>
+    </div>
+    <div className="landing-card__body">
+      Explore AI-driven workflows such as false positive analysis, how-to-fix guidance, autofix, MCP server, and skills.
+    </div>
+    <div className="landing-card__cta">Open AI capabilities</div>
+  </a>
+
+  <a className="landing-card" href="./platform/security-feed">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />
+        </svg>
+      </span>
+      <div className="landing-card__title">Platform User Guide</div>
+    </div>
+    <div className="landing-card__body">
+      Learn where to access features, what each screen does, and how the main platform areas are organized.
+    </div>
+    <div className="landing-card__cta">Open platform guide</div>
+  </a>
+
+  <a className="landing-card" href="./general/role-based-guide-devsecops">
+    <div className="landing-card__heading">
+      <span className="landing-card__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M10 7a4 4 0 100-8 4 4 0 000 8zm10 14v-2a4 4 0 00-3-3.87M15 3.13a4 4 0 010 7.75" />
+        </svg>
+      </span>
+      <div className="landing-card__title">Guides and Operations</div>
+    </div>
+    <div className="landing-card__body">
+      Use the role-based guides to follow practical paths for developers, AppSec, DevSecOps, managers, and PCI-focused teams.
+    </div>
+    <div className="landing-card__cta">Open role-based guides</div>
   </a>
 
   <a className="landing-card" href="./integrations/integrations_intro">
@@ -111,12 +171,12 @@ Explore the main areas below to learn how to use the platform, set up scanning, 
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 21h6m-6 0v-3m6 3v-3M6 7.5V6a6 6 0 1112 0v1.5M9 18h6a3 3 0 003-3V9a3 3 0 00-3-3H9a3 3 0 00-3 3v6a3 3 0 003 3z" />
         </svg>
       </span>
-      <div className="landing-card__title">Integrations</div>
+      <div className="landing-card__title">Integration and Automations</div>
     </div>
     <div className="landing-card__body">
-      Connect CI/CD, defect tracking, notifications, SSO, and security scanners.
+      Connect integrations, use the CLI, automate workflows, and extend the platform through API-based operations.
     </div>
-    <div className="landing-card__cta">Browse integrations</div>
+    <div className="landing-card__cta">Open integrations and automation</div>
   </a>
 
   <a className="landing-card" href="./api/api-overview">
@@ -132,21 +192,6 @@ Explore the main areas below to learn how to use the platform, set up scanning, 
       Use the GraphQL API to automate and extend platform workflows.
     </div>
     <div className="landing-card__cta">Go to API docs</div>
-  </a>
-
-  <a className="landing-card" href="./new-cli">
-    <div className="landing-card__heading">
-      <span className="landing-card__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 8l4 4-4 4M12 16h6" />
-        </svg>
-      </span>
-      <div className="landing-card__title">New CLI</div>
-    </div>
-    <div className="landing-card__body">
-      Learn the new CLI commands, bulk operations, and SBOM tooling.
-    </div>
-    <div className="landing-card__cta">Open New CLI</div>
   </a>
 </div>
 

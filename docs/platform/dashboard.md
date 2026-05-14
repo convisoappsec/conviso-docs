@@ -2,111 +2,54 @@
 id: dashboard
 title: Dashboard
 sidebar_label: Dashboard
-description: By utilizing the Dashboard of the Conviso Platform, you gain control and visibility over all your company's metrics, with graphs that help you understand the evolution of your AppSec Posture and Metrics.
-keywords: [Dashboard, Conviso Platform, metrics, application security, overall risk score, mttr, proactive risk management, mean time to resolve]
+description: Learn where to access the dashboards in the Conviso Platform, how to use the filters, and where to find each dashboard view.
+keywords: [Dashboard, Conviso Platform, metrics, filters, AppSec Posture, ASPM Coverage]
 image: '/static/img/securityfeedseo.png'
 
 ---
-## Introduction
+## Overview
 
-By utilizing the Dashboard, you gain control and visibility over all your company's metrics, with graphs that help you understand the evolution of your AppSec Posture and Metrics.
+The **Dashboard** area gives you access to visual metrics that help you monitor posture, vulnerability trends, developer engagement, and coverage.
 
 ## Usage
 In the left menu, click on **Dashboard**:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/dashboard-img1.png "Dashboard.")
+![Dashboard](../../static/img/platform/dashboard-usage.png "Dashboard.")
 
 </div>
 
-By default, the dashboards are filtered to show the last 30 days. You can change this to any date range you prefer. You can also filter the dashboard information by assets, vulnerability statuses, vulnerability severities and asset tags.
+## Available Dashboards
 
-There are four different types of dashboards available:
-1. AppSec Posture;
-2. AppSec KPIs;
-3. Security Champions Metrics.
+The platform currently provides four dashboard views:
 
-## AppSec Posture
+1. [Risk and Posture Management](../posture-management/posture.md)
+2. [Vulnerability KPI](../posture-management/vulnerability-kpi.md)
+3. [Security Champions Metrics](../posture-management/security-champions-metrics.md)
+4. [ASPM Coverage](../posture-management/aspm-coverage.md)
 
-The AppSec Posture Dashboard presents four key metrics:
-1. Overall Risk Score: The Overall Risk Score of your application;
-2. Risk Score over time: See how your Risk Score has been changing over time;
-3. Mean Time to Resolve (MTTR): Time taken to identify, diagnose, and resolve vulnerabilities affecting your asset;
-4. Mean Time to Resolve (MTTR) Over Time: Time taken to identify, diagnose, and resolve vulnerabilities affecting your asset, displayed over a timeline.
+Use these pages when you need detailed guidance about what each dashboard shows and how to interpret the charts.
+
+## Filters
+
+By default, dashboards are filtered to show the last 30 days. You can refine the view using:
+
+* date range;
+* assets;
+* vulnerability status;
+* severity;
+* asset tags.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/platform/dashboard-img2.png "AppSec Posture.")
+![Dashboard Filters](../../static/img/platform/dashboard-filter.png "Dashboard filters.")
 
 </div>
 
-## AppSec KPI
+These filters are applied across the selected dashboard and help you focus the analysis on a specific time window, asset group, severity range, or workflow state.
 
-The AppSec KPIs Dashboard shows six key metrics:
-1. Open vulnerabilities: Vulnerabilities with status of Identified, In Progress and Awaiting Validation;
-2. Fixed vulnerabilities: Vulnerabilities with the current status at Fixed;
-3. Vulnerabilities Over Time by Status: See how your application vulnerabilities change over time. This show all your existing vulnerabilities;
-4. Vulnerabilities Over Time by Severity: See how your application vulnerabilities change over time. This shows all your existing vulnerabilities;
-5. Vulnerability by Severity: Check how your vulnerabilities are distributed by its severity;
-6. Project by status: Check your projects grouped by status.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/platform/dashboard-img3.png "AppSec KPI.")
-
-</div>
-
-## Security Champions Metrics
-
-The Security Champions Metrics Dashboard presents six key metrics:
-1. Cost savings from Secure Code suggestions: Estimated financial savings resulting from vulnerabilities that were prevented through Secure Code Mentor.
-2. Prevented Vulnerabilities Over Time: Number of vulnerabilities prevented per day.
-3. Prevented Vulnerabilities: Total vulnerabilities prevented based on suggestions provided by our Addon.
-4. Developers Engagement: Total code improvement suggestions provided by Secure Code.
-5. Top 3 Users: Developers who most frequently use plugin to request code security improvements.
-6. Top 5 Prevented Vulnerabilities: Most frequently identified vulnerability types during the coding stage.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/platform/dashboard-img4.png "Secure Code Metrics.")
-
-</div>
-
-### Cost savings from Secure Code suggestions
-
-This metric estimates the financial savings generated by preventing vulnerabilities before they are introduced into the codebase. The calculation is based on the following formula:
-
-```
-AVOIDED_COST = PREVENTED_VULNERABILITIES × HOURS_PER_VULNERABILITY × HOURLY_RATE
-```
-
-- PREVENTED_VULNERABILITIES: Estimated number of vulnerabilities that were avoided thanks to secure development practices.
-- HOURS_PER_VULNERABILITY: Average time required to investigate, fix, and validate a vulnerability (e.g., 6 hours).
-- HOURLY_RATE: Average cost per developer hour (e.g., USD 40).
-
-Example: If 250 vulnerabilities were prevented, each requiring 6 hours to fix at USD 40/hour, then:
-
-```
-AVOIDED_COST = 250 × 6 × 40 = USD 60,000
-```
-
-This value represents the amount of money the organization saved by not having to fix vulnerabilities that were proactively prevented.
-
-How this helps:
-
-- Demonstrates the financial impact of secure development initiatives.
-- Supports investment decisions in AppSec tooling, training, and process improvements.
-- Helps communicate the value of prevention to stakeholders and leadership teams.
-- Aids in prioritization of security efforts based on return on investment.
-
-<div style={{textAlign:'center'}}>
-
-![img](../../static/img/estimated-savings-with-secure-code-mentor.gif)
-
-</div>
-
-**Enhance your development lifecycle's security with the Conviso Platform. Join us today and foster a security-first culture!**
+For vulnerability status definitions used in dashboard filters and charts, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 ## Support
 

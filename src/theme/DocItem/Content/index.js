@@ -6,7 +6,12 @@ import ContributionCTA from "@site/src/components/ContributionCTA/ContributionCT
 import ResourcesFooter from "@site/src/components/ResourcesFooter/ResourcesFooter";
 
 export default function DocItemContent(props) {
-  const { metadata } = useDoc();
+  let metadata = null;
+  try {
+    metadata = useDoc()?.metadata ?? null;
+  } catch (error) {
+    metadata = null;
+  }
   const { pathname } = useLocation();
   const hideExtras =
     metadata?.unversionedId === "index" ||

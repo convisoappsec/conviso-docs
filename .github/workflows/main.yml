@@ -6,15 +6,16 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: Build and Sync with S3
         uses: ./.github/actions/s3-sync
-        with:
-          node-version: '16'
         env:
           AWS_DEFAULT_REGION: "us-west-2"
           AWS_S3_BUCKET: "appsec-flow-docs"

@@ -130,10 +130,10 @@ Triggered when a new asset is created in the platform.
 Triggered when a new project is created.
 
 **Project Changed Status**
-Triggered when a project’s status changes.
+Triggered when a project’s status changes. For project status definitions, see [Workflow Status](../project-management/workflow-status.md).
 
 **Project Requirement Status Changed**
-Triggered when the status of a project requirement is updated.
+Triggered when the status of a project requirement is updated. For the project execution flow, see [Process](../project-management/process.md).
 
 ### Risk Acceptance
 
@@ -146,10 +146,10 @@ Sent seven days before a risk acceptance expires.
 ### Vulnerabilities
 
 **Vulnerability Daily Digest**
-A daily summary of vulnerabilities whose status changed on the previous day.
+A daily summary of vulnerabilities whose status changed on the previous day. For the meaning of each status, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 **Vulnerability Status Changed to Risk Accepted**
-Triggered when a vulnerability’s status is changed to Risk Accepted.
+Triggered when a vulnerability’s status is changed to Risk Accepted. For the status model used in the platform, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 ## Managing Your Notification Preferences
 
@@ -175,5 +175,3 @@ Notification settings are configured per user
 ## Support
 
 Should you have any questions or require assistance while using the Conviso Platform, feel free to reach out to our dedicated support team.
-
-

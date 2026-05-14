@@ -101,6 +101,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 **Step 10 -** Consider the following in order to map Conviso Platform statuses to BusinessMap statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to BusinessMap, while **other fields (2)** are optional. After mapping all the statuses, click on the **Save button (3)**.
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 ![img](../../static/img/businessmap-img9-a.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
 **Step 11** - After saving your integration configuration, you may want to review, modify, or delete it from Conviso Platform. To do so, at your integration configuration panel, choose the **Edit** icon to review or change it; if you want to completely delete it, use the **Trash** icon at its right.
@@ -119,6 +121,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 ![img](../../static/img/businessmap-img8-b.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
 **Step 10 -** Consider the following in order to map Conviso Platform statuses to BusinessMap statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to BusinessMap, while **other fields (2)** are optional. After mapping all the statuses, click on the** Save button (3)**:
+
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
 ![img](../../static/img/businessmap-img9-b.png  'A screenshot of a Conviso Platform screen for integration with BusinessMap.')
 
@@ -153,6 +157,44 @@ In the Webhook URL field, paste the URL copied in the previous step.
 ![BusinessMap Webhook Integration Step 3](../../static/img/businessmap-img13.png)
 
 **Note:** Remember to click "Save" after configuring the integration in BusinessMap.
+
+## Recent Deliveries
+
+The Recent Deliveries feature provides a detailed log of the interactions between Conviso Platform and BusinessMap. This allows users to monitor the status of data transfers and identify any potential issues in the integration process.
+
+To access and navigate the Recent Deliveries page, follow these steps:
+
+**Step 1** - In the integration configuration panel for BusinessMap, locate and click the **Recent Deliveries** button:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/businessmap/businessmap-recent-deliveries-button.png 'Step 1: Locate the Recent Deliveries button in the configuration step.')
+
+</div>
+
+**Step 2** - You will be directed to the Recent Deliveries page, which displays a table with the following columns:
+
+- **Date**: The timestamp of the delivery attempt.
+- **Level**: The severity level of the log entry (**info**, **error**, or **warn**).
+- **Message**: A detailed description of the communication or event.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/businessmap/businessmap-recent-deliveries-page.png 'Step 2: View the Recent Deliveries log table.')
+
+</div>
+
+**Step 3** - Use the available filters to refine the log list:
+
+- **Date Range**: Filter logs by a specific time period.
+- **Level**: Filter by log severity (Info, Warning, or Error).
+- **Search Box**: Enter text or keywords to search for specific messages.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/businessmap/businessmap-recent-deliveries-filters.png 'Step 3: Apply filters or use the search box to find specific log entries.')
+
+</div>
 
 ## Support
 

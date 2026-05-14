@@ -129,6 +129,8 @@ Before starting the integration in Conviso Platform, you need to configure an OA
    - **Risk Accepted** → Map to a closed status (e.g., "Closed Complete")
    - **False positive** → Map to a closed incomplete status (e.g., "Closed Incomplete")
 
+   For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 4. **Severity Mapping**: Configure how vulnerability severities map to ServiceNow priorities. ServiceNow has its own built-in rule for calculating priority based on **Impact** and **Urgency** values. When you select a severity (e.g., "Critical"), the system automatically saves the corresponding Impact and Urgency values so that ServiceNow calculates the priority correctly:
    - **Critical**: Impact 1, Urgency 1
    - **High**: Impact 1, Urgency 2
@@ -172,6 +174,44 @@ Once everything is configured, click **Save**:
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/servicenow/servicenow-img8.png  'ServiceNow check connection')
+
+</div>
+
+## Recent Deliveries
+
+The Recent Deliveries feature provides a detailed log of the interactions between Conviso Platform and ServiceNow. This allows users to monitor the status of data transfers and identify any potential issues in the integration process.
+
+To access and navigate the Recent Deliveries page, follow these steps:
+
+**Step 1** - In the integration configuration panel for ServiceNow, locate and click the **Recent Deliveries** button:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/servicenow/servicenow-recent-deliveries-button.png 'Step 1: Locate the Recent Deliveries button in the configuration step.')
+
+</div>
+
+**Step 2** - You will be directed to the Recent Deliveries page, which displays a table with the following columns:
+
+- **Date**: The timestamp of the delivery attempt.
+- **Level**: The severity level of the log entry (**info**, **error**, or **warn**).
+- **Message**: A detailed description of the communication or event.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/servicenow/servicenow-recent-deliveries-page.png 'Step 2: View the Recent Deliveries log table.')
+
+</div>
+
+**Step 3** - Use the available filters to refine the log list:
+
+- **Date Range**: Filter logs by a specific time period.
+- **Level**: Filter by log severity (Info, Warning, or Error).
+- **Search Box**: Enter text or keywords to search for specific messages.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/servicenow/servicenow-recent-deliveries-filters.png 'Step 3: Apply filters or use the search box to find specific log entries.')
 
 </div>
 

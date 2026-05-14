@@ -29,79 +29,156 @@ module.exports = {
   docs: [
     'index',
     {
-      type: 'doc',
-      id: 'platform/appsec-ai-agent',
-      label: 'AI Capabilities',
-    },
-    {
       type: "category",
-      label: "Role-Based Guides",
+      label: "Core Workflows",
+      collapsible: false,
       items: [
-        'general/role-based-guide-devsecops',
-        'general/role-based-guide-developer',
-        'general/role-based-guide-penetration-tester',
-        'general/role-based-guide-appsec-engineer',
-        'general/role-based-guide-appsec-manager',
-        'general/role-based-guide-security-manager'
-      ],
-    },
-    {
-      type: "category",
-      label: "Platform User Guide",
-      items: [
-        'platform/asset-management',
-        'platform/credentials',
-        'platform/dark-mode',
-        'platform/dashboard',
-        'platform/notifications-center',
-        'platform/policies',
-        'platform/projects',
-        'platform/requirements',
-        'platform/risk-context-funnel',
-        'platform/risk-score',
-        'platform/sbom-management',
-        'platform/security-feed',
-        'platform/security-gate',
-        'platform/threat-modeling',
-        'platform/user-management',
-        'platform/vulnerabilities'
-      ],
-    },
-    {
-      type: "category",
-      label: "Scanning your Application",
-      items: [
-        {
-          type: 'doc',
-          label: 'Scan Application with Conviso',
-          id: 'security-scans/conviso-ast/conviso-ast'
-        },
-        {
-          type: 'doc',
-          label: 'Scan Application with Conviso DAST',
-          id: 'security-scans/conviso-dast/conviso-dast'
-        },
-        {
-          type: 'doc',
-          label: 'Software Bill of Materials (SBOM)',
-          id: 'security-scans/conviso-sbom/conviso-sbom'
-        },
-        {
-          type: 'doc',
-          label: 'Scan Container with Conviso',
-          id: 'security-scans/conviso-containers/conviso-containers'
-        },
-        'security-scans/security-gate',
-      ]
-    },
-    {
-      type: "category",
-      label: "Integrations",
-      items: [
-        'integrations/integrations_intro',
         {
           type: "category",
-          label: "Authentication/SSO",
+          label: "Posture Management",
+          collapsed: true,
+          items: [
+            'posture-management/posture',
+            'posture-management/vulnerability-kpi',
+            'posture-management/security-champions-metrics',
+            'posture-management/aspm-coverage',
+          ],
+        },
+        {
+          type: "category",
+          label: "Vulnerability Management",
+          collapsed: true,
+          items: [
+            'vulnerability-management/workflow-status',
+            'vulnerability-management/process',
+          ],
+        },
+        {
+          type: "category",
+          label: "Project Management",
+          collapsed: true,
+          items: [
+            'project-management/workflow-status',
+            'project-management/process',
+          ],
+        },
+        {
+          type: "category",
+          label: "Threat Modeling",
+          collapsed: true,
+          items: [
+            'threat-modeling/management-threat-modeling-artifacts',
+            'threat-modeling/create-threat-modeling',
+            'threat-modeling/threat-modeling-artefact',
+            'threat-modeling/create-a-new-threat-modeling-artifact',
+            'threat-modeling/management-projects-with-requirements-based-in-tm',
+          ],
+        },
+        {
+          type: "category",
+          label: "Scanning your Application",
+          collapsed: true,
+          items: [
+            {
+              type: 'doc',
+              label: 'Scan Application with Conviso',
+              id: 'security-scans/conviso-ast/conviso-ast'
+            },
+            {
+              type: 'doc',
+              label: 'Scan Application with Conviso DAST',
+              id: 'security-scans/conviso-dast/conviso-dast'
+            },
+            {
+              type: 'doc',
+              label: 'Software Bill of Materials (SBOM)',
+              id: 'security-scans/conviso-sbom/conviso-sbom'
+            },
+            {
+              type: 'doc',
+              label: 'Scan Container with Conviso',
+              id: 'security-scans/conviso-containers/conviso-containers'
+            },
+            {
+              type: 'doc',
+              label: 'Pull Request Scanning',
+              id: 'security-scans/pull-requests/pull-requests'
+            },
+            'security-scans/security-gate',
+          ]
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Platform Features",
+      items: [
+        {
+          type: "category",
+          label: "AI Capabilities",
+          link: {
+            type: "doc",
+            id: "platform/appsec-ai-agent",
+          },
+          collapsed: true,
+          items: [
+            'ai-capabilities/false-positive-analysis',
+            'ai-capabilities/how-to-fix',
+            'ai-capabilities/autofix',
+            'ai-capabilities/ai-pentest',
+            'integrations/conviso-mcp-server',
+            'integrations/conviso-skills',
+          ],
+        },
+        {
+          type: "category",
+          label: "Platform User Guide",
+          items: [
+            'platform/security-feed',
+            'platform/dashboard',
+            'platform/vulnerabilities',
+            'platform/projects',
+            'platform/requirements',
+            'platform/security-gate',
+            'platform/asset-management',
+            'platform/sbom-management',
+            'platform/notifications-center',
+            'platform/policies',
+            'platform/threat-modeling',
+            'platform/user-management',
+            'platform/credentials',
+            'platform/dark-mode',
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Guides and Operations",
+      items: [
+        {
+          type: "category",
+          label: "Role-Based Guides",
+          items: [
+            'general/role-based-guide-devsecops',
+            'general/role-based-guide-developer',
+            'general/role-based-guide-penetration-tester',
+            'general/role-based-guide-appsec-engineer',
+            'general/role-based-guide-appsec-manager',
+            'general/role-based-guide-pci-manager',
+            'general/role-based-guide-security-manager'
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Integration and Automations",
+      items: [
+        'new-cli',
+        {
+          type: "category",
+          label: "Integrations",
           items: [
             'integrations/google',
             'integrations/microsoft-entra-id',
@@ -185,25 +262,123 @@ module.exports = {
             'integrations/azure-devops',
             {
               type: "category",
-              label: "GitHub",
-              link: {
-                type: 'doc',
-                id: 'integrations/github',
-              },
+              label: "Authentication/SSO",
               items: [
-                'integrations/github-ast-orchestrator',
+                'integrations/google',
+                'integrations/microsoft-entra-id',
+                'integrations/saml'
               ]
             },
+            {
+              type: "category",
+              label: "CI/CD",
+              items: [
+                'integrations/azure-pipelines-cli',
+                'integrations/azure-pipelines-graph',
+                'integrations/bitbucket-pipelines',
+                'integrations/circleci',
+                'integrations/codefresh',
+                'integrations/github-actions',
+                'integrations/gitlab',
+                'integrations/jenkins',
+                'integrations/jenkins-single-pipeline'
+              ]
+            },
+            {
+              type: "category",
+              label: "Data Analytics",
+              items: [
+                'integrations/datastudio',
+                'integrations/powerbi'
+              ]
+            },
+            {
+              type: "category",
+              label: "Developer Portal",
+              items: [
+                'integrations/backstage',
+              ]
+            },
+            {
+              type: "category",
+              label: "Defect/Bug Tracking",
+              items: [
+                'integrations/azure-boards',
+                'integrations/businessmap',
+                'integrations/clickup',
+                'integrations/jira',
+                'integrations/servicenow'
+              ]
+            },
+            {
+              type: "category",
+              label: "Notifications",
+              items: [
+                'integrations/microsoft-teams',
+                'integrations/slack'
+              ]
+            },
+            {
+              type: "category",
+              label: "Pentest Tools",
+              items: [
+                'integrations/burp',
+              ]
+            },
+            {
+              type: "category",
+              label: "Scanners",
+              items: [
+                'integrations/checkmarx',
+                'integrations/dependency-track',
+                'integrations/fortify',
+                'integrations/github-advanced-security',
+                'integrations/sonarcloud',
+                'integrations/sonarqube',
+                'integrations/mobsf',
+              ]
+            },
+            {
+              type: "category",
+              label: "Application Lifecycle Management",
+              link: {
+                type: 'generated-index',
+                title: 'Application Lifecycle Management',
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Azure DevOps",
+                  link: {
+                    type: 'doc',
+                    id: 'integrations/azure-devops',
+                  },
+                  items: [
+                    'integrations/azure-devops-ast-orchestrator',
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "GitHub",
+                  link: {
+                    type: 'doc',
+                    id: 'integrations/github',
+                  },
+                  items: [
+                    'integrations/github-ast-orchestrator',
+                  ]
+                },
+              ]
+            },        
           ]
         },
-      ]
+        {
+          type: "category",
+          label: "API Reference",
+          items: apiItems,
+        },
+      ],
     },
-    {
-      type: "category",
-      label: "API",
-      items: apiItems,
-    },
-    'new-cli',
   ],
   releaseSidebar: [
     {
@@ -217,6 +392,9 @@ module.exports = {
           type: "category",
           label: "Release Notes 🚀",
           items: [
+            'releases/release4.25',
+            'releases/release4.24',
+            'releases/release4.23',
             'releases/release4.22',
             'releases/release4.21',
             'releases/release4.20',

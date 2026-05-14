@@ -110,6 +110,8 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 
 **Step 7 -** Consider the following in order to map Conviso Platform statuses to ClickUp statuses: **Identified status (1)** is required to map the vulnerabilities from Conviso Platform to ClickUp, while **other fields (2)** are optional. After mapping all the statuses, click on the **Save** button.
 
+For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
+
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/clickup/clickup9.png)
@@ -143,6 +145,44 @@ With **Custom Configuration**, you can specifically link a Conviso Platform asse
 </div>
 
 When any status changes to any other status on tasks or subtasks, the webhook will be triggered.
+
+## Recent Deliveries
+
+The Recent Deliveries feature provides a detailed log of the interactions between Conviso Platform and ClickUp. This allows users to monitor the status of data transfers and identify any potential issues in the integration process.
+
+To access and navigate the Recent Deliveries page, follow these steps:
+
+**Step 1** - In the integration configuration panel for ClickUp, locate and click the **Recent Deliveries** button:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/clickup/clickup-recent-deliveries-button.png 'Step 1: Locate the Recent Deliveries button in the configuration step.')
+
+</div>
+
+**Step 2** - You will be directed to the Recent Deliveries page, which displays a table with the following columns:
+
+- **Date**: The timestamp of the delivery attempt.
+- **Level**: The severity level of the log entry (**info**, **error**, or **warn**).
+- **Message**: A detailed description of the communication or event.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/clickup/clickup-recent-deliveries-page.png 'Step 2: View the Recent Deliveries log table.')
+
+</div>
+
+**Step 3** - Use the available filters to refine the log list:
+
+- **Date Range**: Filter logs by a specific time period.
+- **Level**: Filter by log severity (Info, Warning, or Error).
+- **Search Box**: Enter text or keywords to search for specific messages.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/clickup/clickup-recent-deliveries-filters.png 'Step 3: Apply filters or use the search box to find specific log entries.')
+
+</div>
 
 ## Support
 

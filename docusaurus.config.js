@@ -94,6 +94,12 @@ async function proxyPlugin() {
               label: 'Release Notes 🚀',
               position: 'right',
             },
+            {
+              to: 'support',
+              label: 'Support',
+              position: 'right',
+              className: 'navbar-support-link',
+            },
  
           ],
         },
@@ -101,15 +107,15 @@ async function proxyPlugin() {
         footer: {
           links: [
             {
-              title: 'Docs',
+              title: 'Resources',
               items: [
                 {
-                  label: 'CLI',
-                  to: 'new-cli',
+                  label: 'Open ticket',
+                  href: 'https://support.convisoappsec.com/tickets',
                 },
                 {
-                  label: 'Github Actions',
-                  to: 'integrations/github-actions',
+                  label: 'Data Retention',
+                  to: 'data-retention',
                 },
               ],
             },
