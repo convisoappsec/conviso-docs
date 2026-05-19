@@ -168,14 +168,15 @@ Create a project:
 
 ```bash
 python -m conviso.app projects create \
-  --company-id 443 \
-  --name "Platform Pentest" \
-  --goal "Validate critical attack paths" \
-  --scope "Main platform" \
-  --type-id 1 \
-  --start-date YYYY-MM-DD \
-  --end-date YYYY-MM-DD \
-  --assets 100,101,102
+ --company-id 443 \
+ --name "New Project" \
+ --goal "Validate scope" \
+ --scope "External perimeter" \
+ --type-id 14 \
+ --start-date 2026-05-19 \
+ --estimated-hours 2 \
+ --assign user@conviso.com.br \
+ --assets 40641
 ```
 
 Update a project:
