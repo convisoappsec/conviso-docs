@@ -257,6 +257,7 @@ module.exports = {
                 'integrations/snyk',
                 'integrations/sonarcloud',
                 'integrations/sonarqube',
+                'integrations/tenable',
                 'integrations/mobsf',
               ]
             },
