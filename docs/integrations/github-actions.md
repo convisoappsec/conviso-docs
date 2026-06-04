@@ -44,6 +44,8 @@ By the end of this tutorial, you will know how to:
 * **[Perform a Conviso AST scan to analyze your application's security](#perform-a-conviso-ast-scan-to-analyze-your-applications-security)**
 * **[Run a scan exclusively using Conviso SAST](#run-a-scan-exclusively-using-conviso-sast)**
 * **[Run a scan exclusively using Conviso SCA](#run-a-scan-exclusively-using-conviso-sca)**
+* **[Trigger the workflow manually](#manually-triggering-the-workflow)**
+* **[Scan after a pull request is merged](#scanning-after-a-pull-request-is-merged)**
 
 **[Learn more about Conviso Platform integrations!](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
@@ -69,7 +71,7 @@ jobs:
      env:
        CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v4
+   - uses: actions/checkout@v6
 
    - name: Run AST
      run: conviso ast run --vulnerability-auto-close
@@ -95,7 +97,7 @@ jobs:
      env:
        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v4
+   - uses: actions/checkout@v6
    - name: Run AST
      run: |
           export DOCKER_BUILDKIT=1
@@ -121,7 +123,7 @@ jobs:
      env:
        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v4
+   - uses: actions/checkout@v6
    - name: Run AST
      run: |
           export IMAGE_NAME="vulnerables/web-dvwa"
@@ -156,7 +158,7 @@ jobs:
      env:
        CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v4
+   - uses: actions/checkout@v6
 
    - name: Run SAST
      run: conviso sast run
@@ -182,7 +184,7 @@ jobs:
      env:
        CONVISO_API_KEY:  ${{secrets.CONVISO_API_KEY}}
    steps:
-   - uses: actions/checkout@v4
+   - uses: actions/checkout@v6
 
    - name: Run SCA
      run: conviso sca run
@@ -209,7 +211,7 @@ jobs:
       env:
         CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Run AST
         run: conviso ast run --vulnerability-auto-close
 ```
@@ -223,6 +225,38 @@ jobs:
 5. Choose the branch or parameters (if applicable) and confirm.
 
 After following these steps, the workflow will start executing.
+
+## Scanning After a Pull Request Is Merged
+
+The recommended trigger for Conviso AST is **a push to your default branch**, which is exactly what happens when a pull request is merged. This keeps the security state of your main branch continuously up to date — every change that reaches production code is scanned, with no redundant scans on intermediate feature branches.
+
+Restrict the `push` trigger to your default branch (for example `main`) so the scan runs only on merges, not on every branch push:
+
+```yml
+name: Conviso AST
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  conviso-ast:
+    runs-on: ubuntu-latest
+    container:
+      image: convisoappsec/convisoast:latest
+      env:
+        CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run AST
+        run: conviso ast run --vulnerability-auto-close
+```
+
+We recommend using the `:latest` tag so every run picks up the most recent CLI release — including new analyzers, detection rules, and fixes — with no manual upgrades. Pin a specific version (for example `convisoappsec/convisoast:3.0.8`) only when you have a strict need for fully reproducible runs.
+
+:::tip Combine with pull request checks
+Pair this with a `pull_request` trigger (shown in the [AST scan example](#perform-a-conviso-ast-scan-to-analyze-your-applications-security) above) to get feedback *before* merge, while the `push` trigger keeps your default branch authoritative *after* merge.
+:::
 
 ## How to Configure Conviso AST and Security Gate with a Reusable Workflow
 
@@ -270,7 +304,7 @@ jobs:
     env:
       CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
   
     - name: Create Security Gate Rules File
       run: |
