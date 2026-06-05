@@ -48,7 +48,7 @@ Scan directly from your terminal with [**New CLI**](../../new-cli) and combine o
 - Send diff versions of your source code application to later be reviewed by your own security team or - Conviso's (when subscribed to our professional services license).
 - Auto-close open vulnerabilities on the platform that are no longer identified during its execution, and can reopen them if they were closed but identified later.
 
-**Conviso AST integrates with all the major CI/CD tools in the market**, whether on Github Actions, Gitlab, Jenkins, and many others; **discover[ our integrations here](../../integrations/integrations_intro)**.
+**Conviso AST integrates with all the major CI/CD tools in the market**, whether on [**GitHub Actions**](../../integrations/github-actions), [**Gitlab**](../../integrations/gitlab), [**Azure Pipelines**](../../integrations/azure-pipelines-cli), Jenkins, and many others; **discover[ our integrations here](../../integrations/integrations_intro)**.
 
 The analysis results are sent to Conviso Platform, where you can view, prioritize and fix the vulnerabilities found using our **[Vulnerabilities](../../platform/vulnerabilities)** feature.
 
