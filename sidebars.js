@@ -51,6 +51,7 @@ module.exports = {
           items: [
             'vulnerability-management/workflow-status',
             'vulnerability-management/process',
+            'vulnerability-management/remediation-sla',
           ],
         },
         {
