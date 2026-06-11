@@ -1,0 +1,80 @@
+.info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.date {
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Type badge */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badgeReleaseNotes {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.badgeNew {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badgeImproved {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.badgeFix {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badgeDeprecated {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badgeEarlyAccess {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+[data-theme='dark'] .badgeReleaseNotes {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+[data-theme='dark'] .badgeNew {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+[data-theme='dark'] .badgeImproved {
+  background: #3b1f6e;
+  color: #c4b5fd;
+}
+
+[data-theme='dark'] .badgeFix {
+  background: #4a3000;
+  color: #fde68a;
+}
+
+[data-theme='dark'] .badgeDeprecated {
+  background: #4c0d0d;
+  color: #fca5a5;
+}
+
+[data-theme='dark'] .badgeEarlyAccess {
+  background: #064e3b;
+  color: #6ee7b7;
+}

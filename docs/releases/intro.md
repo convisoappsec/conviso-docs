@@ -4,9 +4,13 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
+import ReleaseBreadcrumbs from '@site/src/components/ReleaseBreadcrumbs';
+
+<ReleaseBreadcrumbs current="Introduction" />
+
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/logo_release.png)
+![img](/img/logo_release.png)
 
 </div>
 
@@ -25,3 +29,7 @@ Now is the time to brag about all the cool, new stuff your software does.
 ## Bug fixes
 
 Because no software is perfect, there are always bugs left unsquashed. This section is the place to list those.
+
+---
+
+👉 Browse all updates in the [Release Notes feed](/releases).

@@ -1,0 +1,376 @@
+/* Page layout */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pageDescription {
+  color: var(--ifm-font-color-base);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sidebarTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.filterGroup {
+  margin-bottom: 1.5rem;
+}
+
+.filterGroupTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.5rem;
+}
+
+.filterLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  font-size: 0.875rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filterLabel:hover {
+  color: var(--ifm-color-primary);
+}
+
+.filterCheckbox {
+  accent-color: var(--ifm-color-primary);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.clearBtn {
+  background: none;
+  border: none;
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.clearBtn:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+/* Mobile filter toggle */
+.mobileFilterToggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.activeFilterCount {
+  background: var(--ifm-color-primary);
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  padding: 0 0.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Main */
+.main {
+  min-width: 0;
+}
+
+.resultCount {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-800);
+  margin-bottom: 1.5rem;
+}
+
+.updatesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.empty {
+  padding: 3rem;
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+  border: 1px dashed var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+}
+
+/* Update card */
+.card {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.card:last-child {
+  border-bottom: none;
+}
+
+.cardDate {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-emphasis-800);
+  padding-top: 0.25rem;
+  white-space: nowrap;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cardTitleLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardTitleLink:hover .cardTitle {
+  text-decoration: underline;
+  color: var(--ifm-color-primary);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.badgeReleaseNotes {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.badgeNew {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.badgeImproved {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.badgeFix {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badgeDeprecated {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.badgeEarlyAccess {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* Dark mode badge adjustments */
+[data-theme='dark'] .badgeReleaseNotes {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+[data-theme='dark'] .badgeNew {
+  background: #1e3a5f;
+  color: #93c5fd;
+}
+
+[data-theme='dark'] .badgeImproved {
+  background: #3b1f6e;
+  color: #c4b5fd;
+}
+
+[data-theme='dark'] .badgeFix {
+  background: #4a3000;
+  color: #fde68a;
+}
+
+[data-theme='dark'] .badgeDeprecated {
+  background: #4c0d0d;
+  color: #fca5a5;
+}
+
+[data-theme='dark'] .badgeEarlyAccess {
+  background: #064e3b;
+  color: #6ee7b7;
+}
+
+/* Card body */
+.cardBody {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.cardBody p:last-child {
+  margin-bottom: 0;
+}
+
+/* Keep post images responsive inside the card (no .markdown wrapper here) */
+.cardBody img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Authors */
+.authors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-top: 1.25rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.authorAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.authorAvatarFallback {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: var(--ifm-color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-size: 0.875rem;
+}
+
+.authorTitle {
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 400;
+}
+
+/* Tags */
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.25rem;
+}
+
+.tagsLabel {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Responsive */
+@media (max-width: 996px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    display: none;
+  }
+
+  .sidebar.sidebarOpen {
+    display: block;
+  }
+
+  .mobileFilterToggle {
+    display: flex;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .cardDate {
+    font-size: 0.75rem;
+  }
+}
