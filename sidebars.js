@@ -151,6 +151,17 @@ module.exports = {
             'platform/dark-mode',
           ],
         },
+        {
+          type: "category",
+          label: "Compliance",
+          collapsed: true,
+          items: [
+            'compliance/pci-overview',
+            'compliance/pci-create-assessment',
+            'compliance/pci-answer-controls',
+            'compliance/pci-gap-analysis',
+          ],
+        },
       ],
     },
     {
