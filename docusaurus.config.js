@@ -79,6 +79,7 @@ async function proxyPlugin() {
       markdown: {
         hooks: {
           onBrokenMarkdownLinks: 'warn',
+          onBrokenMarkdownImages: 'warn',
         },
       },
       themeConfig: {
@@ -90,7 +91,7 @@ async function proxyPlugin() {
           },
           items: [
             {
-              to: 'releases/intro',
+              to: 'releases',
               label: 'Release Notes 🚀',
               position: 'right',
             },
@@ -168,6 +169,7 @@ async function proxyPlugin() {
               routeBasePath: '/',
               sidebarPath: require.resolve('./sidebars.js'),
             },
+            blog: false,
             theme: {
               customCss: require.resolve('./src/css/custom.css'),
             },
@@ -176,6 +178,24 @@ async function proxyPlugin() {
       ],
   
       plugins: [
+        [
+          '@docusaurus/plugin-content-blog',
+          {
+            id: 'product-updates',
+            routeBasePath: 'releases',
+            path: './product-updates',
+            blogTitle: 'Release Notes',
+            blogDescription: 'Latest Conviso Platform release notes and product updates.',
+            blogSidebarCount: 0,
+            postsPerPage: 'ALL',
+            showReadingTime: false,
+            feedOptions: {
+              type: 'rss',
+              title: 'Conviso Platform – Product Updates',
+              description: 'Stay up to date with the latest Conviso Platform releases.',
+            },
+          },
+        ],
         () => ({
           name: 'custom-dotenv',
           configureWebpack() {
