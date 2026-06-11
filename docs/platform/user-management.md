@@ -22,7 +22,7 @@ Profiles are predefined sets of permissions that determine what a user can do on
 
 Custom profiles are created by administrators and allow you to define access permissions according to the organization's needs. 
 
-There are more resources to come in the [following releases](/releases) so you can make a more granular configuration of your custom profiles. 
+There are more resources to come in the [following releases](../releases/intro.md) so you can make a more granular configuration of your custom profiles. 
 
 [Learn how to create Profiles.](#creating-a-profile)
 

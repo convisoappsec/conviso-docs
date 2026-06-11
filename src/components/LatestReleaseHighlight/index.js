@@ -1,53 +1,96 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-
-// Read migrated release notes from the unified Product Updates feed.
 const releaseModules = require.context(
-  '@site/product-updates',
+  '@site/docs/releases',
   false,
-  /\.mdx?$/,
+  /^\.\/release.*\.mdx?$/,
 );
 
-function parseEntry(key) {
-  const filename = key.replace('./', '');
-  const match = filename.match(/^((\d{4})-(\d{2})-(\d{2})-(.+))\.mdx?$/);
-  if (!match) return null;
-  const module = releaseModules(key);
-  // Prefer the frontmatter date (can include a time), fall back to the
-  // date encoded in the filename.
-  const rawDate =
-    module?.frontMatter?.date || `${match[2]}-${match[3]}-${match[4]}`;
-  return {
-    // fullSlug = the post's flat slug (date-prefixed), matches its URL
-    fullSlug: match[1],
-    timestamp: new Date(rawDate).getTime(),
-    module,
-  };
+function parseReleaseVersionFromFilename(filename) {
+  const matchWithDot = filename.match(/release-?(\d+)\.(\d+)(?:\.(\d+))?/i);
+  if (matchWithDot) {
+    return {
+      major: Number.parseInt(matchWithDot[1], 10),
+      minor: Number.parseInt(matchWithDot[2], 10),
+      patch: Number.parseInt(matchWithDot[3] ?? '0', 10),
+    };
+  }
+
+  const matchNoDot = filename.match(/release-?(\d)(\d+)/i);
+  if (matchNoDot) {
+    return {
+      major: Number.parseInt(matchNoDot[1], 10),
+      minor: Number.parseInt(matchNoDot[2], 10),
+      patch: 0,
+    };
+  }
+
+  const matchSimple = filename.match(/release-?(\d+)/i);
+  if (matchSimple) {
+    return {
+      major: Number.parseInt(matchSimple[1], 10),
+      minor: 0,
+      patch: 0,
+    };
+  }
+
+  return null;
 }
 
-// Most recent first: sort by publish timestamp; the date-prefixed slug is a
-// deterministic tiebreaker when timestamps are identical.
-const releaseEntries = releaseModules
-  .keys()
-  .map(parseEntry)
-  .filter(Boolean)
-  .sort((a, b) => b.timestamp - a.timestamp || b.fullSlug.localeCompare(a.fullSlug));
+function compareReleaseVersions(a, b) {
+  if (a.major !== b.major) return a.major - b.major;
+  if (a.minor !== b.minor) return a.minor - b.minor;
+  return a.patch - b.patch;
+}
+
+function getReleaseEntries() {
+  return releaseModules
+    .keys()
+    .map((key) => {
+      const filename = key.replace('./', '');
+      return {
+        key,
+        filename,
+        module: releaseModules(key),
+        version: parseReleaseVersionFromFilename(filename),
+      };
+    })
+    .filter((entry) => entry.version);
+}
+
+function getLatestRelease(entries) {
+  let latest = null;
+  let latestVersion = null;
+
+  entries.forEach((entry) => {
+    if (!entry.version) return;
+    if (!latestVersion || compareReleaseVersions(entry.version, latestVersion) > 0) {
+      latest = entry;
+      latestVersion = entry.version;
+    }
+  });
+
+  return latest;
+}
+
+const releaseEntries = getReleaseEntries();
 
 export default function LatestReleaseHighlight() {
-  const latest = releaseEntries[0];
+  const latestRelease = getLatestRelease(releaseEntries);
+  const metadata = latestRelease?.module?.metadata ?? {};
+  const frontMatter = latestRelease?.module?.frontMatter ?? {};
+  const toc = latestRelease?.module?.toc ?? [];
 
-  if (!latest) {
+  if (!latestRelease) {
     return null;
   }
 
-  const frontMatter = latest.module?.frontMatter ?? {};
-  const toc = latest.module?.toc ?? [];
-
-  const title = frontMatter.title || 'Release notes';
+  const title = metadata.title || frontMatter.title || 'Release notes';
   const description =
+    metadata.description ||
     frontMatter.description ||
     'Confira as novidades e melhorias mais recentes da Conviso Platform.';
-  const permalink = `/releases/${latest.fullSlug}`;
+  const permalink = metadata.permalink || metadata.slug || '/releases/intro';
   const highlightItems = toc
     .filter((item) => item?.value)
     .filter((item) => !/key benefits|introduction/i.test(item.value))
