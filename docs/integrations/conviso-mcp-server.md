@@ -32,6 +32,8 @@ The connector exposes a set of tools to the MCP host:
 | `get_asset` | Fetch details for a specific asset |
 | `get_issues` | List vulnerabilities for a company or project |
 | `get_issue` | Fetch full technical details for a vulnerability (code snippets, raw requests/responses) |
+| `get_issues_by_asset_id` | List vulnerabilities for a company filtered by a single asset ID. |
+| `get_issues_by_project_id` | List vulnerabilities for a company filtered by a project ID. |
 | `get_top_vulnerabilities` | Vulnerability counts grouped by severity (risk overview) |
 | `create_project_url` | Generate a direct link to a project in the Platform |
 | `create_issue_url` | Generate a direct link to a specific issue |
@@ -255,6 +257,10 @@ Calls `get_top_vulnerabilities` and returns a severity summary — useful for a 
 > **"List the 10 most recent vulnerabilities for company 1234."**
 
 Calls `get_issues` with pagination and returns title, severity, asset, and project for each.
+
+> **"List all vulnerabilities for asset 42."**
+
+Calls `get_issues_by_asset_id` with the specified asset ID. Returns vulnerabilities scoped to that asset.
 
 > **"Show me all vulnerabilities for project 789 — only high and critical, ordered by most recent."**
 
