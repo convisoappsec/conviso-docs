@@ -88,6 +88,7 @@ Use the detailed guide when you need to:
 * configure global or asset-level rules;
 * create YAML-based policies in the repository;
 * run Security Gate in CI/CD with Conviso AST;
+* understand enriched CLI failure output, JSON export with `--output`, and GraphQL access;
 * understand command responses and policy behavior.
 
 **[Open the complete Security Gate guide →](../security-scans/security-gate.md)**
