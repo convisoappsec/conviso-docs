@@ -194,7 +194,17 @@ If the policy is managed in the Platform, use:
 conviso vulnerability assert-security-rules
 ```
 
-This command fetches the active Security Gate rule for the asset and evaluates the vulnerabilities against it.
+This command fetches the active Security Gate rule for the asset, evaluates the vulnerabilities against it, and records the execution in the Platform.
+
+#### Optional: export the full result as JSON
+
+To persist the complete gate response (including all vulnerability fields returned by the API), use `--output`:
+
+```bash
+conviso vulnerability assert-security-rules --output gate-result.json
+```
+
+The JSON file contains the same payload used by the CLI, which is useful for CI artifacts, downstream automation, or debugging large SCA advisories that are summarized in the terminal output.
 
 ### Using YAML-based Configuration
 
@@ -208,24 +218,96 @@ This makes the pipeline evaluate the YAML rule directly from the repository inst
 
 ## Understanding CLI Results
 
-After running the assertion command, the pipeline receives a success or failure result.
+After running the assertion command, the pipeline receives a success or failure result. The output format depends on whether you use **Platform-based** or **YAML-based** configuration.
 
-### Success Response
+### Platform-based Results
+
+When the policy comes from the Platform, the CLI prints a severity summary for every run and, on failure, an enriched breakdown of the vulnerabilities that caused the gate to fail.
+
+#### Success Response
 
 If the rule is respected, the output is similar to:
 
 ```text
-Starting vulnerabilities security rules assertion
-✅ Vulnerabilities security rules assertion finished
+💬 Running security gate with platform rules...
+💬 Security Gate Result for Asset: my-api (ID: 42)
+   Execution Date: 2026-06-10T14:32:11Z
+
+   Severity Summary:
+   ✅ CRITICAL: 0/0
+   ✅ HIGH: 2/5
+   ✅ MEDIUM: 1/10
+   ⚪ LOW: N/A (not configured)
+
+✅ Security gate PASSED.
 ```
 
-### Failure Response
+Each severity line shows the current count versus the configured limit. Icons reflect the backend evaluation status when available (`✅` pass, `⚠️` warning, `❌` fail).
 
-If the rule is violated, the output is similar to:
+#### Failure Response
+
+If the rule is violated, the CLI still prints the severity summary and then lists up to **10** offending vulnerabilities inline:
 
 ```text
-Starting vulnerabilities security rules assertion
-💬 Vulnerabilities summary
+💬 Running security gate with platform rules...
+💬 Security Gate Result for Asset: my-api (ID: 42)
+   Execution Date: 2026-06-10T14:32:11Z
+
+   Severity Summary:
+   ❌ CRITICAL: 1/0
+   ✅ HIGH: 2/5
+   ✅ MEDIUM: 1/10
+   ⚪ LOW: N/A (not configured)
+
+🔴 Security Gate FAILED — 3 vulnerabilities exceeded threshold
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ [CRITICAL] SQL Injection                                                                         │
+│ File: app/models/user.rb:42                                                                      │
+│                                                                                                  │
+│ Unsanitized user input is passed directly to a query.                                            │
+│ CVSS: 9.1                                                                                        │
+│                                                                                                  │
+│ Link:                                                                                            │
+│ https://app.convisoappsec.com/spa/company/11/vulnerabilities/123?assetId=42                      │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+💡 Full vulnerability details: re-run with --output gate-result.json
+Error: Security gate FAILED. Vulnerabilities exceed configured limits.
+```
+
+For each failing vulnerability, the CLI shows:
+
+* severity and title;
+* file path and line number, when available;
+* a short description summary (markdown and code blocks are stripped; long SCA advisories are truncated for readability);
+* CVSS score, when available;
+* a direct link to open the vulnerability in the Conviso Platform.
+
+When more than 10 vulnerabilities caused the failure, the CLI prints how many remain and provides an `issuesUrl` link to review the full filtered list in the Platform.
+
+Use `--output gate-result.json` to save the complete API response, including full descriptions, instead of relying only on the terminal summary. When `--output` is provided, the CLI writes the JSON file before printing the failure details and updates the hint to point to the saved path.
+
+The command exits with a non-zero status on failure, so the pipeline should be treated as blocked.
+
+### YAML-based Results
+
+When you pass `--rules-file`, the CLI evaluates the local YAML policy directly. That path keeps the legacy output format:
+
+#### Success Response
+
+```text
+💬 Starting vulnerability security rules assertion...
+💬 Applying the given rules at the security gate:
+...
+✅ Vulnerability security rules assertion finished.
+```
+
+#### Failure Response
+
+```text
+💬 Starting vulnerability security rules assertion...
+💬 Vulnerabilities summary...
 [
     {
         "from": "any",
@@ -239,7 +321,53 @@ Starting vulnerabilities security rules assertion
 Error: Vulnerabilities quantity offending security rules
 ```
 
-In practice, this means the evaluated vulnerabilities exceeded the configured threshold and the pipeline should be treated as blocked.
+YAML-based runs do not include the enriched vulnerability box or `--output` integration. Prefer Platform-based configuration when you want actionable failure details directly in CI logs.
+
+## Programmatic Access via GraphQL
+
+Custom integrations can trigger and inspect Security Gate runs through the `securityGateRun` query. The response includes threshold evaluation (`reason`), a link to the filtered vulnerability list (`issuesUrl`), and paginated details for vulnerabilities that caused a failure (`failingVulnerabilities`).
+
+```graphql
+query SecurityGateRun($assetId: ID!) {
+  securityGateRun(assetId: $assetId) {
+    status
+    executionDate
+    issuesUrl
+    asset {
+      id
+      name
+    }
+    reason {
+      critical { limit count status }
+      high { limit count status }
+      medium { limit count status }
+      low { limit count status }
+    }
+    failingVulnerabilities(pagination: { page: 1, perPage: 10 }) {
+      collection {
+        id
+        title
+        description
+        severity
+        cvssScore
+        file
+        line
+        platformUrl
+      }
+      metadata {
+        totalCount
+      }
+    }
+  }
+}
+```
+
+Notes:
+
+* `failingVulnerabilities` is populated when the gate status is `FAIL`. It lists vulnerabilities that exceeded quantity thresholds or the configured `max_days_to_fix` grace period.
+* The default page size is `10`. Use `pagination` to fetch additional pages when `metadata.totalCount` is greater than `perPage`.
+* `issuesUrl` opens the Platform vulnerability list with filters that match the failing severities for the evaluated asset.
+* `platformUrl` on each item is a deep link to the individual vulnerability.
 
 ## Creating Security Gate Rules in YAML
 
@@ -316,7 +444,8 @@ For most teams, the most practical model is:
 1. manage the rule in the Platform;
 2. use asset overrides only when justified;
 3. run `conviso vulnerability assert-security-rules` in CI/CD;
-4. investigate results in the web interface when a pipeline warns or fails.
+4. on failure, review the inline vulnerability details in the pipeline log or export the full result with `--output`;
+5. investigate results in the web interface when you need the complete history or more than the first 10 failing vulnerabilities.
 
 Use YAML rules when policy-as-code inside the repository is a stronger requirement than centralized administration.
 
