@@ -62,6 +62,76 @@ For all time-based errors (you triggered more requests than the quota), we recom
 
 If the requests are still unsuccessful, it is important that the delay between requests increase over time until the request gets another status rather than 429.
 
+### Query cost controls
+
+In addition to rate limiting, the Conviso GraphQL API enforces query cost controls that reject overly expensive queries **before any resolver runs**. This protects the platform from worst-case single-query costs.
+
+| Control | Default | Description |
+|---|---|---|
+| **Max depth** | `15` | Maximum nesting depth of a query. Queries deeper than this are rejected at validation. |
+| **Max complexity** | `400` | Maximum complexity score of a query, calculated as 1 point per field node (static count, not result-set size). |
+
+When a query exceeds either limit, you will receive a GraphQL validation error — not an HTTP 429 — with a client-safe message indicating which limit was exceeded. No data is returned and no resolvers are executed.
+
+#### Understanding depth
+
+Depth counts how many levels of nesting a query has. Each nested selection set adds one level:
+
+```graphql
+query {
+  projects {          # depth 1
+    assets {          # depth 2
+      vulnerabilities { # depth 3
+        title
+      }
+    }
+  }
+}
+# → depth 3 ✅ well within the limit of 15
+```
+
+A query that nests 16 or more levels deep would be rejected.
+
+#### Understanding complexity
+
+Complexity counts the total number of field nodes in the query — one point per field, regardless of how many results it returns:
+
+```graphql
+query {
+  projects {     # +1
+    id           # +1
+    name         # +1
+    assets {     # +1
+      id         # +1
+      name       # +1
+      riskScore  # +1
+    }
+  }
+}
+# → complexity 7 ✅ well within the limit of 400
+```
+
+A query requesting many fields across deeply nested objects accumulates complexity quickly. For example, a query that fetches 20 fields on projects, each with 20 nested asset fields, would already reach a complexity of 420 and be rejected.
+
+**Measured limits against real traffic:**
+
+| Example query | Depth | Complexity |
+|---|---|---|
+| `projects` (heavy, ~50 fields incl. nested) | 4 | 89 |
+| `assets` (with nested `scannersExecutionHistories`) | 5 | 15 |
+| `GetIssue` (all finding-type fragments) | 3 | 26 |
+
+The defaults are set just above observed legitimate traffic (deepest real query: depth 5, heaviest real query: complexity 89), giving a reasonable safety margin while allowing all valid client queries.
+
+**Handling validation errors:**
+
+If your query is rejected due to depth or complexity, simplify it by:
+- Requesting fewer nested fields
+- Splitting a large query into multiple smaller ones
+- Removing fields you do not need
+
+If you believe a legitimate query is being incorrectly rejected, contact support.
+
 ## Generate API Key
 To perform activities with Conviso CLI, Conviso Platform Integrations and also Conviso API, it is important to generate an API Key to authenticate your user. 
 
@@ -75,4 +145,4 @@ After clicking on **Confirm**, the confirmation of your new API Key will appear 
 
 **Note:** This key can be generated as many times as you wish. However, the previously generated key will expire.
 ## Getting support for the Conviso API
-If you have any questions or need help using our API, please don't hesitate to contact our [support team](https://support.convisoappsec.com/tickets).
+If you have any questions or need help using our API, please don't hesitate to contact support.
