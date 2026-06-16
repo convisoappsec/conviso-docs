@@ -73,6 +73,46 @@ In addition to rate limiting, the Conviso GraphQL API enforces query cost contro
 
 When a query exceeds either limit, you will receive a GraphQL validation error — not an HTTP 429 — with a client-safe message indicating which limit was exceeded. No data is returned and no resolvers are executed.
 
+#### Understanding depth
+
+Depth counts how many levels of nesting a query has. Each nested selection set adds one level:
+
+```graphql
+query {
+  projects {          # depth 1
+    assets {          # depth 2
+      vulnerabilities { # depth 3
+        title
+      }
+    }
+  }
+}
+# → depth 3 ✅ well within the limit of 15
+```
+
+A query that nests 16 or more levels deep would be rejected.
+
+#### Understanding complexity
+
+Complexity counts the total number of field nodes in the query — one point per field, regardless of how many results it returns:
+
+```graphql
+query {
+  projects {     # +1
+    id           # +1
+    name         # +1
+    assets {     # +1
+      id         # +1
+      name       # +1
+      riskScore  # +1
+    }
+  }
+}
+# → complexity 7 ✅ well within the limit of 400
+```
+
+A query requesting many fields across deeply nested objects accumulates complexity quickly. For example, a query that fetches 20 fields on projects, each with 20 nested asset fields, would already reach a complexity of 420 and be rejected.
+
 **Measured limits against real traffic:**
 
 | Example query | Depth | Complexity |
