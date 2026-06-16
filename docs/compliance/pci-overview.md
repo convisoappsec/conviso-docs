@@ -19,13 +19,7 @@ It is built for the people accountable for payment-security compliance: PCI mana
 AppSec teams preparing for an assessment, and service providers who need a defensible,
 point-in-time record of their posture.
 
-You will find it under **Compliance → PCI** in the left navigation.
-
-<div style={{textAlign: 'center'}}>
-
-![PCI dashboard](../../static/img/compliance/pci-dashboard.png "PCI dashboard with summary KPIs.")
-
-</div>
+You will find it under **Compliance → PCI Assessments** in the left navigation.
 
 ## Supported frameworks
 
@@ -52,17 +46,10 @@ evidence, analyse, finalize — is identical across all of them.
 | **Gap** | A control marked **Not in place** — the work remediation must close. |
 | **Scope** | How much of the framework you assess (e.g. full ROC vs a focused SAQ). |
 
-## The PCI dashboard
+## The assessments list
 
-The landing dashboard summarises your program at a glance:
-
-- **Last assessment** — compliance percentage and scope of the most recent assessment.
-- **In progress** — assessments still in draft or in progress.
-- **History** — number of completed assessments.
-- **Trend** — change in compliance versus the previous assessment, in percentage points.
-
-Use **View** to open the assessments list, where each card shows its scope, framework
-version, control progress, last edit, and current compliance percentage.
+The assessments list shows every PCI assessment you have created. Each card shows its scope,
+framework version, control progress, last edit, and current compliance percentage.
 
 <div style={{textAlign: 'center'}}>
 
