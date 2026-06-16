@@ -130,7 +130,7 @@ If your query is rejected due to depth or complexity, simplify it by:
 - Splitting a large query into multiple smaller ones
 - Removing fields you do not need
 
-If you believe a legitimate query is being incorrectly rejected, contact [support](https://support.convisoappsec.com/tickets).
+If you believe a legitimate query is being incorrectly rejected, contact support.
 
 ## Generate API Key
 To perform activities with Conviso CLI, Conviso Platform Integrations and also Conviso API, it is important to generate an API Key to authenticate your user. 
@@ -145,4 +145,4 @@ After clicking on **Confirm**, the confirmation of your new API Key will appear 
 
 **Note:** This key can be generated as many times as you wish. However, the previously generated key will expire.
 ## Getting support for the Conviso API
-If you have any questions or need help using our API, please don't hesitate to contact our [support team](https://support.convisoappsec.com/tickets).
+If you have any questions or need help using our API, please don't hesitate to contact support.
