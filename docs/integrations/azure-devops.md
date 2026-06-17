@@ -147,4 +147,9 @@ If **Check connection** is available, use it to confirm that the integration can
 
 If you have any questions or need assistance with the Azure DevOps integration, contact the Conviso support team.
 
+## Related Guides
+
+- [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
+- [Azure DevOps AST Orchestrator](./azure-devops-ast-orchestrator.md)
+
 **[Explore other Conviso Platform integrations and get started.](https://bit.ly/3NzvomE)**
