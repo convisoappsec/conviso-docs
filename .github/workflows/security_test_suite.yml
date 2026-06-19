@@ -12,7 +12,7 @@ jobs:
         CONVISO_API_KEY: ${{secrets.CONVISO_API_KEY}}
         CONVISO_COMPANY_ID: '11'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Diplay current version
         run: conviso --version
