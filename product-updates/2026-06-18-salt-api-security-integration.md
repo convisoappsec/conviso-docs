@@ -3,7 +3,7 @@ title: SALT Integration — API Security
 date: 2026-06-18
 slug: 2026-06-18-salt-api-security-integration
 authors: [daniel_guedes]
-tags: ["New", "Web and API Scan", "Vuln Intelligence", "Automations"]
+tags: ["New", "Web and API Scan", "Automations"]
 ---
 
 Introduced a new integration with **SALT Security**, one of the leading API Security solutions globally, bringing API discovery and inventory directly into the Conviso Platform.
