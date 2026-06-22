@@ -22,10 +22,11 @@ export const TYPE_LABELS = {
 export const PRODUCTS = [
   'Risk insight',
   'Vuln Intelligence',
-  'AI Secure code',
+  'AI Secure Code',
   'Web and API Scan',
   'Offensive & Audit Manager',
   'AI Pentest',
+  'Cloud Security',
 ];
 
 export const MODULES = [
