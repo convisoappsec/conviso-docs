@@ -3,7 +3,7 @@ title: Tickets Module — Native Support
 date: 2026-06-12
 slug: 2026-06-12-tickets-module
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Vuln Intelligence", "AI Secure code", "Web and API Scan", "Offensive & Audit Manager", "Automations", "Developer Experience"]
+tags: ["New", "Risk insight", "Vuln Intelligence", "AI Secure Code", "Web and API Scan", "Offensive & Audit Manager", "Automations", "Developer Experience"]
 ---
 
 Introduced a new **Tickets module**, consolidating customer support workflows directly inside the Conviso Platform.
