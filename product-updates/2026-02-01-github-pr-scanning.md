@@ -3,7 +3,7 @@ title: GitHub Pull Request Scanning
 date: 2026-02-01
 slug: 2026-02-01-github-pr-scanning
 authors: [daniel_guedes]
-tags: ["New", "AI Secure code", "Security Analysis", "Developer Experience"]
+tags: ["New", "AI Secure Code", "Security Analysis", "Developer Experience"]
 ---
 
 Added support for automatically running **Conviso AST on open Pull Requests**.

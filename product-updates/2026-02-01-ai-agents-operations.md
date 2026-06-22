@@ -3,7 +3,7 @@ title: AI Agents Operations — Auto-Fix, DAST FP Review & Chat UX
 date: 2026-02-01
 slug: 2026-02-01-ai-agents-operations
 authors: [daniel_guedes]
-tags: ["New", "AI Secure code", "Web and API Scan", "Inteligência Artificial", "Risk-Based Vulnerability Management"]
+tags: ["New", "AI Secure Code", "Web and API Scan", "Inteligência Artificial", "Risk-Based Vulnerability Management"]
 ---
 
 Expanded the AI Agents operations across the platform.

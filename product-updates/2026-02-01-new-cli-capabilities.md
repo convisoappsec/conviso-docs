@@ -3,7 +3,7 @@ title: New CLI Capabilities
 date: 2026-02-01
 slug: 2026-02-01-new-cli-capabilities
 authors: [daniel_guedes]
-tags: ["New", "AI Secure code", "Developer Experience"]
+tags: ["New", "AI Secure Code", "Developer Experience"]
 ---
 
 Enhanced CLI experience with new capabilities aimed at operational workflows.
