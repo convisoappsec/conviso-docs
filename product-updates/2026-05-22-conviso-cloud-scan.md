@@ -3,7 +3,7 @@ title: Conviso Cloud Scan — Cloud Security
 date: 2026-05-22
 slug: 2026-05-22-conviso-cloud-scan
 authors: [daniel_guedes]
-tags: ["Early Access", "Risk insight", "Cloud Native", "Security Analysis"]
+tags: ["Early Access", "Cloud Security", "Cloud Native", "Security Analysis"]
 ---
 
 Released the **Conviso Cloud Scan** engine, bringing cloud security scanning natively into the platform — a major step toward covering the full application security lifecycle.
