@@ -12,3 +12,5 @@ Improved the **Conviso MCP Server** and published new governance documentation.
 - **Improved MCP documentation** for easier setup and usage.
 - **New Skills documentation.**
 - **Documented data retention policy.**
+
+👉 Access the Conviso Platform to experience these updates.
