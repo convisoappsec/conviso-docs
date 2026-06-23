@@ -6,8 +6,8 @@ authors: [daniel_guedes]
 tags: ["Improved", "AI Secure Code", "Security Analysis", "Developer Experience"]
 ---
 
-Improved the **Security Gate** output to give you more visibility into why a build was blocked.
+Improved the **Security Gate** response to give you more visibility into why a build was blocked.
 
 - The Security Gate now reports **how many** and **which** vulnerabilities triggered the block.
-- Surfaced directly in the **AST** output, so developers can see the exact findings to address without leaving the pipeline.
+- Available in the **API endpoint** response and in the **ConvisoAST** output, so this detail is delivered straight into your pipeline.
 - Faster triage and remediation, with clear, actionable feedback at the moment the gate fails.
