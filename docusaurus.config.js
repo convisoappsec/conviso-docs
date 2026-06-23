@@ -77,6 +77,7 @@ async function proxyPlugin() {
       organizationName: 'convisoappsec',
       projectName: 'conviso-docs',
       markdown: {
+        mermaid: true,
         hooks: {
           onBrokenMarkdownLinks: 'warn',
           onBrokenMarkdownImages: 'warn',
@@ -236,6 +237,7 @@ async function proxyPlugin() {
       ],
   
       themes: [
+        '@docusaurus/theme-mermaid',
         [
           require.resolve('@easyops-cn/docusaurus-search-local'),
           {
