@@ -1,15 +1,13 @@
 ---
-title: Tickets Module — Native Support
+title: Tickets Module — In-Platform Support
 date: 2026-06-12
 slug: 2026-06-12-tickets-module
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Vuln Intelligence", "AI Secure Code", "Web and API Scan", "Offensive & Audit Manager", "Automations", "Developer Experience"]
+tags: ["New", "Risk insight", "Vuln Intelligence", "AI Secure Code", "Web and API Scan", "Offensive & Audit Manager", "Cloud Security" ,AI Pentest", "Automations", "Developer Experience"]
 ---
 
-Introduced a new **Tickets module**, consolidating customer support workflows directly inside the Conviso Platform.
+Introduced a new **Tickets module**, bringing support requests directly into the Conviso Platform.
 
-- **GitHub integration:** a more fluid, transparent flow that replaces external sync scripts.
-- **Standardized responses:** canned messages for recurring support answers.
-- **Fine-grained SLA control** over ticket handling.
-- **CRM link:** "Open in CRM" jumps to the related company ticket, and **Internal Notes** keep support context in one place.
-- Everything integrated in a single platform, improving the customer support experience end to end.
+- **Open and track support tickets** without leaving the platform, no need to switch to email or external channels.
+- **Centralized history:** all your support interactions live in one place.
+- A more fluid, transparent support experience, fully integrated into your application security workflow.
