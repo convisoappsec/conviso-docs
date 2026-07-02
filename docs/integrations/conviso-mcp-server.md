@@ -2,9 +2,12 @@
 id: conviso-mcp-server
 title: Conviso MCP Server
 sidebar_label: Conviso MCP Server
-description: "Model Context Protocol (MCP) server that exposes Conviso Platform data (companies, projects, assets, vulnerabilities, metrics) to MCP-compatible clients."
-keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, "Claude Code", integration, security, vulnerabilities]
+description: "Model Context Protocol (MCP) server that lets AI clients read and write Conviso Platform data — companies, projects, assets, vulnerabilities, tickets, requirements, applications, scans, SBOM, AI-Pentest, threat modeling and metrics."
+keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, "Claude Code", integration, security, vulnerabilities, mutations, "write operations", AI-Pentest, "threat modeling", SBOM, tickets, requirements]
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <div style={{textAlign: 'center'}}>
 
@@ -14,165 +17,39 @@ keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, "Claude Code", in
 
 ## Introduction
 
-The Conviso MCP Server is a connector that exposes Conviso Platform data and tools to an LLM via the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client (e.g., Claude Desktop, Claude Code CLI, or Cursor) can ask the model to fetch live, authoritative security context or perform actions instead of relying on cached knowledge.
+The Conviso MCP Server is a connector that exposes Conviso Platform data **and actions** to an LLM through the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client — Claude Desktop, Claude Code CLI, Cursor, or any other — can ask the model to fetch live, authoritative security context and perform operations, instead of relying on cached knowledge.
 
-This server provides capabilities such as listing companies, projects, assets and vulnerabilities, returning technical details, generating direct links to the platform, and retrieving security metrics. It requires a Conviso Platform API Key; data returned is limited by that key's permissions.
+The server ships **42 tools** in two families:
 
-## Features
+- **Read tools (31)** — list and inspect companies, projects, assets, vulnerabilities, tickets, requirements, applications, scan histories, SBOM / supply-chain components, AI-Pentest artifacts and executions, threat-model artifacts, plus security metrics and deep links.
+- **Write tools (11)** — a generic, **allowlisted mutation engine** (`list_mutations` → `describe_mutation` → `execute_mutation`) plus curated shortcuts for the most common writes (change issue status, create vulnerabilities / projects / assets / tickets, run DAST, trigger an AI-Pentest).
 
-The connector exposes a set of tools to the MCP host:
+Everything the server can do is bounded by the **Conviso Platform API Key** you provide — the data returned and the operations allowed match that key's permissions.
 
-| Tool | Description |
-|------|-------------|
-| `get_companies` | List companies accessible with the provided API key, with optional name search |
-| `get_company_info` | Retrieve detailed company info including plan and integrations |
-| `get_projects` | List active security projects for a company |
-| `get_project` | Retrieve metadata for a specific project |
-| `get_assets` | List assets for a company |
-| `get_asset` | Fetch details for a specific asset |
-| `get_issues` | List vulnerabilities for a company or project |
-| `get_issue` | Fetch full technical details for a vulnerability (code snippets, raw requests/responses) |
-| `get_issues_by_asset_id` | List vulnerabilities for a company filtered by a single asset ID. |
-| `get_issues_by_project_id` | List vulnerabilities for a company filtered by a project ID. |
-| `get_top_vulnerabilities` | Vulnerability counts grouped by severity (risk overview) |
-| `create_project_url` | Generate a direct link to a project in the Platform |
-| `create_issue_url` | Generate a direct link to a specific issue |
-| `get_mttr_over_time` | MTTR aggregated over a date range, with severity/status/asset filters |
-| `get_overall_risk_score_history` | Historical risk scores for trend analysis and reporting |
-| `get_today_date` | Utility returning the current date (useful for relative metric queries) |
 
-## Prerequisites
+## Quick install
 
-- Conviso Platform API Key (create it in your Conviso account under **Profile > API Keys**).
-- An MCP-compatible client: Claude Desktop, Claude Code CLI, Cursor, or any client supporting stdio/HTTP MCP servers.
-- Node.js 18+ (if running locally) or Docker.
+Pick your client below and add the server, supplying your API key as `CONVISO_API_KEY`. Most examples run the published package with `npx` — no clone or build required. The write tools ship in all Node-based setups; only the **Python** edition (last tab) is read-only.
 
-:::tip Security recommendation
-Create a dedicated API key for the MCP server and set an expiration date. Never share or commit the key to version control.
-:::
+> **Read and write.** The server acts only within the permissions of the API key you provide.
 
-## Choosing your installation mode
+<Tabs groupId="mcp-client">
+<TabItem value="claude-code" label="Claude Code" default>
 
-The server supports two transport modes depending on where you want to use it:
-
-| Mode | Transport | Works in | How to install |
-|------|-----------|----------|----------------|
-| **Extension** | stdio | Claude Desktop — main chat | Marketplace or manual config |
-| **Connector** | HTTP | Claude Desktop — Cowork/Projects | Run as HTTP server, register URL |
-| **Claude Code CLI** | stdio | Terminal / IDE | `claude mcp add` |
-
----
-
-## Installation
-
-### Claude Desktop — Marketplace (Extension mode)
-
-This installs the server as an **Extension**. It works in the **Claude Desktop main chat only** — not in Cowork or Projects mode.
-
-1. Create an API Key in the Conviso Platform (**Profile > API Keys**).
-
-<div style={{textAlign: 'center'}}>
-
-![step-1](../../static/img/screenshots/new-20260402-123925.png)
-
-</div>
-
-2. Open Claude Desktop → **Settings > Extensions > Explore extensions**. Search for **Conviso MCP Server** and click **Install**.
-
-<div style={{textAlign: 'center'}}>
-
-![step-2](../../static/img/conviso_mcp-img2.png)
-
-</div>
-
-3. Go to **Settings > Extensions**, find **Conviso MCP Server** and click **Configure**. Enter your Conviso API Key and click **Save**.
-
-<div style={{textAlign: 'center'}}>
-
-![step-3](../../static/img/conviso_mcp-img3.png)
-
-</div>
-
-4. Start a new chat and run a sample prompt such as "List my companies" to confirm the server is active.
-
-:::note
-The configuration dialog appears in **Settings → Extensions → Configure**, not during the install step.
-:::
-
----
-
-### Claude Desktop — Connector mode (Cowork / Projects)
-
-To use the server inside **Cowork or Projects**, you need to run it as an HTTP server and register its URL as a **Connector**.
-
-#### 1. Start the HTTP server
-
-Run the server directly with `npx` — no clone or install required:
+Register the server once and it's available in every project:
 
 ```bash
-PORT=3000 CONVISO_API_KEY=<your_api_key> npx -y @convisoappsec/mcp
+claude mcp add -s user -e CONVISO_API_KEY=<your_api_key> conviso-mcp -- npx -y @convisoappsec/mcp
 ```
 
-The server will listen on `http://localhost:3000`.
+Check it with `claude mcp list` (or run `/mcp` inside a session). Swap `-s user` for `-s project` to scope it to the current repo (`.mcp.json`).
 
-#### 2. Register as a Connector
+</TabItem>
+<TabItem value="claude-desktop" label="Claude Desktop">
 
-In Claude Desktop, go to **Settings → Connectors → Add Connector** and enter:
+**Easiest:** open **Settings → Extensions → Explore extensions**, search **Conviso MCP Server**, click **Install**, then **Configure** and paste your API key. Full walkthrough: [Marketplace steps](#desktop-marketplace).
 
-```
-http://localhost:3000
-```
-
-#### 3. Use it in Cowork
-
-Open Cowork or a Project and the Conviso tools will be available automatically.
-
-:::tip Running in production
-For persistent use, run the server as a background process or system service. You can also host it on any server and register its public URL as a Connector.
-:::
-
----
-
-### Claude Code CLI (recommended for developers)
-
-Claude Code is the AI coding assistant CLI from Anthropic. It supports MCP servers natively — no desktop app required.
-
-#### 1. Register the server
-
-```bash
-claude mcp add -e "CONVISO_API_KEY=<your_api_key>" -s user conviso-mcp -- \
-  npx -y @convisoappsec/mcp
-```
-
-- `-s user` makes the server available in all your projects. Use `-s project` to limit it to the current project (stored in `.mcp.json`).
-- `npx` downloads and runs the package automatically — no clone or install required.
-
-#### 2. Verify the connection
-
-```bash
-claude mcp list
-# conviso-mcp: node .../server.js - ✓ Connected
-```
-
-Or inside a Claude Code session, run `/mcp` to see server status and available tools.
-
-#### 3. Use it
-
-Start Claude Code in any project directory and interact naturally:
-
-```
-> List projects for my company
-> Show the top vulnerabilities — what's the breakdown by severity?
-> Get details on issue 5678, including the vulnerable code snippet
-```
-
----
-
-### Other clients — manual configuration
-
-Add an entry in your MCP client's configuration file.
-
-#### Via npx (stdio, no install required)
+**Manual:** edit `claude_desktop_config.json` (Settings → Developer → Edit Config):
 
 ```json
 {
@@ -186,173 +63,236 @@ Add an entry in your MCP client's configuration file.
 }
 ```
 
-#### Local Python (clone required)
+</TabItem>
+<TabItem value="cursor" label="Cursor">
 
-Clone the repository first: `git clone https://github.com/convisoappsec/conviso-mcp.git`
+Add to `.cursor/mcp.json` (current project) or `~/.cursor/mcp.json` (all projects):
 
 ```json
 {
   "mcpServers": {
     "conviso-mcp": {
-      "command": "/absolute/path/to/venv/bin/python",
-      "args": ["/absolute/path/to/conviso-mcp/python/src/conviso_mcp/server.py"],
+      "command": "npx",
+      "args": ["-y", "@convisoappsec/mcp"],
       "env": { "CONVISO_API_KEY": "your_api_key_here" }
     }
   }
 }
 ```
 
-#### Docker (recommended for isolation)
+Then enable **conviso-mcp** under **Settings → MCP**.
+
+</TabItem>
+<TabItem value="vscode" label="VS Code">
+
+Add to `.vscode/mcp.json` — note the `servers` key and the `type` field:
+
+```json
+{
+  "servers": {
+    "conviso-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@convisoappsec/mcp"],
+      "env": { "CONVISO_API_KEY": "your_api_key_here" }
+    }
+  }
+}
+```
+
+Or add it straight from the terminal:
+
+```bash
+code --add-mcp '{"name":"conviso-mcp","command":"npx","args":["-y","@convisoappsec/mcp"],"env":{"CONVISO_API_KEY":"your_api_key_here"}}'
+```
+
+</TabItem>
+<TabItem value="codex" label="Codex">
+
+Add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.conviso-mcp]
+command = "npx"
+args = ["-y", "@convisoappsec/mcp"]
+env = { CONVISO_API_KEY = "your_api_key_here" }
+```
+
+</TabItem>
+<TabItem value="gemini" label="Gemini">
+
+Add to `~/.gemini/settings.json` (all projects) or `.gemini/settings.json` (current project):
 
 ```json
 {
   "mcpServers": {
-    "conviso-mcp-docker": {
+    "conviso-mcp": {
+      "command": "npx",
+      "args": ["-y", "@convisoappsec/mcp"],
+      "env": { "CONVISO_API_KEY": "your_api_key_here" }
+    }
+  }
+}
+```
+
+Or from the terminal:
+
+```bash
+gemini mcp add -e CONVISO_API_KEY=<your_api_key> conviso-mcp npx -y @convisoappsec/mcp
+```
+
+Works in **Gemini CLI** and **Gemini Code Assist** (agent mode). Verify with `/mcp list`. For HTTP transport, run the server with `PORT=3000` and use `"httpUrl": "http://localhost:3000"` instead of `command`.
+
+</TabItem>
+<TabItem value="docker" label="Docker">
+
+Run the Node image (build it first: `docker build -t conviso-mcp-node-image node/`):
+
+```json
+{
+  "mcpServers": {
+    "conviso-mcp": {
       "command": "docker",
       "args": [
-        "run", "-i", "--rm",
+        "run", "-i", "--rm", "--init",
         "-e", "CONVISO_API_KEY=your_api_key_here",
-
-        "conviso-mcp"
+        "conviso-mcp-node-image"
       ]
     }
   }
 }
 ```
 
-Restart or reload your MCP client after adding the entry.
+</TabItem>
+</Tabs>
 
----
+Restart or reload your client after adding the entry. The tabs use the **stdio** transport; for Claude **Cowork/Projects** or remote hosting, use [HTTP (Connector) mode](#connector-mode) below.
 
-## Usage examples
+--- 
 
-Once the server is connected, you can ask the AI in natural language — it will call the right tools, combine results, and synthesize the answer. Below are real-world examples organized by workflow.
 
----
+## What you can do
 
-### Discover your environment
+| Domain | Read | Write |
+|--------|------|-------|
+| **Companies** | List, inspect (plan, integrations, branding) | — |
+| **Vulnerabilities / Issues** | List (rich filters), full technical detail, severity overview, per-asset and per-project views | Change status, create/update (source-code, web, network), reassign, mark analyzed, bulk status, bulk delete |
+| **Projects** | List (filters), inspect | Create, update, change status, bulk status, bulk delete |
+| **Assets** | List (filters), inspect | Create, update, run Conviso DAST |
+| **Tickets** | List, inspect | Create |
+| **Requirements / Checklists** | List by scope, inspect, list per project | Create/update, attach to projects |
+| **Applications** | List, inspect (with linked assets) | Create, update, add/remove assets |
+| **Scans** | Execution history, coverage counts | *(read-only)* |
+| **Supply chain / SBOM** | List components (license, versions, issues by severity) | *(read-only)* |
+| **AI-Pentest** | List artifacts, inspect scope & executions, execution results | Create/update artifact, trigger execution, cancel, retest |
+| **Threat Modeling** | List artifacts, inspect versions | Create artifact/version, update, generate requirements |
+| **Metrics & links** | MTTR over time, risk-score history, deep links, today's date | — |
 
-Start by finding your company ID — you'll need it for most other queries.
+## Tools reference
 
-> **"List my companies"**
+### Read tools
 
-The model will call `get_companies` and return your accessible companies with their IDs. Use that ID in subsequent prompts.
+| Domain | Tool | Description |
+|--------|------|-------------|
+| **General** | `get_companies` | List companies accessible with the API key (`search` = name contains, `label_eq` = exact match). |
+| **General** | `get_company_info` | Company detail: plan, integrations, branding metadata. |
+| **Vulnerabilities** | `get_issues` | List vulnerabilities for a company with rich filtering and sorting. |
+| **Vulnerabilities** | `get_issue` | Full technical detail for one issue; optional vulnerable code snippet and raw HTTP request/response. |
+| **Vulnerabilities** | `get_issues_by_asset_id` | Same filter set, scoped to a single asset. |
+| **Vulnerabilities** | `get_issues_by_project_id` | Same filter set, scoped to a single project. |
+| **Vulnerabilities** | `get_top_vulnerabilities` | Counts grouped by severity (risk overview), with optional filters. |
+| **Projects** | `get_projects` | List security projects for a company, with filters and sorting. |
+| **Projects** | `get_project` | Metadata for a specific project. |
+| **Assets** | `get_assets` | List assets for a company, with rich filtering and sorting. |
+| **Assets** | `get_asset` | Detail for a specific asset. |
+| **Tickets** | `get_tickets` | List tickets (paginated) with search and `TicketSearch` params. |
+| **Tickets** | `get_ticket` | One ticket: status, priority, impact, assignee. |
+| **Requirements** | `get_requirements` | List requirements/checklists for a scope (company). |
+| **Requirements** | `get_requirement` | One requirement/checklist by id. |
+| **Requirements** | `get_project_requirements` | Requirements attached to a specific project. |
+| **Applications** | `get_applications` | List applications (name, url, riskScore, assetsCount). |
+| **Applications** | `get_application` | One application, including its linked assets. |
+| **Scans** | `get_scan_histories` | Scan executions (status, integration, duration, vuln counts). |
+| **Scans** | `get_asset_scans_count` | Scan-coverage counts (assets with / without scans). |
+| **Supply chain** | `get_sbom_components` | SBOM components: version, technology, package manager, license, issues by severity. |
+| **AI-Pentest** | `get_pentest_artifacts` | List AI-Pentest artifacts (label, type, scheduling, latest execution). |
+| **AI-Pentest** | `get_pentest_artifact` | One artifact, including scope and its executions. |
+| **AI-Pentest** | `get_pentest_execution` | Execution result: status, vuln count, severity breakdown, retest progress. |
+| **Threat Modeling** | `get_threat_model_artifacts` | List threat-model artifacts (label, scope, latest version). |
+| **Threat Modeling** | `get_threat_model_artifact` | One artifact, including its versions (diagrams, notes, scope). |
+| **Metrics** | `get_mttr_over_time` | MTTR aggregated over a date range; severity/status/asset filters. |
+| **Metrics** | `get_overall_risk_score_history` | Historical risk scores for trend analysis. |
+| **Utilities** | `create_project_url` | Deep link to a project in the Platform. |
+| **Utilities** | `create_issue_url` | Deep link to a specific issue. |
+| **Utilities** | `get_today_date` | Current date — useful to compute relative ranges ("last 30 days"). |
 
-> **"Show me the details for company 1234 — what plan are they on and which integrations are active?"**
+### Write tools
 
-Calls `get_company_info` and returns plan name, configured integrations, and metadata.
+| Group | Tool | Description |
+|-------|------|-------------|
+| **Engine** | `list_mutations` | Discover the permitted write operations (name, description, category, destructive flag). |
+| **Engine** | `describe_mutation` | Full input schema for one mutation (fields, required, enums, nested inputs) + default return fields. |
+| **Engine** | `execute_mutation` | Run any **allowlisted** mutation by name with a generic input object. |
+| **Shortcut** | `change_issue_status` | Change an issue/vulnerability status. |
+| **Shortcut** | `create_source_code_vulnerability` | Create a manual source-code (SAST-style) vulnerability on an asset. |
+| **Shortcut** | `create_project` | Create a project. |
+| **Shortcut** | `create_asset` | Create an asset. |
+| **Shortcut** | `create_ticket` | Open a ticket. |
+| **Shortcut** | `run_dast` | Start a Conviso DAST scan on an asset. |
+| **Shortcut** | `trigger_pentest` | Trigger an AI-Pentest execution from an existing artifact. |
+| **Shortcut** | `create_pentest_artifact` | Create an AI-Pentest artifact (the scope/config a pentest runs against). |
 
-> **"List all active projects for company 1234. Which ones are currently in progress?"**
 
-Calls `get_projects` and filters by status, so you immediately see what's active vs. completed.
+## Prerequisites
 
----
+- **Conviso Platform API Key** — create it under **Profile > API Keys**.
+- An **MCP-compatible client**: Claude Desktop, Claude Code CLI, Cursor, or any client supporting stdio/HTTP MCP servers.
+- **Node.js 20.10+** (for the Node edition / write tools) or Docker. The Python edition (read-only) needs Python 3.10+.
 
-### Vulnerability triage
+Generate the key in the Conviso Platform under **Profile > API Keys** and copy it — you'll pass it to the server as the `CONVISO_API_KEY` value in the steps below.
 
-> **"What's the current vulnerability breakdown for company 1234? Give me the count by severity."**
+<div style={{textAlign: 'center'}}>
 
-Calls `get_top_vulnerabilities` and returns a severity summary — useful for a quick risk snapshot in a standup or report.
+![Create a Conviso API Key under Profile > API Keys](../../static/img/mcp/apikey.png)
 
-> **"List the 10 most recent vulnerabilities for company 1234."**
+</div>
 
-Calls `get_issues` with pagination and returns title, severity, asset, and project for each.
+:::tip Security recommendation
+Create a dedicated API key for the MCP server and set an expiration date. Grant it only the permissions the workflow needs, and never commit it to version control.
+:::
 
-> **"List all vulnerabilities for asset 42."**
 
-Calls `get_issues_by_asset_id` with the specified asset ID. Returns vulnerabilities scoped to that asset.
 
-> **"Show me all vulnerabilities for project 789 — only high and critical, ordered by most recent."**
 
-Combines `get_issues` filtered by `project_id`. The model will filter and sort the results for you.
 
-> **"Get the full details for issue 5678 — what's the description, status, and which asset is affected?"**
 
-Calls `get_issue`. Returns title, description, severity, status, asset, project, and history.
-
-> **"Get issue 5678 with the vulnerable code snippet and raw HTTP request."**
-
-Calls `get_issue` with `return_vulnerable_data: true`. Returns the technical detail including code location, request/response, and exploit data. Handle with care — see [Security](#security).
-
-> **"Give me a direct link to issue 5678 so I can share it with the team."**
-
-Calls `create_issue_url` and returns the deep link to the Platform.
-
----
-
-### Asset investigation
-
-> **"List all assets for company 1234. How many do we have?"**
-
-Calls `get_assets` and returns the full inventory with asset type, environment, and audience.
-
-> **"Show details for asset 42 — what technology stack is it using and what's its current risk score?"**
-
-Calls `get_asset` and returns architecture type, technologies, business impact, and the current risk score value.
-
-> **"Which vulnerabilities are affecting asset 42?"**
-
-Calls `get_issues` with the asset context. Gives you a scoped view of exposure for a single asset.
-
----
-
-### Security metrics
-
-> **"What's the MTTR for company 1234 for the full year 2024?"**
-
-Calls `get_mttr_over_time` with `start_date: 2024-01-01` and `end_date: 2024-12-31`. Returns MTTR broken down by severity and date.
-
-> **"Show me the MTTR for critical and high vulnerabilities in Q1 2025."**
-
-Same tool, with `severities: ["CRITICAL", "HIGH"]` and the quarter date range.
-
-> **"Is our overall risk score improving? Show me the trend for company 1234."**
-
-Calls `get_overall_risk_score_history` and returns current score, previous score, and the delta — the model will tell you if you're trending up or down.
-
----
-
-### Agentic workflows — combining multiple tools
-
-The AI can chain tools in a single prompt to answer complex questions without manual steps.
-
-> **"Give me a security posture summary for company 1234: current severity breakdown, risk score trend, and MTTR for criticals in the last 6 months. Format as a table."**
-
-The model calls `get_top_vulnerabilities`, `get_overall_risk_score_history`, and `get_mttr_over_time` in sequence, then synthesizes the results into a single structured table.
-
-> **"Find the most critical open vulnerability for company 1234, show me the vulnerable code, and give me a direct link to it."**
-
-Chains `get_top_vulnerabilities` → `get_issues` → `get_issue` (with code snippet) → `create_issue_url`. One prompt, full context.
-
-> **"I need to write a security update for my team. For company 1234, summarise: how many open vulnerabilities by severity, which assets are most exposed, and whether MTTR improved compared to last quarter."**
-
-The model orchestrates multiple tools and writes a plain-language summary ready to paste into Slack or a report.
-
-> **"List all assets for company 1234, then for each asset with a high risk score fetch its open vulnerabilities."**
-
-Chains `get_assets` → multiple `get_issues` calls — an asset-centric risk review in one prompt.
-
----
 
 ### Tips for better prompts
 
-- **Always provide the company ID** once you know it — it unlocks most tools. If you don't know it, start with "List my companies".
-- **Ask for links** at the end of any vulnerability query — the model can call `create_issue_url` or `create_project_url` as a follow-up.
-- **Combine context** — the AI maintains conversation context, so you can say "now get the details for the first one" after a list.
-- **Request formats** — ask for tables, bullet lists, or raw JSON depending on what you need ("format as a markdown table", "give me just the IDs").
+- **Provide the company ID** once you know it — it unlocks most tools. If you don't have it, start with "List my companies".
+- **Ask for links** at the end of any vulnerability or project query — the model calls `create_issue_url` / `create_project_url` as a follow-up.
+- **Combine context** — the AI keeps conversation context, so "now get the details for the first one" works after a list.
+- **Request formats** — ask for tables, bullet lists, or raw JSON ("format as a markdown table", "give me just the IDs").
 
 ---
 
-## Security
+## Security and privacy
 
-- The server only has the permissions of the provided API Key.
+- The server operates strictly within the permissions of the provided **API Key** — for both reads and writes.
+- **Writes are allowlisted.** Only the operations listed above are reachable; destructive ones (delete / bulk / cancel / remove) are flagged so the client prompts for confirmation.
 - `get_issue` with `return_vulnerable_data=true` may return exploit code, raw HTTP requests/responses, or secrets — use with care.
-- Create a dedicated key with an expiration date; do not reuse your personal API key.
-- Keep your API key out of version control. Use environment variables or a secrets manager.
+- Create a **dedicated key with an expiration date**; do not reuse a personal API key, and scope it to the minimum permissions needed.
+- Keep the API key out of version control — use environment variables or a secrets manager.
+
+### Privacy Policy
+
+This connector communicates only with the Conviso Platform API (`https://app.convisoappsec.com`) using the API key you provide. It does not collect, store, or share your data with any third party — requests and responses stay between your MCP client and the Conviso Platform. Error logs go to `stderr` only.
+
+Full privacy policy: [iubenda.com/privacy-policy/55589285](https://www.iubenda.com/privacy-policy/55589285)
 
 ## Open source
 
-The Conviso MCP Server is open source and available at [github.com/convisoappsec/conviso-mcp](https://github.com/convisoappsec/conviso-mcp). Contributions are welcome — bug reports, new tools, and improvements to existing capabilities. See the repository's `CONTRIBUTING.md` to get started.
+The Conviso MCP Server is open source at [github.com/convisoappsec/conviso-mcp](https://github.com/convisoappsec/conviso-mcp). Contributions are welcome — bug reports, new tools, and improvements. See the repository's `CONTRIBUTING.md` to get started.
 
 ## See also
 
