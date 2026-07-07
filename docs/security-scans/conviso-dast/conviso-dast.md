@@ -26,6 +26,7 @@ Before testing, the DAST maps everything it can reach:
 - **Automated crawling** of links and forms across the application.
 - **JavaScript-aware crawling** with a real browser engine — it fully renders and interacts with modern **single-page applications (SPAs)** (React, Angular, Vue, and similar), following client-side navigation and submitting forms so that dynamically loaded pages are reached.
 - **Endpoint recovery from client-side code** — extracts API routes referenced inside the application's JavaScript, recovering endpoints that never appear as static links.
+- **Automatic API discovery** — when no API definition is supplied, the DAST automatically probes for and imports common API specifications (**OpenAPI/Swagger** and **GraphQL**) exposed by the application, so the API surface is tested with **no manual configuration**.
 - **Historical reconnaissance** — discovers previously known URLs of the target from public sources.
 - **Hidden parameter discovery** — detects undocumented parameters that expand the testable surface (a common blind spot on modern APIs).
 
@@ -42,7 +43,9 @@ When the target exposes an **AI / LLM endpoint** (chat or completion style), the
 
 ### API testing
 
-Point the DAST at an API definition (**OpenAPI/Swagger**, **GraphQL**, or **SOAP**) and it imports every operation — including request bodies — so the full API surface is exercised, not just what a crawler can reach. When no definition is provided, the DAST can also auto-discover common specification endpoints.
+Point the DAST at an API definition (**OpenAPI/Swagger**, **GraphQL**, or **SOAP**) and it imports every operation — including request bodies — so the full API surface is exercised, not just what a crawler can reach.
+
+**You don't have to provide the definition, though.** When none is configured, the DAST performs **automatic API discovery** — it probes the application for common specification locations (OpenAPI/Swagger and GraphQL) and, if it finds one, imports and tests it automatically.
 
 ### Authenticated testing
 
