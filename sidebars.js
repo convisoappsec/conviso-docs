@@ -241,6 +241,17 @@ module.exports = {
                 'integrations/businessmap',
                 'integrations/clickup',
                 'integrations/jira',
+                {
+                  type: "category",
+                  label: "Requirements Sync",
+                  link: {
+                    type: "doc",
+                    id: "integrations/requirements-defect-tracker",
+                  },
+                  items: [
+                    'integrations/jira-requirements',
+                  ],
+                },
                 'integrations/servicenow'
               ]
             },
