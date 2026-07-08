@@ -97,6 +97,11 @@ module.exports = {
             },
             {
               type: 'doc',
+              label: 'Reachability Analysis',
+              id: 'security-scans/reachability-analysis'
+            },
+            {
+              type: 'doc',
               label: 'Scan Container with Conviso',
               id: 'security-scans/conviso-containers/conviso-containers'
             },
