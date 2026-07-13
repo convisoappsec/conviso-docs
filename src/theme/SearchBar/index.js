@@ -66,7 +66,16 @@ function reorderResultsByRelevance(results) {
     blocks.push(currentBlock);
   }
 
+  // Prioritize by: (1) has Title match, (2) max score, (3) original order
   blocks.sort((blockA, blockB) => {
+    const hasTitle = (block) => block.some(item => item.type === 0);
+    const titleA = hasTitle(blockA) ? 1 : 0;
+    const titleB = hasTitle(blockB) ? 1 : 0;
+
+    if (titleA !== titleB) {
+      return titleB - titleA; // Title blocks first
+    }
+
     const maxScoreA = Math.max(...blockA.map(item => item.score || 0));
     const maxScoreB = Math.max(...blockB.map(item => item.score || 0));
     return maxScoreB - maxScoreA;
