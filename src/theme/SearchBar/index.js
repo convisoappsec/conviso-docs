@@ -39,6 +39,42 @@ import styles from "./SearchBar.module.css";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
+function reorderResultsByRelevance(results) {
+  if (!results || results.length === 0) {
+    return results;
+  }
+
+  const blocks = [];
+  let currentBlock = [];
+  let currentKey = null;
+
+  results.forEach((item) => {
+    const key = item.page || item.document;
+
+    if (currentKey !== key) {
+      if (currentBlock.length > 0) {
+        blocks.push(currentBlock);
+      }
+      currentBlock = [item];
+      currentKey = key;
+    } else {
+      currentBlock.push(item);
+    }
+  });
+
+  if (currentBlock.length > 0) {
+    blocks.push(currentBlock);
+  }
+
+  blocks.sort((blockA, blockB) => {
+    const maxScoreA = Math.max(...blockA.map(item => item.score || 0));
+    const maxScoreB = Math.max(...blockB.map(item => item.score || 0));
+    return maxScoreB - maxScoreA;
+  });
+
+  return blocks.flat();
+}
+
 async function fetchAutoCompleteJS() {
   const autoCompleteModule = await import("@easyops-cn/autocomplete.js");
   const autoComplete = autoCompleteModule.default;
@@ -165,7 +201,8 @@ export default function SearchBar({ handleSearchBarToggle }) {
               input,
               searchResultLimits
             );
-            callback(result);
+            const reorderedResult = reorderResultsByRelevance(result);
+            callback(reorderedResult);
           },
           templates: {
             suggestion: SuggestionTemplate,
