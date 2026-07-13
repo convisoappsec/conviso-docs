@@ -39,6 +39,80 @@ import styles from "./SearchBar.module.css";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
+function addSearchSummary(results) {
+  if (!results || results.length === 0) {
+    return results;
+  }
+
+  const docMatches = results.filter(item => item.type === 0);
+  const contentMatches = results.filter(item => item.type !== 0);
+
+  const enhanced = [];
+
+  if (docMatches.length > 0) {
+    enhanced.push({
+      __isSeparator: true,
+      __label: `📄 Document References (${docMatches.length})`,
+    });
+    enhanced.push(...docMatches);
+  }
+
+  if (contentMatches.length > 0) {
+    enhanced.push({
+      __isSeparator: true,
+      __label: `🔍 Content Matches (${contentMatches.length})`,
+    });
+    enhanced.push(...contentMatches);
+  }
+
+  return enhanced;
+}
+
+function reorderResultsByRelevance(results) {
+  if (!results || results.length === 0) {
+    return results;
+  }
+
+  const blocks = [];
+  let currentBlock = [];
+  let currentKey = null;
+
+  results.forEach((item) => {
+    const key = item.page || item.document;
+
+    if (currentKey !== key) {
+      if (currentBlock.length > 0) {
+        blocks.push(currentBlock);
+      }
+      currentBlock = [item];
+      currentKey = key;
+    } else {
+      currentBlock.push(item);
+    }
+  });
+
+  if (currentBlock.length > 0) {
+    blocks.push(currentBlock);
+  }
+
+  // Prioritize by: (1) has Title match, (2) max score, (3) original order
+  blocks.sort((blockA, blockB) => {
+    const hasTitle = (block) => block.some(item => item.type === 0);
+    const titleA = hasTitle(blockA) ? 1 : 0;
+    const titleB = hasTitle(blockB) ? 1 : 0;
+
+    if (titleA !== titleB) {
+      return titleB - titleA; // Title blocks first
+    }
+
+    const maxScoreA = Math.max(...blockA.map(item => item.score || 0));
+    const maxScoreB = Math.max(...blockB.map(item => item.score || 0));
+    return maxScoreB - maxScoreA;
+  });
+
+  return blocks.flat();
+}
+
 async function fetchAutoCompleteJS() {
   const autoCompleteModule = await import("@easyops-cn/autocomplete.js");
   const autoComplete = autoCompleteModule.default;
@@ -165,16 +239,29 @@ export default function SearchBar({ handleSearchBarToggle }) {
               input,
               searchResultLimits
             );
-            callback(result);
+            const reorderedResult = reorderResultsByRelevance(result);
+            const enhancedResult = addSearchSummary(reorderedResult);
+            callback(enhancedResult);
           },
           templates: {
-            suggestion: SuggestionTemplate,
+            suggestion: (item) => {
+              if (item.__isSeparator) {
+                return `<div class="${styles.suggestion} ${styles.suggestion__isSeparator}">${item.__label}</div>`;
+              }
+              return SuggestionTemplate(item);
+            },
             empty: EmptyTemplate,
           },
         },
       ]
     )
-      .on("autocomplete:selected", function (event, { document: { u, h }, tokens }) {
+      .on("autocomplete:selected", function (event, data) {
+        // Ignore separator items (they have no document)
+        if (data.__isSeparator) {
+          return;
+        }
+
+        const { document: { u, h }, tokens } = data;
         searchBarRef.current?.blur();
 
         let url = u;
