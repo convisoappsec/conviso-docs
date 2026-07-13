@@ -39,6 +39,35 @@ import styles from "./SearchBar.module.css";
 
 const SEARCH_PARAM_HIGHLIGHT = "_highlight";
 
+function addSearchSummary(results) {
+  if (!results || results.length === 0) {
+    return results;
+  }
+
+  const docMatches = results.filter(item => item.type === 0);
+  const contentMatches = results.filter(item => item.type !== 0);
+
+  const enhanced = [];
+
+  if (docMatches.length > 0) {
+    enhanced.push({
+      __isSeparator: true,
+      __label: `📄 Document References (${docMatches.length})`,
+    });
+    enhanced.push(...docMatches);
+  }
+
+  if (contentMatches.length > 0) {
+    enhanced.push({
+      __isSeparator: true,
+      __label: `🔍 Content Matches (${contentMatches.length})`,
+    });
+    enhanced.push(...contentMatches);
+  }
+
+  return enhanced;
+}
+
 function reorderResultsByRelevance(results) {
   if (!results || results.length === 0) {
     return results;
@@ -211,10 +240,16 @@ export default function SearchBar({ handleSearchBarToggle }) {
               searchResultLimits
             );
             const reorderedResult = reorderResultsByRelevance(result);
-            callback(reorderedResult);
+            const enhancedResult = addSearchSummary(reorderedResult);
+            callback(enhancedResult);
           },
           templates: {
-            suggestion: SuggestionTemplate,
+            suggestion: (item) => {
+              if (item.__isSeparator) {
+                return `<div class="${styles.suggestion} ${styles.suggestion__isSeparator}">${item.__label}</div>`;
+              }
+              return SuggestionTemplate(item);
+            },
             empty: EmptyTemplate,
           },
         },

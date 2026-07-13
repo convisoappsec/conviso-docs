@@ -225,6 +225,25 @@ html[data-theme="dark"] .noResultsIcon {
   text-decoration: underline;
 }
 
+.suggestion.__isSeparator {
+  background: var(--search-local-separator-background, var(--ifm-color-emphasis-200));
+  color: var(--search-local-separator-color, var(--ifm-color-secondary-darker));
+  font-weight: 600;
+  font-size: 0.8em;
+  padding: 8px 12px !important;
+  height: auto !important;
+  cursor: default !important;
+  box-shadow: none !important;
+  margin-bottom: 8px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+html[data-theme="dark"] .suggestion.__isSeparator {
+  background: var(--search-local-separator-background, var(--ifm-color-emphasis-800));
+  color: var(--search-local-separator-color, var(--ifm-color-secondary-lighter));
+}
+
 .searchBarContainer {
   margin-left: 16px;
 }
