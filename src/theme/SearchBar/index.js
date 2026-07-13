@@ -255,7 +255,13 @@ export default function SearchBar({ handleSearchBarToggle }) {
         },
       ]
     )
-      .on("autocomplete:selected", function (event, { document: { u, h }, tokens }) {
+      .on("autocomplete:selected", function (event, data) {
+        // Ignore separator items (they have no document)
+        if (data.__isSeparator) {
+          return;
+        }
+
+        const { document: { u, h }, tokens } = data;
         searchBarRef.current?.blur();
 
         let url = u;
