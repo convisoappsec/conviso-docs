@@ -35,6 +35,7 @@ Currently we support the following languages using Semgrep with Conviso managed 
 - PHP
 - Generic
 - JSON
+- VB6
 
 :::note
 Elixir is not yet supported by Semgrep. We use Sobelow, enhanced with Conviso-managed generic Semgrep rules, for Elixir security scans.
