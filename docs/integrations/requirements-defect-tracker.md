@@ -45,7 +45,7 @@ The external tracker is the execution workspace. Conviso Platform remains the so
 
 Every Requirements Sync integration supports:
 
-- **Outbound sync** — Conviso Platform creates and updates records in the external provider (one parent item for the project, child items for its requirements, and leaf items for the activities).
+- **Outbound sync** — Conviso Platform creates and updates records in the external provider (one item for the project, its requirements, and its activities). Depending on the provider and configuration, these can be nested as a parent/child hierarchy or kept at the same level with metadata references — see the provider guide (for Jira, [Sync modes](./jira-requirements.md#sync-modes)).
 - **Inbound status sync** — Status changes in the external provider are received and applied back to Conviso Platform (via webhooks) when a matching status mapping exists.
 - **Manual Sync** — Creates or refreshes the external hierarchy on demand, reconciling created, updated, and removed items.
 - **Auto Sync** — Sends changes automatically when a project, requirement, or activity is created, updated, or removed.
