@@ -16,12 +16,16 @@ Conviso builds a **call graph** of your application, a map of every function and
 
 This runs automatically in the background for eligible assets.
 
+:::info
+Reachability Analysis is currently only supported for **GitHub** integration.
+:::
+
 ## Eligibility
 
 An asset is automatically picked up for Reachability Analysis when:
 
 * The **SCA** scan type is enabled for the asset.
-* Conviso has access to the asset's source code via a connected Git integration.
+* Conviso has access to the asset's source code via a connected **GitHub** integration.
 
 Reachability results are recalculated as new commits and new SCA findings are detected, so the status and trace shown in the Platform reflect the most recently analyzed code.
 
@@ -68,32 +72,7 @@ The vulnerability list can be filtered by **Reachable by > Static Analysis**. Us
 
 ## Programmatic Access via GraphQL
 
-Reachability data is available on `ScaFinding.detail` for custom integrations and dashboards:
-
-```graphql
-query VulnerabilityReachability($id: ID!) {
-  vulnerability(id: $id) {
-    title
-    ... on ScaFinding {
-      detail {
-        cve
-        package
-        affectedVersion
-        reachabilityAnalysis {
-          staticReachable
-          staticLastAnalysisTime
-        }
-      }
-    }
-  }
-}
-```
-
-Notes:
-
-* `staticReachable` is a boolean indicating whether a call path to the vulnerable function was found.
-* `staticLastAnalysisTime` indicates when the analysis last ran for that finding.
-* The call trace itself (`staticTrace`) is available on the same `reachabilityAnalysis` object and is best fetched on demand, since it can be large for deep call chains.
+Reachability data is available on `ScaFinding.detail` for custom integrations and dashboards. See the [API Getting Started](../api/api-overview) page and the [GraphQL Playground](../api/graphql/playground) for the full schema reference, including the `reachabilityAnalysis` fields.
 
 ## Support
 
