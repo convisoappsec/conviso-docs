@@ -2,7 +2,7 @@
 id: conviso-ast
 title: Conviso AST
 sidebar_label: Conviso AST
-description: Install, configure, and run Conviso AST — the Conviso CLI for SAST, SCA, IaC, and container scanning — locally, in Docker, or in your CI/CD pipeline.
+description: Install, configure, and run Conviso AST — the Conviso security scanner for SAST, SCA, IaC, and container analysis — locally, in Docker, or in your CI/CD pipeline.
 keywords: [Conviso AST, SAST, SCA, IaC, security scanner, conviso-ast, conviso cli, pip install conviso-ast, convisoast docker, application security testing]
 image: /static/img/release45-conviso-ast.png
 ---
@@ -12,9 +12,9 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-**Conviso AST** (Application Security Testing) is the command-line scanner that analyzes your source code and dependencies, then consolidates every finding into the **Vulnerability Management** module of the Conviso Platform.
+**Conviso AST** (Application Security Testing) is the Conviso security scanner that analyzes your source code and dependencies, then consolidates every finding into the **Vulnerability Management** module of the Conviso Platform.
 
-It is distributed as a single CLI — the `conviso` command — that unifies several analysis engines behind one interface. Run it locally from your terminal for fast feedback, or drop it into any CI/CD pipeline so every push and pull request is scanned automatically.
+It runs through a single `conviso` command that unifies several analysis engines behind one interface. Run it locally from your terminal for fast feedback, or drop it into any CI/CD pipeline so every push and pull request is scanned automatically.
 
 **[At Conviso, we believe that AppSec goes beyond security tools, and we offer a comprehensive approach that includes consulting, training, and support services.](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)**
 
@@ -67,7 +67,7 @@ Conviso AST orchestrates its analyzers as **Docker containers**, so a working Do
 
 | Requirement | Details |
 | :--- | :--- |
-| **Docker** | A running Docker daemon the CLI can reach. The SAST engine and other analyzers run as containers pulled on demand. |
+| **Docker** | A running Docker daemon that Conviso AST can reach. The SAST engine and other analyzers run as containers pulled on demand. |
 | **API Key** | A Conviso Platform API Key to authenticate. See [Generate API Key](../../api/api-overview#generate-api-key). |
 | **Python** *(pip install only)* | Python **3.9+**. Not needed if you run the Docker image. |
 | **Git** | The repository must be a Git working tree. Conviso AST uses commit history to scope diffs and track deploys. |
@@ -79,7 +79,7 @@ Choose the method that fits your workflow. The **Docker image** is the recommend
 <Tabs groupId="install-method">
 <TabItem value="docker" label="Docker (recommended)" default>
 
-The image ships the `conviso` CLI and everything it needs. Nothing to install locally beyond Docker itself.
+The image ships the `conviso` command and everything it needs. Nothing to install locally beyond Docker itself.
 
 ```bash
 docker pull convisoappsec/convisoast:latest
@@ -96,7 +96,7 @@ docker run --rm convisoappsec/convisoast:latest conviso --version
 </TabItem>
 <TabItem value="pip" label="pip (PyPI)">
 
-Install the CLI from PyPI. Requires **Python 3.9+** and a running Docker daemon (the analyzers still run in containers).
+Install Conviso AST from PyPI. Requires **Python 3.9+** and a running Docker daemon (the analyzers still run in containers).
 
 ```bash
 pip install conviso-ast
@@ -164,7 +164,7 @@ Use `:latest` (Docker) or the newest PyPI release for day-to-day scanning. Pin a
 
 ## Authentication
 
-Conviso AST authenticates to the Platform with an **API Key**. Generate one from the Conviso Platform (**Security Feed → Quick Actions → Generate API Key**) as described in [Generate API Key](../../api/api-overview#generate-api-key), then expose it to the CLI.
+Conviso AST authenticates to the Platform with an **API Key**. Generate one from the Conviso Platform (**Security Feed → Quick Actions → Generate API Key**) as described in [Generate API Key](../../api/api-overview#generate-api-key), then expose it to the `conviso` command.
 
 The recommended approach is the `CONVISO_API_KEY` environment variable:
 
@@ -189,7 +189,7 @@ Run your first scan from the root of a Git repository.
 <Tabs groupId="install-method">
 <TabItem value="docker" label="Docker" default>
 
-Mount your project and the Docker socket (the CLI needs the socket to launch its analyzer containers), then run the scan:
+Mount your project and the Docker socket (Conviso AST needs the socket to launch its analyzer containers), then run the scan:
 
 ```bash
 docker run --rm \
@@ -424,10 +424,10 @@ Combine it with the **[Security Gate](../security-gate)** to block a pipeline ba
 The installation directory is not on your `PATH`, or your virtual environment is not activated. Reactivate the venv, or run via `python -m` / the full path. Confirm with `pip show conviso-ast`.
 
 **Cannot connect to the Docker daemon**
-Conviso AST needs Docker to run its analyzers. Ensure the daemon is running (`docker info`) and your user can reach it. When running the CLI *inside* a container, mount the socket with `-v /var/run/docker.sock:/var/run/docker.sock`.
+Conviso AST needs Docker to run its analyzers. Ensure the daemon is running (`docker info`) and your user can reach it. When running Conviso AST *inside* a container, mount the socket with `-v /var/run/docker.sock:/var/run/docker.sock`.
 
 **Authentication / `401` errors**
-Confirm `CONVISO_API_KEY` is exported and valid, and that it is available to **every** step or task that runs the CLI. In CI/CD, verify the secret is injected into the job environment.
+Confirm `CONVISO_API_KEY` is exported and valid, and that it is available to **every** step or task that runs a scan. In CI/CD, verify the secret is injected into the job environment.
 
 **`git fetch --unshallow` fails, or no findings on a shallow clone**
 Conviso AST relies on Git history. In CI, fetch the full history — for example, set `fetch-depth: 0` on `actions/checkout` (GitHub Actions) or the equivalent for your platform.
