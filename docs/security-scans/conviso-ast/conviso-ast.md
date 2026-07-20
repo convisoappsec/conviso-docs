@@ -24,7 +24,7 @@ A single `conviso ast run` orchestrates the following analyses and sends the con
 
 | Analysis | Command | What it looks for | Engine |
 | :--- | :--- | :--- | :--- |
-| **SAST** | `conviso sast run` | Vulnerabilities in your own source code | Semgrep with Conviso-managed rules |
+| **SAST** | `conviso sast run` | Vulnerabilities in your own source code | Conviso-managed rules |
 | **SCA** | `conviso sca run` | Known vulnerabilities in third-party dependencies | osv-scanner |
 | **IaC** | `conviso iac run` | Misconfigurations in infrastructure code | Checkov |
 | **Container** | `conviso container run` | OS-level vulnerabilities in container images | Conviso container scanner |
@@ -33,7 +33,7 @@ Results are **aggregated and deduplicated** by a unified security engine before 
 
 ### Supported languages (SAST)
 
-SAST runs Semgrep with Conviso-managed rules for the following languages:
+SAST covers the following languages, backed by Conviso-managed rules:
 
 <div style={{columns: '3', maxWidth: '600px'}}>
 
@@ -58,7 +58,7 @@ SAST runs Semgrep with Conviso-managed rules for the following languages:
 </div>
 
 :::note
-Elixir is not yet supported by Semgrep. For Elixir we use **Sobelow**, enhanced with Conviso-managed generic Semgrep rules.
+For Elixir, we use **Sobelow**, enhanced with Conviso-managed generic rules.
 :::
 
 ## Prerequisites
@@ -402,7 +402,7 @@ conviso ast dry-run --start-commit <commit_id>
 
 | Command | Scope | Underlying tool |
 | :--- | :--- | :--- |
-| `conviso sast dry-run` | Source code vulnerabilities (diff-based) | Semgrep + Conviso rules |
+| `conviso sast dry-run` | Source code vulnerabilities (diff-based) | Conviso-managed rules |
 | `conviso sca dry-run` | Dependency vulnerabilities | osv-scanner |
 | `conviso iac dry-run` | Infrastructure misconfigurations | Checkov |
 | `conviso ast dry-run` | All of the above, combined | All of the above |
