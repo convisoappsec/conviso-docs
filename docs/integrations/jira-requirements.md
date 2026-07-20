@@ -271,20 +271,20 @@ The issue summaries follow this pattern, where `<id>` is the Conviso entity id (
 
 The issue descriptions are populated automatically — for example, the Epic includes the project's goal, scope, dates, and assets, while Stories and Sub-tasks carry the requirement and activity descriptions.
 
-Every created issue also receives labels you can use in Jira filters, dashboards, and queues. Besides the shared `conviso` label, each issue carries a type label prefixed with its Conviso entity id (the same labels apply in both sync modes):
+Every created issue also receives labels you can use in Jira filters, dashboards, and queues. Besides the shared `conviso` label, each issue carries a **static** type label identifying which kind of Conviso entity it represents (the same labels apply in both sync modes):
 
 | Label | Applied to | Purpose |
 |---|---|---|
-| `conviso` | Every issue | Identifies all issues created by Conviso Platform in this flow. It is the only shared, static label. |
-| `<id>_conviso_project` | Epics (and Metadata Project cards) | Identifies the project issue and carries the Conviso project id. |
-| `<id>_conviso_requirement` | Stories (and Metadata Requirement cards) | Identifies the requirement issue and carries the Conviso requirement id. |
-| `<id>_conviso_activity` | Sub-tasks (and Metadata Activity cards) | Identifies the activity issue and carries the Conviso activity id. |
+| `conviso` | Every issue | Identifies all issues created by Conviso Platform in this flow. |
+| `conviso_project` | Epics (and Metadata Project cards) | Identifies the project issue. |
+| `conviso_requirement` | Stories (and Metadata Requirement cards) | Identifies the requirement issue. |
+| `conviso_activity` | Sub-tasks (and Metadata Activity cards) | Identifies the activity issue. |
 
-Because the type labels are prefixed with the Conviso entity id, use `conviso` to filter every Conviso-created issue, and the id-prefixed label to target a specific entity:
+The type labels are static — they carry no entity id — so they group issues by kind without adding a new Jira label for every synced entity. Use `conviso` to filter every Conviso-created issue, and a type label to target one category:
 
 ```text
 labels = "conviso"
-labels = "42_conviso_project"
+labels = "conviso_project"
 ```
 
 <div style={{textAlign: 'center'}}>
