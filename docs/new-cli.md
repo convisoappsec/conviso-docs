@@ -92,7 +92,7 @@ cvs auth whoami
 ## Update CLI
 
 ```bash
-pip install --upgrade cvs-cli
+pip install --upgrade conviso-cli
 ```
 
 Built-in upgrade command (for development installations):
@@ -194,7 +194,7 @@ cvs projects create \
  --type-id 14 \
  --start-date 2026-05-19 \
  --estimated-hours 2 \
- --assign user@cvs.com.br \
+ --assign user@conviso.com.br \
  --assets 40641
 ```
 
@@ -764,7 +764,7 @@ You will be prompted to enter your API key. The CLI will show you where to get i
 
 ```
 📚 Where to get your API key:
-  1. Go to: https://app.cvsappsec.com/spa/company/[COMPANY_ID]/api-keys
+  1. Go to: https://app.convisoappsec.com/spa/company/[COMPANY_ID]/api-keys
   2. Click 'Generate New Key'
   3. Copy the key and paste it below
 ```
@@ -822,4 +822,4 @@ cvs auth whoami
 
 This documentation was updated based on the current `README.md` in the official repository:
 
-* https://github.com/cvslabs/cvs-cli
+* https://github.com/convisolabs/conviso-cli
