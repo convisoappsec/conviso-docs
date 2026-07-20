@@ -84,6 +84,8 @@ Create (or update) `.gitlab-ci.yml` on the orchestrator project branch configure
 
 ```yaml
 variables:
+  # Production. For staging use: https://api.staging.convisoappsec.com
+  # Always use the API host (api.*), not the web app host (app.* / staging.*).
   CONVISO_API_URL: "https://api.convisoappsec.com"
 
 stages:
@@ -103,14 +105,15 @@ conviso-ast:
   script:
     - |
       set -euo pipefail
-      export CONVISO_API_URL="${api_url:-$CONVISO_API_URL}"
+      # Prefer the CI variable; fall back to api_url injected by Conviso when triggering.
+      export CONVISO_API_URL="${CONVISO_API_URL:-$api_url}"
 
       WORKDIR="/tmp/target"
       rm -rf "$WORKDIR" && mkdir -p "$WORKDIR" && cd "$WORKDIR"
 
       git clone "https://oauth2:${GITLAB_TOKEN}@gitlab.com/${repo_full_name}.git" .
       git fetch origin "$commit_sha" --depth=50
-      git checkout "$commit_sha"
+      git checkout -B "$branch" "$commit_sha"
       PREV="$(git rev-parse "${commit_sha}^" 2>/dev/null || echo "$commit_sha")"
 
       conviso ast run \
@@ -121,7 +124,7 @@ conviso-ast:
 ```
 
 :::tip
-`CONVISO_API_URL` defaults to production (`https://api.convisoappsec.com`), the same pattern as the [Azure DevOps AST Orchestrator](./azure-devops-ast-orchestrator.md). When Conviso triggers the pipeline it may also send `api_url`; the script prefers that value if present.
+`CONVISO_API_URL` must be the **GraphQL API host** (`https://api.convisoappsec.com` in production, `https://api.staging.convisoappsec.com` in staging) — not the web app URL. The script prefers the CI variable and only falls back to the injected `api_url` if `CONVISO_API_URL` is unset.
 :::
 
 Conviso injects when triggering: `repo_full_name`, `branch`, `commit_sha`, `mr_iid`, `api_url`.
@@ -166,6 +169,7 @@ If trigger fails with **Insufficient permissions to set pipeline variables**, op
 | **Insufficient permissions to set pipeline variables** | Set minimum role to Developer/Maintainer (see above) and ensure the OAuth user has that role. |
 | Git clone fails | Validate `GITLAB_TOKEN` can clone the target repos (`read_repository` / Download). |
 | `Invalid API key` or AST auth errors | Confirm `CONVISO_API_KEY` belongs to the same environment as `CONVISO_API_URL` (production: `https://api.convisoappsec.com`). |
+| `Failed to create deploy: 400` on `/graphql` | Use the API host (`api.*` / `api.staging.*`), not the web app host. Prefer `CONVISO_API_URL` over the injected `api_url` as in the template above. |
 
 ## Related guides
 
