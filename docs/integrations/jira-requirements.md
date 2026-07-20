@@ -26,7 +26,30 @@ With Jira Requirements enabled, Conviso Platform creates and updates Jira issues
 | Requirement | Story |
 | Activity | Sub-task |
 
-This produces a clear backlog structure in Jira: one Epic for the Conviso project, a Story for each requirement, and a Sub-task for each activity. Stories are linked to their Epic and Sub-tasks to their Story using the Jira **parent** relationship.
+This produces a clear backlog structure in Jira: one Epic for the Conviso project, a Story for each requirement, and a Sub-task for each activity. Stories are linked to their Epic and Sub-tasks to their Story using the Jira **parent** relationship. This is the default **Hierarchical** sync mode; see [Sync modes](#sync-modes) for the alternative.
+
+## Sync Modes
+
+Jira Requirements supports two **sync modes**, chosen per configuration:
+
+| Sync mode | How issues are created | When to use it |
+|---|---|---|
+| **Hierarchical** (default) | Project, Requirement, and Activity become an **Epic**, **Story**, and **Sub-task**, linked through the Jira **parent** relationship. | Jira projects that provide the Epic, Story, and Sub-task hierarchy levels (most company-managed software projects). |
+| **Metadata** | Project, Requirement, and Activity are each created as **independent top-level issues** (no parent). Their relationship is preserved through **reference labels**. | Jira projects that do **not** offer an Epic and/or Sub-task level, such as **Jira Service Management** or **team-managed** projects. |
+
+In both modes, Conviso Platform stays the source of truth, status mapping works the same way across the three entity types, and correlation is canonical through the Conviso entity id. The difference is only how the three issues relate to each other in Jira: parent links (Hierarchical) versus reference labels (Metadata).
+
+:::note
+The sync mode is defined per configuration and cannot be changed after the configuration has created issues in Jira. Choose the mode that matches the target Jira project before the first sync. To switch modes, remove the integration and configure it again.
+:::
+
+Each configuration shows its mode in the **Sync type** column of the configuration list:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-requirements/jira-requirements-config-list.png 'The configuration list showing a Hierarchical and a Metadata configuration, each with its Sync type.')
+
+</div>
 
 ## Key Concepts
 
@@ -56,7 +79,7 @@ To configure Jira Requirements, you need:
 1. A user with permission to **manage integrations in Conviso Platform**.
 2. A **Jira Cloud** account with permission to authorize the Conviso Platform application.
 3. Permission in Jira to create and update issues in the target Jira project.
-4. A Jira project that provides issue types at the **Epic**, **Story**, and **Sub-task** hierarchy levels.
+4. A Jira project whose issue types match your chosen [sync mode](#sync-modes): **Hierarchical** requires issue types at the **Epic**, **Story**, and **Sub-task** hierarchy levels, while **Metadata** has no hierarchy requirement (any non-sub-task issue types work, since all three entities are created as top-level issues).
 5. A Conviso Platform project that already has requirements and activities.
 
 :::note
@@ -126,10 +149,41 @@ The **Add new Project** dialog opens a four-step wizard: **Project**, **Project 
 | **Project** | One or more Conviso Platform projects whose requirements will be synchronized. |
 | **Jira Project** | The target Jira project where the issues will be created. |
 | **Automatic synchronization** | Toggle that enables Auto Sync for this configuration (enabled by default). |
+| **Sync mode** | Whether issues are created as a **Hierarchical** Epic/Story/Sub-task tree or as flat **Metadata** cards (see [Sync modes](#sync-modes)). |
 
 <div style={{textAlign: 'center'}}>
 
 ![img](../../static/img/jira-requirements/jira-requirements-img5.png 'The Project step with the Conviso project, Jira project, and Automatic synchronization toggle.')
+
+</div>
+
+When choosing the **Sync mode**:
+
+- Select **Hierarchical** or **Metadata** according to the target Jira project.
+- When you pick a Jira project, Conviso Platform inspects its issue-type levels and **recommends a mode** — for example, it recommends **Metadata** when the project has no Epic level. The recommendation is advisory; you can override it.
+- In **Metadata mode**, the issue-type options for each mapping step **exclude sub-task types**, because a top-level card cannot use a sub-task issue type.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-requirements/jira-requirements-sync-modes.png 'The Sync mode selector on the Project step, with Metadata selected and its card preview.')
+
+</div>
+
+When you pick a Jira project, Conviso Platform detects its issue-type levels and recommends a mode. In the example below the **Epic** level is missing, so **Metadata** is recommended and the Hierarchical card is flagged:
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-requirements/jira-requirements-discovery.png 'Level discovery detecting 2 of 3 levels (Epic missing) and recommending Metadata.')
+
+</div>
+
+:::caution
+When you **edit** an existing configuration, the sync mode selector is **disabled**. The mode is fixed once the configuration exists, so editing lets you change status mappings and Auto Sync, but not the sync mode.
+:::
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/jira-requirements/jira-requirements-edit-disabled.png 'Editing a configuration: the Sync mode selector is disabled.')
 
 </div>
 
@@ -142,7 +196,7 @@ The **Add new Project** dialog opens a four-step wizard: **Project**, **Project 
 | Activity Status Mapping | Sub-task issue type | Lowest |
 
 :::caution
-The Epic, Story, and Sub-task issue types are required. The wizard only lets you finish a step after you select its issue type and map at least one status, and the configuration is not saved until all three issue types are defined.
+In **Hierarchical mode**, the Epic, Story, and Sub-task issue types are required. In **Metadata mode**, you still choose an issue type for each of the three steps, but any non-sub-task type is accepted (the cards are top-level). In both modes the wizard only lets you finish a step after you select its issue type and map at least one status, and the configuration is not saved until all three are defined.
 :::
 
 **Step 4** - On the last step, click **Confirm** to save. Synchronization runs asynchronously, so the created issues may take a moment to appear in Jira.
@@ -207,32 +261,30 @@ You can review, edit, or delete a configuration from the configuration table at 
 
 Jira issues created by Conviso Platform are linked back to their original Conviso entities and follow a consistent naming pattern.
 
-The issue summaries follow this pattern:
+The issue summaries follow this pattern, where `<id>` is the Conviso entity id (kept at the front so it survives Jira's board truncation of long summaries):
 
 | Jira issue | Summary pattern |
 |---|---|
-| Epic | `[Conviso] {Project name}` |
-| Story | `[Conviso] {Requirement name}` |
-| Sub-task | `[Conviso] {Activity title}` |
+| Epic | `#<id> [Conviso] {Project name}` |
+| Story | `#<id> [Conviso] {Requirement name}` |
+| Sub-task | `#<id> [Conviso] {Activity title}` |
 
 The issue descriptions are populated automatically — for example, the Epic includes the project's goal, scope, dates, and assets, while Stories and Sub-tasks carry the requirement and activity descriptions.
 
-Every created issue also receives labels you can use in Jira filters, dashboards, and queues:
+Every created issue also receives labels you can use in Jira filters, dashboards, and queues. Besides the shared `conviso` label, each issue carries a type label prefixed with its Conviso entity id (the same labels apply in both sync modes):
 
 | Label | Applied to | Purpose |
 |---|---|---|
-| `conviso` | Every issue | Identifies all issues created by Conviso Platform in this flow. |
-| `conviso_project` | Epics | Identifies Epics created from Conviso projects. |
-| `conviso_requirement` | Stories | Identifies Stories created from Conviso requirements. |
-| `conviso_activity` | Sub-tasks | Identifies Sub-tasks created from Conviso activities. |
+| `conviso` | Every issue | Identifies all issues created by Conviso Platform in this flow. It is the only shared, static label. |
+| `<id>_conviso_project` | Epics (and Metadata Project cards) | Identifies the project issue and carries the Conviso project id. |
+| `<id>_conviso_requirement` | Stories (and Metadata Requirement cards) | Identifies the requirement issue and carries the Conviso requirement id. |
+| `<id>_conviso_activity` | Sub-tasks (and Metadata Activity cards) | Identifies the activity issue and carries the Conviso activity id. |
 
-Example Jira Query Language (JQL) filters:
+Because the type labels are prefixed with the Conviso entity id, use `conviso` to filter every Conviso-created issue, and the id-prefixed label to target a specific entity:
 
 ```text
 labels = "conviso"
-labels = "conviso_project"
-labels = "conviso_requirement"
-labels = "conviso_activity"
+labels = "42_conviso_project"
 ```
 
 <div style={{textAlign: 'center'}}>
@@ -243,6 +295,26 @@ labels = "conviso_activity"
 
 :::tip
 Jira Service Management queues are views based on JQL filters. The integration does not send an issue directly to a queue; use the labels above to build filters or queues for Conviso-created issues.
+:::
+
+### Reference labels (Metadata mode)
+
+In **Metadata mode** the three issues are top-level (no parent link), so Conviso Platform adds **reference labels** that point each card to its logical parent's Conviso id:
+
+| Label pattern | Applied to | Meaning |
+|---|---|---|
+| `<project id>_conviso_ref_project` | Requirement and Activity cards | Links the card to its Conviso **project**. |
+| `<requirement id>_conviso_ref_requirement` | Activity cards | Links the activity to its Conviso **requirement**. |
+
+Use them to group all Metadata cards of a given project or requirement in a JQL filter:
+
+```text
+labels = "42_conviso_ref_project"
+labels = "57_conviso_ref_requirement"
+```
+
+:::note
+Reference labels exist only in Metadata mode. In Hierarchical mode the same relationship is expressed by the Jira parent link between Epic, Story, and Sub-task.
 :::
 
 ## Recent Deliveries
@@ -278,6 +350,7 @@ mutation {
     integrationId: 123,
     projectIds: [456],
     autoSync: true,
+    syncMode: HIERARCHICAL,
     configEntries: [
       { configType: PROJECT_ID, externalId: "10001", externalName: "Security Backlog" },
       { configType: EPIC_ISSUE_TYPE_ID, externalId: "10000", externalName: "Epic" },
@@ -296,6 +369,7 @@ mutation {
     requirementSyncConfigurations {
       id
       autoSync
+      syncMode
       configEntries {
         configType
         externalId
@@ -307,6 +381,34 @@ mutation {
 ```
 
 The `configType` values are `PROJECT_ID`, `EPIC_ISSUE_TYPE_ID`, `STORY_ISSUE_TYPE_ID`, and `SUBTASK_ISSUE_TYPE_ID` (the Epic, Story, and Sub-task types are required). The `entityType` values are `PROJECT`, `PROJECT_REQUIREMENT`, and `PROJECT_REQUIREMENT_ITEM`. The `internalStatus` values are the Conviso Platform statuses in lowercase (for example, `planned`, `analysis`, `done` for a project; `not_started`, `in_progress`, `done` for a requirement; and additionally `not_applicable`, `not_according` for an activity), while `externalStatus` is the Jira status ID and `externalStatusName` its name.
+
+The `syncMode` argument selects `HIERARCHICAL` (Epic/Story/Sub-task with parent links) or `METADATA` (three top-level issues correlated by reference labels); it defaults to `HIERARCHICAL` when omitted. In Metadata mode the three issue-type slots may reuse the same non-sub-task issue type, since the cards are not parented.
+
+For a **Metadata** configuration, set `syncMode: METADATA` and point the three issue-type slots at a top-level (non-sub-task) issue type — they can all be the same one:
+
+```graphql
+mutation {
+  createRequirementSyncConfiguration(input: {
+    integrationId: 123,
+    projectIds: [456],
+    autoSync: true,
+    syncMode: METADATA,
+    configEntries: [
+      { configType: PROJECT_ID, externalId: "10001", externalName: "Support Board" },
+      { configType: EPIC_ISSUE_TYPE_ID, externalId: "10010", externalName: "Task" },
+      { configType: STORY_ISSUE_TYPE_ID, externalId: "10010", externalName: "Task" },
+      { configType: SUBTASK_ISSUE_TYPE_ID, externalId: "10010", externalName: "Task" }
+    ]
+  }) {
+    requirementSyncConfigurations {
+      id
+      syncMode
+    }
+  }
+}
+```
+
+The `configType` keys (`EPIC_ISSUE_TYPE_ID`, `STORY_ISSUE_TYPE_ID`, `SUBTASK_ISSUE_TYPE_ID`) are kept for both modes and act as the three slots for the Project, Requirement, and Activity issues. In Metadata mode they do not need to be Epic/Story/Sub-task hierarchy levels — any non-sub-task issue type is accepted, and reusing a single type (as above) is common when the Jira project offers only one relevant type.
 
 To trigger a manual sync through the API:
 
@@ -323,6 +425,10 @@ mutation {
 
 :::note
 The Jira project ID, issue type IDs, and status IDs depend on your Jira project configuration. Always copy these values from the Jira project that will receive the synchronized issues. If you need help using our API, [click here](../api/api-overview.md).
+:::
+
+:::note
+Metadata mode is released gradually and may require enablement by Conviso for your account. If the `syncMode` option is not available in your configuration wizard, contact the Conviso support team.
 :::
 
 ## Support
