@@ -310,6 +310,17 @@ module.exports = {
                     'integrations/github-ast-orchestrator',
                   ]
                 },
+                {
+                  type: "category",
+                  label: "GitLab",
+                  link: {
+                    type: 'doc',
+                    id: 'integrations/gitlab-repositories',
+                  },
+                  items: [
+                    'integrations/gitlab-ast-orchestrator',
+                  ]
+                },
               ]
             },        
           ]
