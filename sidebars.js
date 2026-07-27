@@ -147,6 +147,7 @@ module.exports = {
             'platform/requirements',
             'platform/security-gate',
             'platform/asset-management',
+            'platform/repositories-and-branches',
             'platform/sbom-management',
             'platform/notifications-center',
             'platform/policies',
