@@ -150,11 +150,11 @@ Copy it as-is. Do not replace the `REPLACE/REPLACE` and `replace-me` defaults �
 
 | Parameter | Sent by Conviso as | Notes |
 | --- | --- | --- |
-| `repo_full_name` | `<project>/<repository>` | Azure DevOps project name, then repository name. Not the organization. |
+| `repo_full_name` | `<project>/<repository>` | Azure DevOps project name, then repository name. Not the organization. Conviso builds it from the merge webhook's `project.name` and `repository.name`. |
 | `branch` | Branch of the merged PR | Used for the local checkout name. |
 | `commit_sha` | Merge commit SHA | The commit that gets scanned. |
 | `pr_number` | PR number | Not used by the scan; accepted for compatibility. |
-| `api_url` | Conviso API URL | Must stay declared even though the script exports the URL itself. Removing it breaks the trigger. |
+| `api_url` | Conviso Platform app URL, e.g. `https://app.convisoappsec.com` | Despite the name, this is **not** the AST API host. The scan sets `CONVISO_API_URL` itself — never feed this parameter into it. Keep it declared or the trigger fails. |
 
 #### The two lines that replace the PAT
 
@@ -321,7 +321,7 @@ In **Integrations > Azure DevOps > Orchestrator configuration**, fill:
 | **Orchestrator organization** | Azure DevOps organization name, e.g. `my-org` | First path segment of `https://dev.azure.com/my-org/...` |
 | **Orchestrator project** | Project that contains the orchestrator pipeline | Second path segment of the same URL |
 | **Orchestrator pipeline ID** | The number you copied in Step 2, e.g. `42` | `definitionId=` in the pipeline URL |
-| **Orchestrator ref** | Branch holding the YAML file — use `main` | The branch you saved the file in |
+| **Orchestrator ref** | Branch holding the YAML file — use `main` | The branch you saved the file in. Conviso prefixes plain values with `refs/heads/`, so a tag must be written in full as `refs/tags/<tag>`. |
 
 Click **Save configuration**.
 
