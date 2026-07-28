@@ -98,12 +98,17 @@ parameters:
 
 variables:
   - group: conviso-group
+  # AST API endpoint. Never drive this from the api_url parameter - see the
+  # parameter table below.
+  - name: convisoApiUrl
+    value: https://api.convisoappsec.com
 
 pool:
   vmImage: ubuntu-latest
 
 jobs:
   - job: ast
+    displayName: Run Conviso AST
     container: convisoappsec/convisoast:latest
     steps:
       - checkout: none
@@ -116,6 +121,7 @@ jobs:
           SHA='${{ parameters.commit_sha }}'
 
           case "$REPO_FULL" in ''|REPLACE/REPLACE) echo "##vso[task.logissue type=error]invalid repo_full_name"; exit 1;; esac
+          case "$REPO_FULL" in */*) ;; *) echo "##vso[task.logissue type=error]repo_full_name must be <project>/<repository>"; exit 1;; esac
           case "$SHA" in ''|replace-me) echo "##vso[task.logissue type=error]invalid commit_sha"; exit 1;; esac
           test -n "${SYSTEM_ACCESSTOKEN:-}" || { echo "##vso[task.logissue type=error]SYSTEM_ACCESSTOKEN missing: map \$(System.AccessToken) in the step env block"; exit 1; }
           test -n "${CONVISO_API_KEY:-}" || { echo "##vso[task.logissue type=error]CONVISO_API_KEY missing"; exit 1; }
@@ -130,15 +136,27 @@ jobs:
           rm -rf "${WORKDIR:?}"/* && mkdir -p "$WORKDIR" && cd "$WORKDIR"
           git init -q
           git remote add origin "https://dev.azure.com/${ORG}/${PROJECT}/_git/${REPO}"
-          git -c http.extraheader="AUTHORIZATION: bearer ${SYSTEM_ACCESSTOKEN}" fetch origin "$SHA"
+
+          if ! git -c http.extraheader="AUTHORIZATION: bearer ${SYSTEM_ACCESSTOKEN}" fetch --no-tags origin "$SHA"; then
+            echo "##vso[task.logissue type=error]fetch rejected for '${PROJECT}/${REPO}' - check the build identity Read permission"
+            exit 1
+          fi
+
           git checkout -B "$BRANCH" "$SHA"
 
-          PREV="$(git rev-parse "${SHA}^1")"
-          export CONVISO_API_URL='https://api.convisoappsec.com'
+          if git rev-parse "${SHA}^1" >/dev/null 2>&1; then
+            PREV="$(git rev-parse "${SHA}^1")"
+          else
+            echo "##vso[task.logissue type=warning]commit has no parent, using current as previous"
+            PREV="$SHA"
+          fi
+
           conviso ast run --asset-name "${ORG}/${REPO}" --current-commit "$SHA" --previous-commit "$PREV" --vulnerability-auto-close
+        displayName: Clone target repository and run AST
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
           CONVISO_API_KEY: $(CONVISO_API_KEY)
+          CONVISO_API_URL: $(convisoApiUrl)
           SYSTEM_COLLECTIONURI: $(System.CollectionUri)
 ```
 
@@ -265,14 +283,20 @@ jobs:
           ORG="${ORG%/}"
 
           cd "$(Agent.BuildDirectory)/target"
-          git fetch origin "$SHA"
+          git fetch --no-tags origin "$SHA"
           git checkout -B "$BRANCH" "$SHA"
 
-          PREV="$(git rev-parse "${SHA}^1")"
-          export CONVISO_API_URL='https://api.convisoappsec.com'
+          if git rev-parse "${SHA}^1" >/dev/null 2>&1; then
+            PREV="$(git rev-parse "${SHA}^1")"
+          else
+            echo "##vso[task.logissue type=warning]commit has no parent, using current as previous"
+            PREV="$SHA"
+          fi
+
           conviso ast run --asset-name "${ORG}/${REPO}" --current-commit "$SHA" --previous-commit "$PREV" --vulnerability-auto-close
         env:
           CONVISO_API_KEY: $(CONVISO_API_KEY)
+          CONVISO_API_URL: $(convisoApiUrl)
           SYSTEM_COLLECTIONURI: $(System.CollectionUri)
 ```
 
@@ -369,7 +393,7 @@ The asset in Conviso must be named `organization/repository` (for example `my-or
 | Cross-project clone fails and the orchestrator lives in a public project | Public projects are always project-scoped. Move the orchestrator to a private project. |
 | `invalid repo_full_name` in the logs | The value must be `<project>/<repository>`, not `<organization>/<repository>`. |
 | The failing URL in the log ends in a slash, e.g. `.../_git/my-api/` | `repo_full_name` was passed with a trailing slash. The template strips it, so update to the current version if you are running an older copy. |
-| `unknown revision` on `${SHA}^1` | The commit has no parent — typical of the very first commit in a repository. Scan a later commit. |
+| Warning: `commit has no parent, using current as previous` | The commit has no parent, typical of the very first commit in a repository. The scan still runs, comparing the commit against itself. |
 | PR merged but no pipeline run is created | Confirm **AST Scans** is enabled, the asset mapping is active for the merged branch, and the Orchestrator configuration (organization / project / pipeline ID / ref) is correct. |
 | Pipeline trigger fails with `Unexpected parameter 'api_url'` | Keep `api_url` declared in the pipeline parameters — the Conviso worker always sends it. |
 | `Invalid API key` in AST | Confirm `CONVISO_API_KEY` belongs to the same environment as `CONVISO_API_URL`. |
