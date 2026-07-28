@@ -198,6 +198,8 @@ You do **not** add any repository credential here. Git access comes from `System
 
 The pipeline clones target repositories as the build identity, so that identity needs **Read** permission on them.
 
+This is the only step you repeat as you onboard more repositories — and you repeat it **once per project**, not once per repository, if you grant the permission at the **All Repositories** level.
+
 For each project that owns repositories you want to scan:
 
 1. Go to **Project Settings > Repositories**.
@@ -219,12 +221,12 @@ Go to **Organization Settings > Pipelines > Settings** (and **Project Settings >
 
 **This setting is enabled by default for every organization and project created after May 2020.** While it is enabled, the job access token only reaches repositories that the YAML references explicitly through a `checkout` step or a `uses` statement. The orchestrator uses `checkout: none` and clones a repository chosen at run time, so its `git fetch` fails with an authorization error.
 
-Pick one of the two options below before you continue.
+Pick one of the two options below before you continue. **You do this once**, not once per repository: Option A is a single edit to the orchestrator YAML, and Option B is a single organization or project setting. If the setting is enabled at the organization level, it is grayed out in **Project Settings**.
 :::
 
 #### Option A - Reference the target repository in the YAML (keeps the setting enabled)
 
-Conviso sends `repo_full_name` as a template parameter, which Azure DevOps resolves at compile time, so the repository can be declared as a resource and checked out normally. Replace the `resources`/`jobs` part of the template from Step 1 with:
+Conviso sends `repo_full_name` as a template parameter, which Azure DevOps resolves at compile time, so the repository can be declared as a resource and checked out normally. The declaration is generic — its value changes on every run — so this single edit covers every repository you onboard later. Replace the `resources`/`jobs` part of the template from Step 1 with:
 
 ```yaml
 resources:
