@@ -71,6 +71,10 @@ Some terms used below:
 
 Pick any repository in your Azure DevOps project to host the orchestrator (a dedicated repository such as `security-pipelines` works well). Create a file named `azure-pipelines-orchestrator.yml` in the branch you will use — normally `main` — and paste this content:
 
+:::info Read Step 5 before you finish
+This template uses `checkout: none` and clones the target repository from a script. That only works when **Protect access to repositories in YAML pipelines** is disabled — and it is enabled by default. Step 5 explains the check and gives you a variant of this template that works with the setting left on. The failure you get otherwise is `TF401019`, which looks like a permissions problem but is not.
+:::
+
 ```yaml
 trigger: none
 pr: none
@@ -118,6 +122,7 @@ jobs:
 
           PROJECT="${REPO_FULL%%/*}"
           REPO="${REPO_FULL#*/}"
+          REPO="${REPO%/}"
           ORG="${SYSTEM_COLLECTIONURI#https://dev.azure.com/}"
           ORG="${ORG%/}"
 
@@ -255,6 +260,7 @@ jobs:
 
           REPO_FULL='${{ parameters.repo_full_name }}'
           REPO="${REPO_FULL#*/}"
+          REPO="${REPO%/}"
           ORG="${SYSTEM_COLLECTIONURI#https://dev.azure.com/}"
           ORG="${ORG%/}"
 
@@ -357,11 +363,12 @@ The asset in Conviso must be named `organization/repository` (for example `my-or
 | --- | --- |
 | Run fails with a resource authorization error naming `conviso-group` | Open **Pipelines > Library > conviso-group > Pipeline permissions** and add the orchestrator pipeline (Step 3.6). Confirm the group name matches `- group: conviso-group` exactly. |
 | `SYSTEM_ACCESSTOKEN missing` in the logs | The variable was not mapped. Add `SYSTEM_ACCESSTOKEN: $(System.AccessToken)` to the step `env` block (Step 1). |
-| Git fetch is denied even though the build identity has **Read** | Check **Protect access to repositories in YAML pipelines** (Step 5). While it is enabled, the token cannot reach repositories that the YAML does not reference in a `checkout` step or `uses` statement — which is the case for the `checkout: none` template. |
+| `TF401019` — repository "does not exist or you do not have permissions" | Check three things in order: (1) **Protect access to repositories in YAML pipelines** (Step 5) — with `checkout: none` the token is scoped to no repository at all, and this is the most common cause; (2) the URL in the error resolves in a browser, which tells you whether `repo_full_name` is right; (3) build identity **Read** (Step 4). The error message does not distinguish "missing" from "not visible to this token". |
 | Git fetch fails with `TF401019`, `repository not found`, or `Authentication failed` | Grant **Read** to **Project Collection Build Service** / **Project Build Service** on the target repository, in **Project Settings > Repositories > Security** (Step 4). |
 | Cross-project clone fails while same-project clones succeed | Uncheck _"Limit job authorization scope to current project for non-release pipelines"_ in **Organization Settings > Pipelines > Settings**, or grant the project-scoped identity **View project-level information** plus repository **Read** in the target project (Step 6). |
 | Cross-project clone fails and the orchestrator lives in a public project | Public projects are always project-scoped. Move the orchestrator to a private project. |
 | `invalid repo_full_name` in the logs | The value must be `<project>/<repository>`, not `<organization>/<repository>`. |
+| The failing URL in the log ends in a slash, e.g. `.../_git/my-api/` | `repo_full_name` was passed with a trailing slash. The template strips it, so update to the current version if you are running an older copy. |
 | `unknown revision` on `${SHA}^1` | The commit has no parent — typical of the very first commit in a repository. Scan a later commit. |
 | PR merged but no pipeline run is created | Confirm **AST Scans** is enabled, the asset mapping is active for the merged branch, and the Orchestrator configuration (organization / project / pipeline ID / ref) is correct. |
 | Pipeline trigger fails with `Unexpected parameter 'api_url'` | Keep `api_url` declared in the pipeline parameters — the Conviso worker always sends it. |
