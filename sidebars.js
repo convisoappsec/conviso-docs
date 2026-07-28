@@ -240,6 +240,15 @@ module.exports = {
             },
             {
               type: "category",
+              label: "IDE Plugins",
+              items: [
+                'integrations/ide-vscode-plugin',
+                'integrations/ide-visualstudio-plugin',
+                'integrations/ide-intellij-plugin',
+              ]
+            },
+            {
+              type: "category",
               label: "Defect/Bug Tracking",
               items: [
                 'integrations/azure-boards',

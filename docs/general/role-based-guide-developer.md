@@ -36,6 +36,7 @@ Ship features with security built into day-to-day development, reducing rework a
 - Project execution flow: [Process](../project-management/process)
 - Project status model: [Workflow Status](../project-management/workflow-status)
 - Secure requirements and validation flow: [Requirements](../platform/requirements)
+- Review findings and analyze code in your editor: [IDE Plugins](../integrations/integrations_intro#ide-plugins)
 
 ## Defect tracker integration
 
