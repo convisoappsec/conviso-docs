@@ -230,6 +230,15 @@ After following these steps, the workflow will start executing.
 
 The recommended trigger for Conviso AST is **a push to your default branch**, which is exactly what happens when a pull request is merged. This keeps the security state of your main branch continuously up to date — every change that reaches production code is scanned, with no redundant scans on intermediate feature branches.
 
+:::info
+If the **repository model** is enabled for your account, scanning other branches is no longer
+redundant: each finding is recorded on the branch the scan reports, so a feature branch keeps its
+own result list without changing the repository's risk score — which still follows the default
+branch. A scan that reports **no** branch is recorded on the default branch, whichever branch was
+actually built. See
+[Repositories and Branches](../platform/repositories-and-branches.md#how-a-finding-gets-its-branch).
+:::
+
 Restrict the `push` trigger to your default branch (for example `main`) so the scan runs only on merges, not on every branch push:
 
 ```yml
