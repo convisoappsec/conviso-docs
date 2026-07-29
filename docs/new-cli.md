@@ -158,7 +158,7 @@ The currently available command groups and actions are:
 * `sbom`: `list`, `import`, `check-vulns`
 * `bulk`: `assets`, `requirements`, `vulns`
 * `accesscontrol`: `user-profile`, `user-teams`, `bulk-users`
-* top-level: `upgrade`
+* top-level: `upgrade`, `security-gate`
 
 ### Projects
 
@@ -621,6 +621,73 @@ cvs sbom check-vulns \
   --output osv.json
 ```
 
+### Security Gate
+
+Evaluate whether an asset's vulnerabilities comply with security policies,
+and fail with a non-zero exit code if thresholds are exceeded — designed
+to be used as a CI/CD pipeline gate.
+
+Run the security gate using platform-configured rules:
+
+```bash
+cvs security-gate --asset-id 31894
+```
+
+Run the security gate using a local YAML rules file:
+
+```bash
+cvs security-gate \
+  --asset-id 31894 \
+  --company-id 443 \
+  --rules-file security-gate.yml
+```
+
+Scope the evaluation to a specific branch:
+
+```bash
+cvs security-gate \
+  --asset-id 31894 \
+  --company-id 443 \
+  --branch feature/my-feature
+```
+
+Export the full result to a JSON file:
+
+```bash
+cvs security-gate \
+  --asset-id 31894 \
+  --output gate-result.json
+```
+
+Example `security-gate.yml` rules file:
+
+```yaml
+rules:
+  - from: any
+    severity:
+      critical:
+        maximum: 0
+      high:
+        maximum: 5
+        max_days_to_fix: 30
+      medium:
+        maximum: 10
+        max_days_to_fix: 60
+```
+
+**Notes:**
+
+- `--company-id` is required when `--rules-file` or `--branch` is provided.
+- `--branch` requires an exact, case-sensitive match. If the branch is not
+  found, the command exits with an error listing the available branches
+  for the asset.
+- Vulnerabilities without a branch association (legacy issues) are
+  excluded from the evaluation when `--branch` is used.
+- Exit code `0` means the gate passed; exit code `1` means either the gate
+  failed (thresholds exceeded) or a technical error occurred (network,
+  authentication, invalid input) — the error message always distinguishes
+  the two cases.
+
 ## Bulk Operations
 
 ### Assets CSV
@@ -794,6 +861,7 @@ cvs auth logout
 ## CI/CD Behavior Notes
 
 - GraphQL/API errors return exit code `1`.
+- `security-gate` follows the same convention: exit code `1` on gate failure or on any technical error.
 - `--quiet` silences informational logs.
 - `--verbose` shows detailed request flow on paginated operations.
 - The CLI checks for updates at startup.
