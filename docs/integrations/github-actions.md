@@ -232,11 +232,11 @@ The recommended trigger for Conviso AST is **a push to your default branch**, wh
 
 :::info
 If the **repository model** is enabled for your account, scanning other branches is no longer
-redundant: each finding is recorded on the branch the scan reports, so a feature branch keeps its
-own result list without changing the repository's risk score — which still follows the default
-branch. A scan that reports **no** branch is recorded on the default branch, whichever branch was
+redundant: findings appear under the branch the scan reports, so a feature branch keeps its own
+result list without changing the repository's risk score — which still follows the default branch.
+When a scan reports **no** branch, its findings appear on the default branch, whichever branch was
 actually built. See
-[Repositories and Branches](../platform/repositories-and-branches.md#how-a-finding-gets-its-branch).
+[Repositories and Branches](../platform/repositories-and-branches.md#which-branch-a-finding-appears-on).
 :::
 
 Restrict the `push` trigger to your default branch (for example `main`) so the scan runs only on merges, not on every branch push:

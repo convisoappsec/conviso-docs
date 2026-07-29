@@ -20,10 +20,11 @@ With this feature, users can:
 This documentation explains how the Risk Score is calculated and how you can leverage this insight to enhance your application security posture.
 
 :::info
-On a **repository**, the **Threat** factor is measured on the **default branch only** — a finding
-on any other branch is fully visible in the platform but does not change the repository's score.
-Every other asset type counts all of its open vulnerabilities, exactly as described here. See
-[Repositories and Branches](./repositories-and-branches.md#which-branches-each-number-counts).
+On a **repository**, the score is calculated from the vulnerabilities of its **default branch**
+only — a finding on any other branch is fully visible in the platform, but does not change the
+repository's score. Every other asset type uses all of its open vulnerabilities, exactly as
+described here. See
+[Repositories and Branches](./repositories-and-branches.md#what-each-screen-shows).
 :::
 
 ## Requirements

@@ -20,10 +20,10 @@ From this page, teams can:
 
 :::info
 If the **repository model** is enabled for your account, this list also has a **Branch** column —
-hidden by default — and a **branch** filter. The list counts findings on **every** branch, while a
-repository's own risk score and open-vulnerability card count the **default branch only**, so the
-two totals can legitimately differ. Findings recorded before the model was enabled are shown under
-the default branch but are not returned by the branch filter. See
+hidden by default — and a **branch** filter. The list shows findings from **every** branch, while a
+repository's own risk score and open-vulnerability card show the **default branch only**, so the
+two totals can legitimately differ. Findings recorded before the model was enabled appear under the
+default branch, but are not returned by the branch filter. See
 [Repositories and Branches](./repositories-and-branches.md#vulnerabilities-by-branch).
 :::
 
