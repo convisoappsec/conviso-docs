@@ -50,6 +50,10 @@ Synchronize vulnerabilities with issue management tools to keep remediation insi
 
 Integrate developer portal experiences to expose security context where engineering teams discover services, ownership, and operational standards.
 
+### IDE Plugins
+
+Bring vulnerability data, security requirements, pipeline failures, and secure coding guidance into the development environment.
+
 ### Notifications
 
 Route relevant security updates to collaboration channels so teams can react quickly to risk changes, gate failures, and remediation events.
