@@ -11,6 +11,13 @@ image: '/static/img/securityfeedseo.png'
 
 By utilizing Asset Management, you gain control and visibility over all assets through a centralized repository. This allows you to correlate vulnerabilities, define priorities, and increase agility in the process.
 
+:::info
+Source-code assets are listed under **Inventory > Assets > Repositories**: one asset represents one
+repository, and each branch is tracked inside it, with vulnerabilities and scans attributed per
+branch. See [Repositories and Branches](./repositories-and-branches.md) for how that works.
+Everything described on this page still applies to your assets.
+:::
+
 ## Usage
 In the left menu, click on **Assets** to access the centralized dashboard of all your assets:
 
