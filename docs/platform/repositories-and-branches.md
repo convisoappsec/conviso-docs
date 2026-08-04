@@ -45,6 +45,8 @@ Each row displays:
 * A **`N branches`** badge when the repository has more than one branch. The count includes the
   default branch.
 
+![Repositories list under Inventory > Assets](../../static/img/platform/repositories-and-branches-list.jpg "The Repositories list.")
+
 :::caution
 The **risk score** and **open vulnerabilities** on the row are those of the repository's **default
 branch**, not the sum of all its branches — the other columns describe the repository as a whole.
@@ -111,6 +113,8 @@ The **Branches** tab lists every branch of the repository with:
 * **Open Vulnerabilities** — the open findings of that branch, broken down by severity.
 * **Actions** — the actions available for the branch.
 
+![Branches tab of a repository](../../static/img/platform/repositories-and-branches-branches-tab.jpg "The Branches tab.")
+
 Use the **All / Default only / Non-default** filters above the table to narrow the list.
 
 Branches appear on their own the first time something reports them, so the tab fills up as your
@@ -134,6 +138,8 @@ repository missing, is rejected as an invalid URL.
 The **Asset Name** is suggested automatically from the URL as `org/repo`. The field is required —
 the suggestion simply fills it in for you, and you can replace it with any name you prefer.
 Repository names do not have to be unique in your account.
+
+![Create asset form with the Repository URL and Asset Name fields](../../static/img/platform/repositories-and-branches-create.png "Registering a repository.")
 
 :::danger Use the clone URL, not your browser's address bar
 The address in your browser usually carries extra segments — `.../tree/main`, `.../-/tree/main`,
@@ -178,6 +184,8 @@ branch has another name, adjust it before or right after the first scan:
 | --- | --- |
 | Nothing has been scanned yet and only `main` is listed | **Rename** it to your real branch name, so your scans report to that branch instead of creating a second one |
 | Your real branch is already listed because a scan reported it | Open its actions menu and choose **Set as default** |
+
+![Actions menu of a branch in the Branches tab](../../static/img/platform/repositories-and-branches-branch-actions.png "The actions available on a branch.")
 
 ### Setting the default branch
 
@@ -310,12 +318,16 @@ The **Last Sync** date is shown once per scanner and is the most recent synchron
 repository's branches — it is not a date per branch. Scanners that report without a branch keep the
 single card you already know.
 
+![Scanner Synchronizations panel with one row per branch](../../static/img/platform/repositories-and-branches-scanner-syncs.jpg "Scanner sync status per branch.")
+
 ### Importing projects from a scanner integration
 
 When you import projects from a scanner integration, each project row gains a **Repository**
 column where you enter the repository the project maps to, so imported findings land on the right
 repository. This applies to Checkmarx, Snyk, SonarCloud, SonarQube, Fortify and Dependency Track;
 Tenable is unchanged and does not ask for a repository.
+
+![Repository column in the scanner integration import](../../static/img/platform/repositories-and-branches-scanner-import.jpg "Importing projects from a scanner integration.")
 
 Only **Snyk** reports the repository address itself, so there the column comes already filled in.
 On the other scanners you type the repository URL by hand.
@@ -343,6 +355,8 @@ Leaving the Branch field empty keeps the configuration at repository level: it a
 branch that does not have a configuration of its own. You can keep a repository-level
 configuration and add branch-specific ones alongside it — a finding on a branch that has its own
 configuration goes there, and everything else uses the repository-level one.
+
+![Defect tracker configuration form with Repository and Branch fields](../../static/img/platform/repositories-and-branches-defect-tracker.png "Defect tracker configuration.")
 
 ## How Your Assets Become Repositories
 
