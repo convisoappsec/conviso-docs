@@ -140,6 +140,7 @@ Integrating the Conviso Platform with external scanners such as Checkmarx, Forti
    - Project ID in the external tool: Project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency_Track).
    - Integration Name: Name of the integration in Conviso's GraphQL schema (e.g., Fortify, Checkmarx, Dependency_Track).
    - Company ID: Company ID in Conviso Platform.
+   - Repository URL and Branch: **leave both empty**. The task reads them from the pipeline itself — see [Repository and branch](#repository-and-branch) below.
 8. Save the pipeline configuration and execute it to initiate the synchronization process.
 
 **Expected Behaviors**:
@@ -147,6 +148,37 @@ Integrating the Conviso Platform with external scanners such as Checkmarx, Forti
 - **Synchronizing an Existing Project**: If the project already exists in the Conviso Platform, it will be synchronized to update its data.
 
 In both scenarios, the process is triggered by the pipeline and executed asynchronously. You can monitor the progress directly within the respective asset on the Conviso Platform.
+
+### Repository and branch
+
+The task also reports **which repository and which branch** the build is for. Both are optional
+inputs, and both are filled in from the pipeline when you leave them empty, so the usual setup
+needs no extra YAML:
+
+| Field | Where it comes from when left empty |
+| --- | --- |
+| **Repository URL** | The repository the pipeline checked out |
+| **Branch** | The branch the build is for. In a **Pull Request** build, this is the branch the PR is **merging into**, not the source branch |
+
+Filling either field in overrides what the pipeline reports — use that only when the build does not
+run on the repository you are tracking.
+
+:::caution
+In a Pull Request build the reported branch is the PR's **target** branch, so findings from that
+build are recorded against the branch you are merging into. If your target is the repository's
+default branch, those findings **count towards its risk score** before the code is merged.
+
+Set the **Branch** field explicitly if you want a PR build recorded somewhere else.
+:::
+
+:::note
+A Branch without a Repository URL is discarded — the platform only records branches for
+repositories. The task warns you in the pipeline log when that happens, and the run still succeeds.
+:::
+
+The asset this task reports to becomes — or joins — the repository at that address, and the
+findings appear under the branch above. See
+[Repositories and Branches](../platform/repositories-and-branches.md#how-your-assets-become-repositories).
 
 ## Troubleshooting
 
