@@ -1,24 +1,49 @@
 ---
 id: ide-intellij-plugin
-title: Conviso Platform for IntelliJ IDEA
-sidebar_label: IntelliJ IDEA
-description: Analyze code, review Conviso Platform findings, and run local security scans from IntelliJ IDEA.
-keywords: [IntelliJ IDEA, JetBrains, IDE, AppSec, Conviso Platform]
+title: Conviso Platform for JetBrains IDEs
+sidebar_label: JetBrains IDEs
+description: Analyze code, review Conviso Platform findings, and run local security scans from supported JetBrains IDEs.
+keywords: [JetBrains IDEs, IntelliJ IDEA, IDE plugin, AppSec, Conviso Platform]
 ---
 
 ## Objective
 
-Use Conviso Platform in IntelliJ IDEA to review security data, analyze code with AI assistance, and run local repository scans without leaving the IDE.
+Use Conviso Platform in a supported JetBrains IDE to review security data, analyze code with AI assistance, and run local repository scans without leaving the IDE.
 
 ## Prerequisites
 
-- IntelliJ IDEA 2026.1 or a compatible JetBrains IDE based on platform build 261 or later
+- A supported JetBrains IDE version (see [Supported IDEs](#supported-ides))
 - A Conviso Platform account with access to the required company
 - A Conviso Platform API token
 - An open project
 - Docker installed and running to use local SAST, SCA, or AST scans
 
 AI features depend on the capabilities enabled for your Conviso Platform account.
+
+## Supported IDEs
+
+The Conviso Platform plugin supports the following JetBrains IDEs and minimum versions:
+
+| IDE | Minimum version |
+| --- | --- |
+| Android Studio | Ladybug \| 2024.2.1 |
+| CLion | 2024.2 |
+| Code With Me Guest | 1.0 |
+| DataGrip | 2024.2 |
+| DataSpell | 2024.2 |
+| GoLand | 2024.2 |
+| IntelliJ IDEA | 2024.2 |
+| IntelliJ IDEA Community | 2024.2 |
+| JetBrains Client | 1.0 |
+| JetBrains Gateway | 2024.2 |
+| MPS | 2024.3 |
+| PhpStorm | 2024.2 |
+| PyCharm | 2024.2 |
+| PyCharm Community | 2024.2 |
+| Rider | 2024.2 |
+| RubyMine | 2024.2 |
+| RustRover | 2024.2 |
+| WebStorm | 2024.2 |
 
 ## Install the Plugin
 
@@ -75,7 +100,7 @@ Double-click an item in a list to open its detailed information.
 ### Run a Local Repository Scan
 
 1. Confirm Docker is running.
-2. Open the repository as an IntelliJ project.
+2. Open the repository as a project in your JetBrains IDE.
 3. Open **Tools > Conviso Platform**.
 4. Select **Run Repository SAST**, **Run Repository SCA**, or **Run Repository AST**.
 5. Open the **Repository Vulnerabilities** tab to review the detected issues.
