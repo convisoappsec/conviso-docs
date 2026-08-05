@@ -52,12 +52,7 @@ button. Only credits with status **Available** appear here; if the table is empt
 The banner `1 credit will be deducted on issuance.` is a reminder that the credit is spent when the
 order is placed.
 
-<!-- SCREENSHOT 4 — capture: /spa/company/<id>/assets/certificate/new
-     Expected state: step 1 of the wizard, product table listing available credits.
-     Replace this comment with:
 ![Product step of the issuance wizard](../../../static/img/platform/ssl-certificates-wizard-product.png "Step 1: the product table listing the credits available to spend.")
--->
-
 
 :::caution
 Changing the product **resets everything you have already filled in** in the wizard. Pick the
@@ -100,12 +95,7 @@ The platform generates the CSR and the private key for you. Fill in:
 
 Select **Generate CSR & key**.
 
-<!-- SCREENSHOT 5 — capture: wizard step 2 in "Generate CSR" mode
-     Expected state: Configure step with the Common Name, key size and web server fields filled in.
-     Do NOT capture a real generated private key — take the shot before selecting Generate CSR & key.
-     Replace this comment with:
 ![Configure step in Generate CSR mode](../../../static/img/platform/ssl-certificates-wizard-configure.png "Step 2: the Configure step set to generate the CSR, before generating the key.")
--->
 
 :::danger The private key is shown only once
 The generated private key is **never stored by the platform**. It is displayed once, on this
@@ -203,12 +193,7 @@ CNAME record at your DNS provider, exactly as shown.
 This is the only method that works for every domain, including wildcards, and it does not require
 the domain to be serving traffic yet.
 
-<!-- SCREENSHOT 6 — capture: wizard Validation step with DNS (CNAME) selected
-     Expected state: the Host and Value of the CNAME record visible, with the copy buttons.
-     Replace this comment with:
 ![Domain control validation step showing the CNAME record](../../../static/img/platform/ssl-certificates-wizard-dcv.png "Step 5: the CNAME record to publish at the DNS provider.")
--->
-
 
 ### HTTPS
 

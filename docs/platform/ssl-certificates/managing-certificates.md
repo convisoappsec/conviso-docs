@@ -81,12 +81,7 @@ The **Lifecycle** timeline below it shows how far the certificate has progressed
 **Requested** → **Domain validated** → (**EV details**, for EV certificates) → **Issued**. A
 certificate that did not complete ends on **Rejected**, **Replaced** or **Revoked** instead.
 
-<!-- SCREENSHOT 7 — capture: /spa/company/<id>/assets/certificate/<assetId>
-     Expected state: a Valid certificate, with the Certificate details card and the Lifecycle timeline complete.
-     Replace this comment with:
 ![Detail page of a valid certificate](../../../static/img/platform/ssl-certificates-detail.png "A valid certificate, with the lifecycle complete through to Issued.")
--->
-
 
 :::tip
 The platform reconciles pending orders with the certificate authority automatically, about once an
@@ -121,12 +116,7 @@ being validated:
 
 Search by domain name to find one in a long list.
 
-<!-- SCREENSHOT 8 — capture: certificate detail page, Domain Control Validation card
-     Expected state: ideally a multi-domain certificate with a mix of Validated and Pending rows.
-     Replace this comment with:
 ![Domain Control Validation card](../../../static/img/platform/ssl-certificates-dcv-table.png "The domain control validation table, with validated and pending domains.")
--->
-
 
 ### Getting the record to publish
 
@@ -194,12 +184,7 @@ The same CSR is submitted again. **You do not need the private key** — the one
 your server stays valid, so this is the simplest renewal: one confirmation and nothing to
 reconfigure on the server.
 
-<!-- SCREENSHOT 9 — capture: certificate detail page with the Reissue dialog open
-     Expected state: dialog on "Use the certificate's current CSR", showing "Reissues included until <date>".
-     Replace this comment with:
 ![Reissue dialog](../../../static/img/platform/ssl-certificates-reissue.png "The reissue dialog set to reuse the current CSR, which consumes no credit.")
--->
-
 
 ### Provide a new CSR
 
