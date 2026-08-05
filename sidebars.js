@@ -148,6 +148,19 @@ module.exports = {
             'platform/security-gate',
             'platform/asset-management',
             'platform/repositories-and-branches',
+            {
+              type: "category",
+              label: "SSL Certificates",
+              link: {
+                type: "doc",
+                id: "platform/ssl-certificates/ssl-certificates",
+              },
+              collapsed: true,
+              items: [
+                'platform/ssl-certificates/issuing-a-certificate',
+                'platform/ssl-certificates/managing-certificates',
+              ],
+            },
             'platform/sbom-management',
             'platform/notifications-center',
             'platform/policies',

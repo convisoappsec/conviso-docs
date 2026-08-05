@@ -18,6 +18,12 @@ branch. See [Repositories and Branches](./repositories-and-branches.md) for how 
 Everything described on this page still applies to your assets.
 :::
 
+:::info
+SSL/TLS certificates are a separate asset type, listed under **Inventory > Assets > Certificates**,
+with their own issuance, validation and renewal flows. See
+[SSL Certificates](./ssl-certificates/ssl-certificates.md).
+:::
+
 ## Usage
 In the left menu, click on **Assets** to access the centralized dashboard of all your assets:
 
