@@ -39,11 +39,11 @@ In this guide, we will integrate Conviso Platform with Slack, so that you can re
 You must have Workspace Admin privileges on Slack in order to create this integration.
 :::
 
-To begin, access the **Integrations** page in the Conviso Platform, search for **"Slack"**, and click **Connect**:
+To begin, access the **Integrations** page in the Conviso Platform, filter by the **Chat** category, and click **Connect** on the Slack card:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/slack/slack-img1.png)
+![img](../../static/img/integrations-chat-category.png)
 
 </div>
 

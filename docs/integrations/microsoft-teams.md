@@ -105,11 +105,12 @@ else under **Owners**.
 
 ### Integrating Conviso Platform with Microsoft Teams
 
-1. With your webhook created, login to Conviso Platform, go to the **Integrations** section (1), click on **Notification** (2), and then click **Integrate** (3):
+1. With your webhook created, login to Conviso Platform, open **Integrations**, filter by the
+   **Chat** category and click **Connect** on the Microsoft Teams card:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img9.png)
+![img](../../static/img/integrations-chat-category.png)
 
 </div>
 

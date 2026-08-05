@@ -164,9 +164,13 @@ Triggered when the status of a project requirement is updated. For the project e
 
 :::note Events that are no longer sent individually
 Asset Risk Score Increased, Asset Risk Score Decreased, New Asset Created, Risk Acceptance
-Expires Today, Risk Acceptance Reminder – 7 Days and the one-off SLA alerts used to arrive
-as separate notifications. They are now sections of the daily digest, which is why they no
-longer appear on their own.
+Expires Today, Risk Acceptance Reminder – 7 Days, Vulnerability Status Changed to Risk
+Accepted and the one-off SLA alerts used to arrive as separate notifications. They are now
+sections of the daily digest.
+
+Some of them still appear as switches in the preferences list. **Turning one on has no
+effect** — nothing triggers those events anymore, and what they used to report reaches you
+through the digest instead.
 :::
 
 ## Managing Your Notification Preferences
