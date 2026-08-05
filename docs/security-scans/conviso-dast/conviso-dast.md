@@ -151,10 +151,6 @@ When the vulnerability is fixed, running the next scan should identify it, and t
 
 With the above, you should be able to run DAST on the Conviso Platform.
 
-## Support
-
-Should you have any questions or require assistance while using the Conviso Application Security Testing, feel free to contact our dedicated support team.
-
 ## Self-Hosted DAST
 
 Conviso DAST can also run **self-hosted** — inside your own pipeline or infrastructure — using the published Docker image, while still reporting results into the Conviso Platform exactly like a platform-managed scan.
@@ -210,3 +206,8 @@ Any variable you pass explicitly is always respected as-is and takes precedence 
 :::note
 Setting `AUTH_CONFIG` or `DAST_SCOPE_CONFIGURATION` by hand requires encoding them yourself (base64-encoded YAML and JSON, respectively). In most cases it's simpler to configure authentication and scope once on the asset's CI/CD tab and let the self-hosted scan pick them up automatically.
 :::
+
+
+## Support
+
+Should you have any questions or require assistance while using the Conviso Application Security Testing, feel free to contact our dedicated support team.
