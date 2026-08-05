@@ -82,9 +82,22 @@ The **Lifecycle** timeline below it shows how far the certificate has progressed
 certificate that did not complete ends on **Rejected**, **Replaced** or **Revoked** instead.
 
 :::tip
-The platform reconciles orders with the certificate authority automatically, on a schedule. Use
-**Synchronize** when you have just published a validation record and do not want to wait for the
-next automatic check.
+The platform reconciles pending orders with the certificate authority automatically, about once an
+hour. Use **Synchronize** when you have just published a validation record and do not want to wait
+for the next automatic check.
+:::
+
+:::caution Orders pending for more than a week stop updating on their own
+A certificate that has been **Pending Validation** for over a week is dropped from the automatic
+check — at that point the order has usually stalled because the validation record was never
+published, and it will expire at the certificate authority.
+
+The certificate does not disappear and the order is not cancelled: it simply stops refreshing by
+itself. If you publish the validation record late, select **Revalidate** on the domain and then
+**Synchronize** to bring the certificate up to date manually.
+
+Certificates waiting on **EV vetting details** are not subject to this and keep updating
+automatically.
 :::
 
 ## Domain Control Validation
@@ -234,6 +247,7 @@ generation's own detail page — so a replaced certificate remains fully inspect
 | Symptom | Cause and what to do |
 | --- | --- |
 | Status stays **Pending Validation** | The certificate authority has not confirmed your record. Check the record is published and matches **Validation details** exactly, then select **Revalidate**. For DNS, allow for propagation. |
+| A certificate pending for over a week never updates | It has been dropped from the automatic check. Publish the validation record, then select **Revalidate** and **Synchronize** manually. |
 | A validated domain, but the certificate is still pending | On a multi-domain certificate, **every** domain must be validated. Check the DCV table for rows still **Pending**. |
 | **Reissue** is not offered | The subscription term has ended — check **Subscription until**. Renewal then requires a new credit and a new issuance. |
 | **Download** is not offered | The certificate has not been issued yet. It is only available once the status is **Valid**. |
