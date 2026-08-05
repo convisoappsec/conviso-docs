@@ -169,7 +169,7 @@ docker run --rm \
   -e CONVISO_API_KEY="your-api-key" \
   -e ASSET_ID="12345" \
   -e TARGET_URL="https://example.com" \
-  -e CONVISO_API_URL="https://app.convisoappsec.com/graphql" \
+  -e CONVISO_API_URL="https://api.app.convisoappsec.com/graphql" \
   -v "$(pwd)/results:/scan/results" \
   convisoappsec/convisodast:latest
 ```
@@ -187,7 +187,26 @@ Pin to a specific version (`convisoappsec/convisodast:<tag>`) instead of `:lates
 | `CONVISO_API_KEY` | Your Conviso Platform API key. |
 | `ASSET_ID` | The ID of the asset being scanned. |
 | `TARGET_URL` | The URL to scan. |
-| `CONVISO_API_URL` | The Conviso Platform GraphQL endpoint, e.g. `https://app.convisoappsec.com/graphql`. |
+| `CONVISO_API_URL` | The Conviso Platform GraphQL endpoint. Defaults to `https://api.app.convisoappsec.com/graphql` if not set. |
+
+### Dry run
+
+Want to try Conviso DAST out before pointing it at a real asset? Set `DRY_RUN="true"` to run a full scan against your target — attack surface discovery, vulnerability testing, everything — without registering anything on the Conviso Platform:
+
+```bash
+docker run --rm \
+  -e DRY_RUN="true" \
+  -e CONVISO_API_KEY="your-api-key" \
+  -e TARGET_URL="https://example.com" \
+  -v "$(pwd)/results:/scan/results" \
+  convisoappsec/convisodast:latest
+```
+
+`CONVISO_API_KEY` is still required for a dry run: it's used once, to confirm the key belongs to an active company on the Conviso Platform, so the feature can't be used to scan targets anonymously. Beyond that single check, the platform is never contacted — no scan-policy check, no vulnerabilities are registered, and no `ASSET_ID` is needed. Scan output is still written to `/scan/results` as usual, so you can review findings locally.
+
+:::tip
+Use a dry run to validate connectivity, authentication, and scope configuration before wiring the scan up to a real asset.
+:::
 
 ### Using your existing scan configuration
 
