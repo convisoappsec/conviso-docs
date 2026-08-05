@@ -12,101 +12,110 @@ sidebar_label: Microsoft Teams
 
 ## Introduction
 
-The integration between Conviso Platform and Microsoft Teams helps those managing activities stay informed by sending real-time alerts directly to the development team or management channel. This integration provides five types of alerts with the following benefits:
-1. A notification can be sent when the Risk Score of an asset decreases;
-2. A notification can be sent when the Risk Score of an asset increases;
-3. A notification can be sent when a vulnerability is fixed;
-4. A notification can be sent when a new asset is created;
-5. A notification can be sent when a vulnerability is identified.
+The integration between Conviso Platform and Microsoft Teams keeps the development team or
+management channel informed without anyone having to open the platform. Conviso Platform
+posts **one message per day** — the Vulnerability Daily Digest — every morning at around
+7:30 (Brasília time), covering the previous day:
 
-## Conviso Platform integration with Microsot Teams
+* vulnerabilities that changed status, counted per status;
+* assets whose Risk Score changed;
+* assets created;
+* vulnerabilities that crossed the SLA **Approaching** or **Breached** threshold;
+* risk acceptances expiring today or in seven days.
+
+A section only shows up when it has something to report, and every line links back to the
+platform with the filters already applied. For the full description, see [Notifications
+Center](../platform/notifications-center.md#vulnerability-daily-digest).
+
+:::caution The old Incoming Webhook no longer exists
+Microsoft retired Microsoft 365 Connectors — the feature behind the **Incoming Webhook** option in a
+Teams channel — between **May 18 and May 22, 2026**. The app can no longer be added to a channel,
+and URLs in the `https://<tenant>.webhook.office.com/webhookb2/...` format stopped delivering
+messages.
+
+Webhooks are now created with the **Workflows** app, as described below. If your notifications
+stopped arriving, go to [Replacing a webhook that stopped
+working](#replacing-a-webhook-that-stopped-working).
+:::
+
+## Conviso Platform integration with Microsoft Teams
 
 In this guide, we will walk you through integrating Conviso Platform with Microsoft Teams, enabling you to receive notifications for each action taken in Conviso Platform.
 
 :::note
-You must have Workspace Admin privileges in Azure to create this integration.
+You need permission to use the **Workflows** app and to post to the target channel. The Teams
+webhook trigger does not require a premium Power Automate license, but Power Automate can be
+restricted at tenant level — if **Workflows** is missing, ask your Microsoft 365 administrator.
 :::
 
-### Creating an Incoming Webhook
+### Creating a webhook with the Workflows app
 
-First, ensure you have a channel created on Microsoft Teams to receive Conviso notifications. Next, create an Incoming Webhook by following these steps:
-1. In the New Teams client, select **Teams** and navigate to the channel where you want to add an Incoming Webhook;
-2. Select **More options** on the right side of the channel name;
-3. Select **Manage channel**:
+First, ensure you have a channel created on Microsoft Teams to receive Conviso notifications. Then
+create the webhook — the steps below follow Microsoft's [Create incoming webhooks with Workflows for
+Microsoft Teams](https://support.microsoft.com/en-us/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498):
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/microsoft-teams/microsoft-teams-img2.png)
-
-</div>
-
-4. Select **Edit**:
+1. In Microsoft Teams, select **More options** (**…**) next to the channel that will receive the
+   notifications, then select **Workflows**:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img3.png)
+![img](../../static/img/microsoft-teams/microsoft-teams-workflows-menu.png)
 
 </div>
 
-5. Search for **Incoming Webhook** and select **Add**:
+2. Search for and select the **Send webhook alerts to a channel** template:
 
-<div style={{textAlign: 'center'}}>
+<!-- SCREENSHOT 1 — capture: Workflows template picker filtered by "webhook"
+     Expected state: the "Send webhook alerts to a channel" template highlighted.
+     Replace this comment with:
+![Webhook template in the Workflows app](../../static/img/microsoft-teams/microsoft-teams-workflows-template.png "The Send webhook alerts to a channel template.")
+-->
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img4.png)
+3. Name the workflow — `Conviso Platform notifications`, for example — confirm the Microsoft Teams
+   connection is signed in, and select **Next**;
 
-</div>
+4. Confirm the **Team** and the **Channel**, then select **Save**:
 
-6. Select **Add**:
+<!-- SCREENSHOT 2 — capture: Workflows template configuration step
+     Expected state: the Team and Channel selectors filled in, before selecting Save.
+     Replace this comment with:
+![Choosing the team and channel for the workflow](../../static/img/microsoft-teams/microsoft-teams-workflows-parameters.png "Selecting the destination team and channel.")
+-->
 
-<div style={{textAlign: 'center'}}>
+5. Copy the webhook URL from the workflow details page. You can come back to this page and copy it
+   again at any time, from the **Workflows** app:
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img5.png)
+<!-- SCREENSHOT 3 — capture: workflow details page showing the generated webhook URL
+     Expected state: the URL field and its copy button visible. Blur the signature (sig=) segment.
+     Replace this comment with:
+![Copying the webhook URL generated by the workflow](../../static/img/microsoft-teams/microsoft-teams-workflows-url.png "The webhook URL on the workflow details page.")
+-->
 
-</div>
-
-:::note
-If you’ve already added an Incoming Webhook, the **Configure** option appears. Select **Configure** to create an Incoming Webhook.
+:::note The URL no longer points to `webhook.office.com`
+Workflows URLs are Power Automate URLs — much longer than the old connector URL and hosted on
+`logic.azure.com` or `powerplatform.com`. That is expected. Paste it exactly as copied, query string
+included.
 :::
 
-7. Provide a name for the webhook and upload an image if necessary.
-
-8. Select **Create**:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/microsoft-teams/microsoft-teams-img6.png)
-
-</div>
-
-9. Copy and save the unique webhook URL present in the dialog. The URL maps to the channel and you can use it to send information to Teams.
-
-10. Select **Done**. The webhook is now available in the Teams channel.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/microsoft-teams/microsoft-teams-img7.png)
-
-</div>
-
-Now, with the webhook created, an alert will be sent to your channel notifying members that the connection has been established:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/microsoft-teams/microsoft-teams-img8.png)
-
-</div>
+:::caution Add a co-owner
+A workflow belongs to the user who created it, not to the channel. If that user leaves the
+organization the flow is orphaned and notifications stop. On the workflow details page, add someone
+else under **Owners**.
+:::
 
 ### Integrating Conviso Platform with Microsoft Teams
 
-1. With your Incoming Webhook created, login to Conviso Platform, go to the **Integrations** section (1), click on **Notification** (2), and then click **Integrate** (3):
+1. With your webhook created, login to Conviso Platform, open **Integrations**, filter by the
+   **Chat** category and click **Connect** on the Microsoft Teams card:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img9.png)
+![img](../../static/img/integrations-chat-category.png)
 
 </div>
 
-2. Paste your Incoming Webhook URL and click **Continue**:
+2. Paste the webhook URL and click **Continue**. The field is named **Incoming Webhook URL** and its
+   placeholder still shows the old format — paste your Workflows URL there:
 
 <div style={{textAlign: 'center'}}>
 
@@ -114,25 +123,62 @@ Now, with the webhook created, an alert will be sent to your channel notifying m
 
 </div>
 
-3. Click on **Settings** (4) and select which notifications you want to receive. In this example, only the "**New Asset Creation**" notification will be enabled (5):
+3. Click on **Settings** and enable the notifications you want the channel to receive:
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/microsoft-teams/microsoft-teams-img11.png)
-
-</div>
+<!-- SCREENSHOT 4 — capture: Integrations → Notification → Microsoft Teams, Configuration step
+     Expected state: the Chat section expanded via Settings, showing the current event list
+     with Vulnerability Daily Digest enabled. The old capture (img11) listed five retired
+     events and was removed.
+     Replace this comment with:
+![Choosing which notifications the channel receives](../../static/img/microsoft-teams/microsoft-teams-settings.png "The Chat section of the Microsoft Teams integration.")
+-->
 
 Your notification preferences will be automatically saved.
 
-With the "**New Asset Creation**" notification enabled, each new asset created within your company will trigger a notification in Microsoft Teams:
+From then on, the channel receives the daily digest every morning — a single message with
+one section per kind of change, each linking back to the platform:
 
-<div style={{textAlign: 'center'}}>
+<!-- SCREENSHOT 5 — capture: the daily digest as posted in a Microsoft Teams channel
+     Expected state: a digest with several sections (status changes, risk score, new assets,
+     SLA alerts) so the reader sees the real shape. Use demo data — the message carries
+     vulnerability counts and company URLs. The old capture (img12) showed a single
+     per-event alert and was removed.
+     Replace this comment with:
+![The daily digest posted in a Teams channel](../../static/img/microsoft-teams/microsoft-teams-digest.png "The Vulnerability Daily Digest posted in a Teams channel.")
+-->
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img12.png)
+:::note The channel receives your digest
+The webhook is tied to the account that saved the integration, and the digest only reports
+what its recipient can see. So the numbers in the channel are the ones visible to whoever
+connected it — not the union of everyone's access. If that account is deactivated or loses
+access to the company, the channel goes quiet.
+:::
 
-</div>
+### Replacing a webhook that stopped working
 
-<!--If you have any questions about how the Conviso Platform notifications work, refer to our guide.-->
+If the integration was set up before the retirement, the URL saved in Conviso Platform is dead and
+nothing reaches Teams. To restore it:
+
+1. Create a new webhook with the **Workflows** app, as described
+   [above](#creating-a-webhook-with-the-workflows-app);
+2. In Conviso Platform, open **Integrations** → **Notification** → **Microsoft Teams**, replace
+   **Incoming Webhook URL** with the new URL and click **Continue**.
+
+Your notification preferences are preserved — there is no need to enable the events again. The old
+Incoming Webhook can be removed from the channel, since it no longer does anything.
+
+## Troubleshooting
+
+**Nothing arrives in the channel.** First check the timing: the digest is sent once a day, in the
+morning, and a day with nothing to report produces no message at all — so the first one only arrives
+the morning after you set the integration up. If a message is genuinely missing, open the
+**Workflows** app and check that the flow is **On** — flows are turned off automatically after long
+periods without use. The flow's run history tells you where the problem is: no runs at all means the
+URL saved in Conviso Platform is not the one the flow listens on.
+
+**The notification arrives without buttons.** Workflows accepts both Adaptive Card and Message Card
+payloads, but does not render buttons from a Message Card. The notification text is delivered in
+full.
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
