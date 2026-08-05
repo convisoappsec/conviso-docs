@@ -25,6 +25,13 @@ From that area you can:
 Certificates also appear in your general asset inventory, so a certificate is inventoried like any
 other asset in your account.
 
+<!-- SCREENSHOT 1 — capture: /spa/company/<id>/assets/certificate
+     Expected state: list with the credits balance strip and at least one certificate.
+     Replace this comment with:
+![Certificates list under Inventory > Assets](../../../static/img/platform/ssl-certificates-list.png "Step 1: the Certificates list, with the available credits shown above the table.")
+-->
+
+
 :::note
 The platform **issues** certificates through a certificate authority. It does not scan your
 infrastructure to discover certificates you already have, and it does not produce self-signed
@@ -148,6 +155,13 @@ provisioned for your company:
 Only credits with status **Available** can be spent. Filter the list by **Status** and by
 **Validation**, or search by product name.
 
+<!-- SCREENSHOT 2 — capture: /spa/company/<id>/assets/certificate/credits
+     Expected state: credits table showing a mix of Available and Used statuses.
+     Replace this comment with:
+![Certificate Credits page](../../../static/img/platform/ssl-certificates-credits.png "The Certificate Credits page, listing every credit provisioned for the company.")
+-->
+
+
 ### Requesting credits
 
 Credits are not self-served. Requesting them opens a support ticket, and the Conviso team
@@ -168,6 +182,13 @@ provisions them for your company.
 
 The platform confirms with `Request sent to support.` and opens the ticket it created, so you can
 follow the request there.
+
+<!-- SCREENSHOT 3 — capture: credits page with the Request credits side panel open
+     Expected state: panel filled in, with the "This ticket will be submitted with:" preview visible.
+     Replace this comment with:
+![Request credits side panel](../../../static/img/platform/ssl-certificates-request-credits.png "Step 3: the credit request filled in, showing the ticket preview before submitting.")
+-->
+
 
 :::note
 Credits are **not released immediately**. The request is fulfilled by the Conviso team, so plan
