@@ -111,7 +111,7 @@ The Risk Score can range from N/A (when the necessary information is not provide
 
 ## Being Notified When the Risk Score Changes
 
-Whenever the Risk Score is updated, you can receive notifications via [in-app alerts or email](https://app.convisoappsec.com/spa/user/notifications-center), as well as through [Microsoft Teams](../integrations/microsoft-teams.md) or [Slack](../integrations/slack.md) integration.
+Risk Score changes are reported in the [Vulnerability Daily Digest](notifications-center.md#vulnerability-daily-digest), the message the platform sends every morning covering the previous day. It tells you how many assets ended the day with a score different from the one they had before, and links to the filtered list. You can receive it through [in-app alerts or email](https://app.convisoappsec.com/spa/user/notifications-center), as well as through the [Microsoft Teams](../integrations/microsoft-teams.md) or [Slack](../integrations/slack.md) integration.
 
 ## Support
 

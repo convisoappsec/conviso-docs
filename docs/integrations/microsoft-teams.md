@@ -12,12 +12,20 @@ sidebar_label: Microsoft Teams
 
 ## Introduction
 
-The integration between Conviso Platform and Microsoft Teams helps those managing activities stay informed by sending real-time alerts directly to the development team or management channel. This integration provides five types of alerts with the following benefits:
-1. A notification can be sent when the Risk Score of an asset decreases;
-2. A notification can be sent when the Risk Score of an asset increases;
-3. A notification can be sent when a vulnerability is fixed;
-4. A notification can be sent when a new asset is created;
-5. A notification can be sent when a vulnerability is identified.
+The integration between Conviso Platform and Microsoft Teams keeps the development team or
+management channel informed without anyone having to open the platform. Conviso Platform
+posts **one message per day** — the Vulnerability Daily Digest — every morning at around
+7:30 (Brasília time), covering the previous day:
+
+* vulnerabilities that changed status, counted per status;
+* assets whose Risk Score changed;
+* assets created;
+* vulnerabilities that crossed the SLA **Approaching** or **Breached** threshold;
+* risk acceptances expiring today or in seven days.
+
+A section only shows up when it has something to report, and every line links back to the
+platform with the filters already applied. For the full description, see [Notifications
+Center](../platform/notifications-center.md#vulnerability-daily-digest).
 
 :::caution The old Incoming Webhook no longer exists
 Microsoft retired Microsoft 365 Connectors — the feature behind the **Incoming Webhook** option in a
@@ -114,25 +122,36 @@ else under **Owners**.
 
 </div>
 
-3. Click on **Settings** (4) and select which notifications you want to receive. In this example, only the "**New Asset Creation**" notification will be enabled (5):
+3. Click on **Settings** and enable the notifications you want the channel to receive:
 
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/microsoft-teams/microsoft-teams-img11.png)
-
-</div>
+<!-- SCREENSHOT 4 — capture: Integrations → Notification → Microsoft Teams, Configuration step
+     Expected state: the Chat section expanded via Settings, showing the current event list
+     with Vulnerability Daily Digest enabled. The old capture (img11) listed five retired
+     events and was removed.
+     Replace this comment with:
+![Choosing which notifications the channel receives](../../static/img/microsoft-teams/microsoft-teams-settings.png "The Chat section of the Microsoft Teams integration.")
+-->
 
 Your notification preferences will be automatically saved.
 
-With the "**New Asset Creation**" notification enabled, each new asset created within your company will trigger a notification in Microsoft Teams:
+From then on, the channel receives the daily digest every morning — a single message with
+one section per kind of change, each linking back to the platform:
 
-<div style={{textAlign: 'center'}}>
+<!-- SCREENSHOT 5 — capture: the daily digest as posted in a Microsoft Teams channel
+     Expected state: a digest with several sections (status changes, risk score, new assets,
+     SLA alerts) so the reader sees the real shape. Use demo data — the message carries
+     vulnerability counts and company URLs. The old capture (img12) showed a single
+     per-event alert and was removed.
+     Replace this comment with:
+![The daily digest posted in a Teams channel](../../static/img/microsoft-teams/microsoft-teams-digest.png "The Vulnerability Daily Digest posted in a Teams channel.")
+-->
 
-![img](../../static/img/microsoft-teams/microsoft-teams-img12.png)
-
-</div>
-
-<!--If you have any questions about how the Conviso Platform notifications work, refer to our guide.-->
+:::note The channel receives your digest
+The webhook is tied to the account that saved the integration, and the digest only reports
+what its recipient can see. So the numbers in the channel are the ones visible to whoever
+connected it — not the union of everyone's access. If that account is deactivated or loses
+access to the company, the channel goes quiet.
+:::
 
 ### Replacing a webhook that stopped working
 
@@ -149,10 +168,12 @@ Incoming Webhook can be removed from the channel, since it no longer does anythi
 
 ## Troubleshooting
 
-**Nothing arrives in the channel.** In the **Workflows** app, check that the flow is **On** — flows
-are turned off automatically after long periods without use. The flow's run history tells you where
-the problem is: no runs at all means the URL saved in Conviso Platform is not the one the flow
-listens on.
+**Nothing arrives in the channel.** First check the timing: the digest is sent once a day, in the
+morning, and a day with nothing to report produces no message at all — so the first one only arrives
+the morning after you set the integration up. If a message is genuinely missing, open the
+**Workflows** app and check that the flow is **On** — flows are turned off automatically after long
+periods without use. The flow's run history tells you where the problem is: no runs at all means the
+URL saved in Conviso Platform is not the one the flow listens on.
 
 **The notification arrives without buttons.** Workflows accepts both Adaptive Card and Message Card
 payloads, but does not render buttons from a Message Card. The notification text is delivered in
