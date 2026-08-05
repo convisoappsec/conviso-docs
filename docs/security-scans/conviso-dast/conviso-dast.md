@@ -11,10 +11,6 @@ Scan and protect your application with Conviso DAST, consolidating all your vuln
 Conviso DAST (Dynamic Application Security Testing) analyzes your application **while it is running**, exactly as an attacker would see it — with no access to the source code. It automatically maps the application's attack surface, sends real attacks against it, and reports the confirmed vulnerabilities directly into the Conviso Platform, each with the evidence needed to reproduce and fix it.
 
 
-:::note
-Conviso DAST can be run self-hosted on your local pipeline. Instructions and further information on self-hosting are available on the [Conviso DAST page at Dockerhub](https://hub.docker.com/r/convisoappsec/convisodast).
-:::
-
 ## Capabilities
 
 Conviso DAST combines several techniques into a single automated scan.
@@ -158,3 +154,59 @@ With the above, you should be able to run DAST on the Conviso Platform.
 ## Support
 
 Should you have any questions or require assistance while using the Conviso Application Security Testing, feel free to contact our dedicated support team.
+
+## Self-Hosted DAST
+
+Conviso DAST can also run **self-hosted** — inside your own pipeline or infrastructure — using the published Docker image, while still reporting results into the Conviso Platform exactly like a platform-managed scan.
+
+### Prerequisites
+
+- Docker (or any container runtime able to run a Docker image)
+- A Conviso Platform **API key** with access to the target asset
+- The asset's **ID**, visible on the asset page in the Conviso Platform
+- Network access from wherever the container runs to both the **target application** and the **Conviso Platform**
+
+### Running a scan
+
+```bash
+docker run --rm \
+  -e CONVISO_API_KEY="your-api-key" \
+  -e ASSET_ID="12345" \
+  -e TARGET_URL="https://example.com" \
+  -e CONVISO_API_URL="https://app.convisoappsec.com/graphql" \
+  -v "$(pwd)/results:/scan/results" \
+  convisoappsec/convisodast:latest
+```
+
+Findings are reported back to the Conviso Platform the same way a platform-managed scan does, and appear on the asset's vulnerability list once the scan finishes. Mounting `/scan/results` is optional — it's only needed if you also want the raw scan output on your own filesystem.
+
+:::tip
+Pin to a specific version (`convisoappsec/convisodast:<tag>`) instead of `:latest` if you need a reproducible scan across runs. Available tags are listed on the [Conviso DAST page at Dockerhub](https://hub.docker.com/r/convisoappsec/convisodast).
+:::
+
+#### Required environment variables
+
+| Variable | Description |
+| --- | --- |
+| `CONVISO_API_KEY` | Your Conviso Platform API key. |
+| `ASSET_ID` | The ID of the asset being scanned. |
+| `TARGET_URL` | The URL to scan. |
+| `CONVISO_API_URL` | The Conviso Platform GraphQL endpoint, e.g. `https://app.convisoappsec.com/graphql`. |
+
+### Using your existing scan configuration
+
+You don't need to re-enter settings you've already configured on the asset's **CI/CD** tab (see [Quick Start](#quick-start)). For any of the settings below that you don't pass explicitly as an environment variable, the self-hosted scan automatically uses whatever is already configured for that asset on the Conviso Platform — the same **Scan Profile**, **Scope Definition**, **Authentication**, and **API testing** definition used by platform-managed scans.
+
+| Variable | Matches this platform setting |
+| --- | --- |
+| `SCAN_PROFILE` | [Scan profile](#scan-profiles) (`Basic`, `Balanced`, `Deep Scan`) |
+| `DAST_SCOPE_CONFIGURATION` | [Scope Definition](#scope-definition-optional) (in scope / out of scope) |
+| `AUTH_CONFIG` | [Authentication](#authentication) |
+| `API_FORMAT`, `API_SCHEMA_URL`, `API_SCHEMA_FILE` | [API testing](#api-testing) definition |
+| `COMPANY_ID` | Automatically resolved from `ASSET_ID` if not provided |
+
+Any variable you pass explicitly is always respected as-is and takes precedence over what's configured on the platform. If a setting isn't passed **and** the platform has no configuration for that asset either, the scan falls back to safe defaults (Balanced profile, no scope restriction, no authentication).
+
+:::note
+Setting `AUTH_CONFIG` or `DAST_SCOPE_CONFIGURATION` by hand requires encoding them yourself (base64-encoded YAML and JSON, respectively). In most cases it's simpler to configure authentication and scope once on the asset's CI/CD tab and let the self-hosted scan pick them up automatically.
+:::
