@@ -68,11 +68,11 @@ module.exports = {
           label: "Threat Modeling",
           collapsed: true,
           items: [
-            'threat-modeling/management-threat-modeling-artifacts',
             'threat-modeling/create-threat-modeling',
             'threat-modeling/threat-modeling-artefact',
-            'threat-modeling/create-a-new-threat-modeling-artifact',
             'threat-modeling/management-projects-with-requirements-based-in-tm',
+            'threat-modeling/management-threat-modeling-artifacts',
+            'threat-modeling/create-a-new-threat-modeling-artifact',
           ],
         },
         {

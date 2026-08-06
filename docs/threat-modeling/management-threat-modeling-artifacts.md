@@ -1,60 +1,86 @@
 ---
 id: management-threat-modeling-artifacts
-title: Management Threat Modeling Artifacts
-sidebar_label: Management Threat Modeling Artifacts
-description: Manage the list of threat modeling artifacts, filter versions, and review assignments in the Conviso Platform.
+title: Find and Manage Your Threat Models
+sidebar_label: Find and Manage Your Threat Models
+description: Browse, filter and open the threat modeling artifacts created in your company.
 keywords: [Threat Modeling, artifacts, versions, assignee, Conviso Platform]
 image: '/static/img/securityfeedseo.png'
 ---
 
-## Overview
+**Threat Modeling Artifacts** is the home of the module: every threat model your company has created lives here.
 
-The **Threat Modeling Artifacts** screen is the main list view for managing the threat models created in the platform.
+## Objective
 
-From this screen, teams can:
+By the end of this guide, you will have:
 
-* review all existing artifacts;
-* filter by assignee and version;
-* search by name or ID;
-* identify the latest version of each model;
-* open the actions menu for each artifact;
-* start a new threat model.
+- Located a specific threat model using search and filters.
+- Understood what each column of the list tells you.
+- Opened an artifact to continue working on it.
 
-## Access the Screen
+## Prerequisites
 
-To access this view, click **Threat Modeling** in the left-hand menu.
+- Access to the **Threat Modeling** module in the left-hand menu.
 
-<div style={{textAlign: 'center'}}>
+## Steps
 
-![Threat Modeling Artifacts](../../static/img/threat-modeling/management-threat-modeling-artifacts.png "Threat Modeling Artifacts.")
+### Step 1 – Open the artifact list
 
-</div>
+1. In the left-hand menu, click **Threat Modeling**.
 
-## Main Elements
+*Step 1: Artifact list with search, filters, and the Create threat model button.*
 
-The screen includes:
+![Step 1: Threat Modeling Artifacts list](../../static/img/threat-modeling/tm-artifacts-list.png)
 
-* **Create threat model**: entry point for creating a new model.
-* **Filters**: currently available for assignee and versions.
-* **Saved filters**: save and clear filter combinations.
-* **Search bar**: search by artifact name or ID.
-* **Artifact table**: lists ID, name, description, scope, assigned user, latest version, and last update.
-* **Actions column**: access operations for each artifact.
+Each row is one threat model:
 
-## How to Use This View
+| Column | What it means |
+|---|---|
+| **ID** | The artifact identifier. The copy icon puts it on your clipboard. |
+| **Name** | The system being modeled. Click it to open the artifact. |
+| **Description** | The system as it was described. |
+| **Scope** | What the model covers. |
+| **Assigned user** | Who owns it. |
+| **Latest version** | `v1`, `v2`, and so on. |
+| **Last updated** | When the most recent version was generated. |
+| **Actions** | Per-artifact operations. |
 
-Use this page when you need to:
+### Step 2 – Find a specific model
 
-* find a threat model already created;
-* verify who is assigned to each artifact;
-* identify whether a model has newer versions;
-* continue a threat modeling effort that was already started;
-* open the artifact details page for version history and requirement changes.
+1. Use **search** to filter by name or ID.
+2. Use the **Assignee** filter to see only the models a given person owns.
+3. Use the **Versions** filter to narrow the list.
+4. Click **Save** to keep a filter combination, or **Clear** to reset it.
 
-## Related Pages
+### Step 3 – Open the artifact
 
-After reviewing the list, the most common next steps are:
+1. Click the artifact name to open it and review its versions and requirements.
 
-* [Create Threat Modeling](./create-threat-modeling.md)
-* [Threat Modeling Artefact](./threat-modeling-artefact.md)
-* [Create a New Threat Modeling Artifact](./create-a-new-threat-modeling-artifact.md)
+:::tip
+The **Latest version** column is a quick health check. Models still at `v1` long after their system changed are the ones worth revisiting.
+:::
+
+## Validation
+
+| Check | Expected result |
+|---|---|
+| The list loads | Artifacts appear with their IDs, names, and latest versions. |
+| Applying a filter | Only matching artifacts remain listed. |
+| Clicking a name | The artifact page opens with its details and version history. |
+
+## Troubleshooting
+
+| Problem | What to do |
+|---|---|
+| The list is empty | No threat model has been created yet. See [Create a Threat Model](./create-threat-modeling.md). |
+| An expected model is missing | Clear the filters and search by ID. Confirm you are in the correct company. |
+| **Create threat model** is not visible | Your user lacks permission to create artifacts in this company. |
+
+## Next steps
+
+- [Create a Threat Model](./create-threat-modeling.md)
+- [Read the Artifact and Its Versions](./threat-modeling-artefact.md)
+- [Turn Requirements into a Project](./management-projects-with-requirements-based-in-tm.md)
+
+## Support
+
+Should you have any questions or require assistance while using the Conviso Platform, feel free to reach out to our dedicated support team.

@@ -1,84 +1,87 @@
 ---
 id: create-a-new-threat-modeling-artifact
-title: Create a New Threat Modeling Artifact
-sidebar_label: Create a New Threat Modeling Artifact
-description: Create a threat modeling artifact by defining model information, architecture items, CAPEC mappings, and requirements.
+title: Create a Threat Model Manually
+sidebar_label: Create a Threat Model Manually
+description: Build a threat modeling artifact by hand, defining architecture items and connecting them to attack patterns and requirements.
 keywords: [Threat Modeling, create artifact, architecture items, CAPEC, requirements]
 image: '/static/img/securityfeedseo.png'
 ---
 
-## Overview
+The manual flow gives you full control over the model. Choose it when you already know which components matter and want to decide yourself which attack patterns apply.
 
-The **Create a new Threat Modeling artifact** flow is used to define the model, register the system architecture, and connect architecture items to attack patterns and requirements.
+If you are starting from a diagram, the [AI-assisted flow](./create-threat-modeling.md) is faster, and you can refine the result afterwards.
 
-<div style={{textAlign: 'center'}}>
+## Objective
 
-![Create a new Threat Modeling artifact](../../static/img/threat-modeling/create-new-threat-modeling-artifact.png "Create a new Threat Modeling artifact.")
+By the end of this guide, you will have:
 
-</div>
+- Defined a threat model with its name, description, scope, and owner.
+- Registered the architecture items that make up the system.
+- Connected those items to CAPEC attack patterns and security requirements.
 
-The flow is organized in two major steps:
+## Prerequisites
 
-1. **Define model and architecture**
-2. **Set requirements to architecture item**
+- Access to the **Threat Modeling** module in the left-hand menu.
+- A clear view of the system's components and how they interact.
 
-## Define Model and Architecture
+## Steps
 
-In the first step, fill in the main model fields:
+### Step 1 – Define the model
 
-* **Threat model name**
-* **Threat model description**
-* **Threat model scope**
-* **Assignee**
+1. Click **Threat Modeling**, then **Create threat model**.
+2. Select **Create manual threat model**.
+3. Fill in the **Threat model name**, **Threat model description**, **Threat model scope**, and **Assignee**.
 
-These fields define the artifact context and the responsible user before the detailed architecture is modeled.
+*Step 1: Manual creation flow, organized as define the model and then set requirements.*
 
-## Architecture Items
+![Step 1: Create a new Threat Modeling artifact](../../static/img/threat-modeling/create-new-threat-modeling-artifact.png)
 
-Architecture items represent the main parts of the system that will be evaluated in the threat model.
+### Step 2 – Add the architecture items
 
-Examples include:
+1. In the architecture section, click **Add new architecture item**.
+2. Name the component — for example a browser, an API gateway, an authentication service, a database, or an external provider.
+3. Repeat for every part of the system worth analyzing.
+4. Edit or remove items as the model takes shape.
 
-* browser;
-* API gateway;
-* authentication service;
-* main database;
-* mobile app;
-* internal services.
+*Step 2: Architecture items registered for the model.*
 
-The platform guidance on the screen indicates that, for each architecture item, CAPEC attack patterns should be selected so the corresponding security requirements can be generated.
+![Step 2: Architecture items](../../static/img/threat-modeling/architecture-items.png)
 
-<div style={{textAlign: 'center'}}>
+:::tip
+Keep items at the level you would actually assign work to. "Payment service" is useful; "the entire backend" is too broad to produce actionable requirements.
+:::
 
-![Architecture items](../../static/img/threat-modeling/architecture-items.png "Architecture items.")
+### Step 3 – Connect items to attack patterns and requirements
 
-</div>
+1. Select an architecture item.
+2. Link the **CAPEC** attack patterns that apply to it. CAPEC is a public catalogue of the ways systems get attacked, and it is how the platform knows which requirements to generate.
+3. Reuse an existing requirement, or create a new one with its activities.
+4. Repeat for each architecture item.
 
-## Available Actions in the Architecture Section
+## Validation
 
-Inside the architecture section, you can:
+| Check | Expected result |
+|---|---|
+| Model details | Name, description, scope, and assignee are saved. |
+| Architecture section | Every component you added is listed. |
+| Requirements | Each architecture item has the requirements you linked or created. |
+| Artifact list | The model appears in **Threat Modeling** with a version and a last-updated date. |
 
-* **Add new architecture item**
-* **Add requirement**
-* edit an existing architecture item;
-* remove an architecture item.
+## Troubleshooting
 
-This section is the operational base of the model, because it connects the architecture structure to the generated requirements.
+| Problem | What to do |
+|---|---|
+| No requirements were generated for an item | No CAPEC was linked to it. Open the item and select the applicable attack patterns. |
+| You cannot decide which CAPECs apply | Start with the ones matching how the component is reached — for example authentication, input handling, or data storage. |
+| The model is too coarse to act on | Split broad architecture items into smaller components and link CAPECs to each. |
 
-## Requirements in the Artifact Flow
+## Next steps
 
-The screen text indicates that the team can:
+The artifact behaves exactly like one generated by the AI flow — same versioning, same path into a project:
 
-* link CAPECs to an architecture item;
-* reuse an existing requirement;
-* create a new requirement with activities.
+- [Read the Artifact and Its Versions](./threat-modeling-artefact.md)
+- [Turn Requirements into a Project](./management-projects-with-requirements-based-in-tm.md)
 
-This means the threat modeling artifact is not limited to identifying risks. It also becomes the source for generating or associating actionable requirements that can later be executed in project workflows.
+## Support
 
-## Recommended Use
-
-Use this creation flow when:
-
-* the architecture needs to be modeled with traceability;
-* the team wants to connect architecture elements to attack patterns;
-* the objective is to generate structured security requirements from the modeled architecture.
+Should you have any questions or require assistance while using the Conviso Platform, feel free to reach out to our dedicated support team.
