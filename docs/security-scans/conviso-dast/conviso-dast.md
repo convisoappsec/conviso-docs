@@ -202,10 +202,14 @@ docker run --rm \
   convisoappsec/convisodast:latest
 ```
 
-`CONVISO_API_KEY` is still required for a dry run: it's used once, to confirm the key belongs to an active company on the Conviso Platform, so the feature can't be used to scan targets anonymously. Beyond that single check, the platform is never contacted — no scan-policy check, no vulnerabilities are registered, and no `ASSET_ID` is needed. Scan output is still written to `/scan/results` as usual, so you can review findings locally.
+`CONVISO_API_KEY` is still required for a dry run: it's used once, to confirm the key belongs to an active company on the Conviso Platform, so the feature can't be used to scan targets anonymously. Beyond that single check, the platform is never contacted — no scan-policy check, no analytics, no vulnerabilities are registered, and no `ASSET_ID` is needed. Scan output is still written to `/scan/results` as usual, so you can review findings locally.
+
+:::note
+A dry run does **not** pick up your asset's platform-configured Scan Profile, Scope, or Authentication (see [Using your existing scan configuration](#using-your-existing-scan-configuration) below) — that lookup needs `ASSET_ID` and is skipped too, on purpose. A dry run always uses local defaults unless you pass those settings yourself as environment variables.
+:::
 
 :::tip
-Use a dry run to validate connectivity, authentication, and scope configuration before wiring the scan up to a real asset.
+Use a dry run to validate connectivity and confirm the scan pipeline itself works against your target before wiring it up to a real asset.
 :::
 
 ### Using your existing scan configuration
