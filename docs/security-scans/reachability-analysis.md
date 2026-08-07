@@ -17,7 +17,7 @@ Conviso builds a **call graph** of your application, a map of every function and
 This runs automatically in the background for eligible assets.
 
 :::info
-Reachability Analysis is currently only supported for **GitHub** integration.
+Reachability Analysis is currently supported for **GitHub**, **Azure DevOps** and **GitLab** integrations.
 :::
 
 ## Eligibility
@@ -25,7 +25,7 @@ Reachability Analysis is currently only supported for **GitHub** integration.
 An asset is automatically picked up for Reachability Analysis when:
 
 * The **SCA** scan type is enabled for the asset.
-* Conviso has access to the asset's source code via a connected **GitHub** integration.
+* Conviso has access to the asset's source code via a connected integration.
 
 Reachability results are recalculated as new commits and new SCA findings are detected, so the status and trace shown in the Platform reflect the most recently analyzed code.
 
