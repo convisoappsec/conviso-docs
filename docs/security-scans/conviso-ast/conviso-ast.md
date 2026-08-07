@@ -25,8 +25,8 @@ A single `conviso ast run` orchestrates the following analyses and sends the con
 | Analysis | Command | What it looks for | Engine |
 | :--- | :--- | :--- | :--- |
 | **SAST** | `conviso sast run` | Vulnerabilities in your own source code | Conviso-managed rules |
-| **SCA** | `conviso sca run` | Known vulnerabilities in third-party dependencies | osv-scanner |
-| **IaC** | `conviso iac run` | Misconfigurations in infrastructure code | Checkov |
+| **SCA** | `conviso sca run` | Known vulnerabilities in third-party dependencies | Conviso-managed rules |
+| **IaC** | `conviso iac run` | Misconfigurations in infrastructure code | Conviso-managed rules |
 | **Container** | `conviso container run` | OS-level vulnerabilities in container images | Conviso container scanner |
 
 Results are **aggregated and deduplicated** by a unified security engine before they reach the Platform, so you work from one clean, prioritized list instead of raw scanner output. Everything then flows into the **[Vulnerabilities](../../platform/vulnerabilities)** feature, where your team can triage, prioritize, and fix.
@@ -376,7 +376,7 @@ conviso sast dry-run --output results.json
 
 ### SCA Dry-Run
 
-Scans manifest files for vulnerable third-party dependencies using **osv-scanner**.
+Scans manifest files for vulnerable third-party dependencies.
 
 ```bash
 conviso sca dry-run --repository-dir .
@@ -384,7 +384,7 @@ conviso sca dry-run --repository-dir .
 
 ### IaC Dry-Run
 
-Checks infrastructure definitions (Terraform, CloudFormation, Kubernetes, and more) for misconfigurations using **Checkov**.
+Checks infrastructure definitions (Terraform, CloudFormation, Kubernetes, and more) for misconfigurations.
 
 ```bash
 conviso iac dry-run --repository-dir ./terraform
@@ -400,12 +400,12 @@ conviso ast dry-run --start-commit <commit_id>
 
 ### Command summary
 
-| Command | Scope | Underlying tool |
-| :--- | :--- | :--- |
-| `conviso sast dry-run` | Source code vulnerabilities (diff-based) | Conviso-managed rules |
-| `conviso sca dry-run` | Dependency vulnerabilities | osv-scanner |
-| `conviso iac dry-run` | Infrastructure misconfigurations | Checkov |
-| `conviso ast dry-run` | All of the above, combined | All of the above |
+| Command | Scope |
+| :--- | :--- |
+| `conviso sast dry-run` | Source code vulnerabilities (diff-based) |
+| `conviso sca dry-run` | Dependency vulnerabilities |
+| `conviso iac dry-run` | Infrastructure misconfigurations |
+| `conviso ast dry-run` | All of the above, combined |
 
 ## CI/CD integration
 
