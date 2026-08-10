@@ -14,6 +14,8 @@ keywords:  [Bitbucket Pipelines Integration]
 
 :::note
 First time using Bitbucket? Please refer to the [following documentation](https://bitbucket.org/product/guides/).  
+
+Looking for **centralized AST after merge** (one Pipelines repo for many assets, no per-app YAML)? See the [Bitbucket ALM integration](./bitbucket.md) and [Bitbucket AST Orchestrator](./bitbucket-ast-orchestrator.md).
 :::
 
 ## Introduction
