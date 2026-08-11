@@ -2,39 +2,48 @@
 id: threat-modeling
 title: Threat Modeling
 sidebar_label: Threat Modeling
-description: Use Threat Modeling in the Conviso Platform to manage artifacts, create models, and turn generated requirements into executable projects.
+description: Understand what Threat Modeling is in the Conviso Platform and follow the path from describing your system to executing security requirements.
 keywords: [Threat Modeling, threat modeling, Conviso Platform, artifacts, projects, requirements]
 image: '/static/img/securityfeedseo.png'
 ---
-## Overview
 
-**Threat Modeling** in the Conviso Platform helps teams model architecture, identify threats, generate requirements, and turn those requirements into executable project work.
+## What is Threat Modeling?
 
-The feature now has a broader workflow that includes:
+Threat modeling is the practice of looking at a system **before** it is attacked and asking what could go wrong. Instead of waiting for a scanner or a pentest to find problems in code that already exists, you reason about the design — and fix the problems while they are still cheap to fix.
 
-* managing threat modeling artifacts;
-* creating models through multiple input types;
-* reviewing artifact versions and requirement changes;
-* creating projects from the latest model version;
-* executing generated requirements through project workflows.
+You do not need to be a security specialist to do it. If you can explain how your system works, you can produce a threat model in the Conviso Platform.
 
-## Access the Feature
+## How it works here
 
-To access Threat Modeling, click **Threat Modeling** in the left-hand menu.
+The platform turns your description of a system into a list of concrete security requirements your team can implement and prove. The path has four stages:
 
-## Recommended Navigation
+1. **Describe your system** — upload an architecture diagram or write what the system does.
+2. **Get an artifact** — the platform produces a threat model with a scope and a set of requirements grouped by architecture component.
+3. **Keep it alive** — when the architecture changes, generate a new version. The platform records exactly what changed between versions.
+4. **Execute** — turn the requirements into a project where each activity is assigned, tracked and evidenced.
 
-For the updated operational flow, use these pages:
+The result is not a document that ages on a shelf. It is a living record of your system's security design, with an audit trail.
 
-* [Management Threat Modeling Artifacts](../threat-modeling/management-threat-modeling-artifacts.md)
-* [Create Threat Modeling](../threat-modeling/create-threat-modeling.md)
-* [Threat Modeling Artefact](../threat-modeling/threat-modeling-artefact.md)
-* [Create a New Threat Modeling Artifact](../threat-modeling/create-a-new-threat-modeling-artifact.md)
-* [Management Projects with Requirements Based in TM](../threat-modeling/management-projects-with-requirements-based-in-tm.md)
+## Access the feature
 
-## Related Areas
+Click **Threat Modeling** in the left-hand menu.
 
-Threat Modeling is closely connected to:
+## Start here
+
+If this is your first time, follow these pages in order:
+
+1. [Create a Threat Model](../threat-modeling/create-threat-modeling.md) — the fastest path from a diagram to a finished threat model.
+2. [Read the artifact and its versions](../threat-modeling/threat-modeling-artefact.md) — understand what was generated and how to keep it current.
+3. [Turn requirements into a project](../threat-modeling/management-projects-with-requirements-based-in-tm.md) — put the requirements into your team's workflow.
+
+Reference pages, for when you need them:
+
+* [Find and manage your threat models](../threat-modeling/management-threat-modeling-artifacts.md)
+* [Create a threat model manually](../threat-modeling/create-a-new-threat-modeling-artifact.md)
+
+## Related areas
+
+Threat Modeling connects to:
 
 * [Projects](./projects.md)
 * [Requirements](./requirements.md)

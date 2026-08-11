@@ -1,78 +1,112 @@
 ---
 id: management-projects-with-requirements-based-in-tm
-title: Management Projects with Requirements Based in TM
-sidebar_label: Management Projects with Requirements Based in TM
-description: Manage threat-modeling-based projects and follow the implementation of generated requirements in Project Management.
-keywords: [Threat Modeling, projects, requirements, Project Management, Conviso Platform]
+title: Turn Requirements into a Project
+sidebar_label: Turn Requirements into a Project
+description: Create a project from a threat modeling version and track the implementation of the generated security requirements.
+keywords: [Threat Modeling, projects, requirements, activities, Project Management, Conviso Platform]
 image: '/static/img/securityfeedseo.png'
 ---
 
-## Overview
+A threat model nobody acts on is a document. This guide turns it into work: the platform creates a project from the requirements generated for each part of your architecture, so your team can assign, track, and evidence each one.
 
-After creating a threat modeling artifact and turning it into a project, the implementation work is managed through the project workflow and its generated requirements.
+## Objective
 
-This is the operational bridge between:
+By the end of this guide, you will have:
 
-* the threat model;
-* the generated security requirements;
-* the execution and validation work performed by the team.
+- Created a project from the latest version of a threat model.
+- Located the security requirements and activities generated for each architecture item.
+- Understood how to move activities through their statuses and attach evidence.
 
-## Access the Project
+## Prerequisites
 
-After the threat modeling project is created, open it in **Projects** to monitor the implementation lifecycle.
+- A threat modeling artifact with at least one version. See [Create a Threat Model](./create-threat-modeling.md).
+- Permission to create projects in your company.
 
-At the beginning of the execution, the project may still be in the **To do** phase.
-For project status definitions, see [Workflow Status](../project-management/workflow-status.md).
+## Steps
 
-To indicate that work has started, update the project status to **Running**.
+### Step 1 – Create the project
 
-## Review Generated Requirements
+1. Open the artifact in **Threat Modeling**.
+2. Click **Create project from latest version**.
+3. Enter the **Project Name**.
+4. Select the **Start date** and **End date** from the calendar.
+5. Fill in the **Goal** and the **Scope and limitations**.
+6. Review **Requirement Templates** and remove any architecture item you do not want to work on now.
+7. Click **Create a new project**.
 
-Inside the project, open the **Requirements** tab to review the requirements generated from the threat modeling process.
+*Step 1: Project form opened from the artifact, with Project Type set to Threat Modeling and one requirement template per architecture item.*
 
-These requirements are based on the identified threats and the underlying requirement model used by the platform.
+![Step 1: Create a project from a threat model version](../../static/img/threat-modeling/tm-create-project-form.png)
 
-In this view, you can:
+The platform pre-fills **Project Type** as **Threat Modeling** and lists one requirement template per architecture item found in the model.
 
-* review all generated requirements;
-* track implementation progress;
-* access history and attachments;
-* update requirement and activity statuses.
+| Field | Required |
+|---|---|
+| **Project Name** | Yes |
+| **Start date** and **End date** | Yes |
+| **Goal** | Yes |
+| **Scope and limitations** | Yes |
+| Assets, Tags, Assigned users, Teams, Attachments | No |
 
-The requirements are categorized by execution statuses such as:
+### Step 2 – Open the generated requirements
 
-* `To do`
-* `Running`
-* `Not According`
-* `Not Applicable`
-* `Done`
+1. Open the project from **Projects**.
+2. Select the **Requirements** tab.
+3. Click a requirement group to expand it.
 
-## Implement a Requirement
+*Step 2: Requirements tab listing one group per architecture item, with a group expanded to show its activities.*
 
-Before implementation starts, review the requirement to confirm whether it is applicable to the application scope.
+![Step 2: Project requirements generated from the threat model](../../static/img/threat-modeling/tm-project-requirements.png)
 
-Typical flow:
+Each group corresponds to one part of your architecture and shows how many activities it contains. Expanding it reveals the activities, each with a name, status, assigned users, last update, and history with attachments.
 
-1. Move the requirement or activity from `To do` to `Running`.
-2. Open the requirement details and execute the necessary implementation work.
-3. If the requirement does not apply, mark it as `Not Applicable` and provide justification.
-4. If the requirement is implemented, mark it as `Done` and attach evidence for the security team review.
+### Step 3 – Work through the activities
 
-Evidence can be provided as text or file attachments, depending on the implementation context.
+For each activity:
 
-## Move Toward Final Validation
+1. Confirm whether it applies to your system.
+2. Assign it to whoever will do the work.
+3. Move it to **Running** when work starts.
+4. When finished, move it to **Done** and attach the evidence.
+5. If it does not apply, mark it **Not Applicable** and record the justification.
 
-After the implementation of the generated security requirements is completed, the next step is to move the project toward final validation by the security team.
+| Status | Use it when |
+|---|---|
+| **To do** | Not started. Every activity begins here. |
+| **Running** | Work is in progress. |
+| **Done** | Implemented, with evidence attached. |
+| **Not Applicable** | Does not apply to your system. Always justify. |
+| **Not According** | Reviewed and found not to meet the requirement. |
 
-At that point, the team can:
+:::tip
+Attach evidence while the work is fresh — a screenshot, a configuration excerpt, or a link to a pull request. It is what turns "we handled it" into something you can prove later.
+:::
 
-* finish implementation work in requirements;
-* update the project status as needed;
-* wait for the security review and testing cycle.
+## Validation
 
-## Related Pages
+| Check | Expected result |
+|---|---|
+| After creating the project | You are redirected to **Projects** and the new project is listed. |
+| Project **Details** | **Project Type** is **Threat Modeling**. |
+| **Requirements** tab | Shows one group per architecture item from the model. |
+| Expanding a group | Lists its activities, each starting at **To do**. |
 
-For the broader workflows behind this execution model, see:
+## Troubleshooting
 
-* [Project Management / Process](../project-management/process.md)
-* [Requirements](../platform/requirements.md)
+| Problem | What to do |
+|---|---|
+| **This field is required** on submit | **Start date**, **End date**, **Goal**, and **Scope and limitations** are mandatory. Dates only accept values from the calendar. |
+| The **Requirements** tab is empty | The version used had no requirement groups. Generate a new version and create the project again. |
+| A requirement group is missing | It was removed from **Requirement Templates** during creation. Add it with **Create Requirement**, or create a new project from the artifact. |
+| The requirements do not reflect the current architecture | The project was created from an older version. [Generate a new version](./threat-modeling-artefact.md) and create a project from it. |
+
+## Next steps
+
+- [Read the Artifact and Its Versions](./threat-modeling-artefact.md)
+- [Project Management / Process](../project-management/process.md)
+- [Project Management / Workflow Status](../project-management/workflow-status.md)
+- [Requirements](../platform/requirements.md)
+
+## Support
+
+Should you have any questions or require assistance while using the Conviso Platform, feel free to reach out to our dedicated support team.
