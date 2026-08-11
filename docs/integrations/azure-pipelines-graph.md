@@ -82,6 +82,48 @@ docker run --rm \
 
 3. The results will be sent to Conviso Platform.
 
+## Running Conviso AST with the Azure DevOps task
+
+Instead of the Bash task above, you can add the **Conviso AST** task from the Azure DevOps Marketplace. A single task covers Static Application Security Testing (SAST), Software Composition Analysis (SCA), Infrastructure as Code (IaC), Software Bill of Materials (SBOM), secret and container scanning, and it fills in the branch and the directory to scan from the pipeline itself. To configure it, follow these steps:
+
+1. Access the Azure DevOps Marketplace.
+2. Search for **Conviso AST** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAstTask).
+3. Click on **Get it free**.
+4. Edit Your Azure DevOps Pipeline.
+5. In the **Pipeline variables** section, add the `CONVISO_API_KEY` variable and set its value to your [Conviso API Key](../api/api-overview.md#generate-api-key). Mark it as secret.
+6. Within the pipeline configuration, add the **Conviso AST** task.
+7. Fill in the fields as follows:
+   - Conviso API Key: `$(CONVISO_API_KEY)`.
+   - Company ID: Company ID in Conviso Platform.
+   - Scan types: **leave empty** to run every scan type, or select only the ones you need.
+   - Container image: the image analyzed by the container scan. Required only when you select **Container**, which is skipped without it.
+   - Path to scan and Branch: **leave both empty**. The task reads them from the pipeline itself — see [Repository context](#repository-context) below.
+8. Save the pipeline configuration and execute it to start the scan.
+
+**Expected Behaviors**:
+- **Branch association**: The scan is recorded against the branch the build is for. In a **Pull Request** build, this is the branch the PR is coming **from**, so its findings are not filed under the target branch.
+- **Findings never fail the build**: The task fails only when a scan or an upload fails, never because vulnerabilities were found.
+- **Session archive**: Every run writes a zip with the raw output of each scan and the debug log to the agent's temporary directory. Add a **Publish Build Artifacts** task if you want to keep it, as it is the first artifact Conviso support asks for.
+
+### Repository context
+
+Both fields below are optional, and both are filled in from the pipeline when you leave them empty,
+so the usual setup needs no extra configuration:
+
+| Field | Where it comes from when left empty |
+| --- | --- |
+| **Path to scan** | The directory the pipeline checked the sources out into |
+| **Branch** | The branch the build is for. In a **Pull Request** build, this is the branch the PR is **coming from**, not the branch it is merging into |
+
+Filling either field in overrides what the pipeline reports — use that only when the build does not
+run on the code you are tracking.
+
+:::note
+The task requires a **Linux x64** agent with Docker, such as the `ubuntu-latest` agent specification
+used in [First Steps](#first-steps). Unlike the Bash task above, it does not need the `DOCKER_HOST`
+variable.
+:::
+
 ## Running the Conviso Containers
 
 1. To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
