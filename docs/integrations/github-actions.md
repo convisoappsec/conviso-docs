@@ -327,9 +327,11 @@ jobs:
 
 Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
 
-1. Add the `CONVISO_API_KEY` secret to your repository, with your [Conviso API Key](../api/api-overview.md#generate-api-key) as its value. Keep it in a repository or organization secret: anything written literally in the workflow file is readable by everyone who can read the repository.
-2. Create or edit a workflow file under `.github/workflows/`.
-3. Configure the Workflow with the Following Code:
+1. Access the GitHub Marketplace.
+2. Search for **Conviso GitHub Sync Task** or directly visit [this link](https://github.com/marketplace/actions/conviso-github-sync-task).
+3. Add the `CONVISO_API_KEY` secret to your repository, with your [Conviso API Key](../api/api-overview.md#generate-api-key) as its value. Keep it in a repository or organization secret: anything written literally in the workflow file is readable by everyone who can read the repository.
+4. Create or edit a workflow file under `.github/workflows/`.
+5. Configure the Workflow with the Following Code:
 ```yaml
 name: Sync to Conviso
 
@@ -348,7 +350,7 @@ jobs:
           integration: 'FORTIFY' # or 'DEPENDENCY_TRACK' or 'CHECKMARX'
           company-id: 'your-company-id'
 ```
-4. Commit the workflow and run it.
+6. Commit the workflow and run it.
 
 **Field Descriptions**:
 - api-key: Your [Conviso API Key](../api/api-overview.md#generate-api-key), referenced from the repository secrets.
