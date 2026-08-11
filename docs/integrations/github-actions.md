@@ -323,6 +323,64 @@ jobs:
       run: conviso vulnerability assert-security-rules --rules-file 'security-gate.yml'
 ```
 
+## Importing and Synchronizing Assets from External Scanners
+
+Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
+
+1. Add the `CONVISO_API_KEY` secret to your repository, with your [Conviso API Key](../api/api-overview.md#generate-api-key) as its value. Keep it in a repository or organization secret: anything written literally in the workflow file is readable by everyone who can read the repository.
+2. Create or edit a workflow file under `.github/workflows/`.
+3. Configure the Workflow with the Following Code:
+```yaml
+name: Sync to Conviso
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  conviso-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: convisoappsec/github-sync-task@v1
+        with:
+          api-key: ${{secrets.CONVISO_API_KEY}}
+          project-id: 'external-tool-project-id'
+          integration: 'FORTIFY' # or 'DEPENDENCY_TRACK' or 'CHECKMARX'
+          company-id: 'your-company-id'
+```
+4. Commit the workflow and run it.
+
+**Field Descriptions**:
+- api-key: Your [Conviso API Key](../api/api-overview.md#generate-api-key), referenced from the repository secrets.
+- project-id: The project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency-Track).
+- integration: The name of the integration as specified in Conviso's GraphQL schema (e.g., 'FORTIFY', 'CHECKMARX', 'DEPENDENCY_TRACK').
+- company-id: Your company ID in the Conviso Platform.
+- repository-url: The repository this scan belongs to. Optional; it defaults to the repository the workflow runs in — see [Repository and branch](#repository-and-branch) below.
+- branch: The branch this scan covers. Optional; it defaults to the branch that triggered the run.
+
+**Outputs**: the action exposes `asset-id` and `asset-name`, so a later step can reference the asset it associated.
+
+**Expected Behaviors**:
+- **Importing a New Project**: If the external scanner's project does not exist in the Conviso Platform, it will be imported as a new asset.
+- **Synchronizing an Existing Project**: If the project already exists in the Conviso Platform, it will be synchronized to update its data.
+
+In both scenarios, the process is triggered by the workflow and executed asynchronously. You can monitor the progress directly within the respective asset on the Conviso Platform.
+
+### Repository and branch
+
+The action also reports **which repository and which branch** the run is for. Both are optional
+inputs, and both are filled in from the workflow when you leave them empty, so the usual setup
+needs no extra YAML:
+
+| Input | Where it comes from when left empty |
+| --- | --- |
+| `repository-url` | The repository the workflow is running in |
+| `branch` | The branch that triggered the run. On a **pull request** event, this is the branch the PR is **merging into**, not the source branch |
+
+Setting `repository-url` turns the asset in Conviso Platform into a repository, and the asset is
+then named after the repository (`org/repo`) instead of the scanner's project name. The `branch`
+input only takes effect together with it — on its own, Conviso Platform ignores the branch.
+
 ## Troubleshooting
 
 ### Enabling External Actions for GitHub Actions

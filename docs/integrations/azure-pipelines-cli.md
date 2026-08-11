@@ -80,6 +80,44 @@ jobs:
 
 The identified vulnerabilities will be automatically sent the new Asset created on Conviso Platform. 
 
+## Running Conviso AST with the Azure DevOps task
+
+Instead of running the CLI inside a container job, you can add the **Conviso AST** task from the Azure DevOps Marketplace. A single task covers Static Application Security Testing (SAST), Software Composition Analysis (SCA), Infrastructure as Code (IaC), Software Bill of Materials (SBOM), secret and container scanning, and it resolves the branch, the sources directory and the output location from the pipeline itself. To configure it, follow these steps:
+
+1. Access the Azure DevOps Marketplace.
+2. Search for **Conviso AST** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAstTask).
+3. Click on **Get it free**.
+4. Edit Your Azure DevOps Pipeline.
+5. Configure the Pipeline with the Following Code:
+```yaml
+steps:
+  - checkout: self
+
+  - task: ConvisoAST@1
+    displayName: Conviso AST
+    inputs:
+      apiKey: $(CONVISO_API_KEY)
+      companyId: 'your-company-id'
+```
+6. Save it and run the pipeline.
+
+**Field Descriptions**:
+- apiKey: Your [Conviso API Key](../api/api-overview.md#generate-api-key), referenced as `$(CONVISO_API_KEY)` in the pipeline variables. Always store it as a secret variable.
+- companyId: Your company ID in the Conviso Platform.
+- scanTypes: Which scan types to run — `sast`, `sca`, `iac`, `sbom`, `secret`, `container`. Optional; leave it empty to run all of them.
+- imageName: The image analyzed by the `container` scan (e.g. `myorg/app:$(Build.BuildId)`). Optional, and the `container` scan is skipped without it.
+- baselineRef: Branch to compare against so only what changed is scanned, such as `main` or `$(System.PullRequest.TargetBranch)`. Optional, and it requires `fetchDepth: 0` on the checkout step.
+- assetId: Pins the scan to a specific asset, skipping the automatic lookup by repository URL. Optional; use it if a scan stops with an asset ambiguity error.
+
+**Expected Behaviors**:
+- **Branch association**: The scan is recorded against the branch the build is for. In a **Pull Request** build, this is the branch the PR is coming **from**, so its findings are not filed under the target branch.
+- **Findings never fail the build**: The task fails only when a scan or an upload fails. Add `continueOnError: true` to the step if you do not want even that to stop the pipeline.
+- **Session archive**: Every run writes a zip with the raw output of each scan and the debug log to `$(Agent.TempDirectory)`. It is not published automatically — add a `PublishBuildArtifacts@1` step if you want to keep it, as it is the first artifact Conviso support asks for.
+
+:::note
+The task requires a **Linux x64** agent with Docker, such as `vmImage: ubuntu-latest`. If the agent already has the `conviso-ast` CLI and its scanner binaries installed, the task uses them directly and no Docker is required.
+:::
+
 ## Running the Conviso Containers
 
 To perform the [Conviso Containers](../security-scans/conviso-containers/conviso-containers.md), you can use the example configuration below:
