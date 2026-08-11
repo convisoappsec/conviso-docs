@@ -355,6 +355,17 @@ module.exports = {
                     'integrations/gitlab-ast-orchestrator',
                   ]
                 },
+                {
+                  type: "category",
+                  label: "Bitbucket",
+                  link: {
+                    type: 'doc',
+                    id: 'integrations/bitbucket',
+                  },
+                  items: [
+                    'integrations/bitbucket-ast-orchestrator',
+                  ]
+                },
               ]
             },        
           ]
