@@ -57,10 +57,6 @@ SAST covers the following languages, backed by Conviso-managed rules:
 
 </div>
 
-:::note
-For Elixir, we use **Sobelow**, enhanced with Conviso-managed generic rules.
-:::
-
 ## Prerequisites
 
 Conviso AST orchestrates its analyzers as **Docker containers**, so a working Docker environment is required in every scenario — including local installs via `pip`.
