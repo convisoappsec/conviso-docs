@@ -50,7 +50,7 @@ Most real risk lives behind the login. Conviso DAST can scan **authenticated are
 
 ### Evidence and consolidation
 
-Every finding ships with the **real HTTP request and response** that proves it, plus severity, CWE, description, remediation guidance, and references. Results are automatically **deduplicated** and consolidated in the Conviso Platform, and a vulnerability that is no longer present is **automatically closed** on the next scan.
+Every finding ships with the **real HTTP request and response** that proves it, plus severity, CWE, description, remediation guidance, and references. Results are automatically **deduplicated** and consolidated in the Conviso Platform, and a vulnerability that is no longer present is **automatically closed** once two consecutive scans stop reporting it.
 
 
 
@@ -146,7 +146,7 @@ You can also generate a detailed report of the scan execution from this page cli
 
 
 :::note
-When the vulnerability is fixed, running the next scan should identify it, and then change the vulnerability status to "Fixed" automatically.
+When the vulnerability is fixed, the scans that follow stop reporting it. After two consecutive scans without it, the Platform changes the vulnerability status to "Fixed" automatically — the second scan is what confirms the fix, so a single scan that misses the vulnerability never closes it on its own.
 :::
 
 With the above, you should be able to run DAST on the Conviso Platform.
