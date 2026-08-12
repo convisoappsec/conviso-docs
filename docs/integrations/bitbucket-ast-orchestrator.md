@@ -24,8 +24,9 @@ You do **not** need Conviso CI YAML in every application repository.
 flowchart LR
     A[Developer merges PR] --> B[Conviso Platform]
     B -->|Triggers custom pipeline<br/>run-ast-scan| C[Orchestrator repository]
-    C -->|Clones target repository| D[Target repository]
-    C -->|conviso-ast| E[Findings in Conviso Platform]
+    C -->|conviso-ast-repository-token| D[Clone target repository]
+    D --> E[conviso-ast]
+    E --> F[Findings in Conviso Platform]
 ```
 
 Benefits:
@@ -73,6 +74,12 @@ In the orchestrator repository → **Repository settings → Repository variable
 |----------|----------|-------------|
 | `CONVISO_API_KEY` | **Yes** (secured) | Conviso Platform API key for your company / environment. |
 
+:::tip Optional
+You may add `CONVISO_COMPANY_ID`. The pipeline uses it when the `company_id` input is empty.
+:::
+
+Do **not** store a Bitbucket App password or OAuth token for clone. The job calls `conviso-ast-repository-token --provider bitbucket`.
+
 ### Step 3 – Add `bitbucket-pipelines.yml`
 
 On the branch you will configure as **Ref** in Conviso (usually `main`), create `bitbucket-pipelines.yml` with:
@@ -82,21 +89,22 @@ image: convisoappsec/convisoast_v2:latest
 
 pipelines:
   custom:
+    # Name must stay run-ast-scan — Conviso triggers this selector.
     run-ast-scan:
       - variables:
           - name: repo_full_name
           - name: branch
+          - name: commit_sha
+            default: ""
+          - name: pr_id
+            default: ""
           - name: api_url
-            default: https://app.convisoappsec.com
+            default: https://api.convisoappsec.com
           - name: company_id
             default: ""
           - name: asset_id
             default: ""
           - name: scan_run_id
-            default: ""
-          - name: commit_sha
-            default: ""
-          - name: pr_id
             default: ""
       - step:
           name: Run Conviso AST
@@ -104,10 +112,27 @@ pipelines:
             enabled: false
           script:
             - export CONVISO_APIKEY="$CONVISO_API_KEY"
-            - export CONVISO_BASE_URL="${api_url:-https://app.convisoappsec.com}"
+            - |
+              export CONVISO_BASE_URL="${api_url:-https://api.convisoappsec.com}"
+              CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
+              case "$CONVISO_BASE_URL" in
+                https://app.convisoappsec.com)
+                  export CONVISO_BASE_URL="https://api.convisoappsec.com"
+                  ;;
+                https://staging.convisoappsec.com)
+                  export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+                  ;;
+              esac
             - export CONVISO_REPO_FULL_NAME="$repo_full_name"
-            - export CONVISO_ASSET_ID="$asset_id"
-            - export CONVISO_SCAN_RUN_ID="$scan_run_id"
+            - |
+              case "${asset_id:-}" in
+                ""|none|0) unset CONVISO_ASSET_ID || true ;;
+                *) export CONVISO_ASSET_ID="$asset_id" ;;
+              esac
+              case "${scan_run_id:-}" in
+                ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+                *) export CONVISO_SCAN_RUN_ID="$scan_run_id" ;;
+              esac
             - umask 077 && conviso-ast-repository-token --provider bitbucket > repo_token
             - |
               git clone --branch "$branch" \
@@ -117,7 +142,9 @@ pipelines:
             - export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0='*'
             - export CONVISO_COMPANY_ID="${company_id:-$CONVISO_COMPANY_ID}"
             - export CONVISO_BRANCH="$branch"
-            - conviso-ast -b "$branch"
+            - conviso-ast -p . -o "$BITBUCKET_CLONE_DIR/conviso-ast-session.zip"
+          artifacts:
+            - conviso-ast-session.zip
 ```
 
 The custom pipeline name must be exactly **`run-ast-scan`** — that is the name Conviso triggers.

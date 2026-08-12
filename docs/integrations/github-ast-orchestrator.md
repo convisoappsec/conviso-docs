@@ -148,28 +148,29 @@ on:
         description: "Branch to scan"
         required: true
         type: string
-      api_url:
-        description: "Conviso Platform URL"
-        required: false
-        type: string
-      company_id:
-        description: "Conviso company id. When empty the CONVISO_COMPANY_ID variable is used"
-        required: false
-        type: string
-      asset_id:
-        description: "Conviso asset id. When empty the scanner resolves the asset by repository name"
-        required: false
-        type: string
-      scan_run_id:
-        description: "Scan run created by the platform. Correlates this execution with the run shown in the UI"
-        required: false
-        type: string
       commit_sha:
-        description: "Merge commit SHA (post-merge scans only)"
+        description: "Merge commit SHA (post-merge)"
         required: false
         type: string
       pr_number:
-        description: "Pull request number (post-merge scans only)"
+        description: "Pull request number (post-merge)"
+        required: false
+        type: string
+      api_url:
+        description: "Conviso API URL"
+        required: false
+        type: string
+        default: https://api.convisoappsec.com
+      company_id:
+        description: "Conviso company id"
+        required: false
+        type: string
+      asset_id:
+        description: "Conviso asset id"
+        required: false
+        type: string
+      scan_run_id:
+        description: "Scan run id from the platform"
         required: false
         type: string
 
@@ -184,16 +185,34 @@ jobs:
         id: repo_token
         env:
           CONVISO_APIKEY: ${{ secrets.CONVISO_API_KEY }}
-          CONVISO_BASE_URL: ${{ inputs.api_url || 'https://app.convisoappsec.com' }}
+          API_URL: ${{ inputs.api_url }}
           CONVISO_REPO_FULL_NAME: ${{ inputs.repo_full_name }}
-          CONVISO_ASSET_ID: ${{ inputs.asset_id }}
-          CONVISO_SCAN_RUN_ID: ${{ inputs.scan_run_id }}
+          ASSET_ID: ${{ inputs.asset_id }}
+          SCAN_RUN_ID: ${{ inputs.scan_run_id }}
         run: |
+          set -euo pipefail
+          export CONVISO_BASE_URL="${API_URL:-https://api.convisoappsec.com}"
+          CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
+          case "$CONVISO_BASE_URL" in
+            https://app.convisoappsec.com)
+              export CONVISO_BASE_URL="https://api.convisoappsec.com"
+              ;;
+            https://staging.convisoappsec.com)
+              export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+              ;;
+          esac
+          case "${ASSET_ID:-}" in
+            ""|none|0) unset CONVISO_ASSET_ID || true ;;
+            *) export CONVISO_ASSET_ID="$ASSET_ID" ;;
+          esac
+          case "${SCAN_RUN_ID:-}" in
+            ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+            *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
+          esac
           TOKEN=$(conviso-ast-repository-token --provider github)
-          # Mask BEFORE the value reaches the step output, so it can never surface
-          # in this job's log.
           echo "::add-mask::$TOKEN"
           echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+          echo "base_url=$CONVISO_BASE_URL" >> "$GITHUB_OUTPUT"
 
       - name: Checkout target repository
         uses: actions/checkout@v6
@@ -206,15 +225,24 @@ jobs:
       - name: Run Conviso AST
         env:
           CONVISO_APIKEY: ${{ secrets.CONVISO_API_KEY }}
-          CONVISO_BASE_URL: ${{ inputs.api_url || 'https://app.convisoappsec.com' }}
+          CONVISO_BASE_URL: ${{ steps.repo_token.outputs.base_url }}
           CONVISO_COMPANY_ID: ${{ inputs.company_id || vars.CONVISO_COMPANY_ID }}
-          CONVISO_ASSET_ID: ${{ inputs.asset_id }}
-          CONVISO_SCAN_RUN_ID: ${{ inputs.scan_run_id }}
+          ASSET_ID: ${{ inputs.asset_id }}
+          SCAN_RUN_ID: ${{ inputs.scan_run_id }}
           CONVISO_BRANCH: ${{ inputs.branch }}
           GIT_CONFIG_COUNT: "1"
           GIT_CONFIG_KEY_0: safe.directory
           GIT_CONFIG_VALUE_0: "*"
         run: |
+          set -euo pipefail
+          case "${ASSET_ID:-}" in
+            ""|none|0) unset CONVISO_ASSET_ID || true ;;
+            *) export CONVISO_ASSET_ID="$ASSET_ID" ;;
+          esac
+          case "${SCAN_RUN_ID:-}" in
+            ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+            *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
+          esac
           conviso-ast -p . -o /tmp/conviso-ast-session.zip
 
       - name: Upload session log
