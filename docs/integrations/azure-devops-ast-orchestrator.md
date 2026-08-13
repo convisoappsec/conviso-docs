@@ -2,416 +2,425 @@
 id: azure-devops-ast-orchestrator
 title: Azure DevOps AST Orchestrator
 sidebar_label: AST Orchestrator
-description: Configure a centralized Azure DevOps pipeline to run Conviso AST scans for multiple repositories after PR merges.
+description: Configure a centralized Azure DevOps pipeline to run Conviso AST after PR merges using only CONVISO_API_KEY.
 keywords:
   [
     Azure DevOps AST Orchestrator,
     Application Security Testing,
     Azure Pipelines,
-    System.AccessToken,
+    pipeline-orchestrator,
+    conviso-ast-repository-token,
     Conviso Platform,
   ]
 ---
 
 # Azure DevOps AST Orchestrator
 
-The Conviso Platform **Azure DevOps AST Orchestrator** centralizes AST scanning in a single Azure Pipeline. Instead of adding a pipeline to every repository, you build **one** pipeline. Conviso calls it after each PR merge and tells it which repository and commit to scan.
+The Conviso Platform **Azure DevOps AST Orchestrator** runs Conviso AST from **one** Azure Pipeline (the orchestrator). Application repositories do **not** need a Conviso pipeline of their own.
+
+When an eligible pull request is **merged**, Conviso triggers that pipeline and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso-ast`, and sends findings to the mapped asset.
+
+You do **not** store a PAT or map `System.AccessToken` for clone — only `CONVISO_API_KEY`.
 
 ## How it works
 
 ```mermaid
 flowchart LR
-    A[Developer merges PR] --> B[Conviso Platform]
-    B -->|Triggers pipeline with<br/>repo + commit| C[Orchestrator pipeline]
-    C -->|Clones repo using<br/>System.AccessToken| D[Target repository]
-    C -->|conviso ast run| E[Findings in Conviso Platform]
+    A[PR merged on target repo] --> B[Conviso Platform]
+    B -->|Pipeline run with<br/>repo + branch| C[Orchestrator pipeline<br/>azure-pipelines.yml]
+    C -->|conviso-ast-repository-token<br/>integration OAuth token| D[Clone target repo]
+    D --> E[conviso-ast]
+    E --> F[Findings on the asset]
 ```
 
-Benefits:
+What Conviso checks before dispatching:
 
-- **Centralized management**: Scanning logic lives in one pipeline.
-- **Consistency**: Same scan behavior for every mapped repository.
-- **Simple onboarding**: Add repositories without duplicating CI configuration.
-- **Keyless authentication**: No Personal Access Token (PAT) to create, rotate, or share.
+1. The event is a pull request that was **merged**.
+2. **AST scans on merge** is enabled on the Azure DevOps integration.
+3. The repository is an **imported asset** that is **enabled**.
+4. The PR **destination branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
 
-:::tip Security and compliance
-This integration uses **ephemeral native authentication** (`System.AccessToken`). Azure Pipelines generates the token for each run and it expires automatically when the job finishes. No personal token or long-lived credential needs to be stored or shared.
-:::
+The pipeline always appears on the **orchestrator** project (not on the application repository).
 
 :::note
-**Execution costs**: Scans run in your Azure Pipelines environment and consume your Azure Pipeline runtime.
+**Execution costs:** Pipelines run in your Azure Pipelines environment and consume your Azure Pipeline runtime.
 :::
-
-## Before you begin
-
-You will work in **two consoles**: Azure DevOps first, then Conviso Platform. Total time: about 20 minutes.
-
-You need:
-
-- An Azure DevOps project where you can create pipelines and edit **Project Settings**.
-- **Organization Settings > Pipelines > Settings** access. Two settings there decide whether the pipeline can reach your repositories at all (Steps 5 and 6), and one of them is enabled by default.
-- Your **Conviso API key** for the target environment.
-- The Azure DevOps integration already configured in Conviso Platform, with **AST Scans** enabled.
-
-Some terms used below:
-
-| Term | Meaning |
-| --- | --- |
-| **Orchestrator pipeline** | The single Azure Pipeline you create in Part 1. It does the scanning. |
-| **Target repository** | Any repository you want scanned. It needs no pipeline of its own. |
-| **Build identity** | The automatic service account Azure DevOps uses to run pipelines. Named `Project Collection Build Service (<org>)` or `<Project> Build Service (<org>)`. |
-| **`System.AccessToken`** | Short-lived token Azure Pipelines issues to that build identity for one run. Replaces the PAT. |
-| **Asset** | The repository's entry in Conviso Platform, where findings are stored. Named `organization/repository`. |
 
 ---
 
-## Part 1 - Azure DevOps setup
+## Before you begin
 
-### Step 1 - Add the pipeline YAML to a repository
+Work in this order: **Azure DevOps setup first**, then **Conviso Platform**.
 
-Pick any repository in your Azure DevOps project to host the orchestrator (a dedicated repository such as `security-pipelines` works well). Create a file named `azure-pipelines-orchestrator.yml` in the branch you will use — normally `main` — and paste this content:
+You need:
 
-:::info Read Step 5 before you finish
-This template uses `checkout: none` and clones the target repository from a script. That only works when **Protect access to repositories in YAML pipelines** is disabled — and it is enabled by default. Step 5 explains the check and gives you a variant of this template that works with the setting left on. The failure you get otherwise is `TF401019`, which looks like a permissions problem but is not.
+- [Azure DevOps ALM integration](./azure-devops.md) connected (OAuth), with repositories imported as assets.
+- At least one application repository **imported as an asset** and **enabled**.
+- A dedicated orchestrator repository (or an empty repo you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
+- Permission to create pipelines and set **pipeline variables** on the orchestrator.
+- A **Conviso API key** for the same environment you will scan against (production or staging).
+
+| Term | Exact meaning |
+| --- | --- |
+| **Orchestrator pipeline** | Azure Pipeline whose YAML is `azure-pipelines.yml`. Conviso triggers this pipeline only. |
+| **Target repository** | Application repo imported as an asset. It must **not** rely on a local Conviso pipeline for this flow. |
+| **Ref** | Branch or tag **of the orchestrator** where Azure loads `azure-pipelines.yml` when Conviso starts the run. |
+| **Merge target branch** | The PR **destination** branch on the **target** repo that is allowed to trigger a scan (for example `main`). See below. |
+| **Asset** | Imported repository in Conviso where findings are stored. |
+
+### Merge target branch
+
+Conviso compares the merged PR’s **destination branch** to:
+
+1. The asset’s configured AST / branch mapping, if set; otherwise  
+2. The integration **Ref** (`orchestrator_ref`).
+
+| Configuration | What triggers a scan |
+| --- | --- |
+| Asset branch = `master`, Ref = `main` | Only merges **into `master`** on that asset |
+| Asset branch empty, Ref = `main` | Only merges **into `main`** on that asset |
+| Asset branch empty and Ref empty | No branch filter (any destination branch can trigger). Prefer setting Ref explicitly. |
+
+**Ref is still the orchestrator branch that holds `azure-pipelines.yml`.** It is reused as the default merge-target filter when the asset has no branch of its own. Those are two roles of the same field — do not confuse “where the YAML lives” with “any branch on the target”.
+
+---
+
+## Part 1 – Azure DevOps setup
+
+### Step 1 – Create the orchestrator repository
+
+1. Create an Azure DevOps repository (recommended name: `conviso-ast-orchestrator`), **or** copy from [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator) and keep only `azure-pipelines.yml`.
+2. Choose the branch that will contain the YAML (almost always **`main`**). That value is what you will set as **Ref** in Conviso.
+
+### Step 2 – Add `azure-pipelines.yml`
+
+:::tip Example repository
+Public template: **[convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator)**  
+
+Pipelines file: [`azure-pipelines.yml`](https://github.com/convisoappsec/pipeline-orchestrator/blob/main/azure-pipelines.yml)
 :::
 
-```yaml
-trigger: none
-pr: none
+On the orchestrator branch you will set as **Ref** (usually `main`):
 
+1. Create **`azure-pipelines.yml`** at the repository root.
+2. Paste the YAML below (or copy it from the example repo). Use this template as-is — it matches the public example, including the parameters Conviso sends on each run.
+
+```yaml
 parameters:
   - name: repo_full_name
     type: string
-    default: REPLACE/REPLACE
+    default: ""
   - name: branch
     type: string
-    default: replace-me
+    default: ""
   - name: commit_sha
     type: string
-    default: replace-me
+    default: ""
   - name: pr_number
     type: string
     default: ""
   - name: api_url
     type: string
     default: "https://api.convisoappsec.com"
+  - name: company_id
+    type: string
+    default: ""
+  - name: asset_id
+    type: string
+    default: ""
+  - name: scan_run_id
+    type: string
+    default: ""
+  - name: repo_url
+    type: string
+    default: ""
+
+trigger: none
+pr: none
 
 variables:
-  - group: conviso-group
-  # AST API endpoint. Never drive this from the api_url parameter - see the
-  # parameter table below.
-  - name: convisoApiUrl
-    value: https://api.convisoappsec.com
+  - name: CONVISO_COMPANY_ID
+    value: ""
 
 pool:
   vmImage: ubuntu-latest
 
-jobs:
-  - job: ast
+# Azure requires an empty entrypoint or container steps fail to docker exec.
+container:
+  image: convisoappsec/convisoast_v2:latest
+  options: --entrypoint ""
+
+steps:
+  - checkout: none
+
+  - script: |
+      set -euo pipefail
+      if [ -z "${REPO_FULL_NAME}" ] || [ -z "${BRANCH}" ]; then
+        echo "##vso[task.logissue type=error]repo_full_name and branch are required"
+        exit 1
+      fi
+
+      export CONVISO_APIKEY="$CONVISO_API_KEY"
+      export CONVISO_BASE_URL="${API_URL:-https://api.convisoappsec.com}"
+      CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
+      case "$CONVISO_BASE_URL" in
+        https://app.convisoappsec.com)
+          export CONVISO_BASE_URL="https://api.convisoappsec.com"
+          ;;
+        https://staging.convisoappsec.com)
+          export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+          ;;
+      esac
+
+      export CONVISO_REPO_FULL_NAME="$REPO_FULL_NAME"
+      case "${ASSET_ID:-}" in
+        ""|none|0) unset CONVISO_ASSET_ID || true ;;
+        *) export CONVISO_ASSET_ID="$ASSET_ID" ;;
+      esac
+      case "${SCAN_RUN_ID:-}" in
+        ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+        *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
+      esac
+
+      umask 077
+      TOKEN=$(conviso-ast-repository-token --provider azure_devops)
+      echo "##vso[task.setvariable variable=REPO_TOKEN;issecret=true]$TOKEN"
+      echo "##vso[task.setvariable variable=CONVISO_BASE_URL]$CONVISO_BASE_URL"
+    displayName: Get repository token
+    env:
+      CONVISO_API_KEY: $(CONVISO_API_KEY)
+      API_URL: ${{ parameters.api_url }}
+      REPO_FULL_NAME: ${{ parameters.repo_full_name }}
+      ASSET_ID: ${{ parameters.asset_id }}
+      SCAN_RUN_ID: ${{ parameters.scan_run_id }}
+      BRANCH: ${{ parameters.branch }}
+
+  - script: |
+      set -euo pipefail
+      # Prefer repo_url from the platform (asset.repo_url). Azure webhooks send
+      # project/repo while clone needs org/project/repo — reconstructing from
+      # repo_full_name alone is unreliable.
+      REMOTE_URL=$(python3 -c '
+      import base64, json, os, urllib.request
+      from urllib.parse import urlsplit, urlunsplit
+
+      token = os.environ["REPO_TOKEN"]
+      repo_url = (os.environ.get("REPO_URL") or "").strip()
+      repo_full_name = (os.environ.get("REPO_FULL_NAME") or "").strip()
+
+      def strip_auth(remote: str) -> str:
+          parts = urlsplit(remote)
+          host = parts.hostname or ""
+          if parts.port:
+              host = f"{host}:{parts.port}"
+          return urlunsplit((parts.scheme, host, parts.path, parts.query, parts.fragment))
+
+      if repo_url:
+          print(strip_auth(repo_url))
+          raise SystemExit(0)
+
+      parts = repo_full_name.split("/")
+      if len(parts) == 3:
+          org, project, repo = parts[0], parts[1], "/".join(parts[2:])
+          print(strip_auth(f"https://dev.azure.com/{org}/{project}/_git/{repo}"))
+          raise SystemExit(0)
+
+      if len(parts) != 2:
+          raise SystemExit(f"repo_full_name must be organization/repository. Got: {repo_full_name!r}")
+
+      org, repo = parts
+      req = urllib.request.Request(
+          f"https://dev.azure.com/{org}/_apis/git/repositories?api-version=7.1",
+          headers={"Authorization": "Basic " + base64.b64encode((":" + token).encode()).decode()},
+      )
+      with urllib.request.urlopen(req, timeout=60) as resp:
+          data = json.load(resp)
+      matches = [r for r in data.get("value", []) if r.get("name") == repo]
+      if not matches:
+          raise SystemExit(f"Azure returned no repository named {repo!r} in org {org!r}")
+      if len(matches) > 1:
+          raise SystemExit(
+              f"Multiple Azure repositories named {repo!r} in org {org!r}; "
+              "platform must send repo_url"
+          )
+      print(strip_auth(matches[0]["remoteUrl"]))
+      ')
+
+      rm -rf target
+      git init target
+      cd target
+      git remote add origin "$REMOTE_URL"
+      if [ -n "${COMMIT_SHA:-}" ]; then
+        git -c http.extraheader="AUTHORIZATION: bearer ${REPO_TOKEN}" fetch --depth=50 origin "$COMMIT_SHA"
+        git checkout -B "$BRANCH" "$COMMIT_SHA"
+      else
+        git -c http.extraheader="AUTHORIZATION: bearer ${REPO_TOKEN}" fetch --depth=50 origin "$BRANCH"
+        git checkout -B "$BRANCH" FETCH_HEAD
+      fi
+    displayName: Clone target repository
+    env:
+      REPO_FULL_NAME: ${{ parameters.repo_full_name }}
+      REPO_URL: ${{ parameters.repo_url }}
+      BRANCH: ${{ parameters.branch }}
+      COMMIT_SHA: ${{ parameters.commit_sha }}
+      REPO_TOKEN: $(REPO_TOKEN)
+
+  - script: |
+      set -euo pipefail
+      cd target
+      export CONVISO_APIKEY="$CONVISO_API_KEY"
+      export CONVISO_BASE_URL="${NORMALIZED_BASE_URL}"
+      export CONVISO_COMPANY_ID="${PARAM_COMPANY_ID:-$VAR_COMPANY_ID}"
+      export CONVISO_BRANCH="$BRANCH"
+      case "${ASSET_ID:-}" in
+        ""|none|0) unset CONVISO_ASSET_ID || true ;;
+        *) export CONVISO_ASSET_ID="$ASSET_ID" ;;
+      esac
+      case "${SCAN_RUN_ID:-}" in
+        ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+        *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
+      esac
+      conviso-ast -p . -o "$(Build.ArtifactStagingDirectory)/conviso-ast-session.zip"
     displayName: Run Conviso AST
-    container: convisoappsec/convisoast:latest
-    steps:
-      - checkout: none
+    env:
+      GIT_CONFIG_COUNT: "1"
+      GIT_CONFIG_KEY_0: safe.directory
+      GIT_CONFIG_VALUE_0: "*"
+      CONVISO_API_KEY: $(CONVISO_API_KEY)
+      NORMALIZED_BASE_URL: $(CONVISO_BASE_URL)
+      PARAM_COMPANY_ID: ${{ parameters.company_id }}
+      VAR_COMPANY_ID: $(CONVISO_COMPANY_ID)
+      ASSET_ID: ${{ parameters.asset_id }}
+      SCAN_RUN_ID: ${{ parameters.scan_run_id }}
+      BRANCH: ${{ parameters.branch }}
 
-      - bash: |
-          set -euo pipefail
-
-          REPO_FULL='${{ parameters.repo_full_name }}'
-          BRANCH='${{ parameters.branch }}'
-          SHA='${{ parameters.commit_sha }}'
-
-          case "$REPO_FULL" in ''|REPLACE/REPLACE) echo "##vso[task.logissue type=error]invalid repo_full_name"; exit 1;; esac
-          case "$REPO_FULL" in */*) ;; *) echo "##vso[task.logissue type=error]repo_full_name must be <project>/<repository>"; exit 1;; esac
-          case "$SHA" in ''|replace-me) echo "##vso[task.logissue type=error]invalid commit_sha"; exit 1;; esac
-          test -n "${SYSTEM_ACCESSTOKEN:-}" || { echo "##vso[task.logissue type=error]SYSTEM_ACCESSTOKEN missing: map \$(System.AccessToken) in the step env block"; exit 1; }
-          test -n "${CONVISO_API_KEY:-}" || { echo "##vso[task.logissue type=error]CONVISO_API_KEY missing"; exit 1; }
-
-          PROJECT="${REPO_FULL%%/*}"
-          REPO="${REPO_FULL#*/}"
-          REPO="${REPO%/}"
-          ORG="${SYSTEM_COLLECTIONURI#https://dev.azure.com/}"
-          ORG="${ORG%/}"
-
-          WORKDIR="$(Build.SourcesDirectory)"
-          rm -rf "${WORKDIR:?}"/* && mkdir -p "$WORKDIR" && cd "$WORKDIR"
-          git init -q
-          git remote add origin "https://dev.azure.com/${ORG}/${PROJECT}/_git/${REPO}"
-
-          if ! git -c http.extraheader="AUTHORIZATION: bearer ${SYSTEM_ACCESSTOKEN}" fetch --no-tags origin "$SHA"; then
-            echo "##vso[task.logissue type=error]fetch rejected for '${PROJECT}/${REPO}' - check the build identity Read permission"
-            exit 1
-          fi
-
-          git checkout -B "$BRANCH" "$SHA"
-
-          if git rev-parse "${SHA}^1" >/dev/null 2>&1; then
-            PREV="$(git rev-parse "${SHA}^1")"
-          else
-            echo "##vso[task.logissue type=warning]commit has no parent, using current as previous"
-            PREV="$SHA"
-          fi
-
-          conviso ast run --asset-name "${ORG}/${REPO}" --current-commit "$SHA" --previous-commit "$PREV" --vulnerability-auto-close
-        displayName: Clone target repository and run AST
-        env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-          CONVISO_API_KEY: $(CONVISO_API_KEY)
-          CONVISO_API_URL: $(convisoApiUrl)
-          SYSTEM_COLLECTIONURI: $(System.CollectionUri)
+  - task: PublishBuildArtifacts@1
+    condition: succeededOrFailed()
+    target: host
+    displayName: Upload session log
+    inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory)
+      ArtifactName: conviso-ast-session
 ```
 
-Copy it as-is. Do not replace the `REPLACE/REPLACE` and `replace-me` defaults — Conviso overwrites them on every trigger, and they exist only to make an accidental manual run fail loudly.
+3. Commit and push to that **Ref** branch.
 
-![Step 1 - Pipeline YAML](/img/azure-devops/ast-step-05-pipeline-yaml.png)
+![Step 2: azure-pipelines.yml](/img/azure-devops/ast-step-05-pipeline-yaml.png)
 
-#### What the parameters mean
+:::important
+- `trigger: none` / `pr: none` are intentional — Conviso starts the run; Azure must not auto-trigger on every push.
+- Keep `options: --entrypoint ""` on the container or Azure fails to `docker exec` into the job.
+:::
 
-| Parameter | Sent by Conviso as | Notes |
-| --- | --- | --- |
-| `repo_full_name` | `<project>/<repository>` | Azure DevOps project name, then repository name. Not the organization. Conviso builds it from the merge webhook's `project.name` and `repository.name`. |
-| `branch` | Branch of the merged PR | Used for the local checkout name. |
-| `commit_sha` | Merge commit SHA | The commit that gets scanned. |
-| `pr_number` | PR number | Not used by the scan; accepted for compatibility. |
-| `api_url` | Conviso Platform app URL, e.g. `https://app.convisoappsec.com` | Despite the name, this is **not** the AST API host. The scan sets `CONVISO_API_URL` itself — never feed this parameter into it. Keep it declared or the trigger fails. |
+### Step 3 – Create the pipeline and copy its ID
 
-#### The two lines that replace the PAT
+1. Open **Pipelines → New pipeline**.
+2. Select the repository that holds `azure-pipelines.yml`.
+3. Choose **Existing Azure Pipelines YAML file**, select the **Ref** branch and `/azure-pipelines.yml`, then **Continue**.
+4. Save the pipeline (you can skip the first run).
 
-The `env` block at the bottom of the step is what makes keyless auth work:
-
-```yaml
-        env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-          CONVISO_API_KEY: $(CONVISO_API_KEY)
-```
-
-Azure Pipelines hides `System.AccessToken` from scripts unless you map it explicitly like this. The `git` command then sends it as a one-off header, so the token is never written into `.git/config` or printed in the remote URL.
-
-### Step 2 - Create the pipeline and copy its ID
-
-1. Go to **Pipelines > Pipelines** and click **New pipeline**.
-2. Choose **Azure Repos Git**, then select the repository where you saved the YAML.
-3. Choose **Existing Azure Pipelines YAML file**.
-4. Select the branch (`main`) and the path (`/azure-pipelines-orchestrator.yml`), then click **Continue**.
-5. Click **Save** — **not** *Save and run*. The pipeline is not ready to run yet.
-
-Now copy the pipeline ID. Open the pipeline and look at the browser address bar:
+Copy the pipeline ID from the browser address bar:
 
 ```text
 https://dev.azure.com/my-org/my-project/_build?definitionId=42
 ```
 
-The number after `definitionId=` is the **pipeline ID** — `42` in this example. Write it down; Conviso asks for it in Part 2.
+The number after `definitionId=` (here `42`) is the **Orchestrator pipeline ID** you will paste into Conviso.
 
-### Step 3 - Create the Variable Group
+### Step 4 – Add `CONVISO_API_KEY` on the pipeline
 
-1. Go to **Pipelines > Library > + Variable group**.
-2. Name it exactly `conviso-group`. The name must match the `- group: conviso-group` line in the YAML — a typo here makes every run fail.
-3. Add a variable named `CONVISO_API_KEY` with your Conviso API key as the value.
-4. Click the **lock icon** next to the value to store it as a secret.
-5. Click **Save**.
-6. Open the **Pipeline permissions** tab of the variable group, click **+**, and select your orchestrator pipeline.
+On the orchestrator pipeline you just created:
 
-Step 6 is easy to miss and is a common cause of failed runs. Without it the run stops with *"variable group could not be found or is not authorized for use"*.
+1. Open **Edit → Variables**.
+2. Add:
 
-You do **not** add any repository credential here. Git access comes from `System.AccessToken`.
+| Name | Secret? | Required |
+|------|---------|----------|
+| `CONVISO_API_KEY` | **Yes** (keep this value secret) | **Yes** |
 
-![Step 3 - Variable Group](/img/azure-devops/ast-step-04-variable-group.png)
+Use the API key for the same Conviso environment as the Platform you configured (production vs staging).
 
-### Step 4 - Give the build identity Read access to the repositories
-
-The pipeline clones target repositories as the build identity, so that identity needs **Read** permission on them.
-
-This is the only step you repeat as you onboard more repositories — and you repeat it **once per project**, not once per repository, if you grant the permission at the **All Repositories** level.
-
-For each project that owns repositories you want to scan:
-
-1. Go to **Project Settings > Repositories**.
-2. Select **All Repositories** at the top of the list to apply the permission project-wide, or select a single repository to be more restrictive.
-3. Open the **Security** tab.
-4. In the user/group list, find the build identity:
-   - `Project Collection Build Service (<organization>)` — use this when the orchestrator scans repositories across more than one project.
-   - `<Project Name> Build Service (<organization>)` — use this when everything lives in one project.
-5. Set **Read** to **Allow**.
-
-Leave every other permission unset. Read is all the scan needs.
-
-If you use the **project-scoped** identity and the repository lives in a different project than the pipeline, that identity also needs the **View project-level information** permission in the target project (**Project Settings > Permissions**). Repository Read alone is not enough.
-
-### Step 5 - Check "Protect access to repositories in YAML pipelines"
-
-:::danger Required check - the orchestrator will not work without it
-Go to **Organization Settings > Pipelines > Settings** (and **Project Settings > Pipelines > Settings**) and look at **Protect access to repositories in YAML pipelines**.
-
-**This setting is enabled by default for every organization and project created after May 2020.** While it is enabled, the job access token only reaches repositories that the YAML references explicitly through a `checkout` step or a `uses` statement. The orchestrator uses `checkout: none` and clones a repository chosen at run time, so its `git fetch` fails with an authorization error.
-
-Pick one of the two options below before you continue. **You do this once**, not once per repository: Option A is a single edit to the orchestrator YAML, and Option B is a single organization or project setting. If the setting is enabled at the organization level, it is grayed out in **Project Settings**.
+:::tip Optional variable
+You may add `CONVISO_COMPANY_ID` on the same **Variables** screen. The job uses it only when the `company_id` parameter is empty (typical for a manual **Run pipeline**). When Conviso dispatches after a merge, it sends `company_id`, so this fallback is not required for Platform-triggered runs.
 :::
 
-#### Option A - Reference the target repository in the YAML (keeps the setting enabled)
+Do **not** add an Azure DevOps PAT for clone. The job calls `conviso-ast-repository-token --provider azure_devops`, and the Platform returns the integration’s OAuth credential for that run.
 
-Conviso sends `repo_full_name` as a template parameter, which Azure DevOps resolves at compile time, so the repository can be declared as a resource and checked out normally. The declaration is generic — its value changes on every run — so this single edit covers every repository you onboard later. Replace the `resources`/`jobs` part of the template from Step 1 with:
-
-```yaml
-resources:
-  repositories:
-    - repository: target
-      type: git
-      name: ${{ parameters.repo_full_name }}
-      ref: refs/heads/${{ parameters.branch }}
-
-jobs:
-  - job: ast
-    container: convisoappsec/convisoast:latest
-    steps:
-      - checkout: target
-        path: target
-        persistCredentials: true
-        fetchDepth: 0
-
-      - bash: |
-          set -euo pipefail
-
-          BRANCH='${{ parameters.branch }}'
-          SHA='${{ parameters.commit_sha }}'
-
-          test -n "${CONVISO_API_KEY:-}" || { echo "##vso[task.logissue type=error]CONVISO_API_KEY missing"; exit 1; }
-
-          REPO_FULL='${{ parameters.repo_full_name }}'
-          REPO="${REPO_FULL#*/}"
-          REPO="${REPO%/}"
-          ORG="${SYSTEM_COLLECTIONURI#https://dev.azure.com/}"
-          ORG="${ORG%/}"
-
-          cd "$(Agent.BuildDirectory)/target"
-          git fetch --no-tags origin "$SHA"
-          git checkout -B "$BRANCH" "$SHA"
-
-          if git rev-parse "${SHA}^1" >/dev/null 2>&1; then
-            PREV="$(git rev-parse "${SHA}^1")"
-          else
-            echo "##vso[task.logissue type=warning]commit has no parent, using current as previous"
-            PREV="$SHA"
-          fi
-
-          conviso ast run --asset-name "${ORG}/${REPO}" --current-commit "$SHA" --previous-commit "$PREV" --vulnerability-auto-close
-        env:
-          CONVISO_API_KEY: $(CONVISO_API_KEY)
-          CONVISO_API_URL: $(convisoApiUrl)
-          SYSTEM_COLLECTIONURI: $(System.CollectionUri)
-```
-
-The `checkout` step authenticates with the job access token itself, and `persistCredentials: true` keeps that token available for the later `git fetch`. Build identity permissions from Step 4 still apply.
-
-Validate this variant with a manual run (Step 9) against one repository before rolling it out to your whole organization.
-
-#### Option B - Disable the setting
-
-Uncheck **Protect access to repositories in YAML pipelines** and keep the template exactly as shown in Step 1.
-
-This widens the job access token to every repository in the authorized projects, for **all** pipelines in the scope where you disable it — not just the orchestrator. Prefer Option A unless your organization already runs with this setting off.
-
-### Step 6 - Allow cross-project access (only if needed)
-
-Skip this step if the orchestrator pipeline and **all** target repositories are in the same Azure DevOps project.
-
-:::warning Organization scope configuration (cross-project scans)
-If the Orchestrator pipeline and the target repositories live in **different projects of the same Azure DevOps organization**, go to **Organization Settings > Pipelines > Settings** and **uncheck** _"Limit job authorization scope to current project for non-release pipelines"_. This lets the job access token reach repositories in other projects of the same organization.
-
-The organization-level setting wins: while it is enabled there, you cannot re-enable collection scope from an individual project. If it is already unchecked at the organization level, check the same option in **Project Settings > Pipelines > Settings** for the project that hosts the orchestrator, since the project-level setting blocks access on its own.
-
-Alternatively, leave the scope limited and grant the project-scoped build identity access to the other project, as described in Step 4.
-:::
-
-:::note
-Pipelines in **public** projects are always project-scoped and cannot reach resources in other projects, whatever these settings say. Host the orchestrator in a private project.
-:::
+![Step 4: Pipeline variable CONVISO_API_KEY](/img/azure-devops/ast-step-04-variable-group.png)
 
 ---
 
-## Part 2 - Conviso Platform setup
+## Part 2 – Conviso Platform setup
 
-### Step 7 - Open the Azure DevOps integration
+### Step 5 – Configure the orchestrator
 
-In Conviso Platform, go to **Integrations**, filter by **Application Lifecycle Management**, and open **Azure DevOps**.
-
-![Step 7 - Open Azure DevOps integration](/img/azure-devops/ast-step-01-integrations.png)
-
-### Step 8 - Fill in the Orchestrator settings
-
-In **Integrations > Azure DevOps > Orchestrator configuration**, fill:
+1. Open **Integrations → Azure DevOps → Configuration** (or **Orchestrator configuration**).
+2. Turn **AST scans on merge** **on**.
+3. Under **Orchestrator pipeline**, fill:
 
 | Field | What to enter | Where to find it |
 | --- | --- | --- |
-| **Orchestrator organization** | Azure DevOps organization name, e.g. `my-org` | First path segment of `https://dev.azure.com/my-org/...` |
+| **Orchestrator organization** | Azure DevOps organization, e.g. `my-org` | First path segment of `https://dev.azure.com/my-org/...` |
 | **Orchestrator project** | Project that contains the orchestrator pipeline | Second path segment of the same URL |
-| **Orchestrator pipeline ID** | The number you copied in Step 2, e.g. `42` | `definitionId=` in the pipeline URL |
-| **Orchestrator ref** | Branch holding the YAML file — use `main` | The branch you saved the file in. Conviso prefixes plain values with `refs/heads/`, so a tag must be written in full as `refs/tags/<tag>`. |
+| **Orchestrator pipeline ID** | The number from Step 3, e.g. `42` | `definitionId=` in the pipeline URL |
+| **Orchestrator ref** | Branch holding the YAML — usually `main` | Same branch from Step 1. Conviso prefixes plain values with `refs/heads/`; a tag must be written as `refs/tags/<tag>` |
 
-Click **Save configuration**.
+4. Save.
 
-![Step 8 - Orchestrator configuration](/img/azure-devops/ast-step-02-orchestrator-config.png)
+![Step 5: Orchestrator configuration in Conviso](/img/azure-devops/ast-step-02-orchestrator-config.png)
 
-With **AST Scans** enabled and these settings saved, Conviso triggers the orchestrator automatically on eligible PR merges for mapped assets. No trigger configuration is needed inside Azure DevOps — that is why the YAML starts with `trigger: none`.
+### Step 6 – Assets and merge target
 
----
-
-## Part 3 - Test it
-
-### Step 9 - Run the pipeline manually
-
-Test permissions before waiting for a real merge.
-
-1. Pick any target repository and copy a recent commit SHA from **Repos > Commits**.
-2. Open the orchestrator pipeline and click **Run pipeline**.
-3. Expand the parameters and fill:
-   - `repo_full_name`: `<project>/<repository>`, e.g. `my-project/my-api`
-   - `branch`: `main`
-   - `commit_sha`: the SHA you copied
-4. Click **Run**.
-
-A green run means the variable group, build identity permissions, and token mapping are all correct. A red run points you to the [Troubleshooting](#troubleshooting) table below.
-
-### Step 10 - Validate a real merge
-
-Merge a PR in a mapped repository. Confirm a pipeline run is created automatically and finishes successfully, then check that findings appear on the matching asset in Conviso Platform.
-
-The asset in Conviso must be named `organization/repository` (for example `my-org/my-api`) to receive the findings.
-
-![Step 10 - Successful run](/img/azure-devops/ast-step-06-run-success.png)
+1. Confirm each application repository is **imported** and **enabled**.
+2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
+3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
 
 ---
+
+## End-to-end flow (after setup)
+
+1. Developer merges a PR into the configured merge target on an imported, enabled asset.
+2. Conviso validates the event and configuration, then starts the orchestrator pipeline on the **Ref** branch.
+3. Template parameters include the repository, branch, and related ids Conviso needs for the run.
+4. Job steps: issue repository token → clone target → run `conviso-ast` → upload session artifact.
+5. Findings appear on the asset in Conviso Platform.
+6. In Azure DevOps, open the **orchestrator** pipeline run to inspect logs.
+
+## Validation checklist
+
+| Check | Expected |
+|-------|----------|
+| Variable | `CONVISO_API_KEY` exists as a **secret pipeline variable** on the orchestrator |
+| Path | `azure-pipelines.yml` is on the **Ref** branch |
+| Conviso | Organization + project + pipeline ID + Ref saved; **AST scans on merge** on |
+| Asset | Target repo imported, enabled; merge target branch matches mapping or Ref |
+| After merge | New pipeline run on the orchestrator; findings (or a clean result) on the asset |
+
+![Validation: successful orchestrator pipeline run](/img/azure-devops/ast-step-06-run-success.png)
+
+Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_name` and `branch` for an imported asset. Leave `api_url` as the default for production (`https://api.convisoappsec.com`). Set `company_id` or define the pipeline variable `CONVISO_COMPANY_ID`.
 
 ## Troubleshooting
 
-| Problem | What to check |
-| --- | --- |
-| Run fails with a resource authorization error naming `conviso-group` | Open **Pipelines > Library > conviso-group > Pipeline permissions** and add the orchestrator pipeline (Step 3.6). Confirm the group name matches `- group: conviso-group` exactly. |
-| `SYSTEM_ACCESSTOKEN missing` in the logs | The variable was not mapped. Add `SYSTEM_ACCESSTOKEN: $(System.AccessToken)` to the step `env` block (Step 1). |
-| `TF401019` — repository "does not exist or you do not have permissions" | Check three things in order: (1) **Protect access to repositories in YAML pipelines** (Step 5) — with `checkout: none` the token is scoped to no repository at all, and this is the most common cause; (2) the URL in the error resolves in a browser, which tells you whether `repo_full_name` is right; (3) build identity **Read** (Step 4). The error message does not distinguish "missing" from "not visible to this token". |
-| Git fetch fails with `TF401019`, `repository not found`, or `Authentication failed` | Grant **Read** to **Project Collection Build Service** / **Project Build Service** on the target repository, in **Project Settings > Repositories > Security** (Step 4). |
-| Cross-project clone fails while same-project clones succeed | Uncheck _"Limit job authorization scope to current project for non-release pipelines"_ in **Organization Settings > Pipelines > Settings**, or grant the project-scoped identity **View project-level information** plus repository **Read** in the target project (Step 6). |
-| Cross-project clone fails and the orchestrator lives in a public project | Public projects are always project-scoped. Move the orchestrator to a private project. |
-| `invalid repo_full_name` in the logs | The value must be `<project>/<repository>`, not `<organization>/<repository>`. |
-| The failing URL in the log ends in a slash, e.g. `.../_git/my-api/` | `repo_full_name` was passed with a trailing slash. The template strips it, so update to the current version if you are running an older copy. |
-| Warning: `commit has no parent, using current as previous` | The commit has no parent, typical of the very first commit in a repository. The scan still runs, comparing the commit against itself. |
-| PR merged but no pipeline run is created | Confirm **AST Scans** is enabled, the asset mapping is active for the merged branch, and the Orchestrator configuration (organization / project / pipeline ID / ref) is correct. |
-| Pipeline trigger fails with `Unexpected parameter 'api_url'` | Keep `api_url` declared in the pipeline parameters — the Conviso worker always sends it. |
-| `Invalid API key` in AST | Confirm `CONVISO_API_KEY` belongs to the same environment as `CONVISO_API_URL`. |
-| Pipeline runs but no findings are created | Confirm the asset is named `organization/repository` in Conviso and review the pipeline logs for `conviso ast run` errors. |
-| Job fails to start on a self-hosted agent | The job runs in the `convisoappsec/convisoast` container, so the agent needs Docker installed. Microsoft-hosted `ubuntu-latest` agents already have it. |
+| Symptom | Cause / fix |
+|---------|-------------|
+| Merge done, no pipeline | **AST scans on merge** off; organization/project/pipeline ID/Ref incomplete; asset disabled or not imported; PR destination ≠ asset branch / Ref; service hooks unhealthy |
+| `Repository is not available for this API key` | Wrong environment (`CONVISO_API_KEY` vs `api_url`); Azure integration not authorized; asset not imported/enabled for that company |
+| Unreadable / HTML response from Platform | Use the production API host (`https://api.convisoappsec.com`). The template remaps `https://app.convisoappsec.com` automatically |
+| Initialize containers fails | Confirm `options: --entrypoint ""` is present on the container |
+| `CONVISO_API_KEY` empty / unauthorized | Confirm the secret variable is on the **pipeline** (Edit → Variables), not only elsewhere |
+| Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` and without pipeline variable `CONVISO_COMPANY_ID` |
+| Wrong code scanned | Merge target / `branch` mismatch; confirm you merged into the configured destination branch |
 
-## Migrating from `ADO_GIT_PAT`
+## Migrating from `System.AccessToken` or `ADO_GIT_PAT`
 
-If your orchestrator still uses a Personal Access Token:
+1. Replace the orchestrator YAML with the template in Step 2.
+2. Keep only `CONVISO_API_KEY` as a secret **pipeline variable** (remove `ADO_GIT_PAT` and any `System.AccessToken` mapping).
+3. Re-run a manual test with `repo_full_name` and `branch` set to an imported asset.
 
-1. Grant **Read** to the build identity on the target repositories (Step 4).
-2. Check **Protect access to repositories in YAML pipelines** and choose Option A or B (Step 5). A PAT-based script is exempt from that setting, so this is the step most likely to break a migration that previously worked.
-3. In the step `env` block, replace `ADO_GIT_PAT: $(ADO_GIT_PAT)` with `SYSTEM_ACCESSTOKEN: $(System.AccessToken)`.
-4. Replace the tokenized remote URL with the `http.extraheader` fetch shown in the template (Step 1).
-5. For cross-project setups, review the job authorization scope (Step 6).
-6. Run the pipeline manually to validate (Step 9).
-7. Only after a green run: delete `ADO_GIT_PAT` from **Pipelines > Library** and revoke the PAT in **User Settings > Personal Access Tokens**.
+## Related guides
 
-## Support
-
-If you need help validating orchestrator settings, repository access, or pipeline permissions, contact Conviso Support.
+- [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
+- [Azure DevOps Integration (ALM)](./azure-devops.md)
+- [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
+- [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)

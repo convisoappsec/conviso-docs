@@ -2,150 +2,334 @@
 id: github-ast-orchestrator
 title: GitHub AST Orchestrator
 sidebar_label: AST Orchestrator
-description: Learn how to use the Orchestrator model to centralize security scanning logic across multiple repositories via GitHub Actions.
+description: Configure a centralized GitHub Actions repository to run Conviso AST after PR merges using only CONVISO_API_KEY.
 keywords:
   [
     GitHub AST Orchestrator,
     Application Security Testing,
     GitHub Actions,
-    Orchestrator Model,
+    pipeline-orchestrator,
+    conviso-ast-repository-token,
+    Conviso Platform,
   ]
 ---
 
 # GitHub AST Orchestrator
 
-The Conviso Platform's **GitHub AST Orchestrator** simplifies Application Security Testing (AST) by centralizing scanning logic in a single repository. Instead of configuring workflows in every repository, the Conviso Platform triggers a `workflow_dispatch` event on a designated "Orchestrator" repository to scan other assets.
+The Conviso Platform **GitHub AST Orchestrator** runs Conviso AST from **one** GitHub repository (the orchestrator). Application repositories do **not** need a Conviso workflow.
 
-## Overview
+When an eligible pull request is **merged**, Conviso calls GitHub Actions `workflow_dispatch` on the orchestrator and passes the target repository and branch. The workflow obtains a short-lived clone credential from the Platform (using your API key), checks out the target repository, runs `conviso-ast`, and sends findings to the mapped asset.
 
-The Orchestrator model provides several benefits:
+You do **not** store a GitHub Personal Access Token for cloning.
 
-- **Centralized Management**: Maintain and update security scanning logic in one place.
-- **Consistency**: Ensure all repositories use the same tools and configurations.
-- **Ease of Use**: Quickly onboard new repositories without manual workflow setup.
+## How it works
+
+```mermaid
+flowchart LR
+    A[PR merged on target repo] --> B[Conviso Platform]
+    B -->|workflow_dispatch on Ref| C[Orchestrator repo<br/>.github/workflows/ast.yml]
+    C -->|conviso-ast-repository-token<br/>GitHub App install token| D[Checkout target repo]
+    D --> E[conviso-ast]
+    E --> F[Findings on the asset]
+```
+
+What Conviso checks before dispatching:
+
+1. The event is a pull request that was **merged** (`action: closed` and `merged: true`).
+2. **AST Scans** is enabled on the GitHub integration.
+3. The repository is an **imported asset** that is **enabled**.
+4. The PR **base branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
+
+The Actions run always appears on the **orchestrator** repository (not on the application repository).
 
 :::note
-**Execution Costs**: Since the Orchestrator runs within your GitHub Actions environment, the execution time is consumed from your organization's GitHub Actions minutes.
+**Execution costs**: Jobs run on your GitHub Actions runners and consume your organization’s Actions minutes.
 :::
 
-## Prerequisites
+## Before you begin
 
-Before configuring the Orchestrator, ensure that:
+Work in this order: **GitHub setup first**, then **Conviso Platform**.
 
-1. You have configured the [GitHub Integration](./github.md).
-2. You have a **designated repository** to act as the Orchestrator. We recommend cloning our public template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/).
-3. You have a Conviso API Key. Find yours [in this tutorial](../platform/security-feed.md#generate-api-key).
-4. Go to your Orchestrator repository's **Settings > Secrets and Variables > Actions** and create a **New Repository Secret** named `CONVISO_API_KEY` with your API Key value.
+You need:
 
-:::important
-You must create or clone the Orchestrator repository and ensure the Conviso GitHub App integration has permission to see and access it.
+- [GitHub Integration](./github.md) connected (GitHub App installed).
+- At least one application repository **imported as an asset** and **enabled**.
+- A dedicated orchestrator repository (or an empty repo you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
+- Permission to create an **Actions repository secret** on the orchestrator.
+- A **Conviso API key** for the same environment you will scan against (production or staging).
+- The GitHub App must have access to the **orchestrator** and to every **target** repository you will scan. Prefer **All repositories** on the App installation.
+
+| Term | Exact meaning |
+| --- | --- |
+| **Orchestrator repository** | GitHub repo that contains `.github/workflows/ast.yml`. Conviso triggers this repo only. |
+| **Target repository** | Application repo imported as an asset. It must **not** rely on a local Conviso workflow for this flow. |
+| **Ref** | Branch or tag **of the orchestrator** where GitHub loads `ast.yml` when Conviso calls `workflow_dispatch`. If you leave Ref empty in Conviso, dispatch defaults to **`main`**. |
+| **Merge target branch** | The PR **base** branch on the **target** repo that is allowed to trigger a scan (for example `main`). See below. |
+| **Asset** | Imported repository in Conviso (`owner/repo`) where findings are stored. |
+
+### Merge target branch
+
+Conviso compares the merged PR’s **base branch** to:
+
+1. The asset’s configured AST / branch mapping, if set; otherwise  
+2. The integration **Ref** (`orchestrator_ref`).
+
+| Configuration | What triggers a scan |
+| --- | --- |
+| Asset branch = `master`, Ref = `main` | Only merges **into `master`** on that asset |
+| Asset branch empty, Ref = `main` | Only merges **into `main`** on that asset |
+| Asset branch empty and Ref empty | No branch filter (any base branch can trigger). Prefer setting Ref explicitly. |
+
+**Ref is still the orchestrator branch that holds the workflow.** It is reused as the default merge-target filter when the asset has no branch of its own. Those are two roles of the same field — do not confuse “where `ast.yml` lives” with “any branch on the target”.
+
+---
+
+## Part 1 – GitHub setup
+
+### Step 1 – Create the orchestrator repository
+
+1. Create a GitHub repository (recommended name: `conviso-ast-orchestrator`), **or** copy from [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator) and keep only `.github/workflows/ast.yml`.
+2. Choose the branch that will contain the workflow (almost always **`main`**). That value is what you will set as **Ref** in Conviso.
+
+### Step 2 – Create the `CONVISO_API_KEY` secret
+
+In the **orchestrator** repository (not the target):
+
+1. Open **Settings → Secrets and variables → Actions**.
+2. Under **Repository secrets**, create:
+
+| Name | Type | Required |
+|------|------|----------|
+| `CONVISO_API_KEY` | Repository secret | **Yes** |
+
+Use the API key for the same Conviso environment as the Platform you configured (production vs staging).
+
+*Repository secret `CONVISO_API_KEY` under Settings → Secrets and variables → Actions.*
+
+![Repository secret CONVISO_API_KEY](../../static/img/github/ast-01-actions-secret.png)
+
+:::tip Optional variable
+You may add an Actions **variable** `CONVISO_COMPANY_ID`. The workflow uses it only when the `company_id` input is empty (typical for a manual **Run workflow**). When Conviso dispatches after a merge or **Run AST**, it sends `company_id` in the inputs, so the variable is not required for Platform-triggered runs.
 :::
 
-## Configuring the AST Orchestrator
+Do **not** create a GitHub PAT for clone. The workflow calls `conviso-ast-repository-token --provider github`, and the Platform returns a **GitHub App installation token** scoped to the **single target repository**, with **read-only** contents access, valid for about **one hour**.
 
-### Step 1 - Enable Features
+### Step 3 – Add `.github/workflows/ast.yml`
 
-In the Conviso Platform UI, navigate to the GitHub Integration settings and ensure the following are toggled **On**:
+GitHub Actions only loads workflows from **`.github/workflows/`**. A file at the repository root is ignored.
 
-- **GitHub Advanced Security**
-- **AST Scans**
+:::tip Example repository
+Public template: **[convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator)**  
 
-### Step 2 - Configure Orchestrator Settings
-
-Fill in the **Orchestrator Configuration** section with the following details:
-
-- **Orchestrator Repo (owner/repo)**: The full path to your orchestrator repository (e.g., `my-org/pipeline-orchestrator`).
-- **Workflow Filename or ID**: The name of the YAML file containing the orchestrator workflow. If using our template, use `ast.yml`.
-- **Ref (Branch/Tag)**: The branch or tag where the workflow is defined (e.g., `main`).
-
-### Disabling the Orchestrator
-
-You can disable the AST Orchestrator feature entirely by toggling the **AST Scans** switch to **Off** in the Conviso Platform integration page. This will prevent any further automatic triggers from the platform.
-
-![Orchestrator Configuration](../../static/img/github/github-ast-orchestrator.png)
-
-:::tip
-Recommended setting: In the GitHub App installation on GitHub, allow access to **All repositories** to ensure the Orchestrator can scan any mapped asset.
+Workflow file: [`.github/workflows/ast.yml`](https://github.com/convisoappsec/pipeline-orchestrator/blob/main/.github/workflows/ast.yml)
 :::
 
-### Step 3 - Asset Mapping and Control
+On the orchestrator branch you will set as **Ref** (usually `main`):
 
-Map your Conviso Assets to specific branches. This mapping is primarily for **edge cases** where an asset does not follow the branch defined in your default Orchestrator configuration.
+1. Create **`.github/workflows/`** if needed.
+2. Create **`ast.yml`** so the full path is exactly **`.github/workflows/ast.yml`**.
+3. Paste the YAML below (or copy it from the example repo).
 
-- **Simplified Setup**: If you leave the branch mapping empty for an asset, the Orchestrator will automatically use the default configuration provided in Step 2.
-- **Granular Control**: Use the **Enabled** toggle in the configuration table to activate or deactivate scans for specific assets without affecting the entire integration.
-- **Automatic Triggers**: By integrating with Conviso, we automatically trigger the scanning workflow whenever you **merge a Pull Request (PR)** into a branch mapped to an active asset.
+*Orchestrator repository with `.github/workflows/ast.yml` on `main`.*
 
-:::important
-The Orchestrator logic is specifically designed to run upon **PR merges**, ensuring that only verified code changes are analyzed and identifying vulnerabilities before they progress further in your environment.
-:::
-
-## Workflow Definition
-
-The Orchestrator workflow is triggered via `workflow_dispatch`. It receives several inputs from the Conviso Platform to identify the target for scanning.
-
-### Required Workflow Inputs
-
-If you are using our [pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator/) template, the workflow is already pre-configured at `.github/workflows/ast.yml`.
-
-If you choose to create your own, it must define the following inputs:
-
-- `repo_full_name`: The full name of the repository to scan.
-- `branch`: The branch to scan.
-- `commit_sha`: The specific commit SHA for the scan.
-- `pr_number`: (Optional) The pull request number if the scan is triggered from a PR.
-
-### Workflow Template
-
-Copy the YAML content below as a reference for your Orchestrator repository:
+![`.github/workflows/ast.yml` in the orchestrator repository](../../static/img/github/ast-02-workflows-path.png)
 
 ```yaml
-name: Conviso AST Orchestrator
+name: AST Scan Orchestrator
 
 on:
   workflow_dispatch:
     inputs:
       repo_full_name:
-        description: 'Repository to scan'
+        description: "Repository to scan (owner/repo)"
         required: true
+        type: string
       branch:
-        description: 'Branch to scan'
+        description: "Branch to scan"
         required: true
+        type: string
       commit_sha:
-        description: 'Commit SHA'
-        required: true
-      pr_number:
-        description: 'PR number'
+        description: "Merge commit SHA (post-merge)"
         required: false
+        type: string
+      pr_number:
+        description: "Pull request number (post-merge)"
+        required: false
+        type: string
+      api_url:
+        description: "Conviso API URL"
+        required: false
+        type: string
+        default: https://api.convisoappsec.com
+      company_id:
+        description: "Conviso company id"
+        required: false
+        type: string
+      asset_id:
+        description: "Conviso asset id"
+        required: false
+        type: string
+      scan_run_id:
+        description: "Scan run id from the platform"
+        required: false
+        type: string
 
 jobs:
-  conviso-ast:
+  run-ast-scan:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisoast:latest
-      env:
-        CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
+      image: convisoappsec/convisoast_v2:latest
+
     steps:
+      - name: Get repository token
+        id: repo_token
+        env:
+          CONVISO_APIKEY: ${{ secrets.CONVISO_API_KEY }}
+          API_URL: ${{ inputs.api_url }}
+          CONVISO_REPO_FULL_NAME: ${{ inputs.repo_full_name }}
+          ASSET_ID: ${{ inputs.asset_id }}
+          SCAN_RUN_ID: ${{ inputs.scan_run_id }}
+        run: |
+          set -euo pipefail
+          export CONVISO_BASE_URL="${API_URL:-https://api.convisoappsec.com}"
+          CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
+          case "$CONVISO_BASE_URL" in
+            https://app.convisoappsec.com)
+              export CONVISO_BASE_URL="https://api.convisoappsec.com"
+              ;;
+            https://staging.convisoappsec.com)
+              export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+              ;;
+          esac
+          case "${ASSET_ID:-}" in
+            ""|none|0) unset CONVISO_ASSET_ID || true ;;
+            *) export CONVISO_ASSET_ID="$ASSET_ID" ;;
+          esac
+          case "${SCAN_RUN_ID:-}" in
+            ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+            *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
+          esac
+          TOKEN=$(conviso-ast-repository-token --provider github)
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+          echo "base_url=$CONVISO_BASE_URL" >> "$GITHUB_OUTPUT"
+
       - name: Checkout target repository
         uses: actions/checkout@v6
         with:
-          repository: ${{ github.event.inputs.repo_full_name }}
-          ref: ${{ github.event.inputs.commit_sha }}
+          repository: ${{ inputs.repo_full_name }}
+          ref: ${{ inputs.branch }}
+          fetch-depth: 0
+          token: ${{ steps.repo_token.outputs.token }}
 
-      - name: Run AST Scan
+      - name: Run Conviso AST
+        env:
+          CONVISO_APIKEY: ${{ secrets.CONVISO_API_KEY }}
+          CONVISO_BASE_URL: ${{ steps.repo_token.outputs.base_url }}
+          CONVISO_COMPANY_ID: ${{ inputs.company_id || vars.CONVISO_COMPANY_ID }}
+          ASSET_ID: ${{ inputs.asset_id }}
+          SCAN_RUN_ID: ${{ inputs.scan_run_id }}
+          CONVISO_BRANCH: ${{ inputs.branch }}
+          GIT_CONFIG_COUNT: "1"
+          GIT_CONFIG_KEY_0: safe.directory
+          GIT_CONFIG_VALUE_0: "*"
         run: |
-          conviso ast run \
-            --vulnerability-auto-close \
+          set -euo pipefail
+          case "${ASSET_ID:-}" in
+            ""|none|0) unset CONVISO_ASSET_ID || true ;;
+            *) export CONVISO_ASSET_ID="$ASSET_ID" ;;
+          esac
+          case "${SCAN_RUN_ID:-}" in
+            ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
+            *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
+          esac
+          conviso-ast -p . -o /tmp/conviso-ast-session.zip
 
-## Scan Logic and Execution
-
-- **Environment**: The scan runs using the `convisoappsec/convisoast:latest` Docker image within **your GitHub Actions environment**.
-- **Execution Costs**: As the scan executes on your runners, the time consumed counts towards your GitHub Actions minutes.
-- **Command**: `conviso ast run --vulnerability-auto-close --company-id [ID]`
-- **Blocking Status**: The scan is currently configured as **non-blocking**.
-- **Results**: Identified vulnerabilities are automatically sent to the mapped asset on the Conviso Platform.
-
-## Support
-
-If you have any questions or need assistance, feel free to contact our support team.
+      - name: Upload session log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conviso-ast-session
+          path: /tmp/conviso-ast-session.zip
+          if-no-files-found: ignore
 ```
+
+4. Commit and push to that **Ref** branch.
+
+:::important
+- Path on disk: **`.github/workflows/ast.yml`** only.  
+- In Conviso, set the workflow field to the **file name** `ast.yml` (not `.github/workflows/ast.yml`). Conviso normalizes a full path to the basename, but the UI expects the file name used by the GitHub Actions API.  
+- This template checks out `inputs.branch` (the PR base branch after merge). Conviso also sends `commit_sha` and `pr_number` for correlation; the template above does not pass `commit_sha` into `actions/checkout`.
+:::
+
+---
+
+## Part 2 – Conviso Platform setup
+
+### Step 4 – Configure the orchestrator
+
+1. Open **Integrations → GitHub**.
+2. Turn **AST Scans** **on**.  
+   (**GitHub Advanced Security** is a separate toggle. It is **not** required for the orchestrator merge flow described here.)
+3. Fill **Orchestrator Configuration**:
+   - **Orchestrator Repo** — `owner/repo` of the orchestrator.
+   - **Workflow Filename or ID** — `ast.yml`.
+   - **Ref** — orchestrator branch/tag that contains `.github/workflows/ast.yml` (e.g. `main`). If empty, Conviso dispatches with ref **`main`**.
+4. Save.
+
+![Orchestrator Configuration](../../static/img/github/github-ast-orchestrator.png)
+
+### Step 5 – Assets and merge target
+
+1. Confirm each application repository is **imported** and **enabled**.
+2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
+3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
+
+---
+
+## End-to-end flow (after setup)
+
+1. Developer merges a PR into the configured merge target on an imported, enabled asset.
+2. Conviso validates the event and configuration, then calls `workflow_dispatch` on `owner/orchestrator` / `ast.yml` / **Ref**.
+3. Inputs include at least: `repo_full_name`, `branch` (PR base), `commit_sha`, `pr_number`, `api_url`, `company_id`, `asset_id` (blank values may be omitted).
+4. Job steps: issue repository token → checkout target at `branch` → run `conviso-ast` → upload session artifact.
+5. Findings appear on the asset in Conviso Platform.
+6. In GitHub, open the **orchestrator** → **Actions** → **AST Scan Orchestrator** to inspect the run.
+
+## Validation checklist
+
+| Check | Expected |
+|-------|----------|
+| Secret | `CONVISO_API_KEY` exists on the orchestrator |
+| Path | `.github/workflows/ast.yml` is on the **Ref** branch |
+| Conviso | Orchestrator `owner/repo` + `ast.yml` + Ref saved; **AST Scans** on |
+| Asset | Target repo imported, enabled; merge target branch matches mapping or Ref |
+| After merge | New run under orchestrator **Actions**; findings (or a clean result) on the asset |
+
+*Successful orchestrator run: Get repository token → Checkout → Run Conviso AST.*
+
+![Successful AST Scan Orchestrator Actions run](../../static/img/github/ast-03-actions-run-success.png)
+
+*Scan result on the asset in Conviso Platform (Conviso AST).*
+
+![Successful Conviso AST scan on the Platform](../../static/img/github/ast-04-platform-scan-result.png)
+
+Manual test (optional): on the orchestrator, **Actions → AST Scan Orchestrator → Run workflow**. Set `repo_full_name` and `branch` to an imported asset. Set `api_url` if you are not on production defaults. Set `company_id` or define `CONVISO_COMPANY_ID`.
+
+## Troubleshooting
+
+| Symptom | Cause / fix |
+|---------|-------------|
+| Merge done, no Actions run | **AST Scans** off; orchestrator fields incomplete; asset disabled or not imported; PR base branch ≠ asset branch / Ref; GitHub App cannot see the repos |
+| Workflow never listed | File not under `.github/workflows/`, or not on the **Ref** branch Conviso uses |
+| Token step fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`) |
+| Checkout 403 | GitHub App lacks access to the **target** repository |
+| Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` input and without variable `CONVISO_COMPANY_ID` |
+| Wrong code scanned | Merge target / `branch` input mismatch; confirm you merged into the configured base branch |
+
+## Related guides
+
+- [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
+- [GitHub Integration](./github.md)
+- [GitHub PR Scans](./github-pr-scans.md)
+- [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)
