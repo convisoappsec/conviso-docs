@@ -90,20 +90,44 @@ Instead of running the CLI inside a container job, you can add the **Conviso AST
 4. Edit Your Azure DevOps Pipeline.
 5. Configure the Pipeline with the Following Code:
 ```yaml
+trigger:
+  batch: true
+  branches:
+    include:
+      - staging
+      - main
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: CONVISO_COMPANY_ID
+    value: '<<FILL_IT_HERE>>'
+
 steps:
   - checkout: self
+    fetchDepth: 0
 
   - task: ConvisoAST@1
     displayName: Conviso AST
     inputs:
       apiKey: $(CONVISO_API_KEY)
-      companyId: 'your-company-id'
+      companyId: $(CONVISO_COMPANY_ID)
 ```
-6. Save it and run the pipeline.
+6. Replace `<<FILL_IT_HERE>>` with your company ID, and adjust the pipeline settings below to your workflow.
+7. Save it and run the pipeline.
+
+**Pipeline Settings**: the task itself needs only the two inputs above — everything around it is a starting point you should adapt:
+- `trigger.branches.include`: The branches worth scanning. `staging` and `main` are an example, so use your own.
+- `batch: true`: Runs one scan at a time per branch and collapses the commits queued behind it. Remove it to scan every push.
+- `pr: none`: No scan on pull request builds. Remove it to scan pull requests as well.
+- `fetchDepth: 0`: Full history, required only when you use `baselineRef`. Without it, the default shallow clone is enough.
 
 **Field Descriptions**:
 - apiKey: Your [Conviso API Key](../api/api-overview.md#generate-api-key), referenced as `$(CONVISO_API_KEY)` in the pipeline variables. Always store it as a secret variable.
-- companyId: Your company ID in the Conviso Platform.
+- companyId: Your company ID in the Conviso Platform, referenced above as the `CONVISO_COMPANY_ID` pipeline variable.
 - scanTypes: Which scan types to run — `sast`, `sca`, `iac`, `sbom`, `secret`, `container`. Optional; leave it empty to run all of them.
 - imageName: The image analyzed by the `container` scan (e.g. `myorg/app:$(Build.BuildId)`). Optional, and the `container` scan is skipped without it.
 - baselineRef: Branch to compare against so only what changed is scanned, such as `main` or `$(System.PullRequest.TargetBranch)`. Optional, and it requires `fetchDepth: 0` on the checkout step.
