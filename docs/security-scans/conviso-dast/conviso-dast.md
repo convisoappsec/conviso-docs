@@ -4,6 +4,9 @@ title: Conviso DAST
 sidebar_label: Conviso DAST
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Introduction
 
 Scan and protect your application with Conviso DAST, consolidating all your vulnerabilities and risks in the Conviso Platform.
@@ -164,7 +167,16 @@ Conviso DAST can also run **self-hosted** — inside your own pipeline or infras
 
 ### Running a scan
 
+:::caution Always pull before scanning
+`docker run` does **not** refresh the `:latest` tag on its own — if the image already exists on your machine, Docker reuses that local copy as-is, even though `:latest` is rebuilt regularly. Running an old cached image can produce confusing failures (unrelated arguments, missing features) that look like a scanner bug but are actually just a stale image. Always run `docker pull` immediately before scanning, as shown below — or pin to a specific tag instead of `:latest` (see the tip further down).
+:::
+
+<Tabs groupId="os">
+<TabItem value="bash" label="Bash / Linux / macOS" default>
+
 ```bash
+docker pull convisoappsec/convisodast:latest
+
 docker run --rm \
   -e CONVISO_API_KEY="your-api-key" \
   -e ASSET_ID="12345" \
@@ -173,6 +185,43 @@ docker run --rm \
   -v "$(pwd)/results:/scan/results" \
   convisoappsec/convisodast:latest
 ```
+
+</TabItem>
+<TabItem value="powershell" label="Windows (PowerShell)">
+
+```powershell
+docker pull convisoappsec/convisodast:latest
+
+docker run --rm `
+  -e "CONVISO_API_KEY=your-api-key" `
+  -e "ASSET_ID=12345" `
+  -e "TARGET_URL=https://example.com" `
+  -e "CONVISO_API_URL=https://api.app.convisoappsec.com/graphql" `
+  -v "${PWD}/results:/scan/results" `
+  convisoappsec/convisodast:latest
+```
+
+</TabItem>
+<TabItem value="cmd" label="Windows (Command Prompt)">
+
+```bat
+docker pull convisoappsec/convisodast:latest
+
+docker run --rm ^
+  -e "CONVISO_API_KEY=your-api-key" ^
+  -e "ASSET_ID=12345" ^
+  -e "TARGET_URL=https://example.com" ^
+  -e "CONVISO_API_URL=https://api.app.convisoappsec.com/graphql" ^
+  -v "%cd%/results:/scan/results" ^
+  convisoappsec/convisodast:latest
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+PowerShell uses `` ` `` (backtick) and Command Prompt uses `^` for line continuation instead of Bash's `\` — pasting the Bash version as-is into either will not work. Make sure the continuation character is the very last character on the line; a trailing space after it silently breaks the continuation and splits the command.
+:::
 
 Findings are reported back to the Conviso Platform the same way a platform-managed scan does, and appear on the asset's vulnerability list once the scan finishes. Mounting `/scan/results` is optional — it's only needed if you also want the raw scan output on your own filesystem.
 
@@ -193,7 +242,12 @@ Pin to a specific version (`convisoappsec/convisodast:<tag>`) instead of `:lates
 
 Want to try Conviso DAST out before pointing it at a real asset? Set `DRY_RUN="true"` to run a full scan against your target — attack surface discovery, vulnerability testing, everything — without registering anything on the Conviso Platform:
 
+<Tabs groupId="os">
+<TabItem value="bash" label="Bash / Linux / macOS" default>
+
 ```bash
+docker pull convisoappsec/convisodast:latest
+
 docker run --rm \
   -e DRY_RUN="true" \
   -e CONVISO_API_KEY="your-api-key" \
@@ -201,6 +255,37 @@ docker run --rm \
   -v "$(pwd)/results:/scan/results" \
   convisoappsec/convisodast:latest
 ```
+
+</TabItem>
+<TabItem value="powershell" label="Windows (PowerShell)">
+
+```powershell
+docker pull convisoappsec/convisodast:latest
+
+docker run --rm `
+  -e "DRY_RUN=true" `
+  -e "CONVISO_API_KEY=your-api-key" `
+  -e "TARGET_URL=https://example.com" `
+  -v "${PWD}/results:/scan/results" `
+  convisoappsec/convisodast:latest
+```
+
+</TabItem>
+<TabItem value="cmd" label="Windows (Command Prompt)">
+
+```bat
+docker pull convisoappsec/convisodast:latest
+
+docker run --rm ^
+  -e "DRY_RUN=true" ^
+  -e "CONVISO_API_KEY=your-api-key" ^
+  -e "TARGET_URL=https://example.com" ^
+  -v "%cd%/results:/scan/results" ^
+  convisoappsec/convisodast:latest
+```
+
+</TabItem>
+</Tabs>
 
 `CONVISO_API_KEY` is still required for a dry run: it's used once, to confirm the key belongs to an active company on the Conviso Platform, so the feature can't be used to scan targets anonymously. Beyond that single check, the platform is never contacted — no scan-policy check, no analytics, no vulnerabilities are registered, and no `ASSET_ID` is needed. Scan output is still written to `/scan/results` as usual, so you can review findings locally.
 
