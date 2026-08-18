@@ -26,8 +26,8 @@ With the repository model:
 
 :::note
 Assets created before the repository model become repositories when your scans report a repository
-address **and** a branch; anything left over is combined with the help of the Conviso team. See
-[How Your Assets Become Repositories](#how-your-assets-become-repositories).
+address **and** a branch; anything left over is combined with the help of the Conviso team. Always
+report both — see [How Your Assets Become Repositories](#how-your-assets-become-repositories).
 :::
 
 ## Do I Need to Do Anything?
@@ -43,8 +43,8 @@ the platform will measure is the branch you actually ship.
 
 | Situation | What to do |
 | --- | --- |
-| Your pipeline does not report a **repository address and a branch** | Act now. Without both, nothing is consolidated and the branch is ignored — with no error to tell you |
-| The same codebase is registered under two addresses — HTTPS and SSH, or a browser URL | Standardize on one address now: two addresses become two separate repositories |
+| Your pipeline does not report a **repository address and a branch** | Act now. Without both, the consolidation either does not happen or lands on a branch you did not declare — with no error to tell you |
+| The same codebase is registered under two addresses that do not look alike — the HTTPS and the SSH form on Azure DevOps, say, or a browser URL | Standardize on one address now: addresses that differ in host or path become two separate repositories |
 | More than one asset carries the same repository address | Act now. With two or more candidates nothing is consolidated on its own, and the case has to go to the Conviso team |
 | Your production branch is not the one marked as default | Adjust it before the first scan — see [Setting the Branch That Represents Production](#setting-the-branch-that-represents-production) |
 | You report the risk score upward | Note the current numbers first: the score starts following the default branch alone |
@@ -61,9 +61,10 @@ the platform will measure is the branch you actually ship.
 
 **What does change:**
 
-* The **risk score** reflects the default branch alone, and the open-vulnerability counters no
-  longer add up every branch.
-* **Dashboards, exports and the Security Gate** follow the default branch. See
+* The **risk score** reflects the default branch alone, and the repository's open-vulnerability
+  counters — the list column and the Details card — no longer add up every branch.
+* **Dashboards, the Repositories export and the Security Gate** follow the default branch; the
+  vulnerability list and the export made from it still show every branch. See
   [What Each Screen Shows](#what-each-screen-shows).
 * Rows that used to be **separate assets collapse into a single repository row**.
 * **Business Impact**, **Data Classification** and **Attack Surface** of the assets that were
@@ -76,19 +77,20 @@ the platform will measure is the branch you actually ship.
 Two values, and **both are required**: the **repository address** and the **branch**.
 
 :::caution
-A scan that reports the repository address without a branch — or a branch without the address — is
-**ignored silently**. There is no error and no warning: the scan finishes, the findings land where
-they always did, and nothing is consolidated.
+A scan that reports the repository address without a branch — or a branch without the address —
+does not consolidate the way you expect, and nothing tells you so: there is no error and no
+warning. Depending on the path, nothing is consolidated at all, or the repository ends up
+measuring a branch you never declared.
 :::
 
 There is **no minimum version** enforced by the platform. What matters is capability, not version:
 whatever reports your scans has to be able to send both values. If you use a Conviso task or
 plugin in your pipeline, check that it is on a version that offers repository and branch fields.
 
-The [GitHub Actions integration](../integrations/github-actions.md#repository-and-branch) fills
-both in from the workflow context by default, and is a good reference for what the equivalent
-fields look like elsewhere. For scanner integrations, each one asks for the repository and most
-ask for a branch — see
+The [GitHub Sync Task action](../integrations/github-actions.md#repository-and-branch) fills both
+in from the workflow context by default, and is a good reference for what the equivalent fields
+look like elsewhere. For scanner integrations, each one asks for the repository and most ask for
+a branch — see
 [Importing projects from a scanner integration](#importing-projects-from-a-scanner-integration).
 
 ### The access you need
@@ -100,7 +102,12 @@ ask for a branch — see
 | See a repository's branches | The same access that lets you see the asset |
 | **Set as default**, **Rename branch**, **Delete branch**, **New Branch** | **Update** permission on Asset — and the asset must not be archived |
 | Register a repository | **Create** permission on Asset |
+| Have a scan consolidate an asset you already had | Permission on that asset: **Update**, and **Delete** when an existing repository absorbs it |
 | Combine repositories, or split one back into separate assets | Conviso Support — this is not an action available in your account |
+
+Those two permissions are worth checking against the credentials your pipeline uses: without them
+the scan does not consolidate, it creates a separate entry — with no error. If you would rather
+not grant them to a pipeline key, ask Conviso Support to consolidate instead.
 
 ### Checking that it worked
 
@@ -109,8 +116,9 @@ After the first pipeline run:
 1. The repository is listed under **Inventory > Assets > Repositories**.
 2. The **Git URL** on the **Details** tab is filled in, and does not read **Not Defined**.
 3. The chip under the repository name shows the branch you consider production.
-4. The branch your pipeline reported appears on the **Branches** tab. If it does not, the scan
-   most likely reported the address without the branch.
+4. The branch your pipeline reported appears on the **Branches** tab, and no branch you never
+   declared is sitting there as the default. Either sign points to a scan that reported the
+   address without the branch.
 5. With the **Branch** column enabled on the vulnerability list, new findings show the branch they
    came from.
 
@@ -280,7 +288,8 @@ required.
 Changing the default branch **recalculates the repository's risk score**, because the repository's
 risk always follows the default branch. The change raises a notification of its own, so whoever
 follows the repository sees why the number moved — default-branch changes made by Conviso while
-consolidating an account are not notified.
+consolidating an account are not notified, so ask Conviso Support for the repository's
+default-branch history if a score moved and no notification explains it.
 
 The open-vulnerability counters switch immediately; the recalculated score appears on the Details
 tab a few minutes later, so do not repeat the change if the number has not moved yet.
@@ -453,16 +462,17 @@ branches. They become repositories two ways.
 
 An asset is turned into a repository on its own when a scan — or a call to the API that creates or
 updates it — reports a **repository address together with a branch**, and the match leaves no room
-for doubt. All of the following have to hold:
+for doubt:
 
-* Both values are reported. **The branch is required**: an address without a branch, or a branch
-  without an address, does nothing.
+* Both values are reported. **Always report the branch**: without it the platform cannot tell
+  which branch the findings belong to, and the consolidation either does not happen or adopts a
+  branch nobody declared.
 * **Exactly one** asset carries that repository address. With two or more candidates nothing is
   consolidated, and the case goes to the Conviso team.
 * The asset is **not archived**, and it is not a cloud, domain or API asset.
 * Whoever makes the call has **Update** permission on the asset.
 
-When they all hold, one of two things happens:
+When the match is unambiguous, one of two things happens:
 
 * If no repository is registered at that address yet, the asset **becomes the repository** for it,
   keeping its id, its name, its findings and its history. The branch that was reported becomes the
@@ -472,25 +482,25 @@ When they all hold, one of two things happens:
   **Delete** permission on the asset being absorbed.
 
 :::caution
-The branch is what makes this safe, and that is why it is required. Consolidating without one would
-file the scan under a placeholder default branch that nothing ever corrects — and because the
-repository's risk score follows its default branch, a critical finding reported on `staging` would
-leave the repository reading **zero**.
+The branch is what keeps this safe. Without one the platform has nothing to file the scan under,
+and the repository can end up with a default branch nobody declared — and because the risk score
+follows its default branch, a critical finding reported on `staging` leaves the repository reading
+**zero**.
 :::
 
 :::note
-Everything outside those conditions stays exactly as it is: assets nothing scans, scans that report
-no address, scans that report an address without a branch, and addresses claimed by more than one
-asset. None of them are consolidated automatically — they are handled with the Conviso team, below.
+Outside those conditions nothing is consolidated on its own: assets nothing scans, scans that
+report no address, and addresses claimed by more than one asset. There are narrower cases too — if
+the repository already has a branch with the name your scan reported, the asset is not folded into
+it and stays beside it. All of them are handled with the Conviso team, below.
 :::
 
 ### With the Conviso team
 
 Whatever is left — assets no pipeline reaches, duplicates created by hand, the same address claimed
 by several assets, groupings you want reviewed — is combined by the **Conviso team**. Combining is
-always a reviewed action: the platform can suggest which assets look like the same repository, but
-nothing is merged without someone deciding it. Contact Conviso Support if you want your account
-consolidated, or a particular grouping looked at.
+always a reviewed action: nothing is merged without someone deciding it. Contact Conviso Support
+if you want your account consolidated, or a particular grouping looked at.
 
 ### What is preserved, either way
 
