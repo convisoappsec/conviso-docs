@@ -1,0 +1,38 @@
+name: Docs validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  generate-and-build:
+    # GitHub does not expose repository secrets to pull requests from forks.
+    # Skipping those runs prevents untrusted code from ever receiving the API key.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn --immutable
+
+      - name: Generate GraphQL documentation
+        run: yarn doc
+
+      - name: Build documentation
+        run: yarn build

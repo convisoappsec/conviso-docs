@@ -15,6 +15,7 @@ const hasGraphqlDocs =
 const apiItems = [
   "api/api-overview",
   "api/graphql/playground",
+  "api/graphql/context-and-identifiers",
 ];
 
 if (hasGraphqlDocs) {
