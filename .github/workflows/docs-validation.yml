@@ -34,5 +34,8 @@ jobs:
       - name: Generate GraphQL documentation
         run: yarn doc
 
+      - name: Verify project context example
+        run: grep -q 'scopeIdEq' docs/api/graphql/documentation/operations/queries/projects.mdx
+
       - name: Build documentation
         run: yarn build
