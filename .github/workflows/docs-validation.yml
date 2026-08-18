@@ -15,6 +15,7 @@ jobs:
     # Skipping those runs prevents untrusted code from ever receiving the API key.
     if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
     steps:

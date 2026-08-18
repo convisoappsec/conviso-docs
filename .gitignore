@@ -35,6 +35,5 @@ yarn-error.log*
 
 # Auto-generated GraphQL documentation
 docs/api/graphql/documentation
-static/schema.generated.graphql
 # Local auth/session artifacts
 .auth/

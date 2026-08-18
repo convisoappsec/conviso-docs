@@ -47,13 +47,21 @@ async function proxyPlugin() {
         [
           '@graphql-markdown/docusaurus',
           {
-            schema: 'static/schema.generated.graphql',
+            schema: 'https://api.convisoappsec.com/graphql',
             rootPath: './docs',
             baseURL: 'api/graphql/documentation',
             formatter: require.resolve('./scripts/graphql-docs-formatter.mjs'),
             loaders: {
               GraphQLFileLoader: {
                 module: '@graphql-tools/graphql-file-loader',
+              },
+              UrlLoader: {
+                module: '@graphql-tools/url-loader',
+                options: {
+                  headers: {
+                    'x-api-key': process.env.CONVISO_API_KEY,
+                  },
+                },
               },
             },
           },
