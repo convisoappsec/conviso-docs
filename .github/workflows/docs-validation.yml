@@ -43,6 +43,12 @@ jobs:
       - name: Upload documentation preview
         uses: actions/upload-artifact@v4
         with:
-          name: documentation-preview
-          path: build
+          name: api-documentation-preview
+          path: |
+            build/api
+            build/assets/js
+            build/assets/css
+            build/assets/files
+            build/img/favicon.ico
+            build/img/logo.svg
           retention-days: 7
