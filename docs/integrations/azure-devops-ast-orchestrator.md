@@ -305,11 +305,10 @@ steps:
 
 3. Commit and push to that **Ref** branch.
 
-![Step 2: azure-pipelines.yml](/img/azure-devops/ast-step-05-pipeline-yaml.png)
-
 :::important
 - `trigger: none` / `pr: none` are intentional — Conviso starts the run; Azure must not auto-trigger on every push.
 - Keep `options: --entrypoint ""` on the container or Azure fails to `docker exec` into the job.
+- Do **not** add `variables: - group: ...` to this YAML. The API key is a **pipeline variable** (Step 4), not a Library variable group.
 :::
 
 ### Step 3 – Create the pipeline and copy its ID
@@ -329,10 +328,12 @@ The number after `definitionId=` (here `42`) is the **Orchestrator pipeline ID**
 
 ### Step 4 – Add `CONVISO_API_KEY` on the pipeline
 
-On the orchestrator pipeline you just created:
+On the orchestrator pipeline you just created — **Edit → Variables** on that pipeline, **not** **Pipelines → Library**:
 
-1. Open **Edit → Variables**.
-2. Add:
+1. Open the pipeline and click **Edit**.
+2. Click **Variables** (top right of the YAML editor, next to **Run**).
+3. Stay on the **Pipeline variables** tab. Do **not** open **Variable groups** and do **not** create a group under **Pipelines → Library**.
+4. Add:
 
 | Name | Secret? | Required |
 |------|---------|----------|
@@ -346,7 +347,9 @@ You may add `CONVISO_COMPANY_ID` on the same **Variables** screen. The job uses 
 
 Do **not** add an Azure DevOps PAT for clone. The job calls `conviso-ast-repository-token --provider azure_devops`, and the Platform returns the integration’s OAuth credential for that run.
 
-![Step 4: Pipeline variable CONVISO_API_KEY](/img/azure-devops/ast-step-04-variable-group.png)
+*Pipeline variable `CONVISO_API_KEY` under Edit → Variables (not Library).*
+
+![Step 4: Pipeline variable CONVISO_API_KEY](/img/azure-devops/ast-step-04-pipeline-variables.jpg)
 
 ---
 
@@ -408,7 +411,7 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 | `Repository is not available for this API key` | Wrong environment (`CONVISO_API_KEY` vs `api_url`); Azure integration not authorized; asset not imported/enabled for that company |
 | Unreadable / HTML response from Platform | Use the production API host (`https://api.convisoappsec.com`). The template remaps `https://app.convisoappsec.com` automatically |
 | Initialize containers fails | Confirm `options: --entrypoint ""` is present on the container |
-| `CONVISO_API_KEY` empty / unauthorized | Confirm the secret variable is on the **pipeline** (Edit → Variables), not only elsewhere |
+| `CONVISO_API_KEY` empty / unauthorized | Confirm the secret is a **pipeline variable** (Edit → Variables). A Library / variable group is not enough unless the YAML also references that group — this template does not |
 | Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` and without pipeline variable `CONVISO_COMPANY_ID` |
 | Wrong code scanned | Merge target / `branch` mismatch; confirm you merged into the configured destination branch |
 
