@@ -68,13 +68,13 @@ The identified vulnerabilities will be automatically sent to your Project on Con
 
 ## Running Conviso AST with the GitLab CI/CD component
 
-Instead of writing the job above, you can include the **Conviso AST** component from the GitLab CI/CD Catalog. A single component covers Static Application Security Testing (SAST), Software Composition Analysis (SCA), Infrastructure as Code (IaC), Software Bill of Materials (SBOM), secret and container scanning, and it resolves the branch, the path to scan and the session archive from the pipeline itself. To configure it, follow these steps:
+Instead of writing the job above, you can include the **Conviso AST** component from the GitLab CI/CD Catalog. A single component covers Static Application Security Testing (SAST), Software Composition Analysis (SCA), Infrastructure as Code (IaC), Software Bill of Materials (SBOM), secret and container scanning. To configure it, follow these steps:
 
 1. Access the [GitLab CI/CD Catalog](https://gitlab.com/explore/catalog).
 2. Search for **gitlab-ast-component** or directly visit [this link](https://gitlab.com/explore/catalog/convisoappsec/gitlab-ast-component).
-3. In the project you want to scan, go to **Settings → CI/CD → Variables** and add `CONVISO_API_KEY` with your [Conviso API Key](../api/api-overview.md#generate-api-key). Mark it as **Masked**. Leave **Protect variable** off, or a job on an unprotected branch will not see the key.
+3. In the project you want to scan, go to **Settings → CI/CD → Variables** and add `CONVISO_API_KEY` with your [Conviso API Key](../api/api-overview.md#generate-api-key). Mark it as **Masked** and **Protect variable**. Keep Protect on so only pipelines on protected branches (and protected tags) receive the key.
 4. Edit your `.gitlab-ci.yml`.
-5. Configure the pipeline with the following code:
+5. Configure the pipeline with the following code. Use `workflow:` only when this file exists to run the scan; if you already have tests or a release job, omit `workflow:` and set `rules:` on the `conviso-ast` job instead:
 ```yaml
 workflow:
   rules:
@@ -85,26 +85,27 @@ include:
     inputs:
       company_id: $CONVISO_COMPANY_ID
 ```
-6. Replace `$CONVISO_COMPANY_ID` with your company ID, or store that ID as a CI/CD variable with the same name. Adjust the pipeline settings below to your workflow.
+6. `company_id` must be numeric. Replace `$CONVISO_COMPANY_ID` with your company ID, or store that ID as a CI/CD variable that expands to digits. Adjust the pipeline settings below to your workflow.
 7. Save it and run the pipeline.
 
 **Pipeline Settings**: the component itself needs only `company_id` plus `CONVISO_API_KEY` — everything around it is a starting point you should adapt:
-- `workflow.rules`: The branches worth scanning. `main` and `staging` are an example, so use your own. Without `workflow:`, GitLab starts a pipeline on every branch.
-- Merge request pipelines: add `- if: $CI_PIPELINE_SOURCE == "merge_request_event"` to scan merge requests as well.
-- Other jobs in the same file: `workflow:` applies to the whole pipeline. If other jobs must run on every branch, put `rules:` on those jobs instead and leave this include as-is.
+- `workflow.rules`: Use this in a scan-only `.gitlab-ci.yml`. `main` and `staging` are an example, so use your own protected branches. Without `workflow:`, GitLab starts a pipeline on every branch.
+- Merge request pipelines: add `- if: $CI_PIPELINE_SOURCE == "merge_request_event"` to `workflow.rules` in a scan-only file, or to `conviso-ast` `rules:` in an existing pipeline.
+- Other jobs in the same file: do **not** add `workflow:` — it decides whether the pipeline exists. Limit the scan with `rules:` on the `conviso-ast` job after the include.
+- Feature branches: protect those refs (for example a `feature/*` wildcard) so the protected API key is available, or use a separate lower-privilege key. Do not unprotect the company key.
 
 **Field Descriptions**:
-- `CONVISO_API_KEY`: Your [Conviso API Key](../api/api-overview.md#generate-api-key). It is a CI/CD variable, not a component input. Always store it as a masked variable.
-- `company_id`: Your company ID in the Conviso Platform.
-- `scan_types`: Which scan types to run — `sast`, `sca`, `iac`, `sbom`, `secret`, `container`. Optional; leave it empty to run all of them.
-- `image_name`: The image analyzed by the `container` scan (e.g. `myorg/app:$CI_COMMIT_SHA`). Optional, and the `container` scan is skipped without it.
-- `baseline_ref`: Branch to compare against so only what changed is scanned, such as `main` or `$CI_MERGE_REQUEST_TARGET_BRANCH_NAME`. Optional. The component already clones with `GIT_DEPTH: "0"`.
+- `CONVISO_API_KEY`: Your [Conviso API Key](../api/api-overview.md#generate-api-key). It is a CI/CD variable, not a component input. Store it masked and protected.
+- `company_id`: Your numeric company ID in the Conviso Platform.
+- `scan_types`: Which scan types to run — `sast`, `sca`, `iac`, `sbom`, `secret`, `container`. Optional; leave it empty to run all of them. If you list only `container` without `image_name`, the job fails.
+- `image_name`: The image analyzed by the `container` scan (e.g. `myorg/app:$CI_COMMIT_SHA`). The scan job must be able to pull it. For a private registry, set the project CI/CD variable `DOCKER_AUTH_CONFIG` — a `docker login` in another job does not reach this one.
+- `baseline_ref`: Branch, tag, or commit to compare against so only what changed is scanned, such as `main` or `$CI_MERGE_REQUEST_TARGET_BRANCH_NAME`. Optional. The component already clones with `GIT_DEPTH: "0"`.
 - `asset_id`: Pins the scan to a specific asset, skipping the automatic lookup by repository URL. Optional; use it if a scan stops with an asset ambiguity error.
 
 **Expected Behaviors**:
 - **Branch association**: The scan is recorded against the branch the pipeline is for. In a **merge request** pipeline, this is the branch the merge request is coming **from**, so its findings are not filed under the target branch.
 - **Findings never fail the pipeline**: The job fails only when a scan or an upload fails. Add `allow_failure: true` on the `conviso-ast` job if you do not want even that to stop the pipeline.
-- **Session archive**: Every run writes a zip with the raw output of each scan and the debug log, published as the job artifact `conviso-ast-session.zip`. It is the first artifact Conviso support asks for.
+- **Session archive**: Every run writes a zip with the raw output of each scan (including secret-scanner matches) and the debug log under `/tmp`. It is not a job artifact. That zip is what Conviso support asks for — publish it with an `artifacts:` overlay on `conviso-ast` only then.
 
 :::note
 The component requires a **Linux x64** runner that can pull `convisoappsec/convisoast_v2`. Shared runners on GitLab.com qualify. The image is published for `linux/amd64` only.
