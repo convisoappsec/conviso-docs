@@ -33,6 +33,7 @@ Before you start, ensure that:
 - You can **authorize the Conviso Platform application** in the Microsoft consent screen (grant OAuth permissions) and you have **access to the Azure DevOps organization(s)** you want to connect. If your organization restricts who can install or authorize apps, an Entra ID or Azure DevOps administrator may need to approve the app first.
 - You have a **Microsoft account** (or Microsoft Entra ID account) with access to the Azure DevOps organizations you want to connect.
 - Your Conviso Platform **company** has the integration feature available (contact your administrator if the Azure DevOps card does not appear).
+- The same Microsoft account used to connect must have **Edit subscriptions** and **View subscriptions** on each Azure DevOps **project** whose repositories you import. Conviso registers [Service Hooks](https://learn.microsoft.com/en-us/azure/devops/service-hooks/overview) on those projects so new repositories, pull requests, and merges can notify the platform. See [Service hook permissions](#service-hook-permissions).
 
 :::info
 The first time you connect, an administrator may need to register the Conviso Platform application in your Azure DevOps / Microsoft Entra ID tenant and configure the OAuth client. If you do not see the "Connect to Azure DevOps" option or the consent screen, contact your Conviso or Azure DevOps administrator.
@@ -71,6 +72,8 @@ You will be redirected to Microsoft’s sign-in and consent flow.
 1. Sign in with your Microsoft account if prompted.
 2. Review the **Permissions requested** by the Conviso Platform application (e.g. access to Visual Studio Team Services REST APIs, Code, Build, Project and team, etc.).
 3. Click **Accept** to grant the requested permissions.
+
+Accepting this screen authorizes Conviso to call Azure DevOps **as your user**. It does **not** grant **Edit subscriptions** on the project. If that account is not a Project Administrator (or equivalent), repositories can still import while Service Hooks fail to register — then [PR Scans](./azure-devops-pr-scans.md) and [AST Orchestrator](./azure-devops-ast-orchestrator.md) will not trigger. See [Service hook permissions](#service-hook-permissions).
 
 *Step 3: Microsoft permissions consent screen.*
 
@@ -125,6 +128,30 @@ If you turned on **Authorize all repositories** in Step 4, the platform keeps yo
 
 If you chose **Select specific repositories**, only the repositories you selected at configuration time are imported; no automatic sync runs for new repos or new projects.
 
+## Service hook permissions
+
+Conviso creates Azure DevOps **Service Hooks** (webhooks) on each **project** that has imported repositories. Those subscriptions are how Azure notifies the platform of:
+
+- A **new repository** in a project that is already connected (`git.repo.created`)
+- A pull request **created or updated** — required for [PR Scans](./azure-devops-pr-scans.md)
+- A pull request **merged** — required for [AST Orchestrator](./azure-devops-ast-orchestrator.md)
+
+Microsoft grants **Edit subscriptions** and **View subscriptions** to **Project Administrators** by default. A user who can clone and import repositories may still lack this permission.
+
+Enabling **PR Scans** or **AST scans on merge** in Conviso does not create the hooks by itself. If the connecting account cannot edit subscriptions, the toggle has no effect until an administrator grants the permission (or reconnects the integration with a Project Administrator account) and Conviso can register the hooks.
+
+### Grant Edit subscriptions
+
+On **each** Azure DevOps project you import from:
+
+1. Open the project → **Project settings** → **Permissions** (or **Security**).
+2. Select the user or group that connected Conviso Platform.
+3. Set **Edit subscriptions** and **View subscriptions** to **Allow**.
+
+Alternatively, add that account to **Project Administrators** on the project.
+
+To confirm hooks exist after the permission is granted: **Project settings** → **Service hooks**. You should see Web Hooks subscriptions whose URL contains `/callback/azure-devops`.
+
 ## Validation
 
 - **Login**: After Step 2 and 3, the Login step shows a check mark and you return to Conviso Platform.
@@ -142,6 +169,7 @@ If **Check connection** is available, use it to confirm that the integration can
 | **No organizations in the dropdown** | Ensure your Microsoft account has access to at least one Azure DevOps organization. Check at [https://dev.azure.com](https://dev.azure.com). |
 | **"The integration must have at least one organization selected"** | You must select at least one organization in the Authorization step before saving or importing repositories. Go back to Authorization and select at least one organization. |
 | **Repositories do not appear after import** | Import is processed asynchronously. Wait a few moments and refresh the Configuration tab. If they still do not appear, use **Check connection** and try importing again. |
+| **Assets imported, but PR scans / merge AST / new-repo auto-import do not run** | The connecting account likely lacks **Edit subscriptions** on the Azure project. Grant it (see [Service hook permissions](#service-hook-permissions)), then reconnect or ask Conviso support to re-register the Service Hooks. In Azure, **Project settings** → **Service hooks** should list a Web Hook to Conviso. Accepting the Microsoft OAuth consent screen is not sufficient. |
 
 ## Support
 

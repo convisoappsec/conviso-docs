@@ -55,6 +55,7 @@ Work in this order: **Azure DevOps setup first**, then **Conviso Platform**.
 You need:
 
 - [Azure DevOps ALM integration](./azure-devops.md) connected (OAuth), with repositories imported as assets.
+- The Microsoft account that connected the integration has **Edit subscriptions** on each Azure **project** you scan (Service Hooks for merged pull requests). Consent in Microsoft Entra is not enough — see **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
 - At least one application repository **imported as an asset** and **enabled**.
 - A dedicated orchestrator repository (or an empty repo you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
 - Permission to create pipelines and set **pipeline variables** on the orchestrator.
@@ -407,7 +408,7 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no pipeline | **AST scans on merge** off; organization/project/pipeline ID/Ref incomplete; asset disabled or not imported; PR destination ≠ asset branch / Ref; service hooks unhealthy |
+| Merge done, no pipeline | **AST scans on merge** off; organization/project/pipeline ID/Ref incomplete; asset disabled or not imported; PR destination ≠ asset branch / Ref; connecting user lacks **Edit subscriptions** so no Service Hook was registered ([details](./azure-devops.md#service-hook-permissions)) |
 | `Repository is not available for this API key` | Wrong environment (`CONVISO_API_KEY` vs `api_url`); Azure integration not authorized; asset not imported/enabled for that company |
 | Unreadable / HTML response from Platform | Use the production API host (`https://api.convisoappsec.com`). The template remaps `https://app.convisoappsec.com` automatically |
 | Initialize containers fails | Confirm `options: --entrypoint ""` is present on the container |

@@ -28,6 +28,7 @@ Before enabling PR Scans, ensure that:
 1. Your **[Azure DevOps integration](./azure-devops.md)** is already configured and connected.
 2. Repositories are imported and mapped as assets in the integration configuration.
 3. You have permission to edit integration settings in Conviso Platform.
+4. The Microsoft account that connected the integration has **Edit subscriptions** and **View subscriptions** on each Azure DevOps **project** you scan. Conviso registers Service Hooks on the project to receive pull request events. Accepting the Microsoft OAuth consent screen does **not** grant this. By default only **Project Administrators** have it. See **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
 
 ---
 
@@ -50,7 +51,9 @@ Ensure the target repositories are present and enabled in the configuration tabl
 PR scans only run for repositories that are part of the integration scope.
 
 :::info
-Changes take effect for new PRs and new commits pushed to existing PRs.
+Turning **PR Scans** on does not register Azure Service Hooks. Those are created when the integration can edit subscriptions on the project. If the connecting user lacks that permission, the toggle stays on in Conviso and Azure never notifies the platform.
+
+After hooks exist, changes take effect for new PRs and new commits pushed to existing PRs.
 :::
 
 ---
@@ -105,7 +108,8 @@ Check:
 
 1. **PR Scans** toggle is enabled in integration configuration.
 2. The repository is authorized/imported in Azure DevOps integration.
-3. The PR event reached the platform and worker processing completed.
+3. The connecting account has **Edit subscriptions** on that Azure **project**, and **Project settings** → **Service hooks** shows a Web Hook whose URL contains `/callback/azure-devops`. If assets imported but this list is empty, grant the permission and re-register hooks — see **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
+4. The PR event reached the platform and worker processing completed.
 
 ### Status or comment not updated
 
