@@ -57,14 +57,6 @@ This integration addresses a single pipeline creation that serves multiple repos
 ## Jenkinsfile Pipeline Script
 
 ```yml
-// Here you should map http_git_url with the Conviso project code
-def get_project_code(repo_url){
-    project_codes = [
-        "<url_to_git_repo>": '<project_code>',
-    ]
-    return project_codes[repo_url]
-}
-
 pipeline {
 
   agent {
@@ -75,23 +67,17 @@ pipeline {
   }
 
 environment {
-    FLOW_API_KEY      = credentials('FLOW_API_KEY')
-    FLOW_PROJECT_CODE = get_project_code(webhook_repository_git_http_url)
-    PREVIOUS_COMMIT = "$webhook_before"
-    CURRENT_COMMIT = "$webhook_after"
+    CONVISO_API_KEY = credentials('CONVISO_API_KEY')
+    // The commit the webhook reports as the previous one: only what changed
+    // since it is scanned.
+    BASELINE_COMMIT = "$webhook_before"
 }
 
   stages {
     stage('AppSec_Flow') {
       steps {
         git credentialsId: '<credential_personal_access_token_name>', url: "$webhook_repository_git_http_url"
-        sh 'conviso deploy create -f env_vars with values -p $PREVIOUS_COMMIT -c $CURRENT_COMMIT > created_deploy_vars'
-        sh '''
-            . ./created_deploy_vars
-            conviso sast run \
-            --start-commit "$FLOW_DEPLOY_PREVIOUS_VERSION_COMMIT" \
-            --end-commit "$FLOW_DEPLOY_CURRENT_VERSION_COMMIT"
-        '''
+        sh 'conviso sast run'
       }
     }
   }
@@ -104,29 +90,26 @@ environment {
 }
 ```
 
-## Associating Conviso Projects to the Pipeline
+## Associating Repositories to Assets
 
-The repository must have an AST (Application Security Testing) or CCR (Continuous Code Review) Project. The Project mapping must be inserted at the pipeline's initialization session. As an example, as the Project Key from a particular Project is ```deadbeef1234``` and the repository is ```https://github.com/convisoappsec/raptor```, then the file's initial session will be as shown below:
+Nothing has to be mapped. The scan reads the remote of the repository it just cloned, matches it against the assets of your company, and creates one when there is no match — so a webhook from a new repository works without touching the pipeline.
+
+Pin the asset explicitly only when the automatic lookup is not what you want, by exporting `CONVISO_ASSET_ID` in the `environment` block:
 
 ```yml
-def get_project_code(repo_url){
-    project_codes = [
-        "https://github.com/convisoappsec/raptor": 'deadbeef1234',
+def get_asset_id(repo_url){
+    asset_ids = [
+        "https://github.com/convisoappsec/raptor": '1234',
+        "another_repo": '5678'
     ]
-    return project_codes[repo_url]
+    return asset_ids[repo_url]
 }
 ```
 
-Thus, when receiving a webhook configured at the repository, the pipeline will be able to work at this repository. The ```get_project_code``` function may work with multiple repositories, as long as you respect the syntax of a Groovy function:
-
 ```yml
-def get_project_code(repo_url){
-    project_codes = [
-        "https://github.com/convisoappsec/raptor": 'deadbeef1234',
-        "another_repo": 'another_key',
-        "third_repo": 'third_key'
-    ]
-    return project_codes[repo_url]
+environment {
+    CONVISO_API_KEY  = credentials('CONVISO_API_KEY')
+    CONVISO_ASSET_ID = get_asset_id(webhook_repository_git_http_url) ?: ''
 }
 ```
 

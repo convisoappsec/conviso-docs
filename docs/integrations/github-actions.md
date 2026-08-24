@@ -16,7 +16,7 @@ keywords: [Github Actions]
 
 With Conviso Platform integrated with [Github Actions](https://github.com/) in your CI/CD Pipeline, you can automate and streamline your security processes, ensuring that your applications undergo thorough security assessments throughout the development lifecycle.
 
-You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, and **Code Review** directly on your pipeline.
+You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, **Infrastructure as Code (IaC)** analysis, **SBOM** generation and **secret detection** directly on your pipeline.
 
 The [security scans workflow](../security-scans/conviso-ast) is a docker image in this integration for all execution and connection with the Conviso Platform.
 
@@ -51,7 +51,7 @@ By the end of this tutorial, you will know how to:
 
 ## Perform a Conviso AST scan to analyze your application's security
 
-Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. This versatile tool combines Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review capabilities, providing comprehensive security analysis directly within your pipeline.
+Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. A single `conviso ast run` combines SAST, SCA, IaC, SBOM and secret analysis, providing comprehensive security coverage directly within your pipeline.
 
 Follow the steps below to integrate Conviso AST seamlessly into your pipeline, creating a comprehensive solution within your ```.yml``` file:
 
@@ -74,7 +74,7 @@ jobs:
    - uses: actions/checkout@v6
 
    - name: Run AST
-     run: conviso ast run --vulnerability-auto-close
+     run: conviso ast run
 ```
 
 The identified vulnerabilities will be automatically sent to your Asset on Conviso Platform. Now you can use the [Vulnerabilities](../platform/vulnerabilities) resource to work on the correction flow.
@@ -213,7 +213,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Run AST
-        run: conviso ast run --vulnerability-auto-close
+        run: conviso ast run
 ```
 
 ### Running the Workflow Manually
@@ -249,10 +249,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Run AST
-        run: conviso ast run --vulnerability-auto-close
+        run: conviso ast run
 ```
 
-We recommend using the `:latest` tag so every run picks up the most recent CLI release — including new analyzers, detection rules, and fixes — with no manual upgrades. Pin a specific version (for example `convisoappsec/convisoast:3.0.8`) only when you have a strict need for fully reproducible runs.
+We recommend using the `:latest` tag so every run picks up the most recent CLI release — including new analyzers, detection rules, and fixes — with no manual upgrades. Pin a specific release tag only when you have a strict need for fully reproducible runs.
 
 :::tip Combine with pull request checks
 Pair this with a `pull_request` trigger (shown in the [AST scan example](#perform-a-conviso-ast-scan-to-analyze-your-applications-security) above) to get feedback *before* merge, while the `push` trigger keeps your default branch authoritative *after* merge.
@@ -317,7 +317,7 @@ jobs:
         EOF
 
     - name: Run AST
-      run: conviso ast run --vulnerability-auto-close
+      run: conviso ast run
   
     - name: Run Security Gate
       run: conviso vulnerability assert-security-rules --rules-file 'security-gate.yml'

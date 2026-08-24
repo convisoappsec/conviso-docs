@@ -18,7 +18,7 @@ keywords:
 
 The Conviso Platform **GitHub AST Orchestrator** runs Conviso AST from **one** GitHub repository (the orchestrator). Application repositories do **not** need a Conviso workflow.
 
-When an eligible pull request is **merged**, Conviso calls GitHub Actions `workflow_dispatch` on the orchestrator and passes the target repository and branch. The workflow obtains a short-lived clone credential from the Platform (using your API key), checks out the target repository, runs `conviso-ast`, and sends findings to the mapped asset.
+When an eligible pull request is **merged**, Conviso calls GitHub Actions `workflow_dispatch` on the orchestrator and passes the target repository and branch. The workflow obtains a short-lived clone credential from the Platform (using your API key), checks out the target repository, runs `conviso ast run`, and sends findings to the mapped asset.
 
 You do **not** store a GitHub Personal Access Token for cloning.
 
@@ -29,7 +29,7 @@ flowchart LR
     A[PR merged on target repo] --> B[Conviso Platform]
     B -->|workflow_dispatch on Ref| C[Orchestrator repo<br/>.github/workflows/ast.yml]
     C -->|conviso-ast-repository-token<br/>GitHub App install token| D[Checkout target repo]
-    D --> E[conviso-ast]
+    D --> E[conviso ast run]
     E --> F[Findings on the asset]
 ```
 
@@ -178,27 +178,27 @@ jobs:
   run-ast-scan:
     runs-on: ubuntu-latest
     container:
-      image: convisoappsec/convisoast_v2:latest
+      image: convisoappsec/convisoast:latest
 
     steps:
       - name: Get repository token
         id: repo_token
         env:
-          CONVISO_APIKEY: ${{ secrets.CONVISO_API_KEY }}
+          CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
           API_URL: ${{ inputs.api_url }}
           CONVISO_REPO_FULL_NAME: ${{ inputs.repo_full_name }}
           ASSET_ID: ${{ inputs.asset_id }}
           SCAN_RUN_ID: ${{ inputs.scan_run_id }}
         run: |
           set -euo pipefail
-          export CONVISO_BASE_URL="${API_URL:-https://api.convisoappsec.com}"
-          CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
-          case "$CONVISO_BASE_URL" in
+          export CONVISO_API_URL="${API_URL:-https://api.convisoappsec.com}"
+          CONVISO_API_URL="${CONVISO_API_URL%/}"
+          case "$CONVISO_API_URL" in
             https://app.convisoappsec.com)
-              export CONVISO_BASE_URL="https://api.convisoappsec.com"
+              export CONVISO_API_URL="https://api.convisoappsec.com"
               ;;
             https://staging.convisoappsec.com)
-              export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+              export CONVISO_API_URL="https://api.staging.convisoappsec.com"
               ;;
           esac
           case "${ASSET_ID:-}" in
@@ -212,7 +212,7 @@ jobs:
           TOKEN=$(conviso-ast-repository-token --provider github)
           echo "::add-mask::$TOKEN"
           echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
-          echo "base_url=$CONVISO_BASE_URL" >> "$GITHUB_OUTPUT"
+          echo "base_url=$CONVISO_API_URL" >> "$GITHUB_OUTPUT"
 
       - name: Checkout target repository
         uses: actions/checkout@v6
@@ -224,8 +224,8 @@ jobs:
 
       - name: Run Conviso AST
         env:
-          CONVISO_APIKEY: ${{ secrets.CONVISO_API_KEY }}
-          CONVISO_BASE_URL: ${{ steps.repo_token.outputs.base_url }}
+          CONVISO_API_KEY: ${{ secrets.CONVISO_API_KEY }}
+          CONVISO_API_URL: ${{ steps.repo_token.outputs.base_url }}
           CONVISO_COMPANY_ID: ${{ inputs.company_id || vars.CONVISO_COMPANY_ID }}
           ASSET_ID: ${{ inputs.asset_id }}
           SCAN_RUN_ID: ${{ inputs.scan_run_id }}
@@ -243,7 +243,7 @@ jobs:
             ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
             *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
           esac
-          conviso-ast -p . -o /tmp/conviso-ast-session.zip
+          conviso ast run --repository-dir . --output /tmp/conviso-ast-session.zip
 
       - name: Upload session log
         if: always()
@@ -292,7 +292,7 @@ jobs:
 1. Developer merges a PR into the configured merge target on an imported, enabled asset.
 2. Conviso validates the event and configuration, then calls `workflow_dispatch` on `owner/orchestrator` / `ast.yml` / **Ref**.
 3. Inputs include at least: `repo_full_name`, `branch` (PR base), `commit_sha`, `pr_number`, `api_url`, `company_id`, `asset_id` (blank values may be omitted).
-4. Job steps: issue repository token → checkout target at `branch` → run `conviso-ast` → upload session artifact.
+4. Job steps: issue repository token → checkout target at `branch` → run `conviso ast run` → upload session artifact.
 5. Findings appear on the asset in Conviso Platform.
 6. In GitHub, open the **orchestrator** → **Actions** → **AST Scan Orchestrator** to inspect the run.
 

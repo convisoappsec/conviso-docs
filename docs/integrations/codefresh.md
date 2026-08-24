@@ -51,19 +51,20 @@ steps:
 
 ```txt title="Output:"
 Executing command: conviso --help
-Usage: conviso [OPTIONS] COMMAND [ARGS]...
-Options:
-  -k, --api-key TEXT  The api key to access conviso resources. [env var: FLOW_API_KEY]
-  -u, --api-url TEXT  The api url to access conviso resources. [env var: FLOW_API_URL; default: https://app.convisoappsec.com]
-  -i, --api-insecure  HTTPS requests to untrusted hosts is enable. [env var: FLOW_API_INSECURE; default: False]
-  -h, --help          Show this message and exit.
-  -v, --version       Show the version and exit.
+Conviso AST 0.3.9
+
 Commands:
-  deploy
-  finding
-  sast
-  sca
-Run conviso COMMAND --help for more information on a command.
+
+  conviso ast run [options]           run SAST, SCA, IaC, SBOM and secret
+  conviso sast run [options]          run the SAST scanner
+  conviso sca run [options]           run the SCA scanner
+  conviso iac run [options]           run the IaC scanner
+  conviso sbom generate [options]     generate the SBOM
+  conviso secret run [options]        run the secret scanner
+  conviso container run <image>       scan a container image (not part of ast)
+  conviso <command> dry-run           the same scan, no platform writes
+  ...
+
 Successfully ran freestyle step: AST Hello
 ```
 
@@ -113,7 +114,7 @@ conviso_sample:
     type: "freestyle"
     image: "convisoappsec/convisoast"
     commands:
-      - "conviso ast run --vulnerability-auto-close"
+      - "conviso ast run"
     stage: "test"
     working_directory: "/codefresh/volume/${{CF_REPO_NAME}}"
 ```
