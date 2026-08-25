@@ -81,36 +81,39 @@ module.exports = {
           label: "Scanning your Application",
           collapsed: true,
           items: [
+            // How scans are configured in the Platform. Kept apart from the engines
+            // below so AST configuration has one home instead of three.
             {
-              type: 'doc',
-              label: 'Scan Application with Conviso',
-              id: 'security-scans/conviso-ast/conviso-ast'
+              type: 'category',
+              label: 'Scan Configs',
+              link: {
+                type: 'doc',
+                id: 'security-scans/scan-configs/scan-configs',
+              },
+              collapsed: true,
+              items: [
+                'security-scans/scan-configs/creating-scan-configs',
+                'security-scans/scan-configs/ast-defaults',
+                'security-scans/scan-configs/ast-rules',
+                'security-scans/scan-configs/running-scans',
+              ],
             },
+            // The engines themselves — what each one analyzes and how to run it directly.
             {
-              type: 'doc',
-              label: 'Scan Application with Conviso DAST',
-              id: 'security-scans/conviso-dast/conviso-dast'
+              type: 'category',
+              label: 'Scanners',
+              collapsed: true,
+              // Labels come from each doc's `sidebar_label` frontmatter, which wins over
+              // anything set here — so these are plain ids.
+              items: [
+                'security-scans/conviso-ast/conviso-ast',
+                'security-scans/conviso-dast/conviso-dast',
+                'security-scans/conviso-sbom/conviso-sbom',
+                'security-scans/conviso-containers/conviso-containers',
+                'security-scans/reachability-analysis',
+              ]
             },
-            {
-              type: 'doc',
-              label: 'Software Bill of Materials (SBOM)',
-              id: 'security-scans/conviso-sbom/conviso-sbom'
-            },
-            {
-              type: 'doc',
-              label: 'Reachability Analysis',
-              id: 'security-scans/reachability-analysis'
-            },
-            {
-              type: 'doc',
-              label: 'Scan Container with Conviso',
-              id: 'security-scans/conviso-containers/conviso-containers'
-            },
-            {
-              type: 'doc',
-              label: 'Pull Request Scanning',
-              id: 'security-scans/pull-requests/pull-requests'
-            },
+            'security-scans/pull-requests/pull-requests',
             'security-scans/security-gate',
           ]
         },
