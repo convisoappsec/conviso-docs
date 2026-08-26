@@ -236,7 +236,7 @@ To assign users to the Conviso Platform SSO application, follow these steps:
 Finally, you can view the Microsoft Entra ID users with access to the Conviso Platform.
 
 :::note
-Users must be invited to the Conviso Platform beforehand to be able to log in.
+The first SSO login creates the account, so a user does not have to be invited to the Conviso Platform beforehand. What decides what they see is **access**: a user who arrives without an invite and without a mapped group logs in successfully and sees nothing until someone grants them access.
 :::
 
 ## Setup Group Mapping Integration
@@ -284,7 +284,7 @@ A SAML assertion carries [at most 150 groups](https://learn.microsoft.com/en-us/
 This setup simplifies user management, as permissions and access will be managed through the Team, while users are managed via Entra ID.
 
 :::note
-Users must be invited to the Conviso Platform beforehand to be able to log in.
+A user who arrives through a mapped group needs nobody to act: the Team already carries its accesses, and they apply on that first login. This only works if the `groups` claim actually reaches the platform — see the settings above.
 :::
 
 ## Setup Role Mapping Integration
@@ -344,7 +344,7 @@ Declaring the first mapping is what hands the access profiles of that company ov
 While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
 
 :::note
-An access profile says what a user can do; it does not by itself grant access to the company. Users must be invited to the Conviso Platform beforehand to be able to log in.
+An access profile says what a user is allowed to do; it is not what gives them access to the company's data. That comes from an invite or from a Team the user joined through group mapping. A user mapped only by role logs in with the mapped profile and still sees nothing until they have access.
 :::
 
 You are now ready to go. To log in again with an email from the domain specified in the integration, use the **SSO Access** option on the [Conviso Platform website](https://app.convisoappsec.com/).
