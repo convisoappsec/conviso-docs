@@ -129,7 +129,7 @@ To set up the Conviso Platform, follow these steps:
 
 2. In the left navigation pane, click on **Integrations**.
 
-3. From the Integrations panel, select the **Identity Management** category, find the **Entra ID** card and click **Connect**.
+3. From the Integrations panel, select the **Authentication** category, find the **Entra ID** card and click **Connect**.
 
 <div style={{textAlign: 'center'}}>
 
@@ -259,10 +259,10 @@ Make sure that the claim `name` is mapped to the attribute corresponding to the 
 Three settings on the Entra ID side decide whether group mapping works at all, and getting any of them wrong fails silently — the mapping saves, no error appears, and the user simply never joins the Team:
 
 - **The group claim has to be enabled.** Under **Single sign-on → Attributes & Claims**, add a group claim if there is none.
-- **It has to be named `groups`, with an empty namespace.** Tick *Customize the name of the group claim* and set the name to `groups`. Entra ID's default name is the long `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`, which does not match.
-- **The source has to include your group types.** *Security groups* omits Microsoft 365 groups entirely. *Groups assigned to the application* is the recommended option: it keeps the claim small and avoids the limit below.
+- **It has to be named `groups`, with an empty namespace.** In the group claim dialog, customize the claim name to `groups`. Entra ID's default name carries a Microsoft namespace, and that one the Conviso Platform does not read.
+- **The source has to include your group types.** *Security groups* does not emit Microsoft 365 groups. *Groups assigned to the application* is the safest option, and the one Microsoft recommends for large organizations, because of the limit below.
 
-Entra ID stops sending the group claim once a user belongs to more than 150 groups, replacing it with a link the platform cannot follow. If your users are in many groups, prefer App Roles — see [Role Mapping](#setup-role-mapping-integration).
+A SAML assertion carries [at most 150 groups](https://learn.microsoft.com/en-us/entra/identity-platform/optional-claims#configure-groups-optional-claims), nested groups included. Above that, a user's groups may not reach the Conviso Platform at all.
 :::
 
 2. Assign users to the Entra ID group.
@@ -295,7 +295,7 @@ Roles travel as an Entra ID **App Role**, so a user's profile is granted in Entr
 
 ### On the Entra ID side
 
-1. In the [Microsoft Entra admin center](https://entra.microsoft.com/), browse to **Identity** > **Applications** > **App registrations** and open the registration behind your Conviso Platform SSO application.
+1. In the [Microsoft Entra admin center](https://entra.microsoft.com/), browse to **Entra ID** > **App registrations** and open the registration behind your Conviso Platform SSO application.
 
 2. Select **App roles** > **Create app role** and create one role for each access profile you intend to grant. Fill in:
    - **Display name**: any label — it is what appears when you assign the role.
@@ -312,12 +312,12 @@ Roles travel as an Entra ID **App Role**, so a user's profile is granted in Entr
    - **Source attribute**: `user.assignedroles`
 
 :::caution
-The claim has to be named exactly `roles` with an empty namespace. Entra ID also emits App Roles under its own default name, `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`, which the Conviso Platform does not read. Without the claim above, no role reaches the platform, and — once you have declared at least one mapping — every user is treated as carrying no role. See [What happens on each login](#what-happens-on-each-login).
+The claim has to be named exactly `roles`, with an empty namespace. Entra ID also emits App Roles under a default claim name carrying a Microsoft namespace, and that one the Conviso Platform does not read. Without the claim above, no role reaches the platform, and — once you have declared at least one mapping — every user is treated as carrying no role. See [What happens on each login](#what-happens-on-each-login).
 :::
 
 ### On the Conviso Platform side
 
-1. Log in to the Conviso Platform, go to **Integrations** > **Authentication** > **Azure** and open your integration.
+1. Log in to the Conviso Platform, go to **Integrations** > **Authentication** > **Entra ID** and open your integration.
 
 2. Open the **Role Mapping** step.
 
@@ -338,17 +338,13 @@ The comparison ignores case and surrounding spaces, so `Conviso-Admin` matches `
 Declaring the first mapping is what hands the access profiles of that company over to Entra ID. From then on, every SSO login re-evaluates the user's profile:
 
 - **A role that matches a mapping** — the user gets the mapped access profile, replacing whatever profile they had.
-- **No role, or only roles that match nothing** — the user is set to **Viewer Only**. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in Entra ID.
+- **No role, or only roles that match nothing** — the user is set to the global **viewer-only** profile. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in Entra ID.
 - **More than one matching role** — one of them is applied, and there is no guarantee of which: the order of a multivalued claim is not defined, so it may differ between logins. Assign a single mapped role per user.
 
 While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
 
 :::note
 An access profile says what a user can do; it does not by itself grant access to the company. Users must be invited to the Conviso Platform beforehand to be able to log in.
-:::
-
-:::note
-Role mapping is available for SAML integrations.
 :::
 
 You are now ready to go. To log in again with an email from the domain specified in the integration, use the **SSO Access** option on the [Conviso Platform website](https://app.convisoappsec.com/).
