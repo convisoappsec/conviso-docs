@@ -24,9 +24,17 @@ Unlike traditional, time-consuming full scans, PR Scanning leverages differentia
 
 1. **Trigger:** A developer opens a new Pull Request or pushes new commits to an existing one.
 2. **Detection:** The Conviso Platform automatically detects the event via the configured integration.
-3. **Differential Scan:** The scanning engine isolates and analyzes **only the modified files** introduced by the PR.
-4. **Feedback & Review:** The findings are reported back directly to the Pull Request as comments or status checks. This includes detailed information about the vulnerability, the exact line of code, and how to fix it.
-5. **Remediation:** The developer pushes a fix, which automatically triggers a re-scan. Once clear, the PR can be safely merged.
+3. **Differential Scan:** The scanning engine isolates and analyzes **only the modified files** introduced by the PR, comparing the PR's head against its target branch.
+4. **Security Gate Verdict:** The Platform evaluates the vulnerabilities the PR introduces against your configured [Security Gate](../security-gate.md) policy and publishes a **Pass**, **Warning**, or **Fail** result back to the Pull Request as a status check or comment, together with the exact vulnerability, line of code, and remediation guidance.
+5. **Remediation:** The developer pushes a fix, which automatically triggers a new scan attempt. Once the gate passes, the PR can be safely merged.
+
+### How Findings Are Evaluated
+
+PR Scanning is **delta-aware**: the scan compares the PR's head commit against its target branch, so only vulnerabilities the PR actually **introduces** are counted. Vulnerabilities that already existed on the target branch before the PR do not block it by default — developers are not asked to fix unrelated, pre-existing debt just to merge their change.
+
+The pass/warning/fail decision itself reuses your existing [Security Gate](../security-gate.md) configuration — the same severity and aging thresholds you already use for CI/CD — so a repository does not need a second, separate policy for Pull Requests. An asset-level Security Gate configuration takes precedence over the company-wide one, exactly as it does elsewhere.
+
+Every scan is retained as a durable, immutable **PR Run**, so you can review its findings, the exact Security Gate reason, and re-run it later. See [Pull Request Run History](./pr-runs.md) for how to inspect this history in the Platform.
 
 ## Supported Integrations
 
@@ -34,7 +42,7 @@ The Conviso Platform seamlessly integrates with major Application Lifecycle Mana
 
 ### GitHub Integration
 
-By integrating with GitHub, you can enable zero-configuration Automated PR Scanning. When activated, Conviso automatically reports findings as comments directly on the GitHub PR timeline, acting as an automated security reviewer. 
+By integrating with GitHub, you can enable zero-configuration Automated PR Scanning. When activated, Conviso publishes a GitHub Check for every PR head and posts one canonical comment summarizing the Security Gate result, acting as an automated security reviewer.
 
 To enable this, navigate to the GitHub Integration settings in the Conviso Platform and toggle the **PR Scans** option.
 
