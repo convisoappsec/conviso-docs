@@ -2,13 +2,15 @@
 id: github-ast-orchestrator
 title: GitHub AST Orchestrator
 sidebar_label: AST Orchestrator
-description: Configure a centralized GitHub Actions repository to run Conviso AST after PR merges using only CONVISO_API_KEY.
+description: Configure a centralized GitHub Actions repository to run Conviso AST after PR merges on every branch matching your AST branch pattern, using only CONVISO_API_KEY.
 keywords:
   [
     GitHub AST Orchestrator,
     Application Security Testing,
     GitHub Actions,
     pipeline-orchestrator,
+    AST branch pattern,
+    multi-branch AST,
     conviso-ast-repository-token,
     Conviso Platform,
   ]
@@ -38,7 +40,7 @@ What Conviso checks before dispatching:
 1. The event is a pull request that was **merged** (`action: closed` and `merged: true`).
 2. **AST Scans** is enabled on the GitHub integration.
 3. The repository is an **imported asset** that is **enabled**.
-4. The PR **base branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
+4. The PR **base branch** matches the configured [AST branch pattern](#ast-branch-pattern).
 
 The Actions run always appears on the **orchestrator** repository (not on the application repository).
 
@@ -64,23 +66,65 @@ You need:
 | **Orchestrator repository** | GitHub repo that contains `.github/workflows/ast.yml`. Conviso triggers this repo only. |
 | **Target repository** | Application repo imported as an asset. It must **not** rely on a local Conviso workflow for this flow. |
 | **Ref** | Branch or tag **of the orchestrator** where GitHub loads `ast.yml` when Conviso calls `workflow_dispatch`. If you leave Ref empty in Conviso, dispatch defaults to **`main`**. |
-| **Merge target branch** | The PR **base** branch on the **target** repo that is allowed to trigger a scan (for example `main`). See below. |
+| **AST branch pattern** | Regular expression matched against the merged PR's **base** branch on the **target** repo. Only a branch it matches triggers a scan. See below. |
 | **Asset** | Imported repository in Conviso (`owner/repo`) where findings are stored. |
 
-### Merge target branch
+### AST branch pattern
 
-Conviso compares the merged PR’s **base branch** to:
+Conviso decides whether a merge triggers a scan by matching the merged PR's **base branch**
+against a **regular expression** you configure — the **AST branch pattern**. One pattern can name
+several branches (`main|develop`) or a whole family of them (`release/.*`).
 
-1. The asset’s configured AST / branch mapping, if set; otherwise  
-2. The integration **Ref** (`orchestrator_ref`).
+Before this, the platform compared that branch to a **single name**, with exact equality. Only two
+setups were expressible: one branch, or every branch.
 
-| Configuration | What triggers a scan |
+#### Where you set it
+
+| Level | Where | Applies to |
+| --- | --- | --- |
+| **Repository** | The **Branch pattern** column on the repository table, in the integration's configuration step | That repository only |
+| **Integration** | **Branch pattern that runs the AST**, on the integration configuration page | Every repository of this integration that has no pattern of its own |
+
+#### Which one applies
+
+The first level that is configured wins:
+
+1. The repository's own **Branch pattern**.
+2. The integration's **Branch pattern that runs the AST**.
+3. The integration **Ref** — *legacy fallback*, so nothing changes for a setup that was already using Ref as a branch filter.
+4. Nothing configured — **every branch** triggers a scan.
+
+:::note Ref is the orchestrator's branch, not a branch policy
+**Ref** means "which branch of the orchestrator repository holds `ast.yml`". It was reused as a branch
+filter before the branch pattern existed, and it still is when nothing else is set — but it is no
+longer the field to use for branch policy. Set a branch pattern instead, and leave Ref meaning the
+one thing it should mean.
+:::
+
+#### How a pattern is matched
+
+* **The whole branch name must match.** `main` matches `main` and nothing else — not `maintenance`, not `remain`.
+* **A plain branch name behaves exactly as it did before.** Every value already configured in your account keeps meaning exactly what it means today. There is nothing to migrate and nothing you need to do.
+* **`|` is how you list branches:** `main|develop|homolog`.
+* **The pattern is validated when you save it.** One that does not compile, is longer than 500 characters, or is too slow to evaluate is refused, with the reason shown under the field.
+* **A pattern that fails at merge time does not dispatch.** If a stored expression errors or times out while a merge is being evaluated, Conviso skips the scan rather than spending your CI budget on a decision it could not make.
+
+#### Examples
+
+| Pattern | Merges that trigger a scan |
 | --- | --- |
-| Asset branch = `master`, Ref = `main` | Only merges **into `master`** on that asset |
-| Asset branch empty, Ref = `main` | Only merges **into `main`** on that asset |
-| Asset branch empty and Ref empty | No branch filter (any base branch can trigger). Prefer setting Ref explicitly. |
+| *(nothing set at any level)* | Every branch |
+| `main` | `main` only |
+| `main\|develop` | `main` and `develop` |
+| `release/.*` | Every branch under `release/` |
+| `main\|release/.*` | `main`, and every branch under `release/` |
+| `main` *(stored before this feature)* | `main` only — unchanged |
 
-**Ref is still the orchestrator branch that holds the workflow.** It is reused as the default merge-target filter when the asset has no branch of its own. Those are two roles of the same field — do not confuse “where `ast.yml` lives” with “any branch on the target”.
+#### Running the AST on demand
+
+**Run AST** on the asset offers a **Branch to scan** picker, listing only the branches that match
+that asset's pattern. If the pattern matches none of the asset's branches, the button is disabled
+and says so — adjust the pattern in the integration settings.
 
 ---
 
@@ -275,21 +319,25 @@ jobs:
    - **Orchestrator Repo** — `owner/repo` of the orchestrator.
    - **Workflow Filename or ID** — `ast.yml`.
    - **Ref** — orchestrator branch/tag that contains `.github/workflows/ast.yml` (e.g. `main`). If empty, Conviso dispatches with ref **`main`**.
+   - **Branch pattern that runs the AST** — optional regular expression for the branches on the **target** repositories that should trigger a scan, e.g. `main|develop`. Leave it empty to keep using **Ref** as the filter. See [AST branch pattern](#ast-branch-pattern).
 4. Save.
 
 ![Orchestrator Configuration](../../static/img/github/github-ast-orchestrator.png)
 
-### Step 5 – Assets and merge target
+### Step 5 – Assets and branch pattern
 
 1. Confirm each application repository is **imported** and **enabled**.
-2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
-3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
+2. Set **Branch pattern that runs the AST** on the integration page when more than one branch should be scanned — `main|develop`, or `release/.*`.
+3. Override it for a single repository from the **Branch pattern** column on the repository table, when that one ships from a different branch than the rest.
+4. If you set neither, the integration **Ref** is still used as the filter (legacy behavior); if Ref is empty too, every branch triggers a scan.
+
+See [AST branch pattern](#ast-branch-pattern) for how the expression is matched and validated.
 
 ---
 
 ## End-to-end flow (after setup)
 
-1. Developer merges a PR into the configured merge target on an imported, enabled asset.
+1. Developer merges a PR into a branch matching the AST branch pattern, on an imported, enabled asset.
 2. Conviso validates the event and configuration, then calls `workflow_dispatch` on `owner/orchestrator` / `ast.yml` / **Ref**.
 3. Inputs include at least: `repo_full_name`, `branch` (PR base), `commit_sha`, `pr_number`, `api_url`, `company_id`, `asset_id` (blank values may be omitted).
 4. Job steps: issue repository token → checkout target at `branch` → run `conviso-ast` → upload session artifact.
@@ -303,7 +351,7 @@ jobs:
 | Secret | `CONVISO_API_KEY` exists on the orchestrator |
 | Path | `.github/workflows/ast.yml` is on the **Ref** branch |
 | Conviso | Orchestrator `owner/repo` + `ast.yml` + Ref saved; **AST Scans** on |
-| Asset | Target repo imported, enabled; merge target branch matches mapping or Ref |
+| Asset | Target repo imported, enabled; the merged branch matches the AST branch pattern (repository level, integration level, or Ref as the legacy fallback) |
 | After merge | New run under orchestrator **Actions**; findings (or a clean result) on the asset |
 
 *Successful orchestrator run: Get repository token → Checkout → Run Conviso AST.*
@@ -320,12 +368,16 @@ Manual test (optional): on the orchestrator, **Actions → AST Scan Orchestrator
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no Actions run | **AST Scans** off; orchestrator fields incomplete; asset disabled or not imported; PR base branch ≠ asset branch / Ref; GitHub App cannot see the repos |
+| Merge done, no Actions run | **AST Scans** off; orchestrator fields incomplete; asset disabled or not imported; the merged branch does not match the AST branch pattern; GitHub App cannot see the repos |
+| A branch you expected to scan is skipped | The pattern does not match the whole branch name. `main` does not match `main-hotfix`; use `main.*` if that is what you meant. Check the repository pattern first — it overrides the integration's |
+| No branch scans any more, after editing a pattern | A stored pattern that fails to compile or times out is treated as "do not dispatch". Reopen the field, save a valid expression, and confirm it is accepted |
+| The pattern is refused when you save it | It does not compile, is longer than 500 characters, or is too slow to evaluate. The reason is shown under the field |
+| **Run AST** is disabled on the asset | The pattern matches none of the asset's branches. Adjust it in the integration settings |
 | Workflow never listed | File not under `.github/workflows/`, or not on the **Ref** branch Conviso uses |
 | Token step fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`) |
 | Checkout 403 | GitHub App lacks access to the **target** repository |
 | Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` input and without variable `CONVISO_COMPANY_ID` |
-| Wrong code scanned | Merge target / `branch` input mismatch; confirm you merged into the configured base branch |
+| Wrong code scanned | `branch` input mismatch; confirm you merged into a branch the AST branch pattern matches |
 
 ## Related guides
 
