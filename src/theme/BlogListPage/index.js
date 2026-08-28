@@ -1,6 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
 import clsx from 'clsx';
+import { LAST_DOC_KEY, FILTERS_STORAGE_KEY } from '@site/src/theme/releaseStorageKeys';
 import {
   TYPE_TAGS,
   TYPE_LABELS,
@@ -146,11 +148,57 @@ function FilterGroup({ title, options, selected, onToggle, renderLabel }) {
   );
 }
 
+// Persist the Release Notes filters for the duration of the browser session,
+// so navigating away (e.g. to the main docs) and back to /releases restores
+// the last applied filters. Guarded for SSR, where `window` is undefined.
+function readStoredFilters() {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.sessionStorage.getItem(FILTERS_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
 export default function BlogListPage({ items }) {
+  // Start empty so server-rendered HTML matches the first client render
+  // (avoids hydration mismatch); the stored filters are applied right after
+  // mount in the effect below.
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedModules, setSelectedModules] = useState([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+
+  // On mount, restore the last-used filters from this browser session.
+  useEffect(() => {
+    const stored = readStoredFilters();
+    if (stored) {
+      setSelectedTypes(stored.types ?? []);
+      setSelectedProducts(stored.products ?? []);
+      setSelectedModules(stored.modules ?? []);
+    }
+    setHydrated(true);
+  }, []);
+
+  // Persist filters whenever they change (only after the initial restore,
+  // so we don't overwrite stored values with the empty initial state).
+  useEffect(() => {
+    if (!hydrated || typeof window === 'undefined') return;
+    try {
+      window.sessionStorage.setItem(
+        FILTERS_STORAGE_KEY,
+        JSON.stringify({
+          types: selectedTypes,
+          products: selectedProducts,
+          modules: selectedModules,
+        })
+      );
+    } catch (e) {
+      /* storage unavailable (private mode, quota) — ignore */
+    }
+  }, [hydrated, selectedTypes, selectedProducts, selectedModules]);
 
   // Always show the full official taxonomy in the filters, not only the
   // tags currently in use by posts.
@@ -204,6 +252,17 @@ export default function BlogListPage({ items }) {
     selectedTypes.length + selectedProducts.length + selectedModules.length;
   const hasActiveFilters = activeCount > 0;
 
+  // Last documentation page the user was reading this session (set in Root.js),
+  // used to offer a "continue reading" shortcut back into the docs.
+  const [lastDocPath, setLastDocPath] = useState(null);
+  useEffect(() => {
+    try {
+      setLastDocPath(window.sessionStorage.getItem(LAST_DOC_KEY));
+    } catch (e) {
+      /* storage unavailable — ignore */
+    }
+  }, []);
+
   return (
     <Layout
       title="Release Notes"
@@ -222,6 +281,11 @@ export default function BlogListPage({ items }) {
             release published so far. Learn more in the{' '}
             <a href="/releases/intro">introduction</a>.
           </p>
+          {lastDocPath && (
+            <Link className={styles.continueReading} to={lastDocPath}>
+              ← Continue reading the docs
+            </Link>
+          )}
         </div>
         <div className={styles.layout}>
           {/* Mobile filter toggle */}
