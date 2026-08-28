@@ -25,12 +25,19 @@ function parseEntry(key) {
   };
 }
 
-// Most recent first: sort by publish timestamp; the date-prefixed slug is a
-// deterministic tiebreaker when timestamps are identical.
+function isOfficialRelease(entry) {
+  const tags = entry.module?.frontMatter?.tags ?? [];
+  return tags.some((tag) => String(tag).toLowerCase() === 'release notes');
+}
+
+// The homepage highlights the latest official, consolidated release—not an
+// individual feature update. The date-prefixed slug is a deterministic
+// tiebreaker when timestamps are identical.
 const releaseEntries = releaseModules
   .keys()
   .map(parseEntry)
   .filter(Boolean)
+  .filter(isOfficialRelease)
   .sort((a, b) => b.timestamp - a.timestamp || b.fullSlug.localeCompare(a.fullSlug));
 
 export default function LatestReleaseHighlight() {
