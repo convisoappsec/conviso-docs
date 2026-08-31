@@ -133,11 +133,12 @@ When done, click on the **Finish** button:
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/google-img4.png)
+![img](../../static/img/sso-google-credentials.png)
 
 </div>
 
 4. At last, click **Continue** to store your Google SSO integration configuration.
+
 
 The two steps that follow — **Group Mapping** and **Role Mapping** — are optional, and each is covered in its own section below. Once the integration is saved you can come back at any time and jump straight to a step by clicking its title.
 
@@ -167,6 +168,12 @@ Two more things worth knowing about this mapping: a custom SAML app accepts at m
 
 3. In the Google SSO integration page, open the **Group Mapping** step, select the Team you created and associate it with that identifier. Use **Add mapping** to declare more than one.
 
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/sso-google-group-mapping.png)
+
+</div>
+
 4. Click **Continue**.
 
 ## Setup Role Mapping Integration
@@ -192,6 +199,12 @@ The app attribute has to be named exactly `roles`, and the value has to match th
 1. Open the **Role Mapping** step of the integration.
 
 2. For each role, type the value exactly as Google Workspace sends it and select the access profile it should grant. Use **Add mapping** to declare more than one.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/sso-google-role-mapping.png)
+
+</div>
 
 3. Click **Confirm**.
 

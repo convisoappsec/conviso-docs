@@ -62,7 +62,7 @@ After retrieving the necessary data from your SSO platform, paste them to their 
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/saml-img2.png  "Conviso Platform integration.")
+![img](../../static/img/sso-saml-credentials.png "Conviso Platform integration.")
 
 </div>
 
@@ -94,6 +94,12 @@ An attribute under any other name is not read, and the mapping fails silently: i
 
 3. In the SAML 2.0 integration page, open the **Group Mapping** step, select the Team you created and associate it with that identifier. Use **Add mapping** to declare more than one.
 
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/sso-saml-group-mapping.png)
+
+</div>
+
 4. Click **Continue**.
 
 ## Setup Role Mapping Integration
@@ -115,6 +121,12 @@ The comparison ignores case and surrounding spaces. Everything else has to match
 1. Open the **Role Mapping** step of the integration.
 
 2. For each role, type the value exactly as your provider asserts it and select the access profile it should grant. Use **Add mapping** to declare more than one.
+
+<div style={{textAlign: 'center'}}>
+
+![img](../../static/img/sso-saml-role-mapping.png)
+
+</div>
 
 3. Click **Confirm**.
 
