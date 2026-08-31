@@ -121,7 +121,7 @@ When done, click on the **Finish** button:
 
 </div>
 
-2. Log on to **Conviso Platform**. Make sure your **Company** is selected. Select **Integrations** on the left menu and then select **Identity Management**. Find the Google SSO card and click on Connect::
+2. Log on to **Conviso Platform**. Make sure your **Company** is selected. Select **Integrations** on the left menu and then select **Authentication**. Find the Google SSO card and click on Connect::
 
 <div style={{textAlign: 'center'}}>
 
@@ -137,11 +137,81 @@ When done, click on the **Finish** button:
 
 </div>
 
-4. At last, click Save to store your Google SSO integration configuration.  
+4. At last, click **Continue** to store your Google SSO integration configuration.
+
+The two steps that follow — **Group Mapping** and **Role Mapping** — are optional, and each is covered in its own section below. Once the integration is saved you can come back at any time and jump straight to a step by clicking its title.
+
+## Setup Group Mapping Integration
+
+Group mapping puts a user in a Conviso **Team** based on the Google Workspace groups they belong to. Once a mapping exists, every SSO login applies it: the user joins the mapped Teams, and loses the mapped Teams their groups no longer include.
+
+### On the Google Workspace side
+
+1. In the **Google Admin Console**, open your Conviso Platform SAML app and go to the **Attribute mapping** step.
+
+2. Under **Group membership (optional)**, click **Search for a group**, type a few letters of the group name and select it. Repeat for every group you intend to map.
+
+3. In **App attribute**, enter **`groups`**.
+
+:::caution
+The app attribute has to be named exactly `groups`. Any other name is not read by the Conviso Platform, and the mapping fails silently: it saves, no error appears, and the user simply never joins the Team.
+
+Two more things worth knowing about this mapping: a custom SAML app accepts at most 75 groups, and the assertion carries only the groups the user actually belongs to, directly or indirectly. Groups you did not list here are never sent.
+:::
+
+### On the Conviso Platform side
+
+1. [Create a Team](../platform/user-management.md) in the Conviso Platform, specifying the desired Profile and Access Type for the group's users.
+
+2. Retrieve the Google Workspace group identifier — the value the app attribute will carry for that group.
+
+3. In the Google SSO integration page, open the **Group Mapping** step, select the Team you created and associate it with that identifier. Use **Add mapping** to declare more than one.
+
+4. Click **Continue**.
+
+## Setup Role Mapping Integration
+
+Group mapping decides which **Team** a user joins. Role mapping decides which **access profile** the user gets — what they are allowed to do once inside the company. The two are independent: you can use either, or both.
+
+### On the Google Workspace side
+
+Google Workspace has no built-in role concept for SAML apps, so the value has to come from a user attribute you map yourself:
+
+1. Create a [custom user attribute](https://knowledge.workspace.google.com/admin/apps/creating-custom-attributes-using-the-user-schema) to hold the role, and fill it in for each user.
+
+2. In the SAML app's **Attribute mapping** step, under **Google Directory attributes**, click the **Select field** menu and choose that attribute.
+
+3. In the matching **App attributes** field, enter **`roles`**.
+
+:::caution
+The app attribute has to be named exactly `roles`, and the value has to match the one you type in the Conviso Platform character for character, apart from case and surrounding spaces.
+:::
+
+### On the Conviso Platform side
+
+1. Open the **Role Mapping** step of the integration.
+
+2. For each role, type the value exactly as Google Workspace sends it and select the access profile it should grant. Use **Add mapping** to declare more than one.
+
+3. Click **Confirm**.
+
+### What happens on each login
+
+Declaring the first mapping is what hands the access profiles of that company over to Google Workspace. From then on, every SSO login re-evaluates the user's profile:
+
+- **A role that matches a mapping** — the user gets the mapped access profile, replacing whatever profile they had.
+- **No role, or only roles that match nothing** — the user is set to the global **viewer-only** profile. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in Google Workspace.
+- **More than one matching role** — one of them is applied, and there is no guarantee of which: the order of a multivalued attribute is not defined, so it may differ between logins. Assign a single mapped role per user.
+
+While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
+
+:::note
+An access profile says what a user is allowed to do; it is not what gives them access to the company's data. That comes from an invite or from a Team the user joined through group mapping. A user mapped only by role logs in with the mapped profile and still sees nothing until they have access.
+:::
 
 ## Verifying Google SSO Integration
 
-To check if everything is correct, you may click **Integrations**, then **Identity Managment**:
+To check if everything is correct, you may click **Integrations**, then **Authentication**:
 
 <div style={{textAlign: 'center'}}>
 
