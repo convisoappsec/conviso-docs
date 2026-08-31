@@ -18,7 +18,7 @@ For more information about SBOM in Conviso Platform, [click here](../security-sc
 
 ## How to generate and view components in Conviso Platform
 
-An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run`, `conviso sca run` or `conviso sbom generate`.
+An SBOM file will be generated and sent to the respective asset each time you run `conviso ast run` or `conviso sbom generate`.
 
 After executing any of these commands, simply navigate to the **SBOM Management** section:
 

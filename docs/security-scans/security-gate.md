@@ -184,7 +184,13 @@ This view helps you confirm:
 
 ## Running Security Gate in CI/CD with AST
 
-After the policy is defined, execute Security Gate in the pipeline with Conviso AST.
+After the policy is defined, execute Security Gate in the pipeline with Conviso AST. It is a **step of its own**, run after the scan: a `conviso ast run` reports findings and exits `0`, and this command is what decides whether the build proceeds.
+
+The gate evaluates **one branch** — the checked-out one, or the one named with `-b` / `--branch`. It reads a verdict and never creates an asset: when no asset matches the repository, it warns and exits `0`, so set `CONVISO_ASSET_ID` to point at the right one.
+
+:::info Deprecated
+`conviso vulnerability assert-security-rules` prints a deprecation banner and will be removed. It stays supported so a pipeline that gates on it keeps blocking while it migrates to the policy configured on the Platform.
+:::
 
 ### Using Platform-based Configuration
 
@@ -214,11 +220,11 @@ If you prefer to keep the rule in the repository, use:
 conviso vulnerability assert-security-rules --rules-file 'FILE_NAME.yml'
 ```
 
-This makes the pipeline evaluate the YAML rule directly from the repository instead of the Platform configuration.
+This makes the pipeline apply the thresholds declared in the repository instead of the ones configured on the Platform.
 
 ## Understanding CLI Results
 
-After running the assertion command, the pipeline receives a success or failure result. The output format depends on whether you use **Platform-based** or **YAML-based** configuration.
+After running the assertion command, the pipeline receives a success or failure result. Both configuration models print the same report; the first line names which policy was applied.
 
 ### Platform-based Results
 
@@ -292,36 +298,24 @@ The command exits with a non-zero status on failure, so the pipeline should be t
 
 ### YAML-based Results
 
-When you pass `--rules-file`, the CLI evaluates the local YAML policy directly. That path keeps the legacy output format:
-
-#### Success Response
+When you pass `--rules-file`, the report is the same as above — severity summary, failure breakdown, and `--output` — with the header naming the file the thresholds came from:
 
 ```text
-💬 Starting vulnerability security rules assertion...
-💬 Applying the given rules at the security gate:
-...
-✅ Vulnerability security rules assertion finished.
+💬 Running security gate with rules from security-gate.yml...
+💬 Security Gate Result for Asset: my-api (ID: 42)
+   Execution Date: 2026-06-10T14:32:11Z
+   Branch: main
+
+   Severity Summary:
+   ✅ CRITICAL: 0/0
+   ❌ HIGH: 7/2
+   ✅ MEDIUM: 1/10
+   ⚪ LOW: N/A (not configured)
 ```
 
-#### Failure Response
+Only the limits come from the file: the vulnerabilities behind the verdict are the ones the Platform's own gate counts, on the same branch and with the same statuses, so both configuration models produce comparable numbers for the same asset.
 
-```text
-💬 Starting vulnerability security rules assertion...
-💬 Vulnerabilities summary...
-[
-    {
-        "from": "any",
-        "severity": {
-            "high": {
-                "quantity": 7
-            }
-        }
-    }
-]
-Error: Vulnerabilities quantity offending security rules
-```
-
-YAML-based runs do not include the enriched vulnerability box or `--output` integration. Prefer Platform-based configuration when you want actionable failure details directly in CI logs.
+An invalid rules file is an error, not a pass — the command says what is wrong with it and exits non-zero. The same applies when the Platform cannot be reached: a verdict that could not be obtained never reads as a success.
 
 ## Programmatic Access via GraphQL
 

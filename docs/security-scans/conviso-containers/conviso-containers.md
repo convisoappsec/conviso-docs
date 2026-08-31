@@ -29,7 +29,7 @@ You can always learn more in our blog:
 
 Before proceeding, ensure you have the following:
 
-- [Conviso CLI Image](https://hub.docker.com/r/convisoappsec/convisocli/) \(for development or local testing environments, you can also install the Conviso CLI via [PyPI](https://pypi.org/project/conviso-cli/)\);
+- The [Conviso AST image](https://hub.docker.com/r/convisoappsec/convisoast), which carries the `conviso` command. See [Conviso AST](../conviso-ast/conviso-ast.md) for installation and authentication;
 - A built container image available or a pulled public image.
 
 ## Running the Conviso Image Scan
@@ -68,7 +68,7 @@ If you want to integrate the Image Scan into your CI/CD pipeline, follow the ins
 - [GitLab](../../integrations/gitlab.md#running-the-conviso-containers).
 
 :::note
-To obtain detailed insights from our image scans, we utilize Trivy, a robust tool that efficiently scans container images and filesystems for vulnerabilities.
+Image scanning is performed by the Conviso container engine, which inspects every layer of the image and its filesystem for vulnerable OS packages.
 :::
 
 ## How to View Container Vulnerabilities in Conviso Platform
