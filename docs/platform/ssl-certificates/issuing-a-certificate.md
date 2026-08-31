@@ -87,7 +87,7 @@ The platform generates the CSR and the private key for you. Fill in:
 
 | Field | Required | Notes |
 | --- | --- | --- |
-| **Common Name (domain)** | Yes | The main domain, up to 64 characters. For a wildcard product it must start with `*.`, for example `*.acme.com` |
+| **Common Name (domain)** | Yes | The main domain, up to 64 characters. A `SSL Wildcard` product requires it to start with `*.`, for example `*.acme.com`. A multi-domain wildcard product accepts one here but does not require it |
 | **Additional domains (SAN)** | No | Multi-domain products only. Type a domain and press Enter; commas, semicolons and spaces also separate entries |
 | **Organization** | For OV and EV | The organization's legal name |
 | **Country**, **State**, **City** | For OV and EV | The organization's location |
@@ -257,7 +257,7 @@ it and how to force a re-check.
 | `The Common Name for this product must start with *.` | You chose a wildcard product but entered a plain domain. Enter `*.example.com`, or choose a non-wildcard product. |
 | `This product does not accept a wildcard Common Name` | The opposite case: use a wildcard product, or a plain domain. |
 | `EV certificates do not accept wildcard Common Names or SANs` | EV cannot cover wildcards. Use a DV or OV wildcard product. |
-| `Multi-domain certificates do not accept wildcards in the Common Name or SANs` | Remove the wildcard entries, or issue a separate wildcard certificate. |
+| `This product does not accept a wildcard domain. Use a multi-domain product with wildcard` | The product you selected is not sold with wildcard coverage. Spend a credit of `SSL MDC Wildcard DV` or `SSL SAN Wildcard DV`, or remove the wildcard entries. |
 | `This product does not accept additional SAN domains` | The product covers a single domain. Choose a multi-domain product. |
 | `This CSR contains {n} domains, but the selected product allows at most {max}...` | Your CSR carries more domains than the credit covers. Use a CSR with fewer domains, or request a credit with more domains. |
 | `Enter a valid DNS domain` | The domain is not a valid DNS name. Check for typos, trailing dots or a protocol prefix such as `https://`. |
