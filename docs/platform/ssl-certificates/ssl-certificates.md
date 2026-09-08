@@ -82,6 +82,7 @@ The coverage decides which host names the certificate is valid for.
 | **Wildcard**                     | `SSL Wildcard DV`               | A domain and one level of its subdomains, for example `*.acme.com` |
 | **Multi-domain (MDC)**           | `SSL MDC OV`                    | Several distinct domains in a single certificate                   |
 | **SAN / Unified Communications** | `SSL SAN EV`                    | Several host names listed as Subject Alternative Names             |
+| **Multi-domain with wildcard**   | `SSL MDC Wildcard DV`, `SSL SAN Wildcard DV` | Several domains, where any of them may be a wildcard  |
 
 The **Type** column combines both axes, so `SSL Wildcard DV` is a wildcard certificate with domain
 validation, and `SSL MDC OV` is a multi-domain certificate with organization validation.
@@ -92,8 +93,11 @@ Not every coverage works with every validation level, and the platform refuses i
 before the order reaches the certificate authority:
 
 - **EV certificates cannot cover wildcard domains.** A wildcard needs DV or OV.
-- **Multi-domain certificates cannot contain wildcards**, neither in the Common Name nor in the
-  additional domains.
+- **Whether a multi-domain certificate can contain a wildcard depends on the product you spend.**
+  `SSL MDC DV` and `SSL SAN DV` reject one, in the Common Name and in the additional domains alike.
+  `SSL MDC Wildcard DV` and `SSL SAN Wildcard DV` accept one in either place, and each wildcard
+  takes one of the certificate's domain slots, exactly like an ordinary domain. Multi-domain **EV**
+  products never accept one.
 - A **wildcard product requires a Common Name starting with `*.`**, and a non-wildcard product
   rejects one.
 - **Wildcard domains cannot be validated over HTTPS.** They accept DNS (CNAME) or e-mail
@@ -102,8 +106,10 @@ before the order reaches the certificate authority:
 :::tip Choosing
 If you need to protect an unpredictable set of subdomains, choose a **wildcard**. If you need to
 protect a fixed set of _different_ domains, choose a **multi-domain** certificate and list them as
-additional domains. If a browser padlock showing your legal identity matters to your business,
-choose **OV** or **EV** — and plan for the extra verification.
+additional domains. If you need both at once — a fixed set of domains where one of them has to be a
+wildcard — choose one of the **multi-domain wildcard** products. If a browser padlock showing your
+legal identity matters to your business, choose **OV** or **EV** — and plan for the extra
+verification.
 :::
 
 ## Before You Start
