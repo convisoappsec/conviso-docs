@@ -2,13 +2,15 @@
 id: gitlab-ast-orchestrator
 title: GitLab AST Orchestrator
 sidebar_label: AST Orchestrator
-description: Configure a centralized GitLab CI project to run Conviso AST after MR merges using only CONVISO_API_KEY.
+description: Configure a centralized GitLab CI project to run Conviso AST after MR merges on every branch matching your AST branch pattern, using only CONVISO_API_KEY.
 keywords:
   [
     GitLab AST Orchestrator,
     Application Security Testing,
     GitLab CI,
     pipeline-orchestrator,
+    AST branch pattern,
+    multi-branch AST,
     conviso-ast-repository-token,
     Conviso Platform,
   ]
@@ -38,7 +40,7 @@ What Conviso checks before dispatching:
 1. The event is a merge request that was **merged**.
 2. **AST scans on merge** is enabled on the GitLab integration.
 3. The repository is an **imported asset** that is **enabled**.
-4. The MR **target branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
+4. The MR **target branch** matches the configured [AST branch pattern](#ast-branch-pattern).
 
 The pipeline always appears on the **orchestrator** project (not on the application project).
 
@@ -63,23 +65,65 @@ You need:
 | **Orchestrator project** | GitLab project that contains `.gitlab-ci.yml`. Conviso triggers this project only. |
 | **Target repository** | Application project imported as an asset. It must **not** rely on a local Conviso CI file for this flow. |
 | **Ref** | Branch or tag **of the orchestrator** where GitLab loads `.gitlab-ci.yml` when Conviso creates the pipeline. |
-| **Merge target branch** | The MR **target** branch on the **target** project that is allowed to trigger a scan (for example `main`). See below. |
+| **AST branch pattern** | Regular expression matched against the merged MR's **target** branch on the **target** project. Only a branch it matches triggers a scan. See below. |
 | **Asset** | Imported repository in Conviso (`group/project` path) where findings are stored. |
 
-### Merge target branch
+### AST branch pattern
 
-Conviso compares the merged MR’s **target branch** to:
+Conviso decides whether a merge triggers a scan by matching the merged MR's **target branch**
+against a **regular expression** you configure — the **AST branch pattern**. One pattern can name
+several branches (`main|develop`) or a whole family of them (`release/.*`).
 
-1. The asset’s configured AST / branch mapping, if set; otherwise  
-2. The integration **Ref** (`orchestrator_ref` / pipeline ref).
+Before this, the platform compared that branch to a **single name**, with exact equality. Only two
+setups were expressible: one branch, or every branch.
 
-| Configuration | What triggers a scan |
+#### Where you set it
+
+| Level | Where | Applies to |
+| --- | --- | --- |
+| **Project** | The **Branch pattern** column on the project table, in the integration's configuration step | That project only |
+| **Integration** | **Branch pattern that runs the AST**, on the integration configuration page | Every project of this integration that has no pattern of its own |
+
+#### Which one applies
+
+The first level that is configured wins:
+
+1. The project's own **Branch pattern**.
+2. The integration's **Branch pattern that runs the AST**.
+3. The integration **Ref** — *legacy fallback*, so nothing changes for a setup that was already using Ref as a branch filter.
+4. Nothing configured — **every branch** triggers a scan.
+
+:::note Ref is the orchestrator's branch, not a branch policy
+**Ref** means "which branch of the orchestrator project holds `.gitlab-ci.yml`". It was reused as a branch
+filter before the branch pattern existed, and it still is when nothing else is set — but it is no
+longer the field to use for branch policy. Set a branch pattern instead, and leave Ref meaning the
+one thing it should mean.
+:::
+
+#### How a pattern is matched
+
+* **The whole branch name must match.** `main` matches `main` and nothing else — not `maintenance`, not `remain`.
+* **A plain branch name behaves exactly as it did before.** Every value already configured in your account keeps meaning exactly what it means today. There is nothing to migrate and nothing you need to do.
+* **`|` is how you list branches:** `main|develop|homolog`.
+* **The pattern is validated when you save it.** One that does not compile, is longer than 500 characters, or is too slow to evaluate is refused, with the reason shown under the field.
+* **A pattern that fails at merge time does not dispatch.** If a stored expression errors or times out while a merge is being evaluated, Conviso skips the scan rather than spending your CI budget on a decision it could not make.
+
+#### Examples
+
+| Pattern | Merges that trigger a scan |
 | --- | --- |
-| Asset branch = `master`, Ref = `main` | Only merges **into `master`** on that asset |
-| Asset branch empty, Ref = `main` | Only merges **into `main`** on that asset |
-| Asset branch empty and Ref empty | No branch filter (any target branch can trigger). Prefer setting Ref explicitly. |
+| *(nothing set at any level)* | Every branch |
+| `main` | `main` only |
+| `main\|develop` | `main` and `develop` |
+| `release/.*` | Every branch under `release/` |
+| `main\|release/.*` | `main`, and every branch under `release/` |
+| `main` *(stored before this feature)* | `main` only — unchanged |
 
-**Ref is still the orchestrator branch that holds `.gitlab-ci.yml`.** It is reused as the default merge-target filter when the asset has no branch of its own. Those are two roles of the same field — do not confuse “where the CI file lives” with “any branch on the target”.
+#### Running the AST on demand
+
+**Run AST** on the asset offers a **Branch to scan** picker, listing only the branches that match
+that asset's pattern. If the pattern matches none of the asset's branches, the button is disabled
+and says so — adjust the pattern in the integration settings.
 
 ---
 
@@ -209,6 +253,7 @@ If Conviso fails to trigger with **Insufficient permissions to set pipeline vari
 3. Under **Orchestrator pipeline**, fill:
    - **Project ID** — numeric GitLab project ID of the orchestrator.
    - **Ref** — orchestrator branch/tag that contains `.gitlab-ci.yml` (e.g. `main`).
+   - **Branch pattern that runs the AST** — optional regular expression for the branches on the **target** projects that should trigger a scan, e.g. `main|develop`. Leave it empty to keep using **Ref** as the filter. See [AST branch pattern](#ast-branch-pattern).
 4. Save.
 
 The Project ID is shown in GitLab under the orchestrator project → **Settings → General**:
@@ -223,17 +268,20 @@ Then paste it into Conviso and set the ref:
 
 ![Orchestrator pipeline configuration in Conviso](../../static/img/gitlab-alm/ast-01-orchestrator-config.png)
 
-### Step 5 – Assets and merge target
+### Step 5 – Assets and branch pattern
 
 1. Confirm each application project is **imported** and **enabled**.
-2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
-3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
+2. Set **Branch pattern that runs the AST** on the integration page when more than one branch should be scanned — `main|develop`, or `release/.*`.
+3. Override it for a single project from the **Branch pattern** column on the project table, when that one ships from a different branch than the rest.
+4. If you set neither, the integration **Ref** is still used as the filter (legacy behavior); if Ref is empty too, every branch triggers a scan.
+
+See [AST branch pattern](#ast-branch-pattern) for how the expression is matched and validated.
 
 ---
 
 ## End-to-end flow (after setup)
 
-1. Developer merges an MR into the configured merge target on an imported, enabled asset.
+1. Developer merges an MR into a branch matching the AST branch pattern, on an imported, enabled asset.
 2. Conviso validates the event and configuration, then creates a pipeline on the orchestrator project / **Ref**.
 3. Variables include at least: `repo_full_name`, `branch` (MR target), `commit_sha`, `mr_iid`, `api_url`, `company_id`, `asset_id` (blank values may be omitted).
 4. Job steps: issue repository token → clone target at `branch` → run `conviso-ast` → upload session artifact.
@@ -247,7 +295,7 @@ Then paste it into Conviso and set the ref:
 | Variable | `CONVISO_API_KEY` exists on the orchestrator (Masked; Protected only if Ref is protected) |
 | Path | `.gitlab-ci.yml` is on the **Ref** branch |
 | Conviso | Orchestrator Project ID + Ref saved; **AST scans on merge** on |
-| Asset | Target project imported, enabled; merge target branch matches mapping or Ref |
+| Asset | Target project imported, enabled; the merged branch matches the AST branch pattern (project level, integration level, or Ref as the legacy fallback) |
 | After merge | New pipeline on the orchestrator with job `run-ast-scan`; findings (or a clean result) on the asset |
 
 *Successful orchestrator pipeline: stage `scan`, job `run-ast-scan` Passed.*
@@ -264,14 +312,18 @@ Manual test (optional): on the orchestrator, **Build → Pipelines → New pipel
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no pipeline | **AST scans on merge** off; Project ID/Ref incomplete; asset disabled or not imported; MR target branch ≠ asset branch / Ref |
+| Merge done, no pipeline | **AST scans on merge** off; Project ID/Ref incomplete; asset disabled or not imported; the merged branch does not match the AST branch pattern |
+| A branch you expected to scan is skipped | The pattern does not match the whole branch name. `main` does not match `main-hotfix`; use `main.*` if that is what you meant. Check the project pattern first — it overrides the integration's |
+| No branch scans any more, after editing a pattern | A stored pattern that fails to compile or times out is treated as "do not dispatch". Reopen the field, save a valid expression, and confirm it is accepted |
+| The pattern is refused when you save it | It does not compile, is longer than 500 characters, or is too slow to evaluate. The reason is shown under the field |
+| **Run AST** is disabled on the asset | The pattern matches none of the asset's branches. Adjust it in the integration settings |
 | **Insufficient permissions to set pipeline variables** | Set minimum role to Developer/Maintainer (see above) and ensure the OAuth user has that role |
 | `unrecognized arguments: sh -c ...` | Missing `entrypoint: [""]` on the `convisoast_v2` image |
 | Token / clone fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`); GitLab integration not authorized |
 | `CONVISO_API_KEY` empty / auth errors on unprotected branch | Variable is **Protected** but Ref is not a protected branch — uncheck Protected or protect the branch |
 | Unreadable / HTML response from Platform | Use the API host (`api.*`), not `app.*` / `staging.*`. The template normalizes those hosts automatically |
 | Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` and without variable `CONVISO_COMPANY_ID` |
-| Wrong code scanned | Merge target / `branch` mismatch; confirm you merged into the configured target branch |
+| Wrong code scanned | `branch` mismatch; confirm you merged into a branch the AST branch pattern matches |
 
 ## Related guides
 
