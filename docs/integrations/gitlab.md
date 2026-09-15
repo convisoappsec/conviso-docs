@@ -211,6 +211,86 @@ conviso-sca:
         - docker
 ```
 
+## Importing and Synchronizing Assets from External Scanners
+
+Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
+
+1. Access the [GitLab CI/CD Catalog](https://gitlab.com/explore/catalog).
+2. Search for **Sync External Scans with Conviso** or directly visit [this link](https://gitlab.com/explore/catalog/convisoappsec/gitlab-sync-component).
+3. In the project that will run the sync, go to **Settings → CI/CD → Variables** and add `CONVISO_API_KEY` with your [Conviso API Key](../api/api-overview.md#generate-api-key). Mark it as **Masked** and **Protect variable**. Keep Protect on so only pipelines on protected branches (and protected tags) receive the key.
+4. Edit your `.gitlab-ci.yml`.
+5. Configure the pipeline with the following code:
+```yaml
+include:
+  - component: gitlab.com/convisoappsec/gitlab-sync-component/sync@1
+    inputs:
+      company_id: 'your-company-id'
+      integration: 'FORTIFY' # or 'DEPENDENCY_TRACK' or 'CHECKMARX'
+      project_id: 'external-tool-project-id'
+```
+6. Save it and run the pipeline.
+
+If this pipeline also uploads the scan (Dependency-Track, Fortify, and similar), set `stage` (or `needs` in your YAML) so `conviso-sync` runs **after** that upload. Otherwise a fast pipeline can synchronize the previous run's results.
+
+**Field Descriptions**:
+- `CONVISO_API_KEY`: Your [Conviso API Key](../api/api-overview.md#generate-api-key). It is a CI/CD variable, not a component input. Store it masked and protected.
+- `company_id`: Your company ID in the Conviso Platform.
+- `project_id`: The project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency-Track).
+- `integration`: The name of the integration as specified in Conviso's GraphQL schema (e.g., `FORTIFY`, `CHECKMARX`, `DEPENDENCY_TRACK`). Use `SALT_SECURITY` for Salt Security.
+- `repository_url`: The repository this scan belongs to. Optional; it defaults to the GitLab project the pipeline runs in — see [Repository and branch](#repository-and-branch) below. Not sent for `SALT_SECURITY`.
+- `branch`: The branch this scan covers. Optional; it defaults to the branch that triggered the run.
+- `subproject_path`: Folder inside the repository this scanner project covers (monorepo). Optional; only sent together with a repository URL. Use a distinct path per include when two scanner projects share the same repository and branch.
+
+**Outputs**: the job writes `CONVISO_SYNC_ASSET_ID` and `CONVISO_SYNC_ASSET_NAME` to `conviso-sync.env` in the job workspace. That file is not a job artifact. Later jobs do not see those variables unless you publish the dotenv on `conviso-sync` after the include.
+
+**Expected Behaviors**:
+- **Importing a New Project**: If the external scanner's project does not exist in the Conviso Platform, it will be imported as a new asset.
+- **Synchronizing an Existing Project**: If the project already exists in the Conviso Platform, it will be synchronized to update its data.
+
+In both scenarios, the process is triggered by the pipeline and executed asynchronously. You can monitor the progress directly within the respective asset on the Conviso Platform.
+
+### Repository and branch
+
+The component also reports **which repository and which branch** the run is for. Both are optional
+inputs, and both are filled in from the pipeline when you leave them empty, so the usual setup
+needs no extra YAML:
+
+| Input | Where it comes from when left empty |
+| --- | --- |
+| `repository_url` | The GitLab project the pipeline is running in (`CI_PROJECT_URL`). Omitted for `SALT_SECURITY`. |
+| `branch` | The branch that triggered the run. On a **merge request** pipeline, this is the branch the merge request is **merging into**, not the source branch. Tag pipelines do not send a branch unless you set `branch`. |
+
+Setting `repository_url` (or leaving the default) attaches the scan to that repository. The Asset
+**keeps the scanner project name**; it is not renamed to `org/repo`. The `branch` input only takes
+effect together with a repository URL — on its own, Conviso Platform ignores the branch.
+
+:::caution
+In a merge request pipeline the reported branch is the merge request's **target** branch, so
+findings from that run are recorded against the branch you are merging into. If your target is the
+repository's default branch, those findings **count towards its risk score** before the code is
+merged.
+
+GitLab only creates a merge request pipeline if the project enables it (**Settings → Merge
+requests**, or `workflow:rules` in **your** `.gitlab-ci.yml`). The component does not inject
+`workflow:`. Without that, the job runs on the branch pipeline and records the source ref as if it
+were a push.
+
+Set the `branch` input explicitly if you want a merge request run recorded somewhere else.
+:::
+
+:::note
+A Branch without a Repository URL is discarded — the platform only records branches for
+repositories. The job warns you in the pipeline log when that happens, and the run still succeeds.
+:::
+
+A fork pipeline uses the fork's `CI_PROJECT_URL`. If the group API key is inherited, that run can
+create a second Asset for the same scanner project. Restrict the job in your YAML, for example
+`if: $CI_PROJECT_PATH == "org/repo"`. Do not unprotect the company key.
+
+The asset this job reports to becomes — or joins — the repository at that address, and the
+findings appear under the branch above. See
+[Repositories and Branches](../platform/repositories-and-branches.md#how-your-assets-become-repositories).
+
 **[Unlock the full potential of your Application Program  with Conviso Platform integrations. Visit our Integration page now to get started.](https://bit.ly/3NzvomE)**
 
 ## Support
