@@ -19,17 +19,17 @@ import TabItem from '@theme/TabItem';
 
 The Conviso MCP Server is a connector that exposes Conviso Platform data **and actions** to an LLM through the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client — Claude Desktop, Claude Code CLI, Cursor, or any other — can ask the model to fetch live, authoritative security context and perform operations, instead of relying on cached knowledge.
 
-The server ships **42 tools** in two families:
+The server ships **44 tools** in two families:
 
-- **Read tools (31)** — list and inspect companies, projects, assets, vulnerabilities, tickets, requirements, applications, scan histories, SBOM / supply-chain components, AI-Pentest artifacts and executions, threat-model artifacts, plus security metrics and deep links.
+- **Read tools (33)** — list and inspect companies, projects, assets, vulnerabilities, tickets, requirements and their project activities, applications, scan histories, SBOM / supply-chain components, AI-Pentest artifacts and executions, threat-model artifacts, plus security metrics, object-to-company lookup and deep links.
 - **Write tools (11)** — a generic, **allowlisted mutation engine** (`list_mutations` → `describe_mutation` → `execute_mutation`) plus curated shortcuts for the most common writes (change issue status, create vulnerabilities / projects / assets / tickets, run DAST, trigger an AI-Pentest).
 
-Everything the server can do is bounded by the **Conviso Platform API Key** you provide — the data returned and the operations allowed match that key's permissions.
+Everything the server can do is bounded by the **Conviso Platform API Key** you provide — the data returned and the operations allowed match that key's permissions. Write operations (except ticket creation) also honor the company's **MCP write policy** in Conviso Platform.
 
 
 ## Quick install
 
-Pick your client below and add the server, supplying your API key as `CONVISO_API_KEY`. Most examples run the published package with `npx` — no clone or build required. The write tools ship in all Node-based setups; only the **Python** edition (last tab) is read-only.
+Pick your client below and add the server, supplying your API key as `CONVISO_API_KEY`. Most examples run the published Node package with `npx` — no clone or build required. All setups below expose the same read and write tools.
 
 > **Read and write.** The server acts only within the permissions of the API key you provide.
 
@@ -177,16 +177,16 @@ Restart or reload your client after adding the entry. The tabs use the **stdio**
 |--------|------|-------|
 | **Companies** | List, inspect (plan, integrations, branding) | — |
 | **Vulnerabilities / Issues** | List (rich filters), full technical detail, severity overview, per-asset and per-project views | Change status, create/update (source-code, web, network), reassign, mark analyzed, bulk status, bulk delete |
-| **Projects** | List (filters), inspect | Create, update, change status, bulk status, bulk delete |
+| **Projects** | List (filters), inspect detailed planning and allocation data, list project types and statuses | Create (with requirements and assets), update, change status, bulk status, bulk delete |
 | **Assets** | List (filters), inspect | Create, update, run Conviso DAST |
 | **Tickets** | List, inspect | Create |
-| **Requirements / Checklists** | List by scope, inspect, list per project | Create/update, attach to projects |
+| **Requirements / Checklists** | List by scope, inspect, list per project, list instantiated project activities | Create/update, attach to projects |
 | **Applications** | List, inspect (with linked assets) | Create, update, add/remove assets |
 | **Scans** | Execution history, coverage counts | *(read-only)* |
 | **Supply chain / SBOM** | List components (license, versions, issues by severity) | *(read-only)* |
 | **AI-Pentest** | List artifacts, inspect scope & executions, execution results | Create/update artifact, trigger execution, cancel, retest |
 | **Threat Modeling** | List artifacts, inspect versions | Create artifact/version, update, generate requirements |
-| **Metrics & links** | MTTR over time, risk-score history, deep links, today's date | — |
+| **Utilities, metrics & links** | Resolve a company from an existing object, MTTR over time, risk-score history, deep links, today's date | — |
 
 ## Tools reference
 
@@ -196,13 +196,14 @@ Restart or reload your client after adding the entry. The tabs use the **stdio**
 |--------|------|-------------|
 | **General** | `get_companies` | List companies accessible with the API key (`search` = name contains, `label_eq` = exact match). |
 | **General** | `get_company_info` | Company detail: plan, integrations, branding metadata. |
-| **Vulnerabilities** | `get_issues` | List vulnerabilities for a company with rich filtering and sorting. |
+| **General** | `get_company_id_from_object` | Resolve the owning company from an issue, asset, project, AI-Pentest artifact/execution, or threat-model artifact ID before a write. |
+| **Vulnerabilities** | `get_issues` | List vulnerabilities with rich filtering and sorting; use `asset_id` or `project_id` to scope the results. |
 | **Vulnerabilities** | `get_issue` | Full technical detail for one issue; optional vulnerable code snippet and raw HTTP request/response. |
-| **Vulnerabilities** | `get_issues_by_asset_id` | Same filter set, scoped to a single asset. |
-| **Vulnerabilities** | `get_issues_by_project_id` | Same filter set, scoped to a single project. |
 | **Vulnerabilities** | `get_top_vulnerabilities` | Counts grouped by severity (risk overview), with optional filters. |
 | **Projects** | `get_projects` | List security projects for a company, with filters and sorting. |
-| **Projects** | `get_project` | Metadata for a specific project. |
+| **Projects** | `get_project` | Detailed project data: planning dates, effort, goals, scope, assigned users and teams, allocated hours, assets, requirement progress and project type. |
+| **Projects** | `get_project_types` | List project types and find the `type_id` required by `create_project`; supports label search. |
+| **Projects** | `get_project_statuses` | List valid project statuses (`id`, `label`, `isInitial`). |
 | **Assets** | `get_assets` | List assets for a company, with rich filtering and sorting. |
 | **Assets** | `get_asset` | Detail for a specific asset. |
 | **Tickets** | `get_tickets` | List tickets (paginated) with search and `TicketSearch` params. |
@@ -210,6 +211,7 @@ Restart or reload your client after adding the entry. The tabs use the **stdio**
 | **Requirements** | `get_requirements` | List requirements/checklists for a scope (company). |
 | **Requirements** | `get_requirement` | One requirement/checklist by id. |
 | **Requirements** | `get_project_requirements` | Requirements attached to a specific project. |
+| **Requirements** | `get_project_requirement_activities` | Instantiated activities for a project requirement, including status, assignees and history count. |
 | **Applications** | `get_applications` | List applications (name, url, riskScore, assetsCount). |
 | **Applications** | `get_application` | One application, including its linked assets. |
 | **Scans** | `get_scan_histories` | Scan executions (status, integration, duration, vuln counts). |
@@ -235,7 +237,7 @@ Restart or reload your client after adding the entry. The tabs use the **stdio**
 | **Engine** | `execute_mutation` | Run any **allowlisted** mutation by name with a generic input object. |
 | **Shortcut** | `change_issue_status` | Change an issue/vulnerability status. |
 | **Shortcut** | `create_source_code_vulnerability` | Create a manual source-code (SAST-style) vulnerability on an asset. |
-| **Shortcut** | `create_project` | Create a project. |
+| **Shortcut** | `create_project` | Create a project, optionally associating requirements and assets. Use `get_project_types` to find the required `type_id`. |
 | **Shortcut** | `create_asset` | Create an asset. |
 | **Shortcut** | `create_ticket` | Open a ticket. |
 | **Shortcut** | `run_dast` | Start a Conviso DAST scan on an asset. |
@@ -247,7 +249,7 @@ Restart or reload your client after adding the entry. The tabs use the **stdio**
 
 - **Conviso Platform API Key** — create it under **Profile > API Keys**.
 - An **MCP-compatible client**: Claude Desktop, Claude Code CLI, Cursor, or any client supporting stdio/HTTP MCP servers.
-- **Node.js 20.10+** (for the Node edition / write tools) or Docker. The Python edition (read-only) needs Python 3.10+.
+- **Node.js 20.10+** or Docker.
 
 Generate the key in the Conviso Platform under **Profile > API Keys** and copy it — you'll pass it to the server as the `CONVISO_API_KEY` value in the steps below.
 
@@ -270,6 +272,7 @@ Create a dedicated API key for the MCP server and set an expiration date. Grant 
 ### Tips for better prompts
 
 - **Provide the company ID** once you know it — it unlocks most tools. If you don't have it, start with "List my companies".
+- **For writes with only an object ID**, let the model call `get_company_id_from_object` first instead of guessing the company ID.
 - **Ask for links** at the end of any vulnerability or project query — the model calls `create_issue_url` / `create_project_url` as a follow-up.
 - **Combine context** — the AI keeps conversation context, so "now get the details for the first one" works after a list.
 - **Request formats** — ask for tables, bullet lists, or raw JSON ("format as a markdown table", "give me just the IDs").
@@ -278,7 +281,7 @@ Create a dedicated API key for the MCP server and set an expiration date. Grant 
 
 ## Security and privacy
 
-- The server operates strictly within the permissions of the provided **API Key** — for both reads and writes.
+- The server operates strictly within the permissions of the provided **API Key** — for both reads and writes. Except for ticket creation, writes also require the company's MCP write policy to be enabled.
 - **Writes are allowlisted.** Only the operations listed above are reachable; destructive ones (delete / bulk / cancel / remove) are flagged so the client prompts for confirmation.
 - `get_issue` with `return_vulnerable_data=true` may return exploit code, raw HTTP requests/responses, or secrets — use with care.
 - Create a **dedicated key with an expiration date**; do not reuse a personal API key, and scope it to the minimum permissions needed.
