@@ -51,7 +51,7 @@ steps:
 
 ```txt title="Output:"
 Executing command: conviso --help
-Conviso AST 0.3.9
+Conviso AST 4.0.0
 
 Commands:
 

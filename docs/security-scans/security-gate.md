@@ -186,7 +186,7 @@ This view helps you confirm:
 
 After the policy is defined, execute Security Gate in the pipeline with Conviso AST. It is a **step of its own**, run after the scan: a `conviso ast run` reports findings and exits `0`, and this command is what decides whether the build proceeds.
 
-The gate evaluates **one branch** — the checked-out one, or the one named with `-b` / `--branch`. It reads a verdict and never creates an asset: when no asset matches the repository, it warns and exits `0`, so set `CONVISO_ASSET_ID` to point at the right one.
+The gate evaluates **one branch** — the checked-out one, or the one named with `--branch-name`. It reads a verdict and never creates an asset: when no asset matches the repository, it warns and exits `0`, so set `CONVISO_ASSET_ID` to point at the right one.
 
 :::info Deprecated
 `conviso vulnerability assert-security-rules` prints a deprecation banner and will be removed. It stays supported so a pipeline that gates on it keeps blocking while it migrates to the policy configured on the Platform.

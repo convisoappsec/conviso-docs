@@ -115,7 +115,7 @@ docker pull convisoappsec/convisoast:latest
 ```
 
 :::tip Pinning versions
-Use `:latest` for day-to-day scanning. Pin an explicit release tag only when you need fully reproducible runs. Conviso AST checks its own version at startup and fails when it falls behind the minimum the Platform accepts, so a pinned tag has to be refreshed periodically.
+Use `:latest` for day-to-day scanning. Pin an explicit release tag only when you need fully reproducible runs — and refresh it periodically, or the scan keeps running rules and engines that no longer match the ones the Platform ships.
 :::
 
 ## Authentication
@@ -176,8 +176,9 @@ Every scan command accepts the same set of options:
 | :--- | :--- | :--- |
 | `-r`, `--repository-dir <dir>` | Directory to scan. | current directory |
 | `-o`, `--output <file>` | Where to write the session result zip. | `output.zip` |
-| `-b`, `--branch <name>` | Branch this scan covers. Overrides every automatic detection. | auto-detected |
+| `--branch-name <name>` | Branch this scan covers. Overrides every automatic detection. | auto-detected |
 | `--asset-id <id>` | Report to this asset, bypassing repository lookup and asset creation (env: `CONVISO_ASSET_ID`). | auto |
+| `--asset-name <name>` | Report to the asset with this name (env: `CONVISO_ASSET_NAME`). **Deprecated** — see [Asset resolution](#asset-resolution). | — |
 | `--company-id <id>` | Company the scan reports to (env: `CONVISO_COMPANY_ID`). | from environment |
 | `--dry-run` | Run without writing to the Platform. See [Dry-Run mode](#dry-run-mode). | off |
 | `-d`, `--debug` | Verbose output: execution flow, timeouts, and API responses. | off |
@@ -191,7 +192,7 @@ Every scan command accepts the same set of options:
 conviso --api-key "<your_api_key>" ast run
 ```
 
-An option this CLI does not know is dropped with a warning instead of failing the run, so a pipeline written for the previous CLI keeps scanning. See [Migrating from the previous CLI](#migrating-from-the-previous-cli).
+An option this CLI does not know is dropped with a warning instead of failing the run, so a pipeline written for the previous CLI keeps scanning.
 
 ### `conviso ast run`
 
@@ -277,7 +278,7 @@ conviso vulnerability assert-security-rules
 | :--- | :--- |
 | `--rules-file` | Path to a local YAML rules file. If omitted, uses the rules configured on the Platform. |
 | `-o`, `--output` | Write the gate result to a JSON file. |
-| `-b`, `--branch` | Branch to evaluate. Defaults to the checked-out branch. |
+| `--branch-name` | Branch to evaluate. Defaults to the checked-out branch. |
 | `--asset-id`, `--company-id` | Target selection. |
 | `-r`, `--repository-dir` | Directory the asset is resolved from. Default: current directory. |
 
@@ -306,18 +307,30 @@ Any finding that is no longer present is moved to a **closed** status on the Pla
 Conviso AST decides which asset receives the findings in this order:
 
 1. **`--asset-id`** (or `CONVISO_ASSET_ID`) — an exact match, bypassing every lookup.
-2. **`--asset-name`** (or `CONVISO_ASSET_NAME`) — **deprecated**, and only when given: the name outranks the asset the remote matches, and the scan warns when the two disagree. **It will be discontinued** — identify the asset with `--asset-id` (or `CONVISO_ASSET_ID`), which points at exactly one asset and never depends on a name staying unique.
+2. **`--asset-name`** (or `CONVISO_ASSET_NAME`) — **deprecated, see the warning below**, and only when given: the name outranks the asset the remote matches. When no asset carries that name, the scan reports to the asset the remote resolves to instead, and says so in the log.
 3. **Git remote URL** — the remote is normalized (SSH rewritten to canonical HTTPS, credentials stripped, every Azure DevOps spelling reduced to one) and matched against the repository of each asset in your company.
 4. **Creation** — when no asset matches, one is created from the repository name.
 
 No manual configuration is required: run the scan from inside a directory with a valid Git remote.
 
+:::warning `--asset-name` is being discontinued
+`--asset-name` / `CONVISO_ASSET_NAME` will be removed. Every scan that uses it logs a deprecation
+warning, and the replacement is **`--asset-id` / `CONVISO_ASSET_ID`**.
+
+A name is not an identity: two assets in the same company can carry the same one, and a name that
+stops resolving — after assets are consolidated on the Platform, for instance — sends the scan
+somewhere you did not choose. An id points at exactly one asset, for as long as that asset exists.
+
+Take the id from the asset's URL on the Platform, and move it into the pipeline before the option
+goes away.
+:::
+
 ### Branch detection
 
 Findings are associated with a branch so the Platform can track their lifecycle. Detection follows a strict priority order:
 
-1. **`-b` / `--branch`** — overrides everything else.
-2. **CI environment variables**, in this order: `CONVISO_BRANCH`, `GITHUB_HEAD_REF`, `GITHUB_REF_NAME`, `CI_COMMIT_REF_NAME`, `BITBUCKET_BRANCH`, `SYSTEM_PULLREQUEST_SOURCEBRANCH`, `BUILD_SOURCEBRANCH`, `CIRCLE_BRANCH`, `BRANCH_NAME`.
+1. **`--branch-name`** — overrides everything else.
+2. **Environment variables**, in this order: `CONVISO_BRANCH_NAME`, `CONVISO_BRANCH`, `GITHUB_HEAD_REF`, `GITHUB_REF_NAME`, `CI_COMMIT_REF_NAME`, `BITBUCKET_BRANCH`, `SYSTEM_PULLREQUEST_SOURCEBRANCH`, `BUILD_SOURCEBRANCH`, `CIRCLE_BRANCH`, `BRANCH_NAME`.
 3. **Local Git detection** — reads the checked-out branch, resolving detached `HEAD` states by exact commit match.
 4. **No branch** — if detection fails entirely, the scan still runs and reports to the asset's main timeline.
 
@@ -331,7 +344,9 @@ Branch names are normalized before submission: whitespace is trimmed and a `refs
 | `CONVISO_COMPANY_ID` | Conditional | — | The company the scan reports to. Required when your API Key has access to more than one company. |
 | `CONVISO_API_URL` | Optional | `https://api.convisoappsec.com` | Base URL of your Conviso Platform instance. |
 | `CONVISO_ASSET_ID` | Optional | — | Report to this asset, bypassing repository lookup and asset creation. `--asset-id` takes precedence. |
-| `CONVISO_BRANCH` | Optional | — | Highest-priority CI variable for branch detection. |
+| `CONVISO_ASSET_NAME` | **Deprecated** | — | Report to the asset with this name. Being discontinued — use `CONVISO_ASSET_ID`. |
+| `CONVISO_BRANCH_NAME` | Optional | — | Branch this scan covers. Read before `CONVISO_BRANCH` and before every CI variable. |
+| `CONVISO_BRANCH` | Optional | — | The same, read right after `CONVISO_BRANCH_NAME`. |
 | `BASELINE_REF` | Optional | — | Baseline branch ref for diff-aware scans: only what changed since it is analyzed. |
 | `BASELINE_COMMIT` | Optional | — | Baseline commit hash for diff-aware scans. Takes precedence over `BASELINE_REF`. |
 | `CONVISO_FINISH_TIMEOUT_SECS` | Optional | `900` | Maximum wait, in seconds, for the scan lifecycle to finish. |
@@ -412,7 +427,7 @@ The repository URL belongs to an asset the API could not locate unambiguously. C
 The scan writes its working directory inside the scanned path. Mount the path writable, or point `-r` / `--repository-dir` at a writable copy of the code.
 
 **Outdated version**
-Conviso AST validates its version at startup and stops when it falls behind the minimum the Platform accepts. Pull `convisoappsec/convisoast:latest`.
+A pinned tag keeps the engines and detection rules frozen at that release. Pull `convisoappsec/convisoast:latest` to pick up the current ones.
 
 ## Support
 
