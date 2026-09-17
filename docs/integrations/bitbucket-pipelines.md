@@ -23,7 +23,7 @@ Looking for **centralized AST after merge** (one Pipelines repo for many assets,
 
 With Conviso Platform integrated into your Bitbucket CI/CD Pipeline, you can automate your security processes, ensuring that your applications undergo through automated security assessments in new versions of your code.
 
-You can run Conviso Platform **AST (Application Security Testing)**. This product offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, Infrastructure as Code (IaC) and enables **Continuous Code Review** performed by our Security Analysts directly on your Bitbucket pipeline.
+You can run Conviso Platform **AST (Application Security Testing)**. This product offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, **Infrastructure as Code (IaC)** analysis, **SBOM** generation and **secret detection** directly on your Bitbucket pipeline.
 
 ## Setting up a new repository without an existing pipeline 
 
@@ -73,7 +73,7 @@ In order for the environment to be ready for the execution of all Conviso AST re
 
 ## Conviso AST
 
-You can run Conviso Platform **AST (Application Security Testing)**. This product offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, **Infrastructure as Code (IaC)** and enables **Continuous Code Review** to be performed by Security Analysts of Conviso (when supported in your plan) or by your own Security Analysts team.
+You can run Conviso Platform **AST (Application Security Testing)**. This product offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, **Infrastructure as Code (IaC)** analysis, **SBOM** generation and **secret detection**, reporting every finding to the asset on the Conviso Platform.
 
 ```yml
 image: convisoappsec/convisoast
@@ -85,7 +85,7 @@ pipelines:
           name: Conviso BitBucket Pipeline
           script:
             - |
-                conviso ast run --vulnerability-auto-close \
+                conviso ast run \
           services:
             - docker
 ```
@@ -166,7 +166,7 @@ To view the company ID, click on the company logo icon, as exemplified in the im
 Example
 ```
    - export CONVISO_COMPANY_ID=0000
-   - conviso ast run --vulnerability-auto-close
+   - conviso ast run
 ```
 
 

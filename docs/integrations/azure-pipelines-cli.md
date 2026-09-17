@@ -17,7 +17,7 @@ image: '/static/img/azurepipelinesseo.png'
 
 Integrate the Conviso Platform seamlessly into your [Azure DevOps Pipelines](https://dev.azure.com/) to automate and streamline your security processes. This integration ensures thorough security assessments for your applications throughout the development lifecycle.
 
-You can run the Conviso Platform AST (Application Security Testing), which offers Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review directly on your Azure Pipelines.
+You can run the Conviso Platform AST (Application Security Testing), which offers Static Application Security Testing (SAST), Software Composition Analysis (SCA), Infrastructure as Code (IaC) analysis, SBOM generation and secret detection directly on your Azure Pipelines.
 
 This integration provides the **CLI as a Docker** image for executing tasks and establishing connections with the Conviso Platform.
 
@@ -54,9 +54,9 @@ To set a variable for a build pipeline:
 </div>
 
 ## Perform a Conviso AST scan to analyze your application's security
-Empower your security analysis with Application Security Testing (AST) by directly incorporating the Conviso AST scan into your pipeline. This versatile tool offers SAST, SCA, and Code Review capabilities, all integrated within your pipeline.
+Empower your security analysis with Application Security Testing (AST) by directly incorporating the Conviso AST scan into your pipeline. A single `conviso ast run` covers SAST, SCA, IaC, SBOM and secret analysis, all integrated within your pipeline.
 
-Follow the script below to integrate Security Code Review seamlessly into your pipeline, creating a comprehensive solution within your ```azure-pipelines.yml``` file:
+Follow the script below to integrate it seamlessly into your pipeline, creating a comprehensive solution within your ```azure-pipelines.yml``` file:
 
 ```yml
 trigger:
@@ -72,7 +72,7 @@ jobs:
     - checkout: self
       persistCredentials: true
     - bash: |
-          conviso ast run --vulnerability-auto-close
+          conviso ast run
       displayName: 'Running Conviso AST'
       env:
          CONVISO_API_KEY: $(CONVISO_API_KEY)

@@ -76,7 +76,7 @@ jobs:
       - checkout
       - run:
           name: "Conviso AST"
-          command: "conviso ast run --vulnerability-auto-close"
+          command: "conviso ast run"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows

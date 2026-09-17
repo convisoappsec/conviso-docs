@@ -18,7 +18,7 @@ keywords:
 
 The Conviso Platform **Bitbucket AST Orchestrator** runs Conviso AST from **one** Bitbucket repository (the orchestrator). Application repositories do **not** need a Conviso Pipelines file.
 
-When an eligible pull request is **merged**, Conviso triggers a **custom pipeline** (`run-ast-scan`) on the orchestrator and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso-ast`, and sends findings to the mapped asset.
+When an eligible pull request is **merged**, Conviso triggers a **custom pipeline** (`run-ast-scan`) on the orchestrator and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso ast run`, and sends findings to the mapped asset.
 
 You do **not** store a Bitbucket App password or OAuth token for clone — only `CONVISO_API_KEY`.
 
@@ -29,7 +29,7 @@ flowchart LR
     A[PR merged on target repo] --> B[Conviso Platform]
     B -->|Custom pipeline run-ast-scan on Ref| C[Orchestrator repo<br/>bitbucket-pipelines.yml]
     C -->|conviso-ast-repository-token<br/>integration OAuth token| D[Clone target repo]
-    D --> E[conviso-ast]
+    D --> E[conviso ast run]
     E --> F[Findings on the asset]
 ```
 
@@ -125,7 +125,7 @@ On the orchestrator branch you will set as **Ref** (usually `main`):
 2. Paste the YAML below (or copy it from the example repo).
 
 ```yaml
-image: convisoappsec/convisoast_v2:latest
+image: convisoappsec/convisoast:latest
 
 pipelines:
   custom:
@@ -150,16 +150,16 @@ pipelines:
           clone:
             enabled: false
           script:
-            - export CONVISO_APIKEY="$CONVISO_API_KEY"
+            - export CONVISO_API_KEY="$CONVISO_API_KEY"
             - |
-              export CONVISO_BASE_URL="${api_url:-https://api.convisoappsec.com}"
-              CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
-              case "$CONVISO_BASE_URL" in
+              export CONVISO_API_URL="${api_url:-https://api.convisoappsec.com}"
+              CONVISO_API_URL="${CONVISO_API_URL%/}"
+              case "$CONVISO_API_URL" in
                 https://app.convisoappsec.com)
-                  export CONVISO_BASE_URL="https://api.convisoappsec.com"
+                  export CONVISO_API_URL="https://api.convisoappsec.com"
                   ;;
                 https://staging.convisoappsec.com)
-                  export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+                  export CONVISO_API_URL="https://api.staging.convisoappsec.com"
                   ;;
               esac
             - export CONVISO_REPO_FULL_NAME="$repo_full_name"
@@ -181,7 +181,7 @@ pipelines:
             - export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0='*'
             - export CONVISO_COMPANY_ID="${company_id:-$CONVISO_COMPANY_ID}"
             - export CONVISO_BRANCH="$branch"
-            - conviso-ast -p . -o "$BITBUCKET_CLONE_DIR/conviso-ast-session.zip"
+            - conviso ast run --repository-dir . --output "$BITBUCKET_CLONE_DIR/conviso-ast-session.zip"
           artifacts:
             - conviso-ast-session.zip
 ```
@@ -228,7 +228,7 @@ pipelines:
 1. Developer merges a PR into the configured merge target on an imported, enabled asset.
 2. Conviso validates the event and configuration, then starts custom pipeline **`run-ast-scan`** on the orchestrator / **Ref**.
 3. Variables include at least: `repo_full_name`, `branch` (PR destination), `commit_sha`, `pr_id`, `api_url`, `company_id`, `asset_id` (blank values may be omitted).
-4. Job steps: issue repository token → clone target at `branch` → run `conviso-ast` → upload session artifact.
+4. Job steps: issue repository token → clone target at `branch` → run `conviso ast run` → upload session artifact.
 5. Findings appear on the asset in Conviso Platform.
 6. In Bitbucket, open the **orchestrator** → **Pipelines** → run **`run-ast-scan`** to inspect the job.
 

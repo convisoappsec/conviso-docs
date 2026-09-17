@@ -71,11 +71,11 @@ Given an Azure DevOps project, to create a Welcome Pipeline you can follow the s
 ```bash
 docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $(pwd):/opt/flowcli \
+  -v $(pwd):/workdir \
   -e DOCKER_HOST=$(DOCKER_HOST) \
   -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
   convisoappsec/convisoast:latest \
-  conviso ast run --vulnerability-auto-close
+  conviso ast run
 ```
 
 2. Click at **Save & Queue**. The pipeline execution will begin in a few moments.
@@ -131,7 +131,7 @@ variable.
 ```bash
 docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $(pwd):/opt/flowcli \
+  -v $(pwd):/workdir \
   -e DOCKER_HOST=$(DOCKER_HOST) \
   -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
   convisoappsec/convisoast:latest \
@@ -149,7 +149,7 @@ docker run --rm \
 ```bash
 docker run --rm \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $(pwd):/opt/flowcli \
+  -v $(pwd):/workdir \
   -e DOCKER_HOST=$(DOCKER_HOST) \
   -e CONVISO_API_KEY=$(CONVISO_API_KEY) \
   convisoappsec/convisoast:latest \

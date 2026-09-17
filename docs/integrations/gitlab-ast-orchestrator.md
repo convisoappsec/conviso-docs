@@ -18,7 +18,7 @@ keywords:
 
 The Conviso Platform **GitLab AST Orchestrator** runs Conviso AST from **one** GitLab project (the orchestrator). Application projects do **not** need a Conviso CI file.
 
-When an eligible merge request is **merged**, Conviso triggers a pipeline on the orchestrator and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso-ast`, and sends findings to the mapped asset.
+When an eligible merge request is **merged**, Conviso triggers a pipeline on the orchestrator and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso ast run`, and sends findings to the mapped asset.
 
 You do **not** store a `GITLAB_TOKEN` or other clone PAT on the orchestrator — only `CONVISO_API_KEY`.
 
@@ -29,7 +29,7 @@ flowchart LR
     A[MR merged on target project] --> B[Conviso Platform]
     B -->|Create pipeline on Ref| C[Orchestrator project<br/>.gitlab-ci.yml]
     C -->|conviso-ast-repository-token<br/>integration OAuth token| D[Clone target repo]
-    D --> E[conviso-ast]
+    D --> E[conviso ast run]
     E --> F[Findings on the asset]
 ```
 
@@ -137,23 +137,23 @@ stages:
 run-ast-scan:
   stage: scan
   image:
-    name: convisoappsec/convisoast_v2:latest
+    name: convisoappsec/convisoast:latest
     entrypoint: [""]
   rules:
     - if: '$repo_full_name && $branch'
   variables:
     GIT_STRATEGY: none
   script:
-    - export CONVISO_APIKEY="$CONVISO_API_KEY"
+    - export CONVISO_API_KEY="$CONVISO_API_KEY"
     - |
-      export CONVISO_BASE_URL="${api_url:-https://api.convisoappsec.com}"
-      CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
-      case "$CONVISO_BASE_URL" in
+      export CONVISO_API_URL="${api_url:-https://api.convisoappsec.com}"
+      CONVISO_API_URL="${CONVISO_API_URL%/}"
+      case "$CONVISO_API_URL" in
         https://app.convisoappsec.com)
-          export CONVISO_BASE_URL="https://api.convisoappsec.com"
+          export CONVISO_API_URL="https://api.convisoappsec.com"
           ;;
         https://staging.convisoappsec.com)
-          export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+          export CONVISO_API_URL="https://api.staging.convisoappsec.com"
           ;;
       esac
     - export CONVISO_REPO_FULL_NAME="$repo_full_name"
@@ -175,7 +175,7 @@ run-ast-scan:
     - export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0='*'
     - export CONVISO_COMPANY_ID="${company_id:-$CONVISO_COMPANY_ID}"
     - export CONVISO_BRANCH="$branch"
-    - conviso-ast -p . -o "$CI_PROJECT_DIR/conviso-ast-session.zip"
+    - conviso ast run --repository-dir . --output "$CI_PROJECT_DIR/conviso-ast-session.zip"
   artifacts:
     when: always
     paths:
@@ -186,7 +186,7 @@ run-ast-scan:
 3. Commit and push to that **Ref** branch.
 
 :::important
-- The scanner image defines `ENTRYPOINT` as `conviso-ast`. GitLab CI must clear it with `entrypoint: [""]`; otherwise the job fails with `unrecognized arguments: sh -c ...`.
+- GitLab CI must clear the image entrypoint with `entrypoint: [""]`, so the job runs its own script; otherwise it may fail with `unrecognized arguments: sh -c ...`.
 - This template clones `branch` (the MR target branch after merge). Conviso also sends `commit_sha` and `mr_iid` (from `pr_number`) for correlation.
 :::
 
@@ -236,7 +236,7 @@ Then paste it into Conviso and set the ref:
 1. Developer merges an MR into the configured merge target on an imported, enabled asset.
 2. Conviso validates the event and configuration, then creates a pipeline on the orchestrator project / **Ref**.
 3. Variables include at least: `repo_full_name`, `branch` (MR target), `commit_sha`, `mr_iid`, `api_url`, `company_id`, `asset_id` (blank values may be omitted).
-4. Job steps: issue repository token → clone target at `branch` → run `conviso-ast` → upload session artifact.
+4. Job steps: issue repository token → clone target at `branch` → run `conviso ast run` → upload session artifact.
 5. Findings appear on the asset in Conviso Platform.
 6. In GitLab, open the **orchestrator** → **Build → Pipelines** → job **`run-ast-scan`** to inspect the run.
 
@@ -254,7 +254,7 @@ Then paste it into Conviso and set the ref:
 
 ![Successful run-ast-scan pipeline](../../static/img/gitlab-alm/ast-05-orchestrator-pipeline.png)
 
-*Successful `run-ast-scan` job log (token → clone → conviso-ast → session artifact).*
+*Successful `run-ast-scan` job log (token → clone → conviso ast run → session artifact).*
 
 ![Successful run-ast-scan job log](../../static/img/gitlab-alm/ast-05b-orchestrator-job-log.png)
 
@@ -266,7 +266,7 @@ Manual test (optional): on the orchestrator, **Build → Pipelines → New pipel
 |---------|-------------|
 | Merge done, no pipeline | **AST scans on merge** off; Project ID/Ref incomplete; asset disabled or not imported; MR target branch ≠ asset branch / Ref |
 | **Insufficient permissions to set pipeline variables** | Set minimum role to Developer/Maintainer (see above) and ensure the OAuth user has that role |
-| `unrecognized arguments: sh -c ...` | Missing `entrypoint: [""]` on the `convisoast_v2` image |
+| `unrecognized arguments: sh -c ...` | Missing `entrypoint: [""]` on the `convisoast` image |
 | Token / clone fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`); GitLab integration not authorized |
 | `CONVISO_API_KEY` empty / auth errors on unprotected branch | Variable is **Protected** but Ref is not a protected branch — uncheck Protected or protect the branch |
 | Unreadable / HTML response from Platform | Use the API host (`api.*`), not `app.*` / `staging.*`. The template normalizes those hosts automatically |

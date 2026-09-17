@@ -63,7 +63,7 @@ pipeline {
   stages {
     stage('Conviso_AST') {
       steps {
-        sh 'conviso ast run --vulnerability-auto-close'
+        sh 'conviso ast run'
       }
     }
   }

@@ -15,7 +15,7 @@ keywords:  [Gitlab Integration]
 ## Introduction
 With Conviso Platform integrated into your [Gitlab](https://gitlab.com/) Secure CI/CD Pipeline, you can automate and streamline your security processes, ensuring that your applications undergo thorough security assessments throughout the development lifecycle. 
 
-You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers both **Static Application Security Testing (SAST)** and **Software Composition Analysis (SCA)** and **Code Review** directly on your Gitlab pipeline.
+You can run the Conviso Platform **AST (Application Security Testing)**. The tool offers **Static Application Security Testing (SAST)**, **Software Composition Analysis (SCA)**, **Infrastructure as Code (IaC)** analysis, **SBOM** generation and **secret detection** directly on your Gitlab pipeline.
 
 The [security scans workflow](../security-scans/conviso-ast) is used in this integration for all execution and connection with the Conviso Platform. 
 
@@ -45,9 +45,9 @@ This will allow you to write the code that we will use in this tutorial!
 
 ## Perform a Conviso AST scan to analyze your application's security
 
-Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. This versatile tool combines Static Application Security Testing (SAST), Software Composition Analysis (SCA), and Code Review capabilities, providing comprehensive security analysis directly within your pipeline.
+Harness the power of Application Security Testing (AST) by incorporating the Conviso AST scan into your application's security analysis. A single `conviso ast run` combines SAST, SCA, IaC, SBOM and secret analysis, providing comprehensive security coverage directly within your pipeline.
 
-Follow the steps below to integrate Security Code Review seamlessly into your pipeline, creating a comprehensive solution within your ```.gitlab-ci.yml``` file:
+Follow the steps below to integrate it seamlessly into your pipeline, creating a comprehensive solution within your ```.gitlab-ci.yml``` file:
 
 ```yml
 conviso-ast:
@@ -58,7 +58,7 @@ conviso-ast:
         variables:
             - $CONVISO_API_KEY
     script:
-        - conviso ast run --vulnerability-auto-close
+        - conviso ast run
     tags:
         - docker
 
@@ -108,7 +108,7 @@ include:
 - **Session archive**: Every run writes a zip with the raw output of each scan (including secret-scanner matches) and the debug log under `/tmp`. It is not a job artifact. That zip is what Conviso support asks for — publish it with an `artifacts:` overlay on `conviso-ast` only then.
 
 :::note
-The component requires a **Linux x64** runner that can pull `convisoappsec/convisoast_v2`. Shared runners on GitLab.com qualify. The image is published for `linux/amd64` only.
+The component requires a **Linux x64** runner that can pull `convisoappsec/convisoast`. Shared runners on GitLab.com qualify. The image is published for `linux/amd64` only.
 :::
 
 ## Running the Conviso Containers
@@ -177,21 +177,25 @@ conviso-sast:
         - docker
 ```
 
-Alternatively, you can specify the diff range manually. In the example below, we scan between the current commit and the immediately previous one on the current branch:
+Alternatively, you can scan only what changed against a baseline, by setting `BASELINE_REF` (a branch or ref) or `BASELINE_COMMIT` (an exact commit):
 
 ```yml
 conviso-sast:
     image: convisoappsec/convisoast:latest
     services:
         - docker:dind
+    variables:
+        GIT_DEPTH: "0"
     only:
         variables:
             - $CONVISO_API_KEY
     before_script:
-        - export START_COMMIT=`git rev-parse @~1`
+        - export BASELINE_COMMIT=`git rev-parse @~1`
     script:
-        - conviso sast run --start-commit $START_COMMIT --end-commit $CI_COMMIT_SHA
+        - conviso sast run
 ```
+
+`GIT_DEPTH: "0"` gives the job the full history, without which the baseline commit is not in the clone.
 
 ## Run a scan exclusively using Conviso SCA
 

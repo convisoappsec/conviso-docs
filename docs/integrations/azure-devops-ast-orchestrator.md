@@ -18,7 +18,7 @@ keywords:
 
 The Conviso Platform **Azure DevOps AST Orchestrator** runs Conviso AST from **one** Azure Pipeline (the orchestrator). Application repositories do **not** need a Conviso pipeline of their own.
 
-When an eligible pull request is **merged**, Conviso triggers that pipeline and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso-ast`, and sends findings to the mapped asset.
+When an eligible pull request is **merged**, Conviso triggers that pipeline and passes the target repository and branch. The job obtains a short-lived clone credential from the Platform (using your API key), clones the target repository, runs `conviso ast run`, and sends findings to the mapped asset.
 
 You do **not** store a PAT or map `System.AccessToken` for clone — only `CONVISO_API_KEY`.
 
@@ -29,7 +29,7 @@ flowchart LR
     A[PR merged on target repo] --> B[Conviso Platform]
     B -->|Pipeline run with<br/>repo + branch| C[Orchestrator pipeline<br/>azure-pipelines.yml]
     C -->|conviso-ast-repository-token<br/>integration OAuth token| D[Clone target repo]
-    D --> E[conviso-ast]
+    D --> E[conviso ast run]
     E --> F[Findings on the asset]
 ```
 
@@ -148,7 +148,7 @@ pool:
 
 # Azure requires an empty entrypoint or container steps fail to docker exec.
 container:
-  image: convisoappsec/convisoast_v2:latest
+  image: convisoappsec/convisoast:latest
   options: --entrypoint ""
 
 steps:
@@ -161,15 +161,15 @@ steps:
         exit 1
       fi
 
-      export CONVISO_APIKEY="$CONVISO_API_KEY"
-      export CONVISO_BASE_URL="${API_URL:-https://api.convisoappsec.com}"
-      CONVISO_BASE_URL="${CONVISO_BASE_URL%/}"
-      case "$CONVISO_BASE_URL" in
+      export CONVISO_API_KEY="$CONVISO_API_KEY"
+      export CONVISO_API_URL="${API_URL:-https://api.convisoappsec.com}"
+      CONVISO_API_URL="${CONVISO_API_URL%/}"
+      case "$CONVISO_API_URL" in
         https://app.convisoappsec.com)
-          export CONVISO_BASE_URL="https://api.convisoappsec.com"
+          export CONVISO_API_URL="https://api.convisoappsec.com"
           ;;
         https://staging.convisoappsec.com)
-          export CONVISO_BASE_URL="https://api.staging.convisoappsec.com"
+          export CONVISO_API_URL="https://api.staging.convisoappsec.com"
           ;;
       esac
 
@@ -186,7 +186,7 @@ steps:
       umask 077
       TOKEN=$(conviso-ast-repository-token --provider azure_devops)
       echo "##vso[task.setvariable variable=REPO_TOKEN;issecret=true]$TOKEN"
-      echo "##vso[task.setvariable variable=CONVISO_BASE_URL]$CONVISO_BASE_URL"
+      echo "##vso[task.setvariable variable=CONVISO_API_URL]$CONVISO_API_URL"
     displayName: Get repository token
     env:
       CONVISO_API_KEY: $(CONVISO_API_KEY)
@@ -269,8 +269,8 @@ steps:
   - script: |
       set -euo pipefail
       cd target
-      export CONVISO_APIKEY="$CONVISO_API_KEY"
-      export CONVISO_BASE_URL="${NORMALIZED_BASE_URL}"
+      export CONVISO_API_KEY="$CONVISO_API_KEY"
+      export CONVISO_API_URL="${NORMALIZED_BASE_URL}"
       export CONVISO_COMPANY_ID="${PARAM_COMPANY_ID:-$VAR_COMPANY_ID}"
       export CONVISO_BRANCH="$BRANCH"
       case "${ASSET_ID:-}" in
@@ -281,14 +281,14 @@ steps:
         ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
         *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
       esac
-      conviso-ast -p . -o "$(Build.ArtifactStagingDirectory)/conviso-ast-session.zip"
+      conviso ast run --repository-dir . --output "$(Build.ArtifactStagingDirectory)/conviso-ast-session.zip"
     displayName: Run Conviso AST
     env:
       GIT_CONFIG_COUNT: "1"
       GIT_CONFIG_KEY_0: safe.directory
       GIT_CONFIG_VALUE_0: "*"
       CONVISO_API_KEY: $(CONVISO_API_KEY)
-      NORMALIZED_BASE_URL: $(CONVISO_BASE_URL)
+      NORMALIZED_BASE_URL: $(CONVISO_API_URL)
       PARAM_COMPANY_ID: ${{ parameters.company_id }}
       VAR_COMPANY_ID: $(CONVISO_COMPANY_ID)
       ASSET_ID: ${{ parameters.asset_id }}
@@ -386,7 +386,7 @@ Do **not** add an Azure DevOps PAT for clone. The job calls `conviso-ast-reposit
 1. Developer merges a PR into the configured merge target on an imported, enabled asset.
 2. Conviso validates the event and configuration, then starts the orchestrator pipeline on the **Ref** branch.
 3. Template parameters include the repository, branch, and related ids Conviso needs for the run.
-4. Job steps: issue repository token → clone target → run `conviso-ast` → upload session artifact.
+4. Job steps: issue repository token → clone target → run `conviso ast run` → upload session artifact.
 5. Findings appear on the asset in Conviso Platform.
 6. In Azure DevOps, open the **orchestrator** pipeline run to inspect logs.
 
