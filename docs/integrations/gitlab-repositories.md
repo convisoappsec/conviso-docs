@@ -178,7 +178,7 @@ For full AST after merge via a central GitLab CI project (Project ID, ref, `CONV
 | Login | OAuth completes; Authorization step unlocks |
 | Authorization | Import starts; Configuration shows assets |
 | MR scans | Opening an MR shows Conviso commit status / feedback |
-| AST on merge | Merge into the configured branch triggers the orchestrator pipeline |
+| AST on merge | Merging into a branch that matches the [AST branch pattern](./gitlab-ast-orchestrator.md#ast-branch-pattern) triggers the orchestrator pipeline |
 
 ## Troubleshooting
 
