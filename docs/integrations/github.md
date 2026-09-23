@@ -20,6 +20,8 @@ This integration ensures continuous code inspection, identifying vulnerabilities
 
 ### Prerequisites
 
+This integration is supported only for GitHub.com (including GitHub Enterprise Cloud); for GitHub Enterprise Server (self-hosted / on-premises) instances, use the [CI/CD integration](./github-actions.md) instead.
+
 Before you can use the Conviso Platform with GitHub, ensure that:
 
 - You have **administrator access** to your GitHub organization or repositories.
