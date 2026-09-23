@@ -16,8 +16,14 @@ When a developer opens or updates a Pull Request, the Conviso Platform automatic
 
 - **Zero Configuration:** No need to write YAML files, configure GitHub Actions, or set up CI/CD pipelines in every repository.
 - **Speed:** The scanner uses **differential analysis**, focusing strictly on changed files to deliver results in minutes.
-- **Native Integration:** Security findings appear as comments directly in the PR, and status checks can automatically block merges if critical issues are found.
+- **Native Integration:** Findings appear as a GitHub Check and a canonical PR comment, and the check can automatically block merges based on your **[Security Gate](../security-scans/security-gate.md)** configuration.
+- **Delta-aware Verdict:** Only the vulnerabilities the Pull Request actually introduces are evaluated against your Security Gate — pre-existing findings already on the target branch do not count against the PR by default.
+- **Durable History:** Every scan is recorded as an immutable **PR Run** you can revisit, with retained findings available for **21 days** — see **[Pull Request Run History](../security-scans/pull-requests/pr-runs.md)**.
 - **Secure Execution:** Scans run in an ephemeral, isolated environment managed by Conviso, preserving your CI/CD minutes.
+
+:::info Rollout
+The durable, delta-aware experience described on this page is currently available for GitHub-connected repositories and is being rolled out progressively. Other providers keep the previous PR scanning behavior until parity ships.
+:::
 
 ---
 
@@ -69,39 +75,49 @@ The process begins automatically when a developer:
 - Opens a new Pull Request.
 - Pushes new commits to an existing Pull Request.
 
-### 2. Status Checks
+### 2. GitHub Check
 
-Immediately after the PR is updated, a **Conviso Security Check** will appear in the PR timeline with a status of **Pending**.
+Immediately after the PR is updated, a **Conviso** Check run appears in the PR timeline as **Queued**, then **In progress**. It links to the corresponding **PR Run** in the Conviso Platform for full details.
 
 :::tip Blocking Merges
-We recommend configuring your GitHub **Branch Protection Rules** to require the Conviso Security Check to pass before merging. This ensures no critical vulnerabilities are introduced into your main branch.
+We recommend configuring your GitHub **Branch Protection Rules** to require the Conviso Check to pass before merging. This ensures your configured Security Gate policy is enforced before code reaches your main branch.
 :::
 
 ### 3. Reviewing Results
 
-Once the scan is complete (typically within a few minutes), the status check will update:
+Once the scan completes (typically within a few minutes), the Check updates to reflect the **Security Gate** verdict for the findings the PR introduces:
 
-- **✅ Success:** No vulnerabilities were found.
-- **❌ Failure:** Vulnerabilities were detected.
+- **✅ Passed:** No new finding exceeds your configured thresholds.
+- **⚠️ Warning:** New findings exceed the configured quantity threshold, but none are past their `Max Days to Fix` grace period yet.
+- **❌ Failed:** At least one new finding exceeds a configured threshold or aging rule.
+- **Not evaluated:** No relevant changes were scanned, or no Security Gate rule/entitlement applies. This is never rendered as a pass or a fail.
+- **Action required:** A technical scan or infrastructure error occurred — distinct from a Security Gate failure, so developers never confuse "we couldn't scan this" with "this code is unsafe".
 
-In addition to the status check, the **Conviso Bot** will post a detailed comment on the PR summarizing the findings.
+Only vulnerabilities the Pull Request **introduces** are evaluated: the scan compares the PR's head against its target branch, so pre-existing findings already open on the target branch do not count against the PR by default. See [How Findings Are Evaluated](../security-scans/pull-requests/pull-requests.md#how-findings-are-evaluated) for details.
+
+In addition to the Check, the **Conviso Bot** posts one canonical comment on the PR summarizing the result. The same comment is updated in place on every new commit, instead of being deleted and recreated.
 
 ![img](../../static/img/github/pr-comment-example.png)
 
 The comment provides:
 
-- **Summary:** A count of Critical, High, Medium, and Low issues.
+- **Summary:** The Security Gate result and a count of new Critical, High, Medium, and Low findings.
 - **Evidence:** The specific file path, line number, and a snippet of the code causing the vulnerability.
 - **Description:** An explanation of the vulnerability type (e.g., SQL Injection, Hardcoded Secret) to help the developer understand the risk.
+- **Run link:** A link to the full **PR Run** details in the Conviso Platform, including retained findings, logs, and the Security Gate reason breakdown.
+
+If an attempt is stale by the time it finishes — because a newer commit was already pushed — it is marked **Superseded** and never overwrites the Check or comment for the current head.
 
 ### 4. Remediation
 
 Because feedback is provided immediately:
 
-1. The developer reads the finding in the PR comment.
+1. The developer reads the finding in the PR comment or the linked PR Run.
 2. They push a fix to the branch.
-3. The system automatically detects the update and **re-scans** the code.
-4. If the issue is resolved, the status turns Green.
+3. The system automatically detects the update and **re-scans** the code as a new immutable attempt.
+4. If the issue is resolved, the Check turns green.
+
+If a scan needs to be re-run without a new commit — for example after a transient infrastructure error — open the **PR Run** in the Conviso Platform and use **Retry scan**. This creates a new attempt linked to the original; it never overwrites history.
 
 ---
 
