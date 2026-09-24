@@ -1,4 +1,6 @@
 const Dotenv = require('dotenv-webpack');
+const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 // Plugin de proxy para evitar CORS
 async function proxyPlugin() {
@@ -20,6 +22,26 @@ async function proxyPlugin() {
       },
     };
   }
+
+function llmSourcePlugin() {
+  return {
+    name: 'llm-source-files',
+    configureWebpack() {
+      return {
+        plugins: [
+          new CopyPlugin({
+            patterns: [
+              {
+                from: path.resolve(__dirname, 'docs'),
+                to: 'llms/docs',
+              },
+            ],
+          }),
+        ],
+      };
+    },
+  };
+}
   
   
   module.exports = async () => {
@@ -227,6 +249,7 @@ async function proxyPlugin() {
           },
         ],
         proxyPlugin,
+        llmSourcePlugin,
       ],
   
       themes: [
