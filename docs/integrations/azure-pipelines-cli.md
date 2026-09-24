@@ -27,7 +27,7 @@ This integration provides the **CLI as a Docker** image for executing tasks and 
 
 Before using Conviso Platform with Azure Pipelines, you must ensure that:
 
-1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../platform/security-feed.md#generate-api-key).
+1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/api-overview.md#generate-api-key).
 
 2. A [new pipeline is created to run the automation](https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?view=azure-devops#:~:text=Go%20to%20the%20Pipelines%20tab,start%20with%20an%20Empty%20job.). Follow these steps:
 * Click on "**Pipelines**" in the left-hand menu.
@@ -207,7 +207,7 @@ The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on 
 Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
 
 1. Access the Azure DevOps Marketplace.
-2. Search for **Conviso Azure Sync Task** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
+2. Search for **Sync External Scans with Conviso** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
 3. Click on **Get it free**.
 4. Edit Your Azure DevOps Pipeline.
 5. Configure the Pipeline with the Following Code:
@@ -223,16 +223,60 @@ steps:
 6. Save it and run the pipeline.
 
 **Field Descriptions**:
-- API_KEY: Your [Conviso API Key](../platform/security-feed.md#generate-api-key), referenced as `$(CONVISO_API_KEY)` in the pipeline variables.
+- API_KEY: Your [Conviso API Key](../api/api-overview.md#generate-api-key), referenced as `$(CONVISO_API_KEY)` in the pipeline variables.
 - PROJECT_ID: The project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency-Track).
 - INTEGRATION: The name of the integration as specified in Conviso's GraphQL schema (e.g., 'FORTIFY', 'CHECKMARX', 'DEPENDENCY_TRACK').
 - COMPANY_ID: Your company ID in the Conviso Platform.
+- REPOSITORY_URL: The repository this scan belongs to. Optional; it defaults to the repository the pipeline checked out — see [Repository and branch](#repository-and-branch) below.
+- BRANCH: The branch this scan covers. Optional; it defaults to the branch the build is for.
 
 **Expected Behaviors**:
 - **Importing a New Project**: If the external scanner's project does not exist in the Conviso Platform, it will be imported as a new asset.
 - **Synchronizing an Existing Project**: If the project already exists in the Conviso Platform, it will be synchronized to update its data.
 
 In both scenarios, the process is triggered by the pipeline and executed asynchronously. You can monitor the progress directly within the respective asset on the Conviso Platform.
+
+### Repository and branch
+
+The task also reports **which repository and which branch** the build is for. Both are optional
+inputs, and both are filled in from the pipeline when you leave them empty, so the usual setup
+needs no extra YAML:
+
+| Input | Where it comes from when left empty |
+| --- | --- |
+| `REPOSITORY_URL` | The repository the pipeline checked out (`Build.Repository.Uri`) |
+| `BRANCH` | The branch the build is for. In a **Pull Request** build, this is the branch the PR is **merging into**, not the source branch |
+
+Filling either input in overrides what the pipeline reports — use that only when the build does not
+run on the repository you are tracking. For a repository in Azure Repos, write the address in the
+same format the pipeline reports, `https://dev.azure.com/<organization>/<project>/_git/<repository>`,
+with spaces in the project name encoded as `%20`:
+
+```yaml
+      REPOSITORY_URL: 'https://dev.azure.com/my-org/My%20Project/_git/my-repo'
+      BRANCH: 'main'
+```
+
+:::caution
+In a Pull Request build the reported branch is the PR's **target** branch, so findings from that
+build are recorded against the branch you are merging into. If your target is the repository's
+default branch, those findings **count towards its risk score** before the code is merged.
+
+This is the opposite of the [Conviso AST task](#running-conviso-ast-with-the-azure-devops-task),
+which records a Pull Request scan under the **source** branch: the AST task scans the PR's code,
+while this task imports results another scanner produced.
+
+Set the `BRANCH` input explicitly if you want a PR build recorded somewhere else.
+:::
+
+:::note
+A Branch without a Repository URL is discarded — the platform only records branches for
+repositories. The task warns you in the pipeline log when that happens, and the run still succeeds.
+:::
+
+The asset this task reports to becomes — or joins — the repository at that address, and the
+findings appear under the branch above. See
+[Repositories and Branches](../platform/repositories-and-branches.md#how-your-assets-become-repositories).
 
 ## Troubleshooting
 If you encounter authentication issues after loading the ```CONVISO_API_KEY``` variable, please ensure it has been properly loaded within the environment session of all tasks utilizing the CLI.
