@@ -172,11 +172,11 @@ The `IMAGE_NAME` and `IMAGE_TAG` are variables that should be adjusted based on 
 Integrating the Conviso Platform with external scanners such as Checkmarx, Fortify, or Dependency-Track allows for automated asset import and synchronization. This ensures that your Conviso Platform remains up-to-date with the latest scan results. To configure this behavior, follow these steps:
 
 1. Access the Azure DevOps Marketplace.
-2. Search for **Conviso Azure Sync Task** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
+2. Search for **Sync External Scans with Conviso** or directly visit [this link](https://marketplace.visualstudio.com/items?itemName=Conviso.convisoAzureSyncTask).
 3. Click on **Get it free**.
 4. Edit Your Azure DevOps Pipeline.
-5. In the **Pipelines variables** section, add the `CONVISO_API_KEY` variable and set its value to your [Conviso API Key](../platform/security-feed.md#generate-api-key).
-6. Within the pipeline configuration, add the **Conviso Azure Sync Task**.
+5. In the **Pipelines variables** section, add the `CONVISO_API_KEY` variable and set its value to your [Conviso API Key](../api/api-overview.md#generate-api-key).
+6. Within the pipeline configuration, add the **Sync External Scans with Conviso** task.
 7. Fill in the fields as follows:
    - Conviso API Key: `$(CONVISO_API_KEY)`.
    - Project ID in the external tool: Project ID from the external scanner (e.g., Fortify, Checkmarx, Dependency_Track).
@@ -203,7 +203,9 @@ needs no extra YAML:
 | **Branch** | The branch the build is for. In a **Pull Request** build, this is the branch the PR is **merging into**, not the source branch |
 
 Filling either field in overrides what the pipeline reports — use that only when the build does not
-run on the repository you are tracking.
+run on the repository you are tracking. For a repository in Azure Repos, write the address in the
+same format the pipeline reports, `https://dev.azure.com/<organization>/<project>/_git/<repository>`,
+with spaces in the project name encoded as `%20`.
 
 :::caution
 In a Pull Request build the reported branch is the PR's **target** branch, so findings from that

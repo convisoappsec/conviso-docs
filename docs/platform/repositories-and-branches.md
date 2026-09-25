@@ -87,8 +87,10 @@ There is **no minimum version** enforced by the platform. What matters is capabi
 whatever reports your scans has to be able to send both values. If you use a Conviso task or
 plugin in your pipeline, check that it is on a version that offers repository and branch fields.
 
-The [GitHub Sync Task action](../integrations/github-actions.md#repository-and-branch) and the
-[GitLab Sync component](../integrations/gitlab.md#repository-and-branch) fill both in from the
+The [GitHub Sync Task action](../integrations/github-actions.md#repository-and-branch), the
+[GitLab Sync component](../integrations/gitlab.md#repository-and-branch) and the
+[Azure DevOps Sync task](../integrations/azure-pipelines-cli.md#repository-and-branch) (also in
+[graph mode](../integrations/azure-pipelines-graph.md#repository-and-branch)) fill both in from the
 pipeline context by default, and are a good reference for what the equivalent fields look like
 elsewhere. For scanner integrations, each one asks for the repository and most ask for
 a branch — see
