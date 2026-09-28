@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
@@ -82,7 +81,7 @@ function toLlmMarkdown(markdown) {
 }
 
 function getCursorInstallUrl() {
-  const config = window.btoa(JSON.stringify({ 'conviso-mcp': mcpServerConfig }));
+  const config = window.btoa(JSON.stringify(mcpServerConfig));
   return `cursor://anysphere.cursor-deeplink/mcp/install?name=conviso-mcp&config=${encodeURIComponent(config)}`;
 }
 
@@ -103,8 +102,7 @@ function MenuItem({ icon, label, description, onClick, external = false }) {
   );
 }
 
-export default function DocActions() {
-  const { metadata } = useDoc();
+export default function DocActions({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
   const sourcePath = useBaseUrl(`/llms/${metadata.source.replace('@site/', '')}`);
   const pageUrl = `${siteConfig.url.replace(/\/$/, '')}${metadata.permalink}`;

@@ -22,7 +22,7 @@ export default function DocItemContent(props) {
 
   return (
     <>
-      <DocActions />
+      {metadata && <DocActions metadata={metadata} />}
       <Content {...props} />
       {!hideExtras && <ContributionCTA />}
       {!hideExtras && <ResourcesFooter />}
