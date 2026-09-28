@@ -33,6 +33,7 @@ By the end of this guide, you will have:
 
 ## Prerequisites
 
+- This integration is supported only for GitLab.com; for GitLab Self-Managed (self-hosted) instances, use the [GitLab CI/CD integration](./gitlab.md) instead.
 - A GitLab account with access to the projects/groups you want to connect (Maintainer or Owner recommended for webhook creation).
 - Permission to authorize the **Conviso Platform** OAuth application on the GitLab consent screen.
 - Your Conviso Platform **company** has the GitLab ALM integration available.
