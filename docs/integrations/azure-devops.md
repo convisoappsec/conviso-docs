@@ -28,6 +28,8 @@ By the end of this guide, you will have:
 
 ## Prerequisites
 
+This integration is supported only for Azure DevOps Services (cloud); for Azure DevOps Server (self-hosted / on-premises, formerly TFS) instances, use the [Azure Pipelines integration](./azure-pipelines-cli.md) instead.
+
 Before you start, ensure that:
 
 - You can **authorize the Conviso Platform application** in the Microsoft consent screen (grant OAuth permissions) and you have **access to the Azure DevOps organization(s)** you want to connect. If your organization restricts who can install or authorize apps, an Entra ID or Azure DevOps administrator may need to approve the app first.
