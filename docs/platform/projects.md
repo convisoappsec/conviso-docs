@@ -37,7 +37,7 @@ From the project list and project details view, you can:
 * track timeline and project progress;
 * update project statuses;
 * manage accesses, assigned users, assets, vulnerabilities, attachments, and requirements;
-* generate technical reports for supported project types.
+* generate technical reports for supported project types, with your company's identity applied through [Report Customization](report-customization.md).
 
 ## Learn More
 
@@ -45,3 +45,4 @@ For the complete project management documentation, see:
 
 * [Workflow Status](../project-management/workflow-status.md)
 * [Process](../project-management/process.md)
+* [Report Customization](report-customization.md)
