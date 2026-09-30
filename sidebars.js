@@ -148,6 +148,7 @@ module.exports = {
             'platform/dashboard',
             'platform/vulnerabilities',
             'platform/projects',
+            'platform/report-customization',
             'platform/requirements',
             'platform/security-gate',
             'platform/asset-management',
