@@ -405,7 +405,7 @@ The recommended setup is the **AST Orchestrator**: a single repository holds the
 - **[Bitbucket AST Orchestrator](../../integrations/bitbucket-ast-orchestrator.md)**
 - **[Azure DevOps AST Orchestrator](../../integrations/azure-devops-ast-orchestrator.md)**
 
-To run the scanner from a pipeline you maintain yourself, see the platform guides under **[all integrations](../../integrations/integrations_intro)**.
+To run the scanner from a pipeline you maintain yourself, see the platform guides under **[all integrations](../../integrations/integrations_intro)**. The packaged wrappers are the [GitLab CI/CD component](../../integrations/gitlab.md#running-conviso-ast-with-the-gitlab-cicd-component), the [Azure DevOps task](../../integrations/azure-pipelines-cli.md#running-conviso-ast-with-the-azure-devops-task) and the [Bitbucket Pipe](../../integrations/bitbucket-pipelines.md#running-conviso-ast-with-the-bitbucket-pipe).
 
 Combine it with the **[Security Gate](../security-gate)** to block a pipeline based on severity, vulnerability count, or other policy criteria, and with an **[SBOM](../conviso-sbom/conviso-sbom.md)** — one is generated and sent to your asset on every `conviso ast run`.
 
