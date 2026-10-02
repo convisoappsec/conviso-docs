@@ -99,7 +99,7 @@ pipelines:
           clone:
             depth: full
           script:
-            - pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.3
+            - pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.4
               variables:
                 CONVISO_API_KEY: $CONVISO_API_KEY
                 COMPANY_ID: $CONVISO_COMPANY_ID
@@ -120,14 +120,14 @@ pipelines:
 - `BASELINE_REF`: Branch, tag, or commit to compare against so only what changed is scanned, such as `main` or `$BITBUCKET_PR_DESTINATION_BRANCH`. Optional. Requires `clone: depth: full` on the step.
 - `ASSET_ID`: Pins the scan to a specific asset, skipping the automatic lookup by repository URL. Optional; use it if a scan stops with an asset ambiguity error.
 - `SCAN_PATH`: Directory to scan, relative to the checkout. Optional; default `.`. Not named `PATH`.
-- `BRANCH`: Overrides the branch recorded on the Platform. Optional; leave empty to use Bitbucket's source branch.
+- `BRANCH`: Overrides the branch recorded on the Platform. Optional; leave empty to use Bitbucket's source branch. The pipe exports `CONVISO_BRANCH`; it does not pass `-b` or `--branch-name`.
 - `DRY_RUN`: Set to `"true"` to run `conviso-ast --dry-run` without writing to the Platform.
 - `BASE_URL`: Only for a dedicated or on-premise instance. Default `https://api.convisoappsec.com`.
 
 **Expected Behaviors**:
 - **Branch association**: The scan is recorded against the branch the pipeline is for. In a **pull request** pipeline, this is the branch the pull request is coming **from**, so its findings are not filed under the target branch.
 - **Findings never fail the pipeline**: The step fails only when a scan or an upload fails. Bitbucket has no `allow_failure` on a pipe. Put tests in `parallel` with `fail-fast: false` if a failing scan must not stop them.
-- **Session archive**: This pipe does not copy a session zip into the checkout and does not declare artifacts. Logs stay inside the pipe container.
+- **Session archive**: This pipe writes the session zip under `/tmp` in the container and deletes that directory when the step ends. It does not write `output.zip` into the checkout, does not delete a file of that name if you already have one, and does not declare artifacts.
 
 :::note
 The pipe requires Bitbucket Cloud Pipelines on **Linux**. The image is published for `linux/amd64` only (`convisoappsec/convisoast`). Bitbucket does not have GitLab's **Protect variable**: a secured variable is masked in logs and still available on every branch that runs Pipelines. Restrict which branches run the pipe in your YAML.
@@ -187,7 +187,7 @@ If `CONVISO_API_KEY` is missing from the job, confirm it exists under **Reposito
 
 **It looks like you tried to use a pipe … that doesn't exist**
 
-The YAML used `pipe: conviso-appsec/bitbucket-ast-pipe:1.0.3` without `docker://`. Use `pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.3`.
+The YAML used `pipe: conviso-appsec/bitbucket-ast-pipe:1.0.4` without `docker://`. Use `pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.4`.
 
 **You have access to multiple companies, specify one using CONVISO_COMPANY_ID**
 
