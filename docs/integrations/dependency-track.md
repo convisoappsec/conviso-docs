@@ -161,6 +161,6 @@ This ensures that all companies sharing the same Dependency Track instance use t
 
 
 
-Alternatively, refer to the [Azure Pipelines documentation](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners) to automatically synchronize your assets.
+Alternatively, synchronize assets from your CI/CD pipeline: [GitHub Actions](../integrations/github-actions.md#importing-and-synchronizing-assets-from-external-scanners), [GitLab CI/CD](../integrations/gitlab.md#importing-and-synchronizing-assets-from-external-scanners), [Azure Pipelines](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners), or [Bitbucket Pipelines](../integrations/bitbucket-pipelines.md#importing-and-synchronizing-assets-from-external-scanners).
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
