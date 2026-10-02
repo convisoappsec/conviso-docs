@@ -83,7 +83,7 @@ The identified vulnerabilities are sent to the asset on Conviso Platform. Use th
 
 ## Running Conviso AST with the Bitbucket Pipe
 
-Instead of running the CLI inside `image: convisoappsec/convisoast`, you can add the **Conviso AST** pipe. A single pipe covers SAST, SCA and IaC and calls `conviso ast run`. To configure it, follow these steps:
+Instead of running the CLI inside `image: convisoappsec/convisoast`, you can add the **Conviso AST** pipe. A single pipe covers SAST, SCA and IaC and calls `conviso-ast`. To configure it, follow these steps:
 
 1. Open the pipe repository: [conviso-appsec/bitbucket-ast-pipe](https://bitbucket.org/conviso-appsec/bitbucket-ast-pipe).
 2. In the repository you want to scan, go to **Repository settings → Repository variables** and add `CONVISO_API_KEY` with your [Conviso API Key](../api/api-overview.md#generate-api-key). Check **Secured**.
@@ -99,7 +99,7 @@ pipelines:
           clone:
             depth: full
           script:
-            - pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.2
+            - pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.3
               variables:
                 CONVISO_API_KEY: $CONVISO_API_KEY
                 COMPANY_ID: $CONVISO_COMPANY_ID
@@ -121,7 +121,7 @@ pipelines:
 - `ASSET_ID`: Pins the scan to a specific asset, skipping the automatic lookup by repository URL. Optional; use it if a scan stops with an asset ambiguity error.
 - `SCAN_PATH`: Directory to scan, relative to the checkout. Optional; default `.`. Not named `PATH`.
 - `BRANCH`: Overrides the branch recorded on the Platform. Optional; leave empty to use Bitbucket's source branch.
-- `DRY_RUN`: Set to `"true"` to run `conviso ast dry-run` without writing to the Platform.
+- `DRY_RUN`: Set to `"true"` to run `conviso-ast --dry-run` without writing to the Platform.
 - `BASE_URL`: Only for a dedicated or on-premise instance. Default `https://api.convisoappsec.com`.
 
 **Expected Behaviors**:
@@ -187,7 +187,7 @@ If `CONVISO_API_KEY` is missing from the job, confirm it exists under **Reposito
 
 **It looks like you tried to use a pipe … that doesn't exist**
 
-The YAML used `pipe: conviso-appsec/bitbucket-ast-pipe:1.0.2` without `docker://`. Use `pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.2`.
+The YAML used `pipe: conviso-appsec/bitbucket-ast-pipe:1.0.3` without `docker://`. Use `pipe: docker://convisoappsec/bitbucket-ast-pipe:1.0.3`.
 
 **You have access to multiple companies, specify one using CONVISO_COMPANY_ID**
 
