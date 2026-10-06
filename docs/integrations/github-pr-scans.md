@@ -37,7 +37,9 @@ To activate automated scanning for your organization:
 
 ### Step 1 - Access Integration Settings
 
-Navigate to the **Integrations** page in the Conviso Platform, locate your active **GitHub** integration, and click **Edit/Configure**.
+Navigate to the **Integrations** page in the Conviso Platform, open **GitHub**, and click the pencil icon (**Configure connection**) on the connection of the organization whose pull requests you want to scan.
+
+PR Scanning is configured per [GitHub connection](./github.md#github-connections). If your company connects several organizations, enable it on each connection that should scan pull requests.
 
 ### Step 2 - Activate the Feature
 
@@ -127,7 +129,7 @@ The Conviso Platform offers two ways to scan GitHub repositories. Choose the one
 
 If you opened a PR but do not see the "Conviso Security Check" or any comments from the bot, please verify the following:
 
-1.  **Is the feature enabled?** Go to the GitHub Integration page in Conviso Platform and confirm that **Pull Request Scanning** is toggled **On**.
+1.  **Is the feature enabled?** Go to **Integrations → GitHub** in Conviso Platform, open the connection of the repository's organization, and confirm that **Pull Request Scanning** is toggled **On**. Each connection has its own setting.
 2.  **Is the specific repository allowed?** Check the "Asset Mapping" table in the integration settings. The specific repository must be mapped to an asset, and its **Status** toggle must be active.
 3.  **Are permissions correct?** Ensure the installed **Conviso Application Security** GitHub App has the necessary permissions (specifically `read` and `write` access to Pull Requests and Commit Statuses). You may need to update the app permissions in your GitHub Organization settings.
 

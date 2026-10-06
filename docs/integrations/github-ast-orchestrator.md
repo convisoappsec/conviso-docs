@@ -36,7 +36,7 @@ flowchart LR
 What Conviso checks before dispatching:
 
 1. The event is a pull request that was **merged** (`action: closed` and `merged: true`).
-2. **AST Scans** is enabled on the GitHub integration.
+2. **AST Scans** is enabled on the GitHub connection that holds the repository.
 3. The repository is an **imported asset** that is **enabled**.
 4. The PR **base branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
 
@@ -52,12 +52,16 @@ Work in this order: **GitHub setup first**, then **Conviso Platform**.
 
 You need:
 
-- [GitHub Integration](./github.md) connected (GitHub App installed).
+- A [GitHub connection](./github.md#github-connections) for the organization that holds the target repositories.
 - At least one application repository **imported as an asset** and **enabled**.
 - A dedicated orchestrator repository (or an empty repo you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
 - Permission to create an **Actions repository secret** on the orchestrator.
 - A **Conviso API key** for the same environment you will scan against (production or staging).
 - The GitHub App must have access to the **orchestrator** and to every **target** repository you will scan. Prefer **All repositories** on the App installation.
+
+:::info Several GitHub organizations
+Each [GitHub connection](./github.md#github-connections) has its own orchestrator settings, and Conviso dispatches the workflow with that connection's installation. Keep the orchestrator repository in the same installation as the target repositories, and configure an orchestrator on each connection whose repositories you want to scan.
+:::
 
 | Term | Exact meaning |
 | --- | --- |
@@ -72,11 +76,15 @@ You need:
 Conviso compares the merged PR’s **base branch** to:
 
 1. The asset’s configured AST / branch mapping, if set; otherwise  
-2. The integration **Ref** (`orchestrator_ref`).
+2. The connection’s **Branch pattern that runs the AST**, if set; otherwise  
+3. The connection’s **Ref** (`orchestrator_ref`).
+
+Branch patterns are regular expressions matched against the whole branch name, so `main` does not match `maintenance`.
 
 | Configuration | What triggers a scan |
 | --- | --- |
 | Asset branch = `master`, Ref = `main` | Only merges **into `master`** on that asset |
+| Asset branch empty, connection pattern = `main\|develop` | Merges **into `main` or `develop`** on any asset of the connection without its own branch |
 | Asset branch empty, Ref = `main` | Only merges **into `main`** on that asset |
 | Asset branch empty and Ref empty | No branch filter (any base branch can trigger). Prefer setting Ref explicitly. |
 
@@ -268,7 +276,7 @@ jobs:
 
 ### Step 4 – Configure the orchestrator
 
-1. Open **Integrations → GitHub**.
+1. Open **Integrations → GitHub** and click the pencil icon (**Configure connection**) on the connection that holds the target repositories.
 2. Turn **AST Scans** **on**.  
    (**GitHub Advanced Security** is a separate toggle. It is **not** required for the orchestrator merge flow described here.)
 3. Fill **Orchestrator Configuration**:
@@ -320,7 +328,7 @@ Manual test (optional): on the orchestrator, **Actions → AST Scan Orchestrator
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no Actions run | **AST Scans** off; orchestrator fields incomplete; asset disabled or not imported; PR base branch ≠ asset branch / Ref; GitHub App cannot see the repos |
+| Merge done, no Actions run | **AST Scans** off; orchestrator fields incomplete; asset disabled or not imported; PR base branch ≠ asset branch / Ref; GitHub App cannot see the repos; orchestrator configured on another connection than the one that holds the target repository; **Ref** names a branch that does not exist in the orchestrator repository |
 | Workflow never listed | File not under `.github/workflows/`, or not on the **Ref** branch Conviso uses |
 | Token step fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`) |
 | Checkout 403 | GitHub App lacks access to the **target** repository |
