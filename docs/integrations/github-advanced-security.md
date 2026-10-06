@@ -33,54 +33,17 @@ To integrate GitHub Advanced Security with the Conviso Platform, ensure you meet
 To perform the integration between the two platforms, follow these steps:
 
 1. In the sidebar menu, click **Integrations**.
-2. Search for **GitHub** in the integrations list; you can use the **Scanners** filter to narrow down the results.
-3. Click the **Integrate** button to proceed:
+2. Search for **GitHub Advanced Security** and click **Connect**, or **Settings** if your company already has a GitHub connection. Both open the [GitHub connections](./github.md#github-connections) page, because GitHub Advanced Security is enabled on each GitHub connection.
+3. To connect a new organization, click **Add connection** and follow [Add a connection](./github.md#add-a-connection). Keep **GitHub Advanced Security** on in Step 3.
+4. For an organization that is already connected, click the pencil icon (**Configure connection**) on its connection and turn on the **GitHub Advanced Security** card.
 
 <div style={{textAlign: 'center'}}>
 
-![img](../../static/img/github-advanced-security/github-advanced-security2.png)
+![GitHub connection configuration](../../static/img/screenshots/github-connection-configuration-20261006-125328.png)
 
 </div>
 
-4. Click the **Authorize GitHub App** button and complete the GitHub authentication process:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/github-advanced-security/github-advanced-security3.png)
-
-</div>
-
-5. Select your GitHub organization:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/github-advanced-security/github-advanced-security4.png)
-
-</div>
-
-6. Choose whether to install the Conviso App on all your repositories or only on selected ones:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/github-advanced-security/github-advanced-security5.png)
-
-</div>
-
-7. Click **Continue**:
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/github-advanced-security/github-advanced-security6.png)
-
-</div>
-
-8. Your repositories will be imported asynchronously. Wait a few moments, then refresh the page to view your imported assets.
-
-<div style={{textAlign: 'center'}}>
-
-![img](../../static/img/github-advanced-security/github-advanced-security7.png)
-
-</div>
+5. Your repositories will be imported asynchronously. Wait a few moments, then refresh the page to view the imported assets in the connection's repositories table.
 
 Alternatively, you can access your imported assets via the **Asset Management** page.
 

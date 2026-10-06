@@ -2,8 +2,8 @@
 id: github
 title: GitHub Integration
 sidebar_label: GitHub
-description: Learn how to integrate GitHub with Conviso Platform.
-keywords: [GitHub Integration]
+description: Learn how to connect one or more GitHub organizations to Conviso Platform.
+keywords: [GitHub Integration, GitHub App, GitHub organizations, GitHub connections]
 ---
 
 <div style={{textAlign: 'center'}}>
@@ -18,73 +18,117 @@ The **Conviso Platform** integration with [GitHub](https://github.com/) enables 
 By connecting your GitHub repositories to the Conviso Platform, you can easily monitor and analyze code insights directly from within a secure virtual environment.
 This integration ensures continuous code inspection, identifying vulnerabilities, insecure coding practices, and other potential risks without disrupting your development process.
 
+A company can connect **several GitHub organizations and user accounts**. Each one is a **connection**: one installation of the Conviso GitHub App, with its own repositories and its own scan settings.
+
 ### Prerequisites
 
 This integration is supported only for GitHub.com (including GitHub Enterprise Cloud); for GitHub Enterprise Server (self-hosted / on-premises) instances, use the [CI/CD integration](./github-actions.md) instead.
 
 Before you can use the Conviso Platform with GitHub, ensure that:
 
-- You have **administrator access** to your GitHub organization or repositories.
+- You are an **owner** of the GitHub organization where you will install the Conviso GitHub App. A member who is not an owner can only request the installation, and an owner must approve it on GitHub.
+- Your GitHub user has access to that installation of the App. Conviso confirms this with GitHub before it adds the connection.
+- For organizations that enforce **SAML single sign-on**, you have an active SSO session for the organization on GitHub.
 
-This permission allows you to grant Conviso the necessary access to the desired repositories.
+## GitHub connections
 
-## Configuring the Integration Between Conviso Platform and GitHub
+Go to **Integrations**, search for **GitHub**, and click **Connect**, or **Settings** if your company already has a connection. Both the **GitHub** and the **GitHub Advanced Security** cards open the same page.
 
-Follow these steps to configure the GitHub integration with Conviso Platform.
+![GitHub cards on the Integrations page](../../static/img/screenshots/integrations-github-20261006-125441.png)
 
-### Step 1 - Select the Integration
+The **GitHub** page lists every connection of your company:
 
-Navigate to the integrations page, search for **GitHub**, and click **Connect**.
+![GitHub connections](../../static/img/screenshots/github-connections-20261006-125322.png)
 
-![img](../../static/img/github/github-01.png)
+| Column | Description |
+|--------|-------------|
+| **Organization** | The GitHub organization or user account where the App is installed. Shows **Not available** while Conviso has not recorded the account of an older connection. |
+| **Type** | **Organization** or **User**, as GitHub reports the account. |
+| **Installation** | The ID of the GitHub App installation. |
+| **Orchestrator** | **Configured** when the [AST orchestrator](./github-ast-orchestrator.md) is set up. **Not configured** when it is not. **Merge AST is not running** when AST scans are on but no orchestrator is set up, so merges do not start scans yet. |
 
-### Step 2 - Authorize GitHub App
+:::info
+All GitHub connections of a company count as a single GitHub integration toward your plan's integration limit.
+:::
 
-Click **Authorize GitHub App**, which will redirect you to GitHub's authorization page where you can grant the required permissions.
+## Add a connection
 
-![img](../../static/img/github/github-02.png)
+Repeat these steps for each GitHub organization or user account you want to connect.
 
-### Step 3 - Select the Organization or Account
+### Step 1 - Start the connection
 
-You will be presented with a list of organizations you have access to. Select the desired organization to proceed with the integration.
+On the **GitHub** page, click **Add connection**.
+
+### Step 2 - Install the Conviso GitHub App
+
+GitHub opens the installation page of the Conviso GitHub App. Select the organization or account:
 
 ![img](../../static/img/github/github-03.png)
 
-### Step 4 - Grant Access to Repositories
-
-You can now choose whether to grant access to **All repositories** or manually select specific repositories by choosing **Only select repositories**.
+Choose whether the App can access **All repositories** or **Only select repositories**, then confirm:
 
 ![img](../../static/img/github/github-04.png)
 
-After granting access, you will be redirected to the **Conviso Platform**.
+- If the App is already installed on that account, GitHub shows **Configure** instead of **Install**. Review the repository access and save to continue.
+- If you are not an owner of the organization, GitHub creates an installation request instead. Conviso shows **Installation requested** and returns to the **GitHub** page. Once an owner approves the request on GitHub, click **Add connection** again and select the organization.
 
-![img](../../static/img/github/github-05.png)
+### Step 3 - Choose GitHub Advanced Security
 
-Once redirected, click **Continue** to save the integration and proceed.
+GitHub redirects you back to Conviso Platform, which shows the installation you selected. Choose whether this connection uses [GitHub Advanced Security](./github-advanced-security.md) to import its alerts, then click **Continue**. You can change this later in the connection's settings.
 
-:::info
-A success message, "Integration saved successfully," will confirm the integration is complete.
-:::
+![Add a GitHub connection](../../static/img/screenshots/github-add-connection-20261006-133454.png)
 
-### Step 5 - Configure Asset Mapping
+### Step 4 - Authorize on GitHub
 
-Click **Add** to map a **Conviso Platform** asset to a **GitHub** repository.
+GitHub asks you to authorize the Conviso GitHub App for your user. Click **Authorize**.
 
-![img](../../static/img/github/github-06.png)
+Conviso uses this authorization only to confirm with GitHub that your user can access the installation you selected. The authorization is discarded right after the check and is never stored.
 
-Select the asset and the corresponding repository:
+### Step 5 - Configure the connection
 
-![img](../../static/img/github/github-07.png)
+Conviso adds the connection and opens its configuration page. When GitHub Advanced Security is on, Conviso starts importing the installation's repositories as assets; this can take a few minutes.
 
-### Step 6 - Verify Configuration Mappings
+## Configure a connection
 
-After completing the previous steps, you can view your configured assets:
+On the **GitHub** page, click the pencil icon (**Configure connection**) on the connection you want to change. The page header shows the organization and the installation of that connection.
 
-![img](../../static/img/github/github-08.png)
+![GitHub connection configuration](../../static/img/screenshots/github-connection-configuration-20261006-125328.png)
+
+- **Authorization**: **Manage access on GitHub** opens the installation's settings on GitHub, where you change which repositories the App can access. **Remove integration** removes this connection only; the other connections are kept.
+- **Configuration**: the **AST Scans**, **PR Scans**, and **GitHub Advanced Security** cards, and the table of the connection's repositories. In the table you can turn scans off for a repository or give it its own branch pattern.
+
+Every setting belongs to the connection you are editing. For example, an orchestrator configured on one connection only runs for the repositories of that connection.
+
+## Work with several organizations
+
+- **One company per installation.** An installation of the Conviso GitHub App can be connected to only one company.
+- **No duplicates.** Adding an installation that is already connected to your company opens the existing connection instead of creating a new one.
+- **Availability.** If your company can hold only one GitHub connection, Conviso shows a message asking you to contact Conviso support when you try to add another one.
+- **Filter assets by organization.** In the repositories list, open **Filters** and use **GitHub organizations** to show only the assets imported by the selected connections.
+
+  ![Filter assets by GitHub organization](../../static/img/screenshots/asset-filter-github-organizations-20261006-125333.png)
+
+- **AI Pentest.** When you choose repositories for an AI Pentest, the list includes the repositories of every GitHub connection. Repositories with the same name in different organizations appear separately.
+
+## Troubleshooting
+
+If Conviso cannot add a connection, it returns to the **GitHub** page and shows one of these messages:
+
+| Message | What to do |
+|---------|------------|
+| This GitHub authorization link is invalid or has expired. | Authorization links are single-use and expire. Click **Add connection** and start again. |
+| GitHub did not accept the authorization. | Click **Add connection** and start again. |
+| Your GitHub user cannot access this installation. | Check on GitHub that your user can access the organization and the App installation, or ask an owner of the organization to add the connection. |
+| Start a single sign-on session for this organization on GitHub, then add the connection again. | The organization enforces SAML single sign-on. Start an SSO session for it on GitHub and add the connection again. |
+| This GitHub installation is already connected to another company. | The installation belongs to another Conviso company. Contact Conviso support. |
+| GitHub did not answer. Try again in a few minutes. | Wait a few minutes and add the connection again. |
+| Adding GitHub connections is not available right now. Contact Conviso support. | Contact Conviso support. |
+| Contact Conviso support to connect more GitHub organizations for this company. | Your company can hold only one GitHub connection. Contact Conviso support. |
+| GitHub authorization was not completed. Add the connection again. | The authorization was cancelled on GitHub. Click **Add connection** and start again. |
 
 ## Next Steps: Enable Security Scanning
 
-Once the integration is active, you can enable automated security scanning. Conviso Platform provides two methods to suit your workflow needs:
+Once a connection is active, you can enable automated security scanning for its repositories. Conviso Platform provides two methods to suit your workflow needs:
 
 ### 1. Automated PR Scanning (Zero Configuration)
 
