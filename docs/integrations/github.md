@@ -76,7 +76,7 @@ Choose whether the App can access **All repositories** or **Only select reposito
 
 GitHub redirects you back to Conviso Platform, which shows the installation you selected. Choose whether this connection uses [GitHub Advanced Security](./github-advanced-security.md) to import its alerts, then click **Continue**. You can change this later in the connection's settings.
 
-![Add a GitHub connection](../../static/img/screenshots/github-add-connection-20261006-125323.png)
+![Add a GitHub connection](../../static/img/screenshots/github-add-connection-20261006-133454.png)
 
 ### Step 4 - Authorize on GitHub
 
