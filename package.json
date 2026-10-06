@@ -69,6 +69,7 @@
     "playwright": "^1.58.2"
   },
   "resolutions": {
+    "joi": ">=17.13.8",
     "tar-fs": "^3.1.1",
     "mdast-util-to-hast": "^13.2.1"
   }
