@@ -21,14 +21,16 @@ from the portal.
 
 ## How It Works
 
-1. **Verify the domain.** Add the domain on the ACME page and create one CNAME record in your DNS.
+1. **Create the ACME API key.** ACME issues on behalf of your company through one service API key,
+   created on the ACME page. See [The ACME API Key](#acme-api-key).
+2. **Verify the domain.** Add the domain on the ACME page and create one CNAME record in your DNS.
    It is done once and covers the domain and all of its subdomains, wildcard included.
-2. **Connect the server.** Create a server credential: choose the product, optionally limit the
+3. **Connect the server.** Create a server credential: choose the product, optionally limit the
    domains, and copy the key into certbot or cert-manager.
-3. **Certificates come out on their own.** The client orders the certificate, the platform issues
+4. **Certificates come out on their own.** The client orders the certificate, the platform issues
    it with your credit, and the client renews it before it expires.
 
-No challenge is answered per order: the CNAME you created in step 1 is what proves control of the
+No challenge is answered per order: the CNAME you created in step 2 is what proves control of the
 domain for every order that follows.
 
 ## Prerequisites
@@ -46,15 +48,71 @@ domain for every order that follows.
 The ACME page is under **Inventory > Assets > Certificates**: click **Configure ACME** in the
 certificate list toolbar. The page follows the order of the setup, top to bottom:
 
-1. **Domains:** the domains of your company and the CNAME record each one needs.
-2. **Server credentials:** the servers and clusters connected to ACME, with their situation.
+1. **API key:** the service API key ACME issues through, with its validity and profile.
+2. **Domains:** the domains of your company and the CNAME record each one needs.
+3. **Server credentials:** the servers and clusters connected to ACME, with their situation.
 
-Each section is a list with its own search and its own action: **New domain** in the first,
-**Connect server** in the second. While no domain is verified, the second section warns that
-servers only issue after a domain is verified. The **ACME documentation** link at the top of the
+Until the API key exists, the Domains and Server credentials sections stay locked. The Domains
+and Server credentials sections are lists with their own search and their own action: **New
+domain** and **Connect server**. While no domain is verified, the Server credentials section warns
+that servers only issue after a domain is verified. The **ACME documentation** link at the top of the
 page opens this guide.
 
 {/* Screenshot: the ACME page with both sections. */}
+
+## The ACME API Key {#acme-api-key}
+
+ACME issues certificates on behalf of your company through one **Service** API key of your account.
+You create it in the **API key** section, the first step of the ACME page, and it is also listed
+with your other keys under **Settings > API Keys**. Every server credential of the company runs
+through this one key.
+
+### Create the Key {#create-acme-key}
+
+1. In the **API key** section, click **Select or create API key**.
+2. To use an existing service key, pick it from the list and click **Use this key**. To create one,
+   click **New API key** (company administrators only).
+3. In the API key form, keep the suggested name (**ACME**, or **ACME 2** and so on if the name is
+   taken) or type another. It must be unique among the company's service keys.
+4. Choose the validity. One year is suggested.
+5. Click **Create key** and copy the token shown. It is shown only once. ACME starts using the new
+   key right away.
+
+The key gets the **SSL ACME Service** profile, which allows reading and managing certificates and
+nothing else. Keep this profile on the key: with another profile, issuance fails.
+
+ACME does not use the token: your servers keep the EAB of each server credential. The token gives
+access to the company's certificate REST API, so keep it as a secret or discard it.
+
+### Keep the Key Valid {#keep-acme-key-valid}
+
+From 30 days before the expiry date, the API key section warns that the key is about to expire.
+Click **Regenerate** and choose a new validity. Regenerating creates a new version of the same key
+with a new token, shown once; servers, server credentials and accounts stay as they are and nothing
+changes in certbot or cert-manager. When the key expires, ACME stops for the whole company until it
+is regenerated.
+
+### Switch to Another Key {#switch-acme-key}
+
+**Switch key** lists every service API key of the company and marks which ones have the **SSL ACME
+Service** profile. Pick one that has the profile and is within its validity: every server credential
+moves to it, and nothing changes on the servers. Keys without the profile cannot be picked; change
+their profile under **Settings > API Keys** first, after checking that they are not used by another
+integration. Personal keys are not listed.
+
+The previous key is not revoked. It stays active under **Settings > API Keys**; revoke it there if
+it is no longer used.
+
+### If the Key Is Revoked {#acme-key-revoked}
+
+Revoking the ACME key stops ACME for the whole company: new orders and renewals are refused until
+there is an active key. Certificates already issued stay valid until they expire. A revoked key
+cannot be regenerated: click **Create new key** or **Switch key** in the API key section. Servers
+start issuing again without any change on their side.
+
+Users who can manage certificates can select and switch the key. Creating a key, **Create new key**
+and **Regenerate** are for company administrators only, as in **Settings > API Keys**. Other users
+see the key, its validity and the warnings, and are asked to contact the company administrator.
 
 ## Add a Domain {#add-a-domain}
 
@@ -83,8 +141,8 @@ After creating the record, click **Check now**. When the platform finds the CNAM
 **Active** and servers can issue for it.
 
 Keep the record in place. The platform checks every active domain once a day; if the record is
-removed or changed, the domain turns **Needs attention**, new orders for it are refused, and the
-users who can see certificates are notified.
+removed or changed, the domain turns **Needs attention** and new orders for it are refused. A
+certificate that stops renewing because of it is covered by the usual expiration warnings.
 
 If the domain has CAA records, they must allow Sectigo (`sectigo.com`), the certificate authority
 that issues Conviso certificates.
@@ -123,6 +181,7 @@ and switch off each of them on its own.
 1. In the **Server credentials** section, click **Connect server**.
 2. **What to issue:** name the credential (the hostname or the cluster, for example) and choose
    the product. The product decides the certificate type; each issuance spends one credit of it.
+   Connecting a server needs a usable ACME API key; see [The ACME API Key](#acme-api-key).
 3. **For which domains:** optionally limit the domains this server may order. With none selected,
    it covers every verified domain of the company, including domains verified later. You can
    change it later with **Edit domains**.
