@@ -311,7 +311,13 @@ accounts. The actions of each row:
   request and its unused keys stop working. Certificates already issued stay valid until they
   expire.
 
-Deactivating a **domain** refuses new orders for it; certificates already issued stay valid.
+Deactivating a **domain** refuses new orders for it; certificates already issued stay valid. Delete its
+`_pki-validation` CNAME from your DNS as well: until you do, the domain stays delegated to Conviso.
+
+To use a deactivated domain again, choose **Reactivate** in its row. It goes back to **Pending** with a
+new CNAME target: create the new CNAME in your DNS (in place of the old one, if it is still there) and
+click **Check now**. The old CNAME no longer validates the domain. Registering the same name again
+under **New domain** is refused while the deactivated one exists; reactivate it instead.
 
 ## FAQ {#faq}
 
