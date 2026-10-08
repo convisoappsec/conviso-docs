@@ -110,6 +110,43 @@ Two families of authentication are supported:
 
 ![Create Secrets](../../../static/img/conviso-dast/dastLogin.png "Create DAST Secrets")
 
+### Custom HTTP headers *(optional)*
+
+Use the **Custom HTTP Headers** card to add non-authentication headers to every request made during the DAST scan. This is useful when the target expects metadata such as a tenant identifier, locale, correlation ID, or a header required to route traffic through a specific environment.
+
+Enter each header as a name and value separated by a colon:
+
+```text
+X-Custom-Header: Header value
+```
+
+For example:
+
+```text
+X-Tenant-ID: tenant-123
+Accept-Language: en-US
+```
+
+Add each header as a separate entry. The value can contain additional colons, such as in `X-Callback: https://example.com:8443`.
+
+![img](../../../static/img/conviso-dast/conviso-dast-img17.png 'Custom HTTP Headers')
+
+#### Common use cases
+
+Custom HTTP headers are a standard capability in DAST tools and can help adapt the scan to the target environment. Common use cases include:
+
+- **Identify scanner traffic** — add a header such as `X-DAST-Scan: conviso` or customize the `User-Agent` so requests can be identified in application logs, SIEM platforms, and APM tools. This also helps security teams distinguish authorized DAST activity from real attacks.
+- **Work with security controls** — use an agreed header such as `X-Allow-Scanner: true` to apply a controlled rule for CAPTCHA, WAF, or bot-protection systems. This can improve scan coverage and reduce false negatives caused by blocked scanner requests.
+- **Route requests through infrastructure** — provide metadata required by API gateways, reverse proxies, service meshes, or other routing components.
+- **Select a tenant or environment** — identify the correct context in multi-tenant systems or target a dedicated staging or homologation environment, for example with `X-Tenant-ID: tenant-123` or `X-Environment: staging`.
+- **Reach test-only application paths** — use a header agreed with the application team, such as `X-Internal-Access: conviso-dast`, when the test environment exposes additional routes to authorized scanners.
+
+These options give teams more control over how the scanner interacts with their infrastructure, helping it reach the intended attack surface without requiring application changes for each scan.
+
+:::note
+Use the **Authentication** card for credentials. Authentication headers, headers whose names indicate sensitive credentials (such as tokens, secrets, or passwords), and HTTP headers managed by the scanner cannot be added in **Custom HTTP Headers**. The Platform displays a validation message when a header is not allowed.
+:::
+
 ### Scope Definition *(optional)*
 
 Restrict what the DAST is allowed to reach using **include** and **exclude** URL patterns (regular expressions), relative to the asset URL:
