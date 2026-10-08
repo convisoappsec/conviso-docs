@@ -340,7 +340,9 @@ the first time it is reported.
 The same issue detected on `main` and on `release/2.0` is tracked as **two findings**, one per
 branch, so each branch keeps its own list, its own status and its own history. A finding stays on
 its branch: fixing it on a feature branch closes it there, and the one on the default branch
-closes when the default branch is scanned after the merge.
+closes when the default branch is scanned after the merge. The exception is a False Positive, which
+your company can choose to apply to the other branches — see
+[False Positives Across Branches](#false-positives-across-branches).
 
 Findings on assets that are not repositories — cloud, domain or API assets — have no branch.
 
@@ -375,6 +377,90 @@ towards the repository's risk score like any other finding.
 Where the form offers a **Branch** field, you can point the finding at another branch instead. The
 field is enabled once an asset is selected, lists that asset's branches, and comes already filled
 in with the default branch — change it only when the finding is on another one.
+
+## False Positives Across Branches
+
+Because each branch has its own findings, the same issue can be open on several branches at once.
+Without this setting, marking it as **False Positive** on one branch leaves it open on the others,
+and the same issue is triaged again on every branch.
+
+With **False positive across branches** enabled, marking a vulnerability as **False Positive** also
+marks the same vulnerability on the repository's other branches, and the ones that show up there
+later. It is **off by default** and applies to the whole company.
+
+### Turning it on
+
+1. Go to **Settings** and, under **Vulnerabilities**, open **False positive across branches**.
+
+   ![The False positive across branches card under Settings > Vulnerabilities](../../static/img/platform/false-positive-across-branches-card.png "The False positive across branches card.")
+
+2. Turn on **Sync false positives across branches**.
+3. Under **Sync false positives marked on**, choose where a False Positive is taken from:
+   * **The default branch only** — only a False Positive marked on the repository's
+     [default branch](#setting-the-branch-that-represents-production) is applied to the other
+     branches. One marked on a feature branch stays there.
+   * **Any branch** — a False Positive marked on any branch is applied to all the others,
+     default branch included.
+4. Click **Save**.
+
+![The False positive across branches panel with the sync turned on](../../static/img/platform/false-positive-across-branches-panel.png "Choosing where false positives are taken from.")
+
+The card is shown to users with access to vulnerabilities.
+
+### What gets marked
+
+**When you mark a False Positive.** The same vulnerability on the other branches is marked as
+False Positive too, as long as it is still open there (**Identified**, **In Progress** or
+**Draft**). Vulnerabilities in **Awaiting Validation** are left alone, since they may be waiting
+for a retest verdict, and so are the ones already closed (**Fix Accepted**, **Risk Accepted**,
+**Suppressed**).
+
+**When a vulnerability shows up on another branch.** If a scan finds, on another branch, a
+vulnerability that is a False Positive on the source branch, it is created as usual and moved to
+False Positive right after. The same happens when a scan detects again a vulnerability that had
+been fixed on that branch.
+
+### How the same vulnerability is recognized
+
+For **SAST, IaC and Secret findings from Conviso AST**, two findings are the same vulnerability
+when they are in the **same file**, come from the **same rule** and match the **same code**, at
+**any line**. Code moved up or down by a change on another branch is still recognized.
+
+For other scanners and for **SCA findings**, the line is not part of how a finding is identified,
+so the same finding is recognized on every branch as usual.
+
+A vulnerability is **not** matched when:
+
+* the file was **renamed or moved** on the other branch;
+* the same code appears **more than once in the same file** and is open in more than one place —
+  marking one copy could hide a real issue in the other, so each one is reviewed on its own;
+* the finding has **no code snippet**: it is matched only when it is at the same line.
+
+### What it does not do
+
+* **It is not retroactive.** Turning the setting on does not apply the False Positives that already
+  exist. It applies from then on, when a vulnerability is marked or shows up on a branch.
+  Vulnerabilities recorded before the feature was released are recognized only at the same line.
+* **It does not undo.** Reopening a vulnerability on one branch does not reopen the others.
+* **A reopen made by a person sticks.** If someone reopens a vulnerability that was marked this
+  way, it stays open, including after the branch is scanned again.
+* **The scanner is not told.** The change is recorded in Conviso Platform only.
+
+### In the history and in defect trackers
+
+The vulnerability's history shows where the False Positive came from, recorded as the platform
+rather than as the person who marked the original:
+
+* **False positive replicated from branch `<branch>`** — the vulnerability was already on the branch
+  when the original was marked.
+* **False positive inherited from branch `<branch>`** — the vulnerability showed up on the branch
+  after the original was marked.
+
+With a [defect tracker](#defect-trackers) connected, the ticket follows the vulnerability's status.
+A vulnerability that shows up on a branch already marked as False Positive reaches the defect
+tracker as False Positive, without first opening as a regular issue. Moving a ticket to False
+Positive in the defect tracker counts as marking the vulnerability, so it is applied to the other
+branches as well.
 
 ## What Each Screen Shows
 
