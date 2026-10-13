@@ -41,6 +41,8 @@ domain for every order that follows.
   or SSL SAN Wildcard DV). OV and EV are not issued through ACME. See
   [Certificate Credits](./ssl-certificates.md#certificate-credits).
 * Access to create records in the DNS of the domain.
+* Two-factor authentication enabled on your user account (or sign-in through your company's SSO)
+  to create server credentials. See [Connect a Server](#connect-a-server).
 * An ACME client that supports External Account Binding (EAB), such as certbot or cert-manager.
 
 ## The ACME Page {#the-acme-page}
@@ -189,9 +191,10 @@ and switch off each of them on its own.
    **EAB HMAC Key**, and use them in the client as shown below.
 
 :::info Two-factor sign-in
-Creating a server credential and generating an EAB require signing in to the Conviso Platform with
-two-factor authentication, or through your company's SSO. Requests made with an API key cannot
-create them. Company administrators are notified each time an EAB is generated.
+To create a server credential or generate an EAB, your user account must have two-factor
+authentication enabled, or you must sign in through your company's SSO. Without it, the platform
+refuses the request with "Creating ACME credentials and EABs requires signing in to the portal with
+two-factor authentication". Requests made with an API key cannot create them either. Company administrators are notified each time an EAB is generated.
 :::
 
 :::danger The key is shown only once
