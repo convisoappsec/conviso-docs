@@ -159,8 +159,8 @@ each provider's current screen. */}
 
 ## CNAME Troubleshooting {#cname-troubleshooting}
 
-When **Check now** does not find the record, the reason appears under the domain name. The usual
-causes:
+When **Check now** does not find the record, the domain shows **Needs attention**; hover over it to
+see the reason. The usual causes:
 
 * **Record created under the wrong name.** Some providers append the domain automatically, which
   produces `_pki-validation.example.com.example.com`. Use only `_pki-validation` in the name field.
@@ -187,6 +187,12 @@ and switch off each of them on its own.
    change it later with **Edit domains**.
 4. **Install on the server:** copy the **Directory URL**, the **EAB Key ID** and the
    **EAB HMAC Key**, and use them in the client as shown below.
+
+:::info Two-factor sign-in
+Creating a server credential and generating an EAB require signing in to the Conviso Platform with
+two-factor authentication, or through your company's SSO. Requests made with an API key cannot
+create them. Company administrators are notified each time an EAB is generated.
+:::
 
 :::danger The key is shown only once
 The EAB HMAC Key cannot be displayed again after the panel is closed. It works for **one**
