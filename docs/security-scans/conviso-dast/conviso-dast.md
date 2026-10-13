@@ -149,6 +149,8 @@ Use the **Authentication** card for credentials. Authentication headers, headers
 
 ### Scope Definition *(optional)*
 
+![img](../../../static/img/conviso-dast/conviso-dast-img18.png 'DAST Scope')
+
 Restrict what the DAST is allowed to reach using **In scope** and **Out of scope** URL patterns. Scope entries are **regular expressions matched against the complete URL**, not simple text or wildcard rules:
 
 - **In scope** — only URLs matching these patterns are scanned.
