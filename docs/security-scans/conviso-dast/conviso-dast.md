@@ -149,12 +149,87 @@ Use the **Authentication** card for credentials. Authentication headers, headers
 
 ### Scope Definition *(optional)*
 
-Restrict what the DAST is allowed to reach using **include** and **exclude** URL patterns (regular expressions), relative to the asset URL:
+![img](../../../static/img/conviso-dast/conviso-dast-img18.png 'DAST Scope')
+
+Restrict what the DAST is allowed to reach using **In scope** and **Out of scope** URL patterns. Scope entries are **regular expressions matched against the complete URL**, not simple text or wildcard rules:
 
 - **In scope** — only URLs matching these patterns are scanned.
 - **Out of scope** — URLs matching these patterns are never scanned (for example, logout, destructive actions, or third-party areas).
 
-The DAST also automatically keeps your own cloud backends in scope while leaving third-party and managed services out.
+If the same URL matches both lists, **Out of scope takes precedence** and the URL is not scanned. You can add multiple entries to either list; a URL only needs to match one applicable entry.
+
+#### Choose the correct pattern format
+
+Use one of the following formats. The leading slash or URL scheme is significant.
+
+| What you want to match | Pattern format | Example |
+| --- | --- | --- |
+| A path on the asset, with either HTTP or HTTPS | Start with `/` | `/admin/.*` |
+| A path on one specific origin | Include `http://` or `https://` | `https://app.example.com/admin/.*` |
+| The complete application on a hostname | Enter only the hostname | `app.example.com` |
+
+For an asset configured as `https://www.example.com`, these are common configurations:
+
+| Goal | List | Pattern |
+| --- | --- | --- |
+| Scan only the API | In scope | `/api/.*` |
+| Scan only version 1 of the API | In scope | `/api/v1/.*` |
+| Exclude logout, including URLs with query strings | Out of scope | `/logout.*` |
+| Exclude every Cloudflare internal route | Out of scope | `/cdn-cgi/.*` |
+| Exclude a destructive endpoint and everything below it | Out of scope | `/account/delete/.*` |
+| Exclude a specific URL on a specific origin | Out of scope | `https://www.example.com/private/.*` |
+| Include an entire application hostname | In scope | `api.example.com` |
+
+Relative patterns are resolved against the asset hostname and work with both HTTP and HTTPS. For example, `/cdn-cgi/.*` excludes both:
+
+```text
+http://www.example.com/cdn-cgi/trace
+https://www.example.com/cdn-cgi/challenge-platform/...
+```
+
+Absolute patterns include the scheme and are useful when the protocol or origin matters:
+
+```text
+https://www.example.com/internal/.*
+```
+
+:::caution Do not combine a hostname and path without a URL scheme
+`www.example.com/cdn-cgi/.*` is **not** an absolute URL pattern. Because it has no `http://` or `https://`, it is interpreted as a path relative to the asset and will not exclude `https://www.example.com/cdn-cgi/...`.
+
+Use either the relative path:
+
+```text
+/cdn-cgi/.*
+```
+
+or the complete URL pattern:
+
+```text
+https://www.example.com/cdn-cgi/.*
+```
+
+Adding `.*` before the hostname does not fix the format. For example, `.*www.example.com/cdn-cgi/.*` is still interpreted as a relative pattern because it has no URL scheme.
+:::
+
+#### Regular expression behavior
+
+- `.*` means “zero or more of any character”. Use it after a path prefix when all URLs below that prefix should match.
+- `/admin` matches that exact path. Use `/admin/.*` when child URLs such as `/admin/users` must also match.
+- Patterns are evaluated against the **entire URL**. A fragment such as `cdn-cgi` by itself does not mean “contains this text anywhere.”
+- Query strings are part of the URL. Therefore, `/logout` does not match `/logout?next=/home`; use `/logout.*` when the path and all of its query-string variants must be excluded. A broad suffix such as `.*` also covers URLs like `/api/users?page=2`.
+- When writing an absolute regular expression, escaping dots in the hostname is the strict regex form: `https://www\.example\.com/api/.*`. The simpler `https://www.example.com/api/.*` form is accepted, but unescaped dots are regex wildcards and can match unintended characters.
+- A relative pattern inherits an explicit port from the asset URL. For example, if the asset is `https://app.example.com:8443`, `/api/.*` only applies on port `8443`.
+- Invalid regular expressions and unsupported URL schemes are ignored. Check the execution logs after changing scope to identify rejected entries.
+
+:::caution In scope does not authorize unrelated domains
+For security and authorization reasons, an **In scope** entry can only reference the asset domain or one of its subdomains. Domains belonging to another company or unrelated third parties are ignored, even when explicitly added. To scan another domain, register and configure it as a separate authorized asset.
+:::
+
+:::tip Recommended approach
+Prefer **relative path patterns** for routes on the configured asset, such as `/api/.*` or `/logout.*`. Use an **absolute URL pattern** only when you intentionally need to distinguish a scheme, hostname, subdomain, or port. After changing the scope, check the execution logs for ignored patterns, run a new scan, and review **Scanned URLs** to confirm that the intended surface was included and sensitive routes were excluded.
+:::
+
+When no **In scope** pattern is configured, the DAST scans the authorized application surface it discovers. Adding a valid, supported **In scope** entry narrows that surface to matching URLs. The DAST can also automatically recognize authorized cloud backends related to the asset when no explicit include list replaces the default scope; third-party and managed-service URLs remain outside the authorized target.
 
 
 ### Scheduling *(optional)*
