@@ -8,7 +8,7 @@ image: '/static/img/securityfeedseo.png'
 ---
 
 :::note Draft
-This page is a work in progress. Screenshots will be added once the screen design is final.
+This page is a work in progress.
 :::
 
 ## Objective
@@ -58,7 +58,7 @@ domain** and **Connect server**. While no domain is verified, the Server credent
 that servers only issue after a domain is verified. The **ACME documentation** link at the top of the
 page opens this guide.
 
-{/* Screenshot: the ACME page with both sections. */}
+![ACME page](../../../static/img/platform/ssl-certificates-acme-page.png "The ACME page with an active API key and the Domains section below it.")
 
 ## The ACME API Key {#acme-api-key}
 
@@ -122,7 +122,7 @@ see the key, its validity and the warnings, and are asked to contact the company
    one by one.
 3. Click **Create**. The domain appears as **Pending**, with the CNAME record to create.
 
-{/* Screenshot: new domain panel. */}
+![New domain panel](../../../static/img/platform/ssl-certificates-acme-new-domain.png "The New domain panel with a typed domain, which is also created in Assets as an FQDN.")
 
 ## Create the CNAME Record {#create-the-cname-record}
 
@@ -147,7 +147,7 @@ certificate that stops renewing because of it is covered by the usual expiration
 If the domain has CAA records, they must allow Sectigo (`sectigo.com`), the certificate authority
 that issues Conviso certificates.
 
-{/* Screenshot: domain row with the record name and target. */}
+![Domains list](../../../static/img/platform/ssl-certificates-acme-domains.png "Each domain with its situation and the CNAME record to create, with copy buttons for the name and the target.")
 
 ### Common DNS Providers {#dns-providers}
 
@@ -205,7 +205,7 @@ situation in the list. The credential shows **Waiting for connection** until the
 registers with the key, and **Connected** after that. A link to this guide sits right below the
 key warning, for the step-by-step setup.
 
-{/* Screenshot: the three steps of the Connect server panel. */}
+![Connect server panel](../../../static/img/platform/ssl-certificates-acme-connect-server.png "Step 1 of Connect server: the credential name and the product, with the credits available for each.")
 
 ### certbot {#certbot}
 
