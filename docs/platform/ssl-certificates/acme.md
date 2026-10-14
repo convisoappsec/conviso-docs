@@ -16,13 +16,13 @@ This page is a work in progress.
 Issue and renew Conviso SSL/TLS certificates with the ACME client you already run, such as
 **certbot** or **cert-manager**, without opening the platform for each certificate. You prove
 control of each domain once, connect each server once, and from then on the client orders and
-renews certificates on its own. Each issuance spends a credit, exactly like a certificate issued
-from the portal.
+renews certificates on its own. Each new certificate spends a credit, exactly like one issued from
+the portal; renewals reuse it while its term lasts (see [Renewal](#renewal)).
 
 ## How It Works
 
 1. **Create the ACME API key.** ACME issues on behalf of your company through one service API key,
-   created on the ACME page. See [The ACME API Key](#acme-api-key).
+   created on the ACME page by a company administrator. See [The ACME API Key](#acme-api-key).
 2. **Verify the domain.** Add the domain on the ACME page and create one CNAME record in your DNS.
    It is done once and covers the domain and all of its subdomains, wildcard included.
 3. **Connect the server.** Create a server credential: choose the product, optionally limit the
@@ -37,12 +37,14 @@ domain for every order that follows.
 
 * The SSL Certificates module enabled for your account and permission to manage certificates. See
   [Before You Start](./ssl-certificates.md#before-you-start).
+* A company administrator for the first step: only administrators select, create, regenerate or
+  switch the ACME API key.
 * Credits for a **DV** product (SSL DV, SSL Wildcard DV, SSL MDC DV, SSL MDC Wildcard DV, SSL SAN DV
   or SSL SAN Wildcard DV). OV and EV are not issued through ACME. See
   [Certificate Credits](./ssl-certificates.md#certificate-credits).
 * Access to create records in the DNS of the domain.
 * Two-factor authentication enabled on your user account (or sign-in through your company's SSO)
-  to create server credentials. See [Connect a Server](#connect-a-server).
+  to create server credentials and edit their domains. See [Connect a Server](#connect-a-server).
 * An ACME client that supports External Account Binding (EAB), such as certbot or cert-manager.
 
 ## The ACME Page {#the-acme-page}
@@ -73,11 +75,14 @@ through this one key.
 
 1. In the **API key** section, click **Select or create API key**.
 2. To use an existing service key, pick it from the list and click **Use this key**. To create one,
-   click **New API key** (company administrators only).
+   click **New API key**.
 3. In the API key form, keep the suggested name (**ACME**, or **ACME 2** and so on if the name is
    taken) or type another. It must be unique among the company's service keys.
-4. Choose the validity. One year is suggested.
-5. Click **Create key** and copy the token shown. It is shown only once. ACME starts using the new
+4. Choose the **Expiration date**. One year is suggested.
+5. Pick at least one team in **Teams**, or turn on **Grant access to all company resources** under
+   **Access Control**; the form requires one of them. This choice does not limit what ACME issues:
+   ACME is authorized by the key's profile, **SSL ACME Service**.
+6. Click **Create key** and copy the token shown. It is shown only once. ACME starts using the new
    key right away.
 
 The key gets the **SSL ACME Service** profile, which allows reading and managing certificates and
@@ -112,17 +117,21 @@ there is an active key. Certificates already issued stay valid until they expire
 cannot be regenerated: click **Create new key** or **Switch key** in the API key section. Servers
 start issuing again without any change on their side.
 
-Users who can manage certificates can select and switch the key. Creating a key, **Create new key**
-and **Regenerate** are for company administrators only, as in **Settings > API Keys**. Other users
-see the key, its validity and the warnings, and are asked to contact the company administrator.
+The API key step is for company administrators only, as service keys are in **Settings > API Keys**:
+selecting, creating, regenerating and switching the key. Other users, including those who manage
+certificates, see the key, its validity and the warnings, and are asked to contact the company
+administrator.
 
 ## Add a Domain {#add-a-domain}
 
 1. In the **Domains** section, click **New domain**.
-2. Enter the registered domain, for example `example.com`. Adding `example.com` already covers
-   `www.example.com`, `app.example.com` and `*.example.com`; there is no need to add subdomains
-   one by one.
-3. Click **Create**. The domain appears as **Pending**, with the CNAME record to create.
+2. Pick the domain from the company's FQDNs, or type the registered domain, for example
+   `example.com`, and press **Enter**. Adding `example.com` already covers `www.example.com`,
+   `app.example.com` and `*.example.com`; there is no need to add subdomains one by one. Several
+   domains can be added at once.
+3. Click **Create**. The domain appears as **Pending**, with the CNAME record to create. A typed
+   domain that is not in Assets yet is also created there as an FQDN, which needs permission to
+   create assets.
 
 ![New domain panel](../../../static/img/platform/ssl-certificates-acme-new-domain.png "The New domain panel with a typed domain, which is also created in Assets as an FQDN.")
 
@@ -139,17 +148,21 @@ Each domain shows the record to create in your DNS:
 {/* TODO: confirm the production zone (dcv.acme.conviso.com.br is a placeholder until infra
 defines it). */}
 
-After creating the record, click **Check now**. When the platform finds the CNAME, the domain turns
-**Active** and servers can issue for it.
+After creating the record, open the menu (**⋮**) on the domain's row and click **Check now**. When
+the platform finds the CNAME, the domain turns **Active** and servers can issue for it.
 
 Keep the record in place. The platform checks every active domain once a day; if the record is
-removed or changed, the domain turns **Needs attention** and new orders for it are refused. A
-certificate that stops renewing because of it is covered by the usual expiration warnings.
+removed or changed, the domain turns **Needs attention**, new orders for it are refused and the
+users who can see the company's certificates are notified. Once the record is fixed, the domain
+turns **Active** again on the next daily check, or right away with **Check now**. A DNS
+server that does not answer once does not change the domain; if it still does not answer on a check
+12 hours or more later, the domain turns **Needs attention** as well. A certificate that stops
+renewing because of it is covered by the usual expiration warnings.
 
 If the domain has CAA records, they must allow Sectigo (`sectigo.com`), the certificate authority
 that issues Conviso certificates.
 
-![Domains list](../../../static/img/platform/ssl-certificates-acme-domains.png "Each domain with its situation and the CNAME record to create, with copy buttons for the name and the target.")
+![Domains list](../../../static/img/platform/ssl-certificates-acme-domains.png "Each domain with its situation and the CNAME record to create; hover over the record to copy the name or the target.")
 
 ### Common DNS Providers {#dns-providers}
 
@@ -161,8 +174,8 @@ each provider's current screen. */}
 
 ## CNAME Troubleshooting {#cname-troubleshooting}
 
-When **Check now** does not find the record, the domain shows **Needs attention**; hover over it to
-see the reason. The usual causes:
+When **Check now** does not find the record, a new domain stays **Pending** and an active domain
+turns **Needs attention**; hover over the situation to see the reason. The usual causes:
 
 * **Record created under the wrong name.** Some providers append the domain automatically, which
   produces `_pki-validation.example.com.example.com`. Use only `_pki-validation` in the name field.
@@ -170,10 +183,44 @@ see the reason. The usual causes:
   the TTL. Wait and click **Check now** again.
 * **Proxy enabled.** In providers that offer a proxy (such as Cloudflare), the CNAME must be
   **DNS only**.
-* **CAA does not allow Sectigo.** Add a CAA record with `0 issue "sectigo.com"`, or
-  `0 issuewild "sectigo.com"` for wildcard certificates, next to your existing ones.
-* **Domain marked as Needs attention after working.** The daily check stopped finding the CNAME or
-  the CAA now refuses Sectigo. Fix the record and click **Check now**.
+* **CAA does not allow Sectigo.** Add a CAA record with `0 issue "sectigo.com"` next to your
+  existing ones. If the domain also has `issuewild` records, add `0 issuewild "sectigo.com"` as
+  well for wildcard certificates.
+* **Domain marked as Needs attention after working.** The daily check stopped finding the CNAME,
+  the CAA now refuses Sectigo, or your DNS servers stopped answering. Fix the record or the DNS
+  service and click **Check now**.
+
+## Deactivating a Domain {#deactivating-a-domain}
+
+Open the menu (**⋮**) on the domain's row and click **Deactivate**. The dialog asks you to type
+`DEACTIVATE` to confirm and warns that reactivating the domain later needs a new CNAME.
+
+Deactivating a domain refuses new orders for it; certificates already issued stay valid. Delete
+its `_pki-validation` CNAME from your DNS as well: until you do, the domain stays delegated to
+Conviso.
+
+To use a deactivated domain again, click **Reactivate** in the menu (**⋮**) of its row. It goes back
+to **Pending** with a new CNAME target: create the new CNAME in your DNS (in place of the old one,
+if it is still there) and click **Check now**. The old CNAME no longer validates the domain.
+Registering the same name again under **New domain** is refused while the deactivated one exists;
+reactivate it instead.
+
+## Names Each Product Accepts {#names-per-product}
+
+Besides the CNAME, an order is refused when its names do not fit the product of the server
+credential:
+
+| Product | Names in one order |
+|---|---|
+| SSL DV | One name, optionally with its `www.` form. The certificate always carries both, for example `example.com` and `www.example.com`. |
+| SSL Wildcard DV | `*.example.com`, optionally with `example.com`. The certificate always carries both. |
+| SSL MDC DV, SSL SAN DV | Several names. |
+| SSL MDC Wildcard DV, SSL SAN Wildcard DV | Several names, including `*.` names. |
+
+Names that do not fit are refused with `rejectedIdentifier`; for example, `certbot -d a.example.com
+-d b.example.com` on an SSL DV server credential. An order with more names than any credit of the
+product holds is refused with a message such as `no credit of SSL MDC DV holds 3 names`; when no
+credit of the product is available, the message is `no available credit of SSL MDC DV`.
 
 ## Connect a Server {#connect-a-server}
 
@@ -186,15 +233,15 @@ and switch off each of them on its own.
    Connecting a server needs a usable ACME API key; see [The ACME API Key](#acme-api-key).
 3. **For which domains:** optionally limit the domains this server may order. With none selected,
    it covers every verified domain of the company, including domains verified later. You can
-   change it later with **Edit domains**.
+   change it later with **Edit domains**. Click **Generate key** to create the server credential.
 4. **Install on the server:** copy the **Directory URL**, the **EAB Key ID** and the
    **EAB HMAC Key**, and use them in the client as shown below.
 
 :::info Two-factor sign-in
-To create a server credential or generate an EAB, your user account must have two-factor
-authentication enabled, or you must sign in through your company's SSO. Without it, the platform
-refuses the request with "Creating ACME credentials and EABs requires signing in to the portal with
-two-factor authentication". Requests made with an API key cannot create them either. Company administrators are notified each time an EAB is generated.
+To create a server credential, edit its domains or generate an EAB, your user account must have
+two-factor authentication enabled, or you must sign in through your company's SSO. Without it, the
+platform refuses the request with "Managing ACME credentials and EABs requires signing in to the
+portal with two-factor authentication". Requests made with an API key cannot do it either. Company administrators are notified each time an EAB is generated.
 :::
 
 :::danger The key is shown only once
@@ -223,13 +270,22 @@ certbot certonly --standalone \
   -d example.com
 ```
 
-* Issuance is asynchronous and can take a few minutes. certbot waits 90 seconds by default;
-  `--issuance-timeout 300` gives it more room.
+* Issuance is asynchronous and usually takes a few minutes, but an order can stay in processing for
+  up to 2 hours before it fails. certbot waits 90 seconds by default; `--issuance-timeout 300`
+  gives it more room. If certbot gives up waiting, the order keeps going on the platform: wait for
+  the certificate to show up in the certificate list before running the command again. Each run
+  creates a new private key, and a run made while the first order is still processing spends
+  another credit, or is refused when there is none.
+* `--standalone` is there only because certbot asks for an authenticator. The authorizations come
+  back already valid, since the domain was verified once through the CNAME, so certbot runs no
+  challenge and does not need port 80. It works on a server that already uses that port.
 * For a wildcard, quote the name: `-d '*.example.com'`.
 * certbot registers the account on this first run. Later runs on the same server reuse it, so the
   EAB key is not needed again.
-* Renewal uses certbot's own scheduler (systemd timer or cron, installed with certbot). Check it
-  with `certbot renew --dry-run`.
+* Renewal uses certbot's own scheduler (systemd timer or cron, installed with certbot). Check that
+  it is in place with `systemctl list-timers | grep certbot` or in the crontab. Do not test it with
+  `certbot renew --dry-run`: against the Conviso server the dry run is not simulated, it reissues
+  the certificate for real.
 
 ### cert-manager {#cert-manager}
 
@@ -288,17 +344,50 @@ URL as the ACME server, the EAB Key ID and the EAB HMAC Key.
 ## Renewal {#renewal}
 
 The client renews on its own; nothing is done in the platform. A renewal of the same names reuses
-the credit of the original certificate while that credit's term lasts. After the term ends, or
-when the names change, the next issuance spends a new credit. Without an available credit for the
+the credit of the original certificate while that credit's term lasts. Such a renewal is a reissue:
+the new certificate shows up in the certificate list and the previous one moves to **Replaced**, as
+in [Renewing with Reissue](./managing-certificates.md#renewing-with-reissue). A certificate can be
+reissued up to 10 times in 24 hours; past that, the client is told to retry later. After the term ends, or
+when the names change, the next issuance spends a new credit. Only certificates issued through ACME
+are renewed this way: the first ACME issuance always spends a credit, even for names that already
+have a certificate bought in the platform. Without an available credit for the
 server credential's product, the order is refused and the client reports an authorization error.
+
+In the last 30 days of a credit's term, a renewal spends a new credit when one is available. The
+certificate authority ends a renewal with the term, so a certificate renewed then would expire
+with it and the client would renew it again on every run. Without an available credit, the
+renewal still uses the original credit and expires when its term ends.
+
+A single-domain certificate always covers both `example.com` and `www.example.com`, so ordering
+either one renews the same certificate. The renewal keeps the main name of the first issuance: if
+the first certificate was ordered for `example.com`, a renewal ordered for `www.example.com` still
+comes out with `example.com` as its main name, and covers both. Changing the main name would make
+the certificate authority revoke the copies already installed on your other servers.
+
+If an order fails after the certificate was bought, for example because the CNAME was fixed more than
+two hours later, the next order for the same names continues that purchase without spending another
+credit, even when the client creates a new private key. If the certificate authority never confirmed
+a purchase, new orders for those names are refused with a message to contact support.
 
 ## Revoking a Certificate {#revoking}
 
-Revoke from the client that issued the certificate, for example:
+A certificate issued through ACME can be revoked by:
 
-```bash
-certbot revoke --cert-name example.com --reason superseded
-```
+* the ACME account that issued it, usually from the client that requested it:
+
+  ```bash
+  certbot revoke --cert-name example.com --reason superseded
+  ```
+
+* another ACME account of the company, when its server credential may order every name in the
+  certificate and each name is under an active domain. Certificates bought in the platform are not
+  reachable this way; revoke them in the platform.
+* a request signed with the certificate's own private key, from any machine that holds it:
+
+  ```bash
+  certbot revoke --server <Directory URL> \
+    --cert-path /path/to/cert.pem --key-path /path/to/privkey.pem
+  ```
 
 The accepted reasons are `unspecified`, `keycompromise`, `affiliationchanged`, `superseded` and
 `cessationofoperation`.
@@ -315,18 +404,12 @@ accounts. The actions of each row:
 * **Edit domains:** change which domains the server may order. Renewals for domains removed from
   the list are refused from the next order on.
 * **Accounts:** each installation that registered with a key creates an ACME account. Deactivate an
-  account to switch off one installation without touching the others.
+  account to switch off one installation without touching the others. A deactivated account cannot
+  be used again: to reconnect that installation, register a new ACME account, with a new account
+  key and a new EAB.
 * **Deactivate:** switches the server credential off for good. Its accounts stop on their next
   request and its unused keys stop working. Certificates already issued stay valid until they
   expire.
-
-Deactivating a **domain** refuses new orders for it; certificates already issued stay valid. Delete its
-`_pki-validation` CNAME from your DNS as well: until you do, the domain stays delegated to Conviso.
-
-To use a deactivated domain again, choose **Reactivate** in its row. It goes back to **Pending** with a
-new CNAME target: create the new CNAME in your DNS (in place of the old one, if it is still there) and
-click **Check now**. The old CNAME no longer validates the domain. Registering the same name again
-under **New domain** is refused while the deactivated one exists; reactivate it instead.
 
 ## FAQ {#faq}
 

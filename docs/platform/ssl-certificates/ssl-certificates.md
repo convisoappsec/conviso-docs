@@ -207,6 +207,8 @@ takes longer.
   choosing a product to publishing the validation record.
 - [Managing Certificates](./managing-certificates.md) — tracking, validating, downloading,
   reissuing and revoking a certificate.
+- [Automating Certificates with ACME](./acme.md) — issuing and renewing certificates with certbot,
+  cert-manager or any ACME client.
 
 ## Related Areas
 
