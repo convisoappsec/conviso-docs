@@ -263,7 +263,7 @@ it and how to force a re-check.
 | `Enter a valid DNS domain` | The domain is not a valid DNS name. Check for typos, trailing dots or a protocol prefix such as `https://`. |
 | `Wildcard domains only accept CNAME or email.` | HTTPS validation was selected for a wildcard. Use DNS (CNAME) or e-mail. |
 | The e-mail dropdown is empty for a domain | The certificate authority has no approved address for it. Use DNS (CNAME) or HTTPS instead. |
-| The order was placed but the status is `Manual reconciliation required` | The certificate authority did not confirm the submission. The credit was not returned automatically — contact Conviso Support to reconcile the order. |
+| The order was placed but the status is `Manual reconciliation required` | The certificate authority did not confirm the submission. The platform checks the order with the certificate authority on its own within two hours: either the certificate continues to validation, or it turns to Error and the credit becomes available again. Wait for that before ordering the same domain again. |
 
 ## Related Areas
 

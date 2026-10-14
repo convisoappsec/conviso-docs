@@ -59,7 +59,9 @@ Two situations also show a banner at the top of the detail page:
   resubmit in the form below.` Correct the data in the form on the same page and submit again.
 * **Manual reconciliation required** — `The certificate authority submission could not be
   confirmed. Contact support for manual reconciliation.` The platform could not confirm what
-  happened to the order, so it will not guess. Contact Conviso Support.
+  happened to the order, so it checks it with the certificate authority on its own within two
+  hours: if the order exists, the certificate continues to validation; if not, the certificate
+  turns to Error and its credit becomes available again. There is nothing to do in the meantime.
 
 ## Tracking a Certificate
 
@@ -258,7 +260,7 @@ generation's own detail page — so a replaced certificate remains fully inspect
 | **Reissue** is not offered | The subscription term has ended — check **Subscription until**. Renewal then requires a new credit and a new issuance. |
 | **Download** is not offered | The certificate has not been issued yet. It is only available once the status is **Valid**. |
 | Status is **Error** with an EV banner | The certificate authority rejected the vetting details. Correct them in the form on the page and submit again. |
-| Status is **Manual reconciliation required** | The platform could not confirm the submission with the certificate authority. Contact Conviso Support — do not place a second order for the same domain first. |
+| Status is **Manual reconciliation required** | The platform could not confirm the submission with the certificate authority and checks it on its own within two hours. Do not place a second order for the same domain before it settles: the certificate either continues to validation, or turns to Error with its credit available again. |
 | The e-mail validation message never arrived | Confirm the address is monitored, check the spam folder, then use **Resend validation email**. If it still fails, switch the domain to DNS (CNAME). |
 
 ## Related Areas
