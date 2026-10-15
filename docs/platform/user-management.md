@@ -27,7 +27,22 @@ There are more resources to come in the [following releases](/releases) so you c
 [Learn how to create Profiles.](#creating-a-profile)
 
 #### Default Profiles
-On the Platform, there are 3 default profiles:
+Default profiles are maintained by Conviso and available to every company. They can't be edited or deleted. To adjust one to your needs, [create a custom profile that starts from it](#creating-a-profile).
+
+On the Platform, there are 8 default profiles:
+
+| Profile | Use it for |
+| --- | --- |
+| [Admin](#admin-profile) | Full access, including Access Control. |
+| [Developer](#developer-profile) | Software engineers working on assets and projects. |
+| [Viewer-only](#viewer-only) | Viewing what was assigned, without changing anything. |
+| [Pentester](#pentester) | Running pentests: recording vulnerabilities with evidence and using AI Pentest. |
+| [Security Analyst](#security-analyst) | Triaging vulnerabilities, including false positives, and exporting data. |
+| [AppSec Manager](#appsec-manager) | Running the AppSec program: accepting risk, requirements, compliance and threat modeling. |
+| [Business Owner](#business-owner) | Business people who decide whether to accept the risk of their assets' vulnerabilities. |
+| [Service Account (CI/CD)](#service-account-cicd) | Service API keys used by CI/CD pipelines. |
+
+A profile defines what a user can do. Which assets they can do it on is set by the Access of the user, team, or API key. Some modules also depend on your company's plan: a profile with AI Pentest permissions only reaches AI Pentest if the plan includes it.
 
 #### Developer Profile
 Profile Developer was created with the aim of streamlining the platform for software engineers, so that they only have access to what is relevant to their work. Permissions:
@@ -52,6 +67,55 @@ The Admin profile is designed to provide full access to all the functionalities 
 #### Viewer-only
 The Viewer-Only profile,  a global Profile, refers to users who only have permission to view what was assigned to them on the platform by the administrator.  
 
+#### Pentester
+The Pentester profile is for pentesters testing the assets they were given access to. Permissions:
+
+- View assets and projects, and update projects, including their checklist;
+- View the secrets linked to a project;
+- Create, view, and edit vulnerabilities, and attach evidence to them;
+- Create, edit, and run AI Pentest, and view its results;
+- Manage their own notifications and tickets.
+
+The Pentester can't mark vulnerabilities as False Positive or Risk Accepted, export data, or delete anything.
+
+#### Security Analyst
+The Security Analyst profile is for analysts who triage vulnerabilities. Permissions:
+
+- View everything the Viewer-only profile can view;
+- Edit vulnerabilities and change their status, including to False Positive;
+- Export vulnerabilities, assets, and projects to CSV.
+
+The Security Analyst can't create or delete vulnerabilities, or mark them as Risk Accepted.
+
+#### AppSec Manager
+The AppSec Manager profile is for whoever runs the application security program. Permissions:
+
+- Everything the Security Analyst can do;
+- Mark vulnerabilities as Risk Accepted;
+- Create vulnerabilities;
+- Create, edit, and delete requirements and compliance items;
+- Edit the AppSec Program, and create and delete its assessments;
+- Create and edit threat models.
+
+The AppSec Manager can't delete vulnerabilities, projects, assets, or threat models, and has no access to Access Control.
+
+#### Business Owner
+The Business Owner profile is for the business person responsible for an asset, who decides whether to accept its risks. Permissions:
+
+- View everything the Viewer-only profile can view;
+- Mark vulnerabilities as Risk Accepted.
+
+The Business Owner can't change vulnerabilities to any other status, edit them, or export data. Moving a vulnerability out of Risk Accepted requires editing it, so a Business Owner can't undo an acceptance either.
+
+#### Service Account (CI/CD)
+The Service Account (CI/CD) profile is for Service API keys used by CI/CD pipelines, such as the ones that run Conviso CLI. Permissions:
+
+- Create, view, and edit assets;
+- Create, view, and edit vulnerabilities;
+- Send scan results to the Platform.
+
+To use it, an Admin creates the key in **Settings > API Keys > New API Key > Service API** and selects this profile. The key only reaches the assets in its Access.
+
 ### About Teams
 You can create Teams to represent different types of users within your organization.
 A Team in Conviso Platform let you organize users but also manage permissions and accesses for a more efficiente user management.
@@ -66,8 +130,11 @@ You can invite a user from the Security Feed or through the **Settings>Users** o
 From there you need to provide the email or emails (comma-separated), select a Profile and define the Access that User will have.
 
 ### Creating a Profile
-You can create a new Profile with custom permission from the **Settings>Users** option as well.
-Just press on New Profile and follow the instructions to define a name an specific permissions divided by resource.
+Go to **Settings > Access Control > Profiles** and click **New Profile**. Give the profile a name and choose its permissions for each resource.
+
+To build on an existing profile, select it in **Start from**. Its permissions are filled in on the form, and you can change them before saving. The new profile is independent: later changes to either profile don't affect the other.
+
+Some permissions can't be set on custom profiles yet, such as the ones for AI Pentest and Compliance. When you start from a default profile, those permissions aren't copied and the form shows a warning. Users with the new profile won't reach those modules.
 
 ### Creating a Team
 You can create a new team from the **Settings>Users** option as well.
