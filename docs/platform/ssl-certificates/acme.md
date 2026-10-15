@@ -368,12 +368,15 @@ If an order fails after the certificate was bought, for example because the CNAM
 two hours later, the next order for the same names continues that purchase without spending another
 credit, even when the client creates a new private key. If the certificate authority refuses to
 continue it, the order spends an available credit instead. If the certificate authority does not
-answer, the order fails with "the certificate authority did not answer; place the order again": run
-the client again, and the next order continues the same purchase.
+answer, or cannot take the order at that moment, the order fails with "the certificate authority did
+not answer; place the order again" or "the certificate authority could not take the order now; place
+the order again later": run the client again, and the next order continues the same purchase.
 
 If the certificate authority never confirmed a purchase, new orders for those names are refused until
 the platform checks that purchase with the certificate authority, which happens automatically within
-two hours: the purchase either continues or its credit becomes available again. Then order again. A
+two hours: the purchase either continues or its credit becomes available again. Then order again. If
+the purchase is still not settled after a week, its certificate turns to Error and the names take
+orders again, spending a new credit; contact Conviso Support about the credit of that purchase. A
 scheduled `certbot renew` and cert-manager retry a failed renewal on their own; a first issuance with
 `certbot certonly` has to be run again.
 
