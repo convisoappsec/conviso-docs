@@ -7,10 +7,6 @@ keywords: [ACME, certbot, cert-manager, automatic renewal, EAB, external account
 image: '/static/img/securityfeedseo.png'
 ---
 
-:::note Draft
-This page is a work in progress.
-:::
-
 ## Objective
 
 Issue and renew Conviso SSL/TLS certificates with the ACME client you already run, such as
@@ -143,10 +139,7 @@ Each domain shows the record to create in your DNS:
 |---|---|
 | Type | `CNAME` |
 | Name | `_pki-validation.<your domain>`, for example `_pki-validation.example.com` |
-| Target | `d48e2ff2023f18696cb8f0a0ff9c4635.dcv.acme.conviso.com.br` (example; copy the value shown on the page, unique for each domain) |
-
-{/* TODO: confirm the production zone (dcv.acme.conviso.com.br is a placeholder until infra
-defines it). */}
+| Target | `d48e2ff2023f18696cb8f0a0ff9c4635.acme.trustsign.com.br` (example; copy the value shown on the page, unique for each domain) |
 
 After creating the record, open the menu (**⋮**) on the domain's row and click **Check now**. When
 the platform finds the CNAME, the domain turns **Active** and servers can issue for it.
@@ -235,7 +228,8 @@ and switch off each of them on its own.
    it covers every verified domain of the company, including domains verified later. You can
    change it later with **Edit domains**. Click **Generate key** to create the server credential.
 4. **Install on the server:** copy the **Directory URL**, the **EAB Key ID** and the
-   **EAB HMAC Key**, and use them in the client as shown below.
+   **EAB HMAC Key**, and use them in the client as shown below. The Directory URL is the same for
+   every company: `https://api.app.convisoappsec.com/acme/directory`.
 
 :::info Two-factor sign-in
 To create a server credential, edit its domains or generate an EAB, your user account must have
