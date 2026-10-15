@@ -59,7 +59,7 @@ certificate list toolbar. The page follows the order of the setup, top to bottom
 Until the API key exists, the Domains and Server credentials sections stay locked. The Domains
 and Server credentials sections are lists with their own search and their own action: **New
 domain** and **Connect server**. While no domain is verified, the Server credentials section warns
-that servers only issue after a domain is verified. The **ACME documentation** link at the top of the
+that servers only issue after a domain is verified. The **View documentation** link at the top of the
 page opens this guide.
 
 ![ACME page](../../../static/img/platform/ssl-certificates-acme-page.png "The ACME page with an active API key and the Domains section below it.")
@@ -366,19 +366,21 @@ the certificate authority revoke the copies already installed on your other serv
 
 If an order fails after the certificate was bought, for example because the CNAME was fixed more than
 two hours later, the next order for the same names continues that purchase without spending another
-credit, even when the client creates a new private key. If the certificate authority refuses to
-continue it, the order spends an available credit instead. If the certificate authority does not
-answer, or cannot take the order at that moment, the order fails with "the certificate authority did
-not answer; place the order again" or "the certificate authority could not take the order now; place
-the order again later": run the client again, and the next order continues the same purchase.
+credit, even when the client creates a new private key. If the certificate authority refuses that
+purchase itself, the order spends an available credit instead. If it refuses only the new private
+key, the order fails with "the certificate authority refused the CSR; make a new key and order again"
+and the purchase is kept for the next order. If the certificate authority does not answer, or cannot
+take the order at that moment, the order fails with "the certificate authority did not answer; place
+the order again" or "the certificate authority could not take the order now; place the order again
+later": run the client again, and the next order continues the same purchase.
 
 If the certificate authority never confirmed a purchase, new orders for those names are refused until
-the platform checks that purchase with the certificate authority, which happens automatically within
-two hours: the purchase either continues or its credit becomes available again. Then order again. If
-the purchase is still not settled after a week, its certificate turns to Error and the names take
-orders again, spending a new credit; contact Conviso Support about the credit of that purchase. A
-scheduled `certbot renew` and cert-manager retry a failed renewal on their own; a first issuance with
-`certbot certonly` has to be run again.
+the platform checks that purchase with the certificate authority, which happens automatically,
+usually within two hours: the purchase either continues or its credit becomes available again. Then
+order again. If the purchase is still not settled after a week, its certificate turns to Error and
+the names take orders again, spending a new credit; contact Conviso Support about the credit of that
+purchase. A scheduled `certbot renew` and cert-manager retry a failed renewal on their own; a first
+issuance with `certbot certonly` has to be run again.
 
 ## Revoking a Certificate {#revoking}
 
