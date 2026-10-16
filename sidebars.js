@@ -271,10 +271,13 @@ module.exports = {
               type: "category",
               label: "Defect/Bug Tracking",
               items: [
+                'integrations/asana',
                 'integrations/azure-boards',
                 'integrations/businessmap',
                 'integrations/clickup',
+                'integrations/freshdesk',
                 'integrations/jira',
+                'integrations/linear',
                 {
                   type: "category",
                   label: "Requirements Sync",
@@ -286,7 +289,8 @@ module.exports = {
                     'integrations/jira-requirements',
                   ],
                 },
-                'integrations/servicenow'
+                'integrations/servicenow',
+                'integrations/zendesk'
               ]
             },
             {
