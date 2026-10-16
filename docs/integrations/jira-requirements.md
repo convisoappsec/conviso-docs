@@ -32,12 +32,20 @@ This produces a clear backlog structure in Jira: one Epic for the Conviso projec
 
 Jira Requirements supports two **sync modes**, chosen per configuration:
 
-| Sync mode | How issues are created | When to use it |
+| Sync mode | What Jira receives | When to use it |
 |---|---|---|
 | **Hierarchical** (default) | Project, Requirement, and Activity become an **Epic**, **Story**, and **Sub-task**, linked through the Jira **parent** relationship. | Jira projects that provide the Epic, Story, and Sub-task hierarchy levels (most company-managed software projects). |
-| **Metadata** | Project, Requirement, and Activity are each created as **independent top-level issues** (no parent). Their relationship is preserved through **reference labels**. | Jira projects that do **not** offer an Epic and/or Sub-task level, such as **Jira Service Management** or **team-managed** projects. |
+| **Metadata** | **One issue per activity.** The project and the requirement have no issue of their own; they travel in the activity's description, each with a link back to Conviso Platform. | Jira projects that do **not** offer an Epic and/or Sub-task level, such as **Jira Service Management** or **team-managed** projects. |
 
-In both modes, Conviso Platform stays the source of truth, status mapping works the same way across the three entity types, and correlation is canonical through the Conviso entity id. The difference is only how the three issues relate to each other in Jira: parent links (Hierarchical) versus reference labels (Metadata).
+In both modes, Conviso Platform stays the source of truth and correlation is canonical through the Conviso entity id.
+
+:::note What changed in Metadata mode
+Metadata mode used to create three independent top-level issues — one for the project, one for each requirement, one for each activity — related by reference labels.
+
+It now sends the activities alone. Without a hierarchy to sit in, the project and requirement issues were cards nobody worked: a requirement has no status of its own in Conviso Platform, so nothing ever moved it, and neither issue had any relationship a Jira board could act on. The context they carried travels on the activity instead.
+
+Existing configurations are unaffected until their next sync. Issues already created for projects and requirements are **not** removed — Conviso Platform simply stops updating them.
+:::
 
 :::note
 The sync mode is defined per configuration and cannot be changed after the configuration has created issues in Jira. Choose the mode that matches the target Jira project before the first sync. To switch modes, remove the integration and configure it again.
@@ -207,11 +215,17 @@ Status mappings control how status changes move between Conviso Platform and Jir
 
 Each mapping step shows a **Conviso Status** column with the platform statuses on the left, and an **External Status** column on the right where you pick the corresponding Jira status. The Jira statuses become available after you select the Jira **Issue Type** for that step.
 
-| Wizard step | Conviso statuses you map |
-|---|---|
-| Project Status Mapping | To do, Running, Paused, Done, Discontinued |
-| Requirement Status Mapping | To do, Running, Done |
-| Activity Status Mapping | To do, Running, Not according, Not applicable, Done |
+| Wizard step | Conviso statuses you map | Used in |
+|---|---|---|
+| Project Status Mapping | To do, Running, Paused, Done, Discontinued | Hierarchical only |
+| Requirement Status Mapping | To do, Running, Done | Hierarchical only |
+| Activity Status Mapping | To do, Running, Not according, Not applicable, Done | Both modes |
+
+:::caution Metadata mode uses the Activity mapping only
+The wizard still offers all three steps, but in **Metadata mode** only the activity has an issue in Jira. Anything mapped on the Project and Requirement steps is saved and never used: there is no card for those levels to move.
+
+Map the activity statuses with care in this mode — they are the only ones that take effect.
+:::
 
 <div style={{textAlign: 'center'}}>
 
@@ -299,12 +313,14 @@ Jira Service Management queues are views based on JQL filters. The integration d
 
 ### Reference labels (Metadata mode)
 
-In **Metadata mode** the three issues are top-level (no parent link), so Conviso Platform adds **reference labels** that point each card to its logical parent's Conviso id:
+In **Metadata mode** the activity issue is top-level, with no parent link, so Conviso Platform adds **reference labels** carrying the Conviso ids it belongs to:
 
 | Label pattern | Applied to | Meaning |
 |---|---|---|
-| `<project id>_conviso_ref_project` | Requirement and Activity cards | Links the card to its Conviso **project**. |
-| `<requirement id>_conviso_ref_requirement` | Activity cards | Links the activity to its Conviso **requirement**. |
+| `<project id>_conviso_ref_project` | Activity issues | Links the issue to its Conviso **project**. |
+| `<requirement id>_conviso_ref_requirement` | Activity issues | Links the issue to its Conviso **requirement**. |
+
+The activity's description carries the same relationship in readable form — the requirement and project names, each with a link back to Conviso Platform. The labels are for filtering; the description is for the person reading the issue.
 
 Use them to group all Metadata cards of a given project or requirement in a JQL filter:
 
@@ -408,7 +424,11 @@ mutation {
 }
 ```
 
-The `configType` keys (`EPIC_ISSUE_TYPE_ID`, `STORY_ISSUE_TYPE_ID`, `SUBTASK_ISSUE_TYPE_ID`) are kept for both modes and act as the three slots for the Project, Requirement, and Activity issues. In Metadata mode they do not need to be Epic/Story/Sub-task hierarchy levels — any non-sub-task issue type is accepted, and reusing a single type (as above) is common when the Jira project offers only one relevant type.
+The `configType` keys (`EPIC_ISSUE_TYPE_ID`, `STORY_ISSUE_TYPE_ID`, `SUBTASK_ISSUE_TYPE_ID`) are required in both modes and act as the three slots for the Project, Requirement, and Activity issues. In Metadata mode they do not need to be Epic/Story/Sub-task hierarchy levels — any non-sub-task issue type is accepted, and reusing a single type (as above) is common when the Jira project offers only one relevant type.
+
+:::note
+In **Metadata mode** only `SUBTASK_ISSUE_TYPE_ID` is used to create anything: it is the type the activity issue is created as. The other two slots are still validated — Metadata mode rejects a sub-task type in any of them, since none of the issues has a parent — but no issue is created from them.
+:::
 
 To trigger a manual sync through the API:
 
