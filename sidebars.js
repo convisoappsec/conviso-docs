@@ -165,6 +165,7 @@ module.exports = {
               items: [
                 'platform/ssl-certificates/issuing-a-certificate',
                 'platform/ssl-certificates/managing-certificates',
+                'platform/ssl-certificates/acme',
               ],
             },
             'platform/sbom-management',
