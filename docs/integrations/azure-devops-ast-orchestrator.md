@@ -57,7 +57,7 @@ You need:
 - [Azure DevOps ALM integration](./azure-devops.md) connected (OAuth), with repositories imported as assets.
 - The Microsoft account that connected the integration has **Edit subscriptions** on each Azure **project** you scan (Service Hooks for merged pull requests). Consent in Microsoft Entra is not enough — see **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
 - At least one application repository **imported as an asset** and **enabled**.
-- A dedicated orchestrator repository (or an empty repo you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
+- A dedicated orchestrator repository (or an empty repo you will use only for this).
 - Permission to create pipelines and set **pipeline variables** on the orchestrator.
 - A **Conviso API key** for the same environment you will scan against (production or staging).
 
@@ -90,21 +90,15 @@ Conviso compares the merged PR’s **destination branch** to:
 
 ### Step 1 – Create the orchestrator repository
 
-1. Create an Azure DevOps repository (recommended name: `conviso-ast-orchestrator`), **or** copy from [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator) and keep only `azure-pipelines.yml`.
+1. Create an Azure DevOps repository (recommended name: `conviso-ast-orchestrator`).
 2. Choose the branch that will contain the YAML (almost always **`main`**). That value is what you will set as **Ref** in Conviso.
 
 ### Step 2 – Add `azure-pipelines.yml`
 
-:::tip Example repository
-Public template: **[convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator)**  
-
-Pipelines file: [`azure-pipelines.yml`](https://github.com/convisoappsec/pipeline-orchestrator/blob/main/azure-pipelines.yml)
-:::
-
 On the orchestrator branch you will set as **Ref** (usually `main`):
 
 1. Create **`azure-pipelines.yml`** at the repository root.
-2. Paste the YAML below (or copy it from the example repo). Use this template as-is — it matches the public example, including the parameters Conviso sends on each run.
+2. Paste the YAML below. It is the template to use, including the parameters Conviso sends on each run. Do not copy an older file that wraps the job in `container:` — that form fails on current hosted agents with the Alpine image.
 
 ```yaml
 parameters:
@@ -142,17 +136,20 @@ pr: none
 variables:
   - name: CONVISO_COMPANY_ID
     value: ""
+  - name: CONVISO_AST_IMAGE
+    value: convisoappsec/convisoast:latest
 
 pool:
   vmImage: ubuntu-latest
 
-# Azure requires an empty entrypoint or container steps fail to docker exec.
-container:
-  image: convisoappsec/convisoast:latest
-  options: --entrypoint ""
-
+# The Conviso AST image is Alpine. Azure container jobs (`container:`) run
+# Node-based tasks inside that image and break on current hosted agents, so
+# steps run on the host and call the image with `docker run`.
 steps:
   - checkout: none
+
+  - script: docker pull "$(CONVISO_AST_IMAGE)"
+    displayName: Pull Conviso AST image
 
   - script: |
       set -euo pipefail
@@ -161,7 +158,6 @@ steps:
         exit 1
       fi
 
-      export CONVISO_API_KEY="$CONVISO_API_KEY"
       export CONVISO_API_URL="${API_URL:-https://api.convisoappsec.com}"
       CONVISO_API_URL="${CONVISO_API_URL%/}"
       case "$CONVISO_API_URL" in
@@ -184,7 +180,11 @@ steps:
       esac
 
       umask 077
-      TOKEN=$(conviso-ast-repository-token --provider azure_devops)
+      TOKEN=$(docker run --rm --entrypoint "" \
+        -e CONVISO_API_KEY -e CONVISO_API_URL -e CONVISO_REPO_FULL_NAME \
+        -e CONVISO_ASSET_ID -e CONVISO_SCAN_RUN_ID \
+        "$(CONVISO_AST_IMAGE)" \
+        conviso-ast-repository-token --provider azure_devops)
       echo "##vso[task.setvariable variable=REPO_TOKEN;issecret=true]$TOKEN"
       echo "##vso[task.setvariable variable=CONVISO_API_URL]$CONVISO_API_URL"
     displayName: Get repository token
@@ -268,8 +268,7 @@ steps:
 
   - script: |
       set -euo pipefail
-      cd target
-      export CONVISO_API_KEY="$CONVISO_API_KEY"
+      mkdir -p "$(Build.ArtifactStagingDirectory)"
       export CONVISO_API_URL="${NORMALIZED_BASE_URL}"
       export CONVISO_COMPANY_ID="${PARAM_COMPANY_ID:-$VAR_COMPANY_ID}"
       export CONVISO_BRANCH="$BRANCH"
@@ -281,12 +280,18 @@ steps:
         ""|none|0) unset CONVISO_SCAN_RUN_ID || true ;;
         *) export CONVISO_SCAN_RUN_ID="$SCAN_RUN_ID" ;;
       esac
-      conviso ast run --repository-dir . --output "$(Build.ArtifactStagingDirectory)/conviso-ast-session.zip"
+      # docker.sock: container scan (Trivy). Azure CI env vars: build URL in alerts.
+      docker run --rm --entrypoint "" \
+        -v "$(System.DefaultWorkingDirectory)/target:/src" -w /src \
+        -v "$(Build.ArtifactStagingDirectory):/out" \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -e CONVISO_API_KEY -e CONVISO_API_URL -e CONVISO_COMPANY_ID \
+        -e CONVISO_BRANCH -e CONVISO_ASSET_ID -e CONVISO_SCAN_RUN_ID \
+        -e TF_BUILD -e SYSTEM_TEAMFOUNDATIONCOLLECTIONURI -e SYSTEM_TEAMPROJECT -e BUILD_BUILDID \
+        "$(CONVISO_AST_IMAGE)" \
+        conviso ast run --repository-dir . --output /out/conviso-ast-session.zip
     displayName: Run Conviso AST
     env:
-      GIT_CONFIG_COUNT: "1"
-      GIT_CONFIG_KEY_0: safe.directory
-      GIT_CONFIG_VALUE_0: "*"
       CONVISO_API_KEY: $(CONVISO_API_KEY)
       NORMALIZED_BASE_URL: $(CONVISO_API_URL)
       PARAM_COMPANY_ID: ${{ parameters.company_id }}
@@ -297,7 +302,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     condition: succeededOrFailed()
-    target: host
     displayName: Upload session log
     inputs:
       PathtoPublish: $(Build.ArtifactStagingDirectory)
@@ -308,7 +312,7 @@ steps:
 
 :::important
 - `trigger: none` / `pr: none` are intentional — Conviso starts the run; Azure must not auto-trigger on every push.
-- Keep `options: --entrypoint ""` on the container or Azure fails to `docker exec` into the job.
+- Do **not** use a job-level `container:` with the Alpine `convisoast` image. Hosted agents run Node-based tasks inside that container and fail (`node16` / `node24` missing). Call the image with `docker run` as in the template.
 - Do **not** add `variables: - group: ...` to this YAML. The API key is a **pipeline variable** (Step 4), not a Library variable group.
 :::
 
@@ -411,7 +415,8 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 | Merge done, no pipeline | **AST scans on merge** off; organization/project/pipeline ID/Ref incomplete; asset disabled or not imported; PR destination ≠ asset branch / Ref; connecting user lacks **Edit subscriptions** so no Service Hook was registered ([details](./azure-devops.md#service-hook-permissions)) |
 | `Repository is not available for this API key` | Wrong environment (`CONVISO_API_KEY` vs `api_url`); Azure integration not authorized; asset not imported/enabled for that company |
 | Unreadable / HTML response from Platform | Use the production API host (`https://api.convisoappsec.com`). The template remaps `https://app.convisoappsec.com` automatically |
-| Initialize containers fails | Confirm `options: --entrypoint ""` is present on the container |
+| `exec .../node16/bin/node: no such file` (or node24) on first script step | Job-level `container:` with the Alpine image. Use the template above (`docker run` on the host) — do not wrap the job in `container:` |
+| Initialize containers / `docker exec` fails | Same cause: remove job-level `container:` and follow the `docker run` template |
 | `CONVISO_API_KEY` empty / unauthorized | Confirm the secret is a **pipeline variable** (Edit → Variables). A Library / variable group is not enough unless the YAML also references that group — this template does not |
 | Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` and without pipeline variable `CONVISO_COMPANY_ID` |
 | Wrong code scanned | Merge target / `branch` mismatch; confirm you merged into the configured destination branch |
@@ -424,7 +429,6 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 
 ## Related guides
 
-- [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
 - [Azure DevOps Integration (ALM)](./azure-devops.md)
 - [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)

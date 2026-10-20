@@ -337,6 +337,7 @@ module.exports = {
                     id: 'integrations/azure-devops',
                   },
                   items: [
+                    'integrations/azure-devops-service-principal',
                     'integrations/azure-devops-ast-orchestrator',
                   ]
                 },
