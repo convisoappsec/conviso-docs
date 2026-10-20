@@ -16,11 +16,20 @@ keywords: [Azure DevOps, Integration, Repository Manager, Microsoft]
 
 The **Conviso Platform** integration with [Azure DevOps](https://azure.microsoft.com/products/devops) allows you to connect your Azure DevOps organizations and repositories to the platform. Once connected, you can import repositories as assets and manage them in a single place for security scanning and vulnerability management.
 
-The setup is divided into three steps: **Login** (OAuth with Microsoft Entra ID), **Authorization** (select organizations and repositories), and **Configuration** (view and manage imported assets).
+The setup is divided into three steps: **Login**, **Authorization** (organizations and repositories), and **Configuration** (view and manage imported assets).
+
+### Authentication modes
+
+On **Login** you choose how Conviso authenticates with Azure DevOps:
+
+| Mode | Summary |
+|------|---------|
+| **OAuth** (this guide) | A Microsoft / Entra user signs in and consents. Organizations are listed from that user’s membership. |
+| **Service Principal** | Your own Entra app registration + client secret. Organizations are typed by name. See **[Azure DevOps Service Principal](./azure-devops-service-principal.md)**. |
 
 ## Objective
 
-By the end of this guide, you will have:
+By the end of this guide (OAuth), you will have:
 
 - Connected your Azure DevOps account to Conviso Platform via Microsoft Entra ID.
 - Selected which organizations and repositories to authorize.
@@ -30,15 +39,17 @@ By the end of this guide, you will have:
 
 This integration is supported only for Azure DevOps Services (cloud); for Azure DevOps Server (self-hosted / on-premises, formerly TFS) instances, use the [Azure Pipelines integration](./azure-pipelines-cli.md) instead.
 
-Before you start, ensure that:
+Before you start with **OAuth**, ensure that:
 
 - You can **authorize the Conviso Platform application** in the Microsoft consent screen (grant OAuth permissions) and you have **access to the Azure DevOps organization(s)** you want to connect. If your organization restricts who can install or authorize apps, an Entra ID or Azure DevOps administrator may need to approve the app first.
 - You have a **Microsoft account** (or Microsoft Entra ID account) with access to the Azure DevOps organizations you want to connect.
 - Your Conviso Platform **company** has the integration feature available (contact your administrator if the Azure DevOps card does not appear).
 - The same Microsoft account used to connect must have **Edit subscriptions** and **View subscriptions** on each Azure DevOps **project** whose repositories you import. Conviso registers [Service Hooks](https://learn.microsoft.com/en-us/azure/devops/service-hooks/overview) on those projects so new repositories, pull requests, and merges can notify the platform. See [Service hook permissions](#service-hook-permissions).
 
+For **Service Principal** prerequisites (Entra app registration, client secret, and adding the principal to each Azure DevOps organization), follow **[Azure DevOps Service Principal](./azure-devops-service-principal.md)** instead.
+
 :::info
-The first time you connect, an administrator may need to register the Conviso Platform application in your Azure DevOps / Microsoft Entra ID tenant and configure the OAuth client. If you do not see the "Connect to Azure DevOps" option or the consent screen, contact your Conviso or Azure DevOps administrator.
+The first time you connect with OAuth, an administrator may need to register the Conviso Platform application in your Azure DevOps / Microsoft Entra ID tenant and configure the OAuth client. If you do not see the "Connect to Azure DevOps" option or the consent screen, contact your Conviso or Azure DevOps administrator.
 :::
 
 ## Steps
@@ -58,7 +69,7 @@ The first time you connect, an administrator may need to register the Conviso Pl
 ### Step 2 – Connect to Azure DevOps (Login)
 
 1. On the Azure DevOps integration page, you will see three steps: **Login**, **Authorization**, and **Configuration**.
-2. In the **Login** step, read the description (authorization with Microsoft Entra ID).
+2. In the **Login** step, under **Authentication**, keep **OAuth** selected (for Service Principal, see [Azure DevOps Service Principal](./azure-devops-service-principal.md)).
 3. Click the **Connect to Azure DevOps** button.
 
 *Step 2: Login step with Connect to Azure DevOps button.*
@@ -179,6 +190,7 @@ If you have any questions or need assistance with the Azure DevOps integration, 
 
 ## Related Guides
 
+- [Azure DevOps Service Principal](./azure-devops-service-principal.md)
 - [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
 - [Azure DevOps AST Orchestrator](./azure-devops-ast-orchestrator.md)
 
