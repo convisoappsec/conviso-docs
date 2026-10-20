@@ -26,6 +26,7 @@ For OAuth (interactive sign-in), see [Azure DevOps Integration](./azure-devops.m
 - Azure DevOps Services.
 - Permission in **Microsoft Entra ID** to create an app registration and a client secret.
 - Permission in each **Azure DevOps organization** to add the application as a user.
+- On each **Azure DevOps project** whose repositories you import, the application must be able to create **Service Hooks** (see [Service Hooks / Project Administrators](#service-hooks--project-administrators)). In practice, make the application a **Project Administrator** on those projects.
 - A Conviso Platform company where the Azure DevOps integration is available.
 
 ## Part A – Microsoft Entra ID
@@ -70,20 +71,48 @@ In Conviso paste the secret **Value**, not the **Secret ID**.
 
 ## Part B – Azure DevOps
 
-The Entra app must be added to every Azure DevOps organization you will enter in Conviso.
+The Entra app must be added to every Azure DevOps organization you will enter in Conviso. Conviso cannot add the application for you — Azure DevOps only allows an organization administrator to grant that membership.
 
 For **each** organization (`https://dev.azure.com/{organization}`):
 
 1. Open **Organization settings** → **Users** → **Add users**.
 2. Select the application (service principal) from Entra.
-3. Give it access to the projects whose repositories you will import.
-4. Save.
+3. Choose which **projects** the application can access (see below). Prefer **all projects** when your policy allows it.
+4. Assign an access level that lets the application administer those projects for Service Hooks — use **Project Administrators** (or equivalent) on each project you will import from. Basic / Stakeholder alone is not enough to create hooks.
+5. Save.
 
 *Organization settings → Users → Add new users (service principal).*
 
 ![Add service principal to Azure DevOps organization](../../static/img/azure-devops/sp-b1-ado-add-users.png)
 
 Use the organization name from the URL (`{organization}`) in Conviso. You can paste the full `https://dev.azure.com/{organization}` URL; Conviso extracts the name.
+
+### Service Hooks / Project Administrators
+
+After you authorize repositories, Conviso registers Azure DevOps **Service Hooks** on each project (new repository, pull request, and merge events). Creating those subscriptions requires **Edit subscriptions** and **View subscriptions** on the project.
+
+Microsoft grants those permissions to **Project Administrators** by default. A service principal that can only **read** or **contribute** to repositories can still import assets in Conviso while **Project settings → Service hooks** stays empty — then PR scans, merge AST, and new-repo auto-import will not run.
+
+**Recommendation:** add the Entra application to the **Project Administrators** group on every Azure DevOps project you connect (or set **Edit subscriptions** and **View subscriptions** to **Allow** for the application on that project).
+
+This is the same requirement as for OAuth; details and how to confirm the Web Hooks exist are in [Service hook permissions](./azure-devops.md#service-hook-permissions).
+
+### Project access (important for new projects)
+
+When you add the application as a user, Azure DevOps asks which projects it may use.
+
+| Choice in Azure DevOps | What happens later |
+|------------------------|--------------------|
+| **All projects** (recommended for Conviso) | New projects created in that organization inherit access. Repositories in those projects can appear in Conviso without editing the user again. |
+| **Specific projects only** | Only the projects you pick are visible to the application. A **new** Azure DevOps project does **not** inherit access. You must open **Organization settings → Users**, edit the application, and add the new project to its list before Conviso can list or import its repositories. |
+
+This is an Azure DevOps permission boundary, not a Conviso setting. The repository picker in Authorization only shows what the service principal is allowed to see.
+
+:::tip
+Prefer **all projects** for the service principal in each organization you connect, unless your security policy requires a fixed project allowlist.
+:::
+
+A **new Azure DevOps organization** is different: you must run Part B again for that organization (Add users), then type the organization name on Authorization in Conviso.
 
 ## Part C – Conviso Platform
 
@@ -110,8 +139,8 @@ If the company already had an Azure DevOps integration (for example OAuth) and y
 
 1. In **Organizations**, type the organization name or paste its Azure DevOps URL and press Enter.
 2. Conviso verifies each name. Accepted names are saved; a name the principal cannot access stays on the field with an error.
-3. Choose **Authorize all repositories** or select specific repositories.
-4. Click **Continue**.
+3. Choose **Authorize all repositories** or select specific repositories. If a repository or project is missing from the list, the application usually does not have access to that Azure DevOps project yet — fix project access in Part B, then open the repository select again.
+4. Click **Continue**. Conviso then imports assets and attempts to create Service Hooks on each project. If the application is not a Project Administrator (or lacks Edit/View subscriptions), the import can succeed while no hooks appear in Azure.
 
 *Authorization – type organization names (chips).*
 
@@ -136,6 +165,8 @@ On **Configuration** you can review imported assets, use **Check connection**, a
 |--------|------------|
 | Connect fails / credentials rejected | Check tenant ID, client ID, and the secret **Value** (not Secret ID). Confirm the secret has not expired and the app is in the correct tenant. |
 | Organization access denied when adding a name | Add the service principal to that Azure DevOps organization (Part B) and ensure it can access the organization, then try again. |
+| New Azure DevOps project / repos missing in Conviso | The app was likely limited to specific projects. In Azure DevOps, edit the application under **Organization settings → Users** and add the new project (or switch the user to **all projects**). Conviso cannot grant that access. |
+| Assets imported, but **Service hooks** is empty in Azure | The application can read repos but cannot create subscriptions. Make it a **Project Administrator** on that project (or grant **Edit subscriptions** / **View subscriptions**), then re-import or ask Conviso support to re-register the hooks. See [Service Hooks / Project Administrators](#service-hooks--project-administrators). |
 | No organization dropdown | Expected for Service Principal. Type the organization names instead. |
 | Check connection fails with no organizations | Add at least one organization on Authorization. |
 | After switching from OAuth, organizations disappeared | Those names were not accessible with the new principal and were removed. Fix membership in Azure DevOps, then add the names again on Authorization. |
