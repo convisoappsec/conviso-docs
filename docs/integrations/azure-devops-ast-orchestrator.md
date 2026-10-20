@@ -57,7 +57,7 @@ You need:
 - [Azure DevOps ALM integration](./azure-devops.md) connected (OAuth), with repositories imported as assets.
 - The Microsoft account that connected the integration has **Edit subscriptions** on each Azure **project** you scan (Service Hooks for merged pull requests). Consent in Microsoft Entra is not enough — see **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
 - At least one application repository **imported as an asset** and **enabled**.
-- A dedicated orchestrator repository (or an empty repo you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
+- A dedicated orchestrator repository (or an empty repo you will use only for this).
 - Permission to create pipelines and set **pipeline variables** on the orchestrator.
 - A **Conviso API key** for the same environment you will scan against (production or staging).
 
@@ -90,21 +90,15 @@ Conviso compares the merged PR’s **destination branch** to:
 
 ### Step 1 – Create the orchestrator repository
 
-1. Create an Azure DevOps repository (recommended name: `conviso-ast-orchestrator`), **or** copy from [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator) and keep only `azure-pipelines.yml`.
+1. Create an Azure DevOps repository (recommended name: `conviso-ast-orchestrator`).
 2. Choose the branch that will contain the YAML (almost always **`main`**). That value is what you will set as **Ref** in Conviso.
 
 ### Step 2 – Add `azure-pipelines.yml`
 
-:::tip Example repository
-Public template: **[convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator)**  
-
-Pipelines file: [`azure-pipelines.yml`](https://github.com/convisoappsec/pipeline-orchestrator/blob/main/azure-pipelines.yml)
-:::
-
 On the orchestrator branch you will set as **Ref** (usually `main`):
 
 1. Create **`azure-pipelines.yml`** at the repository root.
-2. Paste the YAML below (or copy it from the example repo). Use this template as-is — it matches the public example, including the parameters Conviso sends on each run.
+2. Paste the YAML below. It is the template to use, including the parameters Conviso sends on each run. Do not copy an older file that wraps the job in `container:` — that form fails on current hosted agents with the Alpine image.
 
 ```yaml
 parameters:
@@ -435,7 +429,6 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 
 ## Related guides
 
-- [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
 - [Azure DevOps Integration (ALM)](./azure-devops.md)
 - [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)
