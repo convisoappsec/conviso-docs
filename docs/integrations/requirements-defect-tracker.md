@@ -41,7 +41,9 @@ Each external provider maps this model to its own native hierarchy — when it h
 | Zendesk | Flat only | — | — | Ticket |
 | Freshdesk | Flat only | — | — | Ticket |
 
-In **flat** structure only the activities are sent. A tracker with no hierarchy has nowhere to hang a project or a requirement card, and a card nobody can act on only raises the question of what it is for — so the project and the requirement travel as context in the activity's description, each with a link back to Conviso Platform.
+In **flat** structure, Linear, Asana, Zendesk and Freshdesk send only the activities. A tracker with no hierarchy has nowhere to hang a project or a requirement card, and a card nobody can act on only raises the question of what it is for — so the project and the requirement travel as context in the activity's description, each with a link back to Conviso Platform.
+
+Jira's flat structure is its **Metadata** mode, which still creates the project, each requirement and each activity as independent top-level issues, related by reference labels — see [Sync modes](./jira-requirements.md#sync-modes).
 
 :::note
 The external tracker is the execution workspace. Conviso Platform remains the source of truth for security requirements, evidence, and Secure by Design governance regardless of the provider.
@@ -51,11 +53,13 @@ The external tracker is the execution workspace. Conviso Platform remains the so
 
 Every Requirements Sync integration supports:
 
-- **Outbound sync** — Conviso Platform creates and updates records in the external provider. In **nested** structure that is one item for the project, its requirements, and its activities, as a parent/child hierarchy. In **flat** structure it is one item per activity, carrying the requirement and project as context — see the provider guide (for Jira, [Sync modes](./jira-requirements.md#sync-modes)).
+- **Outbound sync** — Conviso Platform creates and updates records in the external provider. In **nested** structure that is one item for the project, its requirements, and its activities, as a parent/child hierarchy. In **flat** structure it is one item per activity, carrying the requirement and project as context — except on Jira, where Metadata mode keeps one top-level item for each of the three. See the provider guide (for Jira, [Sync modes](./jira-requirements.md#sync-modes)).
 - **Inbound status sync** — Status changes in the external provider are received and applied back to Conviso Platform (via webhooks) when a matching status mapping exists.
 - **Manual Sync** — Creates or refreshes the external hierarchy on demand, reconciling created, updated, and removed items.
 - **Auto Sync** — Sends changes automatically when a project, requirement, or activity is created, updated, or removed.
-- **Status mappings** — Link Conviso Platform statuses to the external workflow statuses, per level. A requirement is never mapped: it has no status of its own in Conviso Platform, so where a requirement card exists its status is derived from the activities under it. A given external status may be claimed by only one Conviso Platform status per level — two would be undecidable when the change comes back from the tracker, so the configuration is refused.
+- **Status mappings** — Link Conviso Platform statuses to the external workflow statuses, per level.
+  - **Linear, Asana, Zendesk and Freshdesk** never ask for a requirement mapping: a requirement has no status of its own in Conviso Platform, so where a requirement card exists its status is derived from the activities under it and placed with the activity mapping. A given external status may be claimed by only one Conviso Platform status per level — two would be undecidable when the change comes back from the tracker, so the configuration is refused.
+  - **Jira** maps requirement statuses in its own wizard step and uses them as configured; a status left unmapped there is not moved. Only a configuration that maps no requirement status at all falls back to the activity mapping. Jira also accepts two Conviso Platform statuses on the same Jira status.
 - **Recent deliveries** — Integration logs that record successful syncs, skipped updates, unmapped statuses, and external errors.
 
 ## Provider Guides
