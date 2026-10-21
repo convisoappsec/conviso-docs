@@ -177,7 +177,7 @@ In this modal, you will have the following information:
 2. Progress bar showing the progress of the synchronization if it is in progress.
 3. Button to start a synchronization. A synchronization can only be initiated if the previous one has already finished.
 
-Alternatively, refer to the [Azure Pipelines documentation](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners) to automatically synchronize your assets.
+Alternatively, synchronize assets from your CI/CD pipeline: [GitHub Actions](../integrations/github-actions.md#importing-and-synchronizing-assets-from-external-scanners), [GitLab CI/CD](../integrations/gitlab.md#importing-and-synchronizing-assets-from-external-scanners), [Azure Pipelines](../integrations/azure-pipelines-cli.md#importing-and-synchronizing-assets-from-external-scanners), or [Bitbucket Pipelines](../integrations/bitbucket-pipelines.md#importing-and-synchronizing-assets-from-external-scanners).
 
 ## How to get the necessary information for the integration.
 
