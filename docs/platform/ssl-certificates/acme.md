@@ -417,7 +417,3 @@ accounts. The actions of each row:
 * **Deactivate:** switches the server credential off for good. Its accounts stop on their next
   request and its unused keys stop working. Certificates already issued stay valid until they
   expire.
-
-## FAQ {#faq}
-
-{/* TODO: questions collected from the team and from support. */}
