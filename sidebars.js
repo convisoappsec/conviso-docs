@@ -113,7 +113,16 @@ module.exports = {
                 'security-scans/reachability-analysis',
               ]
             },
-            'security-scans/pull-requests/pull-requests',
+            {
+              type: 'category',
+              label: 'Pull Requests',
+              link: {
+                type: 'doc',
+                id: 'security-scans/pull-requests/pull-requests',
+              },
+              collapsed: true,
+              items: ['security-scans/pull-requests/pr-runs'],
+            },
             'security-scans/security-gate',
           ]
         },
