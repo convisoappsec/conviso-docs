@@ -101,6 +101,10 @@ To create or edit an asset rule:
 4. Review the pending changes.
 5. Save the configuration.
 
+:::note
+An asset rule replaces the global rule entirely, including its pull request settings. Creating an asset rule requires configuring at least one vulnerabilities source: an asset rule with no rules would leave the asset without a Security Gate.
+:::
+
 <div style={{textAlign: 'center'}}>
 
 ![Security Gate Asset Rule Card](../../static/img/security-gate-custom-dialog.png "Security Gate Asset Rule Card")
@@ -109,7 +113,7 @@ To create or edit an asset rule:
 
 <div style={{textAlign: 'center'}}>
 
-![Batch Asset Rule Configuration Modal](../../static/img/security-gate-batch-config.png "Batch Asset Rule Configuration Modal")
+![Asset Rule Configuration Modal](../../static/img/security-gate-batch-config.png "Asset Rule Configuration Modal")
 
 </div>
 
@@ -130,6 +134,40 @@ To remove the override and return to the global rule:
 ![Delete Asset Rule Confirmation](../../static/img/security-gate-custom-delete-confirmation.png "Delete Asset Rule Confirmation")
 
 </div>
+
+### Pull Request Target Branches
+
+By default, the Security Gate evaluates every pull request scanned by PR Scanning, whatever its target branch. You can limit it to the target branches that matter, such as release or production branches.
+
+Pull requests into other branches are still scanned, and their findings are still reported on the pull request. Their check finishes as **Neutral** ("Security Gate not applied to this target branch") and does not block the merge.
+
+Where to configure it:
+
+* **Global rule**: in **Policies**, under **Security Gate (Global)** → **Pull Request Settings**.
+* **Asset rule**: in the asset's **Asset Rule Configuration** dialog, under the same settings.
+
+Both screens are shown in [Global Rule Configuration](#global-rule-configuration) and [Asset Rules](#asset-rules).
+
+The settings:
+
+* **Target branches**: a regular expression matched against the **whole** name of the pull request's target branch. Use `release/.*` to match `release/1.0`: `release/*` does not match it. Combine branches with `|`, for example `release/.*|hml`.
+* **Apply to the repository's default branch**: gates pull requests into the asset's default branch. It adds to the pattern: with both set, the gate applies to branches that match the pattern and to the default branch.
+
+How the settings combine:
+
+| Target branches | Default branch option | The gate applies to |
+| --- | --- | --- |
+| Empty | Off | Every target branch (default behavior) |
+| `release/.*\|hml` | Off | Branches matching the pattern |
+| Empty | On | The default branch only |
+| `release/.*\|hml` | On | Branches matching the pattern, plus the default branch |
+
+Points to keep in mind:
+
+* The filter applies only to **PR Scanning**. Security Gate runs from the CLI, CI/CD pipelines and post-merge scans are not affected.
+* An asset rule replaces the global rule entirely, including these settings. An asset that already has its own rule does not inherit the global target branches.
+* With the default branch option on, an asset whose default branch is not known is gated on every target branch.
+* If a pull request's target branch changes, it is scanned again for the new target branch, and its check follows the new target.
 
 ## Monitoring Security Gate in the Web Interface
 

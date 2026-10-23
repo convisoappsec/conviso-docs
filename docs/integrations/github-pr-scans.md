@@ -70,6 +70,7 @@ The process begins automatically when a developer:
 
 - Opens a new Pull Request.
 - Pushes new commits to an existing Pull Request.
+- Changes the target branch of an existing Pull Request. The scan runs again for the new target branch, and the status check follows it.
 
 ### 2. Status Checks
 
@@ -83,12 +84,17 @@ We recommend configuring your GitHub **Branch Protection Rules** to require the 
 
 Once the scan is complete (typically within a few minutes), the status check will update:
 
-- **✅ Success:** No vulnerabilities were found.
-- **❌ Failure:** Vulnerabilities were detected.
+- **✅ Success:** The Security Gate passed: the findings it evaluated are within the configured thresholds.
+- **❌ Failure:** The Security Gate failed: the findings it evaluated exceed the configured thresholds.
+- **⚪ Neutral:** The Security Gate does not apply to this pull request's target branch. Findings are still reported, but they do not block the merge. See [Pull Request Target Branches](../security-scans/security-gate.md#pull-request-target-branches).
 
 In addition to the status check, the **Conviso Bot** will post a detailed comment on the PR summarizing the findings.
 
 ![img](../../static/img/github/pr-comment-example.png)
+
+When the Security Gate does not apply to the target branch, the comment says so and still lists the findings:
+
+![Conviso Bot comment for a target branch the Security Gate does not apply to](../../static/img/github/pr-comment-neutral.png)
 
 The comment provides:
 
