@@ -3,7 +3,7 @@ title: Projects Integration with Jira
 date: 2026-04-20
 slug: 2026-04-20-projects-jira-integration
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Automations", "Developer Experience"]
+tags: ["New", "Threat and Program Management", "Automations", "Developer Experience"]
 ---
 
 Improved the integration between Platform Project Requirements and **Jira**.

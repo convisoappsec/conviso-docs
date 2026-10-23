@@ -20,7 +20,7 @@ export const TYPE_LABELS = {
 };
 
 export const PRODUCTS = [
-  'Risk insight',
+  'Threat and Program Management',
   'Vuln Intelligence',
   'AI Secure Code',
   'Web and API Scan',

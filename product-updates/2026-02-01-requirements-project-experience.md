@@ -3,7 +3,7 @@ title: Requirements & Project Experience
 date: 2026-02-01
 slug: 2026-02-01-requirements-project-experience
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Compliance & Governance", "Developer Experience"]
+tags: ["New", "Threat and Program Management", "Compliance & Governance", "Developer Experience"]
 ---
 
 Improved the requirements and project workflows.

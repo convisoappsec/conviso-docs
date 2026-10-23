@@ -3,7 +3,7 @@ title: Security Gate — Blocking Vulnerability Details
 date: 2026-06-22
 slug: 2026-06-22-security-gate-blocking-details
 authors: [daniel_guedes]
-tags: ["Improved", "Risk Insight", "AI Secure Code", "Security Analysis", "Developer Experience"]
+tags: ["Improved", "Threat and Program Management", "AI Secure Code", "Security Analysis", "Developer Experience"]
 ---
 
 Improved the **Security Gate** response to give you more visibility into why a build was blocked.

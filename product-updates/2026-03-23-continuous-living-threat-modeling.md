@@ -3,7 +3,7 @@ title: Continuous Living Threat Modeling
 date: 2026-03-23
 slug: 2026-03-23-continuous-living-threat-modeling
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Compliance & Governance", "Inteligência Artificial"]
+tags: ["New", "Threat and Program Management", "Compliance & Governance", "Inteligência Artificial"]
 ---
 
 The Threat Modeling module now functions as a **living record** of your application's security design — a persistent artifact that evolves throughout the software lifecycle instead of a project that "closes".

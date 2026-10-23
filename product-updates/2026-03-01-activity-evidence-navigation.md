@@ -3,7 +3,7 @@ title: Improved Navigation for Activity Evidence Attachments
 date: 2026-03-01
 slug: 2026-03-01-activity-evidence-navigation
 authors: [daniel_guedes]
-tags: ["Improved", "Risk insight", "Compliance & Governance"]
+tags: ["Improved", "Threat and Program Management", "Compliance & Governance"]
 ---
 
 Improved the experience of reviewing attachments associated with activities.
