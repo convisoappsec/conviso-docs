@@ -6,7 +6,9 @@ description: Evaluate Conviso Platform for your application security program, in
 keywords: [Conviso Platform evaluation, application security platform, ASPM evaluation]
 ---
 
-Conviso Platform helps security and engineering teams operate application security as one connected program. Use this guide to evaluate the platform against your current environment, operating model, and priorities before you purchase.
+Conviso Platform helps security and engineering teams operate application security as one connected program. Use this guide during discovery, technical validation, and procurement to evaluate the platform against your current environment, operating model, and priorities before you purchase.
+
+This guide is for security leaders, AppSec teams, engineering representatives, IT, procurement, and compliance stakeholders. It explains what to assess before buying; it does not replace the technical documentation for an individual integration or the commitments in your agreement with Conviso.
 
 ## What Conviso Platform is designed to do
 
@@ -78,6 +80,12 @@ For example:
 
 Use the documentation for the scanners, integrations, and AI capabilities in your scope to validate permissions, network access, credentials, and test data before starting implementation.
 
+### Conviso AST language support
+
+For source-code scanning, Conviso AST SAST provides Conviso-managed rules for **Apex, Bash / Shell, C, C#, Clojure, Go, HTML, Java, JavaScript, Kotlin, OCaml, PHP, Python, Ruby, Rust, Scala, Solidity, TypeScript, VB6,** and **YAML**. Language-agnostic rules also inspect files outside this list.
+
+Validate a representative repository during evaluation, especially when your organization depends on a specific framework, build pattern, or custom rule. See [Conviso AST](./security-scans/conviso-ast/conviso-ast.md#supported-languages-sast) for the current supported-language list and scanner prerequisites.
+
 ## Review security and data handling
 
 Include your security, privacy, and procurement stakeholders early when their review is required. Conviso Platform documentation covers data retention, access controls, auditability, and the operational security practices relevant to use of the service.
@@ -90,6 +98,12 @@ Review these resources with the stakeholders who own your security and complianc
 - [Conviso Status Page](https://status.convisoappsec.com) for service availability information.
 
 Raise any contractual, regional, data-processing, or compliance requirements with your Conviso contact before finalizing the scope.
+
+### FIPS requirements
+
+If your organization requires FIPS 140-2 or FIPS 140-3 validation, include that requirement in the security and procurement review from the beginning. FIPS validation applies to specific cryptographic modules and operational environments; it should not be inferred from general encryption practices or other certifications.
+
+Ask your Conviso contact for the current documentation needed to assess your requirement, including the applicable scope, cryptographic-module validation evidence, and responsibility boundaries. Record the outcome in your evaluation criteria and, when required, in the agreement.
 
 ## Validate the commercial scope
 
