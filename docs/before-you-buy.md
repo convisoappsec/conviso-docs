@@ -99,11 +99,9 @@ Review these resources with the stakeholders who own your security and complianc
 
 Raise any contractual, regional, data-processing, or compliance requirements with your Conviso contact before finalizing the scope.
 
-### FIPS requirements
+### FIPS-enabled environments
 
-If your organization requires FIPS 140-2 or FIPS 140-3 validation, include that requirement in the security and procurement review from the beginning. FIPS validation applies to specific cryptographic modules and operational environments; it should not be inferred from general encryption practices or other certifications.
-
-Ask your Conviso contact for the current documentation needed to assess your requirement, including the applicable scope, cryptographic-module validation evidence, and responsibility boundaries. Record the outcome in your evaluation criteria and, when required, in the agreement.
+The Conviso AST agent is compatible with environments where the FIPS policy is enabled. You can install and run Conviso AST scans in these environments using the standard scanner prerequisites.
 
 ## Validate the commercial scope
 

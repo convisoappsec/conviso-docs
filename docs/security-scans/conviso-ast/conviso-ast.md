@@ -103,6 +103,10 @@ This is also where the managed rules are enabled, disabled, or set to blocking f
 | **Python** | **3.10 or newer** — the oldest release still under active support. It already ships inside the Conviso AST image. |
 | **Docker** *(local runs only)* | A running Docker daemon, needed to run the image on your own machine. **Not required in CI/CD**, where the image is the job container and your CI runtime provides it. |
 
+### FIPS-enabled environments
+
+The Conviso AST agent is compatible with environments where the FIPS policy is enabled. Install and run scans with the same requirements described in this guide.
+
 ## Installation
 
 Conviso AST is distributed as a Docker image. It carries the `conviso` command and every analysis engine at its pinned version, so a scan in your pipeline behaves exactly like a scan run by the Platform.
