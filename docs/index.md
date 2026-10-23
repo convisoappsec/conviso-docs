@@ -19,7 +19,7 @@ By centralizing data from multiple security tools and development pipelines, the
 
 Built for modern development environments, the Conviso Platform integrates seamlessly with CI/CD pipelines, code repositories, cloud environments, and security scanners, supporting SAST, DAST, SCA, IaC, container, and cloud security use cases.
 
-Evaluating an application security platform? Read [Before You Buy Conviso Platform](./before-you-buy) to define your scope, validate technical requirements, and plan an evaluation with your team.
+Evaluating an application security platform? Read the [Conviso Platform Evaluation Guide](./before-you-buy) to define your scope, validate technical requirements, and plan a proof of concept with your team and a Conviso FDE.
 
 <LatestReleaseHighlight />
 

@@ -7,7 +7,7 @@ The documentation is public and maintained in the open at https://github.com/con
 ## Start here
 
 - [Conviso Platform documentation home](https://docs.convisoappsec.com/): Platform overview and documentation entry point.
-- [Before You Buy Conviso Platform](https://docs.convisoappsec.com/before-you-buy): Evaluation scope, technical prerequisites, security review, and implementation planning.
+- [Conviso Platform Evaluation Guide](https://docs.convisoappsec.com/before-you-buy): Plan a FDE-led proof of concept, including scope, technical validation, security review, and rollout decisions.
 - [Conviso Platform product page](https://www.convisoappsec.com/conviso-platform): Product overview, use cases, and commercial information.
 - [Pricing](https://www.convisoappsec.com/platform/pricing): Public plan and pricing information.
 - [Contact Conviso](https://www.convisoappsec.com/contact): Talk to a Conviso AppSec specialist.

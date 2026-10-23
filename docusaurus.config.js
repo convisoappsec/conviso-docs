@@ -117,7 +117,7 @@ async function proxyPlugin() {
                   to: 'data-retention',
                 },
                 {
-                  label: 'Before You Buy',
+                  label: 'Evaluate Conviso',
                   to: 'before-you-buy',
                 },
                 {

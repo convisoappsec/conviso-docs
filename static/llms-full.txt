@@ -4,7 +4,7 @@ Conviso Platform is a cloud-based application security platform. It brings toget
 
 ## Evaluation and product information
 
-- https://docs.convisoappsec.com/before-you-buy — Evaluation guide for security, engineering, IT, procurement, and compliance stakeholders.
+- https://docs.convisoappsec.com/before-you-buy — FDE-led proof-of-concept planning guide for security, engineering, IT, procurement, and compliance stakeholders.
 - https://www.convisoappsec.com/conviso-platform — Product overview and primary use cases.
 - https://www.convisoappsec.com/platform/pricing — Public plan and pricing information.
 - https://www.convisoappsec.com/contact — Contact Conviso for a demo or commercial discussion.
