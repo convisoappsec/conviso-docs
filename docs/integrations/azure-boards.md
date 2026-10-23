@@ -1,4 +1,9 @@
-# Azure Boards
+---
+id: azure-boards
+title: Azure Boards Integration
+sidebar_label: Azure Boards
+description: Integrate Azure Boards with Conviso Platform to synchronize vulnerability remediation work and preserve scan-based validation.
+---
 
 # Azure Boards Integration
 

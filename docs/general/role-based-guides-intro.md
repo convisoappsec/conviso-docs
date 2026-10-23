@@ -2,6 +2,7 @@
 id: role-based-guides-intro
 title: Role-Based Guides
 sidebar_label: Role-Based Guides
+description: Find Conviso Platform workflows and responsibilities organized for developers, AppSec, DevSecOps, security, and PCI leaders.
 ---
 
 ## Why role-based guides

@@ -1,6 +1,4 @@
 const Dotenv = require('dotenv-webpack');
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
 
 // Plugin de proxy para evitar CORS
 async function proxyPlugin() {
@@ -23,27 +21,6 @@ async function proxyPlugin() {
     };
   }
 
-function llmSourcePlugin() {
-  return {
-    name: 'llm-source-files',
-    configureWebpack() {
-      return {
-        plugins: [
-          new CopyPlugin({
-            patterns: [
-              {
-                from: path.resolve(__dirname, 'docs'),
-                to: 'llms/docs',
-              },
-            ],
-          }),
-        ],
-      };
-    },
-  };
-}
-  
-  
   module.exports = async () => {
     require('dotenv').config();
     const proxy = await proxyPlugin();
@@ -118,6 +95,11 @@ function llmSourcePlugin() {
           },
           items: [
             {
+              to: 'before-you-buy',
+              label: 'Evaluate Conviso',
+              position: 'right',
+            },
+            {
               to: 'releases',
               label: 'Release Notes 🚀',
               position: 'right',
@@ -133,6 +115,14 @@ function llmSourcePlugin() {
                 {
                   label: 'Data Retention',
                   to: 'data-retention',
+                },
+                {
+                  label: 'Evaluate Conviso',
+                  to: 'before-you-buy',
+                },
+                {
+                  label: 'Conviso Platform',
+                  href: 'https://www.convisoappsec.com/conviso-platform',
                 },
               ],
             },
@@ -155,6 +145,14 @@ function llmSourcePlugin() {
                 {
                   label: 'Blog',
                   to: 'https://blog.convisoappsec.com/',
+                },
+                {
+                  label: 'Pricing',
+                  href: 'https://www.convisoappsec.com/platform/pricing',
+                },
+                {
+                  label: 'Talk to an expert',
+                  href: 'https://www.convisoappsec.com/contact',
                 },
                 {
                   label: 'GitHub',
@@ -249,7 +247,6 @@ function llmSourcePlugin() {
           },
         ],
         proxyPlugin,
-        llmSourcePlugin,
       ],
   
       themes: [

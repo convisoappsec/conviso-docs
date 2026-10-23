@@ -29,6 +29,7 @@ if (hasGraphqlDocs) {
 module.exports = {
   docs: [
     'index',
+    'before-you-buy',
     {
       type: "category",
       label: "Core Workflows",

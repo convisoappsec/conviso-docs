@@ -2,6 +2,7 @@
 id: github-advanced-security
 title: GitHub Advanced Security
 sidebar_label: GitHub Advanced Security
+description: Integrate GitHub Advanced Security with Conviso Platform to consolidate code-scanning findings and remediation workflows.
 ---
 
 <div style={{textAlign: 'center'}}>

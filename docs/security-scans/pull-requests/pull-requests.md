@@ -2,6 +2,7 @@
 id: pull-requests
 title: Pull Request Scanning
 sidebar_label: Pull Requests
+description: Configure Conviso Platform pull request scanning to identify security issues in changed code before merge.
 ---
 
 ## Introduction

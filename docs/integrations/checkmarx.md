@@ -2,6 +2,7 @@
 id: checkmarx
 title: Checkmarx
 sidebar_label: Checkmarx
+description: Integrate Checkmarx with Conviso Platform to centralize code-scanning findings and remediation workflows.
 ---
 
 <div style={{textAlign: 'center'}}>

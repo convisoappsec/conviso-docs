@@ -2,6 +2,7 @@
 id: microsoft-teams
 title: Microsoft Teams
 sidebar_label: Microsoft Teams
+description: Connect Microsoft Teams to Conviso Platform to notify teams and coordinate vulnerability-management workflows.
 ---
 
 <div style={{textAlign: 'center'}}>

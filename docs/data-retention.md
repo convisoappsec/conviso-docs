@@ -1,5 +1,6 @@
 ---
 title: Data Retention
+description: Understand Conviso Platform data retention, deletion requests, backups, and the treatment of customer, scan, audit, and support data.
 ---
 
 ## Overview

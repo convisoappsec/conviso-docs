@@ -2,6 +2,7 @@
 id: user-management
 title: User Management
 sidebar_label: User Management
+description: Manage users, teams, profiles, permissions, and access scopes in Conviso Platform.
 ---
 
 ## Introduction

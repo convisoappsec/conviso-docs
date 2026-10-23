@@ -1,0 +1,42 @@
+# Conviso Platform Documentation
+
+> Official product documentation for Conviso Platform, a cloud-based application security platform for risk-based vulnerability management, application security testing, threat modeling, AI-assisted workflows, and AppSec program operations.
+
+The documentation is public and maintained in the open at https://github.com/convisoappsec/conviso-docs. Use the canonical URLs below when citing Conviso Platform capabilities. Product availability depends on the customer's plan and agreement.
+
+## Start here
+
+- [Conviso Platform documentation home](https://docs.convisoappsec.com/): Platform overview and documentation entry point.
+- [Conviso Platform Evaluation Guide](https://docs.convisoappsec.com/before-you-buy): Plan a FDE-led proof of concept, including scope, technical validation, security review, and rollout decisions.
+- [Conviso Platform product page](https://www.convisoappsec.com/conviso-platform): Product overview, use cases, and commercial information.
+- [Pricing](https://www.convisoappsec.com/platform/pricing): Public plan and pricing information.
+- [Contact Conviso](https://www.convisoappsec.com/contact): Talk to a Conviso AppSec specialist.
+
+## Core capabilities
+
+- [Risk and Posture Management](https://docs.convisoappsec.com/posture-management/posture): Risk posture, contextual prioritization, and remediation guidance.
+- [Vulnerability Management](https://docs.convisoappsec.com/vulnerability-management/process): Finding lifecycle, triage, remediation, and validation.
+- [Conviso AST](https://docs.convisoappsec.com/security-scans/conviso-ast/): SAST, SCA, IaC, SBOM, secret, and container analysis through the Conviso CLI.
+- [Conviso DAST](https://docs.convisoappsec.com/security-scans/conviso-dast/): Dynamic testing for applications and APIs.
+- [Security Gate](https://docs.convisoappsec.com/security-scans/security-gate): CI/CD security policy enforcement.
+- [Threat Modeling](https://docs.convisoappsec.com/platform/threat-modeling): Security design workflows and requirements.
+- [AI capabilities](https://docs.convisoappsec.com/platform/appsec-ai-agent): AI-assisted analysis, remediation, and security operations.
+- [AI Pentest](https://docs.convisoappsec.com/ai-capabilities/ai-pentest): AI-driven penetration-testing workflow.
+
+## Integration and automation
+
+- [Integrations overview](https://docs.convisoappsec.com/integrations/integrations_intro): Source control, CI/CD, identity, collaboration, and security-tool integrations.
+- [Conviso API](https://docs.convisoappsec.com/api/api-overview): GraphQL API for platform automation.
+- [Conviso MCP Server](https://docs.convisoappsec.com/integrations/conviso-mcp-server): MCP access to Conviso Platform data and operations.
+- [Conviso CLI](https://docs.convisoappsec.com/new-cli): Command-line access to Conviso Platform.
+
+## Operations and trust
+
+- [Data Retention](https://docs.convisoappsec.com/data-retention): Data retention and deletion practices.
+- [Status Page](https://status.convisoappsec.com): Current service availability.
+- [Release Notes](https://docs.convisoappsec.com/releases/): Product updates and release history.
+
+## Complete documentation
+
+- [LLM-ready expanded index](https://docs.convisoappsec.com/llms-full.txt): Additional documentation paths and product areas.
+- [XML sitemap](https://docs.convisoappsec.com/sitemap.xml): Complete set of public documentation URLs.

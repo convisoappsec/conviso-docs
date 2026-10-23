@@ -2,6 +2,7 @@
 id: fortify
 title: Fortify
 sidebar_label: Fortify
+description: Integrate OpenText Fortify with Conviso Platform to centralize application security findings and remediation.
 ---
 
 <div style={{textAlign: 'center'}}>

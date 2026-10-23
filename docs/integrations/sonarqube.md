@@ -2,6 +2,7 @@
 id: sonarqube
 title: SonarQube
 sidebar_label: SonarQube
+description: Integrate SonarQube with Conviso Platform to centralize code-security findings and remediation work.
 ---
 
 <div style={{textAlign: 'center'}}>

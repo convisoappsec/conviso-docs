@@ -2,6 +2,7 @@
 id: contributing
 title: Contributing to Conviso Docs
 sidebar_label: Contributing to Conviso Docs
+description: Learn how to contribute documentation improvements to the open-source Conviso Platform documentation repository.
 ---
 
 > To contribute to Conviso Docs, you must follow the [Documentation Writing Best Practices](./documentation-writing-best-practices) guide.

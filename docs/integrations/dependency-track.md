@@ -2,6 +2,7 @@
 id: dependency-track
 title: Dependency Track
 sidebar_label: Dependency Track
+description: Integrate OWASP Dependency-Track with Conviso Platform to centralize software-composition analysis findings.
 ---
 
 <div style={{textAlign: 'center'}}>

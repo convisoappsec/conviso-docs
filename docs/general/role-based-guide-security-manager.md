@@ -2,6 +2,7 @@
 id: role-based-guide-security-manager
 title: Security Manager Guide
 sidebar_label: Security Manager
+description: Use Conviso Platform as a security manager to measure application risk, govern remediation, and monitor program outcomes.
 ---
 
 ## Objective

@@ -42,34 +42,51 @@ The noise is filtered out before it ever reaches your backlog, so what you see o
 
 ### Supported languages (SAST)
 
-SAST covers the following languages, backed by Conviso-managed rules:
+SAST uses the OpenGrep engine and supports the following languages. Conviso-managed rules run for these languages, and you can supplement them with [custom rules](#custom-rules):
 
 <div style={{columns: '3', maxWidth: '600px'}}>
 
 - Apex
 - Bash / Shell
 - C
+- C++
 - C#
 - Clojure
+- Crystal
+- Dart
+- Dockerfile
+- Elixir
 - Go
 - HTML
 - Java
 - JavaScript
+- JSON
+- Jsonnet
+- JSX
+- Julia
 - Kotlin
+- Lisp
+- Lua
 - OCaml
 - PHP
 - Python
+- R
 - Ruby
 - Rust
 - Scala
+- Scheme
 - Solidity
+- Swift
+- Terraform
+- TSX
 - TypeScript
-- VB6
+- Visual Basic
+- XML
 - YAML
 
 </div>
 
-Language-agnostic rules also apply to files outside this list, so configuration and template files are still inspected.
+OpenGrep's generic mode also supports language-agnostic rules for formats such as ERB and Jinja, so configuration and template files can still be inspected.
 
 ### Custom rules
 
@@ -85,6 +102,10 @@ This is also where the managed rules are enabled, disabled, or set to blocking f
 | **Git** | The scan runs against a Git working tree. Conviso AST reads the remote to resolve the asset and the branch to associate the findings with. |
 | **Python** | **3.10 or newer** — the oldest release still under active support. It already ships inside the Conviso AST image. |
 | **Docker** *(local runs only)* | A running Docker daemon, needed to run the image on your own machine. **Not required in CI/CD**, where the image is the job container and your CI runtime provides it. |
+
+### FIPS-enabled environments
+
+The Conviso AST agent is compatible with environments where the FIPS policy is enabled. Install and run scans with the same requirements described in this guide.
 
 ## Installation
 

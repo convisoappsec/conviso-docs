@@ -2,6 +2,7 @@
 id: conviso-containers
 title: Conviso Containers
 sidebar_label: Conviso Containers
+description: Scan container images with Conviso Containers to identify vulnerabilities and misconfigurations before deployment.
 ---
 
 ## Introduction

@@ -2,8 +2,8 @@
 id: index
 title: Home
 sidebar_label: Home
-description:   Here you will find all the details related to our tools, integrations and better usability of the Conviso Platform, an ASPM platform. Welcome!
-keywords: [ASPM platform, Conviso Platform]
+description: Explore Conviso Platform, the application security platform for risk-based vulnerability management, security testing, AI-assisted remediation, threat modeling, and AppSec program operations.
+keywords: [Conviso Platform, ASPM platform, application security, vulnerability management, SAST, DAST, threat modeling, AI AppSec]
 slug: /
 ---
 
@@ -18,6 +18,8 @@ The Conviso Platform is a comprehensive Application Security Posture Management 
 By centralizing data from multiple security tools and development pipelines, the platform provides a clear and actionable view of application risk, connecting technical findings with real business impact. It enables security and engineering teams to work from the same source of truth, with less noise and more focus.
 
 Built for modern development environments, the Conviso Platform integrates seamlessly with CI/CD pipelines, code repositories, cloud environments, and security scanners, supporting SAST, DAST, SCA, IaC, container, and cloud security use cases.
+
+Evaluating an application security platform? Read the [Conviso Platform Evaluation Guide](./before-you-buy) to define your scope, validate technical requirements, and plan a proof of concept with your team and a Conviso FDE.
 
 <LatestReleaseHighlight />
 
