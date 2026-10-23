@@ -3,7 +3,7 @@ title: AppSec Program — Assessment, Roadmap & Monitoring
 date: 2026-05-12
 slug: 2026-05-12-appsec-program-management
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Compliance & Governance", "Analytics"]
+tags: ["New", "Threat and Program Management", "Compliance & Governance", "Analytics"]
 ---
 
 Officially launched the **AppSec Program**. Offering assessment, roadmap, and monitoring of an application security program, natively in the platform.

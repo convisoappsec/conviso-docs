@@ -3,7 +3,7 @@ title: Security Gate Management in the Platform
 date: 2026-03-01
 slug: 2026-03-01-security-gate-in-platform
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Compliance & Governance", "Developer Experience"]
+tags: ["New", "Threat and Program Management", "Compliance & Governance", "Developer Experience"]
 ---
 
 **Security Gate** configuration and monitoring are now available directly inside the Conviso Platform interface, without relying on CLI configuration.

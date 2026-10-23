@@ -3,7 +3,7 @@ title: Custom Project Requirements — Security with Context
 date: 2026-03-12
 slug: 2026-03-12-custom-project-requirements
 authors: [daniel_guedes]
-tags: ["New", "Risk insight", "Compliance & Governance", "Developer Experience"]
+tags: ["New", "Threat and Program Management", "Compliance & Governance", "Developer Experience"]
 ---
 
 **Custom Project Requirements** lets teams tailor security activities within each project without affecting global organization templates.
