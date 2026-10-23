@@ -82,7 +82,7 @@ Use the documentation for the scanners, integrations, and AI capabilities in you
 
 ### Conviso AST language support
 
-For source-code scanning, Conviso AST SAST provides Conviso-managed rules for **Apex, Bash / Shell, C, C#, Clojure, Go, HTML, Java, JavaScript, Kotlin, OCaml, PHP, Python, Ruby, Rust, Scala, Solidity, TypeScript, VB6,** and **YAML**. Language-agnostic rules also inspect files outside this list.
+For source-code scanning, Conviso AST SAST uses the OpenGrep engine. It supports **Apex, Bash / Shell, C, C++, C#, Clojure, Crystal, Dart, Dockerfile, Elixir, Go, HTML, Java, JavaScript, JSON, Jsonnet, JSX, Julia, Kotlin, Lisp, Lua, OCaml, PHP, Python, R, Ruby, Rust, Scala, Scheme, Solidity, Swift, Terraform, TSX, TypeScript, Visual Basic, XML,** and **YAML**. OpenGrep's generic mode also supports language-agnostic rules for formats such as ERB and Jinja.
 
 Validate a representative repository during evaluation, especially when your organization depends on a specific framework, build pattern, or custom rule. See [Conviso AST](./security-scans/conviso-ast/conviso-ast.md#supported-languages-sast) for the current supported-language list and scanner prerequisites.
 

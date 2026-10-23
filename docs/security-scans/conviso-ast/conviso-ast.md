@@ -42,34 +42,51 @@ The noise is filtered out before it ever reaches your backlog, so what you see o
 
 ### Supported languages (SAST)
 
-SAST covers the following languages, backed by Conviso-managed rules:
+SAST uses the OpenGrep engine and supports the following languages. Conviso-managed rules run for these languages, and you can supplement them with [custom rules](#custom-rules):
 
 <div style={{columns: '3', maxWidth: '600px'}}>
 
 - Apex
 - Bash / Shell
 - C
+- C++
 - C#
 - Clojure
+- Crystal
+- Dart
+- Dockerfile
+- Elixir
 - Go
 - HTML
 - Java
 - JavaScript
+- JSON
+- Jsonnet
+- JSX
+- Julia
 - Kotlin
+- Lisp
+- Lua
 - OCaml
 - PHP
 - Python
+- R
 - Ruby
 - Rust
 - Scala
+- Scheme
 - Solidity
+- Swift
+- Terraform
+- TSX
 - TypeScript
-- VB6
+- Visual Basic
+- XML
 - YAML
 
 </div>
 
-Language-agnostic rules also apply to files outside this list, so configuration and template files are still inspected.
+OpenGrep's generic mode also supports language-agnostic rules for formats such as ERB and Jinja, so configuration and template files can still be inspected.
 
 ### Custom rules
 
