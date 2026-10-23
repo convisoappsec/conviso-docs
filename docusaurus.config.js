@@ -134,6 +134,10 @@ function llmSourcePlugin() {
                   label: 'Data Retention',
                   to: 'data-retention',
                 },
+                {
+                  label: 'Status Page',
+                  href: 'https://status.convisoappsec.com',
+                },
               ],
             },
             {
