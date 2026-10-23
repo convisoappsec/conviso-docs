@@ -68,6 +68,13 @@
   background: var(--ifm-color-emphasis-100);
 }
 
+.menuItemSeparated {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0 0 5px 5px;
+  margin-top: 0.35rem;
+  padding-top: 0.95rem;
+}
+
 .icon {
   align-items: center;
   border: 1px solid var(--ifm-color-emphasis-300);

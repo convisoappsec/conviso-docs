@@ -42,6 +42,7 @@ const icons = {
   vscode: '⌁',
   chatgpt: '◌',
   claude: '✺',
+  contribute: '✎',
 };
 
 function copyText(value) {
@@ -85,9 +86,19 @@ function getCursorInstallUrl() {
   return `cursor://anysphere.cursor-deeplink/mcp/install?name=conviso-mcp&config=${encodeURIComponent(config)}`;
 }
 
-function MenuItem({ icon, label, description, onClick, external = false }) {
+function MenuItem({
+  icon,
+  label,
+  description,
+  onClick,
+  external = false,
+  separated = false,
+}) {
   return (
-    <button className={styles.menuItem} type="button" onClick={onClick}>
+    <button
+      className={`${styles.menuItem} ${separated ? styles.menuItemSeparated : ''}`}
+      type="button"
+      onClick={onClick}>
       <span className={styles.icon} aria-hidden="true">
         {icons[icon]}
       </span>
@@ -105,6 +116,7 @@ function MenuItem({ icon, label, description, onClick, external = false }) {
 export default function DocActions({ metadata }) {
   const { siteConfig } = useDocusaurusContext();
   const sourcePath = useBaseUrl(`/llms/${metadata.source.replace('@site/', '')}`);
+  const contributionUrl = useBaseUrl('/general/contributing');
   const pageUrl = `${siteConfig.url.replace(/\/$/, '')}${metadata.permalink}`;
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -185,6 +197,7 @@ export default function DocActions({ metadata }) {
           <MenuItem icon="vscode" label="Copy VS Code config" description="Copy the VS Code-specific MCP configuration" onClick={() => confirmCopy(vscodeMcpConfig, 'VS Code configuration copied.')} />
           <MenuItem icon="chatgpt" label="Ask ChatGPT" description="Open ChatGPT to search this page" external onClick={() => askAssistant('ChatGPT')} />
           <MenuItem icon="claude" label="Ask Claude" description="Open Claude with this page's Markdown source" external onClick={() => askAssistant('Claude')} />
+          <MenuItem icon="contribute" label="Contribute to Docs" description="Suggest or improve this documentation" separated onClick={() => window.location.assign(contributionUrl)} />
           {feedback && <p className={styles.feedback} role="status">{feedback}</p>}
         </div>
       )}
