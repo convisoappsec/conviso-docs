@@ -2,6 +2,7 @@
 id: slack
 title: Slack
 sidebar_label: Slack
+description: Connect Slack to Conviso Platform to notify teams and coordinate vulnerability-management workflows.
 ---
 
 <div style={{textAlign: 'center'}}>

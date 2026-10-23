@@ -2,6 +2,7 @@
 id: sonarcloud
 title: SonarQube Cloud
 sidebar_label: SonarQube Cloud
+description: Integrate SonarQube Cloud with Conviso Platform to consolidate code-quality and security findings.
 ---
 
 <div style={{textAlign: 'center'}}>

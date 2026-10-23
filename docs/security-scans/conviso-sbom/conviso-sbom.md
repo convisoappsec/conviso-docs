@@ -2,6 +2,7 @@
 id: conviso-sbom
 title: Conviso SBOM
 sidebar_label: Conviso SBOM
+description: Generate and manage software bills of materials with Conviso SBOM to inventory components, licenses, and supply-chain vulnerabilities.
 ---
 
 ## Introduction

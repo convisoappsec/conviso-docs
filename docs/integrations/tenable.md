@@ -2,6 +2,7 @@
 id: tenable
 title: Tenable
 sidebar_label: Tenable
+description: Integrate Tenable with Conviso Platform to consolidate vulnerability findings and coordinate remediation.
 ---
 
 :::note

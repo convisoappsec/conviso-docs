@@ -2,6 +2,7 @@
 id: role-based-guide-pci-manager
 title: PCI Manager Guide
 sidebar_label: PCI Manager
+description: Use Conviso Platform as a PCI manager to coordinate assessments, maintain audit evidence, and track compliance activities.
 ---
 
 ## Objective

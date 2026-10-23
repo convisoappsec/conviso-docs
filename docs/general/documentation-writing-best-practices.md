@@ -2,6 +2,7 @@
 id: documentation-writing-best-practices
 title: Documentation Writing Best Practices
 sidebar_label: Docs Writing Best Practices
+description: Follow Conviso documentation writing standards for clear, consistent, and maintainable product documentation.
 ---
 
 ## Purpose

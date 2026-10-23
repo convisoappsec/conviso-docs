@@ -2,6 +2,7 @@
 id: role-based-guide-appsec-manager
 title: AppSec Manager Guide
 sidebar_label: AppSec Manager
+description: Use Conviso Platform as an AppSec manager to coordinate program execution, risk reduction, and engineering alignment.
 ---
 
 ## Objective

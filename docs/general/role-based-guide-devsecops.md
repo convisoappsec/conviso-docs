@@ -2,6 +2,7 @@
 id: role-based-guide-devsecops
 title: DevSecOps Guide
 sidebar_label: DevSecOps
+description: Use Conviso Platform as a DevSecOps practitioner to operate application security in CI/CD pipelines and enforce policies.
 ---
 
 ## Objective

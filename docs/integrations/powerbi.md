@@ -2,6 +2,7 @@
 id: powerbi
 title: PowerBI
 sidebar_label: PowerBI
+description: Connect Microsoft Power BI to Conviso Platform to analyze and report application security data.
 ---
 <div style={{textAlign: 'center'}}>
 

@@ -2,6 +2,7 @@
 id: role-based-guide-penetration-tester
 title: Penetration Tester Guide
 sidebar_label: Penetration Tester
+description: Use Conviso Platform as a penetration tester to manage evidence, findings, reports, and vulnerability follow-up.
 ---
 
 ## Objective

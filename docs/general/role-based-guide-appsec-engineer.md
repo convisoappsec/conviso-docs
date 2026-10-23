@@ -2,6 +2,7 @@
 id: role-based-guide-appsec-engineer
 title: AppSec Engineer Guide
 sidebar_label: AppSec Engineer
+description: Use Conviso Platform as an AppSec engineer to triage findings, prioritize risk, and support secure remediation.
 ---
 
 ## Objective

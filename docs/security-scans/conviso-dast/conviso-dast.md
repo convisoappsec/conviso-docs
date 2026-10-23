@@ -2,6 +2,7 @@
 id: conviso-dast
 title: Conviso DAST
 sidebar_label: Conviso DAST
+description: Configure and run Conviso DAST to test web applications and APIs for security vulnerabilities in Conviso Platform.
 ---
 
 import Tabs from '@theme/Tabs';

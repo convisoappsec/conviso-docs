@@ -2,6 +2,7 @@
 id: clickup
 title: ClickUp
 sidebar_label: ClickUp
+description: Connect ClickUp with Conviso Platform to create and track vulnerability-remediation work items.
 ---
 
 <div style={{textAlign: 'center'}}>

@@ -2,6 +2,7 @@
 id: role-based-guide-developer
 title: Developer Guide
 sidebar_label: Developer
+description: Use Conviso Platform as a developer to identify, understand, and remediate security issues during software delivery.
 ---
 
 ## Objective

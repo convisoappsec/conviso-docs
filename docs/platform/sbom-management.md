@@ -2,6 +2,7 @@
 id: sbom-management
 title: SBOM Management
 sidebar_label: SBOM Management
+description: View, filter, and manage software components, licenses, and vulnerabilities from SBOMs in Conviso Platform.
 ---
 
 ## Introduction

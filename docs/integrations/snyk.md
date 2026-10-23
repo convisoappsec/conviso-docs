@@ -2,6 +2,7 @@
 id: snyk
 title: Snyk
 sidebar_label: Snyk
+description: Integrate Snyk with Conviso Platform to consolidate application security findings and track remediation.
 ---
 
 <div style={{textAlign: 'center'}}>

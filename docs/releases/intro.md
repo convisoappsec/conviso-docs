@@ -2,6 +2,7 @@
 id: intro
 title: Introduction
 sidebar_label: Introduction
+description: Learn how Conviso Platform release notes communicate product changes, enhancements, compatibility updates, and fixes.
 ---
 
 import ReleaseBreadcrumbs from '@site/src/components/ReleaseBreadcrumbs';
