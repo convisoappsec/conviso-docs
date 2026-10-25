@@ -50,13 +50,13 @@ On the vulnerability detail page, SCA findings display a **Reachability Status**
 
 </div>
 
-### Reachability Traces
+### Exploitable Path
 
-When a finding is marked reachable, a **Reachability Traces** tab becomes available on the vulnerability detail page. It shows the call trace as a sequence of hops (`function_name (file_path:line)`), so you can review exactly how the vulnerable function is reached in your code.
+When a finding is marked reachable, an **Exploitable Path** card is displayed on the vulnerability detail page. It shows the call trace as a sequence of hops (`function_name (file_path:line)`), so you can review exactly how the vulnerable function is reached in your code.
 
 <div style={{textAlign: 'center'}}>
 
-![Reachability Traces Tab](../../static/img/platform/reachability-analysis-trace.png "Reachability Traces Tab")
+![Exploitable Path](../../static/img/platform/reachability-analysis-trace.png "Exploitable Path")
 
 </div>
 
