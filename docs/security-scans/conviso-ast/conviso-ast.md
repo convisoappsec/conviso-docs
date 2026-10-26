@@ -340,7 +340,7 @@ Conviso AST decides which asset receives the findings in this order:
 
 1. **`--asset-id`** (or `CONVISO_ASSET_ID`) — an exact match, bypassing every lookup.
 2. **`--asset-name`** (or `CONVISO_ASSET_NAME`) — **deprecated, see the warning below**, and only when given: the name outranks the asset the remote matches. When no asset carries that name, the scan reports to the asset the remote resolves to instead, and says so in the log.
-3. **Git remote URL** — the remote is normalized (SSH rewritten to canonical HTTPS, credentials stripped, every Azure DevOps spelling reduced to one) and matched against the repository of each asset in your company.
+3. **Git remote URL** — the remote is normalized (SSH rewritten to canonical HTTPS, credentials stripped, every Azure DevOps spelling reduced to one) and matched against the repository of each asset the API Key's Access reaches.
 4. **Creation** — when no asset matches, one is created from the repository name.
 
 No manual configuration is required: run the scan from inside a directory with a valid Git remote.
@@ -464,7 +464,7 @@ On 4.1.4 or later in Dry-Run, the profile lacks **Run** or the company plan has 
 Run the scan from inside a valid Git repository (`.git` present) with a configured remote (`git remote -v`). When the checkout belongs to another user — common in containers — Git refuses to read it; the image already sets `safe.directory`, but a custom image may need `git config --global --add safe.directory '*'`.
 
 **Asset conflict / ambiguity error**
-The repository URL belongs to an asset the API could not locate unambiguously. Check the asset on the Conviso Platform and set `CONVISO_ASSET_ID=<id>` to point directly at it.
+The repository URL belongs to an asset the API could not locate unambiguously. The usual cause is an API Key whose Access does not include that asset, even for an Admin: grant it access to the asset, or set `CONVISO_ASSET_ID=<id>` to point directly at it.
 
 **Cannot create the session directory**
 The scan writes its working directory inside the scanned path. Mount the path writable, or point `-r` / `--repository-dir` at a writable copy of the code.
