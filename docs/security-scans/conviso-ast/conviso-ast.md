@@ -163,6 +163,17 @@ conviso --api-key "<your_api_key>" ast run --company-id "<your_company_id>"
 Never commit the key to source control. In CI/CD, store it as a **secret** / protected variable and inject it as `CONVISO_API_KEY`. See the [integration guides](../../integrations/integrations_intro) for platform-specific instructions.
 :::
 
+### Required permissions
+
+The company must have Conviso AST on its plan. Beyond that, from version 4.1.4 what the API Key may do depends on the profile of its user in that company (earlier versions only accept an Admin):
+
+| To | The profile needs |
+| :--- | :--- |
+| Run in [Dry-Run mode](#dry-run-mode) | **Run** |
+| Run and send results to the Platform | **Write results to the platform** |
+
+An **Admin** may always do both. Every default profile has **Run**, and **Write results to the platform** is on for Admin and [Service Account (CI/CD)](../../platform/user-management.md#service-account-cicd). Company Admins manage both in [Conviso AST permissions](../../platform/user-management.md#conviso-ast-permissions).
+
 ## Quick start
 
 Run your first scan from the root of a Git repository:
@@ -380,6 +391,8 @@ Branch names are normalized before submission: whitespace is trimmed and a `refs
 
 **Dry-Run** runs the engines without any write to the Conviso Platform: no asset is created, no finding is uploaded, and no scan is registered. It is built for fast feedback during development — pre-commit hooks, local validation, or pipeline stages where you want results without touching the Platform.
 
+Dry-Run only needs the **Run** permission, which every default profile has, so any member of a company with Conviso AST can use it. See [Required permissions](#required-permissions).
+
 Every scan command has a `dry-run` verb:
 
 | Command | Scope |
@@ -437,6 +450,15 @@ The scan aborts before the first engine runs when `CONVISO_API_KEY` is not set, 
 
 **Authentication / `401` errors**
 Confirm the API Key is valid and belongs to the same environment (production or staging) as the `CONVISO_API_URL` you are pointing at.
+
+**`this api key may not write AST results to company <id>`**
+The profile of the API Key's user has **Run** but not **Write results to the platform**. Run the scan with `--dry-run`, or ask a company Admin to grant the permission. See [Required permissions](#required-permissions).
+
+**`this api key may not run AST on company <id>`**
+Either the company plan has no Conviso AST, or the profile lacks **Run**. Dry-Run fails as well, so ask a company Admin.
+
+**`Failed to fetch config: Not authorized` with a non-Admin API Key**
+Versions before 4.1.4 only accept an Admin. Update to 4.1.4 or later.
 
 **Branch or repository URL detection fails**
 Run the scan from inside a valid Git repository (`.git` present) with a configured remote (`git remote -v`). When the checkout belongs to another user — common in containers — Git refuses to read it; the image already sets `safe.directory`, but a custom image may need `git config --global --add safe.directory '*'`.
