@@ -28,7 +28,7 @@ This integration works for both Cloud and On-Premises Gitlab solutions.
 :::
 
 Before you can use Conviso Platform with Gitlab, you need to make sure that:
-* You have your API Key, which is a code that identifies you to Conviso Platform. Find yours [using this tutorial](../platform/security-feed.md#generate-api-key).
+* You have your API Key, which is a code that identifies you to Conviso Platform. Find yours [using this tutorial](../platform/security-feed.md#generate-api-key). To send results to the Platform, the key's profile needs **Write results to the platform**; **Run** is enough for `--dry-run`. See [Required permissions](../security-scans/conviso-ast/conviso-ast.md#required-permissions).
 
 * You must also set an environment variable for the runner: ```CONVISO_API_KEY```. This code tells Conviso Platform which account you are using. To do this on Gitlab, you must:
   * Go to your project’s **Settings > CI/CD** and expand the **Variables** section.
