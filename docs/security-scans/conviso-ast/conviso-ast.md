@@ -391,7 +391,7 @@ Branch names are normalized before submission: whitespace is trimmed and a `refs
 
 **Dry-Run** runs the engines without any write to the Conviso Platform: no asset is created, no finding is uploaded, and no scan is registered. It is built for fast feedback during development — pre-commit hooks, local validation, or pipeline stages where you want results without touching the Platform.
 
-Dry-Run only needs the **Run** permission, which every default profile has, so any member of a company with Conviso AST can use it. See [Required permissions](#required-permissions).
+Dry-Run only needs the **Run** permission, so any member whose profile has **Run** — every default profile does — can use it. See [Required permissions](#required-permissions).
 
 Every scan command has a `dry-run` verb:
 
@@ -457,8 +457,8 @@ The profile of the API Key's user has **Run** but not **Write results to the pla
 **`this api key may not run AST on company <id>`**
 Either the company plan has no Conviso AST, or the profile lacks **Run**. Dry-Run fails as well, so ask a company Admin.
 
-**`Failed to fetch config: Not authorized` with a non-Admin API Key**
-Versions before 4.1.4 only accept an Admin. Update to 4.1.4 or later.
+**`Failed to fetch config: Not authorized`**
+On 4.1.4 or later in Dry-Run, the profile lacks **Run** or the company plan has no Conviso AST. Before 4.1.4, only an Admin is accepted: update to 4.1.4 or later.
 
 **Branch or repository URL detection fails**
 Run the scan from inside a valid Git repository (`.git` present) with a configured remote (`git remote -v`). When the checkout belongs to another user — common in containers — Git refuses to read it; the image already sets `safe.directory`, but a custom image may need `git config --global --add safe.directory '*'`.

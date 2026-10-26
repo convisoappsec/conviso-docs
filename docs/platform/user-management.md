@@ -53,7 +53,7 @@ When your plan includes Conviso AST, profiles have a **Conviso AST** section wit
 | **Run** | Running [Conviso AST](../security-scans/conviso-ast/conviso-ast.md) in Dry-Run mode, which sends nothing to the Platform. |
 | **Write results to the platform** | Running Conviso AST and sending its results to the Platform. It turns **Run** on with it, and turning **Run** off turns it off. |
 
-Every default profile has **Run**. **Write results to the platform** is on for Admin and Service Account (CI/CD), and an Admin can always run Conviso AST and send its results. A new profile starts with **Run** on and **Write results to the platform** off.
+Every default profile has **Run**. **Write results to the platform** is on for Admin and Service Account (CI/CD), and an Admin can always run Conviso AST and send its results. A profile created from scratch starts with **Run** on and **Write results to the platform** off; one started from another profile copies its permissions.
 
 #### Developer Profile
 Profile Developer was created with the aim of streamlining the platform for software engineers, so that they only have access to what is relevant to their work. Permissions:
