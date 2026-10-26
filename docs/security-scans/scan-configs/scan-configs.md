@@ -91,9 +91,11 @@ The trigger is **derived**, not chosen from a dropdown. It reflects how the asse
 | :--- | :--- |
 | `AST_SCAN_ACCESS` plan permission | The whole AST experience, including the **AST defaults** tab |
 | Company **Admin** profile | Creating, editing, and deleting AST configurations and rules |
+| **Run** permission (**Conviso AST** section of the profile) | Running Conviso AST in [Dry-Run mode](../conviso-ast/conviso-ast.md#dry-run-mode) |
+| **Write results to the platform** permission | Running Conviso AST and sending its results to the Platform |
 | Asset visibility | Starting a scan from an asset you can already see |
 
-Reading and editing AST configuration requires an Admin profile in that company. Starting a scan on an asset you can already see does not.
+Reading and editing AST configuration requires an Admin profile in that company. Starting a scan on an asset you can already see does not. An Admin can always run Conviso AST and send its results; for any other profile, the [Conviso AST permissions](../../platform/user-management.md#conviso-ast-permissions) decide.
 
 ## Where AST is documented
 

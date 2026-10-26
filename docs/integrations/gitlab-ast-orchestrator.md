@@ -56,7 +56,7 @@ You need:
 - At least one application project **imported as an asset** and **enabled**.
 - A dedicated orchestrator project (or an empty project you will use only for this). Example / template: [convisoappsec/pipeline-orchestrator](https://github.com/convisoappsec/pipeline-orchestrator).
 - Permission to set **CI/CD variables** and create pipelines on the orchestrator (see [Pipeline variables policy](#pipeline-variables-policy)).
-- A **Conviso API key** for the same environment you will scan against (production or staging).
+- A **Conviso API key** for the same environment you will scan against (production or staging). Its profile needs **Integrations → Manage** and **Write results to the platform**; an Admin has both. See [Required permissions](../security-scans/conviso-ast/conviso-ast.md#required-permissions).
 
 | Term | Exact meaning |
 | --- | --- |

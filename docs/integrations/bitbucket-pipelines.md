@@ -52,7 +52,7 @@ pipelines:
 
 In order for the environment to be ready for the execution of all Conviso AST resources, it is necessary to configure some environment variable. To accomplish that, follow the steps below:
 
-1. Generate API Key. This key is available for Conviso Platform users at the user profile page;
+1. Generate API Key. This key is available for Conviso Platform users at the user profile page. To send results to the Platform, the key's profile needs **Write results to the platform**; **Run** is enough for `--dry-run`. See [Required permissions](../security-scans/conviso-ast/conviso-ast.md#required-permissions).
 
 **Generate API Key** 
 

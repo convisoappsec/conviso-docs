@@ -54,7 +54,7 @@ Given an Azure DevOps project, to create a Welcome Pipeline you can follow the s
 
 8. Add a **Bash** type task, rename the Display Name to **Run Conviso AST** and modify its type to **Inline**;
 
-9. You need to define an environment variable for `CONVISO_API_KEY` and set the value from Conviso Platform. It is important to set this variable as a secret.
+9. You need to define an environment variable for `CONVISO_API_KEY` and set the value from Conviso Platform. It is important to set this variable as a secret. To send results to the Platform, the key's profile needs **Write results to the platform**; **Run** is enough for `--dry-run`. See [Required permissions](../security-scans/conviso-ast/conviso-ast.md#required-permissions).
 
 10. You will also need to define the `DOCKER_HOST` environment variable and set its value to `unix:///var/run/docker.sock`:
 

@@ -59,7 +59,7 @@ You need:
 - At least one application repository **imported as an asset** and **enabled**.
 - A dedicated orchestrator repository (or an empty repo you will use only for this).
 - Permission to create pipelines and set **pipeline variables** on the orchestrator.
-- A **Conviso API key** for the same environment you will scan against (production or staging).
+- A **Conviso API key** for the same environment you will scan against (production or staging). Its profile needs **Integrations → Manage** and **Write results to the platform**; an Admin has both. See [Required permissions](../security-scans/conviso-ast/conviso-ast.md#required-permissions).
 
 | Term | Exact meaning |
 | --- | --- |

@@ -45,6 +45,16 @@ On the Platform, there are 8 default profiles:
 
 A profile defines what a user can do. Which assets they can do it on is set by the Access of the user, team, or API key. Some modules also depend on your company's plan: a profile with AI Pentest permissions only reaches AI Pentest if the plan includes it.
 
+#### Conviso AST permissions
+When your plan includes Conviso AST, profiles have a **Conviso AST** section with two permissions:
+
+| Permission | Allows |
+| --- | --- |
+| **Run** | Running [Conviso AST](../security-scans/conviso-ast/conviso-ast.md) in Dry-Run mode, which sends nothing to the Platform. |
+| **Write results to the platform** | Running Conviso AST and sending its results to the Platform. It turns **Run** on with it, and turning **Run** off turns it off. |
+
+Every default profile has **Run**. **Write results to the platform** is on for Admin and Service Account (CI/CD), and an Admin can always run Conviso AST and send its results. A profile created from scratch starts with **Run** on and **Write results to the platform** off; one started from another profile copies its permissions.
+
 #### Developer Profile
 Profile Developer was created with the aim of streamlining the platform for software engineers, so that they only have access to what is relevant to their work. Permissions:
 
@@ -113,7 +123,7 @@ The Service Account (CI/CD) profile is for Service API keys used by CI/CD pipeli
 
 - Create, view, and edit assets;
 - Create, view, and edit vulnerabilities;
-- Send scan results to the Platform.
+- Send scan results to the Platform, including [Conviso AST](#conviso-ast-permissions) results.
 
 To use it, an Admin creates the key in **Settings > API Keys > New API Key > Service API** and selects this profile. The key only reaches the assets in its Access.
 

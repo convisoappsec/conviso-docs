@@ -27,7 +27,7 @@ This integration provides the **CLI as a Docker** image for executing tasks and 
 
 Before using Conviso Platform with Azure Pipelines, you must ensure that:
 
-1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/api-overview.md#generate-api-key).
+1. You have your Conviso API Key, a code that identifies you to Conviso Platform. Find yours [using this tutorial](../api/api-overview.md#generate-api-key). To send results to the Platform, the key's profile needs **Write results to the platform**; **Run** is enough for `--dry-run`. See [Required permissions](../security-scans/conviso-ast/conviso-ast.md#required-permissions).
 
 2. A [new pipeline is created to run the automation](https://learn.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline?view=azure-devops#:~:text=Go%20to%20the%20Pipelines%20tab,start%20with%20an%20Empty%20job.). Follow these steps:
 * Click on "**Pipelines**" in the left-hand menu.
