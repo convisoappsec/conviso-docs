@@ -33,13 +33,14 @@ Use these pages when you need detailed guidance about what each dashboard shows 
 
 ## Filters
 
-By default, dashboards are filtered to show the last 30 days. You can refine the view using:
+By default, dashboards are filtered to show the last 7 days. You can refine the view using:
 
-* date range;
-* assets;
-* vulnerability status;
-* severity;
-* asset tags.
+* **Date**: a preset (**Today**, **Yesterday**, **7D**, **30D**, **3M**, **6M**, **12M**) or a **Custom** range. For a custom range, click the start date and then the end date in the calendar;
+* **Assets**;
+* **Assets Tags**;
+* **Archived assets**: **Hidden** (default), **Included**, or **Only archived**.
+
+**Clear** resets the filters to their defaults.
 
 <div style={{textAlign: 'center'}}>
 
@@ -47,7 +48,7 @@ By default, dashboards are filtered to show the last 30 days. You can refine the
 
 </div>
 
-These filters are applied across the selected dashboard and help you focus the analysis on a specific time window, asset group, severity range, or workflow state.
+These filters are applied across the selected dashboard and help you focus the analysis on a specific time window or asset group. On the Vulnerability KPI dashboard, some charts use only the end date of the period; see [Vulnerability KPI](../posture-management/vulnerability-kpi.md#how-the-selected-period-is-used).
 
 For vulnerability status definitions used in dashboard filters and charts, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
