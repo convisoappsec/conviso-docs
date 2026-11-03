@@ -190,6 +190,19 @@ module.exports = {
             'compliance/pci-gap-analysis',
           ],
         },
+        {
+          type: "category",
+          label: "Conviso Trust",
+          link: {
+            type: "doc",
+            id: "trust/trust-overview",
+          },
+          collapsed: true,
+          items: [
+            'trust/configuring-a-trust-center',
+            'trust/vulnerability-disclosure',
+          ],
+        },
       ],
     },
     {
