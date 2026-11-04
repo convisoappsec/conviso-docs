@@ -20,7 +20,7 @@ Setup has three steps: **Login** (OAuth with Bitbucket), **Authorization** (sele
 
 :::info
 This guide covers the **Application Lifecycle Management (ALM)** integration (repository manager).  
-For running Conviso AST **inside each repository’s own** `bitbucket-pipelines.yml`, see the [Bitbucket Pipelines CI/CD guide](./bitbucket-pipelines.md).
+For running Conviso AST **inside each repository’s own** `bitbucket-pipelines.yml`, see the [Bitbucket Pipelines CI/CD guide](./bitbucket-pipelines.md). To synchronize Fortify, Checkmarx, or Dependency-Track from Pipelines, see [Importing and Synchronizing Assets from External Scanners](./bitbucket-pipelines.md#importing-and-synchronizing-assets-from-external-scanners).
 :::
 
 ## Objective
@@ -164,4 +164,5 @@ If you need help validating OAuth, webhooks, or orchestrator settings, contact C
 
 - [Bitbucket AST Orchestrator](./bitbucket-ast-orchestrator.md)
 - [Bitbucket Pipelines (per-repository CI)](./bitbucket-pipelines.md)
+- [Importing and Synchronizing Assets from External Scanners](./bitbucket-pipelines.md#importing-and-synchronizing-assets-from-external-scanners)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)
