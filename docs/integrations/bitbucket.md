@@ -20,7 +20,7 @@ Setup has three steps: **Login** (OAuth with Bitbucket), **Authorization** (sele
 
 :::info
 This guide covers the **Application Lifecycle Management (ALM)** integration (repository manager).  
-For running Conviso AST **inside each repository’s own** `bitbucket-pipelines.yml`, see the [Bitbucket Pipelines CI/CD guide](./bitbucket-pipelines.md).
+For running Conviso AST **inside each repository’s own** `bitbucket-pipelines.yml`, see the [Bitbucket Pipelines CI/CD guide](./bitbucket-pipelines.md) — the recommended per-repo setup is the [Conviso AST pipe](./bitbucket-pipelines.md#running-conviso-ast-with-the-bitbucket-pipe).
 :::
 
 ## Objective
@@ -164,4 +164,5 @@ If you need help validating OAuth, webhooks, or orchestrator settings, contact C
 
 - [Bitbucket AST Orchestrator](./bitbucket-ast-orchestrator.md)
 - [Bitbucket Pipelines (per-repository CI)](./bitbucket-pipelines.md)
+- [Conviso AST Bitbucket Pipe](./bitbucket-pipelines.md#running-conviso-ast-with-the-bitbucket-pipe)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)

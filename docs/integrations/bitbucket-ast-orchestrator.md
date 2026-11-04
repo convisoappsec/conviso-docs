@@ -268,4 +268,5 @@ Manual test (optional): on the orchestrator, **Run pipeline** → custom pipelin
 - [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
 - [Bitbucket Integration (ALM)](./bitbucket.md)
 - [Bitbucket Pipelines (per-repository CI)](./bitbucket-pipelines.md)
+- [Conviso AST Bitbucket Pipe](./bitbucket-pipelines.md#running-conviso-ast-with-the-bitbucket-pipe)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)
