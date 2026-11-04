@@ -40,11 +40,11 @@ To perform the integration between the two platforms, follow these steps:
 
 <div style={{textAlign: 'center'}}>
 
-![GitHub connection configuration](../../static/img/screenshots/github-connection-configuration-20261006-125328.png)
+![GitHub connection configuration](../../static/img/screenshots/github-connection-scan-setup-20261104-191108.png)
 
 </div>
 
-5. Your repositories will be imported asynchronously. Wait a few moments, then refresh the page to view the imported assets in the connection's repositories table.
+5. Your repositories will be imported asynchronously. Wait a few moments for the imported assets to appear. Once the organization has a setup in [Scan Setup](../security-scans/scan-setup.md), its **Repositories** card lists them too.
 
 Alternatively, you can access your imported assets via the **Asset Management** page.
 

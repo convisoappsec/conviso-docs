@@ -36,7 +36,7 @@ flowchart LR
 What Conviso checks before dispatching:
 
 1. The event is a merge request that was **merged**.
-2. **AST scans on merge** is enabled on the GitLab integration.
+2. **Conviso AST Scans** is on in the GitLab [Scan Setup](../security-scans/scan-setup.md).
 3. The repository is an **imported asset** that is **enabled**.
 4. The MR **target branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
 
@@ -62,7 +62,7 @@ You need:
 | --- | --- |
 | **Orchestrator project** | GitLab project that contains `.gitlab-ci.yml`. Conviso triggers this project only. |
 | **Target repository** | Application project imported as an asset. It must **not** rely on a local Conviso CI file for this flow. |
-| **Ref** | Branch or tag **of the orchestrator** where GitLab loads `.gitlab-ci.yml` when Conviso creates the pipeline. |
+| **Ref** | Branch or tag **of the orchestrator** where GitLab loads `.gitlab-ci.yml` when Conviso creates the pipeline. It is the **Orchestrator branch** field in Scan Setup. |
 | **Merge target branch** | The MR **target** branch on the **target** project that is allowed to trigger a scan (for example `main`). See below. |
 | **Asset** | Imported repository in Conviso (`group/project` path) where findings are stored. |
 
@@ -71,7 +71,8 @@ You need:
 Conviso compares the merged MR’s **target branch** to:
 
 1. The asset’s configured AST / branch mapping, if set; otherwise  
-2. The integration **Ref** (`orchestrator_ref` / pipeline ref).
+2. The setup’s **Branches that run the AST**, if set; otherwise  
+3. The setup’s **Orchestrator branch**, the Ref (`orchestrator_ref` / pipeline ref).
 
 | Configuration | What triggers a scan |
 | --- | --- |
@@ -204,12 +205,13 @@ If Conviso fails to trigger with **Insufficient permissions to set pipeline vari
 
 ### Step 4 – Configure the orchestrator
 
-1. Open **Integrations → GitLab → Configuration**.
-2. Turn **AST scans on merge** **on**.
-3. Under **Orchestrator pipeline**, fill:
+1. Open **DevSecOps → Scan Setup** and click the GitLab row, or click **New setup** and choose GitLab if it has no setup yet. See [Scan Setup](../security-scans/scan-setup.md).
+2. Turn **Conviso AST Scans** **on**. In a new setup, this is the **Orchestrator** step. On the setup page, the gear of the **Conviso AST Scans** card opens the same fields.
+3. Fill:
    - **Project ID** — numeric GitLab project ID of the orchestrator.
-   - **Ref** — orchestrator branch/tag that contains `.gitlab-ci.yml` (e.g. `main`).
-4. Save.
+   - **Orchestrator branch** — the Ref: orchestrator branch/tag that contains `.gitlab-ci.yml` (e.g. `main`).
+   - **Branches that run the AST** — optional. See [Merge target branch](#merge-target-branch).
+4. Finish the wizard with **Create setup**, or click **Save** on the setup page.
 
 The Project ID is shown in GitLab under the orchestrator project → **Settings → General**:
 
@@ -217,16 +219,10 @@ The Project ID is shown in GitLab under the orchestrator project → **Settings 
 
 ![GitLab Settings - Project ID](../../static/img/gitlab-alm/ast-01b-gitlab-project-id.png)
 
-Then paste it into Conviso and set the ref:
-
-*Orchestrator pipeline – Project ID, Ref, and Save.*
-
-![Orchestrator pipeline configuration in Conviso](../../static/img/gitlab-alm/ast-01-orchestrator-config.png)
-
 ### Step 5 – Assets and merge target
 
 1. Confirm each application project is **imported** and **enabled**.
-2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
+2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`). In the setup's **Repositories** card, open the repository's row menu and use **Edit branch pattern**.
 3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
 
 ---
@@ -246,7 +242,7 @@ Then paste it into Conviso and set the ref:
 |-------|----------|
 | Variable | `CONVISO_API_KEY` exists on the orchestrator (Masked; Protected only if Ref is protected) |
 | Path | `.gitlab-ci.yml` is on the **Ref** branch |
-| Conviso | Orchestrator Project ID + Ref saved; **AST scans on merge** on |
+| Scan Setup | **Project ID** and **Orchestrator branch** saved; **Conviso AST Scans** on; the setup reads **Active** |
 | Asset | Target project imported, enabled; merge target branch matches mapping or Ref |
 | After merge | New pipeline on the orchestrator with job `run-ast-scan`; findings (or a clean result) on the asset |
 
@@ -264,7 +260,7 @@ Manual test (optional): on the orchestrator, **Build → Pipelines → New pipel
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no pipeline | **AST scans on merge** off; Project ID/Ref incomplete; asset disabled or not imported; MR target branch ≠ asset branch / Ref |
+| Merge done, no pipeline | **Conviso AST Scans** off in Scan Setup; Project ID/Orchestrator branch incomplete (the setup reads **Needs attention**); asset disabled or not imported; MR target branch ≠ asset branch / Ref |
 | **Insufficient permissions to set pipeline variables** | Set minimum role to Developer/Maintainer (see above) and ensure the OAuth user has that role |
 | `unrecognized arguments: sh -c ...` | Missing `entrypoint: [""]` on the `convisoast` image |
 | Token / clone fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`); GitLab integration not authorized |
@@ -277,5 +273,6 @@ Manual test (optional): on the orchestrator, **Build → Pipelines → New pipel
 
 - [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
 - [GitLab Integration](./gitlab-repositories.md)
+- [Scan Setup](../security-scans/scan-setup.md)
 - [GitLab CI/CD (per-repo pipeline)](./gitlab.md)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)

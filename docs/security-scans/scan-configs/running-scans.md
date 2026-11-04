@@ -123,7 +123,7 @@ stateDiagram-v2
 | **failed** | The dispatch could not happen — a setup problem, not a transient one |
 | **lost** | The pipeline never reported back within the expected window |
 
-You watch this in the **Executions** tab.
+You watch this in **DevSecOps → Scan Executions**.
 
 ![Scan executions](../../../static/img/scan-configs/scan-executions-list.png "Scan executions")
 

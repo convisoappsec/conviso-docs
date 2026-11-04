@@ -10,7 +10,7 @@ keywords: [AST defaults, company defaults, AST modules, SAST, SCA, IaC, containe
 
 **AST defaults** is the company-wide baseline for AST. Every asset that has not overridden a module runs that module with these settings — so a change here reaches every inheriting asset on its next run, without touching a single asset configuration.
 
-Open it from **DevSecOps → AST**, or from the **AST defaults** tab inside the Scans context.
+Open **DevSecOps → Scan Setup** and click **AST Global Config** in the toolbar. The screen is titled **AST Global Config**.
 
 ![AST defaults](../../../static/img/scan-configs/ast-defaults.png "AST defaults")
 
