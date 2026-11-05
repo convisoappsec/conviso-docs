@@ -16,11 +16,11 @@ keywords: [Azure DevOps, Integration, Repository Manager, Microsoft]
 
 The **Conviso Platform** integration with [Azure DevOps](https://azure.microsoft.com/products/devops) allows you to connect your Azure DevOps organizations and repositories to the platform. Once connected, you can import repositories as assets and manage them in a single place for security scanning and vulnerability management.
 
-The setup is divided into three steps: **Login**, **Authorization** (organizations and repositories), and **Configuration** (view and manage imported assets).
+The setup has two steps: **Connect to Azure DevOps** and **Authorize access** (organizations and repositories). After that, the Azure DevOps page shows what Conviso can access, and the scans are set up in [Scan Setup](../security-scans/scan-setup.md).
 
 ### Authentication modes
 
-On **Login** you choose how Conviso authenticates with Azure DevOps:
+On **Connect to Azure DevOps** you choose how Conviso authenticates with Azure DevOps:
 
 | Mode | Summary |
 |------|---------|
@@ -68,8 +68,8 @@ The first time you connect with OAuth, an administrator may need to register the
 
 ### Step 2 – Connect to Azure DevOps (Login)
 
-1. On the Azure DevOps integration page, you will see three steps: **Login**, **Authorization**, and **Configuration**.
-2. In the **Login** step, under **Authentication**, keep **OAuth** selected (for Service Principal, see [Azure DevOps Service Principal](./azure-devops-service-principal.md)).
+1. On the Azure DevOps integration page, you will see two cards: **Connect to Azure DevOps** and **Authorize access**.
+2. On **Connect to Azure DevOps**, under **Authentication**, keep **OAuth** selected (for Service Principal, see [Azure DevOps Service Principal](./azure-devops-service-principal.md)).
 3. Click the **Connect to Azure DevOps** button.
 
 *Step 2: Login step with Connect to Azure DevOps button.*
@@ -98,12 +98,12 @@ After accepting, you will be redirected back to the Conviso Platform.
 
 ### Step 4 – Select organizations and authorize repositories (Authorization)
 
-1. Back in Conviso Platform, you will be on the **Authorization** step.
+1. Back in Conviso Platform, you will be on the **Authorize access** card.
 2. In **Select organizations**, click the field and choose one or more Azure DevOps organizations to use. Repositories from these organizations will be available to import.
 3. Choose how to authorize repositories:
    - **Authorize all repositories**: Turn the **Authorize all repositories** toggle **on** to automatically detect and authorize all repositories from the selected organization(s).
    - **Select specific repositories**: Turn the toggle **off** to open **Select repositories to authorize** and choose only the repositories you want.
-4. Click **Continue** to save and go to the next step.
+4. Click **Authorize and import**.
 
 *Step 4: Authorization – select organizations and authorize all or selected repositories.*
 
@@ -117,18 +117,14 @@ If you chose to select specific repositories, use the dropdown as in the image b
 
 ---
 
-### Step 5 – View and manage configuration
+### Step 5 – Set up the scans
 
-1. On the **Configuration** step, you will see a table of **Assets** (repositories that were imported).
-2. Use the search bar to **Search by Name or ID** if you have many assets.
-3. Optionally:
-   - Click **Check connection** to verify that the integration is healthy.
-   - Click **Remove integration** to disconnect Azure DevOps (this does not delete assets already created; it removes the link for future imports).
-4. Use the pagination controls at the bottom to browse all integrated assets.
+Once authorized, the Azure DevOps page shows:
 
-*Step 5: Configuration – list of integrated assets and actions.*
-
-![Step 5: Configuration - Integrated assets table](../../static/img/azure-devops/step-06-configuration.png)
+- **Authorized access**: the authentication mode, organizations, and repositories Conviso can read. **Edit** reopens the authorization.
+- **Conviso scans in this organization**: how scans run. **Set up scans** (or **Open setup**) takes you to [Scan Setup](../security-scans/scan-setup.md), where you turn on [PR Scans](./azure-devops-pr-scans.md) and AST scans on merge, set the [orchestrator pipeline](./azure-devops-ast-orchestrator.md), and manage the imported repositories.
+- **Remove integration**: disconnects Azure DevOps. Assets already imported and their findings stay.
+- **Check connection** and **Reconnect**, at the top, confirm or renew Conviso's access.
 
 ---
 
@@ -151,7 +147,7 @@ Conviso creates Azure DevOps **Service Hooks** (webhooks) on each **project** th
 
 Microsoft grants **Edit subscriptions** and **View subscriptions** to **Project Administrators** by default. A user who can clone and import repositories may still lack this permission.
 
-Enabling **PR Scans** or **AST scans on merge** in Conviso does not create the hooks by itself. If the connecting account cannot edit subscriptions, the toggle has no effect until an administrator grants the permission (or reconnects the integration with a Project Administrator account) and Conviso can register the hooks.
+Turning on **Conviso PR Scans** or **Conviso AST Scans** in Scan Setup does not create the hooks by itself. If the connecting account cannot edit subscriptions, the toggle has no effect until an administrator grants the permission (or reconnects the integration with a Project Administrator account) and Conviso can register the hooks.
 
 ### Grant Edit subscriptions
 
@@ -167,9 +163,9 @@ To confirm hooks exist after the permission is granted: **Project settings** →
 
 ## Validation
 
-- **Login**: After Step 2 and 3, the Login step shows a check mark and you return to Conviso Platform.
-- **Authorization**: After Step 4, the Authorization step shows a check mark and the Configuration step becomes active.
-- **Configuration**: The Configuration step shows a table of assets; each row is a repository imported as an asset (e.g. `organization/repository-name`). You can open an asset to confirm it is linked correctly.
+- **Connect**: After Step 2 and 3, you return to Conviso Platform on the **Authorize access** card.
+- **Authorization**: After Step 4, the page shows **Authorized access** with the organizations you chose.
+- **Repositories**: The **Repositories** card of the Azure DevOps setup in Scan Setup lists each repository imported as an asset (e.g. `organization/repository-name`). You can open an asset to confirm it is linked correctly.
 
 If **Check connection** is available, use it to confirm that the integration can still access Azure DevOps with the current credentials.
 
@@ -177,11 +173,11 @@ If **Check connection** is available, use it to confirm that the integration can
 
 | Problem | What to do |
 |--------|------------|
-| **"OAuth state is required" or "Invalid or expired OAuth state"** | Do not modify the URL when returning from Microsoft. Use the **Connect to Azure DevOps** flow again from the Login step and complete the consent in one go. If the error persists, try in a new browser tab or clear cookies for the Conviso Platform domain. |
+| **"OAuth state is required" or "Invalid or expired OAuth state"** | Do not modify the URL when returning from Microsoft. Use **Connect to Azure DevOps** again and complete the consent in one go. If the error persists, try in a new browser tab or clear cookies for the Conviso Platform domain. |
 | **"Azure DevOps OAuth is not configured"** | The Conviso Platform instance is missing OAuth configuration (client ID, secret, redirect URI). Contact your platform administrator. |
 | **No organizations in the dropdown** | Ensure your Microsoft account has access to at least one Azure DevOps organization. Check at [https://dev.azure.com](https://dev.azure.com). |
-| **"The integration must have at least one organization selected"** | You must select at least one organization in the Authorization step before saving or importing repositories. Go back to Authorization and select at least one organization. |
-| **Repositories do not appear after import** | Import is processed asynchronously. Wait a few moments and refresh the Configuration tab. If they still do not appear, use **Check connection** and try importing again. |
+| **"The integration must have at least one organization selected"** | You must select at least one organization on **Authorize access** before importing repositories. Select at least one organization and try again. |
+| **Repositories do not appear after import** | Import is processed asynchronously. Wait a few moments and refresh the page. If they still do not appear, use **Check connection** and try importing again. |
 | **Assets imported, but PR scans / merge AST / new-repo auto-import do not run** | The connecting account likely lacks **Edit subscriptions** on the Azure project. Grant it (see [Service hook permissions](#service-hook-permissions)), then reconnect or ask Conviso support to re-register the Service Hooks. In Azure, **Project settings** → **Service hooks** should list a Web Hook to Conviso. Accepting the Microsoft OAuth consent screen is not sufficient. |
 
 ## Support
@@ -190,6 +186,7 @@ If you have any questions or need assistance with the Azure DevOps integration, 
 
 ## Related Guides
 
+- [Scan Setup](../security-scans/scan-setup.md)
 - [Azure DevOps Service Principal](./azure-devops-service-principal.md)
 - [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
 - [Azure DevOps AST Orchestrator](./azure-devops-ast-orchestrator.md)

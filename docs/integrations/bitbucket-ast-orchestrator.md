@@ -36,7 +36,7 @@ flowchart LR
 What Conviso checks before dispatching:
 
 1. The event is a pull request that was **merged**.
-2. **AST scans on merge** is enabled on the Bitbucket integration.
+2. **Conviso AST Scans** is on in the Bitbucket [Scan Setup](../security-scans/scan-setup.md).
 3. The repository is an **imported asset** that is **enabled**.
 4. The PR **destination branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
 
@@ -62,7 +62,7 @@ You need:
 | --- | --- |
 | **Orchestrator repository** | Bitbucket repo that contains `bitbucket-pipelines.yml`. Conviso triggers this repo only. |
 | **Target repository** | Application repo imported as an asset. It must **not** rely on a local Conviso Pipelines file for this flow. |
-| **Ref** | Branch or tag **of the orchestrator** where Bitbucket loads `bitbucket-pipelines.yml` when Conviso starts the custom pipeline. |
+| **Ref** | Branch or tag **of the orchestrator** where Bitbucket loads `bitbucket-pipelines.yml` when Conviso starts the custom pipeline. It is the **Orchestrator branch** field in Scan Setup. |
 | **Merge target branch** | The PR **destination** branch on the **target** repo that is allowed to trigger a scan (for example `main`). See below. |
 | **Custom pipeline** | Entry under `pipelines.custom` that Conviso triggers by name (`run-ast-scan`). |
 | **Asset** | Imported repository in Conviso (`workspace/repo`) where findings are stored. |
@@ -72,7 +72,8 @@ You need:
 Conviso compares the merged PR’s **destination branch** to:
 
 1. The asset’s configured AST / branch mapping, if set; otherwise  
-2. The integration **Ref** (`orchestrator_ref`).
+2. The setup’s **Branches that run the AST**, if set; otherwise  
+3. The setup’s **Orchestrator branch**, the Ref (`orchestrator_ref`).
 
 | Configuration | What triggers a scan |
 | --- | --- |
@@ -203,22 +204,19 @@ pipelines:
 
 ### Step 4 – Configure the orchestrator
 
-1. Open **Integrations → Bitbucket → Configuration**.
-2. Turn **AST scans on merge** **on**.
-3. Under **Orchestrator pipeline**, fill:
+1. Open **DevSecOps → Scan Setup** and click the Bitbucket row, or click **New setup** and choose Bitbucket if it has no setup yet. See [Scan Setup](../security-scans/scan-setup.md).
+2. Turn **Conviso AST Scans** **on**. In a new setup, this is the **Orchestrator** step. On the setup page, the gear of the **Conviso AST Scans** card opens the same fields.
+3. Fill:
    - **Workspace** — Bitbucket workspace slug of the orchestrator repository.
    - **Repository** — repository slug (not the full URL).
-   - **Ref** — orchestrator branch/tag that contains `bitbucket-pipelines.yml` (e.g. `main`).
-4. Save.
-
-*Step 4: Orchestrator workspace, repository, ref, and AST scans toggle.*
-
-![Step 4: Orchestrator configuration in Conviso](/img/bitbucket-alm/ast-04-orchestrator-config.png)
+   - **Orchestrator branch** — the Ref: orchestrator branch/tag that contains `bitbucket-pipelines.yml` (e.g. `main`).
+   - **Branches that run the AST** — optional. See [Merge target branch](#merge-target-branch).
+4. Finish the wizard with **Create setup**, or click **Save** on the setup page.
 
 ### Step 5 – Assets and merge target
 
 1. Confirm each application repository is **imported** and **enabled**.
-2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
+2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`). In the setup's **Repositories** card, open the repository's row menu and use **Edit branch pattern**.
 3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
 
 ---
@@ -238,7 +236,7 @@ pipelines:
 |-------|----------|
 | Variable | `CONVISO_API_KEY` exists on the orchestrator (secured) |
 | Path | `bitbucket-pipelines.yml` with `pipelines.custom.run-ast-scan` is on the **Ref** branch |
-| Conviso | Workspace + repository + Ref saved; **AST scans on merge** on |
+| Scan Setup | **Workspace**, **Repository**, and **Orchestrator branch** saved; **Conviso AST Scans** on; the setup reads **Active** |
 | Asset | Target repo imported, enabled; merge target branch matches mapping or Ref |
 | After merge | New Pipelines run on the orchestrator for `run-ast-scan`; findings (or a clean result) on the asset |
 
@@ -256,7 +254,7 @@ Manual test (optional): on the orchestrator, **Run pipeline** → custom pipelin
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no pipeline | **AST scans on merge** off; workspace/repository/Ref incomplete; asset disabled or not imported; PR destination ≠ asset branch / Ref; webhooks unhealthy |
+| Merge done, no pipeline | **Conviso AST Scans** off in Scan Setup; workspace/repository/Orchestrator branch incomplete (the setup reads **Needs attention**); asset disabled or not imported; PR destination ≠ asset branch / Ref; webhooks unhealthy |
 | `Requested selector is not found` | `pipelines.custom.run-ast-scan` missing on the **exact Ref** configured in Conviso |
 | Token / clone fails (HTTP 4xx) | `repo_full_name` not an imported asset for that API key/company; wrong environment (`CONVISO_API_KEY` vs `api_url`); Bitbucket integration not authorized / OAuth user lacks access |
 | Unreadable / HTML response from Platform | Use the API host (`api.*`), not `app.*` / `staging.*`. The template normalizes those hosts automatically |
@@ -267,5 +265,6 @@ Manual test (optional): on the orchestrator, **Run pipeline** → custom pipelin
 
 - [Example orchestrator repository (pipeline-orchestrator)](https://github.com/convisoappsec/pipeline-orchestrator)
 - [Bitbucket Integration (ALM)](./bitbucket.md)
+- [Scan Setup](../security-scans/scan-setup.md)
 - [Bitbucket Pipelines (per-repository CI)](./bitbucket-pipelines.md)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)

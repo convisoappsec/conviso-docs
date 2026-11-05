@@ -90,14 +90,17 @@ Conviso adds the connection and opens its configuration page. When GitHub Advanc
 
 ## Configure a connection
 
-On the **GitHub** page, click the pencil icon (**Configure connection**) on the connection you want to change. The page header shows the organization and the installation of that connection.
+On the **GitHub** page, click the pencil icon (**Configure connection**) on the connection you want to change.
 
-![GitHub connection configuration](../../static/img/screenshots/github-connection-configuration-20261006-125328.png)
+![GitHub connection configuration](../../static/img/screenshots/github-connection-scan-setup-20261104-191108.png)
 
-- **Authorization**: **Manage access on GitHub** opens the installation's settings on GitHub, where you change which repositories the App can access. **Remove integration** removes this connection only; the other connections are kept.
-- **Configuration**: the **AST Scans**, **PR Scans**, and **GitHub Advanced Security** cards, and the table of the connection's repositories. In the table you can turn scans off for a repository or give it its own branch pattern.
+- **Check connection** and **Reconnect**, at the top, confirm or renew Conviso's access to the installation.
+- **Authorized access** shows the organization and the installation. **Manage access on GitHub** opens the installation's settings on GitHub, where you change which repositories the App can access.
+- **GitHub Advanced Security** turns the import of the organization's [GitHub Advanced Security](./github-advanced-security.md) alerts on or off.
+- **Conviso scans in this organization** shows how AST and PR scans run here. **Open setup**, or **Set up scans** when there is no setup yet, takes you to [Scan Setup](../security-scans/scan-setup.md), where you configure the orchestrator, PR scans, and the connection's repositories.
+- **Remove integration** removes this connection only; the other connections are kept. The GitHub App stays installed on GitHub until you uninstall it there.
 
-Every setting belongs to the connection you are editing. For example, an orchestrator configured on one connection only runs for the repositories of that connection.
+Every setting belongs to the connection you are editing. For example, an orchestrator configured for one organization only runs for the repositories of that organization.
 
 ## Work with several organizations
 
@@ -128,7 +131,7 @@ If Conviso cannot add a connection, it returns to the **GitHub** page and shows 
 
 ## Next Steps: Enable Security Scanning
 
-Once a connection is active, you can enable automated security scanning for its repositories. Conviso Platform provides two methods to suit your workflow needs:
+Once a connection is active, you can enable automated security scanning for its repositories in [Scan Setup](../security-scans/scan-setup.md), one setup per organization. Conviso Platform provides two methods to suit your workflow needs:
 
 ### 1. Automated PR Scanning (Zero Configuration)
 

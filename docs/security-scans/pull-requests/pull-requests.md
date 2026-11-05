@@ -37,21 +37,19 @@ The Conviso Platform seamlessly integrates with major Application Lifecycle Mana
 
 By integrating with GitHub, you can enable zero-configuration Automated PR Scanning. When activated, Conviso automatically reports findings as comments directly on the GitHub PR timeline, acting as an automated security reviewer. 
 
-To enable this, navigate to the GitHub Integration settings in the Conviso Platform and toggle the **PR Scans** option.
-
-<div style={{textAlign: 'center' , maxWidth: '80%', margin: '0 auto'}}>
-
-![GitHub PR Scans Configuration](./github-scan.png "GitHub PR Scans Configuration")
-
-</div>
+To enable this, open **DevSecOps → Scan Setup** in the Conviso Platform, open the setup of the GitHub organization, and turn on **Conviso PR Scans**. See [Scan Setup](../scan-setup.md).
 
 For detailed instructions on configuring this feature, refer to the [Automated PR Scanning for GitHub](../../integrations/github-pr-scans.md) documentation.
 
 ### Azure DevOps Integration
 
-Similar to GitHub, the Conviso Platform integrates with Azure DevOps to provide PR scanning capabilities within your Azure Repos. By configuring the integration, Azure DevOps pipelines can trigger differential scans on Pull Requests, ensuring that any code merged into your protected branches meets your organization's security standards.
+Similar to GitHub, the Conviso Platform integrates with Azure DevOps to provide PR scanning capabilities within your Azure Repos. Once **Conviso PR Scans** is on in the Azure DevOps setup, differential scans run on Pull Requests, ensuring that any code merged into your protected branches meets your organization's security standards.
 
-For more information on setting up Azure DevOps, please refer to the [Azure DevOps Integration](../../integrations/azure-devops.md) documentation.
+For more information, refer to the [Azure DevOps PR Scans](../../integrations/azure-devops-pr-scans.md) documentation.
+
+### GitLab and Bitbucket
+
+GitLab merge requests and Bitbucket pull requests are scanned the same way, once **Conviso PR Scans** is on in their setup. See [GitLab Integration](../../integrations/gitlab-repositories.md#scans-on-merge-requests) and [Bitbucket Integration](../../integrations/bitbucket.md#scans-on-pull-requests).
 
 ## Best Practices for PR Scanning
 

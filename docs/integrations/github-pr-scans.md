@@ -35,24 +35,23 @@ Before enabling PR Scanning, ensure that:
 
 To activate automated scanning for your organization:
 
-### Step 1 - Access Integration Settings
+### Step 1 - Open the organization's setup
 
-Navigate to the **Integrations** page in the Conviso Platform, open **GitHub**, and click the pencil icon (**Configure connection**) on the connection of the organization whose pull requests you want to scan.
+In the Conviso Platform, open **DevSecOps → Scan Setup** and click the row of the organization whose pull requests you want to scan. If it has no setup yet, click **New setup** and choose it. See [Scan Setup](../security-scans/scan-setup.md).
 
-PR Scanning is configured per [GitHub connection](./github.md#github-connections). If your company connects several organizations, enable it on each connection that should scan pull requests.
+PR Scanning is configured per GitHub organization. If your company connects several organizations, turn it on in the setup of each organization that should scan pull requests.
 
 ### Step 2 - Activate the Feature
 
-Scroll to the configuration section and toggle **Pull Request Scanning** to **On**.
-
-![img](../../static/img/github/pr-scanning-toggle.png)
+Turn **Conviso PR Scans** **on**: in a new setup, at the **PR Scans** step; on the setup page, with the switch of the **Conviso PR Scans** card. **Target branches** limits the scan to pull requests into the branches it matches; left empty, pull requests into any branch are scanned.
 
 ### Step 3 - Repository Level Control
 
-Once the global setting is enabled, you can control which specific repositories are scanned via the **Asset Mapping** table on the integration page.
+Once the setting is on, you control which repositories are scanned in the setup's **Repositories** card.
 
-- **Enable Scanning:** Ensure the **Status** toggle is active for the specific asset/repository.
-- **Disable Scanning:** If you disable a specific repository mapping, PRs for that repository will be ignored.
+- **Enable Scanning:** Ensure the **Enabled** switch is on for the repository.
+- **Disable Scanning:** If you turn a repository off, PRs for that repository will be ignored.
+- **Target branches per repository:** In the row menu, **Edit branch pattern** gives a repository its own target branch pattern.
 
 :::info
 Changes to these settings take effect immediately for all new Pull Requests or new commits pushed to existing PRs.
@@ -135,8 +134,8 @@ The Conviso Platform offers two ways to scan GitHub repositories. Choose the one
 
 If you opened a PR but do not see the "Conviso Security Check" or any comments from the bot, please verify the following:
 
-1.  **Is the feature enabled?** Go to **Integrations → GitHub** in Conviso Platform, open the connection of the repository's organization, and confirm that **Pull Request Scanning** is toggled **On**. Each connection has its own setting.
-2.  **Is the specific repository allowed?** Check the "Asset Mapping" table in the integration settings. The specific repository must be mapped to an asset, and its **Status** toggle must be active.
+1.  **Is the feature enabled?** Go to **DevSecOps → Scan Setup** in Conviso Platform, open the setup of the repository's organization, and confirm that **Conviso PR Scans** is **On** and that **Target branches** matches the pull request's target branch. Each organization has its own setup.
+2.  **Is the specific repository allowed?** Check the **Repositories** card of the setup. The repository must be listed as an asset, and its **Enabled** switch must be on.
 3.  **Are permissions correct?** Ensure the installed **Conviso Application Security** GitHub App has the necessary permissions (specifically `read` and `write` access to Pull Requests and Commit Statuses). You may need to update the app permissions in your GitHub Organization settings.
 
 ### I already have a pipeline step running Conviso AST. What happens if I enable PR Scanning?

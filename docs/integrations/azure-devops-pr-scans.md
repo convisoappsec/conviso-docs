@@ -26,32 +26,31 @@ When a developer creates or updates a PR, the platform detects the event and run
 Before enabling PR Scans, ensure that:
 
 1. Your **[Azure DevOps integration](./azure-devops.md)** is already configured and connected.
-2. Repositories are imported and mapped as assets in the integration configuration.
-3. You have permission to edit integration settings in Conviso Platform.
+2. Repositories are imported and mapped as assets.
+3. You have permission to edit integration and scan settings in Conviso Platform.
 4. The Microsoft account that connected the integration has **Edit subscriptions** and **View subscriptions** on each Azure DevOps **project** you scan. Conviso registers Service Hooks on the project to receive pull request events. Accepting the Microsoft OAuth consent screen does **not** grant this. By default only **Project Administrators** have it. See **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
 
 ---
 
 ## Enabling PR Scans
 
-### Step 1 - Open Azure DevOps Integration
+### Step 1 - Open the Azure DevOps setup
 
-1. Go to **Integrations** in Conviso Platform.
-2. Open the configured **Azure DevOps** integration.
-3. Go to the **Configuration** step.
+1. Go to **DevSecOps → Scan Setup** in Conviso Platform.
+2. Click the Azure DevOps row, or click **New setup** and choose Azure DevOps if it has no setup yet. See [Scan Setup](../security-scans/scan-setup.md).
 
-### Step 2 - Enable PR Scans Toggle
+### Step 2 - Turn on PR Scans
 
-1. Locate the **PR Scans** toggle.
-2. Turn it **On** to activate PR scan automation.
+1. Turn **Conviso PR Scans** **On**: in a new setup, at the **PR Scans** step; on the setup page, with the switch of the **Conviso PR Scans** card.
+2. Optionally, set **Target branches** to limit the scan to pull requests into the branches it matches. Left empty, it uses the branches that run the AST.
 
 ### Step 3 - Validate Repository Mapping
 
-Ensure the target repositories are present and enabled in the configuration table.  
+Ensure the target repositories are present and enabled in the setup's **Repositories** card.  
 PR scans only run for repositories that are part of the integration scope.
 
 :::info
-Turning **PR Scans** on does not register Azure Service Hooks. Those are created when the integration can edit subscriptions on the project. If the connecting user lacks that permission, the toggle stays on in Conviso and Azure never notifies the platform.
+Turning **Conviso PR Scans** on does not register Azure Service Hooks. Those are created when the integration can edit subscriptions on the project. If the connecting user lacks that permission, the toggle stays on in Conviso and Azure never notifies the platform.
 
 After hooks exist, changes take effect for new PRs and new commits pushed to existing PRs.
 :::
@@ -94,7 +93,7 @@ Conviso offers two complementary Azure DevOps security flows:
 | Primary goal | Fast PR feedback | Merge/branch pipeline execution |
 | Trigger source | PR create/update events | Pipeline configuration on Azure DevOps |
 | Typical scope | Pull Request context | Configurable by pipeline strategy |
-| Setup effort | Low (toggle in integration) | Requires orchestrator pipeline setup |
+| Setup effort | Low (switch in Scan Setup) | Requires orchestrator pipeline setup |
 
 For orchestrator setup, see **[Azure DevOps AST Orchestrator](./azure-devops-ast-orchestrator.md)**.
 
@@ -106,7 +105,7 @@ For orchestrator setup, see **[Azure DevOps AST Orchestrator](./azure-devops-ast
 
 Check:
 
-1. **PR Scans** toggle is enabled in integration configuration.
+1. **Conviso PR Scans** is on in the Azure DevOps setup, and **Target branches** matches the PR's target branch.
 2. The repository is authorized/imported in Azure DevOps integration.
 3. The connecting account has **Edit subscriptions** on that Azure **project**, and **Project settings** → **Service hooks** shows a Web Hook whose URL contains `/callback/azure-devops`. If assets imported but this list is empty, grant the permission and re-register hooks — see **[Service hook permissions](./azure-devops.md#service-hook-permissions)**.
 4. The PR event reached the platform and worker processing completed.
@@ -116,7 +115,7 @@ Check:
 Check:
 
 1. Integration credentials and permissions are still valid.
-2. The repository remains mapped and active in Conviso configuration.
+2. The repository remains enabled in the setup's **Repositories** card.
 3. There were no processing errors in background workers.
 
 ---

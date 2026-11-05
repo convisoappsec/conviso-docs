@@ -2,7 +2,7 @@
 id: scan-configs
 title: Scan Configs
 sidebar_label: Scan Configs Overview
-description: Understand how Conviso Platform stores scan configuration per asset, how AST branch profiles inherit company defaults, and how the Scans context is organized.
+description: Understand how Conviso Platform stores scan configuration per asset, how AST branch profiles inherit company defaults, and where each scan screen lives.
 keywords: [scan configs, conviso scan configuration, AST configuration, DAST configuration, branch profile, AST defaults, scan executions]
 ---
 
@@ -12,15 +12,15 @@ keywords: [scan configs, conviso scan configuration, AST configuration, DAST con
 
 Edit a configuration once, and the next run picks it up. You never have to re-declare scanner options inside your CI/CD files.
 
-## The Scans context
+## Where it lives
 
-Everything lives under **DevSecOps → AST** in the side menu, which opens a context with three tabs:
+| Screen | Where to open it | What it holds |
+| :--- | :--- | :--- |
+| **Scan Configs** | **DevSecOps → Scan Setup**, **Asset** tab | The saved configurations — one row per asset/type, plus one row per AST branch profile |
+| **AST Global Config** | **AST Global Config**, in the toolbar of **Scan Setup** | The company-wide AST baseline that every asset inherits from. See [AST Defaults](./ast-defaults.md) |
+| **Scan Executions** | **DevSecOps → Scan Executions** | Every scan that already ran, with status, duration, asset, and branch |
 
-| Tab | What it holds |
-| :--- | :--- |
-| **Executions** | Every scan that already ran, with status, duration, asset, and branch |
-| **Scan Configs** | The saved configurations — one row per asset/type, plus one row per AST branch profile |
-| **AST defaults** | The company-wide AST baseline that every asset inherits from |
+How AST and PR scans run on their own in each ALM organization, through the orchestrator pipeline and pull request checks, is set on the **Organization** tab of [Scan Setup](../scan-setup.md).
 
 ![Scan Configs list](../../../static/img/scan-configs/scan-configs-list.png "Scan Configs list")
 
@@ -35,7 +35,7 @@ flowchart TD
     C -->|falls back to| D[Conviso platform defaults]
 ```
 
-- **Company AST defaults** — the baseline for the whole company. Managed in the **AST defaults** tab.
+- **Company AST defaults** — the baseline for the whole company. Managed in **AST Global Config**.
 - **Asset configuration** — overrides the defaults for one asset. Applies to every branch that has no profile of its own.
 - **Branch execution profile** — overrides the asset configuration for one specific branch. A release branch and a feature branch rarely need the same scan.
 
@@ -89,7 +89,7 @@ The trigger is **derived**, not chosen from a dropdown. It reflects how the asse
 
 | Requirement | Applies to |
 | :--- | :--- |
-| `AST_SCAN_ACCESS` plan permission | The whole AST experience, including the **AST defaults** tab |
+| `AST_SCAN_ACCESS` plan permission | The whole AST experience, including **AST Global Config** |
 | Company **Admin** profile | Creating, editing, and deleting AST configurations and rules |
 | **Run** permission (**Conviso AST** section of the profile) | Running Conviso AST in [Dry-Run mode](../conviso-ast/conviso-ast.md#dry-run-mode) |
 | **Write results to the platform** permission | Running Conviso AST and sending its results to the Platform |

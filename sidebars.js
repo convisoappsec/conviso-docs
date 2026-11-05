@@ -82,6 +82,8 @@ module.exports = {
           label: "Scanning your Application",
           collapsed: true,
           items: [
+            // How scans run on their own in each ALM organization (orchestrator, PR scans).
+            'security-scans/scan-setup',
             // How scans are configured in the Platform. Kept apart from the engines
             // below so AST configuration has one home instead of three.
             {

@@ -8,11 +8,11 @@ keywords: [new scan, create scan config, AST configuration, DAST configuration, 
 
 # Creating Scan Configs
 
-A scan configuration is created from the **Scan Configs** tab. The same form is used to create a new configuration and to edit an existing one — the breadcrumb tells you which mode you are in (*New AST scan* vs. *Edit*).
+A scan configuration is created from the **Asset** tab of **Scan Setup**. The same form is used to create a new configuration and to edit an existing one — the breadcrumb tells you which mode you are in (*New AST scan* vs. *Edit*).
 
 ## Starting a new configuration
 
-Open **DevSecOps → AST → Scan Configs** and press **New**. The dropdown offers one entry per scan type:
+Open **DevSecOps → Scan Setup**, select the **Asset** tab, and press **New**. The dropdown offers one entry per scan type:
 
 ![New scan dropdown](../../../static/img/scan-configs/scan-configs-new-dropdown.png "New scan dropdown")
 

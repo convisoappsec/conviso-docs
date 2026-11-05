@@ -36,7 +36,7 @@ flowchart LR
 What Conviso checks before dispatching:
 
 1. The event is a pull request that was **merged**.
-2. **AST scans on merge** is enabled on the Azure DevOps integration.
+2. **Conviso AST Scans** is on in the Azure DevOps [Scan Setup](../security-scans/scan-setup.md).
 3. The repository is an **imported asset** that is **enabled**.
 4. The PR **destination branch** matches the configured merge target (see [Merge target branch](#merge-target-branch) below).
 
@@ -65,7 +65,7 @@ You need:
 | --- | --- |
 | **Orchestrator pipeline** | Azure Pipeline whose YAML is `azure-pipelines.yml`. Conviso triggers this pipeline only. |
 | **Target repository** | Application repo imported as an asset. It must **not** rely on a local Conviso pipeline for this flow. |
-| **Ref** | Branch or tag **of the orchestrator** where Azure loads `azure-pipelines.yml` when Conviso starts the run. |
+| **Ref** | Branch or tag **of the orchestrator** where Azure loads `azure-pipelines.yml` when Conviso starts the run. It is the **Orchestrator branch** field in Scan Setup. |
 | **Merge target branch** | The PR **destination** branch on the **target** repo that is allowed to trigger a scan (for example `main`). See below. |
 | **Asset** | Imported repository in Conviso where findings are stored. |
 
@@ -74,7 +74,8 @@ You need:
 Conviso compares the merged PR’s **destination branch** to:
 
 1. The asset’s configured AST / branch mapping, if set; otherwise  
-2. The integration **Ref** (`orchestrator_ref`).
+2. The setup’s **Branches that run the AST**, if set; otherwise  
+3. The setup’s **Orchestrator branch**, the Ref (`orchestrator_ref`).
 
 | Configuration | What triggers a scan |
 | --- | --- |
@@ -362,25 +363,24 @@ Do **not** add an Azure DevOps PAT for clone. The job calls `conviso-ast-reposit
 
 ### Step 5 – Configure the orchestrator
 
-1. Open **Integrations → Azure DevOps → Configuration** (or **Orchestrator configuration**).
-2. Turn **AST scans on merge** **on**.
-3. Under **Orchestrator pipeline**, fill:
+1. Open **DevSecOps → Scan Setup** and click the Azure DevOps row, or click **New setup** and choose Azure DevOps if it has no setup yet. See [Scan Setup](../security-scans/scan-setup.md).
+2. Turn **Conviso AST Scans** **on**. In a new setup, this is the **Orchestrator** step. On the setup page, the gear of the **Conviso AST Scans** card opens the same fields.
+3. Fill:
 
 | Field | What to enter | Where to find it |
 | --- | --- | --- |
-| **Orchestrator organization** | Azure DevOps organization, e.g. `my-org` | First path segment of `https://dev.azure.com/my-org/...` |
-| **Orchestrator project** | Project that contains the orchestrator pipeline | Second path segment of the same URL |
-| **Orchestrator pipeline ID** | The number from Step 3, e.g. `42` | `definitionId=` in the pipeline URL |
-| **Orchestrator ref** | Branch holding the YAML — usually `main` | Same branch from Step 1. Conviso prefixes plain values with `refs/heads/`; a tag must be written as `refs/tags/<tag>` |
+| **Organization** | Azure DevOps organization, e.g. `my-org` | First path segment of `https://dev.azure.com/my-org/...` |
+| **Project** | Project that contains the orchestrator pipeline | Second path segment of the same URL |
+| **Pipeline ID** | The number from Step 3, e.g. `42` | `definitionId=` in the pipeline URL |
+| **Orchestrator branch** | Branch holding the YAML — usually `main` | Same branch from Step 1. Conviso prefixes plain values with `refs/heads/`; a tag must be written as `refs/tags/<tag>` |
+| **Branches that run the AST** | Optional. See [Merge target branch](#merge-target-branch) | — |
 
-4. Save.
-
-![Step 5: Orchestrator configuration in Conviso](/img/azure-devops/ast-step-02-orchestrator-config.png)
+4. Finish the wizard with **Create setup**, or click **Save** on the setup page.
 
 ### Step 6 – Assets and merge target
 
 1. Confirm each application repository is **imported** and **enabled**.
-2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`).
+2. Set the asset branch mapping when the merge target is **not** the same as Ref (example: Ref `main` on the orchestrator, merges into `master` on the asset → map the asset to `master`). In the setup's **Repositories** card, open the repository's row menu and use **Edit branch pattern**.
 3. If the asset has no branch mapping, merges must go into the branch named by **Ref** (or any branch only if Ref is also empty — avoid that setup).
 
 ---
@@ -400,7 +400,7 @@ Do **not** add an Azure DevOps PAT for clone. The job calls `conviso-ast-reposit
 |-------|----------|
 | Variable | `CONVISO_API_KEY` exists as a **secret pipeline variable** on the orchestrator |
 | Path | `azure-pipelines.yml` is on the **Ref** branch |
-| Conviso | Organization + project + pipeline ID + Ref saved; **AST scans on merge** on |
+| Scan Setup | **Organization**, **Project**, **Pipeline ID**, and **Orchestrator branch** saved; **Conviso AST Scans** on; the setup reads **Active** |
 | Asset | Target repo imported, enabled; merge target branch matches mapping or Ref |
 | After merge | New pipeline run on the orchestrator; findings (or a clean result) on the asset |
 
@@ -412,7 +412,7 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 
 | Symptom | Cause / fix |
 |---------|-------------|
-| Merge done, no pipeline | **AST scans on merge** off; organization/project/pipeline ID/Ref incomplete; asset disabled or not imported; PR destination ≠ asset branch / Ref; connecting user lacks **Edit subscriptions** so no Service Hook was registered ([details](./azure-devops.md#service-hook-permissions)) |
+| Merge done, no pipeline | **Conviso AST Scans** off in Scan Setup; organization/project/pipeline ID incomplete (the setup reads **Needs attention**); asset disabled or not imported; PR destination ≠ asset branch / Ref; connecting user lacks **Edit subscriptions** so no Service Hook was registered ([details](./azure-devops.md#service-hook-permissions)) |
 | `Repository is not available for this API key` | Wrong environment (`CONVISO_API_KEY` vs `api_url`); Azure integration not authorized; asset not imported/enabled for that company |
 | Unreadable / HTML response from Platform | Use the production API host (`https://api.convisoappsec.com`). The template remaps `https://app.convisoappsec.com` automatically |
 | `exec .../node16/bin/node: no such file` (or node24) on first script step | Job-level `container:` with the Alpine image. Use the template above (`docker run` on the host) — do not wrap the job in `container:` |
@@ -430,5 +430,6 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 ## Related guides
 
 - [Azure DevOps Integration (ALM)](./azure-devops.md)
+- [Scan Setup](../security-scans/scan-setup.md)
 - [Azure DevOps PR Scans](./azure-devops-pr-scans.md)
 - [Conviso AST](../security-scans/conviso-ast/conviso-ast.md)
