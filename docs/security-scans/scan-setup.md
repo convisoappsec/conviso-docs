@@ -50,7 +50,7 @@ The toolbar also has:
 
 | Status | Meaning |
 | :--- | :--- |
-| **Active** | The setup is on and ready: merges and pull requests that match its branches get scanned. |
+| **Active** | The scans that are on are ready to run: AST scans on merges to the AST branches, PR scans on pull requests to the target branches, or both. A setup with only PR scans on is also **Active**, and its merges do not start AST scans. |
 | **Needs attention** | AST scans are on, but the orchestrator pipeline is incomplete, so merges do not start AST scans yet. Fill in the orchestrator fields. |
 | **Paused** | The setup keeps its settings, but both AST and PR scans are off. |
 | **Not set up** | Nothing is configured for this connection yet. |
