@@ -301,6 +301,7 @@ module.exports = {
               type: "category",
               label: "Notifications",
               items: [
+                'integrations/google-chat',
                 'integrations/microsoft-teams',
                 'integrations/slack'
               ]
