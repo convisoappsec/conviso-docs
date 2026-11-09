@@ -3,7 +3,7 @@ id: notifications-center
 title: Explore the Notifications Center for Proactive AppSec Alerts
 sidebar_label: Notifications Center
 description: Configure and manage how you receive application security notifications in the Conviso Platform. Stay informed about risks, vulnerabilities, projects, and assets through email, in-app, and chat integrations.
-keywords: [Notifications Center,Conviso Platform,AppSec notifications,application security alerts,risk management,vulnerability notifications,Slack integration,Microsoft Teams integration,ASPM]
+keywords: [Notifications Center,Conviso Platform,AppSec notifications,application security alerts,risk management,vulnerability notifications,Google Chat integration,Slack integration,Microsoft Teams integration,ASPM]
 image: '/img/securityfeedseo.png'
 
 ---
@@ -83,6 +83,7 @@ Recommended for:
 Send AppSec notifications to collaboration tools used by your team.
 
 Supported integrations:
+* Google Chat
 * Slack
 * Microsoft Teams
 
@@ -102,6 +103,13 @@ account is deactivated or loses access to the company, the channel stops receivi
 ![img](/img/platform/notifications-center-05.png)
 
 </div>
+
+**Google Chat**
+
+Google Chat integration posts AppSec notifications into a space. The connection is an incoming webhook created in that space. A personal Gmail account cannot create the webhook. A Workspace administrator must allow incoming webhooks.
+
+For setup instructions, refer to the official documentation:
+https://docs.convisoappsec.com/integrations/google-chat
 
 **Slack**
 
@@ -183,7 +191,7 @@ Notification settings are configured per user
 ## Best Practices
 * Use In-App notifications for continuous operational awareness
 * Use Email for the daily digest and for deadline-based reminders
-* Use Slack or Microsoft Teams to give the whole team the same daily picture
+* Use Google Chat, Slack, or Microsoft Teams to give the whole team the same picture
 * Avoid enabling all events across all channels to reduce notification fatigue
 
 ## Notes and Limitations
