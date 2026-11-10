@@ -128,7 +128,7 @@ The digest does not arrive at setup time. It is sent the next morning, and a day
 
 ## Replace or remove the webhook
 
-To point the integration at another space, create a webhook in that space and copy the new link. In Conviso Platform, open the Google Chat integration. If the page opens on **Configuration**, select **Back**. Replace **Incoming webhook URL**, then select **Continue**. The notification switches stay as they are.
+To point the integration at another space, create a webhook in that space and copy the new link. In Conviso Platform, open the Google Chat integration. If the page opens on **Configuration**, select **Back**. The saved link is shown without its key and token. **Continue** keeps that webhook. Paste a new full link over it, then select **Continue**, to point the integration at another space. The notification switches stay as they are.
 
 To stop delivery, open **Credentials** and select **Remove integration**, then confirm. The space keeps its webhook until someone deletes it in Google Chat. Deleting the webhook in Chat also stops delivery, because the saved link no longer accepts messages.
 
