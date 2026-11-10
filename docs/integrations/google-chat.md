@@ -88,7 +88,7 @@ Anyone who has the link can post messages in that space. Do not paste it into ch
 
 </div>
 
-2. Paste the link into **Incoming webhook URL** and select **Continue**. The field accepts only an `https` link on `chat.googleapis.com` whose path starts with `/v1/spaces/`.
+2. Paste the link into **Incoming webhook URL** and select **Continue**. The field accepts only an `https` link on `chat.googleapis.com` whose path is `/v1/spaces/SPACE_ID/messages`.
 
 <div style={{textAlign: 'center'}}>
 
@@ -136,7 +136,7 @@ To stop delivery, open **Credentials** and select **Remove integration**, then c
 
 **Add webhooks is missing or cannot be clicked.** The signed-in account is a personal Gmail account, or the Workspace administrator has not turned on **Allow users to add and use incoming webhooks**. Installing an app from **Add apps** does not create this webhook.
 
-**Continue rejects the link.** Copy the link again from the webhook's more menu. It must start with `https://chat.googleapis.com/v1/spaces/`. A shortened link or a link from another product is rejected.
+**Continue rejects the link.** Copy the link again from the webhook's more menu. It must be `https://chat.googleapis.com/v1/spaces/SPACE_ID/messages`, with the key and token Google added. A shortened link or a link from another product is rejected.
 
 **No message arrives.** Confirm the switch for that event is on, and that you are acting in the same company where you saved the integration. **New Project Created** is the check you can run immediately. The digest waits until the next morning, and a quiet day sends nothing. If the account that connected the integration lost access, reconnect with an account that still has it.
 
