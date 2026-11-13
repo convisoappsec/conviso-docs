@@ -168,6 +168,7 @@ module.exports = {
               items: [
                 'platform/ssl-certificates/issuing-a-certificate',
                 'platform/ssl-certificates/managing-certificates',
+                'platform/ssl-certificates/organization-pre-validation',
                 'platform/ssl-certificates/acme',
               ],
             },
