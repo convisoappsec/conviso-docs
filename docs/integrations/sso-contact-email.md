@@ -56,7 +56,7 @@ The **Contact email** card shows in **My Profile** when the login email is in th
 
 <div style={{textAlign: 'center'}}>
 
-![Adding a contact email](../../static/img/sso-contact-email/sso-contact-email-request.png "The request asks only for the new address when the person logs in through SSO.")
+![Adding a contact email](../../static/img/sso-contact-email/sso-contact-email-request.png "Step 4: the request asks only for the new address when the person logs in through SSO.")
 
 </div>
 

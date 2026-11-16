@@ -52,7 +52,7 @@ The provisioning key is how your identity provider authenticates to Conviso Plat
 
 <div style={{textAlign: 'center'}}>
 
-![Generating the provisioning key](../../static/img/scim-provisioning/scim-provisioning-generate-key.png "The Generate provisioning key panel, with the expiry date.")
+![Generating the provisioning key](../../static/img/scim-provisioning/scim-provisioning-generate-key.png "Step 3: the Generate provisioning key panel, with the expiry date.")
 
 </div>
 
@@ -60,7 +60,7 @@ The provisioning key is how your identity provider authenticates to Conviso Plat
 
 <div style={{textAlign: 'center'}}>
 
-![The token, shown once](../../static/img/scim-provisioning/scim-provisioning-token.png "The SCIM URL and the token, hidden until you show or copy it.")
+![The token, shown once](../../static/img/scim-provisioning/scim-provisioning-token.png "Step 4: the SCIM URL and the token, hidden until you show or copy it.")
 
 </div>
 
