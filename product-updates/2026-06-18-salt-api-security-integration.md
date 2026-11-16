@@ -12,4 +12,4 @@ Introduced a new integration with **SALT Security**, one of the leading API Secu
 - **FQDN-based grouping:** APIs and endpoints can be associated to a FQDN, so a single domain can aggregate a set of related APIs (the relationship is optional, not mandatory).
 - Strengthens API visibility across the application security lifecycle and consolidates third-party API security data in a single platform.
 
-👉 Access the [Conviso Docs](https://docs.convisoappsec.com/integrations/salt-security) to experience these updates.
+👉 Access the [Conviso Docs](https://conviso.io/docs/integrations/salt-security) to experience these updates.

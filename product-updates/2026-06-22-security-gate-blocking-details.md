@@ -12,4 +12,4 @@ Improved the **Security Gate** response to give you more visibility into why a b
 - Available in the **API endpoint** response and in the **ConvisoAST** output, so this detail is delivered straight into your pipeline.
 - Faster triage and remediation, with clear, actionable feedback at the moment the gate fails.
 
-👉 Access the [Conviso Docs](https://docs.convisoappsec.com/security-scans/security-gate/) to experience these updates.
+👉 Access the [Conviso Docs](https://conviso.io/docs/security-scans/security-gate/) to experience these updates.

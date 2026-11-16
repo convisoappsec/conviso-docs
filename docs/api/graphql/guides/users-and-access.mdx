@@ -1,0 +1,86 @@
+---
+title: Users and access
+sidebar_label: Users and access
+description: Invite users and manage access profiles, permissions, and teams with the Conviso GraphQL API.
+---
+
+import ApiOperationExamples from '@site/src/components/ApiOperationExamples';
+import Link from '@docusaurus/Link';
+
+Use this workflow to review users, assign an access profile, invite a new user,
+or organise users into teams. Your API key must have permission to manage users
+in the target company.
+
+## List access profiles
+
+Start by finding the profile that represents the permissions you want to grant.
+
+<ApiOperationExamples
+  title="List access profiles"
+  operationName="GetPortalUserAccessProfiles"
+  operationType="query"
+  query={"query GetPortalUserAccessProfiles($companyId: ID!) {\n  portalUserAccessProfiles(companyId: $companyId) {\n    collection { id name assetPermissions }\n    metadata { currentPage limitValue totalCount }\n  }\n}"}
+  variables={{ companyId: '<company_id>' }}
+  prerequisite="Use collection[].id as <access_profile_id> when inviting a user or updating access."
+/>
+
+## List users in a company
+
+Use the returned user ID to inspect or change one user's access.
+
+<ApiOperationExamples
+  title="List company users"
+  operationName="GetPortalUserByCompany"
+  operationType="query"
+  query={"query GetPortalUserByCompany($companyId: ID!, $page: Int!, $limit: Int!) {\n  portalUserByCompany(companyId: $companyId, page: $page, limit: $limit) {\n    collection { id name }\n    metadata { currentPage limitValue totalCount }\n  }\n}"}
+  variables={{ companyId: '<company_id>', page: 1, limit: 20 }}
+  prerequisite="Use collection[].id as <portal_user_id> in the access operations below."
+/>
+
+## Invite a user
+
+The invitation applies the selected access profile in the company scope.
+
+<ApiOperationExamples
+  title="Invite a user with an access profile"
+  operationName="CreateInviteUser"
+  operationType="mutation"
+  query={"mutation CreateInviteUser($input: CreateInviteUserInput!) {\n  createInviteUser(input: $input) {\n    msg\n  }\n}"}
+  variables={{ input: { companyId: '<company_id>', accessProfileId: '<access_profile_id>', emails: ['new.user@example.com'], accesses: {} } }}
+/>
+
+## Review or change a user's access
+
+Use `portalUserAccess` to confirm the current profile, then assign a different
+profile when responsibilities change. This does not create a new user.
+
+<ApiOperationExamples
+  title="Review a user's current access"
+  operationName="GetPortalUserAccess"
+  operationType="query"
+  query={"query GetPortalUserAccess($portalUserId: ID!, $companyId: Int!) {\n  portalUserAccess(portalUserId: $portalUserId, companyId: $companyId) {\n    accessProfile { id name }\n    portalUser { id name }\n  }\n}"}
+  variables={{ portalUserId: '<portal_user_id>', companyId: 1 }}
+/>
+
+<ApiOperationExamples
+  title="Assign a different access profile"
+  operationName="UpdatePortalUserAccess"
+  operationType="mutation"
+  query={"mutation UpdatePortalUserAccess($input: UpdatePortalUserAccessInput!) {\n  updatePortalUserAccess(input: $input) {\n    portalUserAccess {\n      accessProfile { id name }\n      portalUser { id name }\n    }\n  }\n}"}
+  variables={{ input: { portalUserId: '<portal_user_id>', companyId: '<company_id>', accessProfileId: '<access_profile_id>' } }}
+/>
+
+## Organise users into teams
+
+Use teams when access should be managed around a working group.
+
+<ApiOperationExamples
+  title="Create a team"
+  operationName="CreateTeam"
+  operationType="mutation"
+  query={"mutation CreateTeam($input: CreateTeamInput!) {\n  createTeam(input: $input) {\n    team { id label }\n  }\n}"}
+  variables={{ input: { companyId: '<company_id>', params: { label: 'Application Security' } } }}
+/>
+
+For custom access-profile permissions, team updates, removals, and other access
+operations, use the <Link to="/api/graphql/documentation">complete schema</Link>.

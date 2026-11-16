@@ -1,0 +1,144 @@
+---
+title: Users and Access
+sidebar_label: Users and Access
+description: Set up users, access profiles, teams, SSO, and service accounts in the Conviso Platform.
+---
+
+import Link from '@docusaurus/Link';
+
+Access management makes sure each person and automation can do the work it is responsible for, without exposing the rest of the company data. Use this guide when onboarding a team, changing responsibilities, or reviewing who has access to the Conviso Platform.
+
+## How access works
+
+Conviso separates **what someone can do** from **what they can access**:
+
+| Element | Controls | Typical use |
+| --- | --- | --- |
+| **Access profile** | Actions a user can perform, such as viewing, editing, exporting, or administering. | Give a security analyst the ability to triage vulnerabilities. |
+| **Access** | The company data and resources a user can reach. | Limit a developer to the assets and projects of their application. |
+| **Team** | A reusable group of users with a common profile and access configuration. | Apply the same access to everyone in a product squad. |
+| **User** | A person invited by email, with a profile and access assigned directly or through a team. | Give a new engineer the access required for their role. |
+
+:::important
+An access profile does not, by itself, grant access to company data. A user also needs access assigned directly or through a team. Treat these as two separate decisions: **permission** and **scope**.
+:::
+
+## Before you start
+
+You need an **Admin** profile to manage users, profiles, teams, and company access. Collect the following before configuring access:
+
+1. The people or automations that need access.
+2. The responsibilities each one has in the security workflow.
+3. The assets, projects, or company scope they should be able to work with.
+4. Whether their access should be managed individually, by a team, or by your identity provider.
+
+For most organizations, start with teams for recurring groups and use individual access only for exceptions.
+
+## Choose the right profile
+
+Default profiles are maintained by Conviso and cannot be edited or deleted. Choose the narrowest profile that supports the user's work.
+
+| Profile | Best for |
+| --- | --- |
+| **Admin** | Platform administration, including users, profiles, teams, and business units. |
+| **Developer** | Engineers who need to work with assets, projects, and their vulnerability workflow. |
+| **Viewer-only** | Stakeholders who need visibility into items assigned to them without making changes. |
+| **Pentester** | Pentesters recording evidence and vulnerabilities, and working with AI Pentest. |
+| **Security Analyst** | Analysts triaging vulnerabilities and exporting operational data. |
+| **AppSec Manager** | People who run the AppSec program, including risk acceptance, requirements, compliance, and threat modeling. |
+| **Business Owner** | Asset owners who need visibility and can make risk-acceptance decisions. |
+| **Service Account (CI/CD)** | API keys used by automation such as CI/CD pipelines and Conviso CLI. |
+
+### Create a custom profile
+
+Create a custom profile when the default profiles are too broad or too narrow.
+
+1. Go to **Settings > Access Control > Profiles**.
+2. Select **New Profile**.
+3. Give the profile a descriptive name, such as `Product squad developer` or `Read-only auditor`.
+4. Choose only the permissions needed for each resource and save.
+
+You can use **Start from** to copy the selectable permissions of an existing profile. The new profile is independent after it is created; later changes do not flow between the two.
+
+:::caution
+Some permissions, including parts of AI Pentest and Compliance, may not yet be configurable on custom profiles. When starting from a default profile, check the warning shown in the form: unavailable permissions are not copied.
+:::
+
+For the complete permission detail of each built-in profile, see the <Link to="/platform/user-management">User Management reference</Link>.
+
+## Onboard users consistently
+
+Use this sequence whenever a new person joins a team.
+
+### 1. Create the team when access is shared
+
+Create a team for a group that has the same responsibilities and scope:
+
+1. In **Settings > Users**, open the **Teams** section and select **New Team**.
+2. Name the team after the working group it represents.
+3. Set its access profile and access scope.
+4. Add the users who should inherit that configuration.
+
+Update membership from the team when a person joins, changes squads, or leaves. This keeps access decisions in one place instead of recreating them for every user.
+
+### 2. Invite the user
+
+From **Security Feed** or **Settings > Users**, use **Invite New Users**. Enter one or more comma-separated email addresses, then select the profile and access that apply to each invitation.
+
+Use an individual invitation for a one-off role or when the person should not inherit a team's configuration. Use a team for a stable working group.
+
+### 3. Validate the result
+
+After the user accepts the invitation, verify that they can see only the expected company data and can perform the intended actions. For sensitive roles, also confirm that they cannot access other assets, projects, or administrative areas.
+
+## Manage changes safely
+
+Access should follow a person's current role, not their historical role.
+
+| Change | Recommended action |
+| --- | --- |
+| Person changes responsibility | Assign the new profile and review their access scope. |
+| Person moves to another squad | Remove them from the old team before adding them to the new one. |
+| Temporary elevated access | Grant the narrowest suitable profile and record an expiry or review date. |
+| Person leaves the organization | Remove their platform access and any team memberships promptly. |
+| Scope is shared by a new group | Create a team instead of duplicating individual grants. |
+
+Review privileged profiles, direct exceptions, and service accounts regularly. An effective review asks two questions for every account: “Does this account still need this profile?” and “Does it still need this scope?”
+
+## SSO and identity-provider mapping
+
+With SAML SSO, your identity provider can manage both team membership and access profiles:
+
+- **Group mapping** places a user in a Conviso team.
+- **Role mapping** assigns an access profile.
+
+The two mappings are independent. A role mapping defines what a user is allowed to do; it does not grant them access to company data. A mapped user still needs an invitation or team membership that supplies access.
+
+Once a role mapping exists, each SSO login re-evaluates the mapped profile. If the identity provider is the source of truth, make profile changes there rather than manually in Conviso, because the next login can replace a manual change.
+
+Follow the <Link to="/integrations/saml">SAML integration guide</Link> for the required attribute names, mapping rules, and test procedure.
+
+## Set up service accounts for automation
+
+Use a service account API key for CI/CD and other non-human integrations. Do not share a personal user's API key with automation.
+
+1. Go to **Settings > API Keys > New API Key > Service API**.
+2. Select the **Service Account (CI/CD)** profile.
+3. Grant only the access scope required by the pipeline.
+4. Store the key in your CI/CD secret manager and rotate it according to your organization's policy.
+
+The profile determines what the integration can do; its access limits which assets it reaches. For scan automation, confirm that the profile has the permissions needed to run scans and, when applicable, write results to the platform.
+
+See <Link to="/security-scans/conviso-ast/conviso-ast#required-permissions">required Conviso AST permissions</Link> and the <Link to="/api/graphql/guides/users-and-access">Users and access API workflow</Link> when automating access operations.
+
+## Troubleshooting
+
+| Symptom | Check |
+| --- | --- |
+| A user can sign in but sees no data | Confirm that an invitation or team grants access; a profile alone is not enough. |
+| A menu item or action is missing | Review the permissions in the user's profile and the company's enabled plan features. |
+| An SSO user receives an unexpected profile | Check the role mapping and the value sent by the identity provider; SSO applies it again at login. |
+| An SSO user is not added to a team | Check the group attribute name and value exactly as sent by the identity provider. |
+| A pipeline cannot send scan results | Review the service account's access scope and its **Run** and **Write results to the platform** permissions. |
+
+If access still does not behave as expected, collect the user's email, company, profile, team memberships, and the affected asset or project before contacting <a href="mailto:support@convisoappsec.com">Conviso Support</a>.

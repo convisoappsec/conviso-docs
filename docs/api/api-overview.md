@@ -1,148 +1,43 @@
 ---
 id: api-overview
-title: API Getting Started
-sidebar_label: API Getting Started
-description:  Conviso's API supports seamless integration with existing tools and processes, enabling developers to customize security automation to their workflows for a consistent experience. Get to know!
-keywords:  [Conviso API Overview]
+title: Conviso API
+sidebar_label: Overview
+description: Start using the Conviso GraphQL API.
+keywords: [Conviso API, GraphQL API]
 image: '/static/img/apioverviewseo.png'
 ---
 
-## Introduction
-Conviso's API supports seamless integration with existing tools and processes, enabling developers to customize security automation to their workflows for a consistent experience.
+import Link from '@docusaurus/Link';
 
-## API GraphQL
-The GraphQL API offers advantages over other API options such as flexibility, reduced overfetching and underfetching, integrated documentation, and a growing ecosystem of developers and tools.
+The Conviso API is a GraphQL API for automating platform workflows. Use it to
+read and manage projects, assets, vulnerabilities, scans, and integrations.
 
-### What is GraphQL?
-[GraphQL](https://graphql.org/) is a query language for APIs. It provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools..
+## Start here
 
-## GraphQL Overview
+1. Create an API key in **Security Feed → Generate API Key** and store it securely.
+2. Send it in every request with the `x-api-key` header.
+3. Find the company or project scope required by your operation.
+4. Choose a workflow guide, then use the full schema reference only when you need additional fields or operations.
 
-One of the key features of the Conviso GraphQL API is the ability to perform actions through queries and mutations.
-
-### Queries
-[Queries](./graphql/playground) allow you to retrieve data from the API, such as information about projects, vulnerabilities, and scans. You can also use queries to filter data based on specific criteria, making it easy to retrieve exactly the information you need.
-
-### Mutations
-[Mutations](./graphql/playground), on the other hand, enable you to modify data. With mutations, you can create new entities, such as projects, scans, and vulnerabilities. You can also update and delete existing entities.
-
-The Conviso API offers diverse queries and mutations that enable you to manage projects and vulnerabilities.
-
-## Understanding the GraphQL Schema Language  
-Directives, Objects, Enums, Inputs, and Scalars are all components of the GraphQL schema language used in the Conviso API GraphQL.
-
-### Directives
-[Directives](./graphql/playground) are used to control the behavior of GraphQL operations. The ```deprecated``` directive can be used to mark a field or enum value as deprecated, while ```include``` and ```skip``` directives can be used to conditionally include or skip parts of a query based on a Boolean argument. The ```specifiedBy``` directive can be used to specify a URL that provides information about the field or enum value.
-
-
-### Objects
-[Objects](./graphql/playground) are complex data types that can have fields and methods. They are used to represent various entities and concepts in the system, such as ```Asset```, ```Project```, and ```Vulnerability```. These objects can be queried and mutated using GraphQL operations.
-
-
-### Enums
-[Enums](./graphql/playground) are used to represent a fixed set of possible values for a field. The system includes various enums such as ```AssetArch```, ```AssetAudience```, and ```AssetSeverity``` which represent different characteristics of assets.
-
-### Inputs
-[Inputs](./graphql/playground) are used to pass arguments to mutation operations. These are used to create or update entities in the system, such as ```CreateProjectInput```, ```CreateAssetInput```, and ```UpdateSamlIntegrationInput```.
-
-### Scalars
-[Scalars](./graphql/playground) are basic data types that represent a single value. The system includes various scalars such as ```Boolean```, ```Int```, ```String```, and ```ISO8601Date```. These are used as field types in objects and as argument types in operations.
-
-## API access limit
-
-As the Conviso GraphQL API is a shared service, we apply quotas and limitations to make sure it's used fairly by all users and to protect the overall health of the system.
-
-By exceeding the quota, you'll receive a ``429: Too many requests`` HTTP status code response. If this happens, you should consider using a backoff algorithm to keep your requests within our limits and try again later.
-
-Currently, our requests are limited to ``` 1200 requests per minute ``` to our GraphQL endpoint. 
-
-### Dealing with time-based errors
-
-For all time-based errors (you triggered more requests than the quota), we recommend your code to catch the exception and use a backoff algorithm to reduce the frequency of the requests until it normalizes. 
-
-If the requests are still unsuccessful, it is important that the delay between requests increase over time until the request gets another status rather than 429.
-
-### Query cost controls
-
-In addition to rate limiting, the Conviso GraphQL API enforces query cost controls that reject overly expensive queries **before any resolver runs**. This protects the platform from worst-case single-query costs.
-
-| Control | Default | Description |
-|---|---|---|
-| **Max depth** | `15` | Maximum nesting depth of a query. Queries deeper than this are rejected at validation. |
-| **Max complexity** | `400` | Maximum complexity score of a query, calculated as 1 point per field node (static count, not result-set size). |
-
-When a query exceeds either limit, you will receive a GraphQL validation error — not an HTTP 429 — with a client-safe message indicating which limit was exceeded. No data is returned and no resolvers are executed.
-
-#### Understanding depth
-
-Depth counts how many levels of nesting a query has. Each nested selection set adds one level:
-
-```graphql
-query {
-  projects {          # depth 1
-    assets {          # depth 2
-      vulnerabilities { # depth 3
-        title
-      }
-    }
-  }
-}
-# → depth 3 ✅ well within the limit of 15
+```bash
+curl --request POST https://api.convisoappsec.com/graphql \
+  --header "x-api-key: $CONVISO_API_KEY" \
+  --header "content-type: application/json" \
+  --data '{"query":"{ __typename }"}'
 ```
 
-A query that nests 16 or more levels deep would be rejected.
+## Choose your next step
 
-#### Understanding complexity
+- <Link to="/api/graphql/context-and-identifiers">Context and identifiers</Link> — find and use `company_id` and `project_id`.
+- <Link to="/api/graphql/guides/projects">Projects</Link> — list, create, and update projects.
+- <Link to="/api/graphql/guides/assets-and-applications">Assets and applications</Link> — manage your asset inventory.
+- <Link to="/api/graphql/guides/vulnerabilities">Vulnerabilities</Link> — find, assign, and triage issues.
+- <Link to="/api/graphql/guides/users-and-access">Users and access</Link> — invite users and manage profiles, permissions, and teams.
+- <Link to="/api/graphql/playground">GraphQL Playground</Link> — explore and run operations interactively.
+- <Link to="/api/graphql/limits">Limits and query cost</Link> — understand rate, depth, and complexity limits.
 
-Complexity counts the total number of field nodes in the query — one point per field, regardless of how many results it returns:
+## Complete schema
 
-```graphql
-query {
-  projects {     # +1
-    id           # +1
-    name         # +1
-    assets {     # +1
-      id         # +1
-      name       # +1
-      riskScore  # +1
-    }
-  }
-}
-# → complexity 7 ✅ well within the limit of 400
-```
-
-A query requesting many fields across deeply nested objects accumulates complexity quickly. For example, a query that fetches 20 fields on projects, each with 20 nested asset fields, would already reach a complexity of 420 and be rejected.
-
-**Measured limits against real traffic:**
-
-| Example query | Depth | Complexity |
-|---|---|---|
-| `projects` (heavy, ~50 fields incl. nested) | 4 | 89 |
-| `assets` (with nested `scannersExecutionHistories`) | 5 | 15 |
-| `GetIssue` (all finding-type fragments) | 3 | 26 |
-
-The defaults are set just above observed legitimate traffic (deepest real query: depth 5, heaviest real query: complexity 89), giving a reasonable safety margin while allowing all valid client queries.
-
-**Handling validation errors:**
-
-If your query is rejected due to depth or complexity, simplify it by:
-- Requesting fewer nested fields
-- Splitting a large query into multiple smaller ones
-- Removing fields you do not need
-
-If you believe a legitimate query is being incorrectly rejected, contact support.
-
-## Generate API Key
-To perform activities with Conviso CLI, Conviso Platform Integrations and also Conviso API, it is important to generate an API Key to authenticate your user. 
-
-Follow these steps as shown in the gif:
-
-1. Log in to Conviso Platform and go to **Security Feed**;
-2. Click on **Generate API Key** button in **Quick Actions** box to create your key;
-3. Click **Confirm** after generating the key for successful creation.
-
-After clicking on **Confirm**, the confirmation of your new API Key will appear with its respective value. We recommend storing this API Key somewhere safe as a password vault.
-
-**Note:** This key can be generated as many times as you wish. However, the previously generated key will expire.
-## Getting support for the Conviso API
-If you have any questions or need help using our API, please don't hesitate to contact support.
+The <Link to="/api/graphql/documentation">complete GraphQL reference</Link>
+contains every query, mutation, type, input, and enum. It is best used as a
+lookup tool after you have identified the workflow you need.
