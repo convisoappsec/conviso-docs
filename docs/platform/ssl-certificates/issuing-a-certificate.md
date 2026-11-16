@@ -124,6 +124,17 @@ section turns green when it is valid.
 
 If you provided your own CSR, these fields are prefilled from it and can be edited.
 
+### Using a Pre-Validated Organization {#using-a-pre-validated-organization}
+
+When the company has an active
+[organization pre-validation](./organization-pre-validation.md) that serves the chosen credit, the
+step offers **Use a pre-validated organization**. Choose it in **Pre-validation** (search by
+organization or CNPJ): the organization and representative details come from it, and after the
+order the issuance only waits for domain control validation. An OV credit accepts an OV or an EV
+pre-validation; an EV credit only an EV one. Select **Enter the organization** to fill in the
+sections below instead. See
+[Using It When Issuing a Certificate](./organization-pre-validation.md#using-at-issuance).
+
 ### Organization
 
 All fields are required: **Organization**, **Street address**, **City**, **State**,

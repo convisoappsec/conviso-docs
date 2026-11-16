@@ -2,7 +2,7 @@
 id: organization-pre-validation
 title: Organization Pre-Validation
 sidebar_label: Organization Pre-Validation
-description: Validate your organization once with the certificate authority for OV and EV certificates in Conviso Platform. Request, follow, reject and request again a pre-validation, and understand its statuses and the e-mails the certificate authority sends.
+description: Validate your organization once with the certificate authority and choose the pre-validation when issuing OV and EV certificates in Conviso Platform. Request, follow, use, request again and reject a pre-validation, and understand its statuses and the e-mails the certificate authority sends.
 keywords: [pre-validation, organization validation, OV, EV, extended validation, CNPJ, certificate authority, SSL, TLS, Conviso Platform]
 image: '/static/img/securityfeedseo.png'
 ---
@@ -12,20 +12,21 @@ image: '/static/img/securityfeedseo.png'
 OV and EV certificates assert who owns the domain, so the certificate authority validates your
 organization before issuing them: the agreement, the representative, the company registry and, for
 EV, a final approval. A **pre-validation** runs that validation once, ahead of any certificate.
-While it is active, the next OV or EV certificates for that organization skip the organization
-validation, and issuance only waits for [domain control validation](./managing-certificates.md#domain-control-validation).
+
+Once it is active, choose it when you issue an OV or EV certificate: the order uses the validated
+organization and only waits for
+[domain control validation](./managing-certificates.md#domain-control-validation).
 
 ## How It Works
 
-1. **Request it.** Fill in the organization and its representative, once per organization and type
-   (OV or EV).
+1. **Request it.** Choose the type (OV or EV) and fill in the organization and its representative.
 2. **The certificate authority validates the organization.** The representative accepts the
    agreement by e-mail and answers the certificate authority contact. Follow each step in the
-   platform.
-3. **It becomes active.** From then on, the organization's OV or EV certificates skip the
-   organization validation, until the pre-validation expires.
+   platform; our support team follows it with the certificate authority.
+3. **It becomes active.** From then on, choose it in the issuance wizard, in the
+   **Organization** step. See [Using It When Issuing a Certificate](#using-at-issuance).
 
-## Where to Find It
+## Where to Find It {#where-to-find-it}
 
 Go to **Inventory > Assets > Certificates** and select **Organizations**. The **Pre-validated
 organizations** page lists every pre-validation of your company:
@@ -37,44 +38,65 @@ organizations** page lists every pre-validation of your company:
 | **CNPJ** | The registration number. It is what tells two organizations apart |
 | **Type** | `OV` or `EV` |
 | **Status** | The current state, see [Statuses](#statuses) |
-| **Expires on** | When an active pre-validation stops applying |
+| **Expires on** | When an active pre-validation stops being offered at issuance |
 
-Search by organization, CNPJ or order, use the **Active** and **In validation** shortcuts, or open
+Search by organization or CNPJ, use the **Active** and **Pending validation** shortcuts, or open
 **Filters** for status and type. Select a row to open its details.
 
 A company may have several organizations, each identified by its CNPJ, and each with its own OV and
-EV pre-validation.
+EV pre-validations.
 
-## Who Can Do What
+## Who Can Do What {#who-can-do-what}
 
 | Action | Who |
 | --- | --- |
 | See the list and the details | Users who can view certificates |
-| Request, **Check now**, **Reject** and **Request again** | Users who can manage certificates |
+| Request, **Check now**, **Request again** and **Reject** | Users who can manage certificates |
 
 Requesting and rejecting also require being signed in to the portal with two-factor authentication
 (or through your company's single sign-on). They are not available through an API key.
 
-## Requesting a Pre-Validation
+## Choosing the Type {#choose-the-type}
 
-1. Select **Request OV pre-validation** or **Request EV pre-validation**.
-2. Fill in the form:
-   * **Organization**: legal name, CNPJ and address **exactly as in the official registry** (CNPJ
-     card). A name, address or CNPJ that differs from the registry, or an inactive CNPJ, gets the
-     request rejected.
-   * **Registration and jurisdiction** (EV only): organization category, date of incorporation,
-     trade name if the company uses one, and the city, state and country where it was registered.
+| | OV | EV |
+| --- | --- | --- |
+| **Used for** | OV certificates | EV and OV certificates |
+| **You provide** | Organization, CNPJ and representative | Organization, CNPJ, registration details (category, date of incorporation and jurisdiction) and representative |
+| **Validation steps** | Agreement, order authorization and organization validation | Agreement, representative verification, organization validation and final approval |
+
+An active EV pre-validation also serves OV certificates, so a company that issues both only needs
+the EV one.
+
+## Requesting a Pre-Validation {#requesting}
+
+Select **Request pre-validation**. The request goes in steps, shown at the top of the panel:
+
+1. **Type**: OV or EV, see [Choosing the Type](#choose-the-type).
+2. **Organization**: legal name, CNPJ and address **exactly as in the official registry** (CNPJ
+   card). A name, address or CNPJ that differs from the registry, or an inactive CNPJ, gets the
+   request rejected.
+3. **Registration** (EV only): organization category, date of incorporation, trade name if the
+   company uses one, and the city, state and country where it was registered.
+4. **Contacts**:
    * **Representative**: job title, name, e-mail and phone of a person with authority to represent
-     the organization. Prefer an e-mail on the company domain.
+     the organization. Use a person's name, never a department, and prefer an e-mail on the company
+     domain. Enter the phone in international format, with the country code (for example
+     `+55 11 99999-8888`).
    * **Someone else signs the agreement** (optional): when another person has the legal power to
      accept the agreement, they receive it instead of the representative.
-3. Select **Review**, check the summary, confirm that the representative has authority to represent
-   the organization, and select **Send request**.
+5. **Review**: check the summary (select **Edit** on a section to change it), confirm that the
+   representative has authority to represent the organization, and select **Send request**.
 
-Only one pre-validation of each type can be in progress or active for the same organization. Another
-one of the same type can be requested once it is rejected or expired.
+Each organization can have only one pre-validation **in progress** per type. Another one of the same
+type can be requested while the current one is active, rejected or expired.
 
-## Following the Validation
+### The Support Ticket {#support-ticket}
+
+When the certificate authority takes the request, the platform opens a support ticket in your name,
+titled with the type and the organization. Our support team uses it to follow the validation with the
+certificate authority; reply there if the certificate authority asks for something you cannot solve.
+
+## Following the Validation {#following-the-validation}
 
 The details show the steps of the validation, each as **Done**, **In progress** or **Waiting**:
 
@@ -88,7 +110,8 @@ The details show the steps of the validation, each as **Done**, **In progress** 
 The platform checks the certificate authority automatically. To check right away, select **Check
 now**, at most once a minute.
 
-What the representative should expect:
+Ask the representative to watch their e-mail and answer calls from the certificate authority. What
+they should expect:
 
 * **The agreement**, by e-mail, with a verification code. Only the person who receives it can accept
   it.
@@ -105,72 +128,93 @@ For OV, if the phone the certificate authority found is no longer valid, its pag
 a PDF of the organization profile in a trusted directory, a letter from a lawyer or accountant, or a
 code sent to the phone.
 
-## Statuses
+Once the pre-validation is active, each certificate issued with it sends the representative an
+e-mail from the certificate authority. Its cancel link cancels the company's pre-validation; see
+[The E-mail Sent at Each Certificate](#certificate-email).
+
+## Statuses {#statuses}
 
 | Status | Meaning |
 | --- | --- |
-| **Sending** | The request is on its way to the certificate authority |
 | **Submission unconfirmed** | The certificate authority did not confirm the request. The platform keeps checking. Do not send it again; if it stays like this, contact support |
-| **In validation** | The certificate authority is validating the organization. Follow the steps in the details |
-| **Active** | Validated. The organization's next certificates of this type skip the organization validation |
-| `Expires in {n} days` | Active, with 30 days or less left |
+| **Pending Validation** | The certificate authority is validating the organization. Follow the steps in the details |
+| **Active** | Validated. It can be chosen when issuing certificates of the types it serves |
 | **Rejected** | The certificate authority refused it, or it was rejected in the platform. The details show the reason, when there is one |
-| **Expired** | The validity has ended. New certificates of this type go back to validating the organization |
+| **Expired** | The validity has ended. It is no longer offered at issuance; to keep using one, request a new pre-validation |
 
 The company administrators, and whoever requested the pre-validation, are notified when it becomes
 active, when the certificate authority rejects it, and 30, 15 and 7 days before it expires and on
 the day it does.
 
-## Rejecting a Pre-Validation
+## Using It When Issuing a Certificate {#using-at-issuance}
+
+The pre-validation is chosen at each OV or EV order in the
+[issuance wizard](./issuing-a-certificate.md#step-3-organization-details):
+
+1. In **Product**, pick an OV or EV credit. The wizard tells you whether the company has an active
+   pre-validation, or links to the **Pre-validated organizations** page if it has none.
+2. In **Organization**, select **Use a pre-validated organization** and choose it in **Pre-validation**
+   (search by organization or CNPJ). An OV credit offers the active OV and EV pre-validations; an EV
+   credit offers only the EV ones.
+3. The organization and representative details come from the pre-validation and are not typed
+   again. If the CSR names another organization, the wizard warns you: the order uses the
+   pre-validated organization.
+
+After the order, issuance only waits for domain control validation. To validate the organization
+in the order itself instead, select **Enter the organization**.
+
+## Requesting Again {#requesting-again}
+
+On an **Active**, **Rejected** or **Expired** pre-validation, the details and the row's **⋮** menu
+offer **Request again**. It opens the request of the same type, filled in with the organization's
+details: legal name, CNPJ and address. The contacts and the EV registration details start blank.
+
+Sending it creates a **new** pre-validation, with its own order at the certificate authority, and the
+validation starts over. The previous one stays in the list as it was; an active one keeps being
+offered at issuance until it expires. Use it to have a new pre-validation ready before the current
+one expires.
+
+The option is not offered while the organization has another pre-validation of the same type in
+progress.
+
+## Rejecting a Pre-Validation {#rejecting}
 
 Rejecting withdraws the pre-validation at the certificate authority. It is available while the
-pre-validation is **In validation** or **Active**.
+pre-validation is **Pending Validation** or **Active**.
 
 1. In the row's **⋮** menu, select **Reject**.
 2. Check the organization and the certificate authority order shown, type `REJECT` and confirm.
 
 :::warning
-Rejecting cannot be undone. The pre-validation stops applying to new certificates, and using one
-again means requesting a new pre-validation and going through the whole organization validation
-again.
+Rejecting cannot be undone. The pre-validation is no longer offered at issuance, and using one again
+means requesting a new pre-validation and going through the whole organization validation again.
 :::
 
-## Requesting Again
-
-On a **Rejected** or **Expired** pre-validation, the **⋮** menu offers **Request again** (or
-**Request a new pre-validation**, on an expired one). It opens the request form of the same type,
-filled in with the organization's details: legal name, CNPJ and address. The representative, the
-signer and the EV registration details start blank.
-
-Sending it creates a **new** pre-validation, with its own order at the certificate authority, and the
-validation starts over. The rejected or expired one stays in the list as it was.
-
-The option is only offered when the organization has no other pre-validation of the same type in
-progress or active.
-
-## The E-mail Sent at Each Certificate
+## The E-mail Sent at Each Certificate {#certificate-email}
 
 Each OV or EV certificate issued with the pre-validation sends the representative an e-mail from the
 certificate authority (`noreply@sectigo.com`), with a subject like `ORDER #<order> - Instant
-Organization Validation Based On EV Pre-Validation ID <pre-validation>`. It is expected and asks for no action: it states that the organization is already validated and that
-the certificate is issued as soon as domain control validation completes, and it repeats the
-company and requester details for review.
+Organization Validation Based On EV Pre-Validation ID <pre-validation>`. It is expected and asks for
+no action: it states that the organization is already validated and that the certificate is issued
+as soon as domain control validation completes, and it repeats the company and requester details for
+review.
 
 :::danger
 The **To cancel the pre-validation** link in that e-mail cancels the **company's pre-validation**,
-not the certificate order. After that, the next OV and EV certificates go back to the full
-organization validation. Do not select it unless that is what you want.
+not the certificate order. After that, it is no longer offered at issuance. Do not select it unless
+that is what you want.
 :::
 
-## Troubleshooting
+## Troubleshooting {#troubleshooting}
 
 | Situation | What to do |
 | --- | --- |
-| The request is refused because one is already in progress or active | The organization already has a pre-validation of that type in progress or active. Only one per organization and type is allowed. |
+| The request is refused because one is already in progress | The organization already has a pre-validation of that type being validated. Wait for it to finish or follow it in the details. |
 | The request is refused because a pre-validation already exists for these details | The certificate authority already holds one for this organization. Contact support before requesting again. |
+| **Continue** does not move to the next step | A field is missing or invalid; the message under it says why. The phone must be in international format, with the country code. |
 | Requesting or rejecting asks for two-factor authentication | Sign in to the portal with two-factor authentication (or single sign-on) and try again. |
 | A step stays **Waiting** for days | Check that the representative accepted the agreement and answered the certificate authority's e-mail or call, and that any requested document was sent through its tracking page. |
-| **The last check could not reach the certificate authority** | Temporary. Select **Check now** again later; the automatic check also continues. |
+| The pre-validation is not offered in the issuance wizard | It must be **Active** and not expired, and of a type that serves the credit: an EV credit only accepts an EV pre-validation. |
 
 ## Related Areas
 
