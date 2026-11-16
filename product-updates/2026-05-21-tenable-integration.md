@@ -12,4 +12,4 @@ Introduced a new integration between the **Conviso Platform** and **Tenable**, b
 - Particularly valuable for environments that require **auditing** and **PCI** (e.g. ASV scans).
 - Documentation is available directly from the platform.
 
-👉 Access the [Conviso Docs](https://docs.convisoappsec.com/integrations/tenable/) to experience these updates.
+👉 Access the [Conviso Docs](https://conviso.io/docs/integrations/tenable/) to experience these updates.

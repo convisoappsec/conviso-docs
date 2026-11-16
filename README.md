@@ -31,7 +31,7 @@ The Conviso Platform documentation website is built  using [Docusaurus 2](https:
 
 ### View published documentation.
 
-View all [documentation](https://docs.convisoappsec.com/) and walk-through our code samples on the website.
+View all [documentation](https://conviso.io/docs/) and walk-through our code samples on the website.
 
 
 ## Contributing

@@ -10,16 +10,16 @@ keywords: [skills, "conviso-cli", LLM, automation, vulnerabilities, assets, reme
 
 Conviso Skills are reusable operational playbooks that let an LLM execute structured, multi-step workflows against the Conviso Platform via the `conviso-cli`. Each skill packages a defined workflow, safety rules, and helper scripts so the LLM follows a consistent and auditable process — rather than making ad-hoc decisions at each step.
 
-**Skills vs. MCP Server:**
+**Skills vs. MCP:**
 
-| | [MCP Server](./conviso-mcp-server) | Skills |
+| | [MCP](./conviso-mcp-server) | Skills |
 |---|---|---|
 | **Best for** | Interactive queries — "show me X", "open issue Y" | Bulk operations — assign owners, triage 200 vulns, normalize assets |
 | **Execution engine** | MCP tools called by the LLM client | `conviso-cli` scripts run in a shell |
 | **Safety model** | Read-only by default | Preview-first; `--yes` required for mutations |
 | **Artifact output** | Live API response | JSON, CSV, Markdown files in `out/` |
 
-Use the **MCP Server** when you need fast, interactive access to live data. Use **Skills** when you need a repeatable, auditable workflow that produces reviewable artifacts before applying any change.
+Use **MCP** when you need fast, interactive access to live data. Use **Skills** when you need a repeatable, auditable workflow that produces reviewable artifacts before applying any change.
 
 ## Available skills
 
@@ -262,9 +262,9 @@ Contributions are welcome. See `CONTRIBUTING.md` for contribution rules and vali
 
 ## See also
 
-- [Conviso MCP Server](./conviso-mcp-server) — interactive, real-time queries from any MCP-compatible LLM client
-- [Conviso Platform Vulnerabilities](https://docs.convisoappsec.com/platform/vulnerabilities)
-- [Conviso Platform Risk Score](https://docs.convisoappsec.com/platform/risk-score)
+- [Conviso MCP](./conviso-mcp-server) — interactive, real-time queries from any MCP-compatible LLM client
+- [Conviso Platform Vulnerabilities](https://conviso.io/docs/platform/vulnerabilities)
+- [Conviso Platform Risk Score](https://conviso.io/docs/platform/risk-score)
 
 ## Support
 

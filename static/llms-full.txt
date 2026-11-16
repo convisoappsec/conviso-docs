@@ -4,56 +4,56 @@ Conviso Platform is a cloud-based application security platform. It brings toget
 
 ## Evaluation and product information
 
-- https://docs.convisoappsec.com/before-you-buy — FDE-led proof-of-concept planning guide for security, engineering, IT, procurement, and compliance stakeholders.
+- https://conviso.io/docs/before-you-buy — FDE-led proof-of-concept planning guide for security, engineering, IT, procurement, and compliance stakeholders.
 - https://www.convisoappsec.com/conviso-platform — Product overview and primary use cases.
 - https://www.convisoappsec.com/platform/pricing — Public plan and pricing information.
 - https://www.convisoappsec.com/contact — Contact Conviso for a demo or commercial discussion.
 
 ## Risk and vulnerability operations
 
-- https://docs.convisoappsec.com/posture-management/posture — Risk and posture management.
-- https://docs.convisoappsec.com/posture-management/aspm-coverage — ASPM coverage dashboard.
-- https://docs.convisoappsec.com/posture-management/vulnerability-kpi — Vulnerability KPIs.
-- https://docs.convisoappsec.com/vulnerability-management/process — Vulnerability management workflow.
-- https://docs.convisoappsec.com/vulnerability-management/workflow-status — Vulnerability lifecycle statuses.
-- https://docs.convisoappsec.com/vulnerability-management/remediation-sla — Remediation SLA configuration.
-- https://docs.convisoappsec.com/platform/security-feed — Security Feed overview.
+- https://conviso.io/docs/posture-management/posture — Risk and posture management.
+- https://conviso.io/docs/posture-management/aspm-coverage — ASPM coverage dashboard.
+- https://conviso.io/docs/posture-management/vulnerability-kpi — Vulnerability KPIs.
+- https://conviso.io/docs/vulnerability-management/process — Vulnerability management workflow.
+- https://conviso.io/docs/vulnerability-management/workflow-status — Vulnerability lifecycle statuses.
+- https://conviso.io/docs/vulnerability-management/remediation-sla — Remediation SLA configuration.
+- https://conviso.io/docs/platform/security-feed — Security Feed overview.
 
 ## Security testing and delivery
 
-- https://docs.convisoappsec.com/security-scans/conviso-ast/ — Conviso AST: SAST, SCA, IaC, SBOM, secret, and container analysis.
-- https://docs.convisoappsec.com/security-scans/conviso-dast/ — Conviso DAST for web applications and APIs.
-- https://docs.convisoappsec.com/security-scans/conviso-sbom/ — SBOM generation and visibility.
-- https://docs.convisoappsec.com/security-scans/conviso-containers/ — Container security analysis.
-- https://docs.convisoappsec.com/security-scans/pull-requests/ — Pull request scanning.
-- https://docs.convisoappsec.com/security-scans/security-gate — Security Gate in CI/CD.
-- https://docs.convisoappsec.com/security-scans/reachability-analysis — Reachability analysis for SCA findings.
+- https://conviso.io/docs/security-scans/conviso-ast/ — Conviso AST: SAST, SCA, IaC, SBOM, secret, and container analysis.
+- https://conviso.io/docs/security-scans/conviso-dast/ — Conviso DAST for web applications and APIs.
+- https://conviso.io/docs/security-scans/conviso-sbom/ — SBOM generation and visibility.
+- https://conviso.io/docs/security-scans/conviso-containers/ — Container security analysis.
+- https://conviso.io/docs/security-scans/pull-requests/ — Pull request scanning.
+- https://conviso.io/docs/security-scans/security-gate — Security Gate in CI/CD.
+- https://conviso.io/docs/security-scans/reachability-analysis — Reachability analysis for SCA findings.
 
 ## Program and secure design
 
-- https://docs.convisoappsec.com/platform/threat-modeling — Threat modeling overview.
-- https://docs.convisoappsec.com/threat-modeling/create-threat-modeling — Create a threat model.
-- https://docs.convisoappsec.com/platform/program-samm — OWASP SAMM-based AppSec program management.
-- https://docs.convisoappsec.com/project-management/process — Project execution workflows.
-- https://docs.convisoappsec.com/compliance/pci-overview — PCI compliance workflows.
+- https://conviso.io/docs/platform/threat-modeling — Threat modeling overview.
+- https://conviso.io/docs/threat-modeling/create-threat-modeling — Create a threat model.
+- https://conviso.io/docs/platform/program-samm — OWASP SAMM-based AppSec program management.
+- https://conviso.io/docs/project-management/process — Project execution workflows.
+- https://conviso.io/docs/compliance/pci-overview — PCI compliance workflows.
 
 ## AI capabilities
 
-- https://docs.convisoappsec.com/platform/appsec-ai-agent — AI capabilities overview.
-- https://docs.convisoappsec.com/ai-capabilities/false-positive-analysis — AI-assisted false-positive analysis.
-- https://docs.convisoappsec.com/ai-capabilities/how-to-fix — AI remediation guidance.
-- https://docs.convisoappsec.com/ai-capabilities/autofix — AI-assisted code fixes and pull requests.
-- https://docs.convisoappsec.com/ai-capabilities/ai-pentest — AI-driven penetration testing.
-- https://docs.convisoappsec.com/integrations/conviso-mcp-server — MCP server for AI clients.
+- https://conviso.io/docs/platform/appsec-ai-agent — AI capabilities overview.
+- https://conviso.io/docs/ai-capabilities/false-positive-analysis — AI-assisted false-positive analysis.
+- https://conviso.io/docs/ai-capabilities/how-to-fix — AI remediation guidance.
+- https://conviso.io/docs/ai-capabilities/autofix — AI-assisted code fixes and pull requests.
+- https://conviso.io/docs/ai-capabilities/ai-pentest — AI-driven penetration testing.
+- https://conviso.io/docs/integrations/conviso-mcp-server — MCP for AI clients.
 
 ## Integrations, API, and administration
 
-- https://docs.convisoappsec.com/integrations/integrations_intro — Integration catalog and setup guides.
-- https://docs.convisoappsec.com/api/api-overview — Conviso GraphQL API.
-- https://docs.convisoappsec.com/new-cli — Conviso CLI.
-- https://docs.convisoappsec.com/platform/user-management — Users, teams, profiles, and access.
-- https://docs.convisoappsec.com/data-retention — Data retention.
-- https://docs.convisoappsec.com/releases/ — Release notes.
+- https://conviso.io/docs/integrations/integrations_intro — Integration catalog and setup guides.
+- https://conviso.io/docs/api/api-overview — Conviso GraphQL API.
+- https://conviso.io/docs/new-cli — Conviso CLI.
+- https://conviso.io/docs/platform/user-management — Users, teams, profiles, and access.
+- https://conviso.io/docs/data-retention — Data retention.
+- https://conviso.io/docs/releases/ — Release notes.
 - https://status.convisoappsec.com — Service status.
 
-For all public URLs, use https://docs.convisoappsec.com/sitemap.xml.
+For all public URLs, use https://conviso.io/docs/sitemap.xml.

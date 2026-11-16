@@ -13,4 +13,4 @@ tags: ["New", "Threat and Program Management", "Compliance & Governance", "Devel
 - Define **severity thresholds** per source and optional **maximum days to remediate**.
 - Support for **asset-specific policies** that override global company rules.
 
-Learn more in the [Security Gate documentation](https://docs.convisoappsec.com/platform/security-gate).
+Learn more in the [Security Gate documentation](https://conviso.io/docs/platform/security-gate).

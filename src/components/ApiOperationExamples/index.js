@@ -58,6 +58,7 @@ print(payload['data'])`;
 }
 
 export default function ApiOperationExamples({
+  title = 'Example request',
   operationName,
   operationType,
   query,
@@ -66,7 +67,7 @@ export default function ApiOperationExamples({
 }) {
   return (
     <section className="api-operation-examples">
-      <h2>Example request</h2>
+      <h2>{title}</h2>
       <p>
         This generated {operationType} uses placeholders for required values. Replace
         them with values available to your API key before running it.

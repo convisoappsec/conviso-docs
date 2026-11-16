@@ -108,7 +108,7 @@ account is deactivated or loses access to the company, the channel stops receivi
 Slack integration allows AppSec events to be delivered directly to Slack channels, improving visibility and response time for development and security teams.
 
 For setup instructions, refer to the official documentation:
-https://docs.convisoappsec.com/integrations/slack
+https://conviso.io/docs/integrations/slack
 
 **Microsoft Teams**
 
@@ -117,7 +117,7 @@ Microsoft Teams integration enables AppSec notifications to be sent to Teams cha
 The webhook is created with the **Workflows** app in Teams. The older **Incoming Webhook** connector was retired by Microsoft in May 2026 and integrations still using a connector URL no longer deliver notifications.
 
 For setup instructions, refer to the official documentation:
-https://docs.convisoappsec.com/integrations/microsoft-teams/
+https://conviso.io/docs/integrations/microsoft-teams/
 
 ## Vulnerability Daily Digest
 

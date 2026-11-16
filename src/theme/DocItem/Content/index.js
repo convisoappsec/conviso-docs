@@ -4,7 +4,6 @@ import { useDoc } from "@docusaurus/plugin-content-docs/client";
 import { useLocation } from "@docusaurus/router";
 import ContributionCTA from "@site/src/components/ContributionCTA/ContributionCTA";
 import DocActions from "@site/src/components/DocActions/DocActions";
-import ResourcesFooter from "@site/src/components/ResourcesFooter/ResourcesFooter";
 
 export default function DocItemContent(props) {
   let metadata = null;
@@ -25,7 +24,6 @@ export default function DocItemContent(props) {
       {metadata && <DocActions metadata={metadata} />}
       <Content {...props} />
       {!hideExtras && <ContributionCTA />}
-      {!hideExtras && <ResourcesFooter />}
     </>
   );
 }

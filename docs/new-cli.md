@@ -1,7 +1,7 @@
 ---
 id: new-cli
-title: New CLI
-sidebar_label: New CLI
+title: CLI
+sidebar_label: CLI
 description: Learn how to install, configure, and use the Conviso CLI to interact with Conviso Platform through GraphQL.
 keywords: [Conviso CLI, GraphQL, CLI, automation, AppSec]
 image: '/static/img/cli-overview.png'

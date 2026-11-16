@@ -41,7 +41,7 @@ This section provides a comprehensive guide on using the Conviso Platform SSO Ap
 
 Following these steps, you can efficiently configure and manage user access to the Conviso Platform, ensuring a streamlined and secure experience for your enterprise customers.
 
-## Installing the Conviso Platform SSO Application[](https://docs.convisoappsec.com/integrations/microsoft-entra-id/#installing-conviso-platform-sso-application)
+## Installing the Conviso Platform SSO Application[](https://conviso.io/docs/integrations/microsoft-entra-id/#installing-conviso-platform-sso-application)
 To install the Conviso Platform SSO application, follow these steps:
 
 1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a [Cloud Application Administrator](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference#cloud-application-administrator).
@@ -122,7 +122,7 @@ The `user.userprincipalname` attribute is not mandatory. Just make sure you're u
 
 12. Conviso Platform uses the **Certificate (Base64)**, **Login URL**, and **Microsoft Entra Identifier** as credentials to communicate with Microsoft Entra.
 
-## Performing Conviso Platform setup[](https://docs.convisoappsec.com/integrations/microsoft-entra-id/#conviso-platform-setup)
+## Performing Conviso Platform setup[](https://conviso.io/docs/integrations/microsoft-entra-id/#conviso-platform-setup)
 To set up the Conviso Platform, follow these steps:
 
 1. Log in to the Conviso Platform.
@@ -150,7 +150,7 @@ The two steps that follow — **Group Mapping** and **Role Mapping** — are opt
 
 The next step is to assign which Microsoft Entra users will use SSO to access the Conviso Platform.
 
-## Test in Microsoft Entra ID[](https://docs.convisoappsec.com/integrations/microsoft-entra-id/#test-in-microsoft-entra-id)
+## Test in Microsoft Entra ID[](https://conviso.io/docs/integrations/microsoft-entra-id/#test-in-microsoft-entra-id)
 
 Before testing the SSO integration, ensure you are logged out of the Conviso Platform.
 
@@ -190,7 +190,7 @@ The SSO test process is mandatory in the Microsoft Entra ID provider. Follow the
 
 The test will verify that the SSO configuration is working correctly between Microsoft Entra ID and the Conviso Platform.
 
-## Assigning users to the Conviso Platform SSO Application[](https://docs.convisoappsec.com/integrations/microsoft-entra-id/#assigning-users)
+## Assigning users to the Conviso Platform SSO Application[](https://conviso.io/docs/integrations/microsoft-entra-id/#assigning-users)
 To assign users to the Conviso Platform SSO application, follow these steps:
 
 1. After configuring the Microsoft Entra ID in the Conviso Platform, you must permit users to use the SSO. Go back to your Microsoft Entra Portal. In the **Enterprise Applications | All applications page**, select your recently configured Conviso Platform SSO application. If it doesn't show your new application, refresh the page.

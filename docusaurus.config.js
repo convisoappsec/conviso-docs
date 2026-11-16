@@ -73,8 +73,8 @@ async function proxyPlugin() {
     return {
       title: 'Conviso Platform Docs',
       tagline: 'Check the documentation of Conviso Platform',
-      url: 'https://docs.convisoappsec.com',
-      baseUrl: '/',
+      url: 'https://conviso.io',
+      baseUrl: '/docs/',
       onBrokenLinks: 'throw',
       favicon: 'img/favicon.ico',
       organizationName: 'convisoappsec',
@@ -130,6 +130,14 @@ async function proxyPlugin() {
               title: 'Community',
               items: [
                 {
+                  label: 'Blog',
+                  href: 'https://conviso.io/blogs',
+                },
+                {
+                  label: 'YouTube',
+                  href: 'https://www.youtube.com/@convisoappsec/videos',
+                },
+                {
                   label: 'Instagram',
                   href: 'https://www.instagram.com/convisoappsec/',
                 },
@@ -142,10 +150,6 @@ async function proxyPlugin() {
             {
               title: 'More',
               items: [
-                {
-                  label: 'Blog',
-                  to: 'https://blog.convisoappsec.com/',
-                },
                 {
                   label: 'Pricing',
                   href: 'https://www.convisoappsec.com/platform/pricing',
@@ -178,8 +182,6 @@ async function proxyPlugin() {
           '@docusaurus/preset-classic',
           {
             docs: {
-              editUrl: ({ versionDocsDirPath, docPath }) =>
-                `https://github.com/convisoappsec/conviso-docs/edit/main/${versionDocsDirPath}/${docPath}`,
               routeBasePath: '/',
               sidebarPath: require.resolve('./sidebars.js'),
             },
@@ -262,7 +264,7 @@ async function proxyPlugin() {
             highlightSearchTermsOnTargetPage: true,
             searchResultLimits: 25,
             searchContextByPaths: [
-              { label: 'API Reference', path: 'api' },
+              { label: 'API', path: 'api' },
               { label: 'CLI', path: 'new-cli' },
             ],
             useAllContextsWithNoSearchContext: false,

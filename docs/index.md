@@ -131,7 +131,7 @@ Explore the main areas below according to the current documentation structure.
       <div className="landing-card__title">AI Capabilities</div>
     </div>
     <div className="landing-card__body">
-      Explore AI-driven workflows such as false positive analysis, how-to-fix guidance, autofix, MCP server, and skills.
+      Explore AI-driven workflows such as false positive analysis, how-to-fix guidance, autofix, MCP, and skills.
     </div>
     <div className="landing-card__cta">Open AI capabilities</div>
   </a>

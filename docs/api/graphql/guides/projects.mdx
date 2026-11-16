@@ -1,0 +1,65 @@
+---
+title: Projects
+sidebar_label: Projects
+description: Create, find, and update Conviso projects through one GraphQL workflow.
+---
+
+import ApiOperationExamples from '@site/src/components/ApiOperationExamples';
+import Link from '@docusaurus/Link';
+
+Use this page to manage projects. Start by listing projects in the company scope;
+the returned project ID is used in the update operations below.
+
+## List projects
+
+Replace `<company_id>` with a company your API key can access.
+
+<ApiOperationExamples
+  title="List projects in a company"
+  operationName="GetProjects"
+  operationType="query"
+  query={"query GetProjects($page: Int, $limit: Int, $params: ProjectSearch) {\n  projects(page: $page, limit: $limit, params: $params) {\n    collection { id label status }\n    metadata { currentPage limitValue totalCount }\n  }\n}"}
+  variables={{ page: 1, limit: 20, params: { scopeIdEq: '<company_id>' } }}
+  prerequisite="Use the returned collection[].id as <project_id> in the update operations."
+/>
+
+## Create a project
+
+`typeId` is the project type and `companyId` is the company scope. Add optional
+fields only when your workflow requires them.
+
+<ApiOperationExamples
+  title="Create a project"
+  operationName="CreateProject"
+  operationType="mutation"
+  query={"mutation CreateProject($input: CreateProjectInput!) {\n  createProject(input: $input) {\n    errors\n    project { id label status }\n  }\n}"}
+  variables={{ input: { label: 'Example project', goal: 'example', scope: 'example', startDate: '<ISO8601Date>', companyId: '<company_id>', typeId: 1 } }}
+/>
+
+## Update a project
+
+Use the project ID returned by the list or create operation. The schema reference
+has every optional field accepted by `UpdateProjectInput`.
+
+<ApiOperationExamples
+  title="Update project details"
+  operationName="UpdateProject"
+  operationType="mutation"
+  query={"mutation UpdateProject($input: UpdateProjectInput!) {\n  updateProject(input: $input) {\n    errors\n    msg\n  }\n}"}
+  variables={{ input: { id: '<project_id>' } }}
+/>
+
+## Change project status
+
+Set `projectStatus` to the next status allowed by your project workflow.
+
+<ApiOperationExamples
+  title="Change project status"
+  operationName="UpdateProjectStatus"
+  operationType="mutation"
+  query={"mutation UpdateProjectStatus($input: UpdateProjectStatusInput!) {\n  updateProjectStatus(input: $input) {\n    errors\n    project { id label status }\n  }\n}"}
+  variables={{ input: { id: '<project_id>', projectStatus: 'ANALYSIS' } }}
+/>
+
+For less common project operations and every available field, use the{' '}
+<Link to="/api/graphql/documentation">complete schema</Link>.

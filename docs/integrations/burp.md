@@ -55,4 +55,4 @@ target/Burp-ConvisoPlatform-<version>-jar-with-dependencies.jar
 ## Support
 
 - Project issues: [Burp-ConvisoPlatform Issues](https://github.com/convisolabs/Burp-ConvisoPlatform/issues)
-- Conviso documentation: [docs.convisoappsec.com](https://docs.convisoappsec.com/)
+- Conviso documentation: [docs.convisoappsec.com](https://conviso.io/docs/)

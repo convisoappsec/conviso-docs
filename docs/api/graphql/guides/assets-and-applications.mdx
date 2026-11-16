@@ -1,0 +1,68 @@
+---
+title: Assets and applications
+sidebar_label: Assets and applications
+description: Find, create, update, and archive Conviso assets through one GraphQL workflow.
+---
+
+import ApiOperationExamples from '@site/src/components/ApiOperationExamples';
+import Link from '@docusaurus/Link';
+
+Use this page to manage an asset inventory. Start with the company scope, then
+reuse returned IDs in the mutations.
+
+## List applications
+
+<ApiOperationExamples
+  title="List applications in a company"
+  operationName="GetApplications"
+  operationType="query"
+  query={"query GetApplications($companyId: ID!) {\n  applications(companyId: $companyId) {\n    id\n    name\n  }\n}"}
+  variables={{ companyId: '<company_id>' }}
+/>
+
+## List assets
+
+<ApiOperationExamples
+  title="List assets in a company"
+  operationName="GetAssets"
+  operationType="query"
+  query={"query GetAssets($companyId: ID!) {\n  assets(companyId: $companyId) {\n    collection { id name }\n    metadata { currentPage limitValue totalCount }\n  }\n}"}
+  variables={{ companyId: '<company_id>' }}
+  prerequisite="Use collection[].id as <asset_id> for update or archive operations."
+/>
+
+## Create or update an asset
+
+The exact optional fields depend on the asset type. The reference exposes the
+complete `CreateAssetInput` and `UpdateAssetInput` shapes.
+
+<ApiOperationExamples
+  title="Create an asset"
+  operationName="CreateAsset"
+  operationType="mutation"
+  query={"mutation CreateAsset($input: CreateAssetInput!) {\n  createAsset(input: $input) {\n    errors\n    asset { id name }\n  }\n}"}
+  variables={{ input: { companyId: '<company_id>' } }}
+/>
+
+<ApiOperationExamples
+  title="Update an asset"
+  operationName="UpdateAsset"
+  operationType="mutation"
+  query={"mutation UpdateAsset($input: UpdateAssetInput!) {\n  updateAsset(input: $input) {\n    asset { id name }\n  }\n}"}
+  variables={{ input: { companyId: '<company_id>', id: '<asset_id>' } }}
+/>
+
+## Archive assets
+
+Archiving removes assets from active use while retaining their history.
+
+<ApiOperationExamples
+  title="Archive selected assets"
+  operationName="ArchiveAssets"
+  operationType="mutation"
+  query={"mutation ArchiveAssets($input: ArchiveAssetsInput!) {\n  archiveAssets(input: $input) {\n    clientMutationId\n  }\n}"}
+  variables={{ input: { companyId: '<company_id>', assetIds: ['<asset_id>'] } }}
+/>
+
+For advanced asset, repository, and branch operations, use the{' '}
+<Link to="/api/graphql/documentation">complete schema</Link>.

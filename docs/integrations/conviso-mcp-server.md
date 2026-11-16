@@ -1,9 +1,9 @@
 ---
 id: conviso-mcp-server
-title: Conviso MCP Server
-sidebar_label: Conviso MCP Server
+title: Conviso MCP
+sidebar_label: Conviso MCP
 description: "Model Context Protocol (MCP) server that lets AI clients read and write Conviso Platform data — companies, projects, assets, vulnerabilities, tickets, requirements, applications, scans, SBOM, AI-Pentest, threat modeling and metrics."
-keywords: [MCP, Conviso, "Conviso MCP Server", Claude, Cursor, "Claude Code", integration, security, vulnerabilities, mutations, "write operations", AI-Pentest, "threat modeling", SBOM, tickets, requirements]
+keywords: [MCP, Conviso, Claude, Cursor, "Claude Code", integration, security, vulnerabilities, mutations, "write operations", AI-Pentest, "threat modeling", SBOM, tickets, requirements]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-The Conviso MCP Server is a connector that exposes Conviso Platform data **and actions** to an LLM through the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client — Claude Desktop, Claude Code CLI, Cursor, or any other — can ask the model to fetch live, authoritative security context and perform operations, instead of relying on cached knowledge.
+Conviso MCP is a connector that exposes Conviso Platform data **and actions** to an LLM through the Model Context Protocol (MCP). MCP lets external services register named capabilities (tools) so an MCP-compatible client — Claude Desktop, Claude Code CLI, Cursor, or any other — can ask the model to fetch live, authoritative security context and perform operations, instead of relying on cached knowledge.
 
 The server ships **44 tools** in two families:
 
@@ -47,7 +47,7 @@ Check it with `claude mcp list` (or run `/mcp` inside a session). Swap `-s user`
 </TabItem>
 <TabItem value="claude-desktop" label="Claude Desktop">
 
-**Easiest:** open **Settings → Extensions → Explore extensions**, search **Conviso MCP Server**, click **Install**, then **Configure** and paste your API key. Full walkthrough: [Marketplace steps](#desktop-marketplace).
+**Easiest:** open **Settings → Extensions → Explore extensions**, search **Conviso MCP**, click **Install**, then **Configure** and paste your API key. Full walkthrough: [Marketplace steps](#desktop-marketplace).
 
 **Manual:** edit `claude_desktop_config.json` (Settings → Developer → Edit Config):
 
@@ -248,7 +248,7 @@ Restart or reload your client after adding the entry. The tabs use the **stdio**
 ## Prerequisites
 
 - **Conviso Platform API Key** — create it under **Profile > API Keys**.
-- An **MCP-compatible client**: Claude Desktop, Claude Code CLI, Cursor, or any client supporting stdio/HTTP MCP servers.
+- An **MCP-compatible client**: Claude Desktop, Claude Code CLI, Cursor, or any client supporting MCP over stdio or HTTP.
 - **Node.js 20.10+** or Docker.
 
 Generate the key in the Conviso Platform under **Profile > API Keys** and copy it — you'll pass it to the server as the `CONVISO_API_KEY` value in the steps below.
@@ -260,7 +260,7 @@ Generate the key in the Conviso Platform under **Profile > API Keys** and copy i
 </div>
 
 :::tip Security recommendation
-Create a dedicated API key for the MCP server and set an expiration date. Grant it only the permissions the workflow needs, and never commit it to version control.
+Create a dedicated API key for MCP and set an expiration date. Grant it only the permissions the workflow needs, and never commit it to version control.
 :::
 
 
@@ -295,7 +295,7 @@ Full privacy policy: [iubenda.com/privacy-policy/55589285](https://www.iubenda.c
 
 ## Open source
 
-The Conviso MCP Server is open source at [github.com/convisoappsec/conviso-mcp](https://github.com/convisoappsec/conviso-mcp). Contributions are welcome — bug reports, new tools, and improvements. See the repository's `CONTRIBUTING.md` to get started.
+Conviso MCP is open source at [github.com/convisoappsec/conviso-mcp](https://github.com/convisoappsec/conviso-mcp). Contributions are welcome — bug reports, new tools, and improvements. See the repository's `CONTRIBUTING.md` to get started.
 
 ## See also
 
