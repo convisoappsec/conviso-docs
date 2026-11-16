@@ -341,7 +341,7 @@ Declaring the first mapping is what hands the access profiles of that company ov
 
 - **A role that matches a mapping** — the user gets the mapped access profile, replacing whatever profile they had.
 - **No role, or only roles that match nothing** — the user is set to the global **viewer-only** profile. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in Entra ID.
-- **More than one matching role** — one of them is applied, and there is no guarantee of which: the order of a multivalued claim is not defined, so it may differ between logins. Assign a single mapped role per user.
+- **More than one matching role** — the access profile the identity provider already gave the user stays while one of their roles still maps to it. Otherwise one of them is applied, and there is no guarantee of which: the order of a multivalued claim is not defined, so it may differ between logins. Assign a single mapped role per user.
 
 While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
 
