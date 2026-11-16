@@ -18,7 +18,7 @@ The contact email works in every company with an SSO integration, whether **Micr
 ## Where messages go {#where-messages-go}
 
 - With a contact email, messages go to it. Without one, they go to the login email.
-- A contact email the person chose never receives a link that registers the account, sets its password or reactivates it: an invitation with a sign-up link, a password reset and an account reactivation always go to the login email. Everything else goes to the contact email.
+- A contact email the person chose never receives a link that registers the account, sets its password or reactivates it. An invitation with a sign-up link, a password reset and an account reactivation are sent as if the person had no contact email. Everything else goes to the contact email.
 - A contact email the identity provider declared receives every message, password reset links included.
 - The address is checked again before every message. If the SSO integration stops accepting its domain, or stops letting the identity provider set the contact email, messages go back to the login email.
 
@@ -87,7 +87,7 @@ In **Access Control**, the page of a user shows their **Contact email** next to 
 
 **The confirmation link does not work.** It expired after 24 hours, a newer link replaced it, or the request was cancelled. Request the address again.
 
-**A message went to the login email.** The link was not opened yet, the address's domain is no longer accepted, or the message was an invitation, a password reset or an account reactivation, which never go to an address the person chose.
+**A message went to the login email.** The link was not opened yet, the address's domain is no longer accepted, or the message was an invitation with a sign-up link, a password reset or an account reactivation, which never go to an address the person chose.
 
 ## Support
 
