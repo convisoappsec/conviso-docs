@@ -13,7 +13,7 @@ A login email does not always have a mailbox. Microsoft Entra ID, for example, c
 The contact email works in every company with an SSO integration, whether **Microsoft Entra ID**, **Google** or **SAML 2.0**, with or without [SCIM provisioning](scim-provisioning.md). It comes from one of two places:
 
 - **The person chooses it** in **My Profile** and confirms it through a link. See [Choose a contact email in My Profile](#choose-in-my-profile).
-- **The identity provider declares it** over SCIM provisioning, when the SSO integration allows it. See [Let the identity provider set it](#identity-provider).
+- **The identity provider declares it** over SCIM provisioning, when the SSO integration allows it. See [Let the identity provider set it](#set-by-the-identity-provider).
 
 ## Prerequisites
 
@@ -66,9 +66,9 @@ While a request is pending, the card offers **Resend link**, which makes the pre
 
 A person can send up to five requests an hour. After that, no link is sent until the hour is over.
 
-## Let the identity provider set it {#identity-provider}
+## Let the identity provider set it {#set-by-the-identity-provider}
 
-With SCIM provisioning, the SSO integration can let the identity provider set the contact email: the switch **Let *identity provider* set the contact email**, on the **Provisioning (SCIM)** step, is off as it comes. See [Contact email](scim-provisioning.md#contact-email-authority) in the SCIM provisioning guide.
+With SCIM provisioning, the SSO integration can let the identity provider set the contact email: the switch **Let *identity provider* set the contact email**, on the **Provisioning (SCIM)** step, is off as it comes. See [Contact email](scim-provisioning.md#contact-email) in the SCIM provisioning guide.
 
 - **Off**: the identity provider's address is not used, and each person can choose theirs in **My Profile**.
 - **On**: provisioned people can no longer choose. On the identity provider's next sync of each person, the work email it declares replaces the one they chose, as long as it is in an accepted domain. **My Profile** shows their contact email read only.

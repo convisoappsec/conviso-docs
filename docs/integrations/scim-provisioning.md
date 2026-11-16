@@ -142,7 +142,7 @@ Some accounts are never removed, and the recent deliveries show them as "Did not
 
 Reactivating a person in the identity provider does not undo a removal in full. They get back only what the identity provider decides: their mapped teams and their access profile, by the sources above. Direct accesses and assignments do not come back.
 
-### Contact email {#contact-email-authority}
+### Contact email {#contact-email}
 
 **Let *identity provider* set the contact email** is off as it comes. The contact email is where Conviso Platform sends a person's messages instead of their login email. It is described in [Contact email](sso-contact-email.md).
 
