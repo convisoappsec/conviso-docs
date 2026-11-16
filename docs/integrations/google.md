@@ -262,4 +262,8 @@ During the SSO authentication process, the **email** is used as the primary iden
 
 Therefore, when configuring the identity provider (such as Google Workspaces or others), make sure the `email` field is mapped correctly and matches the email associated with the user's account in the Conviso Platform.
 
+## Contact email
+
+When your users log in with an address that has no mailbox, they can receive Conviso Platform messages at a contact email instead, without changing how they log in. See [Contact Email for SSO Users](sso-contact-email.md).
+
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)
