@@ -15,6 +15,12 @@ The contact email works in every company with an SSO integration, whether **Micr
 - **The person chooses it** in **My Profile** and confirms it through a link. See [Choose a contact email in My Profile](#choose-in-my-profile).
 - **The identity provider declares it** over SCIM provisioning, when the SSO integration allows it. See [Let the identity provider set it](#identity-provider).
 
+## Prerequisites
+
+- An SSO integration, **Microsoft Entra ID**, **Google** or **SAML 2.0**, whose **Authorized Domains** include the person's login email.
+- To change **Contact email domains**: permission to manage integrations.
+- For the identity provider to declare the contact email: [SCIM provisioning](scim-provisioning.md) set up on that integration.
+
 ## Where messages go {#where-messages-go}
 
 - With a contact email, messages go to it. Without one, they go to the login email.
@@ -76,6 +82,12 @@ In **Access Control**, the page of a user shows their **Contact email** next to 
 ![A user's contact email in Access Control](../../static/img/sso-contact-email/sso-contact-email-user-page.png "The user's personal information, with the contact email next to the login email.")
 
 </div>
+
+## Validation
+
+1. After opening the confirmation link, the **Contact email** card in **My Profile** shows the new address, with no request awaiting confirmation.
+2. An administrator sees the same address as the **Contact email** on the person's page in **Access Control**.
+3. The next platform message, such as a notification, arrives at the new address.
 
 ## Troubleshooting
 
