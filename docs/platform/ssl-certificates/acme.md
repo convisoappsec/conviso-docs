@@ -35,9 +35,11 @@ domain for every order that follows.
   [Before You Start](./ssl-certificates.md#before-you-start).
 * A company administrator for the first step: only administrators select, create, regenerate or
   switch the ACME API key.
-* Credits for a **DV** product (SSL DV, SSL Wildcard DV, SSL MDC DV, SSL MDC Wildcard DV, SSL SAN DV
-  or SSL SAN Wildcard DV). OV and EV are not issued through ACME. See
-  [Certificate Credits](./ssl-certificates.md#certificate-credits).
+* Credits for the product the server will issue: DV (SSL DV, SSL Wildcard DV, SSL MDC DV, SSL MDC
+  Wildcard DV, SSL SAN DV or SSL SAN Wildcard DV), OV (SSL OV or SSL Wildcard OV) or EV (SSL EV or
+  SSL MDC EV). See [Certificate Credits](./ssl-certificates.md#certificate-credits).
+* For OV and EV only: an organization with an active pre-validation that covers the product (an EV
+  pre-validation also covers OV). See [Organization Pre-Validation](./organization-pre-validation.md).
 * Access to create records in the DNS of the domain.
 * Two-factor authentication enabled on your user account (or sign-in through your company's SSO)
   to create server credentials and edit their domains. See [Connect a Server](#connect-a-server).
@@ -205,9 +207,9 @@ credential:
 
 | Product | Names in one order |
 |---|---|
-| SSL DV | One name, optionally with its `www.` form. The certificate always carries both, for example `example.com` and `www.example.com`. |
-| SSL Wildcard DV | `*.example.com`, optionally with `example.com`. The certificate always carries both. |
-| SSL MDC DV, SSL SAN DV | Several names. |
+| SSL DV, SSL OV, SSL EV | One name, optionally with its `www.` form. The certificate always carries both, for example `example.com` and `www.example.com`. |
+| SSL Wildcard DV, SSL Wildcard OV | `*.example.com`, optionally with `example.com`. The certificate always carries both. |
+| SSL MDC DV, SSL SAN DV, SSL MDC EV | Several names. |
 | SSL MDC Wildcard DV, SSL SAN Wildcard DV | Several names, including `*.` names. |
 
 Names that do not fit are refused with `rejectedIdentifier`; for example, `certbot -d a.example.com
@@ -221,13 +223,16 @@ A **server credential** connects one server or cluster. Create one per server so
 and switch off each of them on its own.
 
 1. In the **Server credentials** section, click **Connect server**.
-2. **What to issue:** name the credential (the hostname or the cluster, for example) and choose
+2. **Product:** name the credential (the hostname or the cluster, for example) and choose
    the product. The product decides the certificate type; each issuance spends one credit of it.
    Connecting a server needs a usable ACME API key; see [The ACME API Key](#acme-api-key).
-3. **For which domains:** optionally limit the domains this server may order. With none selected,
+3. **Organization** (OV and EV products only): choose the organization whose details go into
+   the certificates. Only organizations with an active pre-validation that covers the product are
+   listed. See [OV and EV Through ACME](#ov-ev).
+4. **Domains:** optionally limit the domains this server may order. With none selected,
    it covers every verified domain of the company, including domains verified later. You can
    change it later with **Edit domains**. Click **Generate key** to create the server credential.
-4. **Install on the server:** copy the **Directory URL**, the **EAB Key ID** and the
+5. **Install:** copy the **Directory URL**, the **EAB Key ID** and the
    **EAB HMAC Key**, and use them in the client as shown below. The Directory URL is the same for
    every company: `https://api.app.convisoappsec.com/acme/directory`.
 
@@ -250,6 +255,25 @@ registers with the key, and **Connected** after that. A link to this guide sits 
 key warning, for the step-by-step setup.
 
 ![Connect server panel](../../../static/img/platform/ssl-certificates-acme-connect-server.png "Step 1 of Connect server: the credential name and the product, with the credits available for each.")
+
+### OV and EV Through ACME {#ov-ev}
+
+An OV or EV server credential keeps the organization chosen when it was created, not one specific
+pre-validation. Each order issues on the active pre-validation of that organization that covers the
+product: one of the same type first, then the one that lasts longest. When the organization gets a
+new pre-validation, it takes over once active, with nothing to change on the server credential. The
+order only needs domain control, through the CNAME of the domain, as for DV.
+
+The organization in the certificate (name and address) is the one of the pre-validation. The client's
+CSR only needs the names, which is what certbot and cert-manager send. Renewals keep the organization of the certificate they renew, and each order, renewals
+included, needs the organization to have an active pre-validation at that moment.
+
+Without an active pre-validation of the organization, the order is refused with `unauthorized` and
+the message `the organization pre-validation of this credential is not active`; nothing is bought
+and no credit is spent. The same happens when the pre-validation expires or is rejected while the
+client finishes the order. Request a new pre-validation (see
+[Requesting Again](./organization-pre-validation.md#requesting-again)) and run the client again
+once it is active.
 
 ### certbot {#certbot}
 
