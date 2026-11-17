@@ -232,6 +232,10 @@ Skip this section unless access profiles come from provisioning. While they do, 
 
 This expression does not work with the **Sync all users and groups** scope, which is one more reason to keep **Sync only assigned users and groups**. Microsoft describes it in [Provisioning a role to a SCIM app](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/customize-application-attributes).
 
+:::caution Do not use SingleAppRoleAssignment
+Keep the `AssertiveAppRoleAssignmentsComplex` expression. With `SingleAppRoleAssignment`, Entra ID sends the role's display name instead of its **Value** when it updates a person. No role mapping matches it, and the person becomes **viewer-only**.
+:::
+
 ### Turn on notifications and accidental deletion prevention
 
 In the provisioning settings, enter a **Notification Email** and turn on accidental deletion prevention with a threshold. Entra ID writes to that address when provisioning goes into quarantine or crosses the threshold. The threshold counts deactivations too, so with removal on, it stops a mass unassignment from removing people from the company. See [Enable accidental deletions prevention](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/accidental-deletions).
@@ -269,7 +273,7 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 
 **Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let Entra ID decide team membership** is off.
 
-**People became viewer-only.** Access profiles come from provisioning, but Entra ID sends no mapped role. Check the **Send roles** steps and the role each person has in the provisioning application.
+**People became viewer-only.** Access profiles come from provisioning, but Entra ID sends no mapped role. Check the **Send roles** steps, the expression of the `roles` mapping, and the role each person has in the provisioning application.
 
 **A contact email was not applied.** The address is outside the authorized domains and the contact email domains, or **Let Entra ID set the contact email** is off.
 
