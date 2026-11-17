@@ -40,7 +40,7 @@ organizations** page lists every pre-validation of your company:
 | **Status** | The current state, see [Statuses](#statuses) |
 | **Expires on** | When an active pre-validation stops being offered at issuance |
 
-Search by organization or CNPJ, use the **Active** and **Pending validation** shortcuts, or open
+Search by name or CNPJ, use the **Active** and **Pending Validation** shortcuts, or open
 **Filters** for status and type. Select a row to open its details.
 
 A company may have several organizations, each identified by its CNPJ, and each with its own OV and
@@ -166,8 +166,9 @@ in the order itself instead, select **Enter the organization**.
 ## Requesting Again {#requesting-again}
 
 On an **Active**, **Rejected** or **Expired** pre-validation, the details and the row's **⋮** menu
-offer **Request again**. It opens the request of the same type, filled in with the organization's
-details: legal name, CNPJ and address. The contacts and the EV registration details start blank.
+offer **Request again**. It opens the request of the same type, filled in with what the previous
+request sent: the organization, the representative, who signs the agreement and, on EV, the
+registration details. Review each step before sending.
 
 Sending it creates a **new** pre-validation, with its own order at the certificate authority, and the
 validation starts over. The previous one stays in the list as it was; an active one keeps being
