@@ -138,7 +138,7 @@ e-mail from the certificate authority. Its cancel link cancels the company's pre
 | **Submission unconfirmed** | The certificate authority did not confirm the request. The platform keeps checking. Do not send it again; if it stays like this, contact support |
 | **Pending Validation** | The certificate authority is validating the organization. Follow the steps in the details |
 | **Active** | Validated. It can be chosen when issuing certificates of the types it serves |
-| **Rejected** | The certificate authority refused it, or it was rejected in the platform. The details show the reason, when there is one |
+| **Rejected** | The certificate authority refused it, or it was rejected in the platform. When the certificate authority already holds a pre-validation for these details, the details say so |
 | **Expired** | The validity has ended. It is no longer offered at issuance; to keep using one, request a new pre-validation |
 
 The company administrators, and whoever requested the pre-validation, are notified when it becomes
@@ -152,8 +152,9 @@ The pre-validation is chosen at each OV or EV order in the
 
 1. In **Product**, pick an OV or EV credit. The wizard tells you whether the company has an active
    pre-validation, or links to the **Pre-validated organizations** page if it has none.
-2. In **Organization**, select **Use a pre-validated organization** and choose it in **Pre-validation**
-   (search by organization or CNPJ). An OV credit offers the active OV and EV pre-validations; an EV
+2. In **Organization**, select **Use a pre-validated organization**. With more than one, choose it in
+   **Pre-validated organization** (search by organization or CNPJ); with only one, it is already
+   chosen. An OV credit offers the active OV and EV pre-validations; an EV
    credit offers only the EV ones.
 3. The organization and representative details come from the pre-validation and are not typed
    again. If the CSR names another organization, the wizard warns you: the order uses the

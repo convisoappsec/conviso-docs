@@ -128,8 +128,8 @@ If you provided your own CSR, these fields are prefilled from it and can be edit
 
 When the company has an active
 [organization pre-validation](./organization-pre-validation.md) that serves the chosen credit, the
-step offers **Use a pre-validated organization**. Choose it in **Pre-validation** (search by
-organization or CNPJ): the organization and representative details come from it, and after the
+step offers **Use a pre-validated organization**. With more than one, choose it in **Pre-validated
+organization** (search by organization or CNPJ); with only one, it is already chosen. The organization and representative details come from it, and after the
 order the issuance only waits for domain control validation. An OV credit accepts an OV or an EV
 pre-validation; an EV credit only an EV one. Select **Enter the organization** to fill in the
 sections below instead. See
