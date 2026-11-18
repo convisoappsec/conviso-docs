@@ -80,8 +80,7 @@ Select **Request pre-validation**. The request goes in steps, shown at the top o
 4. **Contacts**:
    * **Representative**: job title, name, e-mail and phone of a person with authority to represent
      the organization. Use a person's name, never a department, and prefer an e-mail on the company
-     domain. Enter the phone in international format, with the country code (for example
-     `+55 11 99999-8888`).
+     domain.
    * **Someone else signs the agreement** (optional): when another person has the legal power to
      accept the agreement, they receive it instead of the representative.
 5. **Review**: check the summary (select **Edit** on a section to change it), confirm that the
@@ -212,7 +211,7 @@ that is what you want.
 | --- | --- |
 | The request is refused because one is already in progress | The organization already has a pre-validation of that type being validated. Wait for it to finish or follow it in the details. |
 | The request is refused because a pre-validation already exists for these details | The certificate authority already holds one for this organization. Contact support before requesting again. |
-| **Continue** does not move to the next step | A field is missing or invalid; the message under it says why. The phone must be in international format, with the country code. |
+| **Continue** does not move to the next step | A field is missing or invalid; the message under it says why. |
 | Requesting or rejecting asks for two-factor authentication | Sign in to the portal with two-factor authentication (or single sign-on) and try again. |
 | A step stays **Waiting** for days | Check that the representative accepted the agreement and answered the certificate authority's e-mail or call, and that any requested document was sent through its tracking page. |
 | The pre-validation is not offered in the issuance wizard | It must be **Active** and not expired, and of a type that serves the credit: an EV credit only accepts an EV pre-validation. |
