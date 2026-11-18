@@ -35,7 +35,9 @@ Focus remediation efforts on what truly matters by correlating vulnerability dat
 Automate ingestion, triage, and tracking of findings through native integrations with development and collaboration tools.
 
 **Program-level insight and governance**  
-Measure application security posture over time, track maturity, and support informed decision-making with reliable metrics and dashboards.
+Measure application security posture over time, track maturity, and support informed decision-making with reliable metrics.
+
+With [Metrics Studio](./posture-management/metrics-studio/metrics-studio.md), create the metrics your team needs to manage risk, remediation, and coverage. Define what to measure, compare results, investigate the supporting records, and share consistent measurement criteria for operational reviews and leadership decisions.
 
 **Role-oriented adoption paths**  
 Use the [Role-Based Guides](./general/role-based-guide-devsecops) to follow practical journeys by profile (Developer, DevSecOps, AppSec Engineer, Penetration Tester, and managers), with focused workflows and priorities.

@@ -19,6 +19,8 @@ It is useful for:
 * identifying overdue risk acceptance trends;
 * prioritizing vulnerabilities based on business impact, exposure, and data sensitivity.
 
+Use [Metrics Studio](./metrics-studio/metrics-studio.md) to create metrics for your AppSec management process. Measure priority risk, remediation commitments, and testing coverage, then use the results and supporting records to guide actions and track progress.
+
 ## Main Metrics
 
 The dashboard includes the following key views:

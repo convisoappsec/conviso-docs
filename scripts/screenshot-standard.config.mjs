@@ -22,7 +22,9 @@ export const standardScreenshotConfig = {
   hideSelectors: [
     '.q-notification',
     '.q-tooltip',
-    '[role="alert"]'
+    '[role="alert"]',
+    '.profile-dropdown-menu__company-avatar',
+    '.profile-dropdown-menu__user-avatar'
   ],
   textReplacements: [
     {
