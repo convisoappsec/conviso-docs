@@ -213,7 +213,7 @@ The app attribute has to be named exactly `roles`, and the value has to match th
 Declaring the first mapping is what hands the access profiles of that company over to Google Workspace. From then on, every SSO login re-evaluates the user's profile:
 
 - **A role that matches a mapping** — the user gets the mapped access profile, replacing whatever profile they had.
-- **No role, or only roles that match nothing** — the user is set to the global **viewer-only** profile. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in Google Workspace.
+- **No role, or only roles that match nothing** — a user whose access profile came from the identity provider, or who has none, is set to the global **viewer-only** profile. An access profile an administrator set by hand in the Conviso Platform stays until a mapped role replaces it, so to override the profile of a user who carries a mapped role, change it in Google Workspace.
 - **More than one matching role** — the access profile the identity provider already gave the user stays while one of their roles still maps to it. Otherwise one of them is applied, and there is no guarantee of which: the order of a multivalued attribute is not defined, so it may differ between logins. Assign a single mapped role per user.
 
 While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
