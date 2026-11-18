@@ -2,7 +2,7 @@
 id: organization-pre-validation
 title: Organization Pre-Validation
 sidebar_label: Organization Pre-Validation
-description: Validate your organization once with the certificate authority and choose the pre-validation when issuing OV and EV certificates in Conviso Platform. Request, follow, use, request again and reject a pre-validation, and understand its statuses and the e-mails the certificate authority sends.
+description: Validate your organization once with the certificate authority and choose the pre-validation when issuing OV and EV certificates in Conviso Platform. Request, follow, use, request again, reject and revoke a pre-validation, and understand its statuses and the e-mails the certificate authority sends.
 keywords: [pre-validation, organization validation, OV, EV, extended validation, CNPJ, certificate authority, SSL, TLS, Conviso Platform]
 image: '/static/img/securityfeedseo.png'
 ---
@@ -51,9 +51,9 @@ EV pre-validations.
 | Action | Who |
 | --- | --- |
 | See the list and the details | Users who can view certificates |
-| Request, **Check now**, **Request again** and **Reject** | Users who can manage certificates |
+| Request, **Check now**, **Request again**, **Reject** and **Revoke** | Users who can manage certificates |
 
-Requesting and rejecting also require being signed in to the portal with two-factor authentication
+Requesting, rejecting and revoking also require being signed in to the portal with two-factor authentication
 (or through your company's single sign-on). They are not available through an API key.
 
 ## Choosing the Type {#choose-the-type}
@@ -139,10 +139,11 @@ e-mail from the certificate authority. Its cancel link cancels the company's pre
 | **Pending Validation** | The certificate authority is validating the organization. Follow the steps in the details |
 | **Active** | Validated. It can be chosen when issuing certificates of the types it serves |
 | **Rejected** | The certificate authority refused it, or it was rejected in the platform. When the certificate authority already holds a pre-validation for these details, the details say so |
+| **Revoked** | It was withdrawn after becoming active, in the platform or by the certificate authority. It is no longer offered at issuance |
 | **Expired** | The validity has ended. It is no longer offered at issuance; to keep using one, request a new pre-validation |
 
 The company administrators, and whoever requested the pre-validation, are notified when it becomes
-active, when the certificate authority rejects it, and 30, 15 and 7 days before it expires and on
+active, when the certificate authority rejects or revokes it, and 30, 15 and 7 days before it expires and on
 the day it does.
 
 ## Using It When Issuing a Certificate {#using-at-issuance}
@@ -165,7 +166,7 @@ in the order itself instead, select **Enter the organization**.
 
 ## Requesting Again {#requesting-again}
 
-On an **Active**, **Rejected** or **Expired** pre-validation, the details and the row's **⋮** menu
+On an **Active**, **Rejected**, **Revoked** or **Expired** pre-validation, the details and the row's **⋮** menu
 offer **Request again**. It opens the request of the same type, filled in with what the previous
 request sent: the organization, the representative, who signs the agreement and, on EV, the
 registration details. Review each step before sending.
@@ -178,16 +179,17 @@ one expires.
 The option is not offered while the organization has another pre-validation of the same type in
 progress.
 
-## Rejecting a Pre-Validation {#rejecting}
+## Rejecting or Revoking a Pre-Validation {#rejecting}
 
-Rejecting withdraws the pre-validation at the certificate authority. It is available while the
-pre-validation is **Pending Validation** or **Active**.
+Both withdraw the pre-validation at the certificate authority. Which action you get depends on its
+state, as with certificates: a pre-validation still **Pending Validation** is **rejected**, and an
+**Active** one is **revoked**.
 
-1. In the row's **⋮** menu, select **Reject**.
-2. Check the type and the organization shown, type `REJECT` and confirm.
+1. In the row's **⋮** menu, select **Reject** or **Revoke**.
+2. Check the type and the organization shown, type `REJECT` or `REVOKE` and confirm.
 
 :::warning
-Rejecting cannot be undone. The pre-validation is no longer offered at issuance, and using one again
+Rejecting or revoking cannot be undone. The pre-validation is no longer offered at issuance, and using one again
 means requesting a new pre-validation and going through the whole organization validation again.
 :::
 
@@ -213,7 +215,7 @@ that is what you want.
 | The request is refused because one is already in progress | The organization already has a pre-validation of that type being validated. Wait for it to finish or follow it in the details. |
 | The request is refused because a pre-validation already exists for these details | The certificate authority already holds one for this organization. Contact support before requesting again. |
 | **Continue** does not move to the next step | A field is missing or invalid; the message under it says why. |
-| Requesting or rejecting asks for two-factor authentication | Sign in to the portal with two-factor authentication (or single sign-on) and try again. |
+| Requesting, rejecting or revoking asks for two-factor authentication | Sign in to the portal with two-factor authentication (or single sign-on) and try again. |
 | A step stays **Waiting** for days | Check that the representative accepted the agreement and answered the certificate authority's e-mail or call, and that any requested document was sent through its tracking page. |
 | The pre-validation is not offered in the issuance wizard | It must be **Active** and not expired, and of a type that serves the credit: an EV credit only accepts an EV pre-validation. |
 

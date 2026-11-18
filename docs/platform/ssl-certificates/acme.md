@@ -270,7 +270,7 @@ included, needs the organization to have an active pre-validation at that moment
 
 Without an active pre-validation of the organization, the order is refused with `unauthorized` and
 the message `the organization pre-validation of this credential is not active`; nothing is bought
-and no credit is spent. The same happens when the pre-validation expires or is rejected while the
+and no credit is spent. The same happens when the pre-validation expires or is revoked while the
 client finishes the order. Request a new pre-validation (see
 [Requesting Again](./organization-pre-validation.md#requesting-again)) and run the client again
 once it is active.
