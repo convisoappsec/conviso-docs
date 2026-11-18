@@ -11,4 +11,4 @@ Published the **Compliance** area on the Conviso Platform, starting with a **PCI
 - Documents how PCI assessments, evidence, and controls are handled within the platform.
 - Serves as the entry point for the broader Compliance & Governance capabilities (GAP Analysis, SAQ, SLA, retention).
 
-Learn more in the [PCI overview documentation](https://docs.convisoappsec.com/compliance/pci-overview).
+Learn more in the [PCI overview documentation](https://conviso.io/docs/compliance/pci-overview).

@@ -1,12 +1,12 @@
 ---
-title: MCP Server Improvements & Data Retention Policy
+title: MCP Improvements & Data Retention Policy
 date: 2026-04-24
 slug: 2026-04-24-mcp-skills-retention
 authors: [daniel_guedes]
 tags: ["Improved", "Threat and Program Management", "Vuln Intelligence", "AI Secure Code", "Web and API Scan", "Offensive & Audit Manager", "Inteligência Artificial", "Automations"]
 ---
 
-Improved the **Conviso MCP Server** and published new governance documentation.
+Improved **Conviso MCP** and published new governance documentation.
 
 - **Broader compatibility:** the MCP now works across all Claude products — Desktop, Cowork/Projects, and CLI.
 - **Improved MCP documentation** for easier setup and usage.

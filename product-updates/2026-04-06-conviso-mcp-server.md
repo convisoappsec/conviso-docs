@@ -1,5 +1,5 @@
 ---
-title: Conviso MCP Server — AI Ecosystem Integration
+title: Conviso MCP — AI Ecosystem Integration
 date: 2026-04-06
 slug: 2026-04-06-conviso-mcp-server
 authors: [daniel_guedes]

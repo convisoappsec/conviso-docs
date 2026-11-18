@@ -1,0 +1,64 @@
+---
+title: Vulnerabilities
+sidebar_label: Vulnerabilities
+description: Find, assign, and triage Conviso vulnerabilities through one GraphQL workflow.
+---
+
+import ApiOperationExamples from '@site/src/components/ApiOperationExamples';
+import Link from '@docusaurus/Link';
+
+Use this page to work through a vulnerability backlog: find an issue, inspect it,
+assign an owner, then change its status individually or in bulk.
+
+## List vulnerabilities
+
+<ApiOperationExamples
+  title="List vulnerabilities in a company"
+  operationName="GetIssues"
+  operationType="query"
+  query={"query GetIssues($companyId: ID!, $pagination: PaginationInput!) {\n  issues(companyId: $companyId, pagination: $pagination) {\n    collection { id title status }\n    metadata { currentPage limitValue totalCount }\n  }\n}"}
+  variables={{ companyId: '<company_id>', pagination: {} }}
+  prerequisite="Use collection[].id as <issue_id> in the actions below."
+/>
+
+## Inspect and assign a vulnerability
+
+<ApiOperationExamples
+  title="Get vulnerability details"
+  operationName="GetIssue"
+  operationType="query"
+  query={"query GetIssue($id: ID!) {\n  issue(id: $id) {\n    id\n    title\n    status\n  }\n}"}
+  variables={{ id: '<issue_id>' }}
+/>
+
+<ApiOperationExamples
+  title="Assign a vulnerability owner"
+  operationName="UpdateIssueAssignee"
+  operationType="mutation"
+  query={"mutation UpdateIssueAssignee($input: UpdateIssueAssigneesInput!) {\n  updateIssueAssignee(input: $input) {\n    assignees { id name }\n  }\n}"}
+  variables={{ input: { issueId: '<issue_id>', assigneeEmails: ['owner@example.com'] } }}
+/>
+
+## Change status
+
+Use the single-item mutation for one vulnerability. Use the bulk mutation when
+the same transition applies to multiple IDs.
+
+<ApiOperationExamples
+  title="Change one vulnerability status"
+  operationName="ChangeIssueStatus"
+  operationType="mutation"
+  query={"mutation ChangeIssueStatus($input: ChangeIssueStatusInput!) {\n  changeIssueStatus(input: $input) {\n    issue { id title status }\n  }\n}"}
+  variables={{ input: { id: '<issue_id>', status: 'CREATED' } }}
+/>
+
+<ApiOperationExamples
+  title="Change status for multiple vulnerabilities"
+  operationName="BulkChangeIssueStatus"
+  operationType="mutation"
+  query={"mutation BulkChangeIssueStatus($input: BulkChangeIssueStatusInput!) {\n  bulkChangeIssueStatus(input: $input) {\n    jobId\n  }\n}"}
+  variables={{ input: { companyId: '<company_id>', ids: ['<issue_id>'], status: 'CREATED' } }}
+/>
+
+For filters, finding types, and less common vulnerability operations, use the{' '}
+<Link to="/api/graphql/documentation">complete schema</Link>.

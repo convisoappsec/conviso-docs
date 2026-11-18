@@ -13,7 +13,7 @@ description: Integrate Azure Boards with Conviso Platform to synchronize vulnera
 
 </div>
 
-## Introduction[​](https://docs.convisoappsec.com/integrations/azure_boards/#introduction)
+## Introduction[​](https://conviso.io/docs/integrations/azure_boards/#introduction)
 
 Integrating Azure Boards in Conviso Platform will let developers gain productivity while we do all the hard work by automating the whole vulnerability management triage process.
 
@@ -27,7 +27,7 @@ This integration is designed to:
 - Ensure continuous technical validation through security scans
 - Provide governance without coupling security validation to workflow actions
 
-### Key Concepts[​](https://docs.convisoappsec.com/integrations/azure_boards/#key-concepts)
+### Key Concepts[​](https://conviso.io/docs/integrations/azure_boards/#key-concepts)
 
 Before configuring the integration, it is important to understand how vulnerability lifecycle, status, and workflow states work together.
 
@@ -39,7 +39,7 @@ Actions taken in Azure Boards reflect progress and intent, but never replace tec
 
 For the Conviso lifecycle model, status meanings, and closure behavior, see [Workflow Status](../vulnerability-management/workflow-status.md). For the operational handling flow inside the platform, see [Process](../vulnerability-management/process.md).
 
-### Status Mapping: Conviso ↔ Azure Boards[​](https://docs.convisoappsec.com/integrations/azure-#status-mapping)
+### Status Mapping: Conviso ↔ Azure Boards[​](https://conviso.io/docs/integrations/azure-#status-mapping)
 
 **Identified**
 Meaning: Vulnerability detected
@@ -63,7 +63,7 @@ Typical Azure Boards State: Done
 
 For the official Conviso status definitions used in this mapping, see [Workflow Status](../vulnerability-management/workflow-status.md).
 
-### Integration Capabilities[​](https://docs.convisoappsec.com/integrations/azure-#integration-capabilities)
+### Integration Capabilities[​](https://conviso.io/docs/integrations/azure-#integration-capabilities)
 
 This integration enhances issue control management and vulnerability consolidation between systems. It facilitates seamless interaction and communication between various aspects of the process. The integration offers the following capabilities:
 
@@ -81,7 +81,7 @@ This integration enhances issue control management and vulnerability consolidati
 - Updates Azure Boards issues when specific actions occur in Conviso Platform's Vulnerability Management System, such as changes in vulnerability status, assessment completions, or updates to risk levels.
 - Transitions Azure Boards issues to appropriate workflow stages when vulnerabilities are resolved or mitigated within Conviso Platform's Vulnerability Management System.
 
-### Prerequisites[​](https://docs.convisoappsec.com/integrations/azure_boards#prerequirements)
+### Prerequisites[​](https://conviso.io/docs/integrations/azure_boards#prerequirements)
 
 To set up the integration, you'll need the following information:
 
@@ -102,7 +102,7 @@ To set up the integration, you'll need the following information:
 
 </div>
 
-## Usage[​](https://docs.convisoappsec.com/integrations/azure_boards#usage)
+## Usage[​](https://conviso.io/docs/integrations/azure_boards#usage)
 
 To seamlessly integrate Conviso Platform with Azure Boards, follow these step-by-step procedures:
 
@@ -364,6 +364,6 @@ To access and navigate the Recent Deliveries page, follow these steps:
 
 </div>
 
-## Support[​](https://docs.convisoappsec.com/integrations/azure_boards#support)
+## Support[​](https://conviso.io/docs/integrations/azure_boards#support)
 
 Should you have any questions or require assistance while using the Conviso Platform, feel free to contact our dedicated support team.

@@ -11,4 +11,4 @@ Performed a **complete refactor of our technical documentation**, making it more
 - Reorganized content and navigation for an easier reading experience.
 - Updated a large amount of content, addressing multiple support tickets and update requests.
 
-👉 Access the [Conviso Docs](https://docs.convisoappsec.com/) to experience these updates.
+👉 Access the [Conviso Docs](https://conviso.io/docs/) to experience these updates.
