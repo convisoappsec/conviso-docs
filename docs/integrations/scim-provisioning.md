@@ -370,7 +370,7 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 
 **Google's test fails on Create User.** Google already provisioned that person (`409`), their address is outside the integration's **Authorized Domains** (`400`), or **Access token** is not the current token (`401`).
 
-**Test Connection fails.** Check that **Tenant URL** is the **SCIM URL** and that **Secret Token** is the current token. A regenerated, revoked or expired key is refused with a `401`.
+**Test Connection fails in Entra ID.** Check that **Tenant URL** is the **SCIM URL** and that **Secret Token** is the current token. A regenerated, revoked or expired key is refused with a `401`.
 
 **A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning.
 
