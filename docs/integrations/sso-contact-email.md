@@ -25,6 +25,7 @@ The contact email works in every company with an SSO integration, whether **Micr
 
 - With a contact email, messages go to it. Without one, they go to the login email.
 - A contact email the person chose never receives a link that registers the account, sets its password or reactivates it. An invitation with a sign-up link, a password reset and an account reactivation are sent as if the person had no contact email. Everything else goes to the contact email.
+- An account reactivation or an inactivity warning that goes to a login email in a `.onmicrosoft.com` domain is sent to the same name in the `.com` domain instead: `name@company.onmicrosoft.com` becomes `name@company.com`.
 - A contact email the identity provider declared receives every message, password reset links included.
 - The address is checked again before every message. If the SSO integration stops accepting its domain, or stops letting the identity provider set the contact email, messages go back to the login email.
 
