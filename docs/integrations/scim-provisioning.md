@@ -372,7 +372,7 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 
 **Test Connection fails in Entra ID.** Check that **Tenant URL** is the **SCIM URL** and that **Secret Token** is the current token. A regenerated, revoked or expired key is refused with a `401`.
 
-**A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning.
+**A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning in Entra ID. Google Workspace does not say when it retries a person it failed to provision: after its next sync, check under **Autoprovisioning**, with **Download list**, that the person is no longer among the failures.
 
 **Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let Entra ID decide team membership** is off.
 
