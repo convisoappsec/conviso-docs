@@ -36,6 +36,8 @@ This section provides a comprehensive guide on using the Conviso Platform SSO Ap
   - [What happens on each login](#what-happens-on-each-login)
 - [Email Field Mapping in SAML 2.0 for Microsoft Entra ID](#email-field-mapping-in-saml-20-for-microsoft-entra-id)
   - [How this works:](#how-this-works)
+- [Provision users with SCIM](#provision-users-with-scim)
+- [Contact email](#contact-email)
 - [Support](#support)
 - [Resources](#resources)
 
@@ -338,8 +340,8 @@ The comparison ignores case and surrounding spaces, so `Conviso-Admin` matches `
 Declaring the first mapping is what hands the access profiles of that company over to Entra ID. From then on, every SSO login re-evaluates the user's profile:
 
 - **A role that matches a mapping** — the user gets the mapped access profile, replacing whatever profile they had.
-- **No role, or only roles that match nothing** — the user is set to the global **viewer-only** profile. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in Entra ID.
-- **More than one matching role** — one of them is applied, and there is no guarantee of which: the order of a multivalued claim is not defined, so it may differ between logins. Assign a single mapped role per user.
+- **No role, or only roles that match nothing** — a user whose access profile came from the identity provider, or who has none, is set to the global **viewer-only** profile. An access profile an administrator set by hand in the Conviso Platform stays until a mapped role replaces it, so to override the profile of a user who carries a mapped role, change it in Entra ID.
+- **More than one matching role** — the access profile the identity provider already gave the user stays while one of their roles still maps to it. Otherwise one of them is applied, and there is no guarantee of which: the order of a multivalued claim is not defined, so it may differ between logins. Assign a single mapped role per user.
 
 While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
 
@@ -370,6 +372,14 @@ The `user.userprincipalname` attribute is not mandatory. Just make sure you're u
 During the SSO authentication process, the email is used as the primary identifier to map the user's identity in the Conviso Platform. This means the email value provided by the Microsoft Entra ID identity provider in the SAML Assertion must match exactly with the user's email in Conviso. If it doesn't match, login may fail.
 
 Therefore, when configuring Microsoft Entra ID as the identity provider, make sure the email field is mapped correctly and matches the email associated with the user's account in the Conviso Platform.
+
+## Provision users with SCIM
+
+The SSO login updates a user only when they log in. To keep names, teams and access profiles up to date between logins, and to remove from the company the people you deactivate in Entra ID, connect Entra ID over SCIM 2.0. Provisioning runs from a second, non-gallery enterprise application, because the **Conviso Platform SSO** application does not support it. See [SCIM Provisioning](scim-provisioning.md#microsoft-entra-id).
+
+## Contact email
+
+When your users log in with an address that has no mailbox, such as a `@company.onmicrosoft.com` user principal name, they can receive Conviso Platform messages at a contact email instead, without changing how they log in. See [Contact Email for SSO Users](sso-contact-email.md).
 
 ## Support
 If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).

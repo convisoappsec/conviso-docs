@@ -135,8 +135,8 @@ The comparison ignores case and surrounding spaces. Everything else has to match
 Declaring the first mapping is what hands the access profiles of that company over to your identity provider. From then on, every SSO login re-evaluates the user's profile:
 
 - **A role that matches a mapping** — the user gets the mapped access profile, replacing whatever profile they had.
-- **No role, or only roles that match nothing** — the user is set to the global **viewer-only** profile. Profiles granted manually in the Conviso Platform do not survive the next login, so an operator who needs to override a profile has to change it in the identity provider.
-- **More than one matching role** — one of them is applied, and there is no guarantee of which: the order of a multivalued attribute is not defined, so it may differ between logins. Assign a single mapped role per user.
+- **No role, or only roles that match nothing** — a user whose access profile came from the identity provider, or who has none, is set to the global **viewer-only** profile. An access profile an administrator set by hand in the Conviso Platform stays until a mapped role replaces it, so to override the profile of a user who carries a mapped role, change it in the identity provider.
+- **More than one matching role** — the access profile the identity provider already gave the user stays while one of their roles still maps to it. Otherwise one of them is applied, and there is no guarantee of which: the order of a multivalued attribute is not defined, so it may differ between logins. Assign a single mapped role per user.
 
 While a company has **no** mapping declared, nothing changes: access profiles keep being managed entirely in the Conviso Platform.
 
@@ -185,5 +185,13 @@ When configuring the SSO integration via SAML, it is important to ensure that th
 During the SSO authentication process, the **email** is used as the primary identifier to map the user's identity in the Conviso Platform. This means the email value provided by the SSO identity provider in the **SAML Assertion** must match exactly with the user's email in Conviso. If not, login might fail.
 
 Therefore, when configuring the identity provider (such as Oracle Authentication Manager or others), make sure the `email` field is mapped correctly and matches the email associated with the user's account in the Conviso Platform.
+
+## Provision users with SCIM
+
+The SSO login updates a user only when they log in. If your identity provider provisions over SCIM 2.0, it can keep names, teams and access profiles up to date between logins, and remove from the company the people you deactivate. The Conviso Platform side, from the provisioning key to what the identity provider may decide, is in [SCIM Provisioning](scim-provisioning.md).
+
+## Contact email
+
+When your users log in with an address that has no mailbox, they can receive Conviso Platform messages at a contact email instead, without changing how they log in. See [Contact Email for SSO Users](sso-contact-email.md).
 
 [![Discover Conviso Platform!](https://no-cache.hubspot.com/cta/default/5613826/interactive-125788977029.png)](https://cta-service-cms2.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLKtcWzoFbzpyImNNQsXC9S54LjJuklwM39zNd7hvSoR%2FVTX%2FXjNdqdcIIDaZwGiNwYii5hXwRR06puch8xINMyL3EXxTMuSG8Le9if9juV3u%2F%2BX%2FCKsCZN1tLpW39gGnNpiLedq%2BrrfmYxgh8G%2BTcRBEWaKasQ%3D&webInteractiveContentId=125788977029&portalId=5613826)

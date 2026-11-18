@@ -251,7 +251,9 @@ module.exports = {
               items: [
                 'integrations/google',
                 'integrations/microsoft-entra-id',
-                'integrations/saml'
+                'integrations/saml',
+                'integrations/scim-provisioning',
+                'integrations/sso-contact-email'
               ]
             },
             {
