@@ -310,6 +310,8 @@ With no groups in the provisioning scope, Google provisions every person who has
 
 These groups only choose who is provisioned. Google does not send them, so they put nobody in a team.
 
+Google does not provision the people of a group who are in a secondary domain or outside your organization. Provisioning never updates them, and removal never reaches them.
+
 ### Choose how people are deprovisioned {#google-workspace-deprovisioning}
 
 In the deprovisioning step, Google asks what to do with a person's account in the app, and when, for three events:
