@@ -184,7 +184,7 @@ Rejecting withdraws the pre-validation at the certificate authority. It is avail
 pre-validation is **Pending Validation** or **Active**.
 
 1. In the row's **⋮** menu, select **Reject**.
-2. Check the organization and the certificate authority order shown, type `REJECT` and confirm.
+2. Check the type and the organization shown, type `REJECT` and confirm.
 
 :::warning
 Rejecting cannot be undone. The pre-validation is no longer offered at issuance, and using one again
