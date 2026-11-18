@@ -290,7 +290,13 @@ Google Workspace provisions people. It provisions no groups, and it has not been
 
 ### Map the attributes {#google-workspace-attributes}
 
-Google fills the attribute mapping with the attributes Conviso Platform accepts. Check that the app attribute `userName` comes from the same Google Directory attribute the SAML app sends as `email`, which the [Google SSO setup](google.md#google-web-app-setup) maps from **Primary email**. Keep the rest and select **Continue**.
+Google fills the app attributes from the SCIM user schema Conviso Platform announces, which lists more attributes than the platform reads. Check that each app attribute below comes from a Google Directory attribute, then select **Continue**.
+
+| App attribute | What it does |
+| --- | --- |
+| `userName` | Finds the account by its login email. It must come from the attribute the SAML app sends as `email`, which the [Google SSO setup](google.md#google-web-app-setup) maps from **Primary email** |
+| `displayName`, `name.givenName`, `name.familyName` | Keeps the name up to date: `displayName` when Google sends it, otherwise the given and family names together |
+| `emails[type eq "work"].value` | The work email, which becomes the contact email when Google Workspace sets it. An address equal to the login email sets none |
 
 :::caution Use the same attribute as the SSO login
 `userName` must carry the address the person logs in with. If it comes from another attribute than the [`email` of the SAML app](google.md#email-field-mapping-in-saml-20), provisioning finds no account, or another one.
