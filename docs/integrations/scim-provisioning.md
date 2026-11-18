@@ -319,7 +319,7 @@ Conviso Platform takes a suspension and a hard delete the same way, as a deactiv
 - **Off**: nobody leaves the company. The delay only decides when the recent deliveries show "Would remove *person* from the company".
 - **On**: the person leaves the company, and their work is unassigned, when the first of these requests arrives. With both actions chosen, the suspension comes first, because Google wants a longer delay before a hard delete, and the hard delete after it changes nothing more. See [Removal from the company](#removal).
 
-While removal is on, the delay is how long the person stays in the company after the event. In that time, Google no longer lets them sign in through the SAML app, but they keep their teams, their access profile and their assigned work, and whatever does not go through the SSO login, such as their personal API keys, keeps working.
+While removal is on, the delay is how long the person stays in the company after the event. In that time, Google no longer lets them sign in through the SAML app, but they keep their teams, their access profile and their assigned work, and whatever does not go through the SSO login keeps working: their personal API keys and, unless **Allow login via SSO only** is on in the integration, a login with a password, which a password reset can also give them.
 
 - **Within 24 hours**: they leave the company at most a day after the event.
 - **After 1, 7 or 21 days**: they stay in the company for that long, then leave it.
