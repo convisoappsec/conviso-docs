@@ -250,6 +250,7 @@ In the provisioning settings, enter a **Notification Email** and turn on acciden
 
 - **Authorize the domains before you turn provisioning on.** Everyone outside them is refused with a `400`.
 - **Move team membership to provisioning only after the first full cycle has sent the groups.** Until a person's groups arrive, they leave the mapped teams.
+- **Give each group a name no other group of the integration uses.** Entra ID allows two groups with the same display name, but the platform refuses the second with a `409`, and letter case does not tell two names apart. When two groups swap names, both keep being refused until one of them gets a temporary name first.
 - **Give each person one mapped role.**
 - **Read the "Would remove" deliveries before you turn removal on.**
 - **Keep the key valid.** When most requests fail, an expired or revoked key included, Entra ID puts provisioning in quarantine: cycles drop to one a day, and after four weeks provisioning is turned off. Regenerate the key before it expires, paste the new token, and restart provisioning.
@@ -272,6 +273,8 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 **A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning.
 
 **Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let Entra ID decide team membership** is off.
+
+**A group is refused with status 409.** Another group of the same integration already has its display name, whatever the letter case, or its `externalId`. Rename one of them in the identity provider. When two groups swap names, give one a temporary name, wait for the next cycle, then give it the final name.
 
 **People became viewer-only.** Access profiles come from provisioning, but Entra ID sends no mapped role. Check the **Send roles** steps, the expression of the `roles` mapping, and the role each person has in the provisioning application.
 
