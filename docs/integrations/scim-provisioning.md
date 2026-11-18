@@ -121,7 +121,7 @@ Either source applies the mappings of the **Role Mapping** step, and only while 
 
 With provisioning as the source, every mapped role must be sent over SCIM, not only in the SSO login. Once at least one role is mapped, a sync that declares none of the mapped roles for a person, or no role at all, sets that person to **viewer-only**. An access profile an administrator set by hand is not demoted.
 
-Give each person one mapped role. When a person carries more than one, the access profile they already have stays while its role is still declared, so changing their profile means removing the old role in the identity provider.
+Give each person one mapped role. When a person carries more than one, the access profile the identity provider already gave them stays while one of their roles still maps to it, so changing their profile means removing the old role in the identity provider. An access profile an administrator set by hand is replaced by the profile of the first mapped role the identity provider declares.
 
 ### Removal from the company {#removal}
 
