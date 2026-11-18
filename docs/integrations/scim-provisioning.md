@@ -268,7 +268,7 @@ Google Workspace provisions from the custom SAML app your people already sign in
 
 ### What Google Workspace provisions {#google-workspace-provisions}
 
-Google Workspace provisions people. It provisions no groups, and it has not been seen sending roles.
+Google Workspace provisions people. It provisions no groups, and a role it sends is not used: see [Map the attributes](#google-workspace-attributes).
 
 - **Names, removal and the contact email.** Google keeps each person's name up to date. When you allow it on the provisioning step, its deprovisioning [removes people from the company](#removal), and it [sets the contact email](#contact-email).
 - **No teams.** The groups you choose in Google only decide who is provisioned, and Google never sends them. Team membership keeps coming from the SSO login, through the groups the SAML app sends, as described in [Setup Group Mapping Integration](google.md#setup-group-mapping-integration). The step of a Google SSO integration does not offer provisioning as the source of team membership.
