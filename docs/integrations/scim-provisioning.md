@@ -24,7 +24,7 @@ The Conviso Platform side is the same for every identity provider, and it is des
 - An **Entra ID** or **SAML 2.0** SSO integration, already saved. The Google SSO integration has no provisioning step.
 - SCIM provisioning enabled for your company. Conviso enables it: ask our [support team](mailto:support@convisoappsec.com).
 - To generate and manage the provisioning key: a company administrator, the role that manages service API keys.
-- To change what the identity provider decides and to read the recent deliveries: permission to invite users.
+- To change what the identity provider decides and to read the recent deliveries: a company administrator who also has permission to invite users.
 - An identity provider that provisions over SCIM 2.0 with a Bearer token.
 
 ## Open the provisioning step {#open-the-step}
@@ -80,7 +80,7 @@ Once the token is copied, the step shows the key's status, when it was **Last us
 
 ## Choose what the identity provider decides {#choose-what-the-identity-provider-decides}
 
-Four settings on the step decide what provisioning may change. Only users with permission to invite users can change them, and the info icon next to each one explains it on the screen.
+Four settings on the step decide what provisioning may change. Only company administrators who also have permission to invite users can change them, and the info icon next to each one explains it on the screen.
 
 | Setting | As it comes | Options |
 | --- | --- | --- |
