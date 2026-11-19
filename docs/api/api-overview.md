@@ -8,9 +8,12 @@ image: '/static/img/apioverviewseo.png'
 ---
 
 import Link from '@docusaurus/Link';
+import ApiUrls from '@site/src/components/ApiUrls';
 
 The Conviso API is a GraphQL API for automating platform workflows. Use it to
 read and manage projects, assets, vulnerabilities, scans, and integrations.
+
+<ApiUrls />
 
 ## Start here
 
