@@ -62,6 +62,20 @@ module.exports = {
           collapsed: true,
           items: [
             'posture-management/posture',
+            {
+              type: 'category',
+              label: 'Metrics Studio',
+              link: {
+                type: 'doc',
+                id: 'posture-management/metrics-studio/metrics-studio',
+              },
+              collapsed: true,
+              items: [
+                'posture-management/metrics-studio/create-metrics',
+                'posture-management/metrics-studio/explore-metrics',
+                'posture-management/metrics-studio/share-and-reuse',
+              ],
+            },
             'posture-management/vulnerability-kpi',
             'posture-management/security-champions-metrics',
             'posture-management/aspm-coverage',

@@ -31,6 +31,10 @@ The platform currently provides four dashboard views:
 
 Use these pages when you need detailed guidance about what each dashboard shows and how to interpret the charts.
 
+## Create metrics with Metrics Studio
+
+Open **Dashboard > Metrics Studio** to create metrics for managing your AppSec program. Define the scope and comparisons that matter to your team, follow remediation commitments, investigate the records behind a result, and measure progress. Follow the [Metrics Studio quick start](../posture-management/metrics-studio/metrics-studio.md) to begin.
+
 ## Filters
 
 By default, dashboards are filtered to show the last 7 days. You can refine the view using:
