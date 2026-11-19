@@ -254,7 +254,9 @@ situation in the list. The credential shows **Waiting for connection** until the
 registers with the key, and **Connected** after that. A link to this guide sits right below the
 key warning, for the step-by-step setup.
 
-![Connect server panel](../../../static/img/platform/ssl-certificates-acme-connect-server.png "Step 1 of Connect server: the credential name and the product, with the credits available for each.")
+![Connect server panel](../../../static/img/platform/ssl-certificates-acme-connect-server.png "Step 1 of Connect server: the product, with the credits available for each, including the OV and EV ones.")
+
+![Organization step of Connect server](../../../static/img/platform/ssl-certificates-acme-connect-organization.png "Step 2 of Connect server, for OV and EV products: the pre-validated organization and its details.")
 
 ### OV and EV Through ACME {#ov-ev}
 

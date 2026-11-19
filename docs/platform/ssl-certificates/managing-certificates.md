@@ -78,7 +78,9 @@ The **Certificate details** card shows the **Issuer**, the **Validation** method
 **Expires** dates, and **Subscription until** — the date up to which reissues are included.
 
 The **Lifecycle** timeline below it shows how far the certificate has progressed:
-**Requested** → **Domain validated** → (**EV details**, for EV certificates) → **Issued**. A
+**Requested** → **Domain validated** → (**EV details** for EV certificates, or **Pre-validated
+organization**, already complete, when the EV certificate used a
+[pre-validation](./organization-pre-validation.md)) → **Issued**. A
 certificate that did not complete ends on **Rejected**, **Replaced** or **Revoked** instead.
 
 ![Detail page of a valid certificate](../../../static/img/platform/ssl-certificates-detail.png "A valid certificate, with the lifecycle complete through to Issued.")

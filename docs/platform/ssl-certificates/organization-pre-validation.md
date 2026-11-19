@@ -43,6 +43,8 @@ organizations** page lists every pre-validation of your company:
 Search by name or CNPJ, use the **Active** and **Pending Validation** shortcuts, or open
 **Filters** for status and type. Select a row to open its details.
 
+![Pre-validated organizations page](../../../static/img/platform/ssl-certificates-prevalidation-list.png "The pre-validations of the company, active and pending validation, with the Active and Pending Validation shortcuts.")
+
 A company may have several organizations, each identified by its CNPJ, and each with its own OV and
 EV pre-validations.
 
@@ -87,7 +89,9 @@ Select **Request pre-validation**. The request goes in steps, shown at the top o
    representative has authority to represent the organization, and select **Send request**.
 
 Each organization can have only one pre-validation **in progress** per type. Another one of the same
-type can be requested while the current one is active, rejected or expired.
+type can be requested while the current one is active, rejected, revoked or expired.
+
+![Review step of the request](../../../static/img/platform/ssl-certificates-prevalidation-review.png "The Review step of an OV request: the organization, the representative and who signs the agreement, each with Edit.")
 
 ### The Support Ticket {#support-ticket}
 
@@ -105,6 +109,8 @@ The details show the steps of the validation, each as **Done**, **In progress** 
 | **Order authorization** (OV) / **Representative verification** (EV) | ✓ | ✓ |
 | **Organization validation** | ✓ | ✓ |
 | **Final approval** | | ✓ |
+
+![Details of a pre-validation in validation](../../../static/img/platform/ssl-certificates-prevalidation-detail.png "An EV pre-validation in validation: two steps done, the organization validation in progress and the final approval waiting.")
 
 The platform checks the certificate authority automatically. To check right away, select **Check
 now**, at most once a minute.
@@ -135,10 +141,10 @@ e-mail from the certificate authority. Its cancel link cancels the company's pre
 
 | Status | Meaning |
 | --- | --- |
-| **Submission unconfirmed** | The certificate authority did not confirm the request. The platform keeps checking. Do not send it again; if it stays like this, contact support |
+| **Submission unconfirmed** | The certificate authority did not confirm the request. The platform keeps checking. Do not send it again: if the certificate authority has no record of it after 24 hours, it becomes **Rejected** and the organization can be requested again |
 | **Pending Validation** | The certificate authority is validating the organization. Follow the steps in the details |
 | **Active** | Validated. It can be chosen when issuing certificates of the types it serves |
-| **Rejected** | The certificate authority refused it, or it was rejected in the platform. When the certificate authority already holds a pre-validation for these details, the details say so |
+| **Rejected** | The certificate authority refused it, the request never reached the certificate authority, or it was rejected in the platform. When the certificate authority already holds a pre-validation for these details, the details say so |
 | **Revoked** | It was withdrawn after becoming active, in the platform or by the certificate authority. It is no longer offered at issuance |
 | **Expired** | The validity has ended. It is no longer offered at issuance; to keep using one, request a new pre-validation |
 
@@ -153,10 +159,10 @@ The pre-validation is chosen at each OV or EV order in the
 
 1. In **Product**, pick an OV or EV credit. The wizard tells you whether the company has an active
    pre-validation, or links to the **Pre-validated organizations** page if it has none.
-2. In **Organization**, select **Use a pre-validated organization**. With more than one, choose it in
-   **Pre-validated organization** (search by organization or CNPJ); with only one, it is already
-   chosen. An OV credit offers the active OV and EV pre-validations; an EV
-   credit offers only the EV ones.
+2. In **Organization**, **Use a pre-validated organization** is already selected. With more than
+   one, confirm which one in **Pre-validated organization** (search by organization or CNPJ): one
+   comes chosen. An OV credit offers the active OV and EV pre-validations; an EV credit offers only
+   the EV ones.
 3. The organization and representative details come from the pre-validation and are not typed
    again. If the CSR names another organization, the wizard warns you: the order uses the
    pre-validated organization.
@@ -212,7 +218,7 @@ that is what you want.
 
 | Situation | What to do |
 | --- | --- |
-| The request is refused because one is already in progress | The organization already has a pre-validation of that type being validated. Wait for it to finish or follow it in the details. |
+| The request is refused because one is already in progress | The organization already has a pre-validation of that type being validated. Wait for it to finish or follow it in the details. A request in **Submission unconfirmed** also counts as in progress, for up to 24 hours. |
 | The request is refused because a pre-validation already exists for these details | The certificate authority already holds one for this organization. Contact support before requesting again. |
 | **Continue** does not move to the next step | A field is missing or invalid; the message under it says why. |
 | Requesting, rejecting or revoking asks for two-factor authentication | Sign in to the portal with two-factor authentication (or single sign-on) and try again. |
