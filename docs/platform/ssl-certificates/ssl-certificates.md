@@ -69,7 +69,9 @@ change the encryption — it changes what the certificate asserts, and how much 
 For **OV** and **EV**, the certificate authority contacts the person you register as the
 **Application Representative**, by phone or e-mail, to confirm the request was authorized.
 Issuance stays pending until that person responds. Register someone who is reachable — an
-unreachable contact is the most common reason an OV or EV order stalls.
+unreachable contact is the most common reason an OV or EV order stalls. With an active
+[organization pre-validation](./organization-pre-validation.md), the order only waits for domain
+validation.
 :::
 
 ### Domain coverage: single, wildcard and multi-domain
@@ -207,6 +209,8 @@ takes longer.
   choosing a product to publishing the validation record.
 - [Managing Certificates](./managing-certificates.md) — tracking, validating, downloading,
   reissuing and revoking a certificate.
+- [Organization Pre-validation](./organization-pre-validation.md) — validating the organization
+  once, so OV and EV orders only wait for domain validation.
 - [Automating Certificates with ACME](./acme.md) — issuing and renewing certificates with certbot,
   cert-manager or any ACME client.
 
