@@ -1,0 +1,93 @@
+.card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  margin: 1.75rem 0 2.5rem;
+  overflow: hidden;
+}
+
+.header {
+  background: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding: 1rem;
+}
+
+.header h2 {
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.header p {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.rows {
+  padding: 0.35rem 1rem;
+}
+
+.row {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(9rem, 0.65fr) minmax(0, 1.7fr);
+  padding: 0.65rem 0;
+}
+
+.label {
+  color: var(--ifm-font-color-base);
+  font-size: 0.875rem;
+}
+
+.valueGroup {
+  align-items: stretch;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.valueGroup code {
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  flex: 1;
+  font-size: 0.8125rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.55rem 0.7rem;
+  white-space: nowrap;
+}
+
+.copyButton {
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+  flex: 0 0 2.5rem;
+  font-size: 1rem;
+}
+
+.copyButton:hover {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-primary);
+}
+
+.copyButton:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -2px;
+}
+
+@media (max-width: 576px) {
+  .rows {
+    padding: 0.5rem 1rem;
+  }
+
+  .row {
+    align-items: stretch;
+    gap: 0.45rem;
+    grid-template-columns: 1fr;
+    padding: 0.6rem 0;
+  }
+}
