@@ -41,7 +41,7 @@ Click on the **Administrators** row to open the options, and under the **API Key
 
 ## Conviso Platform Setup
 
-Log in to the [Conviso Platform](https://app.convisoappsec.com);
+Log in to the [Conviso Platform](https://app.conviso.io);
 
 On the main menu to the left, click on **Integrations**. At the search bar, type **Dependency Track**, then click on the **Connect** button on the **Dependency Track** card:
 

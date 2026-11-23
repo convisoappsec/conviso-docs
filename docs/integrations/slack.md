@@ -96,4 +96,4 @@ goes quiet.
 With the integration complete, simply monitor the channel used in the integration to stay informed about the risks associated with your company.
 
 ## Support
-If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@conviso.io).

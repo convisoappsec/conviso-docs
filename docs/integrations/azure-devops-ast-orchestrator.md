@@ -117,7 +117,7 @@ parameters:
     default: ""
   - name: api_url
     type: string
-    default: "https://api.convisoappsec.com"
+    default: "https://api.conviso.io"
   - name: company_id
     type: string
     default: ""
@@ -159,14 +159,14 @@ steps:
         exit 1
       fi
 
-      export CONVISO_API_URL="${API_URL:-https://api.convisoappsec.com}"
+      export CONVISO_API_URL="${API_URL:-https://api.conviso.io}"
       CONVISO_API_URL="${CONVISO_API_URL%/}"
       case "$CONVISO_API_URL" in
-        https://app.convisoappsec.com)
-          export CONVISO_API_URL="https://api.convisoappsec.com"
+        https://app.conviso.io)
+          export CONVISO_API_URL="https://api.conviso.io"
           ;;
-        https://staging.convisoappsec.com)
-          export CONVISO_API_URL="https://api.staging.convisoappsec.com"
+        https://staging.conviso.io)
+          export CONVISO_API_URL="https://api.staging.conviso.io"
           ;;
       esac
 
@@ -406,7 +406,7 @@ Do **not** add an Azure DevOps PAT for clone. The job calls `conviso-ast-reposit
 
 ![Validation: successful orchestrator pipeline run](/img/azure-devops/ast-step-06-run-success.png)
 
-Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_name` and `branch` for an imported asset. Leave `api_url` as the default for production (`https://api.convisoappsec.com`). Set `company_id` or define the pipeline variable `CONVISO_COMPANY_ID`.
+Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_name` and `branch` for an imported asset. Leave `api_url` as the default for production (`https://api.conviso.io`). Set `company_id` or define the pipeline variable `CONVISO_COMPANY_ID`.
 
 ## Troubleshooting
 
@@ -414,7 +414,7 @@ Manual test (optional): on the orchestrator, **Run pipeline**. Set `repo_full_na
 |---------|-------------|
 | Merge done, no pipeline | **Conviso AST Scans** off in Scan Setup; organization/project/pipeline ID incomplete (the setup reads **Needs attention**); asset disabled or not imported; PR destination ≠ asset branch / Ref; connecting user lacks **Edit subscriptions** so no Service Hook was registered ([details](./azure-devops.md#service-hook-permissions)) |
 | `Repository is not available for this API key` | Wrong environment (`CONVISO_API_KEY` vs `api_url`); Azure integration not authorized; asset not imported/enabled for that company |
-| Unreadable / HTML response from Platform | Use the production API host (`https://api.convisoappsec.com`). The template remaps `https://app.convisoappsec.com` automatically |
+| Unreadable / HTML response from Platform | Use the production API host (`https://api.conviso.io`). The template remaps `https://app.conviso.io` automatically |
 | `exec .../node16/bin/node: no such file` (or node24) on first script step | Job-level `container:` with the Alpine image. Use the template above (`docker run` on the host) — do not wrap the job in `container:` |
 | Initialize containers / `docker exec` fails | Same cause: remove job-level `container:` and follow the `docker run` template |
 | `CONVISO_API_KEY` empty / unauthorized | Confirm the secret is a **pipeline variable** (Edit → Variables). A Library / variable group is not enough unless the YAML also references that group — this template does not |

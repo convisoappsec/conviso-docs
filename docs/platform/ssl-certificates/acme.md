@@ -229,7 +229,7 @@ and switch off each of them on its own.
    change it later with **Edit domains**. Click **Generate key** to create the server credential.
 4. **Install on the server:** copy the **Directory URL**, the **EAB Key ID** and the
    **EAB HMAC Key**, and use them in the client as shown below. The Directory URL is the same for
-   every company: `https://api.app.convisoappsec.com/acme/directory`.
+   every company: `https://api.app.conviso.io/acme/directory`.
 
 :::info Two-factor sign-in
 To create a server credential, edit its domains or generate an EAB, your user account must have

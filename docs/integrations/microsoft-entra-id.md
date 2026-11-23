@@ -77,9 +77,9 @@ To install the Conviso Platform SSO application, follow these steps:
 </div>
 
 8. The **Basic SAML Configuration** must be edited as it is a requirement by Microsoft. Select **Edit**, then **Save** with the following data:
-   - **Identifier (Entity ID)**: `https://auth.app.convisoappsec.com/realms/conviso-platform`
-   - **Reply URL (Assertion Consumer Service URL)**: `https://auth.app.convisoappsec.com/realms/conviso-platform/broker/azure_{YOUR_COMPANY_ID}/endpoint`
-   - **Sign on URL**: `https://app.convisoappsec.com/spa/auth/login`
+   - **Identifier (Entity ID)**: `https://auth.app.conviso.io/realms/conviso-platform`
+   - **Reply URL (Assertion Consumer Service URL)**: `https://auth.app.conviso.io/realms/conviso-platform/broker/azure_{YOUR_COMPANY_ID}/endpoint`
+   - **Sign on URL**: `https://app.conviso.io/spa/auth/login`
  - Close the pop-up window.
 
 :::note
@@ -347,7 +347,7 @@ While a company has **no** mapping declared, nothing changes: access profiles ke
 An access profile says what a user is allowed to do; it is not what gives them access to the company's data. That comes from an invite or from a Team the user joined through group mapping. A user mapped only by role logs in with the mapped profile and still sees nothing until they have access.
 :::
 
-You are now ready to go. To log in again with an email from the domain specified in the integration, use the **SSO Access** option on the [Conviso Platform website](https://app.convisoappsec.com/).
+You are now ready to go. To log in again with an email from the domain specified in the integration, use the **SSO Access** option on the [Conviso Platform website](https://app.conviso.io/).
 
 Note: Also consult the [Microsoft Documentation](https://learn.microsoft.com/en-us/entra/identity/saas-apps/appsec-flow-sso-tutorial) for further guidance. There you will find a similar tutorial to help you.
 
@@ -372,9 +372,9 @@ During the SSO authentication process, the email is used as the primary identifi
 Therefore, when configuring Microsoft Entra ID as the identity provider, make sure the email field is mapped correctly and matches the email associated with the user's account in the Conviso Platform.
 
 ## Support
-If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@conviso.io).
 
 ## Resources
 
 - [Microsoft Entra SSO tutorial](https://learn.microsoft.com/en-us/entra/identity/saas-apps/appsec-flow-sso-tutorial)
-- [Conviso Platform](https://app.convisoappsec.com/)
+- [Conviso Platform](https://app.conviso.io/)

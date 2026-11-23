@@ -313,7 +313,7 @@ If the rule is violated, the CLI still prints the severity summary and then list
 │ CVSS: 9.1                                                                                        │
 │                                                                                                  │
 │ Link:                                                                                            │
-│ https://app.convisoappsec.com/spa/company/11/vulnerabilities/123?assetId=42                      │
+│ https://app.conviso.io/spa/company/11/vulnerabilities/123?assetId=42                      │
 └──────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 💡 Full vulnerability details: re-run with --output gate-result.json
@@ -483,4 +483,4 @@ Use YAML rules when policy-as-code inside the repository is a stronger requireme
 
 ## Support
 
-If you have any questions or need help using Conviso AST, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help using Conviso AST, please don't hesitate to contact our [support team](mailto:support@conviso.io).

@@ -168,7 +168,7 @@ on:
         description: "Conviso API URL"
         required: false
         type: string
-        default: https://api.convisoappsec.com
+        default: https://api.conviso.io
       company_id:
         description: "Conviso company id"
         required: false
@@ -199,14 +199,14 @@ jobs:
           SCAN_RUN_ID: ${{ inputs.scan_run_id }}
         run: |
           set -euo pipefail
-          export CONVISO_API_URL="${API_URL:-https://api.convisoappsec.com}"
+          export CONVISO_API_URL="${API_URL:-https://api.conviso.io}"
           CONVISO_API_URL="${CONVISO_API_URL%/}"
           case "$CONVISO_API_URL" in
-            https://app.convisoappsec.com)
-              export CONVISO_API_URL="https://api.convisoappsec.com"
+            https://app.conviso.io)
+              export CONVISO_API_URL="https://api.conviso.io"
               ;;
-            https://staging.convisoappsec.com)
-              export CONVISO_API_URL="https://api.staging.convisoappsec.com"
+            https://staging.conviso.io)
+              export CONVISO_API_URL="https://api.staging.conviso.io"
               ;;
           esac
           case "${ASSET_ID:-}" in

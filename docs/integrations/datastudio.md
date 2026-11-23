@@ -60,7 +60,7 @@ function test() {
   }
   `;
 
-  var url = "https://app.convisoappsec.com/graphql";
+  var url = "https://app.conviso.io/graphql";
   var options = {
     headers: {
       'Content-Type': 'application/json',

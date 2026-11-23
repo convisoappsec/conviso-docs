@@ -76,4 +76,4 @@ Reachability data is available on `ScaFinding.detail` for custom integrations an
 
 ## Support
 
-If you have any questions or need help understanding Reachability Analysis results, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help understanding Reachability Analysis results, please don't hesitate to contact our [support team](mailto:support@conviso.io).

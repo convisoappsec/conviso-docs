@@ -66,7 +66,7 @@ yarn screenshot:install
 
 ### 2. Save an authenticated session
 
-This opens a Chromium window with default login URL `https://app.convisoappsec.com/spa/auth/login`.
+This opens a Chromium window with default login URL `https://app.conviso.io/spa/auth/login`.
 If needed, you can override with `--loginUrl`.
 
 ```bash
@@ -76,7 +76,7 @@ yarn screenshot:auth
 ### 3. Capture the target page (standard command)
 
 ```bash
-yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed
+yarn screenshot:standard --url=https://app.conviso.io/spa/security-feed
 ```
 
 The command only accepts:
@@ -89,7 +89,7 @@ The command only accepts:
 If you need custom captures for one-off cases, use:
 
 ```bash
-yarn screenshot:url --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
+yarn screenshot:url --url=https://app.conviso.io/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
 ```
 
 ## Community

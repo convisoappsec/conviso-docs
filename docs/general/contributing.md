@@ -162,4 +162,4 @@ If you prefer a step-by-step visual walkthrough, use the screenshots below.
 
 ## Support
 
-If you need help, contact [support@convisoappsec.com](mailto:support@convisoappsec.com).
+If you need help, contact [support@conviso.io](mailto:support@conviso.io).

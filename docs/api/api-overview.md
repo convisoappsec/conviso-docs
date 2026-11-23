@@ -23,7 +23,7 @@ read and manage projects, assets, vulnerabilities, scans, and integrations.
 4. Choose a workflow guide, then use the full schema reference only when you need additional fields or operations.
 
 ```bash
-curl --request POST https://api.convisoappsec.com/graphql \
+curl --request POST https://api.conviso.io/graphql \
   --header "x-api-key: $CONVISO_API_KEY" \
   --header "content-type: application/json" \
   --data '{"query":"{ __typename }"}'

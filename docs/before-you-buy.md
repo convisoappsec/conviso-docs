@@ -65,7 +65,7 @@ For each application, identify:
 
 Map the systems that will contribute data or receive actions from the platform. This makes it easier to select the right integrations and identify owners before the PoC begins.
 
-Consider source control and delivery, existing security tools, defect trackers, collaboration channels, identity providers, and the application context that informs prioritization. Review the [Integrations overview](./integrations/integrations_intro.md) and the [integration catalog](https://www.convisoappsec.com/platform/integrations). If a required tool is not listed, assess whether the [GraphQL API](./api/api-overview.md) supports the workflow.
+Consider source control and delivery, existing security tools, defect trackers, collaboration channels, identity providers, and the application context that informs prioritization. Review the [Integrations overview](./integrations/integrations_intro.md) and the [integration catalog](https://conviso.io/platform/integrations). If a required tool is not listed, assess whether the [GraphQL API](./api/api-overview.md) supports the workflow.
 
 ### Plan access and operating ownership
 
@@ -98,8 +98,8 @@ Include security, privacy, and procurement stakeholders early when their review 
 
 - [Data Retention](./data-retention.md), including standard retention periods, deletion requests, and backup rotation.
 - [User Management](./platform/user-management.md), including profiles, teams, access scopes, and service API keys.
-- [Information Security and Services](https://www.convisoappsec.com/information-security-and-services) for Conviso's security management information.
-- [Conviso Status Page](https://status.convisoappsec.com) for service availability information.
+- [Information Security and Services](https://conviso.io/information-security-and-services) for Conviso's security management information.
+- [Conviso Status Page](https://status.conviso.io) for service availability information.
 
 ## Decide and plan rollout
 
@@ -107,7 +107,7 @@ Include security, privacy, and procurement stakeholders early when their review 
 
 The platform is modular. Confirm the products, plan permissions, usage-based capabilities, support arrangements, applications, assets, repositories, and environments included in the intended rollout.
 
-Discuss availability of AI Pentest credits or other usage-based capabilities when applicable, the integrations and implementation dependencies required, expected users and service accounts, and onboarding responsibilities. See [Conviso Platform pricing](https://www.convisoappsec.com/platform/pricing) for public plan information.
+Discuss availability of AI Pentest credits or other usage-based capabilities when applicable, the integrations and implementation dependencies required, expected users and service accounts, and onboarding responsibilities. See [Conviso Platform pricing](https://conviso.io/platform/pricing) for public plan information.
 
 ### Review the PoC and prepare rollout
 
@@ -121,4 +121,4 @@ Bring your evaluation goals, representative applications, and intended stakehold
 
 - Explore the [Conviso Platform documentation home](./index.md) for product areas and workflows.
 - Review the [latest release notes](/releases) for recent capabilities and improvements.
-- [Contact Conviso](https://www.convisoappsec.com/contact) to plan an evaluation.
+- [Contact Conviso](https://conviso.io/contact) to plan an evaluation.

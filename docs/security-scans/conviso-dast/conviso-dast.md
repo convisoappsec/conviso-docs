@@ -294,7 +294,7 @@ docker run --rm \
   -e CONVISO_API_KEY="your-api-key" \
   -e ASSET_ID="12345" \
   -e TARGET_URL="https://example.com" \
-  -e CONVISO_API_URL="https://api.app.convisoappsec.com/graphql" \
+  -e CONVISO_API_URL="https://api.app.conviso.io/graphql" \
   -v "$(pwd)/results:/scan/results" \
   convisoappsec/convisodast:latest
 ```
@@ -309,7 +309,7 @@ docker run --rm `
   -e "CONVISO_API_KEY=your-api-key" `
   -e "ASSET_ID=12345" `
   -e "TARGET_URL=https://example.com" `
-  -e "CONVISO_API_URL=https://api.app.convisoappsec.com/graphql" `
+  -e "CONVISO_API_URL=https://api.app.conviso.io/graphql" `
   -v "${PWD}/results:/scan/results" `
   convisoappsec/convisodast:latest
 ```
@@ -324,7 +324,7 @@ docker run --rm ^
   -e "CONVISO_API_KEY=your-api-key" ^
   -e "ASSET_ID=12345" ^
   -e "TARGET_URL=https://example.com" ^
-  -e "CONVISO_API_URL=https://api.app.convisoappsec.com/graphql" ^
+  -e "CONVISO_API_URL=https://api.app.conviso.io/graphql" ^
   -v "%cd%/results:/scan/results" ^
   convisoappsec/convisodast:latest
 ```
@@ -349,7 +349,7 @@ Pin to a specific version (`convisoappsec/convisodast:<tag>`) instead of `:lates
 | `CONVISO_API_KEY` | Your Conviso Platform API key. |
 | `ASSET_ID` | The ID of the asset being scanned. |
 | `TARGET_URL` | The URL to scan. |
-| `CONVISO_API_URL` | The Conviso Platform GraphQL endpoint. Defaults to `https://api.app.convisoappsec.com/graphql` if not set. |
+| `CONVISO_API_URL` | The Conviso Platform GraphQL endpoint. Defaults to `https://api.app.conviso.io/graphql` if not set. |
 
 ### Dry run
 

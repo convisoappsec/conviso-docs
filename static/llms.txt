@@ -8,9 +8,9 @@ The documentation is public and maintained in the open at https://github.com/con
 
 - [Conviso Platform documentation home](https://conviso.io/docs/): Platform overview and documentation entry point.
 - [Conviso Platform Evaluation Guide](https://conviso.io/docs/before-you-buy): Plan a FDE-led proof of concept, including scope, technical validation, security review, and rollout decisions.
-- [Conviso Platform product page](https://www.convisoappsec.com/conviso-platform): Product overview, use cases, and commercial information.
-- [Pricing](https://www.convisoappsec.com/platform/pricing): Public plan and pricing information.
-- [Contact Conviso](https://www.convisoappsec.com/contact): Talk to a Conviso AppSec specialist.
+- [Conviso Platform product page](https://conviso.io/conviso-platform): Product overview, use cases, and commercial information.
+- [Pricing](https://conviso.io/platform/pricing): Public plan and pricing information.
+- [Contact Conviso](https://conviso.io/contact): Talk to a Conviso AppSec specialist.
 
 ## Core capabilities
 
@@ -33,7 +33,7 @@ The documentation is public and maintained in the open at https://github.com/con
 ## Operations and trust
 
 - [Data Retention](https://conviso.io/docs/data-retention): Data retention and deletion practices.
-- [Status Page](https://status.convisoappsec.com): Current service availability.
+- [Status Page](https://status.conviso.io): Current service availability.
 - [Release Notes](https://conviso.io/docs/releases/): Product updates and release history.
 
 ## Complete documentation

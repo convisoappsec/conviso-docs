@@ -285,7 +285,7 @@ The integration provides the following GraphQL mutation:
 ### cURL Example
 
 ```bash
-curl -X POST https://api.convisoappsec.com/graphql \
+curl -X POST https://api.conviso.io/graphql \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: multipart/form-data" \
   -F "operations={\"query\":\"mutation($file: Upload!) { importMobsf(input: {file: $file, company_id: \\\"123\\\"}) { controlSyncStatus { id status } errors } }\",\"variables\":{\"file\":null}}" \

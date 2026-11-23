@@ -79,7 +79,7 @@ Prioritize integrations in this order:
 
 If your tool is not listed or you need implementation guidance, contact the support team:
 
-- [Support Team](https://support.convisoappsec.com/tickets)
+- [Support Team](https://support.conviso.io/tickets)
 
 ## Resources
 
