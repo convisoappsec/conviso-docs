@@ -49,7 +49,7 @@ Follow these steps to integrate Conviso Platform with Power BI Desktop:
 ```
 let
     Source = Web.Contents(
-        "https://app.convisoappsec.com/graphql",
+        "https://app.conviso.io/graphql",
         [
             Headers=[
                 #"Method"="POST",
@@ -107,7 +107,7 @@ Once you have pasted the code, the data will be loaded within seconds.
 ```
 (Pag as text) => let
     Source = Web.Contents(
-        "https://app.convisoappsec.com/graphql",
+        "https://app.conviso.io/graphql",
         [
             Headers=[
                 #"Method"="POST",

@@ -10,7 +10,7 @@ async function proxyPlugin() {
             proxy: [
               {
                 context: ['/graphql'],
-                target: 'https://api.convisoappsec.com',
+                target: 'https://api.conviso.io',
                 changeOrigin: true,
                 pathRewrite: { '^/graphql': '/graphql' },
               },
@@ -46,7 +46,7 @@ async function proxyPlugin() {
         [
           '@graphql-markdown/docusaurus',
           {
-            schema: 'https://api.convisoappsec.com/graphql',
+            schema: 'https://api.conviso.io/graphql',
             rootPath: './docs',
             baseURL: 'api/graphql/documentation',
             formatter: require.resolve('./scripts/graphql-docs-formatter.mjs'),
@@ -122,7 +122,7 @@ async function proxyPlugin() {
                 },
                 {
                   label: 'Conviso Platform',
-                  href: 'https://www.convisoappsec.com/conviso-platform',
+                  href: 'https://conviso.io/conviso-platform',
                 },
               ],
             },
@@ -152,11 +152,11 @@ async function proxyPlugin() {
               items: [
                 {
                   label: 'Pricing',
-                  href: 'https://www.convisoappsec.com/platform/pricing',
+                  href: 'https://conviso.io/platform/pricing',
                 },
                 {
                   label: 'Talk to an expert',
-                  href: 'https://www.convisoappsec.com/contact',
+                  href: 'https://conviso.io/contact',
                 },
                 {
                   label: 'GitHub',

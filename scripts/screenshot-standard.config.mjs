@@ -5,7 +5,7 @@ const sessionStatePath = path.join(os.homedir(), '.conviso-docs', 'platform-sess
 
 export const standardScreenshotConfig = {
   browser: 'chromium',
-  defaultLoginUrl: 'https://app.convisoappsec.com/spa/auth/login',
+  defaultLoginUrl: 'https://app.conviso.io/spa/auth/login',
   sessionStatePath,
   viewport: { width: 1440, height: 900 },
   deviceScaleFactor: 1,
@@ -30,7 +30,7 @@ export const standardScreenshotConfig = {
     {
       pattern: '\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\b',
       flags: 'gi',
-      value: 'demo@convisoappsec.com'
+      value: 'demo@conviso.io'
     },
     {
       pattern: '\\b([A-Fa-f0-9]{8,})\\b',

@@ -79,4 +79,4 @@ You need to navigate to the Teams section, edit the specific Team that you want 
 
 
 ## Support
-If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@convisoappsec.com).
+If you have any questions or need help using our product, please don't hesitate to contact our [support team](mailto:support@conviso.io).

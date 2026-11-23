@@ -268,4 +268,4 @@ Contributions are welcome. See `CONTRIBUTING.md` for contribution rules and vali
 
 ## Support
 
-[support@convisoappsec.com](mailto:support@convisoappsec.com)
+[support@conviso.io](mailto:support@conviso.io)

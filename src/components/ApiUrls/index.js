@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 const urls = [
   {
     label: 'API hostname',
-    value: 'https://api.convisoappsec.com',
+    value: 'https://api.conviso.io',
   },
   {
     label: 'GraphQL endpoint',
-    value: 'https://api.convisoappsec.com/graphql',
+    value: 'https://api.conviso.io/graphql',
   },
 ];
 

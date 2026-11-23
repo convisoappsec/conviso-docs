@@ -24,7 +24,7 @@ Scanning containers and images allows organizations to identify potential securi
 Performing regular scans of your container images is vital for ensuring software security, reducing risks, and maintaining operational integrity. It helps organizations build trust by offering transparency into the contents and vulnerabilities of their containers.
 
 You can always learn more in our blog:
-- [How to increase the security of your container](https://blog.convisoappsec.com/en/how-to-increase-the-security-of-your-container/) to learn more about Container Security.
+- [How to increase the security of your container](https://conviso.io/blogs/en/how-to-increase-the-security-of-your-container/) to learn more about Container Security.
 
 ## Prerequisites
 

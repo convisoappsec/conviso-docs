@@ -24,8 +24,8 @@ A Software Bill of Materials (SBOM) helps us build an inventory of our component
 This is crucial for enhancing software transparency, security, and compliance. By providing visibility into the existence of vulnerabilities for each component, an SBOM aids in decision-making and prioritization.
 
 You can always learn more in our blog:
-- [Software bill of materials what it is and how it works](https://blog.convisoappsec.com/en/software-bill-of-materials-sbom-what-it-is-and-how-it-works/) to learn more about SBOM.
-- [The importance of supply chain to application security](https://blog.convisoappsec.com/en/the-importance-of-supply-chain-to-application-security/) to learn more about Supply Chain.
+- [Software bill of materials what it is and how it works](https://conviso.io/blogs/en/software-bill-of-materials-sbom-what-it-is-and-how-it-works/) to learn more about SBOM.
+- [The importance of supply chain to application security](https://conviso.io/blogs/en/the-importance-of-supply-chain-to-application-security/) to learn more about Supply Chain.
 
 ## SBOM Formats Overview
 
@@ -94,7 +94,7 @@ You can also filter by Asset name or Asset tag. To do this, click **Add filter**
 
 If you don't use Conviso AST, you can import an SBOM in CycloneDX format using our GraphQL API:
 
-The base URL for Conviso API GraphQL endpoints is `https://app.convisoappsec.com/graphql`.
+The base URL for Conviso API GraphQL endpoints is `https://app.conviso.io/graphql`.
 
 You need to pass the SBOM file in CycloneDX format, asset id and company id to be able to import an SBOM file.
 

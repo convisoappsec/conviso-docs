@@ -3,7 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-const API_URL = 'https://api.convisoappsec.com/graphql';
+const API_URL = 'https://api.conviso.io/graphql';
 
 function curlExample(query, variables) {
   return `curl --request POST ${API_URL} \\

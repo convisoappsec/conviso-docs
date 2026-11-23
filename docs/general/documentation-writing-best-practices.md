@@ -47,7 +47,7 @@ Each how-to page should follow this order:
 
 Use this flow when you need screenshots for documentation pages.
 
-1. Save authenticated session (default login URL: `https://app.convisoappsec.com/spa/auth/login`):
+1. Save authenticated session (default login URL: `https://app.conviso.io/spa/auth/login`):
 
 ```bash
 yarn screenshot:auth
@@ -56,19 +56,19 @@ yarn screenshot:auth
 2. Generate standardized screenshot:
 
 ```bash
-yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed
+yarn screenshot:standard --url=https://app.conviso.io/spa/security-feed
 ```
 
 3. Optional custom selector:
 
 ```bash
-yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed --waitFor='[data-testid=\"security-feed\"]'
+yarn screenshot:standard --url=https://app.conviso.io/spa/security-feed --waitFor='[data-testid=\"security-feed\"]'
 ```
 
 4. Advanced non-standard mode (only when strictly necessary):
 
 ```bash
-yarn screenshot:url --url=https://app.convisoappsec.com/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
+yarn screenshot:url --url=https://app.conviso.io/spa/security-feed --output=static/img/custom.png --viewport=1440x900 --fullPage=true
 ```
 
 ### Screenshot standards
@@ -117,7 +117,7 @@ Do not use screenshots when:
 Example:
 
 ```bash
-yarn screenshot:standard --url=https://app.convisoappsec.com/spa/security-feed
+yarn screenshot:standard --url=https://app.conviso.io/spa/security-feed
 ```
 
 ## Links and References

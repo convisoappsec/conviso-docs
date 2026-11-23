@@ -59,9 +59,9 @@ In order to configure Google SSO, it is necessary to have Admin privileges on th
 
 6. At this point you must provide the following URLs:
 
-- At the **ACS URL** field, paste ```https://auth.app.convisoappsec.com/realms/conviso-platform/broker/google_<YOUR_COMPANY_ID>/endpoint```
-- At the **Entity ID** field, paste ```https://auth.app.convisoappsec.com/realms/conviso-platform```
-- At the **Start URL** field, paste ```https://app.convisoappsec.com```
+- At the **ACS URL** field, paste ```https://auth.app.conviso.io/realms/conviso-platform/broker/google_<YOUR_COMPANY_ID>/endpoint```
+- At the **Entity ID** field, paste ```https://auth.app.conviso.io/realms/conviso-platform```
+- At the **Start URL** field, paste ```https://app.conviso.io```
 
 Also, you must check the **Signed Response** checkbox, before clicking on the **Continue** button:
 

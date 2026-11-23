@@ -147,14 +147,14 @@ run-ast-scan:
   script:
     - export CONVISO_API_KEY="$CONVISO_API_KEY"
     - |
-      export CONVISO_API_URL="${api_url:-https://api.convisoappsec.com}"
+      export CONVISO_API_URL="${api_url:-https://api.conviso.io}"
       CONVISO_API_URL="${CONVISO_API_URL%/}"
       case "$CONVISO_API_URL" in
-        https://app.convisoappsec.com)
-          export CONVISO_API_URL="https://api.convisoappsec.com"
+        https://app.conviso.io)
+          export CONVISO_API_URL="https://api.conviso.io"
           ;;
-        https://staging.convisoappsec.com)
-          export CONVISO_API_URL="https://api.staging.convisoappsec.com"
+        https://staging.conviso.io)
+          export CONVISO_API_URL="https://api.staging.conviso.io"
           ;;
       esac
     - export CONVISO_REPO_FULL_NAME="$repo_full_name"
@@ -254,7 +254,7 @@ The Project ID is shown in GitLab under the orchestrator project → **Settings 
 
 ![Successful run-ast-scan job log](../../static/img/gitlab-alm/ast-05b-orchestrator-job-log.png)
 
-Manual test (optional): on the orchestrator, **Build → Pipelines → New pipeline**. Set variables `repo_full_name` and `branch` to an imported asset. Leave `api_url` empty for production (`https://api.convisoappsec.com`). Set `company_id` or define `CONVISO_COMPANY_ID`.
+Manual test (optional): on the orchestrator, **Build → Pipelines → New pipeline**. Set variables `repo_full_name` and `branch` to an imported asset. Leave `api_url` empty for production (`https://api.conviso.io`). Set `company_id` or define `CONVISO_COMPANY_ID`.
 
 ## Troubleshooting
 

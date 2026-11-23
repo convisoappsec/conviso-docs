@@ -13,4 +13,4 @@ Improved **Conviso MCP** and published new governance documentation.
 - **New Skills documentation.**
 - **Documented data retention policy.**
 
-👉 Access the [Conviso Platform](https://app.convisoappsec.com/) to experience these updates.
+👉 Access the [Conviso Platform](https://app.conviso.io/) to experience these updates.

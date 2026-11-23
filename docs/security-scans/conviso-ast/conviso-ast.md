@@ -374,7 +374,7 @@ Branch names are normalized before submission: whitespace is trimmed and a `refs
 | :--- | :--- | :--- | :--- |
 | `CONVISO_API_KEY` | **Required** | — | Your Conviso Platform API Key. |
 | `CONVISO_COMPANY_ID` | Conditional | — | The company the scan reports to. Required when your API Key has access to more than one company. |
-| `CONVISO_API_URL` | Optional | `https://api.convisoappsec.com` | Base URL of your Conviso Platform instance. |
+| `CONVISO_API_URL` | Optional | `https://api.conviso.io` | Base URL of your Conviso Platform instance. |
 | `CONVISO_ASSET_ID` | Optional | — | Report to this asset, bypassing repository lookup and asset creation. `--asset-id` takes precedence. |
 | `CONVISO_ASSET_NAME` | **Deprecated** | — | Report to the asset with this name. Being discontinued — use `CONVISO_ASSET_ID`. |
 | `CONVISO_BRANCH_NAME` | Optional | — | Branch this scan covers. Read before `CONVISO_BRANCH` and before every CI variable. |

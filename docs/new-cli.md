@@ -31,7 +31,7 @@ Repository:
 ## Requirements
 
 - Python 3.10+
-- API Key from Conviso Platform (get at: https://app.convisoappsec.com/spa/company/[COMPANY_ID]/api-keys)
+- API Key from Conviso Platform (get at: https://app.conviso.io/spa/company/[COMPANY_ID]/api-keys)
 - Optional: `CONVISO_API_TIMEOUT` (seconds, default `30`)
 
 ## Install
@@ -831,7 +831,7 @@ You will be prompted to enter your API key. The CLI will show you where to get i
 
 ```
 📚 Where to get your API key:
-  1. Go to: https://app.convisoappsec.com/spa/company/[COMPANY_ID]/api-keys
+  1. Go to: https://app.conviso.io/spa/company/[COMPANY_ID]/api-keys
   2. Click 'Generate New Key'
   3. Copy the key and paste it below
 ```
