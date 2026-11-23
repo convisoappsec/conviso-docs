@@ -148,8 +148,12 @@ Reactivating a person in the identity provider does not undo a removal in full. 
 
 **Let *identity provider* set the contact email** is off as it comes. The contact email is where Conviso Platform sends a person's messages instead of their login email. It is described in [Contact email](sso-contact-email.md).
 
+The identity provider declares it in a single attribute, `contactEmail`, from the extension `urn:ietf:params:scim:schemas:extension:conviso:2.0:User` that Conviso Platform announces. The `emails` list is not read. Each identity provider maps it its own way: see [Microsoft Entra ID](#entra-id-contact-email) and [Google Workspace](#google-workspace-contact-email).
+
 - **Off**: provisioning writes no contact email, and each person can choose theirs in **My Profile**. A contact email the identity provider declared before stops applying, and until the person chooses one, their messages go to the login email.
-- **On**: provisioned people can no longer choose their contact email. On the identity provider's next sync of each person, the work email it declares becomes their contact email, replacing the one they chose. It receives every message, password reset links included. An address outside the integration's authorized domains and [contact email domains](sso-contact-email.md#which-addresses-are-accepted) is not applied: the account keeps the contact email it had, and the recent deliveries show "Did not apply the contact email of *person*".
+- **On**: provisioned people can no longer choose their contact email. On the identity provider's next sync of each person, the address it declares in `contactEmail` becomes their contact email, replacing the one they chose. It receives every message, password reset links included. An address outside the integration's authorized domains and [contact email domains](sso-contact-email.md#which-addresses-are-accepted) is not applied: the account keeps the contact email it had, and the recent deliveries show "Did not apply the contact email of *person*".
+
+An address equal to the login email counts as none. When the identity provider declares none, or declares the login email, the contact email it set before is dropped, and messages go to the login email. A contact email the person chose stays. The recent deliveries show "Set the contact email of *person* back to the login email", with the reason.
 
 Turn it on before the first provisioning cycle. Turned on later, it reaches each person only the next time the identity provider writes them.
 
@@ -165,6 +169,7 @@ Select **View recent deliveries** on the step. The panel lists, newest first and
 - what provisioning changed in an account, with the old and new values: the name, the contact email, the access profile, and joining or leaving a mapped team;
 - the people the identity provider removed, would remove, or did not remove, with the reason;
 - the contact emails provisioning did not apply, with the address it received;
+- the contact emails that went back to the login email, with the reason;
 - every request that failed after its key was accepted, with the reason, the HTTP status and the SCIM error type.
 
 Each delivery has a level: **Info** for a request that succeeded or a change to an account, **Warn** for something provisioning decided not to apply, and **Error** for a request that failed. Filter by **Level** and **Date**, or search by user, group, access profile or team.
@@ -214,7 +219,7 @@ In **Attribute mapping**, open the mapping of users and check these rows, then *
 | Entra ID attribute | SCIM attribute | What it does |
 | --- | --- | --- |
 | The attribute your SSO application sends in the `name` claim, usually `userPrincipalName` | `userName` | Finds the account by its login email |
-| `mail` | `emails[type eq "work"].value` | The work email, which becomes the contact email when Entra ID sets it |
+| `mail` | `urn:ietf:params:scim:schemas:extension:conviso:2.0:User:contactEmail` | The contact email, when Entra ID sets it. Entra ID does not list this attribute until you add it: see [Send the contact email](#entra-id-contact-email) |
 | `displayName`, `givenName`, `surname` | `displayName`, `name.givenName`, `name.familyName` | Keeps the name up to date |
 
 Keep the rest of the default mapping, `active` included: it is how Entra ID deactivates a person. In the mapping of groups, keep `displayName`, `members`, and `objectId` to `externalId`. The group ID you typed in **Group Mapping** is that `objectId`.
@@ -222,6 +227,15 @@ Keep the rest of the default mapping, `active` included: it is how Entra ID deac
 :::caution Use the same attribute as the SSO claim
 `userName` must carry the address the person logs in with. If it comes from another attribute than the `name` claim of [Conviso Platform SSO](microsoft-entra-id.md#email-field-mapping-in-saml-20-for-microsoft-entra-id), provisioning finds no account, or another one.
 :::
+
+### Send the contact email {#entra-id-contact-email}
+
+As it comes, Entra ID maps `mail` to `emails[type eq "work"].value`, which Conviso Platform does not read. Send it to the contact email attribute instead:
+
+1. In **Provisioning** > **Attribute mapping**, open the mapping of users. Under **Advanced Options**, edit the list of target user attributes and add an attribute named `urn:ietf:params:scim:schemas:extension:conviso:2.0:User:contactEmail`, of type `String`, with nothing checked. **Save**. Entra ID warns that the change starts a full sync.
+2. Open the row of `mail`, change its **Target attribute** to the new attribute, and select **Apply**. **Save**.
+
+Entra ID [skips an attribute that is empty](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#null-attribute-cant-be-provisioned). Clearing a person's `mail` sends nothing, so their contact email in Conviso Platform stays until `mail` carries another address.
 
 ### Send roles
 
@@ -281,6 +295,16 @@ Google Workspace provisions people. It provisions no groups, and a role it sends
 - You have the **SCIM URL** and the token from [Generate the provisioning key](#generate-the-key).
 - You can sign in to the [Google Admin console](https://admin.google.com/) as a super administrator.
 
+### Create the contact email attribute {#google-workspace-contact-email}
+
+Skip this section unless Google Workspace will set the contact email. It has to come from a custom attribute of the Google Directory: **Primary email** is the login email, and an address equal to the login email counts as none.
+
+1. In the Google Admin console, go to **Directory** > **Users**. At the top of the list, select **More options** > **Manage custom attributes**, then **Add Custom Attribute**.
+2. Enter a **Category**, such as `Conviso`, and a custom field, such as `Contact email`, with **Info type** set to **Text** and **Number of values** set to **Single value**. Select **Add**. See [Create custom attributes for user profiles](https://knowledge.workspace.google.com/admin/users/create-custom-attributes-for-user-profiles).
+3. For each person, open their account page, select **User information**, and fill in the attribute with their contact email.
+
+When a person's attribute is empty, Google removes their contact email on its next sync: one it set before is dropped, and their messages go to the login email.
+
 ### Connect the SAML app to Conviso Platform {#google-workspace-connect}
 
 1. In the Google Admin console, go to **Apps** > **Web and mobile apps** and open the SAML app your people sign in with, such as **Conviso Platform SSO**.
@@ -296,13 +320,13 @@ Google fills the app attributes from the SCIM user schema Conviso Platform annou
 | --- | --- |
 | `userName` | Finds the account by its login email. It must come from the attribute the SAML app sends as `email`, which the [Google SSO setup](google.md#google-web-app-setup) maps from **Primary email** |
 | `displayName`, `name.givenName`, `name.familyName` | Keeps the name up to date: `displayName` when Google sends it, otherwise the given and family names together |
-| `emails[type eq "work"].value` | The work email, which becomes the contact email when Google Workspace sets it. An address equal to the login email sets none |
+| `contactEmail` | The contact email, when Google Workspace sets it. It must come from the custom attribute of [Create the contact email attribute](#google-workspace-contact-email), never from **Primary email** |
 
 :::caution Use the same attribute as the SSO login
 `userName` must carry the address the person logs in with. If it comes from another attribute than the [`email` of the SAML app](google.md#email-field-mapping-in-saml-20), provisioning finds no account, or another one.
 :::
 
-The app attributes may include `roles`. A role mapped there changes nothing, because on a Google SSO integration access profiles come from the SSO login.
+The app attributes may include `roles`. A role mapped there changes nothing, because on a Google SSO integration access profiles come from the SSO login. They also include `emails`, which Conviso Platform does not read: the contact email comes only from `contactEmail`.
 
 ### Choose who is provisioned {#google-workspace-scope}
 
@@ -346,10 +370,16 @@ Google's test provisions a person, updates them and deletes them. With **Let Goo
 
 From then on, Google syncs every few hours.
 
+:::note The test does not send the contact email
+Google's test sends no custom attribute: the person it provisions has no `contactEmail`, and its update removes it. The contact email arrives only with the syncs, so check it in the recent deliveries after the first one.
+:::
+
 ### Cautions {#google-workspace-cautions}
 
 - **Authorize the domains before you turn autoprovisioning on.** Everyone outside them is refused with a `400`.
 - **Run Google's test with removal off.** The test deletes the person it provisions.
+- **Map `contactEmail` from a custom attribute, never from Primary email.** The primary email is the login email, which sets no contact email.
+- **Check the contact email after a sync, not with Google's test.** The test sends no custom attribute.
 - **Read the "Would remove" deliveries before you turn removal on.**
 - **Give Google the new token when you regenerate the key.** Autoprovisioning stops while its token is expired or revoked. Under **Autoprovisioning**, select **App authorization** > **Reauthorize**, paste the new token into **Access token**, and select **Reauthorize**.
 - **Changing a person's primary email in Google Workspace can start a new account.** When the `userName` Google sends changes, the old address counts as a deactivation.
@@ -359,6 +389,7 @@ From then on, Google syncs every few hours.
 1. On the provisioning step, **Last used** shows a recent time.
 2. In **View recent deliveries**, your identity provider created and updated the people in its scope.
 3. Change the name of a test person in your identity provider. In Entra ID, use **Provision on demand**. Google Workspace sends it on its next sync, within a few hours. A delivery reads "Changed the name of *person*", and their name in **Access Control** follows.
+4. With **Let *identity provider* set the contact email** on, change the contact email of a test person the same way, to an address in an accepted domain. A delivery reads "Changed the contact email of *person*", and their **Contact email** in **Access Control** follows.
 
 In Entra ID, the **Provisioning logs** of the provisioning application show every request and its result. In Google Workspace, open the SAML app in **Apps** > **Web and mobile apps**. Under **Autoprovisioning**, **View sync log** shows the events of each sync, and when there are failures, **Download list** gives each one with its reason.
 
@@ -383,6 +414,10 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 **People became viewer-only.** Access profiles come from provisioning, but Entra ID sends no mapped role. Check the **Send roles** steps, the expression of the `roles` mapping, and the role each person has in the provisioning application.
 
 **A contact email was not applied.** The address is outside the authorized domains and the contact email domains, or **Let *identity provider* set the contact email** is off.
+
+**The contact email does not change.** In Entra ID, `mail` still goes to `emails[type eq "work"].value`, which Conviso Platform does not read: see [Send the contact email](#entra-id-contact-email). In Google Workspace, only the syncs send it, never the test.
+
+**The contact email went back to the login email.** The identity provider declared the login email, or no contact email: the delivery gives the reason. In Google Workspace, check that `contactEmail` comes from the custom attribute, not from **Primary email**, and that the person's attribute is filled in.
 
 **Nobody changes any more.** The key expired or was revoked, or provisioning is in quarantine. Regenerate the key, paste the new token, and restart provisioning. In Google Workspace, paste it through **App authorization** > **Reauthorize**.
 

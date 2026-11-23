@@ -72,7 +72,7 @@ A person can send up to five requests an hour. After that, no link is sent until
 With SCIM provisioning, the SSO integration can let the identity provider set the contact email: the switch **Let *identity provider* set the contact email**, on the **Provisioning (SCIM)** step, is off as it comes. See [Contact email](scim-provisioning.md#contact-email) in the SCIM provisioning guide.
 
 - **Off**: the identity provider's address is not used, and each person can choose theirs in **My Profile**.
-- **On**: provisioned people can no longer choose. On the identity provider's next sync of each person, the work email it declares replaces the one they chose, as long as it is in an accepted domain. **My Profile** shows their contact email read only.
+- **On**: provisioned people can no longer choose. On the identity provider's next sync of each person, the contact email it declares replaces the one they chose, as long as it is in an accepted domain and is not the login email. **My Profile** shows their contact email read only.
 
 ## See a user's contact email {#see-a-users-contact-email}
 
