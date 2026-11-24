@@ -2,15 +2,15 @@
 id: scim-provisioning
 title: SCIM Provisioning
 sidebar_label: SCIM Provisioning
-description: Keep the users of an SSO integration in sync with your identity provider over SCIM 2.0, without waiting for their next login. Set up the provisioning key, choose what the identity provider decides, and connect Microsoft Entra ID or Google Workspace.
-keywords: [SCIM, SCIM 2.0, provisioning, deprovisioning, Microsoft Entra ID, Google Workspace, autoprovisioning, SSO, identity provider, contact email]
+description: Keep the users of an SSO integration in sync with your identity provider over SCIM 2.0, without waiting for their next login. Set up the provisioning key, choose what the identity provider decides, and connect Microsoft Entra ID, Google Workspace or Okta.
+keywords: [SCIM, SCIM 2.0, provisioning, deprovisioning, Microsoft Entra ID, Google Workspace, Okta, autoprovisioning, SSO, identity provider, contact email]
 ---
 
 ## Objective
 
 Connect your identity provider to an SSO integration over SCIM 2.0, so the people of that integration stay up to date in Conviso Platform without waiting for their next SSO login. Provisioning keeps each person's name up to date. Depending on what you allow, it also decides their contact email, their mapped teams, their access profile, and whether they stay in the company.
 
-The Conviso Platform side is the same for every identity provider, and it is described first. Each identity provider has its own section: [Microsoft Entra ID](#microsoft-entra-id) and [Google Workspace](#google-workspace).
+The Conviso Platform side is the same for every identity provider, and it is described first. Each identity provider has its own section: [Microsoft Entra ID](#microsoft-entra-id), [Google Workspace](#google-workspace) and [Okta](#okta).
 
 ## What provisioning does and does not do {#what-provisioning-does}
 
@@ -384,11 +384,133 @@ Google's test sends no custom attribute: the person it provisions has no `contac
 - **Give Google the new token when you regenerate the key.** Autoprovisioning stops while its token is expired or revoked. Under **Autoprovisioning**, select **App authorization** > **Reauthorize**, paste the new token into **Access token**, and select **Reauthorize**.
 - **Changing a person's primary email in Google Workspace can start a new account.** When the `userName` Google sends changes, the old address counts as a deactivation.
 
+## Okta {#okta}
+
+Okta provisions from the SAML app your people already sign in with, so there is no second app. Once SCIM is on in that app, Okta pushes the people assigned to it, with their contact email and roles, and the groups you choose.
+
+### Before you start {#okta-before-you-start}
+
+- Okta SSO already works through a [SAML 2.0](saml.md) integration, from a SAML 2.0 app integration in Okta.
+- Every domain your people sign in with is in the integration's **Authorized Domains**.
+- You have the **SCIM URL** and the token from [Generate the provisioning key](#generate-the-key).
+- You can sign in to the Okta Admin Console as a super administrator.
+
+### Check the login email of the SAML app {#okta-login-email}
+
+Okta sends each person's **Okta username** as the `userName`, which is how provisioning finds the account. The SAML app has to log them in with that same address, which Conviso Platform reads from the `email` attribute of the assertion.
+
+1. In the Okta Admin Console, go to **Applications and Resources** > **Applications** and open the SAML app.
+2. On the **Sign On** tab, under **Credentials Details**, check that **Application username format** is **Okta username**.
+3. Under **Attribute statements**, check for an expression named `email` with the value `user.profile.login`. If there is none, select **Add expression**, enter `email` in **Name** and `user.profile.login` in **Expression**, and select **Save**. This syntax refuses `user.login`.
+
+### Turn on SCIM in the SAML app {#okta-turn-on-scim}
+
+1. In the SAML app, open the **General** tab and select **Edit** in **App Settings**.
+2. In **Provisioning**, choose **SCIM**, and select **Save**. The **Provisioning** tab appears.
+
+### Connect it to Conviso Platform {#okta-connect}
+
+1. On the **Provisioning** tab, open **Integration** and select **Edit**.
+2. Fill in the SCIM connection:
+   - **SCIM connector base URL**: the **SCIM URL**.
+   - **Unique identifier field for users**: `userName`.
+   - **Supported provisioning actions**: check **Push New Users**, **Push Profile Updates** and **Push Groups**.
+   - **Authentication Mode**: **HTTP Header**. In **Authorization**, paste only the token: Okta adds the `Bearer` prefix it shows before the box.
+3. Select **Test Connector Configuration**, then **Save**.
+
+The test only lists users. Passing it proves the URL and the token, not the attributes or the groups.
+
+### Choose what Okta sends {#okta-to-app}
+
+1. On the **Provisioning** tab, open **To App** and select **Edit**.
+2. Enable **Create Users**, **Update User Attributes** and **Deactivate Users**, and select **Save**.
+
+**Sync Password** is not needed. Okta sends a random password when it creates a person, even with it off, and Conviso Platform ignores it.
+
+With **Deactivate Users** on, unassigning a person from the app and deactivating them in Okta both reach Conviso Platform as a deactivation: see [Removal from the company](#removal). Deleting the person in Okta afterwards sends nothing. Assigning again a person Okta already provisioned reaches Conviso Platform as a reactivation.
+
+### Assign people {#okta-assign}
+
+1. On the **Assignments** tab of the SAML app, select **Assign** > **Assign to People**.
+2. Assign each person, check the attributes Okta shows, and select **Save and Go Back**. Then select **Done**.
+
+Okta provisions each person when you assign them, and pushes the changes to their profile as you save them. You can also assign a group with **Assign to Groups**, but not a group you will push: see [Push groups](#okta-push-groups).
+
+### Map the attributes {#okta-attributes}
+
+Okta does not read the attributes Conviso Platform announces. The app profile Okta creates for SCIM already maps the name, and you add the contact email and the roles to it yourself.
+
+| App attribute | What it does |
+| --- | --- |
+| `userName` | Finds the account by its login email. Okta fills it with the **Okta username**, the same address as the `email` attribute of the SAML app |
+| `givenName`, `familyName`, `displayName` | Keeps the name up to date. Okta maps them from the Okta user profile as it comes |
+| `contactEmail` | The contact email, when Okta sets it. You add it in [Send the contact email](#okta-contact-email) |
+| `roles` | The roles, when access profiles come from provisioning. You add it in [Send roles](#okta-roles) |
+
+The app profile also maps `email`, which Conviso Platform does not read: the contact email comes only from `contactEmail`.
+
+### Send the contact email {#okta-contact-email}
+
+Skip this section unless Okta will set the contact email. It has to come from an Okta user attribute other than the login: an address equal to the login email counts as none.
+
+1. In the Okta Admin Console, go to **Directory** > **Profile Editor**, open the user profile of the SAML app, and select **Add Attribute**.
+2. Fill in the attribute, and select **Save**:
+   - **Data type**: `string`;
+   - **Display name**: a name such as `Contact email`;
+   - **Variable name** and **External name**: `contactEmail`;
+   - **External namespace**: `urn:ietf:params:scim:schemas:extension:conviso:2.0:User`.
+3. Select **Mappings**, and open the tab that maps the Okta user to the SAML app. In the row of `contactEmail`, enter the Okta user attribute that holds the contact email, such as `user.secondEmail`, and keep it applied on user create and update. Select **Save Mappings**.
+
+When Okta offers to apply the new mapping, it sends it only to the people whose value changed.
+
+When a person's attribute is empty, Okta sends an empty contact email: one it set before is dropped, and their messages go to the login email.
+
+### Send roles {#okta-roles}
+
+Skip this section unless access profiles come from provisioning. While they do, only the roles Okta provisions count: the login ignores the roles in the SAML assertion.
+
+1. In **Directory** > **Profile Editor**, open the user profile of the SAML app and select **Add Attribute**.
+2. Fill in the attribute, and select **Save**:
+   - **Data type**: `string array`;
+   - **Display name**: a name such as `Roles`;
+   - **Variable name** and **External name**: `roles`;
+   - **External namespace**: `urn:ietf:params:scim:schemas:core:2.0:User`.
+3. Give each person their role, with the same value you mapped in **Role Mapping**: on the **Assignments** tab of the SAML app, edit the person and fill in **Roles**. To take it from the Okta user profile instead, map it in **Mappings**, as with the contact email.
+
+**Roles** takes more than one value with **Add Another**, and each value is a role. Give each person one mapped role: see [Where access profiles come from](#access-profiles-source). A person whose **Roles** is empty declares no role.
+
+### Push groups {#okta-push-groups}
+
+Skip this section unless team membership comes from provisioning.
+
+Okta sends no `externalId` with a group. The identifier you type in **Group Mapping** for a pushed group is its name in Okta, exactly as written.
+
+1. Assign the group's people to the SAML app before you push it. Okta pushes only the members who are assigned to the app and already provisioned. Okta [does not support using the same group for app assignment and Group Push](https://help.okta.com/en-us/content/topics/users-groups-profiles/app-assignments-group-push.htm), so assign them one by one or through another group.
+2. On the **Push Groups** tab, select **Push Groups** > **Find groups by name**, and enter the group's name. Keep **Push group memberships immediately** checked.
+3. Okta looks the group up in Conviso Platform by its name. When there is none, the match result reads **No match found**, with **Create Group**. Select **Save**: Okta creates the group and pushes its members.
+4. In Conviso Platform, on the **Group Mapping** step, map the team to the group's name in Okta.
+
+From then on, Okta pushes each change of members and each new name as it happens. When you rename a pushed group in Okta, change its identifier in **Group Mapping** to the new name.
+
+### Cautions {#okta-cautions}
+
+- **Authorize the domains before you assign people.** Everyone outside them is refused with a `400`.
+- **Log in and provision with the same address.** Keep **Okta username** as the application username and `user.profile.login` in the `email` attribute statement.
+- **Add `contactEmail` and `roles` to the app profile yourself.** Okta does not read the attributes Conviso Platform announces.
+- **Map `contactEmail` from an attribute other than the login.** The login email sets no contact email.
+- **Push every mapped group, and do not use it to assign the app.** Okta does not support the same group for both.
+- **Move team membership to provisioning only after Okta has pushed the groups.** Until a person's groups arrive, they leave the mapped teams.
+- **Moving a source to provisioning applies nothing at once.** A person's teams follow the next time their groups change or they log in, and their access profile the next time Okta writes them. Okta has no periodic cycle, and **Push now** on a group whose members did not change applies nothing.
+- **Give each person one mapped role.**
+- **Read the "Would remove" deliveries before you turn removal on.**
+- **Give Okta the new token when you regenerate the key.** On the **Provisioning** tab, open **Integration**, select **Edit**, paste the new token into **Authorization**, and select **Save**.
+- **Changing a person's Okta username can start a new account.** When the `userName` Okta sends changes, the old address counts as a deactivation.
+
 ## Validation
 
 1. On the provisioning step, **Last used** shows a recent time.
 2. In **View recent deliveries**, your identity provider created and updated the people in its scope.
-3. Change the name of a test person in your identity provider. In Entra ID, use **Provision on demand**. Google Workspace sends it on its next sync, within a few hours. A delivery reads "Changed the name of *person*", and their name in **Access Control** follows.
+3. Change the name of a test person in your identity provider. In Entra ID, use **Provision on demand**. Google Workspace sends it on its next sync, within a few hours. Okta sends it when you save the person's profile. A delivery reads "Changed the name of *person*", and their name in **Access Control** follows.
 4. With **Let *identity provider* set the contact email** on, change the contact email of a test person the same way, to an address in an accepted domain. A delivery reads "Changed the contact email of *person*", and their **Contact email** in **Access Control** follows.
 
 In Entra ID, the **Provisioning logs** of the provisioning application show every request and its result. In Google Workspace, open the SAML app in **Apps** > **Web and mobile apps**. Under **Autoprovisioning**, **View sync log** shows the events of each sync, and when there are failures, **Download list** gives each one with its reason.
@@ -403,19 +525,21 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 
 **Test Connection fails in Entra ID.** Check that **Tenant URL** is the **SCIM URL** and that **Secret Token** is the current token. A regenerated, revoked or expired key is refused with a `401`.
 
+**Test Connector Configuration fails in Okta.** Check that **SCIM connector base URL** is the **SCIM URL**, and that **Authorization** holds only the current token, without `Bearer`: Okta adds it.
+
 **A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning in Entra ID. Google Workspace does not say when it retries a person it failed to provision: after its next sync, check under **Autoprovisioning**, with **Download list**, that the person is no longer among the failures.
 
-**Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let Entra ID decide team membership** is off.
+**Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let *identity provider* decide team membership** is off. In Okta, the group is not pushed, its people are not assigned to the SAML app, or the identifier in **Group Mapping** is not the group's name in Okta.
 
 **A group is refused with status 409.** Another group of the same integration already has its display name, whatever the letter case, or its `externalId`. Rename one of them in the identity provider. When two groups swap names, give one a temporary name, wait for the next cycle, then give it the final name.
 
 **Teams or access profiles do not change with Google Workspace.** On a Google SSO integration they come from the SSO login. Check the group and role mappings in the [Google SSO guide](google.md#setup-group-mapping-integration).
 
-**People became viewer-only.** Access profiles come from provisioning, but Entra ID sends no mapped role. Check the **Send roles** steps, the expression of the `roles` mapping, and the role each person has in the provisioning application.
+**People became viewer-only.** Access profiles come from provisioning, but the identity provider sends no mapped role. In Entra ID, check the [Send roles](#send-roles) steps, the expression of the `roles` mapping, and the role each person has in the provisioning application. In Okta, check the `roles` attribute of [Send roles](#okta-roles) and the **Roles** of each person's assignment.
 
 **A contact email was not applied.** The address is outside the authorized domains and the contact email domains, or **Let *identity provider* set the contact email** is off.
 
-**The contact email does not change.** In Entra ID, `mail` still goes to `emails[type eq "work"].value`, which Conviso Platform does not read: see [Send the contact email](#entra-id-contact-email). In Google Workspace, only the syncs send it, never the test.
+**The contact email does not change.** In Entra ID, `mail` still goes to `emails[type eq "work"].value`, which Conviso Platform does not read: see [Send the contact email](#entra-id-contact-email). In Google Workspace, only the syncs send it, never the test. In Okta, check the **External namespace** of `contactEmail` in the app profile, and its mapping.
 
 **The contact email went back to the login email.** The identity provider declared the login email, or no contact email: the delivery gives the reason. In Google Workspace, check that `contactEmail` comes from the custom attribute, not from **Primary email**, and that the person's attribute is filled in.
 
