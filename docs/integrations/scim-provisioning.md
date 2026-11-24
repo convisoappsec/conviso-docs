@@ -529,7 +529,7 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 
 **A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning in Entra ID. Google Workspace does not say when it retries a person it failed to provision: after its next sync, check under **Autoprovisioning**, with **Download list**, that the person is no longer among the failures.
 
-**Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let *identity provider* decide team membership** is off. In Okta, the group is not pushed, its people are not assigned to the SAML app, or the identifier in **Group Mapping** is not the group's name in Okta.
+**Teams do not change.** **Where team membership comes from** is still **SSO login**, or **Let *identity provider* decide team membership** is off. In Entra ID, the group is not assigned to the provisioning application, or its people are not direct members of it. In Okta, the group is not pushed, its people are not assigned to the SAML app, or the identifier in **Group Mapping** is not the group's name in Okta.
 
 **A group is refused with status 409.** Another group of the same integration already has its display name, whatever the letter case, or its `externalId`. Rename one of them in the identity provider. When two groups swap names, give one a temporary name, wait for the next cycle, then give it the final name.
 
