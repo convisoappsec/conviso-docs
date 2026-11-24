@@ -2,15 +2,15 @@
 id: scim-provisioning
 title: SCIM Provisioning
 sidebar_label: SCIM Provisioning
-description: Keep the users of an SSO integration in sync with your identity provider over SCIM 2.0, without waiting for their next login. Set up the provisioning key, choose what the identity provider decides, and connect Microsoft Entra ID.
-keywords: [SCIM, SCIM 2.0, provisioning, deprovisioning, Microsoft Entra ID, SSO, identity provider, contact email]
+description: Keep the users of an SSO integration in sync with your identity provider over SCIM 2.0, without waiting for their next login. Set up the provisioning key, choose what the identity provider decides, and connect Microsoft Entra ID or Google Workspace.
+keywords: [SCIM, SCIM 2.0, provisioning, deprovisioning, Microsoft Entra ID, Google Workspace, autoprovisioning, SSO, identity provider, contact email]
 ---
 
 ## Objective
 
 Connect your identity provider to an SSO integration over SCIM 2.0, so the people of that integration stay up to date in Conviso Platform without waiting for their next SSO login. Provisioning keeps each person's name up to date. Depending on what you allow, it also decides their contact email, their mapped teams, their access profile, and whether they stay in the company.
 
-The Conviso Platform side is the same for every identity provider, and it is described first. The identity provider side has its own section: [Microsoft Entra ID](#microsoft-entra-id).
+The Conviso Platform side is the same for every identity provider, and it is described first. Each identity provider has its own section: [Microsoft Entra ID](#microsoft-entra-id) and [Google Workspace](#google-workspace).
 
 ## What provisioning does and does not do {#what-provisioning-does}
 
@@ -21,7 +21,7 @@ The Conviso Platform side is the same for every identity provider, and it is des
 
 ## Prerequisites
 
-- An **Entra ID** or **SAML 2.0** SSO integration, already saved. The Google SSO integration has no provisioning step.
+- An **Entra ID**, **Google SSO** or **SAML 2.0** SSO integration, already saved.
 - SCIM provisioning enabled for your company. Conviso enables it: ask our [support team](mailto:support@convisoappsec.com).
 - To generate and manage the provisioning key: a company administrator, the role that manages service API keys.
 - To change what the identity provider decides and to read the recent deliveries: a company administrator who also has permission to invite users.
@@ -31,7 +31,7 @@ The Conviso Platform side is the same for every identity provider, and it is des
 
 The **Provisioning (SCIM)** step is the last step of the SSO integration, marked **Optional**. It shows only while SCIM provisioning is enabled for the company, and only to company administrators. Everyone else, and every company without the feature, sees the integration end on **Role Mapping**.
 
-1. In Conviso Platform, open **Integrations** > **Authentication** and open your **Entra ID** or **SAML 2.0** integration.
+1. In Conviso Platform, open **Integrations** > **Authentication** and open your **Entra ID**, **Google SSO** or **SAML 2.0** integration.
 2. Select the **Provisioning (SCIM)** step title. You can also select **Confirm** on **Role Mapping**: it saves the mappings and opens this step.
 
 Every action on this step is saved as you make it. **Done** closes the step without saving anything else.
@@ -88,6 +88,8 @@ Four settings on the step decide what provisioning may change. Only company admi
 | **Where access profiles come from** | **SSO login** | **SSO login** or **Provisioning (SCIM)** |
 | **Let *identity provider* remove users from the company** | Off | On or off |
 | **Let *identity provider* set the contact email** | Off | On or off |
+
+On a **Google SSO** integration, the step shows only the last two. Team membership and access profiles keep coming from the SSO login there: see [Google Workspace](#google-workspace).
 
 ### Where team membership comes from {#teams-source}
 
@@ -146,8 +148,12 @@ Reactivating a person in the identity provider does not undo a removal in full. 
 
 **Let *identity provider* set the contact email** is off as it comes. The contact email is where Conviso Platform sends a person's messages instead of their login email. It is described in [Contact email](sso-contact-email.md).
 
+The identity provider declares it in a single attribute, `contactEmail`, from the extension `urn:ietf:params:scim:schemas:extension:conviso:2.0:User` that Conviso Platform announces. The `emails` list is not read. Each identity provider maps it its own way: see [Microsoft Entra ID](#entra-id-contact-email) and [Google Workspace](#google-workspace-contact-email).
+
 - **Off**: provisioning writes no contact email, and each person can choose theirs in **My Profile**. A contact email the identity provider declared before stops applying, and until the person chooses one, their messages go to the login email.
-- **On**: provisioned people can no longer choose their contact email. On the identity provider's next sync of each person, the work email it declares becomes their contact email, replacing the one they chose. It receives every message, password reset links included. An address outside the integration's authorized domains and [contact email domains](sso-contact-email.md#which-addresses-are-accepted) is not applied: the account keeps the contact email it had, and the recent deliveries show "Did not apply the contact email of *person*".
+- **On**: provisioned people can no longer choose their contact email. On the identity provider's next sync of each person, the address it declares in `contactEmail` becomes their contact email, replacing the one they chose. It receives every message, password reset links included. An address outside the integration's authorized domains and [contact email domains](sso-contact-email.md#which-addresses-are-accepted) is not applied: the account keeps the contact email it had, and the recent deliveries show "Did not apply the contact email of *person*".
+
+An address equal to the login email counts as none. When the identity provider declares none, or declares the login email, the contact email it set before is dropped, and messages go to the login email. A contact email the person chose stays. The recent deliveries show "Set the contact email of *person* back to the login email", with the reason.
 
 Turn it on before the first provisioning cycle. Turned on later, it reaches each person only the next time the identity provider writes them.
 
@@ -163,6 +169,7 @@ Select **View recent deliveries** on the step. The panel lists, newest first and
 - what provisioning changed in an account, with the old and new values: the name, the contact email, the access profile, and joining or leaving a mapped team;
 - the people the identity provider removed, would remove, or did not remove, with the reason;
 - the contact emails provisioning did not apply, with the address it received;
+- the contact emails that went back to the login email, with the reason;
 - every request that failed after its key was accepted, with the reason, the HTTP status and the SCIM error type.
 
 Each delivery has a level: **Info** for a request that succeeded or a change to an account, **Warn** for something provisioning decided not to apply, and **Error** for a request that failed. Filter by **Level** and **Date**, or search by user, group, access profile or team.
@@ -212,7 +219,7 @@ In **Attribute mapping**, open the mapping of users and check these rows, then *
 | Entra ID attribute | SCIM attribute | What it does |
 | --- | --- | --- |
 | The attribute your SSO application sends in the `name` claim, usually `userPrincipalName` | `userName` | Finds the account by its login email |
-| `mail` | `emails[type eq "work"].value` | The work email, which becomes the contact email when Entra ID sets it |
+| `mail` | `urn:ietf:params:scim:schemas:extension:conviso:2.0:User:contactEmail` | The contact email, when Entra ID sets it. Entra ID does not list this attribute until you add it: see [Send the contact email](#entra-id-contact-email) |
 | `displayName`, `givenName`, `surname` | `displayName`, `name.givenName`, `name.familyName` | Keeps the name up to date |
 
 Keep the rest of the default mapping, `active` included: it is how Entra ID deactivates a person. In the mapping of groups, keep `displayName`, `members`, and `objectId` to `externalId`. The group ID you typed in **Group Mapping** is that `objectId`.
@@ -220,6 +227,15 @@ Keep the rest of the default mapping, `active` included: it is how Entra ID deac
 :::caution Use the same attribute as the SSO claim
 `userName` must carry the address the person logs in with. If it comes from another attribute than the `name` claim of [Conviso Platform SSO](microsoft-entra-id.md#email-field-mapping-in-saml-20-for-microsoft-entra-id), provisioning finds no account, or another one.
 :::
+
+### Send the contact email {#entra-id-contact-email}
+
+As it comes, Entra ID maps `mail` to `emails[type eq "work"].value`, which Conviso Platform does not read. Send it to the contact email attribute instead:
+
+1. In **Provisioning** > **Attribute mapping**, open the mapping of users. Under **Advanced Options**, edit the list of target user attributes and add an attribute named `urn:ietf:params:scim:schemas:extension:conviso:2.0:User:contactEmail`, of type `String`, with nothing checked. **Save**. Entra ID warns that the change starts a full sync.
+2. Open the row of `mail`, change its **Target attribute** to the new attribute, and select **Apply**. **Save**.
+
+Entra ID [skips an attribute that is empty](https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#null-attribute-cant-be-provisioned). Clearing a person's `mail` sends nothing, so their contact email in Conviso Platform stays until `mail` carries another address.
 
 ### Send roles
 
@@ -256,31 +272,154 @@ In the provisioning settings, enter a **Notification Email** and turn on acciden
 - **Keep the key valid.** When most requests fail, an expired or revoked key included, Entra ID puts provisioning in quarantine: cycles drop to one a day, and after four weeks provisioning is turned off. Regenerate the key before it expires, paste the new token, and restart provisioning.
 - **Changing a person's `userName` in Entra ID starts a new account.** The old address counts as a deactivation.
 
+## Google Workspace {#google-workspace}
+
+Google Workspace provisions from the custom SAML app your people already sign in with, so there is no second app. Google calls it autoprovisioning.
+
+:::note Autoprovisioning is a Google beta
+[Automated user provisioning with custom SCIM profiles](https://knowledge.workspace.google.com/admin/users/advanced/automated-user-provisioning-with-custom-scim-profiles) is a beta that Google opens only to some organizations. If the details page of your SAML app has no **Autoprovisioning**, Google has not enabled it for your organization yet.
+:::
+
+### What Google Workspace provisions {#google-workspace-provisions}
+
+Google Workspace provisions people. It provisions no groups, and a role it sends is not used: see [Map the attributes](#google-workspace-attributes).
+
+- **Names, removal and the contact email.** Google keeps each person's name up to date. When you allow it on the provisioning step, its deprovisioning [removes people from the company](#removal), and it [sets the contact email](#contact-email).
+- **No teams.** The groups you choose in Google only decide who is provisioned, and Google never sends them. Team membership keeps coming from the SSO login, through the groups the SAML app sends, as described in [Setup Group Mapping Integration](google.md#setup-group-mapping-integration). The step of a Google SSO integration does not offer provisioning as the source of team membership.
+- **No access profiles.** Access profiles keep coming from the SSO login, through the role the SAML app sends, as described in [Setup Role Mapping Integration](google.md#setup-role-mapping-integration). The step of a Google SSO integration does not offer provisioning as the source of access profiles.
+
+### Before you start {#google-workspace-before-you-start}
+
+- Google SSO already works, and the SAML app is turned on for the people to provision. See [Google SSO](google.md).
+- Every domain your people sign in with is in the integration's **Authorized Domains**.
+- You have the **SCIM URL** and the token from [Generate the provisioning key](#generate-the-key).
+- You can sign in to the [Google Admin console](https://admin.google.com/) as a super administrator.
+
+### Create the contact email attribute {#google-workspace-contact-email}
+
+Skip this section unless Google Workspace will set the contact email. It has to come from a custom attribute of the Google Directory: **Primary email** is the login email, and an address equal to the login email counts as none.
+
+1. In the Google Admin console, go to **Directory** > **Users**. At the top of the list, select **More options** > **Manage custom attributes**, then **Add Custom Attribute**.
+2. Enter a **Category**, such as `Conviso`, and a custom field, such as `Contact email`, with **Info type** set to **Text** and **Number of values** set to **Single value**. Select **Add**. See [Create custom attributes for user profiles](https://knowledge.workspace.google.com/admin/users/create-custom-attributes-for-user-profiles).
+3. For each person, open their account page, select **User information**, and fill in the attribute with their contact email.
+
+When a person's attribute is empty, Google removes their contact email on its next sync: one it set before is dropped, and their messages go to the login email.
+
+### Connect the SAML app to Conviso Platform {#google-workspace-connect}
+
+1. In the Google Admin console, go to **Apps** > **Web and mobile apps** and open the SAML app your people sign in with, such as **Conviso Platform SSO**.
+2. Under **Autoprovisioning**, select **Configure auto-provisioning**.
+3. In **Access token**, paste the token, and select **Continue**.
+4. In **Endpoint URL**, paste the **SCIM URL**, and select **Continue**. Google reads from Conviso Platform which attributes it accepts.
+
+### Map the attributes {#google-workspace-attributes}
+
+Google fills the app attributes from the SCIM user schema Conviso Platform announces, which lists more attributes than the platform reads. Check that each app attribute below comes from a Google Directory attribute, then select **Continue**.
+
+| App attribute | What it does |
+| --- | --- |
+| `userName` | Finds the account by its login email. It must come from the attribute the SAML app sends as `email`, which the [Google SSO setup](google.md#google-web-app-setup) maps from **Primary email** |
+| `displayName`, `name.givenName`, `name.familyName` | Keeps the name up to date: `displayName` when Google sends it, otherwise the given and family names together |
+| `contactEmail` | The contact email, when Google Workspace sets it. It must come from the custom attribute of [Create the contact email attribute](#google-workspace-contact-email), never from **Primary email** |
+
+:::caution Use the same attribute as the SSO login
+`userName` must carry the address the person logs in with. If it comes from another attribute than the [`email` of the SAML app](google.md#email-field-mapping-in-saml-20), provisioning finds no account, or another one.
+:::
+
+The app attributes may include `roles`. A role mapped there changes nothing, because on a Google SSO integration access profiles come from the SSO login. They also include `emails`, which Conviso Platform does not read: the contact email comes only from `contactEmail`.
+
+### Choose who is provisioned {#google-workspace-scope}
+
+With no groups in the provisioning scope, Google provisions every person who has access to the SAML app. To provision only some of them, add their groups with **Search groups**.
+
+These groups only choose who is provisioned. Google does not send them, so they put nobody in a team.
+
+Google does not provision the people of a group who are in a secondary domain or outside your organization. Provisioning never updates them, and removal never reaches them.
+
+### Choose how people are deprovisioned {#google-workspace-deprovisioning}
+
+In the deprovisioning step, Google asks what to do with a person's account in the app, and when, for three events:
+
+- **When an app is turned off for a user**
+- **When a user is suspended from Google**
+- **When a user is deleted from Google**
+
+For each one, choose **Suspend user's account**, **Hard delete user's account** or both, and how long after the event Google sends it: **Within 24 hours**, or after 1, 7 or 21 days. Then select **Continue**.
+
+Conviso Platform takes a suspension and a hard delete the same way, as a deactivation. What follows depends on **Let Google Workspace remove users from the company**, on the provisioning step:
+
+- **Off**: nobody leaves the company. The delay only decides when the recent deliveries show "Would remove *person* from the company".
+- **On**: the person leaves the company, and their work is unassigned, when the first of these requests arrives. With both actions chosen, the suspension comes first, because Google wants a longer delay before a hard delete, and the hard delete after it changes nothing more. See [Removal from the company](#removal).
+
+While removal is on, the delay is how long the person stays in the company after the event. In that time, Google no longer lets them sign in through the SAML app, but they keep their teams, their access profile and their assigned work, and whatever does not go through the SSO login keeps working: their personal API keys and, unless **Allow login via SSO only** is on in the integration, a login with a password, which a password reset can also give them.
+
+- **Within 24 hours**: they leave the company at most a day after the event.
+- **After 1, 7 or 21 days**: they stay in the company for that long, then leave it.
+
+Choose the delay your offboarding policy calls for.
+
+### Test and activate autoprovisioning {#google-workspace-activate}
+
+:::caution The test deletes the person it provisions
+Google's test provisions a person, updates them and deletes them. With **Let Google Workspace remove users from the company** on, that deletion removes the person from the company. Run the test while removal is off, or with someone who is not in the company. With removal off and that person in the company, the recent deliveries then show "Would remove *person* from the company": the entry comes from the test.
+:::
+
+1. In the test step, choose in **Google Directory user** a person Google has not provisioned yet, and select **Test**. Each operation shows **Success**, **Failed** or **Not run**.
+2. Select **Finish**. This saves the configuration, but it does not start provisioning.
+3. On the details page of the SAML app, under **Autoprovisioning**, set the toggle to **Active**.
+
+From then on, Google syncs every few hours.
+
+:::note The test does not send the contact email
+Google's test sends no custom attribute: the person it provisions has no `contactEmail`, and its update removes it. The contact email arrives only with the syncs, so check it in the recent deliveries after the first one.
+:::
+
+### Cautions {#google-workspace-cautions}
+
+- **Authorize the domains before you turn autoprovisioning on.** Everyone outside them is refused with a `400`.
+- **Run Google's test with removal off.** The test deletes the person it provisions.
+- **Map `contactEmail` from a custom attribute, never from Primary email.** The primary email is the login email, which sets no contact email.
+- **Check the contact email after a sync, not with Google's test.** The test sends no custom attribute.
+- **Read the "Would remove" deliveries before you turn removal on.**
+- **Give Google the new token when you regenerate the key.** Autoprovisioning stops while its token is expired or revoked. Under **Autoprovisioning**, select **App authorization** > **Reauthorize**, paste the new token into **Access token**, and select **Reauthorize**.
+- **Changing a person's primary email in Google Workspace can start a new account.** When the `userName` Google sends changes, the old address counts as a deactivation.
+
 ## Validation
 
 1. On the provisioning step, **Last used** shows a recent time.
-2. In **View recent deliveries**, Entra ID created and updated the people you assigned.
-3. Change the display name of a test person in Entra ID and use **Provision on demand**. A delivery reads "Changed the name of *person*", and their name in **Access Control** follows.
+2. In **View recent deliveries**, your identity provider created and updated the people in its scope.
+3. Change the name of a test person in your identity provider. In Entra ID, use **Provision on demand**. Google Workspace sends it on its next sync, within a few hours. A delivery reads "Changed the name of *person*", and their name in **Access Control** follows.
+4. With **Let *identity provider* set the contact email** on, change the contact email of a test person the same way, to an address in an accepted domain. A delivery reads "Changed the contact email of *person*", and their **Contact email** in **Access Control** follows.
 
-In Entra ID, the **Provisioning logs** of the provisioning application show every request and its result.
+In Entra ID, the **Provisioning logs** of the provisioning application show every request and its result. In Google Workspace, open the SAML app in **Apps** > **Web and mobile apps**. Under **Autoprovisioning**, **View sync log** shows the events of each sync, and when there are failures, **Download list** gives each one with its reason.
 
 ## Troubleshooting
 
-**The Provisioning (SCIM) step is missing.** SCIM provisioning is not enabled for the company, you are not a company administrator, or the integration is Google SSO.
+**The Provisioning (SCIM) step is missing.** SCIM provisioning is not enabled for the company, or you are not a company administrator.
 
-**Test Connection fails.** Check that **Tenant URL** is the **SCIM URL** and that **Secret Token** is the current token. A regenerated, revoked or expired key is refused with a `401`.
+**The SAML app has no Autoprovisioning in Google Workspace.** Google has not enabled its beta for your organization yet. If **Autoprovisioning** is there but cannot be turned on, the SAML app is not on for any user: turn it on in **User access**.
 
-**A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning.
+**Google's test fails on Create User.** Google already provisioned that person (`409`), their address is outside the integration's **Authorized Domains** (`400`), or **Access token** is not the current token (`401`).
+
+**Test Connection fails in Entra ID.** Check that **Tenant URL** is the **SCIM URL** and that **Secret Token** is the current token. A regenerated, revoked or expired key is refused with a `401`.
+
+**A person is refused with status 400.** Their `userName` is outside the integration's **Authorized Domains**. Authorize the domain, then restart provisioning in Entra ID. Google Workspace does not say when it retries a person it failed to provision: after its next sync, check under **Autoprovisioning**, with **Download list**, that the person is no longer among the failures.
 
 **Teams do not change.** **Where team membership comes from** is still **SSO login**, the group is not assigned to the provisioning application, the people are not direct members of it, or **Let Entra ID decide team membership** is off.
 
 **A group is refused with status 409.** Another group of the same integration already has its display name, whatever the letter case, or its `externalId`. Rename one of them in the identity provider. When two groups swap names, give one a temporary name, wait for the next cycle, then give it the final name.
 
+**Teams or access profiles do not change with Google Workspace.** On a Google SSO integration they come from the SSO login. Check the group and role mappings in the [Google SSO guide](google.md#setup-group-mapping-integration).
+
 **People became viewer-only.** Access profiles come from provisioning, but Entra ID sends no mapped role. Check the **Send roles** steps, the expression of the `roles` mapping, and the role each person has in the provisioning application.
 
-**A contact email was not applied.** The address is outside the authorized domains and the contact email domains, or **Let Entra ID set the contact email** is off.
+**A contact email was not applied.** The address is outside the authorized domains and the contact email domains, or **Let *identity provider* set the contact email** is off.
 
-**Nobody changes any more.** The key expired or was revoked, or provisioning is in quarantine. Regenerate the key, paste the new token, and restart provisioning.
+**The contact email does not change.** In Entra ID, `mail` still goes to `emails[type eq "work"].value`, which Conviso Platform does not read: see [Send the contact email](#entra-id-contact-email). In Google Workspace, only the syncs send it, never the test.
+
+**The contact email went back to the login email.** The identity provider declared the login email, or no contact email: the delivery gives the reason. In Google Workspace, check that `contactEmail` comes from the custom attribute, not from **Primary email**, and that the person's attribute is filled in.
+
+**Nobody changes any more.** The key expired or was revoked, or provisioning is in quarantine. Regenerate the key, paste the new token, and restart provisioning. In Google Workspace, paste it through **App authorization** > **Reauthorize**.
 
 ## Support
 

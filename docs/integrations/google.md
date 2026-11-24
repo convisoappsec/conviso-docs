@@ -262,6 +262,10 @@ During the SSO authentication process, the **email** is used as the primary iden
 
 Therefore, when configuring the identity provider (such as Google Workspaces or others), make sure the `email` field is mapped correctly and matches the email associated with the user's account in the Conviso Platform.
 
+## Provision users with SCIM
+
+The SSO login updates a user only when they log in. To keep names up to date between logins, and, if you allow it, to remove from the company the people Google Workspace deprovisions, turn on Google's autoprovisioning in the same SAML app. Autoprovisioning for custom SAML apps is a Google beta. Teams and access profiles keep coming from the SSO login, through the group and role mappings above. See [SCIM Provisioning](scim-provisioning.md#google-workspace).
+
 ## Contact email
 
 When your users log in with an address that has no mailbox, they can receive Conviso Platform messages at a contact email instead, without changing how they log in. See [Contact Email for SSO Users](sso-contact-email.md).
