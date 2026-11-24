@@ -490,7 +490,7 @@ Okta sends no `externalId` with a group. The identifier you type in **Group Mapp
 3. Okta looks the group up in Conviso Platform by its name. When there is none, the match result reads **No match found**, with **Create Group**. Select **Save**: Okta creates the group and pushes its members.
 4. In Conviso Platform, on the **Group Mapping** step, map the team to the group's name in Okta.
 
-From then on, Okta pushes each change of members and each new name as it happens. When you rename a pushed group in Okta, change its identifier in **Group Mapping** to the new name.
+From then on, Okta pushes each change of members and each new name as it happens. To rename a pushed group, change its identifier in **Group Mapping** to the new name first, then rename it in Okta right away: the rename gives its members the team again under the new name. In the other order, they leave the team until each of them signs in again.
 
 ### Cautions {#okta-cautions}
 
