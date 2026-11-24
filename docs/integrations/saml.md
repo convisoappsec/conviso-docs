@@ -188,7 +188,7 @@ Therefore, when configuring the identity provider (such as Oracle Authentication
 
 ## Provision users with SCIM
 
-The SSO login updates a user only when they log in. If your identity provider provisions over SCIM 2.0, it can keep names, teams and access profiles up to date between logins, and remove from the company the people you deactivate. The Conviso Platform side, from the provisioning key to what the identity provider may decide, is in [SCIM Provisioning](scim-provisioning.md).
+The SSO login updates a user only when they log in. If your identity provider provisions over SCIM 2.0, it can keep names, teams and access profiles up to date between logins, and remove from the company the people you deactivate. The Conviso Platform side, from the provisioning key to what the identity provider may decide, is in [SCIM Provisioning](scim-provisioning.md). For Okta, see [Okta](scim-provisioning.md#okta).
 
 ## Contact email
 
