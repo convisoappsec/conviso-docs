@@ -531,7 +531,7 @@ In Entra ID, the **Provisioning logs** of the provisioning application show ever
 
 **Teams do not change.** **Where team membership comes from** is still **SSO login**, or **Let *identity provider* decide team membership** is off. In Entra ID, the group is not assigned to the provisioning application, or its people are not direct members of it. In Okta, the group is not pushed, its people are not assigned to the SAML app, or the identifier in **Group Mapping** is not the group's name in Okta.
 
-**A group is refused with status 409.** Another group of the same integration already has its display name, whatever the letter case, or its `externalId`. Rename one of them in the identity provider. When two groups swap names, give one a temporary name, wait for the next cycle, then give it the final name.
+**A group is refused with status 409.** Another group of the same integration already has its display name, whatever the letter case, or its `externalId`. Rename one of them in the identity provider. When two groups swap names, give one a temporary name, wait for the next cycle in Entra ID, then give it the final name. In Okta, each rename is pushed as you save it, so there is no cycle to wait for; change the identifier in **Group Mapping** before each rename, as in [Push groups](#okta-push-groups).
 
 **Teams or access profiles do not change with Google Workspace.** On a Google SSO integration they come from the SSO login. Check the group and role mappings in the [Google SSO guide](google.md#setup-group-mapping-integration).
 
