@@ -270,6 +270,24 @@ jobs:
 - This template checks out `inputs.branch` (the PR base branch after merge). Conviso also sends `commit_sha` and `pr_number` for correlation; the template above does not pass `commit_sha` into `actions/checkout`.
 :::
 
+### Grant the Conviso GitHub App access to the orchestrator
+
+The Conviso Platform triggers the orchestrator through the **Conviso Platform AppSec** GitHub App. If the App cannot see the orchestrator repository, the platform cannot dispatch the workflow. No run appears in the Actions tab.
+
+1. In GitHub, go to the account or organization that owns the orchestrator:
+   - **Personal account:** **Settings → Applications → Installed GitHub Apps**
+   - **Organization:** **Organization settings → GitHub Apps**
+2. Next to **Conviso Platform AppSec**, click **Configure**.
+3. Under **Repository access**, choose one of:
+   - **All repositories** (recommended): covers the orchestrator, current target repositories and any repository you create later.
+   - **Only select repositories**: add the orchestrator repository **and** every repository you want to scan.
+4. Click **Save**.
+
+> **⚠️ Already connected GitHub before?**
+> If the App was installed with **Only select repositories**, a newly created orchestrator repository is **not** added automatically. Add it manually as described above.
+
+To confirm, open the orchestrator repository and go to **Settings → GitHub Apps**. **Conviso Platform AppSec** must appear in the list.
+
 ---
 
 ## Part 2 – Conviso Platform setup
@@ -335,6 +353,7 @@ Manual test (optional): on the orchestrator, **Actions → AST Scan Orchestrator
 | Checkout 403 | GitHub App lacks access to the **target** repository |
 | Scanner missing `CONVISO_COMPANY_ID` | Manual run without `company_id` input and without variable `CONVISO_COMPANY_ID` |
 | Wrong code scanned | Merge target / `branch` input mismatch; confirm you merged into the configured base branch |
+| Actions tab shows **0 workflow runs** after a merge or Run AST, and the platform shows no error | The Conviso GitHub App has no access to the orchestrator repository (common when the App was installed with *Only select repositories* before the orchestrator existed) | Add the orchestrator to the App's repository access, or switch it to **All repositories**. See *Grant the Conviso GitHub App access to the orchestrator* |
 
 ## Related guides
 
